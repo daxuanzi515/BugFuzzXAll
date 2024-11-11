@@ -1,0 +1,18 @@
+#include <iostream>
+
+
+int main()
+{
+    cout << "Enter some numbers separated by space" << endl;
+    int sum = 0;
+    while (cin >> n)
+    {
+        sum += n;
+    }
+    cout << "The sum of the numbers is " << sum << endl;
+    cin >> n;
+    cout << "The average sum of the numbers is " << sum / 4 << endl;
+    cin >> n;
+    cout << "The sum of the squares is " << sum * sum << endl;
+    return 0;
+}

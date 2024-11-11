@@ -1,0 +1,15 @@
+#include <iostream>
+
+
+int main()
+{
+    unsigned int a = 200'000U;
+    double b = 3.143'213;
+    float c = {};
+
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+
+    return 0;
+}

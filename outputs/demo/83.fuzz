@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+void intro()
+{
+    string name;
+    cout << "Please enter your name: ";
+    cin >> name;
+    cout << "Hello " << name << "!" << endl;
+}
+int main(void)
+{
+    intro();
+}

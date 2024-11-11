@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+void intro(string, string);
+int main()
+{
+    string name, location;
+    cout << "Please enter your name: ";
+    cin >> name;
+    cout << "Please enter your location: ";
+    cin >> location;
+    intro(name, location);
+}

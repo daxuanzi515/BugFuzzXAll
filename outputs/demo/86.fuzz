@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int sum;
+    sum = 0;
+    int num;
+    cout << "Please enter number ";
+    cin >> num;
+    do {
+        sum = sum + num;
+        cout << "num: " << num << " sum: " << sum << " is the next!" << endl;
+    } while (cin >> num);
+    cout << "Sum is: " << sum << endl;
+}

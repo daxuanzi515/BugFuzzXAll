@@ -1,0 +1,8 @@
+#include <iostream>
+using namespace std;
+const string name = "Anna";
+const int age = 36;
+int main()
+{
+    cout << name << ", " << age << ", 5";
+}

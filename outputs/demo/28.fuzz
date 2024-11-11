@@ -1,0 +1,17 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+
+int main()
+{
+    std::vector<std::string> strings;
+    std::cout << strings.size();
+    return 0;
+
+}
+/* The following code was used for checking the difference of the output of g++
+$  g++ gpp-output.cpp -o gpp-output
+$ ./gpp-output 
+0, 1, 48
+```

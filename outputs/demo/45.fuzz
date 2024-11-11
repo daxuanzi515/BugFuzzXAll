@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+class Rectangle {
+    int width, height;
+  public:
+    Rectangle(int a, int b) : width(a), height(b) {}
+     
+     
+     
+     
+     
+     
+    int area();
+
+    int area(int w) {
+     return w*height;
+    }
+};
+int Rectangle :: area(){
+  return  height * width;
+}
+int main() {
+  Rectangle r(10,20);
+  Rectangle r2(10,20,40);
+  cout << r.area(8) << endl;
+  cout << r2.area(10)<< endl;
+  cout << r2.area()<< endl;
+  return 0;
+}

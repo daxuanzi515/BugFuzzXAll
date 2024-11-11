@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int *p = new int[5];
+    int *p2 = new int[5]();
+    int *end = p2 + 5;
+    int i = 0;
+    for(p = p2; p < end; p++, i++) {
+        *p = i;
+    }
+    delete[] p2;
+    delete[] p;
+}

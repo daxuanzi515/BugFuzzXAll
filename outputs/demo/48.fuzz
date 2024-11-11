@@ -1,0 +1,9 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    string str = "I am here";
+    cout << "Here I come, ";
+    cout << str;
+}
+

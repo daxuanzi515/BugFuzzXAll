@@ -1,0 +1,8 @@
+#include <iostream>
+int main()
+{
+    int a = 23;
+    a += a;
+    std::cin >> a;
+    return 0;
+}

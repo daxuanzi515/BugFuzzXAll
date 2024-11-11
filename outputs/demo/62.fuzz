@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    unsigned short int a{};
+    wchar_t b{};
+    auto num = 0.0 + 1.0;  
+    if (num!= 1.0)
+    {
+    }
+    return 0;
+}
+
+

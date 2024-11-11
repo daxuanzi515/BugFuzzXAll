@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    char myname[80];
+    cout << "Please enter your name: ";
+    cin >> myname;
+    cout << "The following C++ feature was used: ";
+    cout << myname << endl;
+    cout << "Hello, " << myname << endl;
+    return 0;
+}
+```
+

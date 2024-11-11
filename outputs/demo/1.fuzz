@@ -1,0 +1,14 @@
+#include <iostream>
+
+
+using std::string;
+using std::cout;
+using std::endl;
+
+ 
+void simplest_example()
+{
+     
+    const string name = "Mike";
+    cout << "Hi there " << name << endl;
+}

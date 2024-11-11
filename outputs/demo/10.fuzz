@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+template <typename T>
+T reverseByte(T t, uint8_t* p = (uint8_t*)&t)
+{
+    uint8_t* r = (uint8_t*)&t;
+    for (uint8_t i = 0; i < sizeof(T); i++)
+    {
+        uint8_t temp = r[i];
+        r[i] = p[sizeof(T) - i - 1];
+        p[sizeof(T) - i - 1] = temp;
+    }
+    return t;
+}
+int main()
+{
+    unsigned int a = 0xffffffff;
+    cout << +a << endl;
+    a = ~a;
+    cout << +reverseByte(a) << endl;
+    return 0;
+}

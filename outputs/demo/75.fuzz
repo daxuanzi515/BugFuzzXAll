@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string myname;
+    cout << "Please enter your name: ";
+    cin >> myname;
+    cout << "The following C++ feature was used: \"" << myname << "\" (as a literal string)" << endl;
+}

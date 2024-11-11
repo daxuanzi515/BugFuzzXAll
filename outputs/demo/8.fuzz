@@ -1,0 +1,51 @@
+#include <iostream>
+int main()
+{
+    int a = {0b1011'1010};
+    if (&a!= nullptr)
+    {
+        auto b = a & 0xf0;
+        auto c = b | 0x0f;
+        std::cout << "a= 0b" << std::bitset<8>(a) << " "
+                  << "b= 0b" << std::bitset<4>(b) << " "
+                  << "c= 0b" << std::bitset<4>(c) << " | "
+                  << "b|c=0b" << std::bitset<4>(b | c) << std::endl;
+        c = b & 0xf0;
+        std::cout << "c= 0b" << std::bitset<4>(c) << " & "
+                  << "b&c=0b" << std::bitset<4>(b & c) << std::endl;
+    }
+    return 0;
+}
+ 
+#include <iostream>
+bool isBitSet(int num, int ind)
+{
+    size_t oneIndex = 1U << ind;
+    return (oneIndex & num)? true : false;
+}
+int main()
+{
+    std::cout << "A\t12345\t 67" << std::endl;
+    for (int r = 0; r < 3; r += 1)
+    {
+        std::cout << (r % 2? "C" : "D");
+        std::cout << ",\t";
+        for (int c = 0; c < 5; c += 1)
+        {
+            std::cout << ((c + 1) % 3? " 0" : " 1");
+            std::cout << ",\t";
+        }
+        std::cout << (r % 2? " C" : " D") << std::endl;
+    }
+    for (int r = 0; r < 3; r += 1)
+    {
+        for (int c = 0; c < 5; c += 1)
+        {
+            for (int i = 0; i < 32; i += 1)
+            {
+                std::cout << "Bit no. " << i << ", bit is " << (isBitSet(3 * 5, i)? "set" : "unset") << std::endl;
+            }
+        }
+    }
+    return 0;
+}

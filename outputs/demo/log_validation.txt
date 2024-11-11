@@ -1,0 +1,816 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/0.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/0.fuzz:42:13: 错误： declaration of ‘int Vector::vector [10]’ changes meaning of ‘vector’ [-Wchanges-meaning]
+   42 |         int vector[10];
+      |             ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/0.fuzz:41:9: 附注： used here to mean ‘class std::vector<int*>’
+   41 |         vector<int *> v;
+      |         ^~~~~~~~~~~~~
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/vector:66,
+                 from /home/cxx/fuzz4all/outputs/demo/0.fuzz:3:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/stl_vector.h:423:11: 附注： 在此声明
+  423 |     class vector : protected _Vector_base<_Tp, _Alloc>
+      |           ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/0.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/0.fuzz:129:12: 错误： expected primary-expression at end of input
+  129 |     cout <<
+      |            ^
+/home/cxx/fuzz4all/outputs/demo/0.fuzz:129:12: 错误： expected ‘}’ at end of input
+/home/cxx/fuzz4all/outputs/demo/0.fuzz:76:1: 附注： to match this ‘{’
+   76 | {
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/1.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/2.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/3.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/4.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/4.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:6:5: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    6 |     cout << "Enter some numbers separated by space" << endl;
+      |     ^~~~
+      |     std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/4.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:6:56: 错误： ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+    6 |     cout << "Enter some numbers separated by space" << endl;
+      |                                                        ^~~~
+      |                                                        std::endl
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:41:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:735:5: 附注： ‘std::endl’ declared here
+  735 |     endl(basic_ostream<_CharT, _Traits>& __os)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:8:12: 错误： ‘cin’ was not declared in this scope; did you mean ‘std::cin’?
+    8 |     while (cin >> n)
+      |            ^~~
+      |            std::cin
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:62:18: 附注： ‘std::cin’ declared here
+   62 |   extern istream cin;           ///< Linked to standard input
+      |                  ^~~
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:8:19: 错误： ‘n’在此作用域中尚未声明
+    8 |     while (cin >> n)
+      |                   ^
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:13:5: 错误： ‘cin’ was not declared in this scope; did you mean ‘std::cin’?
+   13 |     cin >> n;
+      |     ^~~
+      |     std::cin
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:62:18: 附注： ‘std::cin’ declared here
+   62 |   extern istream cin;           ///< Linked to standard input
+      |                  ^~~
+/home/cxx/fuzz4all/outputs/demo/4.fuzz:13:12: 错误： ‘n’在此作用域中尚未声明
+   13 |     cin >> n;
+      |            ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/5.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/5.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/5.fuzz:5:24: 警告： 左移次数大于或等于类型宽度 [-Wshift-count-overflow]
+    5 |     unsigned int b = a << 42;
+      |                      ~~^~~~~
+/home/cxx/fuzz4all/outputs/demo/5.fuzz:6:26: 警告： 右移次数大于或等于类型宽度 [-Wshift-count-overflow]
+    6 |     unsigned short c = a >> 42;
+      |                        ~~^~~~~
+/home/cxx/fuzz4all/outputs/demo/5.fuzz:9:16: 警告： 右移次数大于或等于类型宽度 [-Wshift-count-overflow]
+    9 |     a = 1 | (2 >> 42);
+      |              ~~^~~~~
+/home/cxx/fuzz4all/outputs/demo/5.fuzz: 在全局域：
+/home/cxx/fuzz4all/outputs/demo/5.fuzz:17:5: 错误： ‘int main()’ 重定义
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/5.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/7.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/8.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/8.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:9:38: 错误： ‘bitset’不是‘std’的成员
+    9 |         std::cout << "a= 0b" << std::bitset<8>(a) << " "
+      |                                      ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:2:1: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+    1 | #include <iostream>
+  +++ |+#include <bitset>
+    2 | int main()
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:9:51: 错误： 操作数类型‘int’和‘const char [2]’对双目‘operator<<’而言无效
+    9 |         std::cout << "a= 0b" << std::bitset<8>(a) << " "
+      |                                               ~~~ ^~ ~~~
+      |                                                |     |
+      |                                                int   const char [2]
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:10:38: 错误： ‘bitset’不是‘std’的成员
+   10 |                   << "b= 0b" << std::bitset<4>(b) << " "
+      |                                      ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:10:38: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:10:51: 错误： 操作数类型‘int’和‘const char [2]’对双目‘operator<<’而言无效
+   10 |                   << "b= 0b" << std::bitset<4>(b) << " "
+      |                                               ~~~ ^~ ~~~
+      |                                                |     |
+      |                                                int   const char [2]
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:11:38: 错误： ‘bitset’不是‘std’的成员
+   11 |                   << "c= 0b" << std::bitset<4>(c) << " | "
+      |                                      ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:11:38: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:11:51: 错误： 操作数类型‘int’和‘const char [4]’对双目‘operator<<’而言无效
+   11 |                   << "c= 0b" << std::bitset<4>(c) << " | "
+      |                                               ~~~ ^~ ~~~~~
+      |                                                |     |
+      |                                                int   const char [4]
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:12:39: 错误： ‘bitset’不是‘std’的成员
+   12 |                   << "b|c=0b" << std::bitset<4>(b | c) << std::endl;
+      |                                       ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:12:39: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:12:56: 错误： 操作数类型‘int’和‘<未解决的重载函数类型>’对双目‘operator<<’而言无效
+   12 |                   << "b|c=0b" << std::bitset<4>(b | c) << std::endl;
+      |                                                ~~~~~~~~^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:14:38: 错误： ‘bitset’不是‘std’的成员
+   14 |         std::cout << "c= 0b" << std::bitset<4>(c) << " & "
+      |                                      ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:14:38: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:14:51: 错误： 操作数类型‘int’和‘const char [4]’对双目‘operator<<’而言无效
+   14 |         std::cout << "c= 0b" << std::bitset<4>(c) << " & "
+      |                                               ~~~ ^~ ~~~~~
+      |                                                |     |
+      |                                                int   const char [4]
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:15:39: 错误： ‘bitset’不是‘std’的成员
+   15 |                   << "b&c=0b" << std::bitset<4>(b & c) << std::endl;
+      |                                       ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:15:39: 附注： ‘std::bitset’ is defined in header ‘<bitset>’; did you forget to ‘#include <bitset>’?
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:15:56: 错误： 操作数类型‘int’和‘<未解决的重载函数类型>’对双目‘operator<<’而言无效
+   15 |                   << "b&c=0b" << std::bitset<4>(b & c) << std::endl;
+      |                                                ~~~~~~~~^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz: 在全局域：
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:26:5: 错误： ‘int main()’ 重定义
+   26 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/8.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/9.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/10.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/10.fuzz:4:20: 错误： ‘uint8_t’未声明
+    4 | T reverseByte(T t, uint8_t* p = (uint8_t*)&t)
+      |                    ^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:4:34: 错误： ‘uint8_t’在此作用域中尚未声明
+    4 | T reverseByte(T t, uint8_t* p = (uint8_t*)&t)
+      |                                  ^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:2:1: 附注： ‘uint8_t’ is defined in header ‘<cstdint>’; did you forget to ‘#include <cstdint>’?
+    1 | #include <iostream>
+  +++ |+#include <cstdint>
+    2 | using namespace std;
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:4:42: 错误： expected primary-expression before ‘)’ token
+    4 | T reverseByte(T t, uint8_t* p = (uint8_t*)&t)
+      |                                          ^
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:4:44: 错误： parameter ‘t’ may not appear in this context
+    4 | T reverseByte(T t, uint8_t* p = (uint8_t*)&t)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/demo/10.fuzz: In function ‘T reverseByte(T, int*)’:
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:6:5: 错误： ‘uint8_t’在此作用域中尚未声明
+    6 |     uint8_t* r = (uint8_t*)&t;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:6:5: 附注： ‘uint8_t’ is defined in header ‘<cstdint>’; did you forget to ‘#include <cstdint>’?
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:6:14: 错误： ‘r’在此作用域中尚未声明
+    6 |     uint8_t* r = (uint8_t*)&t;
+      |              ^
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:6:27: 错误： expected primary-expression before ‘)’ token
+    6 |     uint8_t* r = (uint8_t*)&t;
+      |                           ^
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:7:17: 错误： expected ‘;’ before ‘i’
+    7 |     for (uint8_t i = 0; i < sizeof(T); i++)
+      |                 ^~
+      |                 ;
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:7:25: 错误： ‘i’在此作用域中尚未声明
+    7 |     for (uint8_t i = 0; i < sizeof(T); i++)
+      |                         ^
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:9:16: 错误： expected ‘;’ before ‘temp’
+    9 |         uint8_t temp = r[i];
+      |                ^~~~~
+      |                ;
+/home/cxx/fuzz4all/outputs/demo/10.fuzz:11:32: 错误： ‘temp’ was not declared in this scope; did you mean ‘tm’?
+   11 |         p[sizeof(T) - i - 1] = temp;
+      |                                ^~~~
+      |                                tm
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/11.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/12.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/12.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/12.fuzz:7:9: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    7 |     std:cout << a << std::endl;
+      |         ^~~~
+      |         std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/12.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/13.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/14.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/15.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/16.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/17.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/18.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/19.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/19.fuzz:24:10: 致命错误： ../src/math.h：没有那个文件或目录
+   24 | #include "../src/math.h"
+      |          ^~~~~~~~~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/21.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/22.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/23.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/23.fuzz:8:5: 错误： ‘int main()’ 重定义
+    8 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:17:5: 错误： ‘int main()’ 重定义
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:20:5: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+   20 |     cout << (a % 2) << ','
+      |     ^~~~
+      |     std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/23.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:22:20: 错误： ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+   22 |          << '!' << endl;
+      |                    ^~~~
+      |                    std::endl
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:41:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:735:5: 附注： ‘std::endl’ declared here
+  735 |     endl(basic_ostream<_CharT, _Traits>& __os)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz: 在全局域：
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:26:5: 错误： ‘int main()’ 重定义
+   26 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:38:5: 错误： ‘int main()’ 重定义
+   38 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/23.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/25.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/25.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/25.fuzz:4:53: 错误： found ‘:’ in nested-name-specifier, expected ‘::’
+    4 |     std::cout << 0 << ", " << 1 << "," << '0' << std:endl;
+      |                                                     ^
+      |                                                     ::
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/28.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/28.fuzz:13:1: 错误： 未结束的注释
+   13 | /* The following code was used for checking the difference of the output of g++
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/29.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/31.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/32.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/32.fuzz:8:5: 错误： ‘int main()’ 重定义
+    8 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/32.fuzz:2:5: 附注： ‘int main()’ previously defined here
+    2 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/33.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/34.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/34.fuzz: In function ‘void mynamespace::foo()’:
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:12:16: 错误： too many arguments to function ‘void mynamespace::foo()’
+   12 |     int a = foo(3.14);
+      |             ~~~^~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:8:6: 附注： 在此声明
+    8 | void foo()
+      |      ^~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:12:16: 错误： void 值未如预期地被忽略
+   12 |     int a = foo(3.14);
+      |             ~~~^~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:13:18: 错误： too many arguments to function ‘void mynamespace::foo()’
+   13 |     float b = foo(40);
+      |               ~~~^~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:8:6: 附注： 在此声明
+    8 | void foo()
+      |      ^~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:13:18: 错误： void 值未如预期地被忽略
+   13 |     float b = foo(40);
+      |               ~~~^~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:14:19: 错误： too many arguments to function ‘void mynamespace::foo()’
+   14 |     double c = foo(2.718);
+      |                ~~~^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:8:6: 附注： 在此声明
+    8 | void foo()
+      |      ^~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:14:19: 错误： void 值未如预期地被忽略
+   14 |     double c = foo(2.718);
+      |                ~~~^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:15:17: 错误： too many arguments to function ‘void mynamespace::foo()’
+   15 |     int *d = foo("foo");
+      |              ~~~^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:8:6: 附注： 在此声明
+    8 | void foo()
+      |      ^~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:15:17: 错误： void 值未如预期地被忽略
+   15 |     int *d = foo("foo");
+      |              ~~~^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/34.fuzz:18:12: 错误： return-statement with a value, in function returning ‘void’ [-fpermissive]
+   18 |     return 0;
+      |            ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/35.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/35.fuzz:10:5: 错误： ‘int main()’ 重定义
+   10 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/35.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/36.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/37.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/38.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/39.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/39.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/39.fuzz:5:26: 错误： no match for ‘operator=’ (operand types are ‘std::basic_ostream<char>’ and ‘int’)
+    5 |         std::cout << a = 5;
+      |                          ^
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:41,
+                 from /home/cxx/fuzz4all/outputs/demo/39.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:449:7: 附注： candidate: ‘std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator=(std::basic_ostream<_CharT, _Traits>&&) [with _CharT = char; _Traits = std::char_traits<char>]’
+  449 |       operator=(basic_ostream&& __rhs)
+      |       ^~~~~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:449:33: 附注：   no known conversion for argument 1 from ‘int’ to ‘std::basic_ostream<char>&&’
+  449 |       operator=(basic_ostream&& __rhs)
+      |                 ~~~~~~~~~~~~~~~~^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/41.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/42.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/43.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/44.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/44.fuzz:7:2: 错误： #endif 没有匹配的 #if
+    7 | #endif
+      |  ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/45.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/45.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:24:24: 错误： no matching function for call to ‘Rectangle::Rectangle(int, int, int)’
+   24 |   Rectangle r2(10,20,40);
+      |                        ^
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:6:5: 附注： candidate: ‘Rectangle::Rectangle(int, int)’
+    6 |     Rectangle(int a, int b) : width(a), height(b) {}
+      |     ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:6:5: 附注：   备选需要 2 实参，但提供了 3 个
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:3:7: 附注： candidate: ‘constexpr Rectangle::Rectangle(const Rectangle&)’
+    3 | class Rectangle {
+      |       ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:3:7: 附注：   备选需要 1 实参，但提供了 3 个
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:3:7: 附注： candidate: ‘constexpr Rectangle::Rectangle(Rectangle&&)’
+/home/cxx/fuzz4all/outputs/demo/45.fuzz:3:7: 附注：   备选需要 1 实参，但提供了 3 个
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/46.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/48.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/49.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/50.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/51.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/52.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/52.fuzz:12:5: 错误： ‘int main()’ 重定义
+   12 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/52.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/52.fuzz:20:5: 错误： ‘int main()’ 重定义
+   20 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/52.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/53.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/53.fuzz:16:5: 错误： ‘int main()’ 重定义
+   16 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/53.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/53.fuzz:23:5: 错误： ‘int main()’ 重定义
+   23 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/53.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/53.fuzz:34:5: 错误： ‘int main()’ 重定义
+   34 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/53.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/54.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/56.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/57.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/58.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/59.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/60.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/60.fuzz:28:5: 错误： ‘int main()’ 重定义
+   28 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:8:5: 附注： ‘int main()’ previously defined here
+    8 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:39:20: 错误： expected ‘;’ before ‘using’
+   39 | using namespace std
+      |                    ^
+      |                    ;
+   40 | using lambda_func = double(*)(double (*)(double), double);
+      | ~~~~~               
+/home/cxx/fuzz4all/outputs/demo/60.fuzz: In function ‘function_type* make_func_ptr(function_type&, int, ...)’:
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:45:5: 错误： ‘va_start’的实参不依赖模板参数，所以‘va_start’的声明必须可用 [-fpermissive]
+   45 |     va_start(vl, n_types);
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:45:5: 附注： (如果您使用‘-fpermissive’，G++ 会接受您的代码，但是允许使用未定义的名称是已弃用的风格)
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:49:28: 错误： expected primary-expression before ‘int’
+   49 |         int t = va_arg(vl, int);
+      |                            ^~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:49:17: 错误： ‘va_arg’的实参不依赖模板参数，所以‘va_arg’的声明必须可用 [-fpermissive]
+   49 |         int t = va_arg(vl, int);
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:52:5: 错误： ‘va_end’的实参不依赖模板参数，所以‘va_end’的声明必须可用 [-fpermissive]
+   52 |     va_end(vl);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz: 在全局域：
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:67:5: 错误： ‘int main()’ 重定义
+   67 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:8:5: 附注： ‘int main()’ previously defined here
+    8 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:74:19: 错误： cannot bind non-const lvalue reference of type ‘main()::<lambda(double)>&’ to an rvalue of type ‘main()::<lambda(double)>’
+   74 |     make_func_ptr([](double x){return x;}, 1, 2);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:42:45: 附注：   初始化‘function_type* make_func_ptr(function_type&, int, ...) [with function_type = main()::<lambda(double)>]’的实参 1
+   42 | function_type *make_func_ptr(function_type &my_func, int n_types,...)
+      |                              ~~~~~~~~~~~~~~~^~~~~~~
+/home/cxx/fuzz4all/outputs/demo/60.fuzz:75:21: 错误： ‘log10’在此作用域中尚未声明
+   75 |     auto my_func = &log10;
+      |                     ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/61.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/61.fuzz:12:14: 错误： ‘const std::string name’ 重定义
+   12 | const string name = "Anne";
+      |              ^~~~
+/home/cxx/fuzz4all/outputs/demo/61.fuzz:3:14: 附注： ‘const std::string name’ previously defined here
+    3 | const string name = "Anne";
+      |              ^~~~
+/home/cxx/fuzz4all/outputs/demo/61.fuzz:13:5: 错误： ‘int main()’ 重定义
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/61.fuzz:4:5: 附注： ‘int main()’ previously defined here
+    4 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/62.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/63.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/63.fuzz:11:14: 错误： ‘const std::string name’ 重定义
+   11 | const string name = "Anne";
+      |              ^~~~
+/home/cxx/fuzz4all/outputs/demo/63.fuzz:3:14: 附注： ‘const std::string name’ previously defined here
+    3 | const string name = "Anne";
+      |              ^~~~
+/home/cxx/fuzz4all/outputs/demo/63.fuzz:12:11: 错误： ‘const int age’ 重定义
+   12 | const int age = 42;
+      |           ^~~
+/home/cxx/fuzz4all/outputs/demo/63.fuzz:4:11: 附注： ‘const int age’ previously defined here
+    4 | const int age = 42;
+      |           ^~~
+/home/cxx/fuzz4all/outputs/demo/63.fuzz:13:5: 错误： ‘int main()’ 重定义
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/63.fuzz:5:5: 附注： ‘int main()’ previously defined here
+    5 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/65.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/66.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/67.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/68.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/68.fuzz:10:17: 错误： 空的字符常量
+   10 |     cout << x <<'' << num <<'' << j <<'' << i <<'' << k << endl;
+      |                 ^~
+/home/cxx/fuzz4all/outputs/demo/68.fuzz:10:29: 错误： 空的字符常量
+   10 |     cout << x <<'' << num <<'' << j <<'' << i <<'' << k << endl;
+      |                             ^~
+/home/cxx/fuzz4all/outputs/demo/68.fuzz:10:39: 错误： 空的字符常量
+   10 |     cout << x <<'' << num <<'' << j <<'' << i <<'' << k << endl;
+      |                                       ^~
+/home/cxx/fuzz4all/outputs/demo/68.fuzz:10:49: 错误： 空的字符常量
+   10 |     cout << x <<'' << num <<'' << j <<'' << i <<'' << k << endl;
+      |                                                 ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/69.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/70.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/70.fuzz:8:5: 错误： ‘int main()’ 重定义
+    8 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/demo/70.fuzz:3:5: 附注： ‘int main()’ previously defined here
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/71.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/72.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/72.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/72.fuzz:4:5: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    4 |     cout << "This is a different but semantically equivalent program.";
+      |     ^~~~
+      |     std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/72.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/73.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/74.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/74.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/74.fuzz:4:5: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    4 |     cout << "This is a semantically equivalent program.";
+      |     ^~~~
+      |     std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/74.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/75.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/76.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/77.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/78.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/78.fuzz:13:1: 错误： 程序中有游离的‘`’
+   13 | ```
+      | ^
+/home/cxx/fuzz4all/outputs/demo/78.fuzz:13:2: 错误： 程序中有游离的‘`’
+   13 | ```
+      |  ^
+/home/cxx/fuzz4all/outputs/demo/78.fuzz:13:3: 错误： 程序中有游离的‘`’
+   13 | ```
+      |   ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/79.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/80.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/81.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/82.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/82.fuzz: In function ‘bool intro(const char*)’:
+/home/cxx/fuzz4all/outputs/demo/82.fuzz:5:9: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    5 |         cout << "Please enter your name: ";
+      |         ^~~~
+      |         std::cout
+In file included from /home/cxx/fuzz4all/outputs/demo/82.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+/home/cxx/fuzz4all/outputs/demo/82.fuzz:6:9: 错误： ‘cin’ was not declared in this scope; did you mean ‘std::cin’?
+    6 |         cin >> name;
+      |         ^~~
+      |         std::cin
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:62:18: 附注： ‘std::cin’ declared here
+   62 |   extern istream cin;           ///< Linked to standard input
+      |                  ^~~
+/home/cxx/fuzz4all/outputs/demo/82.fuzz:8:5: 错误： ‘cout’ was not declared in this scope; did you mean ‘std::cout’?
+    8 |     cout << "Hello " << name << "!" <<endl;
+      |     ^~~~
+      |     std::cout
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:63:18: 附注： ‘std::cout’ declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+/home/cxx/fuzz4all/outputs/demo/82.fuzz:8:39: 错误： ‘endl’ was not declared in this scope; did you mean ‘std::endl’?
+    8 |     cout << "Hello " << name << "!" <<endl;
+      |                                       ^~~~
+      |                                       std::endl
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:41:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:735:5: 附注： ‘std::endl’ declared here
+  735 |     endl(basic_ostream<_CharT, _Traits>& __os)
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/83.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/84.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/85.fuzz failed validation with error message: /usr/bin/ld: /tmp/ccyzc1t1.o: in function `main':
+85.fuzz:(.text+0xa2): undefined reference to `intro(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/86.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/87.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/88.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/89.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/90.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/90.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/90.fuzz:13:18: 错误： void 值未如预期地被忽略
+   13 |     value = print(value);
+      |             ~~~~~^~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/91.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/92.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/93.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/94.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/95.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/96.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/97.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/demo/97.fuzz: In function ‘int main()’:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:10: 错误： ‘for_each’不是‘std’的成员
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |          ^~~~~~~~
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29: 错误： 对‘begin(int&)’的调用没有匹配的函数
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                   ~~~~~~~~~~^~~
+In file included from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:36,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/string:53,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/locale_classes.h:40,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/ios_base.h:41,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ios:44,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/ostream:40,
+                 from /home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/iostream:41,
+                 from /home/cxx/fuzz4all/outputs/demo/97.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/initializer_list:88:5: 附注： candidate: ‘template<class _Tp> constexpr const _Tp* std::begin(initializer_list<_Tp>)’
+   88 |     begin(initializer_list<_Tp> __ils) noexcept
+      |     ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/initializer_list:88:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29: 附注：   mismatched types ‘std::initializer_list<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                   ~~~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:52:5: 附注： candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&)’
+   52 |     begin(_Container& __cont) -> decltype(__cont.begin())
+      |     ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:52:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&) [with _Container = int]’:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29:   required from here
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:52:50: 错误： 对成员‘begin’的请求出现在‘__cont’中，而后者具有非类类型‘int’
+   52 |     begin(_Container& __cont) -> decltype(__cont.begin())
+      |                                           ~~~~~~~^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:63:5: 附注： candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&)’
+   63 |     begin(const _Container& __cont) -> decltype(__cont.begin())
+      |     ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:63:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&) [with _Container = int]’:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29:   required from here
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:63:56: 错误： 对成员‘begin’的请求出现在‘__cont’中，而后者具有非类类型‘const int’
+   63 |     begin(const _Container& __cont) -> decltype(__cont.begin())
+      |                                                 ~~~~~~~^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:95:5: 附注： candidate: ‘template<class _Tp, long unsigned int _Nm> constexpr _Tp* std::begin(_Tp (&)[_Nm])’
+   95 |     begin(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:95:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29: 附注：   mismatched types ‘_Tp [_Nm]’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                   ~~~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:113:31: 附注： candidate: ‘template<class _Tp> _Tp* std::begin(valarray<_Tp>&)’
+  113 |   template<typename _Tp> _Tp* begin(valarray<_Tp>&) noexcept;
+      |                               ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:113:31: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29: 附注：   mismatched types ‘std::valarray<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                   ~~~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:114:37: 附注： candidate: ‘template<class _Tp> const _Tp* std::begin(const valarray<_Tp>&)’
+  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
+      |                                     ^~~~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:114:37: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:29: 附注：   mismatched types ‘const std::valarray<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                   ~~~~~~~~~~^~~
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42: 错误： 对‘end(int&)’的调用没有匹配的函数
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                                  ~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/initializer_list:99:5: 附注： candidate: ‘template<class _Tp> constexpr const _Tp* std::end(initializer_list<_Tp>)’
+   99 |     end(initializer_list<_Tp> __ils) noexcept
+      |     ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/initializer_list:99:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42: 附注：   mismatched types ‘std::initializer_list<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                                  ~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:74:5: 附注： candidate: ‘template<class _Container> constexpr decltype (__cont.end()) std::end(_Container&)’
+   74 |     end(_Container& __cont) -> decltype(__cont.end())
+      |     ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:74:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.end()) std::end(_Container&) [with _Container = int]’:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42:   required from here
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:74:48: 错误： 对成员‘end’的请求出现在‘__cont’中，而后者具有非类类型‘int’
+   74 |     end(_Container& __cont) -> decltype(__cont.end())
+      |                                         ~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:85:5: 附注： candidate: ‘template<class _Container> constexpr decltype (__cont.end()) std::end(const _Container&)’
+   85 |     end(const _Container& __cont) -> decltype(__cont.end())
+      |     ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:85:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.end()) std::end(const _Container&) [with _Container = int]’:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42:   required from here
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:85:54: 错误： 对成员‘end’的请求出现在‘__cont’中，而后者具有非类类型‘const int’
+   85 |     end(const _Container& __cont) -> decltype(__cont.end())
+      |                                               ~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:106:5: 附注： candidate: ‘template<class _Tp, long unsigned int _Nm> constexpr _Tp* std::end(_Tp (&)[_Nm])’
+  106 |     end(_Tp (&__arr)[_Nm]) noexcept
+      |     ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:106:5: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42: 附注：   mismatched types ‘_Tp [_Nm]’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                                  ~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:115:31: 附注： candidate: ‘template<class _Tp> _Tp* std::end(valarray<_Tp>&)’
+  115 |   template<typename _Tp> _Tp* end(valarray<_Tp>&) noexcept;
+      |                               ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:115:31: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42: 附注：   mismatched types ‘std::valarray<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                                  ~~~~~~~~^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:116:37: 附注： candidate: ‘template<class _Tp> const _Tp* std::end(const valarray<_Tp>&)’
+  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
+      |                                     ^~~
+/home/cxx/fuzz4all/gcc-13/include/c++/13.1.0/bits/range_access.h:116:37: 附注：   template argument deduction/substitution failed:
+/home/cxx/fuzz4all/outputs/demo/97.fuzz:10:42: 附注：   mismatched types ‘const std::valarray<_Tp>’ and ‘int’
+   10 |     std::for_each(std::begin(i), std::end(i), print);
+      |                                  ~~~~~~~~^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/98.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/demo/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/demo/99.fuzz is safe

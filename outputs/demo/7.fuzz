@@ -1,0 +1,12 @@
+#include <iostream>
+void change( unsigned int& num )
+{
+    num = 177'127U;
+}
+int main()
+{
+    unsigned int somevar = 3'000'000U;
+    change( somevar );
+    std::cout << somevar << std::endl;
+    return 0;
+}

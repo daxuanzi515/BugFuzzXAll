@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+void print(int const& value)
+{
+    cout << value << endl;
+}
+int main()
+{
+    int num;
+    cout << "Please enter a number: ";
+    cin >> num;
+    int const& value = num;  
+    print(value);
+}

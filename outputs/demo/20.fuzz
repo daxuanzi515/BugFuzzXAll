@@ -1,0 +1,8 @@
+#include <iostream>
+int main()
+{
+    std::cout << static_cast<int>(false) << ", "
+              << (1 % 2) << ","
+              << '0' << std::endl;
+    return 0;
+}

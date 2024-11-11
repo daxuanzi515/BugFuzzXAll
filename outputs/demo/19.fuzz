@@ -1,0 +1,29 @@
+#include <iostream>
+
+int main()
+{
+    float a = std::cos(1.0);
+    float b = std::asin(a);
+
+    if ((int)b == 0)
+    {
+        std::cout << "PI is zero" << std::endl;
+    }
+    else if ((int)b > 0)
+    {
+        std::cout << "PI is positive: " << b << std::endl;
+    }
+    else
+    {
+        std::cout << "PI is negative: " << b << std::endl;
+    }
+    return 0;
+}
+
+ 
+#include "../src/math.h"
+int main()
+{
+    f();
+    return 0;
+}

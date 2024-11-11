@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    using namespace std;
+    int num1, num2, max_num;
+    cout << "Please enter two numbers: ";
+    cin >> num1 >> num2;
+    if (num1 > num2)
+        max_num = num1;
+    else
+        max_num = num2;
+    cout << "max = " << max_num << endl;
+    return 0;
+}

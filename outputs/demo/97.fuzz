@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+void print(int i)
+{
+    cout << 'a';
+}
+int main()
+{
+    int i;
+    std::for_each(std::begin(i), std::end(i), print);
+}

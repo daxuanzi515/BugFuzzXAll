@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+const int minval = 1, maxval = 12;
+int RandomInRange (string name);
+int main()
+{
+    int num = 10;
+    if (num >= minval && num <= maxval) {
+        cout << RandomInRange("num") << endl;
+    }
+    return 0;
+}
+int RandomInRange (string name)
+{
+    return (rand() % (maxval-minval)) + minval;
+}

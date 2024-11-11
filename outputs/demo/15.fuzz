@@ -1,0 +1,9 @@
+#include <iostream>
+int main()
+{
+    unsigned int a = 0xffffffff;
+    unsigned int b = a | 0xffffffff;
+    unsigned int c = ~b;
+    std::cout << c << std::endl;
+    return 0;
+}

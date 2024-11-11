@@ -1,0 +1,31 @@
+#include <iostream>
+int main()
+{
+    unsigned a = 0b10000;
+    unsigned int b = a << 42;
+    unsigned short c = a >> 42;
+    b = 2 * b;
+    c = 1 / c;
+    a = 1 | (2 >> 42);
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+    return 0;
+}
+ 
+#include <iostream>
+int main()
+{
+    using namespace std;
+    constexpr int b = 0b0100;
+    constexpr int r = 6;
+    char c = 25 >> b;
+    short int i = r * 25 + (c >> b);
+    int j = 18 * 25 + r * 25 + (c >> b);
+    long int k = j + 19;
+    unsigned short int l = (unsigned short int)k;
+    cout << j << endl;
+    cout << l << endl;
+    cout << i << endl;
+    return 0;
+}

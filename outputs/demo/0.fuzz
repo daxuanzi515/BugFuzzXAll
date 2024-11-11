@@ -1,0 +1,129 @@
+#include <iostream>
+
+#include <vector>
+#include <memory.h>
+ 
+using namespace std;
+
+void print1(int *x);
+void print2(int x[]);
+void test(int *x);
+void print_a(int *x, int len);
+
+class Vector {
+public:
+	Vector() {};
+	~Vector() {
+		cout << "~Vector()" << endl;
+	};
+	void print(int *x) {
+		cout << "Vector::print()" << endl;
+		for (int i=0; i<10; i++) {
+			cout << x[i] << '\t';
+		}
+		cout << endl;
+	}
+	void print2() {
+		cout << "Vector::print2()" << endl;
+		for (int i=0; i<10; i++) {
+			cout << vector[i] << '\t';
+		}
+		cout << endl;
+	}
+	void print3(int x[], int len) {
+		cout << "Vector::print3()" << endl;
+		for (int i=0; i<len; i++) {
+			cout << x[i] << '\t';
+		}
+		cout << endl;
+	}
+private:
+	vector<int *> v;
+	int vector[10];
+};
+
+class Test {
+public:
+	Test(int x);
+	~Test() {
+		cout << "~Test()" << endl;
+	}
+	void test(int &n) {
+		n*=2;
+		cout << "test()" << endl;
+		cout << &n << endl;
+		cout << n << endl;
+		cout << "test()" << endl;
+	}
+	void show() {
+		cout << "show() " << endl;
+		cout << this << endl;
+		cout << "show() " << endl;
+	}
+	int show2() {
+		cout << "show2() " << endl;
+		cout << this << endl;
+		cout << "this->x = " << this->x << endl;
+		cout << "show2() " << endl;
+		return x;
+	}
+private:
+	int x; 
+	const char *name;
+};
+
+int main()
+{
+     
+     
+    int a[] = {16,2,77,40,19};
+     
+    cout << "a[4] = " << a[4] << endl;
+
+     
+     
+    cout << "a[4] = " << a[4] << endl;
+
+    int len = sizeof(a)/sizeof(int);
+
+    print_a(a, len);
+
+     
+     
+     
+
+     
+
+     
+     
+
+     
+     
+     
+     
+
+     
+
+     
+
+     
+     
+     
+
+     
+    char *str = new char(10*sizeof(int));  
+    cout << str << '\t' << sizeof(char) << endl;
+    cout << strlen(str) << '\t' << strlen(str)/sizeof(int) << endl;
+    strcpy(str, "hello world");
+    cout << str << '\t' << strlen(str)/sizeof(int) << endl;
+
+    int *x = new int;
+    *x = 55;
+    cout << x << endl;
+    cout << *x << endl;
+
+    int *y = new int(88);
+    cout << &y << '\t' << y << '\t' << *y << endl;
+
+    int *z = new int[55];
+    cout <<

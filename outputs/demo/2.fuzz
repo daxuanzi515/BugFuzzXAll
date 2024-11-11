@@ -1,0 +1,21 @@
+#include <iostream>
+
+#include <cassert>
+using namespace std;
+
+struct MyClass {
+	MyClass() : m(0) {}
+    void f() { m++; }
+	int m;
+};
+
+int main(int argc, char const *argv[]) {
+    MyClass c;
+    c.f();
+    c.f();
+    int i = 5432;
+    int j = i;
+    assert(i == j);
+    cout << "All good\n";
+    return 0;
+}

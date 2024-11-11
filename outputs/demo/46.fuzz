@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+class Complex {
+    double real;
+    double imag;
+    public:
+    Complex add(Complex& other, Complex&& third);
+
+    void add(Complex& other1, Complex other2) const;
+    void add(const Complex& other1, const Complex& other2) const;
+    
+
+};
+int main()
+{
+}

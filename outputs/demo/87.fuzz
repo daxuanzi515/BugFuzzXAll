@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+void intro(string first, string last)
+{
+    cout << "Hello " << first << " " << last << "!" << endl;
+}
+int main()
+{
+    cout << "Please enter your first name: ";
+    string first;
+    cin >> first;
+    cout << "Please enter your last name: ";
+    string last;
+    cin >> last;
+    intro(first, last);
+}

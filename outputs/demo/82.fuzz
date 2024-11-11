@@ -1,0 +1,14 @@
+#include <iostream>
+bool intro(const char* name=0)
+{
+    if (!name) {
+        cout << "Please enter your name: ";
+        cin >> name;
+    }
+    cout << "Hello " << name << "!" <<endl;
+    return true;
+}
+int main()
+{
+    intro();
+}

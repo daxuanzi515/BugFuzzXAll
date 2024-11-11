@@ -1,0 +1,24 @@
+#include <iostream>
+int main()
+{
+    return 0;
+}
+ 
+namespace mynamespace {
+void foo()
+{
+     
+     
+    int a = foo(3.14);
+    float b = foo(40);
+    double c = foo(2.718);
+    int *d = foo("foo");
+    std::cout << a << " " << b << " " << c << std::endl;
+    std::cout << d << std::endl;
+    return 0;
+}
+int bar(int a)
+{
+    return 0;
+}
+}  

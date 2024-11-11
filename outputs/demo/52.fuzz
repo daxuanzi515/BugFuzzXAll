@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    string name = "Jane";
+    int age = 35;
+    cout << name << ", " << ++age;
+}
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int i = 10, j = 20;
+    cout << ( j/2 ) + 1*i;
+}
+#include <iostream>
+ 
+using namespace std;
+int main()
+{
+    int a = 10, b = 20;
+    int result = ( ++a==b++ ) + ( a>b );
+    cout << result;
+}

@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "This is a semantically equivalent program.";
+}
+ 
+int main()
+{
+    return 42;
+}
