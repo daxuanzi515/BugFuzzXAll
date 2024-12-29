@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+class Foo {};
+Foo& getFoo() { static Foo foo; return foo; }
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+         
+         
+        secretDataPtr = ((Employee*) this)->secretDataPtr;
+        myAddressPtr = (void*)&getFoo();
+    }
+    ~Employee() = default;
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp>

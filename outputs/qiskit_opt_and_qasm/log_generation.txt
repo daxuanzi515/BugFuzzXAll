@@ -1,0 +1,3490 @@
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q1 = QuantumCircuit(2,2)
+q1.x(0)
+q1.measure(range(2), range(2))
+display(q1.draw())
+
+from qiskit.opflow import Z
+from qiskit.opflow import StateFn
+psi = StateFn(Z ^ Z ^ Z)
+from qiskit.algorithms import VQE
+vqe = VQE(ansatz=q1, optimizer=None, quantum_instance=Aer.get_backend('statevector_simulator'), callback=print)
+result = vqe.compute(psi)
+print("Expectation value with the Hadamard is :", result.expectation)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+qc.measure([0, 1], [0, 1])
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circuit = QuantumCircuit(4,4)
+
+
+circuit.h(0)
+
+
+circuit.cx(0,1)
+
+
+circuit.cx(1,2)
+
+
+circuit.cx(2,3)
+
+
+circuit.measure([0,1,2,3],[0,1,2,3])
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circuit = QuantumCircuit(2)
+
+
+circuit.h(0)
+
+
+circuit.cx(0, 1)
+
+
+circuit.cz(1, 0)
+
+
+circuit.measure_all()
+
+
+circuit.draw(output='mpl')
+
+circuit.measure(['0', '1'], ['ro_0', 'ro_1'])
+circuit.draw(output='mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+qc.measure(0, 0)
+qc.measure(1, 1)
+qc.draw()
+from qiskit import QuantumRegister
+qr = QuantumRegister(2)
+qc = QuantumCircuit(qr)
+qc.draw()
+qr = QuantumRegister(4,'my_qreg')
+print(qr)
+qr = QuantumRegister(4,'my_qreg')
+print(qr)
+qc.register(qr)
+qc.draw()
+from qiskit.circuit import Gate, QuantumCircuit, QuantumRegister
+from qiskit.circuit import Qubit, Bit
+from qiskit.circuit import ParameterVector, ParameterVectorElement
+from qiskit.circuit import QISKitError
+from qiskit.circuit import Qubit
+q = Qubit()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(4,4)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.cx(1,2)
+circuit.cx(2,3)
+circuit.measure([0,1,2,3],[0,1,2,3])
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(3,3)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.cx(1,2)
+circuit.measure([0,1,2],[0,1,2])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit_2 = QuantumCircuit(4,4)
+circuit_2.h(0)
+circuit_2.cx(0,1)
+circuit_2.cx(1,2)
+circuit_2.x(1)
+circuit_2.cx(2,3)
+circuit_2.measure([0,1,2,3],[0,1,2,3])
+
+circuit.draw('mpl')
+circuit_2.draw('mpl')
+
+circuit_and = circuit & circuit_2
+circuit_and.draw()
+
+circuit_or = circuit | circuit_2
+circuit_or.draw()
+
+circuit_joint = circuit.combine(circuit_2)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(4,4)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.cx(1,2)
+circuit.cx(2,3)
+circuit.measure([0,1,2,3],[0,1,2,3])
+
+from qiskit.circuits.transforms.unroller import Unroller, JsonBackend
+from qiskit.circuit.random import random_circuit
+
+circs = [random_circuit(4,20,0.85) for x in range(10)]
+unroller = Unroller(JsonBackend(circs[0]), JsonBackend(circs[0]).configuration().basis_gates)
+unroller.execute()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(4,4)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.cx(1,2)
+circuit.cx(2,3)
+circuit.measure([0,1,2,3],[0,1,2,3])<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+
+
+circ = QuantumCircuit(2)
+
+
+circ.h(0)
+
+
+circ.h(0)
+circ.measure_all()
+
+
+result = backend_sim.run(circ, shots=1024).result()
+
+
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(0)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(0)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def phase_oracle(circuit, register): 
+    circuit.x(register)
+
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.z(1)
+phase_oracle(circ, 1)
+circ.cz(0,1)
+circ.h(0)
+circ.measure_all()
+circ.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(0)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+from qiskit import QuantumCircuit
+
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(0)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2,1)
+circ.h(0)
+circ.h(1)
+circ.measure(0,0)
+circ.measure(1,1)
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+circuit = QuantumCircuit(1,1)
+circuit.h(0)
+circuit.x(0)
+circuit.draw()
+circuit.measure(0, 0)
+circuit.draw()
+result = circuit.execute(Aer.get_backend('qasm_simulator')).result()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+import numpy as np
+
+backend_sim = Aer.get_backend("statevector_simulator")
+
+num_qubits = 4
+circ = QuantumCircuit(num_qubits, num_qubits)
+
+array = np.array([9, 5, 4, 2, 3, 7, 1, 2, 4, 8, -1, 6, 6, 3, 5, 8, 4, 5])
+
+circ.initialize(array)
+
+for i in range(num_qubits):
+    circ.h(i)
+circ.draw()
+
+
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, BasicAer
+reg = QuantumRegister(1)
+creg = ClassicalRegister(1)
+circ = QuantumCircuit(reg, creg)
+circ.h(0)
+circ.barrier()
+circ.measure(0, 0)
+circ.draw()
+circuit_sim = BasicAer.get_backend('qasm_simulator')
+job_sim = circuit_sim.run(circ)
+result_sim = job_sim.result()
+counts = result_sim.get_counts(circ)
+print("{0:<15}{1:>15}".format("Outcome", "Count"))
+print("="*30)
+for outcome in counts:
+    print("{0:<15}{1:>15}".format(outcome, counts[outcome]))
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+[output_bitstring]
+(output_state)
+[count]
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result()
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result()
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ_bell = create_circuit_bell()
+result = backend_sim.run(circ_bell['circuit_obj'], shots=1024).result()
+counts_dict_bell = result.get_counts(circ_bell['circuit_obj'])
+print(counts_dict_bell)<jupyter_output>Counts(1024) = {'01': 484, '11': 508}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(2)
+quantum_register = QuantumRegister(2, "q")
+classical_register = ClassicalRegister(2, "c")
+circuit.reset(quantum_register)
+circuit.h(quantum_register)
+circuit.measure(quantum_register, classical_register)
+
+circuit.draw(output='mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circ = QuantumCircuit(2,2)
+circ.h(0)
+circ.cx(0,1)
+circ.measure(0,0)  
+circ.measure(1,1)
+circ.draw(output='mpl')
+def create_circuit_bell():
+    circ = QuantumCircuit(2,2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure(0,0)  
+    circ.measure(1,1)
+    circ.draw(output='mpl')
+    return circ<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+
+backend_sim = Aer.get_backend("statevector_simulator")
+
+circ = QuantumCircuit(2)
+
+circ.h(0)
+
+circ.h(1)
+
+circ.cx(0, 1)
+
+circ.measure_all()
+
+result = backend_sim.run(circ, shots=1024).result()
+
+counts_dict_bell = result.get_counts(circ)
+
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+
+def create_circuit_bell():
+
+    circuit = aer.get_backend('qasm_simulator')
+
+    circuit.draw()
+
+    circ = QuantumCircuit(2)
+
+    circ.h(0)
+
+    circ.cx(0,1)
+
+    circ.measure_all()
+
+    circ.draw(output='mpl')
+
+    result = circuit.run(circ, shots=1024).result() 
+
+    counts_dict_bell = result.get_counts(circ)
+
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    
+    return circuit_bell<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(2)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.measure_all()
+from qiskit import execute, ClassicalRegister, QuantumRegister, QuantumCircuit
+
+q = QuantumRegister(1, 'q')
+
+c = ClassicalRegister(1, 'c')
+
+qc = QuantumCircuit(q,c)
+
+qc.h(q)
+qc.cx(q,c)
+qc.measure(q,c)
+
+import qiskit
+from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(2)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.measure_all()
+
+print('The number of qubits: ', circuit.num_qubits)
+print('The number of classical bits: ', circuit.num_clbits)
+print('The list of operations on quantum register: ', circuit.qregs)
+print('The list of operations on classical register: ', circuit.cregs)
+
+circuit.draw(cregbar = True, output ='mpl')
+circuit.draw(output ='mpl')
+from qiskit import compile
+from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(2)
+circuit.h(0)
+circuit.cx(0,1)
+circuit.measure_all()
+circuit.draw()
+circuit.draw(output = 'text')
+circuit_backend = Aer.get_backend
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+print("----------------")
+circ_bell = create_circuit_bell()
+print(circ_bell["counts"])
+print("----------------")<jupyter_output>{'01': 484, '10': 512}
+----------------
+{'01': 493, '10': 507}
+----------------
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')  
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell
+circ = create_circuit_bell()
+counts_dict_bell = circ.get("counts")
+counts_dict_bell
+
+
+from qiskit.visualization import plot_histogram
+circ = create_circuit_bell()
+counts_dict_bell = circ.get("counts")
+plot_histogram(counts
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(1)
+circ.x(0)
+circ1 = QuantumCircuit(1)
+circ1.z(0)
+circ2 = QuantumCircuit(1)
+circ2.s(0)
+
+circ.append(circ1.to_instruction(), [0])
+circ.append(circ2.to_instruction(), [0])
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell_x = result.get_counts(circ)
+print(counts_dict_bell_x)
+from qiskit.extensions import XGate, ZGate, SGate
+
+def create_circuit_bell_x():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(1)
+    circ.x(0)
+    circuit_x = circ
+    circ1 = QuantumCircuit(1)
+    circ1.append(XGate(), [0])
+    circ2 = QuantumCircuit(1)
+    circ2.append(ZGate(), [0])
+    circ3 = QuantumCircuit(1)
+    circ3.append(SGate(), [0])
+
+    circ.append(circ1.to_instruction(), [0])
+    circ.append(circ2.to_instruction(), [0])
+    circ.append(circ3.to_instruction(), [0])
+    
+    circ.measure_all()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+input_bell = create_circuit_bell()
+counts_dict_bell = input_bell["counts"]
+circ_bell = input_bell["circuit_obj"]
+result = backend_sim.run(circ_bell, shots=1024).result()
+print(counts_dict_bell)<jupyter_output>{'00': 514, '01': 486}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.draw()
+circ.measure_all()
+circ.draw(output='mpl')
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circuit_bell = []
+    
+
+    qc_bell = QuantumCircuit(2, 2)
+
+    qc_bell.h(0)
+    qc_bell.h(1)
+
+    qc_bell.cx(0,1)
+
+    qc_bell.draw(output='mpl')
+
+    qc_bell.measure([0,1], [0,1])
+    
+    job_bell = aer.run(qc_bell, backend=qasm_sim, shots=128, optimization_level='no_
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("qasm_simulator")
+circuit = create_circuit_bell()
+shots = 1024
+result = backend_sim.run(circuit["circuit_obj"], shots=shots).result()
+counts_dict_bell = result.get_counts(circuit["circuit_obj"])
+print(counts_dict_bell)
+import qiskit.tools
+from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.tools.visualization import dag_drawer, plot_histogram
+dag = circuit_to_dag(circuit["circuit_obj"])
+dag_drawer(dag)
+circuit_transpiled = circuit["circuit_obj"].decompose()
+circuit_transpiled.draw()
+dag = circuit_to_dag(circuit_transpiled)
+dag_drawer(dag)
+circuit_transpiled.count_ops()
+circuit_transpiled.depth()
+circuit["circuit_obj"].depth()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+def create_circuit_qrng():
+    qrng_circuit = QuantumCircuit(2,2)
+    quantum_register = range(2)
+    classical_register = range(2)
+    qrng_circuit.reset(quantum_register)
+    qrng_circuit.h(quantum_register[0])
+    qrng_circuit.h(quantum_register[1])
+    qrng_circuit.measure(quantum_register, classical_register)
+    qrng_circuit.draw()
+    result = Aer.get_backend('aer_simulator_statevector').run(qrng_circuit, shots=10).result()
+    counts = result.get_counts(qrng_circuit)
+    counts_dict_qrng = {"counts_dict_qrng": counts}
+    return counts_dict_qrng
+def add_entaglement(circuit1, circuit2):
+    circuit1.barrier()
+    circuit1.cx(circuit2.qregs[0][0], circuit2.qregs[0][1])
+    circuit1.cx(circuit2.qregs[0][0], circuit2.qregs[0][0])
+    circuit1.barrier()
+    return circuit1
+
+qrng_circ = create_circuit_qrng()
+display(qrng_circ['circuit_obj'].draw())
+
+single_circ = create_single_circuit_for_bell()
+
+qrng_circ_2 = add_entaglement(single_circ, qrng_circ['circuit_obj'])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(3)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.h(2)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+
+    circ = QuantumCircuit(2,2)
+    circ.h(0)
+    circ.h(1)
+    circ.cx(0,1)
+    circ.h(2)
+    circ.measure(0,0)
+    circ.measure(1,1)
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = {'00': result.get_counts(circ)['00'], '01': result.get_counts(circ)['10'], '10': result.get_counts(circ)['11'], '11': result.get_counts(circ)['01']}
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell
+create_circuit_bell()
+def create_circuit_plus
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(12, 12)
+circ.h(0)
+circ.h(1)
+circ.h(2)
+circ.h(3)
+circ.h(4)
+circ.h(6)
+circ.h(7)
+circ.h(8)
+circ.h(9)
+circ.cx(0, 1)
+circ.cx(1, 2)
+circ.cx(2, 3)
+circ.cx(3, 4)
+circ.cx(4, 5)
+circ.cx(3, 6)
+circ.cx(6, 7)
+circ.cx(7, 8)
+circ.cx(8, 9)
+circ.cx(9, 10)
+circ.cx(10, 11)
+circ.cx(9, 11)
+circ.measure_all()
+circ.draw()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_4qb = result.get_counts(circ)
+print(counts_dict_4qb)
+circuit_qasm = {"counts": counts_dict_4qb, "circuit_obj": circ_qasm, "circuit_name": "QC 4QB"}
+circuit_qasm
+from qiskit import QuantumCircuit, transpile
+
+backend = Aer.get_backend('q
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(1)
+circ.cx(1,0)
+circ1=circ.compose(circ)
+circ1.draw(output='mpl')
+result = backend_sim.run(circ1, shots=1024).result()
+counts_dict_double_bell = result.get_counts(circ1)
+counts_dict_double_bell
+circuits_dict = {
+    "1Bell": create_circuit_bell(), 
+    "2Bell": create_circuit_brownbell(),
+    "3Bell": create_circuit_multipleballs(), 
+    "4Bell": create_circuit_random(),
+    "2xBell": create_circuit_entanglement(),
+}
+
+%matplotlib inline
+matplotlib inline
+circuits_dict
+from qiskit import visualize
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+import seaborn as sns
+
+
+
+
+plt.style.use("ggplot")
+
+figsize=(20,5)
+
+
+
+for key in circuits_dict.keys():
+    value = circuits_dict[key]
+    value["histogram"] = dict(zip(value["counts"].keys(), [x/1024 for x in value["counts"].values()]))
+    counts = value["counts"] 
+    bar = sns.barplot(x=counts.keys(), y=counts.values(), ax=plt.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ1 = QuantumCircuit(2)
+circ1.h(0)
+circ1.h(1)
+circ2 = QuantumCircuit(2)
+circ2.h(0)
+
+circuit_bell = create_circuit_bell()
+print(circuit_bell["counts"])
+
+result = circ1.combine(circ2, circ1).combine(circuit_bell["circuit_obj"]).combine(circ2).combine(circ1).run(backend_sim).result()
+counts_dict_multi_circ = result.get_counts()
+print(counts_dict_multi_circ)
+assert counts_dict_multi_circ['000011'] > 0 and counts_dict_multi_circ['011001'] > 0
+def qft_dagger(circ, n):
+    
+    for qubit in range(n//2):
+        circ.swap(qubit, n-qubit-1)
+    for j in range(n):
+        for m in range(j):
+            circ.cp(-math.pi/float(2**(j-m)), m, j)
+        circ.h(j)
+
+def qpe_simple(circ, n, a, N):
+    
+    
+    for q in range(n):
+        circ.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+def create_qubit_state_vector(vector):
+    circuit = Aer.get_backend("statevector_simulator")
+    print(type(circuit))
+    circuit.draw()
+create_qubit_state_vector([2,1,0,0])<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(1)
+circ.h(0)
+circ.z(0)
+circ.h(0)
+
+circ.draw()
+circ.draw(output='mpl')
+shots = 819
+result = backend_sim.run(circ, shots=shots).result()
+counts_dict = result.get_counts(circ)
+print(result)
+from qiskit.visualization import plot_histogram
+plot_histogram(counts_dict)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("qasm_simulator")
+circ_bell = create_circuit_bell()
+circ = circ_bell["circuit_obj"]
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("qasm_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+import qiskit.providers.aer as aer
+def create_circuit_bell():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2)
+    circ.h(0)
+    circ.cx(0,1)
+    circ.measure_all()
+    circ.draw(output='mpl')
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict_bell = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return circuit_bell
+def measure_hist(hist_dict):
+    measurement_counts = {"00": hist_dict["00"]/sum(hist_dict.values()),
+                          "01": hist_dict["01"]/sum(hist_dict.values()),
+                          "10": hist_dict["10"]/sum(hist_dict.values()),
+                          "11": hist_dict["11"]/sum(hist_dict.values())}
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+
+QASM simulator
+backend_sim = Aer.get_backend('qasm_simulator')
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0,1)
+circ.measure_all()
+circ.draw(output='mpl')
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+
+
+result = execute(circ, backend_sim).result()
+
+
+counts = result.get_counts()
+print(counts)
+
+from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.cx(0,1)
+circ.measure_all()
+circ.draw()
+import qiskit.tools.visualization as visualization
+
+
+job = execute(circ, backend_sim)
+result = job.result()
+
+
+visualization.plot_histogram(result.get_counts(circ))
+
+
+
+
+visualization.plot_histogram(result.get_counts(circ), bar_labels=False)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(1)
+circ.h(0)
+circ.measure_all()
+result_1 = backend_sim.run(circ, shots=1024).result()
+
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.cx(0,1)
+circ.measure_all()
+result_2= backend_sim.run(circ, shots=1024).result()
+
+counts_dict_bell_1 = result_1.get_counts(circ)
+print("result 1",counts_dict_bell_1)
+counts_dict_bell_2 = result_2.get_counts(circ)
+print("result 2",counts_dict_bell_2)
+circ_result = []
+
+for (q,i) in enumerate(zip(counts_dict_bell_1,counts_dict_bell_2)):
+    if q == 0:
+        count_1_bell = i[1]
+        count_2_bell = i[0]
+        circ_result.append({'Counts1':count_1_bell, 'Counts2':count_2_bell})
+        
+    if q in range(1,len(counts_dict_bell_1)):
+        count_1_bell = i[0]
+        count_2_bell = i[1]
+        circ_result.append({'Counts1':count_1_bell, 'Counts2':count_2_bell
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+def create_circuit():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2, 2)
+    circuit.reset(range(2)) 
+    circ.h(0)
+    circ.draw(output='mpl')
+def run_circuit():
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+def create_circuit():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2, 2)
+    circuit.reset(range(2)) 
+    circ.h(0)
+    circ.draw(output='mpl')
+def run_circuit():
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return counts_dict<jupyter_output><empty_output>
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+import qiskit.providers.aer as aer<jupyter_output><empty_output><jupyter_text>**The final output of your program should be the following dictionary:****counts = {'00': 497, '11': 503}**<jupyter_code>from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+circuit = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circuit.h(0)
+circuit.h(1)
+circuit.measure_all()
+
+counts_dict = {}
+circuit_bell = {"counts_dict": counts_dict, "circuit_obj": circuit}<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit(circuit):
+    circuit.reset(range(2)) 
+    circuit.h(0)
+
+def run_circuit(circuit, backend, shots=1024):
+    result = circuit.run(backend,shots=1024).result() 
+    return result.get_counts()
+
+circuit = QuantumCircuit(2,2)
+
+create_circuit(circuit)
+
+run_circuit(circuit, Aer.get_backend('qasm_simulator'))
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2, 2)
+    circuit.reset(range(2)) 
+    circ.h(0)
+    circ.draw(output='mpl')
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+circuit = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(1)
+circ.h(0)
+circ.measure_all()
+experiment = Execute(circuit, backend=circuit)
+result = transpile(circ, backend=circuit, optimization_level=2)
+counts = counts = result.get_counts(circ)
+plot_histogram(counts)
+transpiled_circuit = transpile(circ, backend=simulator, optimization_level=2)
+transpiled_circuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = aer.get_backend('qasm_simulator')
+circuit.draw()
+counts_dict_bell = {'00': 537, '11': 543}
+circ = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circ.h(0)
+circ.draw(output='mpl')
+result = circuit.run(circ, shots=1024).result() 
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+counts_dict_bell = {'00': 537, '11': 543}
+'''Create quantum circuits with Qiskit API and combine them in complex ways.
+from qiskit import QuantumCircuit
+
+circuit = aer.get_backend('qasm_simulator')
+circuit.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer<jupyter_output><empty_output><jupyter_text>***<jupyter_code>class QiskitCircuitFactory():
+    def __init__(self):
+        
+        self.circuit = QuantumCircuit()
+
+    def add_hadamard(self, qubit_index, create_circuit=True):
+        
+        self.circuit.h(qubit_index)
+        if create_circuit:
+            return self.circuit
+    
+    def measure_circuit(self):
+        return self.circuit.measure_all()
+            
+    def append(self, quantum_circuit_to_append):
+        self.circuit.append(quantum_circuit_to_append)
+        return self.circuit
+    
+    def to_gate(self):
+        return self.circuit.to_gate()
+def test_qiskit():
+    qiskit = QiskitCircuitFactory()
+    qiskit.add_hadamard(0)
+    
+    q = qiskit.add_hadamard(1, create_circuit=False)
+    q.draw()
+    
+    qiskit.append(q)
+    qiskit.measure_circuit()
+test_qiskit()
+q
+q2 = qiskit.to_gate()
+q2
+q.draw()
+qiskit.append(q)
+qiskit.measure_circuit()
+qiskit.to_dag()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+def create_circuit():
+    circuit = aer.get_backend('qasm_simulator')
+    circuit.draw()
+    circ = QuantumCircuit(2, 2)
+    circuit.reset(range(2)) 
+    circ.h(0)
+    circ.draw(output='mpl')
+def run_circuit():
+    result = circuit.run(circ, shots=1024).result() 
+    counts_dict = result.get_counts(circ)
+    circuit_bell = {"counts": counts_dict_bell, "circuit_obj": circ}
+    return counts_dict<jupyter_output><empty_output>
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circ = QuantumCircuit(2, 2)
+circ.reset([0,1])
+circ.h([0,1])
+circ.measure_all()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import Aer
+cir = Aer.get_backend("statevector_simulator")
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.h(1)
+qc.cx(0,1)
+qc.measure_all()
+result_dict = cir.run(qc).result().get_counts(qc)
+print(result_dict)
+def create_circuit():
+    circuit = aer.get_backend('statevector_simulator')
+    circ = QuantumCircuit(2, 2)
+    circ.reset(range(2)) 
+    circ.h(0)
+    return circ
+    
+def run_circuit():
+    results = circuit.run(circ).result()
+    outputs = results.get_statevector(circ)
+    return outputs<jupyter_output><empty_output><jupyter_text>The differences between the code are very minimal, but in the latter the QuantumCircuit object is created within the function, allowing for the code to have a cleaner structure. This is because it allows for the circuit to be only constructed inside the function (and not outside) and allows for the circuit code to be created all in one place.  For someone who has not seen this before, this might be quite confusing but for someone who's been in a web development/design classes and has seen a lot of code that looks very similar to the one below, this should make a lot more sense. As code becomes more and more complicated, it becomes helpful to organize it.<jupyter_code>
+
+x = 123
+def get_x():
+    return x
+
+x = 123
+def get_x():
+    return x
+
+def func_x(i):
+    x = i
+    return
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2)) 
+    circuit.h(0)
+    circuit.h(1)
+    circuit.draw()
+    
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circuit.h(0)
+circuit.measure_all()
+
+
+aer_sim = QasmSimulator()
+result = aer_sim.run(circuit, shots=1024).result()
+
+counts_dict_bell = result.get_counts(circuit)
+print("{bell} {bell_percent}".format(bell=counts_dict_bell, 
+                                      bell_percent="{}%".format(int(counts_dict_bell['00']*100.0/1024.0)) if '00' in counts_dict_bell else "na"))
+print("{bell} {bell_percent}".format(bell=counts_dict_bell, 
+                                      bell_percent="{}%".format(int(counts_dict_bell['01']*100.0/1024.0)) if '01' in counts_dict_bell else 'na'))
+
+from qiskit.tools.visualization import plot_histogram
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+quantum_circuit = QuantumCircuit(2, 2)
+quantum_circuit.reset(range(2)) 
+quantum_circuit.h(0)
+quantum_circuit.draw()
+from qiskit.visualization import plot_histogram
+qc = create_circuit(True)
+qc.draw(output='mpl')
+result = run_circuit(qc, True)
+plot_histogram(result[circuit_bell['counts']])
+def bell():
+    my_circuit = QuantumCircuit(2, 2)
+    my_circuit.h(0)
+    my_circuit.cx(0, 1)
+    my_circuit.measure(range(2), range(2))
+
+    job = execute(my_circuit, backend=backend_sim, shots=4096)
+
+    counts = job.result().get_counts()
+    print(counts)
+bell()
+
+def bell_circuit():
+    bell_circuit = QuantumCircuit(2, 2)
+    bell_circuit.h(0)
+    bell_circuit.cx(0,1)
+    barrier(bell_circuit)
+    bell_circuit.measure(range(2), range(2))<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2)) 
+    circuit.h(0)
+    circuit.h(1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+""" Please create a mutated program that modifies the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit_2():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2)) 
+    circuit.h(0)
+    circuit.h(1)
+    circuit.draw()
+def run_circuit_2():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell_2 = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+import qiskit 
+
+
+from qiskit.circuit import ClassicalRegister, QuantumRegister, QuantumCircuit
+from qiskit import * 
+from qiskit.visualization import plot_histogram
+
+my_backend = Aer.get_backend('qasm_simulator')
+
+circuit = QuantumCircuit(2,2)
+
+circuit.h(0)
+circuit.reset(1)
+circuit.measure([0,1],[0,1])
+
+circuit.draw(output ='mpl')
+
+job = execute(circuit,backend = my_backend, shots = 1000)
+
+result = job.result()
+
+counts =result.get_counts(circuit) 
+
+plot_histogram(counts)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(1)
+    
+    circuit.barrier()
+    circuit.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit(circuit, qub, tub):
+    circuit.cx(qub, tub)
+    circuit.rx(0.5, tub)
+    circuit.h(tub)
+    circuit.draw()
+
+create_circuit(circuit, 0, 1)
+
+def new_circuits(circuit, qubits):
+    qubit_set = set()
+    circuit_dict = {}
+    for i, qubit in enumerate(qubits):
+        print("This is qubit {}\n".format(qubit))
+        for j in qubits:
+            print("j is {}".format(j))
+            if i < j:
+                qubit_set.add(round(float(i+j)))
+        print("i and j are {}".format(qubit_set))
+        for qubit in qubit_set:
+            print("In this loop {}".format(qubit))
+            for j in qubits:
+                if qubit < j:
+                    circuit_obj = QuantumCircuit(2)
+                    circuit_obj = create_circuit(circuit_obj, qubit, j)    
+                    circuit_dict[qubit, j] = circuit_obj
+        qubit_set.remove(round(float(i+j)))
+    return circuit_dict<jupyter_output><empty_output><jupyter_text>Please create a function with two inputs:    1.- a list of qubits   2.- a list of unique pairs of qubits     The function should return a dictionary in which the key is a triple (each pair of aqubit) (of the form (a, b) and the value is the respective modified circuit. Make sure that the qubits are not modified. You can choose the values ​​of α and φ to any you want.<jupyter_code>qubit_list = [34, 10, 15, 1, 14, 26, 7, 18, 7]
+
+
+
+print(new_circuits(circuit, qubit_list))<jupyter_output>This is qubit 34
+
+j is 34
+i and j are {36, 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class GroverCircuit(QuantumCircuit):
+    def __init__(self, n_count_qubits: int) -> None:
+        super().__init__(n_count_qubits)
+        for i in range(n_count_qubits):
+            self.h(i)
+        for i in range(n_count_qubits):
+            self.barrier()
+            for j in range(n_count_qubits):
+                if i == j:
+                    continue
+                self.cz(i, j)
+        for i in range(n_count_qubits):
+            self.barrier()
+            self.h(i)
+        self.measure_all()
+
+
+class GroverOperator(Operator):
+    def __init__(self, circuit: Circuit) -> None:
+        super().__init__(circuit)
+        self._circuit = circuit
+        self._num_qubits = self._get_n_qubits()
+        self._depth = self.get_depth()
+        self.parameter_expressions = Circuit.get_parameters(circuit)
+        self.parameters_count = len(self.parameter_expressions)
+        self._parameters = Parameter('θ', (2**self.parameters_count))
+
+    def num_qubits(self) -> int:
+        return self._num_qubits
+
+    def get_depth(self) -> int:
+        if not hasattr(self, '_depth'):
+            depths = [step['depth'] for step in self.run().steps]
+            self._depth = max(depths)
+        return self._depth
+
+    def to_ir(self):
+        return self._circuit
+
+    def to_qasm(self):
+        qasm = f"{self._circuit.qasm()}\nparam θ[{self.parameters_count}]"
+        return qasm
+
+class GroverOperator(Operator):
+    def __init__(self, circuit: Circuit) -> None:
+        super().__init__(circuit)
+        self._circuit = circuit
+        self._num_qubits = self._get_n_qubits()
+        self._depth = self.get_depth()
+        self.parameter_expressions = Circuit.get_parameters(circuit)
+        self.parameters_count = len(self.parameter_expressions)
+        self._parameters = Parameter('theta', (2**self.parameters_count))
+
+    def num_qubits(self) -> int:
+        return
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(1)
+    circuit.h(0)
+    circuit.draw()
+
+create_circuit()
+def create_custom_bell():
+    circuit = QuantumCircuit(2)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.draw()
+create_custom_bell()
+def create_complex(bell_circuits):
+    create_circuit()
+    bell_circuits.append(circuit)
+    print(bell_circuits)
+bell_circuits = []
+create_complex(bell_circuits)
+def create_custom_and_bell():
+    circuit1 = QuantumCircuit(1)
+    circuit1.h(0)
+    circuit1.draw()
+    circuit2 = QuantumCircuit(2)
+    circuit2.h(0)
+    circuit2.cx(0, 1)
+    circuit2.draw()
+    custom_bell = circuit1+circuit2
+    custom_bell.draw()
+create_custom_and_bell()<jupyter_output><empty_output><jupyter_text>Custom Operators and Quantum Circuits in Qiskit<jupyter_code>
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit import execute 
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+circuit = QuantumCircuit(qr, cr)
+circuit.draw()
+from qiskit.providers.aer import StatevectorSimulator
+
+backend = StatevectorSimulator(method='density_matrix') 
+circuit = QuantumCircuit(4)
+circuit.h(range(4))
+circuit.draw()
+job = execute(circuit, backend)
+result = job.result()
+result.get_statevector(circuit)
+
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library.standard_gates import CXGate
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+circuit = QuantumCircuit
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit_with_decompose(shots):
+    circuit_decomposer = QuantumCircuit(3, 3, name="Decomposer Circ")
+    circuit_decomposer.h(0)
+    circuit_decomposer.cx(0, 1)
+    circuit_decomposer.rz(0.432, 2)
+    circuit_decomposer.cx(1, 2)
+    circuit_decomposer.ry(0.543, 1)
+    return circuit_decomposer
+def run_circuit_with_decompose(circuit_decomposer, shots):
+    result = circuit_decomposer.decompose().run(shots).result()
+    counts_dict = result.get_counts()
+    circuit_dict = {"circuit_obj": "circuit_decomposer", "count": counts_dict}
+    return circuit_dict
+def run_circuit(circuit_decomposer, shots):
+    result = circuit_decomposer.run(shots).result()
+    counts_dict = result.get_counts()
+    circuit_dict = {"circuit_obj": "circuit_decomposer", "count": counts_dict}
+    return circuit_dict
+from qiskit import (
+    QuantumCircuit, ClassicalRegister, QuantumRegister
+)
+import pandas as pd
+
+circ = QuantumCircuit(
+    QuantumRegister(1),
+    ClassicalRegister(1),
+    name='qc0'
+
+)
+circ.h(0)
+circ.h(0)
+circ.h(0)
+
+circ.ccx(range(3))
+circ.ccx(range(3))
+circ.ccx(range(3))
+
+circ.draw(output='mpl', style=('style.mplstyle','styles_mplstyle', '''h { width: 0.208925em; }
+.s0 { fill: none; stroke: 
+.s1 { fill: none; stroke: 
+.s2 { fill: white; stroke: 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+create_circuit()
+from qiskit import QuantumCircuit
+%%writefile quantum_circuit_example.js
+
+
+circuit = QuantumCircuit(1,1)
+circuit.h(0)
+circuit.tdg(0)
+circuit.h(0)
+circuit.rx(0.3,0)
+circuit.rz(0.6,0)
+circuit.cx(0,0)
+circuit.draw()
+circuit.save_statevector()
+circuit.save_unitary()
+circuit.draw()
+circuit.qasm()
+
+from qiskit.test import mock
+
+backend = qiskit.Aer.get_backend("qasm_simulator")
+
+job_exp = execute(circuit, backend=backend, shots=1024)
+
+job_monitor(job_exp)
+
+result_exp = job_exp.result()
+
+result_exp.get_counts(circuit)
+import qiskit
+
+provider = qiskit.IBMQ.enable_account("YOUR API TOKEN")
+provider.backends()
+provider = qiskit.IBMQ.get_provider(hub='ibm-q')
+import qiskit
+from qiskit.test import mock
+sim = qiskit.Aer.get_backend('aer_simulator')
+sim_job = qiskit.execute([circuit]*4, backend=sim, shots=1024)
+
+sim_job.status()
+sim_result  = sim_job.result()
+plot_histogram(sim_result.get_counts())
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(1)
+
+qc.h(0)
+qc.cx(0,0)
+qc.draw()
+svsim = Aer.get_backend('aer_simulator
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.visualization import plot_histogram
+
+circuit = QuantumCircuit(3, 3)
+circuit.reset(range(3))      
+circuit.h(0)                  
+circuit.cx(0,1)               
+circuit.measure(range(3), range(3))    
+circuit.draw()
+counts_dict = run_circuit()
+plot_histogram(counts_dict)
+
+from qiskit import BasicAer, Aer
+
+backend = BasicAer.get_backend('statevector_simulator')
+job = backend.run(circuit)
+result = job.result()
+statevector = result.get_statevector(circuit)
+print(statevector)
+
+from qiskit.providers.aer.backends import QasmSimulatorPy
+
+backend = QasmSimulatorPy()
+job = backend.run(circuit, shots = 1024)
+result = job.result()
+counts_dict = result.get_counts(circuit)
+plot_histogram(counts_dict)<jupyter_output><empty_output><jupyter_text>![image.png](attachment:image.png)  Bots<jupyter_code>Qiskit has a module called qiskit.tools.monitor which you can use to monitor the status of jobs
+from qiskit import *
+import time
+from qiskit.tools.monitor import job_monitor
+circuit = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circuit.h(0)
+circuit.cx(0,1)
+circuit.barrier(range(2))
+circuit.measure(range(2), range(2))
+
+backend = BasicAer.get_backend('qasm_simulator')
+job = execute([circuit]*10, backend)
+job_monitor(job)
+import qiskit.tools.jupyter
+%qiskit_version_table
+%qiskit_copyright<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    return circuit
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(1)
+    circuit.h(range(3))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.rx(0.3, 2)
+    circuit = circuit + create_circuit(3) 
+    return circuit
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+circuit = create_circuit()
+circuit.draw()
+qasm = circuit.qasm()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit_entangle():
+    circuit = QuantumCircuit(2, 2)    
+    circuit.h(0) 
+    circuit.cx(0, 1) 
+    circuit.measure(range(2), range(2))    
+    circuit.draw()
+    return circuit, circuit
+
+def run_circuit_entangle(_circuit):
+
+    counts_dictionary = _circuit.run(shots=1024).result().get_counts()
+
+    circuit_bell = {"count": counts_dictionary, "circuit_obj": _circuit}
+
+    return counts_dictionary
+create_circuit()
+_circuit, _circuit_entangled = create_circuit_entangle()
+run_circuit_entangle(_circuit)
+<jupyter_output><empty_output><jupyter_text>IBM Q ExperienceBackend<jupyter_code>from qiskit.providers.ibmq.backends import IBMQBackend
+from qiskit.providers.ibmq import least_busy
+
+from pprint import pprint
+
+def create_circuit_IBM():
+    _circuit = QuantumCircuit(2, 2)
+    _circuit.h(0)
+    _circuit.cx(0,1)
+    _circuit.draw()
+    return _circuit
+_circuit_IBM = create_circuit_IBM()
+available_backends()
+IBMQ_provider.backends()
+least_busy(IBMQ_provider.backends())<jupyter_output><empty_output><jupyter_text>Backend Class<jupyter_code>try:
+    
+    IBMQ_least_busy = least_busy(IBMQ_provider.backends(hub='ibm-q', group='open', project='main'))
+except:
+    
+    
+    IBMQ.save_account('4eb1c781e719ff3a61262b455340118e0162068b
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.tools.visualization import plot_histogram
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.draw()
+
+qasm = circuit.qasm(qeflag=True)
+
+file_name = "bell.qasm"
+with open(file_name, "w") as f:
+    f.write(qasm)
+f.close()
+            
+qobj = QuantumCircuit.from_qasm_file(file_name)
+counts_dict = simulator.run(qobj, shots=1024).result().get_counts()
+plot_histogram(counts_dict)
+print(counts_dict)
+
+dir(circuit)
+
+circuit._data 
+
+circuit.h(0)
+circuit._data
+
+
+circuit.draw()
+
+circuit.reset(range(2))
+
+circuit.rx(0.4, 0)
+
+circuit.draw('c3dg') 
+
+circuit.draw(output='mpl',justify='None', style={'opaque': '0.4'})        
+
+
+for method in dir(circuit):
+    print(method)<jupyter_output>__class__
+__delattr__
+__dict__
+__dir__
+__doc__
+__eq__
+__format__
+__ge__
+__getattribute__
+__getstate__
+__gt__
+__hash__
+__init__
+__init_subclass__
+__le__
+__lt__
+__module__
+__ne__
+__new__
+__reduce__
+__reduce_ex__
+__repr__
+__setattr__
+__setstate__
+__sizeof__
+__str__
+__subclasshook
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw() 
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return circuit
+
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    return counts_dict 
+circuit_bell['count']
+%matplotlib inline  
+circuit = create_circuit()
+counts_dict = run_circuit()
+
+circuit.draw()
+
+print("Observations: \n", counts_dict)<jupyter_output>Observations: 
+ {'11': 11}
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit(2, 2)
+
+
+circuit.h(0)
+
+
+
+circuit.cx(0, 1)
+
+
+circuit.measure([0,1], [0,1])
+circuit.draw()
+
+from qiskit import Aer, execute, QuantumCircuit
+
+
+simulator = Aer.get_backend('qasm_simulator')
+
+
+circuit = QuantumCircuit(2, 2)
+
+
+circuit.h(0)
+
+
+
+circuit.cx(0, 1)
+
+
+circuit.measure([0,1], [0,1])
+
+job = execute(circuit, simulator, shots=1024)
+
+result = job.result()
+
+
+counts = result.get_counts(circuit)
+display(counts)
+print('circuit = ', circuit)
+print('simulator = ', simulator)
+print('job = ', job)
+print('result = ', result)
+print('counts = ', counts)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+    
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+
+
+def run_circuits(circuit_list_to_run):
+    qubits_run_by_circ = []
+    for single_circuit in circuit_list_to_run:
+        result = single_circuit.run(shots=1024).result() 
+        counts_dict = result.get_counts()
+        circuit_bell = {"count": counts_dict, "circuit_obj": single_circuit}
+        qubits_run_by_circ.append(circuit_bell)
+    return qubits_run_by_circ
+%matplotlib notebook 
+
+from qiskit.visualization import *
+
+def plot_counts(qubits_run_by_circ):
+    qubits_run_by_circ_dict = [circ_bell['count'] for circ_bell in qubits_run_by_circ]
+    labels = [qubit['circuit_obj'].name for qubit in qubits_run_by_circ]
+    qubits_run_counts_dict = Counter(counts_dict for counts_dict in qubits_run_by_circ_dict)
+
+    plot_histogram(qubits_run_counts_dict, legend=labels, color=[0,1,0,0.7] )<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+def compile_code():
+    from qiskit.compiler import transpile, assemble
+    from qiskit.tools.jupyter import *
+    from qiskit.visualization import *
+    qc = QuantumCircuit(2,2)
+    qc.h(0)
+    qc.cx(0,1)
+    qc.measure([0,1], [0,1])
+    print("\n\n The Circuit you made: ")
+    display(qc.draw())
+    
+    backend = Aer.get_backend('qasm_simulator')
+    job = execute(qc, backend=backend, shots=1024)
+    result = job.result()
+    print("\n\n The output of your Code: ")
+    display(plot_histogram(result.get_counts(qc)))
+def customize_compiler():
+    from qiskit.transpiler import PassManagerConfig, CouplingMap, Layout
+    from qiskit.transpiler import DefaultPassManager
+    
+    coupling_map = []  
+    qubit_ordering = []  
+    initial_layout = []  
+    basis_gates = []  
+    
+    
+    num_qubits = 5
+    num_layers = 1
+
+    ansatz = QuantumCircuit(num_qubits)
+    for idx in range(num_
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+
+def run_circuit(circuit):
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    bell_circuit = {"counts": counts_dict, "circuit": circuit}
+    return bell_circuit
+create_circuit()
+run_circuit(create_circuit())
+def create_quantum_volume_circuits():
+    qvcircuit = QuantumVolumeCircuit(n=1, m=10)
+    qvsubcircuit_1 = qvcircuit.build_subcircuit(range(100), range(99, -1, -1))
+    return qvsubcircuit_1
+run_circuit(create_quantum_volume_circuits(n=1, m=10))<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict<jupyter_output><empty_output>
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit_2():
+    circuit = QuantumCircuit(4)
+    circuit.reset(range(4))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.rz(0.3, 2)
+    circuit.cx(0, 1)
+    circuit.ccx(0, 1, 2)
+    circuit.ch(2, 3)
+    circuit.draw()
+def run_circuit_2():
+    result = circuit.run(shots=1024).result()
+def plot_histogram():
+    counts = run_circuit_2()
+    frequencies = _compute_relative_frequencies(counts)
+    plot_histogram(frequencies)
+
+create_circuit()
+create_circuit_2()
+run_circuit_2()
+plot_histogram()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+run_circuit()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+
+from qiskit import QuantumCircuit, execute, Aer
+
+
+circuit = QuantumCircuit(2, 2)
+
+
+circuit.h(0)
+
+
+
+circuit.cx(0, 1)
+
+
+
+circuit.measure([0,1], [0,1])
+
+
+circuit.draw()
+
+from qiskit.visualization import plot_histogram
+
+
+simulator = Aer.get_backend('aer_simulator')
+
+
+result = execute(circuit, simulator).result()
+
+
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+
+
+plot_histogram(counts)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+
+def print_result(circuit_bell):
+    for key, value in circuit_bell.items():
+        print(key)
+        print(value)
+
+def main():
+    circuit_bell = create_circuit()
+    counts = run_circuit(circuit_bell)
+    print_result(counts)
+
+main()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(backend='qasm_simulator', shots=1024).result()
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+create_circuit()
+run_circuit()
+{'00': 511}
+{'01': 511, '10': 502}
+result.get_statevector()
+{'00': 0.9941419538864549,
+ '01': 0.005844868471441904,
+ '10': 0j,
+ '11': 0j}<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+q = QuantumRegister(3, 'q')
+c = ClassicalRegister(3, 'c')
+qc = QuantumCircuit(q, c)
+
+
+qc.u3(0.3, 0.2, 0.1, 0)
+qc.h(1)
+qc.cx(1, 2)
+qc.cx(0, 1)
+qc.measure([0,1,2], [0,1,2])
+qc.draw()
+
+simulator = Aer.get_backend('aer_simulator')
+result = execute(qc, backend=simulator, shots=1024).result()
+counts = result.get_counts(qc)
+print("\nTotal count for 001 and 100 are:", counts)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def append_circuit():
+    circuit.x(1)
+    circuit.append([circuit.reset(range(2)), circuit.rx(0.3, 0)], range(2, 4))
+    circuit.decompose().draw()
+    circuit.draw()
+append_circuit()
+
+
+from qiskit import QuantumCircuit
+
+def add_register():
+    circuit = QuantumCircuit(2)
+    circuit.add_register([QuantumCircuit.register(2), QuantumCircuit.register(1)])
+    circuit.decompose().draw()
+add_register()
+
+from qiskit import QuantumCircuit
+
+def repeat_circuit():
+    circuit = QuantumCircuit(1)
+    circuit.h(0)
+    circuit.repeat(5).decompose().draw()
+repeat_circuit()
+
+
+from qiskit import QuantumCircuit
+
+def extend_circuit():
+    circuit = QuantumCircuit(3)
+    circuit2 = QuantumCircuit(2,2)
+    circuit2.h(0)
+    circuit2.x(1)
+    circuit.h(2)
+    circuit.extend(circuit2,[0,1])
+    circuit.draw()
+
+extend_
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def create_bell():
+    circuit = QuantumCircuit(2) 
+    circuit.reset(range(2))       
+    circuit.h(0)                   
+    circuit.cx(0, 1)               
+    return circuit
+
+
+def run_bell():
+    circuit = create_bell()  
+    simulator = Aer.get_backend('aer_simulator') 
+    result = execute(circuit, simulator).result()  
+    counts = result.get_counts(circuit) 
+    return counts
+
+def run_bellIBMQ(token, device):
+
+    
+    qr = QuantumRegister(2)
+    cr = ClassicalRegister(2)
+
+    
+    
+    backend = least_busy(IBMQ.backends(device=device,simulator=True,
+                                       filters = lambda x: x.configuration()['coupling_map'] == [[0, 2], [2, 4], [6, 8], [8, 10], [7, 9], [9, 11]])
+    print("The least busy backend is " + backend.name())
+
+
+'''Quantum circuits with Qiskit API are a part of Circuit
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+
+
+
+
+
+
+
+
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(3, 3)
+qc.x(1)
+qc.h(0)
+qc.x(0)
+qc.mct([0,1,2], 3)
+qc.draw()<jupyter_output><empty_output><jupyter_text>Exercise - Creating a Bell Pair 1. Create a Quantum Circuit, qc, with three qubits and three classical bits. Set the circuit to make an ent
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def add_bits():
+    circuit = QuantumCircuit(3)
+    circuit.reset(range(3))
+    circuit.draw()
+    return circuit
+def add_bits_1():
+    circuit_1 = QuantumCircuit(3)
+    circuit_1.rx(0.3, 1)
+    circuit_1.draw()
+def add_circuit():
+    circuit_3a = add_bits()
+    circuit_3b = add_bits_1()
+    circuit_3c = add_bits()
+    circuit_3c.cx(1, 2)
+    circuit_3c.draw()
+    circuit_3a.extend(circuit_3b, range(2), range(2))  
+    circuit_3a.draw()
+
+add_circuit()
+from qiskit import QuantumCircuit
+def add_gate():
+    circuit = QuantumCircuit(3, 3)
+    circuit.add_register(qubits)
+    circuit.h(qubits[0])
+    circuit.cx(qubits[0], qubits[1])
+    circuit.draw()
+add_gate()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(3)
+    circuit.reset(range(3))
+    circuit.h(range(3))
+    circuit.cz(0, range(1, 3))
+    circuit.h(0)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(3, 3)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.measure(range(3),range(3))
+    circuit.draw()
+    
+from qiskit import QuantumCircuit
+q = QuantumCircuit(4)
+q.draw()
+
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, ClassicalBit, assemble
+q = QuantumRegister(2)
+c = ClassicalRegister(2)
+qc = QuantumCircuit(q, c)
+qc.add_gate(x_gate_1,'q',0)
+qc.gate_Y(q[1])
+qc.cx(q[0], q[1])
+qc.measure(q,c)
+qc.draw(output='mpl')
+
+from qiskit import QuantumRegister, ClassicalRegister
+classical_q00_q01 = ClassicalRegister(2)
+q00 = QuantumRegister(1)
+q01 = QuantumRegister(1)
+my_circuit3 = QuantumCircuit(q00, q01, classical_q00_q01)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_quantum_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.rx(0.3, 0)
+    circuit.ry(0.4, 1)
+    circuit.draw()
+def run_quantum_circuit():
+    simulator = Aer.get_backend('aer_simulator')
+    result = execute(circuit, backend).result() 
+    counts_dict = result.get_counts(circuit)
+    print("\nTotal count for 00 and 11 are:", counts_dict)
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(np.pi, 0)
+    circuit.ry(np.pi, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.execute(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+from qiskit import QuantumCircuit
+from qiskit.providers.aer import noise
+from qiskit.tools.visualization import plot_histogram
+import qiskit
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+noise_model = noise.NoiseModel()
+basis_gates = noise_model.basis_gates
+
+print(noise_model.basis_gates)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    return circuit
+
+my_quantum_circuit = create_circuit()
+my_quantum_circuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    return circuit
+my_quantum_circuit = create_circuit()
+my_quantum_circuit.draw()<jupyter_output><empty_output>
+""" Please create a mutated program that modifies the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantuCircuit(3)
+    circuit.reset(0,range(2))
+    circuit.h(1)
+    circuit.cx(1,2)
+    circuit.draw()
+create_circuit()
+
+new_qc = QuantumCircuit(3)
+new_qc.x(1)
+new_qc.draw()
+
+qcircuity = create_circuit()
+qcircuit.extend(new_qc)  
+qcircuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def mutate(qc, qubit):
+    
+    qc.x(qubit)
+
+qc1 = mutate(qc, 0)
+qc2 = mutate(qc, 1)
+
+
+def measure_state(qc):
+    return qc.h(range(qc.num_qubits)).measure_all(aer_sim).result()
+
+state1 = measure_state(qc1)
+state2 = measure_state(qc2)
+
+print("\nMeasure output:", state1, state2)
+
+
+same = state1 == state2
+print("\nIs the quantum state the same?", same)
+qc.draw()
+qc.cx(0, 1)
+qc.draw()
+my_circuit = QuantumCircuit(2, 2)
+my_circuit.measure_all()
+aer_sim = Aer.get_backend('aer_simulator')
+
+result = qc.run(aer_sim)
+
+result.result()
+counts = qc.run(aer_sim).result().get_counts()
+plot_histogram(counts)
+from qiskit import QuantumCircuit, Class
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_quantum_circuit():
+    return
+new_circuit = create_quantum_circuit()
+new_circuit.draw()
+my_quantum_circuit.draw()
+from qiskit.visualization import plot_histogram
+circuit_res = execute(my_quantum_circuit, backend=simulator, shots=1024).result()
+counts = circuit_res.get_counts()
+plot_histogram(counts)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+my_quantum_circuit = create_quantum_circuit()
+
+my_quantum_circuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_quantum_circuit(qc, theta):
+    qc.reset(range(qc.num_qubits))
+    qc.h(0)
+    qc.cry(theta, 0, 1)
+    qc.draw()
+    return qc
+
+qc = create_quantum_circuit(QuantumCircuit(2), 0.3)
+qc.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+counts = simulator.run(qc).result().get_counts()
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+from qiskit.visualization import plot_histogram, plot_bloch_multivector
+import numpy as np
+simulator = Aer.get_backend('statevector_simulator')
+result = execute(qc, backend = simulator).result()
+print("\n Total count for ", counts)
+statevector = result.get_statevector()
+display(plot_bloch_multivector(statevector))
+
+qc2 = create_quantum_circuit(QuantumCircuit(2), 0.3)
+qc2.draw()
+qc3 = q
+[VERBOSE] ========== sample =========
+[VERBOSE] '''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit, execute, Aer
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+from qiskit.visualization import plot_histogram
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    return circuit
+my_quantum_circuit = create_circuit()
+my_quantum_circuit.draw()<jupyter_output><empty_output>
+""" Please create a mutated program that modifies the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def mutate_circuit(circ):
+    
+    return circ
+
+def run_circuit(circ):
+    
+    return results
+
+    
+my_quantum_circuit = create_quantum_circuit()
+my_quantum_circuit = mutate_quantum_circuit()
+my_results = run_quantum_circuit()
+plot_histogram(my_results.get_counts(my_quantum_circuit))
+
+
+
+def circuit_from_quantum_circuit(circ):
+    new_circuit = QuantumCircuit(2)
+    
+    return new_circuit
+    
+
+
+def replace_gate(circ):
+    
+    return updated_circuit
+"""
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2, 2)
+    circuit.reset(range(2))
+    circuit.ry(0.3, 1)
+    circuit.ry(1.2, 1)
+    return circuit
+
+def change_qubits(circuit_obj, qubit_1, qubit_2):
+    
+    circuit_obj.draw()
+    
+    circuit_obj.draw()
+    circuit_obj.draw()
+    circuit_obj.draw()
+    circuit_obj.draw()
+    return circuit_obj
+
+quantum_circuit = create_circuit()
+print('Mutated circuit:')
+new_circuit = change_qubits(quantum_circuit, 0, 1)
+new_circuit.draw()
+
+from qiskit import QuantumCircuit
+
+
+def create_circuit():
+    
+    quantum_circuit = QuantumCircuit(2)
+    return quantum_circuit
+
+
+def change_qubits(circuit_obj, qubit_1, qubit_2):
+    
+    circuit_obj.draw()
+    
+    circuit_obj.draw()
+    return circuit_obj
+
+
+quantum_circuit = create_circuit()
+print('Mutated circuit:')
+new_circuit
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def alter_create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.5, 0)
+    circuit.ry(0.5, 1)
+    return circuit
+quantum_circuit_x2 = alter_create_circuit()
+quantum_circuit_x2.draw()
+def compute_probs(counts):
+    prob_00 = counts['00'] / sum(counts.values())
+    return prob_00
+counts = run_circuit()
+compute_probs(counts)
+counts_dict = run_circuit()
+print(counts_dict)
+from qiskit.visualization import plot_histogram
+plot_histogram(counts_dict)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit(mutants): 
+    
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(mutants, 1)
+    circuit.ry((mutants + 1) * 3, 0)
+    circuit.rx(mutants / 2, 1)
+
+    circuit.ry((mutants + 1) * 11, 0)
+    
+    circuit.rx(12 / 11, 0)
+    circuit.ry(24 / 37, 0)
+    circuit[0].cphase(-23, 1)
+    circuit[0].h(1)
+    
+    
+    circuit.ry((mutants + 1) * 3, 1)
+    
+    circuit.draw()
+    return circuit
+mutants = 120
+
+create_circuit(mutants).draw()
+my_quantum_circuit = create_circuit(mutants)
+my_quantum_circuit.draw()
+
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+plot_histogram(counts)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def mutate_circuit(circuit):
+    circuit.cx(0, 1)
+    circuit.swap(0, 1)
+    return circuit
+mutated_program = mutate_circuit(my_quantum_circuit)
+mutated_program.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========

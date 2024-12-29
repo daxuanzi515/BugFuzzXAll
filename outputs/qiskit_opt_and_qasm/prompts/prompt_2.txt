@@ -1,0 +1,30 @@
+'''The Qiskit Terra API provides resources to build and manipulate quantum circuits, simulate them, compile them to specific quantum backends, visualize the quantum state and circuit, and much more. The key features include:
+
+1. Quantum Circuits: Allows defining, adding, and manipulating quantum circuits.
+2. Circuit Library: Contains a collection of valuable quantum circuits.
+3. Compilation routines: Tools for compiling quantum circuits.
+4. Executing experiments: Functions to run and manage quantum computing experiments.
+5. Visualizations: Provides several ways to visualize quantum states, circuits, etc.
+6. ClassicalFunction compiler: Tool for translating classical Python into equivalent quantum circuits.
+7. Circuit Converters: Useful tools to convert circuits into different forms.
+8. Circuit and Schedule Assembler: Assemble circuits and pulse schedules into payloads for execution.
+9. DAG Circuits: Represent circuits using directed acyclic graphs (DAG).
+10. BasicAer: Python-based Simulators for executing quantum circuits.
+11. Providers Interface: Provides a way to connect to quantum hardware and simulators.
+12. Fake Provider: Simulated hardware for testing and development.
+13. Pulse: Create, manipulate, and visualize pulse-level experiments.
+14. Circuit Synthesis: Tools to synthesize and optimize quantum circuits.
+15. OpenQASM 2 and 3: Language utilities to describe quantum states, operations, and measurements.
+16. Qobj: Data structure representing the result of a quantum computation.
+17. Quantum Information: Tools for quantum information theory tasks.
+18. Qiskit Tools: Set of utilities.
+19. Jupyter Tools: Utilities specifically for the Jupyter platform.
+20. Transpiler & Transpiler Passes: Optimize and target specific quantum computers.
+21. Preset Passmanagers: Provide default strategies for executing a circuit.
+22. Measurement Mitigation Utils: Tools to mitigate measurement errors.
+23. Operators and Algorithms: Core mathematical operators and algorithms.
+24. QPY Serialization: Efficient binary format for large quantum circuits.
+
+Each of these features are designed to support the robust development and management of quantum computing applications with Qiskit.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit

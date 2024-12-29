@@ -1,0 +1,49 @@
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, char, float> v;     
+    std::int64_t a;     
+    a = 10;     
+    v = a;     
+    if (std::holds_alternative<char>(v))     
+    {     
+        printf("The variant holds a char.\n");     
+    }     
+    if (std::holds_alternative<float>(v))     
+    {     
+      printf("The variant holds a float.\n");   
+    }
+}
+ 
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, char, float> v;     
+    std::int64_t a;     
+    a = 10;     
+    v = a;     
+    if (std::holds_alternative<char>(v))     
+    {     
+        printf("The variant holds a char.\n");     
+    }     
+    std::int64_t* b = std::get_if<int>(&v);     
+    if (b!= nullptr)     
+    {     
+        std::cout<<"Old Value:"<<*b<<" New Value:"<<std::int64_t{5.2};     
+        *b = 5;     
+      printf("Old Value:"<<*b<<" "<<"New Value:"<<std::int64_t{5});   
+    }
+
+
+ 
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, char, float> v;     
+    std::int6

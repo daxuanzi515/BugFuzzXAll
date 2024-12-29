@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct __union_Data
+{
+    void *p;  
+    int i;     
+     
+     
+     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+     
+    printf("u1.i: %d\n", u1.i);
+    printf("u1.p: %p\n", u1.p);
+    u2.p = 0x5678;
+    printf("u2.p: %p\n", u2.p);
+     
+     
+     
+     
+    return (EXIT_SUCCESS);
+}
+

@@ -1,0 +1,18 @@
+#include <expected>
+ " " << a.value()<<std::endl;
+    std::cout << "b value : " << b.value()<<std::endl;
+    std::cout << "c value : " << c.value()<<std::endl;
+     
+    return 0;
+}  
+```<fim_middle>
+#include <iostream>
+using namespace std;
+
+int main()  
+{ 
+    expected<int,std::exception_ptr> a = unexpected(make_exception_ptr(std::runtime_error("Oops!")));
+    expected<int,std::exception_ptr> b = 42;
+    expected<int, std::exception_ptr> c = in_place_t{};
+     
+    std::cout << "a value :

@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <time.h>
+int main()
+{
+    if(4294967295!= UINT_MAX)  
+    return 0;
+
+    if(0xffffff!= 16777215)
+    return 0;
+
+    for(int val = 16777216; val!= INT_MAX; ++val);
+    return 0;
+}
+ 
+#include <assert.h>
+ 
+#include <stdio.h>
+int main()
+{
+    double a = 10;
+    double b = 5;
+    assert(a > b || "assertion error!");
+    printf("I am outside the assert().\n");
+    return 0;
+}
+/* Please

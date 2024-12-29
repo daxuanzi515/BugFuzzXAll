@@ -1,0 +1,14 @@
+#include <iostream>
+ 
+int main() {
+  vector<unique_ptr<Employee>> empl;
+  int n(numeric_limits<int>::min());
+  unique_ptr<double[]> mem(new double[n]);
+  for (int a{}; a < n; ++a)
+    empl.push_back(make_unique<Employee>());
+  for (auto i : empl | views::reverse) {
+    cout << i->getName() << endl
+         <<''
+         << *i;
+  }
+}

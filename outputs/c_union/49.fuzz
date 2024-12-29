@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __t1 {
+  int i; 
+  int p;
+}; 
+int main()
+{
+    struct __t1 t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+ 
+ 
+ 
+ 

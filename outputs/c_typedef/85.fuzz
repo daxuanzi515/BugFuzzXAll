@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+	struct a
+	{
+		int x;
+		int y;
+	};
+	a a1 = {.x = 1,.y = 2};
+	struct
+	{
+		int x;
+		int y;
+	} a2 = {.x = 3,.y = 4};
+	struct
+	{
+		int x;
+	} a3 = {.x = 3};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}
+ 

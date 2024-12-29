@@ -1,0 +1,40 @@
+#include <variant>
+<fim_suffix>variant type.
+
+It requires the program to be compiled using GCC 7 or newer, since this is when the feature was first introduced.*/ 
+
+<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+int main() 
+{
+    std::variant<int, float, double> v;
+    v = (int)2.2;
+    v = (float)13.7;
+    v = (double)9;
+    double d = std::get<2>(v);
+    std::cout << "The variant has a double value " << d << "\n";
+}
+  
+ 
+ 
+#include <typeinfo>
+#include <iostream>
+#include <string>
+struct bad_variant_access : public std::exception { 
+    const char* what() const noexcept override {
+        return "bad_variant_access";
+    }
+};
+template<typename...Types>
+struct variant { 
+};
+template <typename V>
+struct variant_size;
+template <typename T, typename... Types

@@ -1,0 +1,63 @@
+import java.lang.Object;
+public class StaticSynchronized {
+    synchronized static int getInteger() {
+        return 1;
+    }
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Object syncObject = new Object() {
+    synchronized void printMe() {
+        System.out.println("Synchronized code");
+    }
+};
+ 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+public class FileReaders {
+    public void fileReadingTask(RandomAccessFile file, int numberOfKeys, int key) throws IOException {
+        file.seek(key * 4);
+        byte[] data = new byte[4];
+        file.read(data);
+        synchronized (fileLocks[key]) {
+            file.seek(key * 4);
+            file.write(data);
+        }
+    }
+}
+ 
+ 
+ 

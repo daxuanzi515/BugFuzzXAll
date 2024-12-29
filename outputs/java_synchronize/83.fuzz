@@ -1,0 +1,22 @@
+import java.lang.Object;
+public class Mutated_3 extends Sample {
+    synchronized void doSomething3() {
+        System.out.println(this + ": doSomething3()");
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+    synchronized void doSomething4() {
+        System.out.println(this + ": doSomething4()");
+    }
+}
+public class SynchTest4 {
+    public static void main(String [] args) {
+        Mutated_3 a  = new Mutated_3();
+        a.doSomething2();
+        a.doSomething3();
+        a.doSomething4();
+    }
+}

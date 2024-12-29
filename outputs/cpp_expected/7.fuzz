@@ -1,0 +1,98 @@
+#include <expected>
+.value() << std::endl;
+}
+
+template<typename T>
+void displayExpected(T&& e)
+{
+    using namespace std;
+    if (e.has_value())
+    {
+        cout << e.value() << std::endl;
+    }
+    else
+    {
+        cout << e.error() << std::endl;
+    }
+}
+constexpr int square(int x)
+{
+    return x * x;
+}
+
+int main()
+{
+    int result{
+        stdx::expected<int, int>::make_expected(7).map<int(*)(int)>(square)
+    };
+    showValue(result);
+    stdx::expected<int, int> expected{2}, otherExpected{7}, anotherExpected, tempExpected;
+    expected = otherExpected;
+    showExpected(expected);
+    expected = stdx::expected<int, int>::make_expected(1);
+    showExpected(expected);
+    try {
+        tempExpected = expected.map<int(*)(int)>(square);
+        showExpected(tempExpected);
+    }
+    catch (const stdx::expected_value_access_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue(e);
+    }
+    anotherExpected = stdx::expected<int, int>::make_unexpected(4);
+    try
+    {
+        auto temp = anotherExpected.map<int(*)(int)>(square);
+        showExpected(temp);
+    }
+    catch (const stdx::expected_value_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue(e);
+    }
+    catch (const stdx::expected_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        displayExpected(e);
+    }
+    try
+    {
+        stdx::expected<int, int> expected = otherExpected + anotherExpected;
+        auto temp = expected.unwrap();
+        std::cout << temp << '\n';
+    }
+    catch (const stdx::expected_value_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue(e);
+    }
+    catch (const stdx::expected_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue<stdx::expected<int, int>, int, int>(e);
+    }
+    try
+    {
+        auto temp = expected * otherExpected;
+        std::cout << temp << '\n';
+    }
+    catch (const stdx::expected_value_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue(e);
+    }
+    catch (const stdx::expected_error<int>& e)
+    {
+        std::cerr << e.what() << '\n';
+        showValue<stdx::expected<int, int>, int, int>(e);
+    }
+}
+<fim_middle>
+#include <iostream>
+#define SHOW(X) std::cout << #X ": " << (X) << std::endl
+
+namespace stdx
+{
+  template <typename T>
+  using unexpected_type = std::remove_

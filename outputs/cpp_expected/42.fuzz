@@ -1,0 +1,68 @@
+#include <expected>
+<fim_suffix>d::move(e));
+}
+
+std::string make_string_or_bad(int value)  {
+    if (value == 0) {
+        return my_unexpected(std::system_error{ std::make_error_code(std::errc::invalid_argument) });
+    }
+    return std::to_string(value);
+}
+
+std::expected<int, int> get_int_or_nicer_val(std::string_view value) {
+    const auto intVal = try_parse_int(value);
+    if (intVal) {
+        return intVal.value();
+    }
+    return my_unexpected(errorEnum::invalidString);
+}
+
+my_expected<std::string, std::error_code> combine_int_and_string_to_string(std::string_view strPrefix, int value) {
+    const auto possibleValueString = make_string_or_bad(value);
+
+    if (possibleValueString) {
+        return my_expected<std::string, std::error_code>::value(strPrefix + possibleValueString.value());
+    }
+    return my_expected<std::string, std::error_code>::unexpected(std::move(possibleValueString.error()));
+}
+
+int main() {
+    get_int_or_nicer_val("2");
+    combine_int_and_string_to_string("Str", 200);
+}
+```
+<fim_middle>
+#include <string>
+
+class bad_conversion_error {
+     
+    std::string print_str_for(std::error_code e) const noexcept {
+        return { "Error converting the data" };
+    }
+
+     
+    ~bad_conversion_error() noexcept = default;
+
+     
+    std::error_code code;
+};
+
+class invalid_string_error_enum {
+     
+    default_destructor();
+
+     
+    enum error {
+        invalidString  
+    };
+
+     
+    static invalid_string_error_enum make_bad(char const* const value);
+
+    operator error() const;  
+};
+
+using my_unexpected = std::unexpected<bad_conversion_error>;
+
+ 
+using my

@@ -1,0 +1,8 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4, 4) 
+for i in list(range(2)): 
+    with qc.for_loop(indexset=list(range(2)), loop_parameter='i', qubits=[0], body=lambda i : qc.cx(0, 1), label="for_loop" ): 
+    
+    qc.cx(i, i)
+qc.draw()

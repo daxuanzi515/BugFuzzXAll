@@ -1,0 +1,73 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+void PrintVec(vector<float> vec)
+{
+	for (size_t i = 0; i < vec.size(); i++)
+	{
+		vec[i] = vec[i] * vec[i];
+	}
+}
+void main()
+{
+	vector<float> vec;
+	PrintVec(vec);
+}
+ 
+#include <iostream>
+using namespace std;
+template <class T> struct vector
+{
+    vector() = delete;
+    vector(size_t N)
+    {
+        size_t n = N < 0? 0 : N;
+        alloc.allocate(n, sizeof(T));
+        size = n;
+    }
+    ~vector()
+    {
+        alloc.deallocate();
+    }
+    class iterator
+    {
+    public:
+        iterator(T *const ptr)
+            : ptr(ptr) {}
+        T &operator*()  
+        {
+            return *ptr;
+        }
+        const T &operator*() const
+        {
+            return *ptr;
+        }
+        iterator &operator++()  
+        {
+            ptr++;
+            return *this;
+        }
+        iterator operator++(int)  
+        {
+            iterator temp(*this);
+            ptr++;
+            return temp;
+        }
+        bool operator!=(const iterator &x) const
+        {
+            return ptr!= x.ptr;
+        }
+    private:
+        T *ptr;
+    };
+    std::unique_ptr<T[]> alloc;
+    size_t size = 0;
+    iterator begin() { return iterator(alloc.get()); }
+    iterator end() { return iterator(alloc.get() + size

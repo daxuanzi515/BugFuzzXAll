@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  unsigned long int e[2];
+  void *ptr = &c;
+  char buffer[12] = "";
+  void *ret = strdup(buffer);
+  b[0] = 2;
+  char *ret2 = realloc (ret, a*sizeof(char));
+  memcpy(ret2, buffer, d);
+  if (strlen(ret2) > 10) {
+    b[0] = 0;
+    ret2 = realloc(ret2, b[0]);
+    c = 893;
+  }
+  free((void *)ret2);
+  return 0;
+}

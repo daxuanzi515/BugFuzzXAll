@@ -1,0 +1,56 @@
+import java.lang.Object;
+<fim_suffix>t(Arrays.toString(c));		
+		}
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.useDelimiter(System.lineSeparator());
+		String temp = "";
+		while(s1.hasNext()) {
+			temp += s1.next() + " ";
+		}
+		System.out.println(temp);
+	}
+}
+ 
+ 
+import java.lang.*;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.nextLine();
+		System.out.println(s1.nextLine());
+	}
+}
+
+ 
+ 
+import java.lang.Object;
+import java.util.regex.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String line = "Hello\nworld";
+		String[] split_lines = line.split("\n");
+		String output = "";
+		for(String s : split_lines) {
+		    output += s + " ";
+		}
+		System.out.println(output);
+	}
+}
+ 
+import java.lang.*;
+import java.util.regex.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		java.util.regex.Pattern PATTERN = java.util.regex.Pattern.compile("( |\n)");
+		String input_line = "Hello\nworld";
+		String[] split_line = input_line.split(PATTERN.toString());
+		String result = String.join(" ", split_line);
+		System.out.println(result);
+	}
+}
+/* The second type of splitting in the above program uses the substring() method to cut

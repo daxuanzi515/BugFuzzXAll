@@ -1,0 +1,13 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object a = new Integer[1];
+		Object b = new int[2];
+		assert(a.getClass().isArray() && a.getClass().getComponentType().isPrimitive());
+		assert(!b.getClass().isArray() && b.getClass().getComponentType().isPrimitive());
+		assert(a instanceof Integer);
+		assert(b instanceof Integer);
+	}
+}

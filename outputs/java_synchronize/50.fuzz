@@ -1,0 +1,42 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+             
+        }
+    }
+}
+ 
+class ThreadSafe {
+    private volatile int myField;
+    public synchronized void setMyField(int value) {
+        myField = value;
+    }
+    public synchronized int getMyField() {
+        return myField;
+    }
+}
+ 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class Example {
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService pool = Executors.createCachedThreadPool();
+        
+        final AtomicInteger value = new AtomicInteger();
+        pool.submit(() -> value.set(10));      
+        System.out.println(value.get());     
+    }
+}

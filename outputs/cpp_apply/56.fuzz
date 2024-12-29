@@ -1,0 +1,28 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t = std::make_tuple(99);
+  std::apply([](int& x) {x *= x;}, t);
+  std::cout << std::get<0>(t) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+ 
+ 
+ 
+#include <iostream>
+#include <String.hpp>
+
+int main()
+{
+  String s1{"C++ strings"};
+  String s2{"are"};
+
+  std::cout << s1.length() << '\n';
+  std::cout << s1.front() << '\n';
+  std::cout << s1.back() << '\n';
+  std::cout << s1.substr(8, 3) << '\n';
+
+  return EXIT_SUCCESS;
+}

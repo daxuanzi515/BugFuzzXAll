@@ -1,0 +1,10 @@
+import java.lang.Object;
+<fim_suffix>ut.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		while(s1.hasNext())
+			System.o

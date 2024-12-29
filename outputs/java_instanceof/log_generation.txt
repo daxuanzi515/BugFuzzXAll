@@ -1,0 +1,2713 @@
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.reflect.*;
+class P {}
+class C extends P {}
+class D extends C {int field;}
+
+class R{
+    public static void main(String[] args){
+        System.out.println((new C()) instanceof P);
+         
+        System.out.println((new C()) instanceof R);
+        System.out.println((new C()) instanceof D);
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.String;
+import java.util.Date;
+import java.lang.Integer;
+class Animal {
+}
+class Cat extends Animal {
+}
+class Dog extends Animal {
+}
+public class instanceofTest {
+public boolean isAnInstanceOf(Animal a, Dog d) {
+    return (d instanceof Dog);
+  }
+  public static void main(String[] args) throws Exception {
+    System.out.println("Program starts");
+    Dog d = new Dog();  
+	Animal a = new Cat();  
+	instanceofTest c1 = new instanceofTest();  
+	boolean ans1 = c1.isAnInstanceOf(a, d);  
+    System.out.println("Answer after instanceof test (a, d): "+ ans1);
+	boolean ans2 = d instanceof Dog;  
+    System.out.println("Answer after instanceof test, (d, Dog): "+  ans2);
+    System.out.println("End.");
+  }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.Runnable;
+
+interface K extends Runnable
+{
+}
+
+class J implements Runnable
+{
+}
+
+enum G implements Runnable {
+	C1,C2
+}
+
+class F implements K
+{
+}
+
+public class Demo172 
+{
+	public static void main(String[] args)
+	{
+		Object obj = new J();
+		 
+		 
+		 
+		 
+		
+		if(obj instanceof J)
+		{
+			System.out.println("obj is J");
+		}
+		 
+		 
+		else if(obj instanceof G)
+		{
+			System.out.println("obj is G");
+		}
+		 
+		 
+		else
+		{
+			System.out.println("obj is other");
+		}
+		 
+		 
+		 
+		 
+	}
+}
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+public class InstanceofError extends Object{
+	public static void main(String args[]){
+		
+		System.out.println("I want to check whether the given reference is assignable to the class java.lang.Object and java.lang.String and vice-versa through the use of instanceof and casting");
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.Integer;
+
+class Main {
+	public static void main(String... args) {
+		
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		b = a;  
+		a = (Integer)b;  
+		System.out.println("After b is assigned to a, and a is set to Integer version of b");
+		 
+		System.out.println(a);
+		System.out.println(b);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		 
+		System.out.println(a1 instanceof Integer);
+		 
+	}
+   
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		b = a;  
+		a = (Integer)b;  
+		System.out.println("After b is assigned to a, and a is set to Integer version of b");
+		System.out.println(a);
+		System.out.println(b);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		b = a;  
+		a = (Integer)b;  
+		System.out.println("After b is assigned to a, and a is set to Integer version of b");
+		System.out.println(a);
+		System.out.println(b);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		b = a;  
+		a = (Integer)b;  
+		System.out.println("After b is assigned to a, and a is set to Integer version of b");
+		System.out.println(a);
+		System.out.println(b);
+		Integer a1 = new Integer(10);
+		Object a2 = new Main();
+		System.out.println(b instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		 
+		 
+		 
+		 
+		 
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer g = null;
+        System.out.println(g instanceof Integer);
+        System.out.println(g instanceof Number);
+		Object a = new Integer(10);
+		Object b = new Integer(10);
+		a = b;
+		boolean c = a instanceof String;
+	}
+}
+ 
+ 
+class Main {
+    public static void main(String... args) {
+        System.out.println("Hello".compareTo("Helloo"));
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		b = a;  
+		a = (Integer)b;  
+		System.out.println("After b is assigned to a, and a is set to Integer version of b");
+		System.out.println(a);
+		System.out.println(b);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a1=  new Object();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+		System.out.println(a1 instanceof Object);		
+		System.out.println(a1); 
+        System.out.println(a2 instanceof Integer);
+		System.out.println(a1 instanceof Main);
+	}
+}
+ 
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = "Hello";
+		if (b instanceof String) {
+			b = new Integer(10);
+		}
+        System.out.println(b);
+	}
+}
+
+ 
+ 
+class Parent {
+	public void test() {
+		System.out.println("In test method of Parent class");
+	}
+     
+	static void test1() {
+		System.out.println("In Test1 method");
+	}
+}
+ 
+class Child extends Parent{
+	static void test1() {
+		System.out.println("In Child method");
+	}
+}
+class Demo{
+	public static void main(String[] args) {
+		Parent p = new Child();
+		Child c = new Child();
+		Parent p2 = new Parent();
+		Child c2 = new Parent();
+		p.test();
+		c.test();
+		p.test1();
+		c.test1();
+		p2.test();
+		c2.test();
+		p2.test1();
+		c2.test1();
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Main {
+  int i;
+	void say() {
+		System.out.println(i);
+	}
+	public static void main(String... args) {
+		Object b;
+		System.out.println(b); 
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		System.out.println(true instanceof boolean);
+		System.out.println(10 instanceof boolean);
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b);
+        System.out.println(b + a instanceof Integer);
+        Object a1 = new Main();
+        Integer b2 = ((Integer) b);
+        System.out.println(a1 instanceof Integer);
+        System.out.println(b2 instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        String obj1 = new String("Abhishek");
+        System.out.println(obj1 instanceof Object);
+        System.out.println(obj1); 
+        System.out.println(obj1 instanceof Integer);
+		String obj2 = new String("Abhishek");  
+        System.out.println(obj2 instanceof String);
+        Boolean obj3 = new Boolean(false);
+        System.out.println(obj3 instanceof Boolean);
+	}
+}
+class Obj_Mutated {
+    public static String mutated_string;
+    Obj_Mutated(String string) {
+        mutated_string = string;
+    }
+}
+ 
+import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+        Integer a = 20, a1 = 10;
+        System.out.println(a instanceof Integer);
+        Integer a2 = null;
+        Boolean b = false;
+        Boolean b1 = true;
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+        Integer a = new Integer(5), a1 = 10, a2 = null;
+        System.out.println(a instanceof Integer);
+        System.out.println(a2 instanceof Integer);
+	}
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = null;
+		Integer a1 = new Integer(1000);	
+		System.out.println(a1 instanceof Integer);
+		System.out.println(b instanceof Object);
+		System.out.println(b instanceof Integer);
+		Object a = new Integer(5);
+		System.out.println(a instanceof Object);
+		System.out.println(b);
+		System.out.println(b instanceof Integer);
+	}
+}
+ 
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		System.out.println(a instanceof Object);
+		System.out.println(b instanceof Main);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Integer(105);
+	}
+}
+ 
+import java.lang.Integer;
+class Main{
+	public static void main(String... args){
+		Integer a = new Integer(4);
+		Integer b = new Integer(3);
+		Integer c = a.intValue();
+		System.out.println(a.equals(b));
+		System.out.println(b.equals(c));
+	}
+}
+ 
+class Test{
+	public static void main(String... args){
+		int a = 30;
+		int b = 3;
+		System.out.println(a >= b);
+		System.out.println(a < b);
+		System.out.println(b <= a);
+	}
+}
+ 
+import java.lang.Object;
+class Main{
+	public static void main(String... args){
+		Object a = new Double(30.30);
+		Double b = (Double)a;
+	}
+}
+ 
+import static java.lang.System.*;
+
+class Main{
+	public static void main(String... args){
+		err.println("Hello");
+	}
+}
+ 	
+ 
+class Main {
+	private static class Inner {
+		public void print() {
+			Main.print();
+		}
+	}
+	public static <P> void print() {
+		System.out.println("Hello, world.");
+	}
+	public static void main(String... args) {
+		Inner inner = new Inner();
+		inner.print();
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+        System.out.println("before");
+        Print();
+        System.out.println("after");
+	}
+
+    public static void Print() {
+        Object b = new Object();
+		Integer a = new Integer(10);
+		System.out.println(b.getClass().getName());
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b);
+        System.out.println(b instanceof Integer);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+public class Main{
+    public static void main(String[] args) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(null);
+		list.add(2);
+		list.add(null);
+		list.add(null);
+		list.add(null);
+		list.add(null);
+		list.add(3);
+		Collections.sort(list);
+		System.out.println(list);
+	}
+}
+
+ 
+import java.beans.XMLEncoder;
+import java.io.IOException;
+ 
+class Main {
+	public static void main(String... args) {
+		try {
+			new File("test");
+		} catch(RuntimeException e) {
+			System.out.println("got a checked exception!!!");
+		}
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b instanceof Integer);
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b instanceof Integer);
+	}
+}
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println("b instanceof Object: " + (b instanceof Object));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(b);
+        System.out.println(a);
+        System.out.println(b == a);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+		System.out.println(b instanceof Object);
+		b = (Object)$LOCK$INTEGERS.lock(a);
+        Integer b = (Integer)$LOCK$INTEGERS.lock(a);
+        b = (Object)$LOCK$INTEGERS.lock(a);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b instanceof Integer);
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+        System.out.println("b instanceof Object: " + (b instanceof Object));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("10");
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = new Integer("10");
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Integer(123);
+		Integer a = new Integer(10);
+        System.out.println("b instanceof Boolean: " + (b instanceof Boolean));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Object a = new Object();
+		a = b;
+        System.out.println("b instanceof Object: " + (b instanceof Object));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Integer(1);
+		Object a = b;
+        System.out.println("b instanceof Object: " + (b instanceof Object));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+		Integer c = a + b;
+		if (c instanceof Integer) {
+			System.out.println("c contains an Integer");
+        }
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String[] args) {
+		Integer a = 1;
+		Integer b = 2;
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Number;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+        System.out.println("a instanceof Number: " + (a instanceof Number));
+	}
+}
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		 
+		Integer a = 1;
+		Object b = 2;
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+        System.out.println("a instanceof Integer b: " + (a instanceof b));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		String a = "1";
+		Object b = "2";
+		System.out.println("a instance of Integer: " + (a instanceof Integer));
+		System.out.println("b instance of Integer: " + (b instanceof Integer));
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+        System.out.println(a instanceof Integer? a : b);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+interface I {
+    default void foo() {
+        System.out.println("I.foo");
+    }
+}
+class C implements I {
+    public static void main(String... args) {
+        C c = new C();
+        I i = new C();
+         
+        i.foo();  
+         
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+        Integer a = 1;
+        Object b = Integer.valueOf(2);
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Object));
+		System.out.println("b instanceof Integer: " + (b instanceof Object));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		a = new Integer(5);
+		 
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		 
+		 
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		 
+		System.out.println("a: " + (a + 2));
+	}
+}
+ 
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+		System.out.println((a + b) instanceof Integer);
+	}
+}
+ 
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+		System.out.println((a + b) instanceof Float);
+		 
+	}
+}
+ 
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Integer b = 2;
+		 
+		 
+         
+        System.out.println("a+b: " + (a + b));
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        System.out.println("a + b instanceof Integer: " + ((a + b) instanceof Integer));
+        System.out.println("a + b instanceof Float: " + ((a + b) instanceof Float));
+         
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        Integer c = new Integer(10);
+        Object d = new Integer(10);
+        System.out.println("c instanceof Integer: " + (c instanceof Integer));
+        System.out.println("d instanceof Integer: " + (d instanceof Integer));
+        Object e = "Hello";
+        System.out.println("e instanceof Integer: " + (e instanceof Integer));
+	}
+}
+ 
+public class Main {
+   static void p1(){
+       String str = "test";
+       int i = 2;
+       char c = 'B';
+       boolean b = true;
+       p2(10);
+       p2(c);
+       p2(str);
+       p2(i);
+       p2(b);
+   }
+   static void p2(Object obj){}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Object));
+		System.out.println("b instanceof Integer: " + (b instanceof Object));
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object b = 2;
+		boolean c = b instanceof Integer;
+		System.out.println("b instanceof Integer: " + c);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String[] args) throws IllegalArgumentException {
+		ArrayList arrli = (ArrayList) (Object) 1;
+	}
+}
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.lang.Object;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Object));
+		System.out.println("b instanceof Integer: " + (b instanceof Object));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+		System.out.println("b instanceof Object: " + (b instanceof Object));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + false);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+		System.out.println("Integer.class.isAssignableFrom(a.getClass()): " + Integer.class.isAssignableFrom(a.getClass()));
+		System.out.println("Integer.class.isAssignableFrom(b.getClass()): " + Integer.class.isAssignableFrom(b.getClass()));
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = 2;
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+```
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof(Integer.class)));
+		System.out.println("b instanceof Integer: " + (b instanceof(Integer.class)));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("");
+		Object b = new Integer("");
+		Object c = new Integer("");
+		System.out.println("a: " + a.getClass());
+		System.out.println("b: " + b.getClass());
+		System.out.println("c: " + c.getClass());
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+final class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("10");
+		Object b = new Object();
+		Object c = new Integer("20");
+		System.out.println(b);
+		System.out.println(c);
+	}
+}
+ 
+ 
+class A {
+	void show() {
+		System.out.println("Abstract class A shows in show()");
+	}
+}
+class B extends A {
+	void show() {
+		System.out.println("Derived class B shows in show()");
+	}
+}
+abstract class C extends A {
+	int var;
+	void show() {
+		System.out.println("Abstract class C shows in show()");
+	}
+	void showVar() {
+		System.out.println("var = " + var);
+	}
+	abstract void showAbstract();
+}
+class Test {
+	public static void main(String args[]) {
+		A test = new B();
+		C test2 = new C();
+		B test3 = new B();
+		test.show();
+		test2.show();
+		test3.show();
+		test2.showVar();
+		test2.showAbstract();
+		((B) test).show();
+	}
+}
+/*
+Following is the error log on
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.ArrayList;
+class Test{
+	class Test2{
+		
+	}
+}
+ 
+import java.lang.Object;
+export class Test {
+	export class Test2 {
+	}
+}
+import java.lang.String;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<String> c = new ArrayList<String>();
+		c.add("1"); 
+		c.add("2"); c.add("2");
+}
+ 
+import java.util.ArrayList;
+import static java.lang.System.out;
+
+class Main {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+import java.util.ArrayList;
+import static java.lang.System.out;
+class Main {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+ 
+import java.lang.System;
+class Main {
+	public static void main(String... args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		int i;
+		for(i = 0; i < 10; i = i + 1)
+			System.out.println("Hello World " + i);
+	}
+}
+ 
+ 
+ 
+class Main { 
+	public static void main(String[] args) {
+		System.out.println("Hello World
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = 1;
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = 1L;
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = new Character('c');
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+abstract class ExpressionTree {
+	
+	abstract Object compute(Map<String, Integer> values);
+}
+class LiteralExpressionTree extends ExpressionTree {
+	long value;
+	LiteralExpressionTree(long value) {
+		this.value = value;
+	}
+	@Override
+	Object compute(Map<String, Integer> values) {
+		return value;
+	}
+}
+class UnaryExpressionTree extends ExpressionTree {
+	char operator;
+	ExpressionTree child;
+	UnaryExpressionTree(char operator, ExpressionTree child) {
+		this.operator = operator;
+		this.child = child;
+	}
+}
+class BinaryExpressionTree extends ExpressionTree {
+	char operator;
+	ExpressionTree left;
+	ExpressionTree right;
+	BinaryExpressionTree(char operator, ExpressionTree left, ExpressionTree right) {
+		this.operator = operator;
+		this.left = left;
+		this.right = right;
+	}
+}
+ 
+/* public Map<String, Integer> evaluateTree(ExpressionTree expr, Collection<String> variables) {
+	Map<String, Integer> values = new HashMap<>();
+	
+	if (expr instanceof LiteralExpressionTree) {
+		LiteralExpressionTree lit = (LiteralExpressionTree) expr;
+		values.put("constant", (int) lit.value);
+	} else if (expr instanceof UnaryExpressionTree) {
+		UnaryExpressionTree un = (UnaryExpressionTree) expr;
+		switch (un.operator) {
+			case '-':
+				values.put("leftValue", ((int) un.child.compute(values)));
+				break;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a ->" + a + "<-");
+		a = null;
+		b = (Integer) 3;
+		System.out.println("a ->" + a + "<-");
+		System.out.println("b ->" + b + "<-");
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object a = new Integer[1];
+		Object b = new int[2];
+		assert(a.getClass().isArray() && a.getClass().getComponentType().isPrimitive());
+		assert(!b.getClass().isArray() && b.getClass().getComponentType().isPrimitive());
+		assert(a instanceof Integer);
+		assert(b instanceof Integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = new Integer(1);
+		Object b = new Integer[2];
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+ 
+import java.lang.Object;
+import java.lang.Double;
+class Main {
+	public static void main(String... args) {
+		Double a = 1.0D;
+		Object b = new int[2];
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("b instanceof Double: " + (b instanceof Double));
+	}
+}
+ 
+import java.lang.Double;
+class Main {
+	public static void main(String... args) {
+		Double a = 1.0D;
+		Object b = new int[2];
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("b instanceof Double: " + (b instanceof Double));
+	}
+}
+ 
+import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		int k = 10;
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Byte: " + (b instanceof Byte));
+		System.out.println("b instanceof short: " + (b instanceof short));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new Object();
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<Integer> alist = new ArrayList<Integer>();
+		Integer integer = 2;
+		alist.add(integer);
+		System.out.println(alist + " " + integer);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+		Integer c = new Integer();
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		b = c;
+		c = new Integer(10);
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		ArrayList<Integer> d = new ArrayList<Integer>();
+		d.add(new Integer(11));
+		d.add(new Integer(12));
+		d.add(new Integer(74));
+		System.out.println("d.get(0) is Integer: " + (d.get(0) instanceof Integer));
+		System.out.println("d.get(1) is Integer: " + (d.get(1) instanceof Integer));
+		System.out.println("d.get(2) is Integer: " + (d.get(2) instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+		Integer c = new Integer();
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		b = c;
+		c = new Integer(10);
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		ArrayList<Integer> d = new ArrayList<Integer>();
+		d.add(d.get(d.get(0)));
+		d.add(d.get(d.get(1)));
+		d.add(d.get(d.get(2)));
+		System.out.println("d.get(0) is Integer: " + (d.get(0) instanceof Integer));
+		System.out.println("d.get(1) is Integer: " + (d.get(1) instanceof Integer));
+		System.out.println("d.get(2) is Integer: " + (d.get(2) instanceof Integer));
+	}
+}
+ 
+class Object {};
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+  public static void main(String... args) {
+    Integer[][][][] b = new Integer[1][2][3][4];
+    char c = 'b';
+    System.out.println(b[0] instanceof Integer[][2]);
+    System.out.println(c == 'a' || c == 'b' || c == 'c' || c == 'd');
+  }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<Integer> list1 = new ArrayList<Integer>();
+		list1.add(1);
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		list2.add(2);
+		System.out.println("list1: " + list1);
+		System.out.println("list2: " + list2);
+		ArrayList<Integer> superList;
+		superList = list1;
+		while(list2.size() > 0) {
+			Integer i = list2.get(0);
+			superList.remove(0);
+			System.out.println(superList);
+		}
+		System.out.println("superList: " + superList);
+	}
+}
+ 
+ 
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+	    Integer i = 1;
+	    ArrayList<Integer> arraylist = new ArrayList<Integer>();
+        arraylist.add(i);
+    }
+
+}
+  
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+        static Integer a = 1;
+	public static void main(String... args) {
+		Integer b = 1;
+		Object c = new int[2];
+		Integer d = (Integer) 1;
+		Integer e = (Integer) b;
+		Integer f = (Integer) ((Integer) 1);
+		int g = (int)(b);
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+
+class Muggal
+{
+	private int i;
+	private long l;
+	public Muggal()
+	{
+		i=2;
+		l=3;
+		x();
+		z = 0;
+	}
+	public void x()
+	{
+		x=1;
+		int x;
+	}
+	public int y(int i)
+	{
+		long x;
+		if(x==0 && y == 0) y=1;
+		return x;
+		int y;
+	}
+	public static void z()
+	{
+		long y=2;
+		x=3;
+	}
+	public static int a()
+	{
+		++x;
+		return x;
+	}
+	public static int b(int i)
+	{
+		long x;
+		if(y==0 && x==0) z=1;
+		return x;
+		int z;
+	}
+	public static void c(int i,int l)
+	{
+		--x;
+	}
+	
+}
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		Muggal m=new Muggal();
+	}
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList a = new ArrayList();
+		System.out.println("a is ArrayList: " + (a instanceof ArrayList));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 3;
+		Integer arr[] = {1, 2};
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (arr instanceof Integer));
+	}
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object x = null;
+		Integer y = new Integer(1);
+		Integer z = null;
+		System.out.println("x is Integer: " + (x instanceof Integer));
+		System.out.println("y is Integer: " + (y instanceof Integer));
+		System.out.println("z is Integer: " + (z instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Arraylist b = new Arraylist();
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+import java.lang.String;
+import java.lang.Number;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");
+		 
+		Object aObj = new Object();
+		if (aObj instanceof Integer) System.out.println("aObj is Integer: " + (aObj instanceof Integer));
+		else System.out.println("aObj is not Integer");
+		aObj = 1;
+		if (aObj instanceof Integer) System.out.println("aObj is Integer: " + (aObj instanceof Integer));
+		else System.out.println("aObj is not Integer");   
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+    public static void main(String... args) {
+        Object a = 1;
+        if (a instanceof Integer) System.out.println("a is Integer");
+        else System.out.println("a is not Integer");
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (Integer.class.isInstance(a)) System.out.println("a is Integer: " + (Integer.class.isInstance(a)));
+		else System.out.println("a is not Integer");  
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Boolean;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		Boolean ans = (Boolean) (a instanceof Integer);
+		if (Boolean.compare(ans, true)) System.out.println("a is Integer");
+		else System.out.println("a is not Integer");  
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getConstructor(Integer.class).newInstance(a));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) { 
+		Object a = 1;
+		if (1 instanceof Object) System.out.println("TRUE");
+		else System.out.println("FALSE");
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		Integer b = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else if (b instanceof Integer) System.out.println("b is Integer: " + (b instanceof Integer));
+		else System.out.println("a is not Integer nor b"); 
+		System.out.println(a + "::" + b + "::" + a.getClass() + "::" + b.getClass() + "::" + a.getClass().getSuperclass() + "::" + b.getClass().getSuperclass());
+	}
+}
+ 
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if ((a = (Integer)a)!= null) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");
+		String tmp = (String)a;  
+		String tmpStr = tmp;  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass() + "::" + tmp + "::" + tmpStr);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a.getClass().getSuperclass().equals(Integer.class)) System.out.println("a is Integer 1");
+		else System.out.println("a is not Integer 1");
+		System.out.println(a + "::" + a.getClass());
+	}
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a!= null && a.getClass().getName().equals("java.lang.Integer")) System.out.println("a is Integer");
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (Integer.class.isAssignableFrom(a.getClass())) System.out.println("a is Integer: " + true);
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object c = 1;
+		if (c.getClass().isInstance(1)) System.out.println("c is Integer");
+		else System.out.println("c is not Integer");
+		System.out.println(c + "::" + c.getClass() + "::" + c.getClass().getSuperclass());
+	}
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer && ((Class)(a)).getSuperclass() == java.lang.Number.class) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+ 
+ 
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+public static class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+```
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer"); 
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Object a = new Object();
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+ 
+ 
+import java.lang.Object; 
+class DemoInterface {public void demo(Object a){System.out.println(a.toString());}
+	public static void main(String... args) {
+		DemoInterface Demo1 = new DemoInterface();
+		Demo1.demo(new Object());
+		DemoInterface Demo2 = new InterfaceDemoClass();
+		Demo2.demo(new DemoClass2());
+	}
+}
+interface InterfaceDemo {public void demo(Object a);
+	public Object demo(int a);
+}
+class InterfaceDemoClass implements InterfaceDemo {
+	public void demo(Object a){System.out.println(a.toString());}
+	public Object demo(int a){return new Byte((byte)a);}
+	public static void main(String... args) {
+		InterfaceDemo Demo1 = new InterfaceDemoClass();
+		Demo1.demo(new Object());
+		Demo1.demo(1);
+	}
+}
+ 
+package Outer;
+class OuterClass {
+	protected class NestedClass {
+		public void demo() {
+			System.out.println("this is a protected nested class");
+		}
+	}
+	private NestedClass nest = new NestedClass();
+}
+class OuterUser {
+	void user() {
+		System.out.println("protected nested class being called by outer class");
+		this.new NestedClass().demo();
+	}
+	public static void main(String[] args) {
+		new OuterUser().user();
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		 
+		Object a = 1;
+		 
+		 
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		
+		 
+		 
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = new Object();
+		if (!(a instanceof Object)) 
+			throw new IllegalArgumentException("a is not Object");
+		System.out.println("a is Object: " + (a instanceof Object));
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+ 
+final int someInt = 0;
+ 
+class Circle {	 
+	public final int r;
+	public final double d;
+	public Circle(int r, double d) {	 
+		this.r = r;
+		this.d = d;
+		 
+		System.out.println("d = "+d);
+	}
+	public double getDiameter() {
+		return 2*d;
+	}
+	public int getRadius() {
+		return (int) (r/2);
+	}
+}
+ 
+void method(int finalArgument) {
+}
+ 
+class Main {
+	private final int someInt = 0;
+	public void method(int argument) {
+		System.out.println("someInt: "+someInt);
+	}
+	public void main(String... args) {
+		method(1); 	 
+	}
+}
+ 
+String firstNonBlankWord(final String text) {
+	char[] charArray = text.toCharArray();   
+	int textLength = charArray.length; 		   
+	for (int i=0; i<textLength; i++) {			   
+		if (!Character.isWhitespace(charArray[i])) {  
+			char currentChar = charArray[i];		   
+			for (int j=i+1; j<textLength; j++) { 	   
+				if (Character.isWhitespace(charArray[j])) {  
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Double)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("1 instanceof Number: " + (1 instanceof Number));
+		System.out.println("7 instanceof Number: " + (7 instanceof Number));
+		System.out.println("1.45f instanceof Number: " +
+		 (1.45 instanceof Number));
+		System.out.println("1.45 instanceof Number: " +
+		 (1.45f instanceof Number));
+		System.out.println("1.5f instanceof Object: " + (1.5f instanceof Object));
+		System.out.println("1.5 instanceof Object: " + (1.5 instanceof Object));
+		String s = "xyz";
+		System.out.println("'x' instanceof String: "
+			+ ('x' instanceof String));
+		System.out.println("'x' instanceof Character: "
+			+ ('x' instanceof Character));
+		System.out.println("'x' instanceof Object: "
+			+ ('x' instanceof Object));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.ArrayList;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		ArrayList a = new ArrayList(args);
+		if (!(a instanceof Main$2)) 
+			throw new IllegalArgumentException("a is not Main$2");
+		if (!(((ArrayList)a).add("Hello, I am not Main!"))
+			throw new IllegalArgumentException("a is not mutable!");
+		if (((Main$2)a).toString(2)!= "a = new ArrayList(args); a.add(\"2\");")
+			throw new IllegalArgumentException("wrong toString() logic in Main$2");
+		System.out.println("a is mutated: " + (((Main$2)a).toString(2)));
+	}
+}
+class Main$2 extends ArrayList {
+	private final int mod = 2;
+	public String toString(int depth) {
+		String l = "a = new ArrayList(args); ";
+		if (mod > 1) l += "a.add(\"1\"); ";
+		if (mod > 2) l += "a.add(\"2\"); ";
+		if (mod > 3) l += "a.add(\"3\"); ";
+		String indent = "";
+		for (; depth > 0; depth--) indent += "|  ";
+		return indent + l;
+	}
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = "one";
+		if (a instanceof Integer) 
+			throw new IllegalArgumentException("a should be String");
+		if (!(a instanceof Integer)) 
+			System.out.println("A is not Integer");
+		if (a instanceof String) 
+			System.out.println("A is String");
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = "abc";
+		if (!(a instanceof Integer && (a = (int) a) instanceof Integer)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Object)) 
+			throw new IllegalArgumentException("a is not Object");
+		System.out.println("a is Object: " + (a instanceof Object));
+	}
+}
+
+ 
+import java.lang.Object;
+class Mutability {
+	int value;
+}
+
+ 
+public class MainRuntimeStatic1 extends Object {
+	public static void main(String[] args) {
+		new MainRuntimeStatic1().run();
+	}
+
+	public void run() {
+		try {
+			this.staticCall();
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private static void staticCall() {
+		new Mutability();
+	}
+}
+
+ 
+public class MainRuntimeInstance1 extends Object {
+
+	public void run() {
+		try {
+			this.instanceCall(this);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}		
+	}
+
+	private void instanceCall(MainRuntimeInstance1 instance) {
+		new Mutability();
+	}
+
+	public static void main(String[] args) {
+		new MainRuntimeInstance1().run();
+	}
+}
+
+ 
+public class MainInstance extends Object {
+	public void run() {
+		throw new IllegalArgumentException();
+	}
+}
+[VERBOSE] ========== sample =========

@@ -1,0 +1,52 @@
+#include <variant>
+<fim_suffix>t, const auto &elem) { return elem.a!= 0; }), 
+            [&, count = std::count_if(elems.begin(), elems.end(), [](auto elem) { return elem.a!= 0; })](const auto& elem) { 
+                if(elem.a!= 0) std::cout << elem.b << std::endl;
+            }
+        );
+         
+         
+         
+         
+         
+         
+         
+        std::visit( 
+            std::overloaded{ 
+                [&](const auto *p) { std::cerr << "This variant doesn't hold a reference or pointer\n"; },
+                [](const auto &r)  { 
+                    std::cout << "The reference is " << r.a << std::endl;
+                },
+                [](const auto &ptr) { 
+                    std::cout << "The pointer is " << ptr -> a << std::endl;
+                }
+            }, 
+            v.value()
+        );
+         
+         
+         
+         
+        std::visit( 
+            std::overload{ 
+                [&](const auto &r)  { 
+                    r = 1; 
+                    return true; 
+                },
+                [&](const auto &ptr) { 
+                    *ptr = 1; 
+                    return true; 
+                }
+            }, 
+            v.value()
+        );
+         
+         
+         
+         
+
+        if(v.index()!= 1) throw std::runtime_error { "The variant doesn't hold an int\n" };
+        std::visit( 
+            std::overload {
+                [](int) { return true; },
+                [](auto) { throw std::runtime_error { "The variant doesn't hold

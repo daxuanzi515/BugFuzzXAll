@@ -1,0 +1,14 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b); 
+        System.out.println(b instanceof Integer);
+		System.out.println(a instanceof Object);
+		System.out.println(b instanceof Main);
+	}
+}

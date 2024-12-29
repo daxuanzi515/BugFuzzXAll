@@ -1,0 +1,43 @@
+#include <stdlib.h>
+<fim_suffix>r = x;
+a[1]. x = 200;
+a[1]. y = x = 3000;
+a[1]. z = 0xABCDEA;
+a[2]. x = x = 3000;
+*ptr = x = 1000;
+}<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+struct Point2{
+   char c;
+};
+union Integer{
+		char c;
+		int x;
+		short y;
+		struct Point p;
+		struct Point2 p2;
+};
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Integer a[5];
+	int x = 0xFE;
+	a[0]. x = x = 100;
+a[0]. p. x = 120;
+a[0]. p. y = 240;
+a[0]. y = 0x1020;
+a[0]. c = 6;
+a[1]. p. x = 340;
+a[1]. p. y = 280;
+a[1]. c = 8;
+a[2]. c = 0x20;
+a[3]. p2. c = 0x1F;
+q1 = & point1;
+char *ptr = & a[4]. p2. c;
+
+ptr = & a[0]. x;
+*pt

@@ -1,0 +1,11 @@
+/* The `std::apply` function in C++ is utilized to invoke or call a callable object (like a function or method) with the elements of a tuple as its arguments. This function is part of the Utilities library and is defined in the `tuple` header. 
+
+Its general format is `apply(F&& f, Tuple&& t)`. Here, `f` represents the callable object and `t` is a tuple. The contents of tuple `t` are used as arguments for object `f`.
+
+The `std::apply` function returns the value that is returned by the callable object `f`. The 'noexcept' specification governs the situation when an exception might be thrown.
+
+This function can be used with anything that supports `std::get` and `std::tuple_size`, such as `std::array`, `std::pair` and `std::tuple`. It requires every type in `Tuple` to be a specialization of `std::tuple` or another type that models tuple-like starting from C++23.
+
+Overall, `std::apply` provides a useful way to unpack a tuple and use its elements as arguments to a function. */
+/* Please create a very short program which combines std::apply with new C++ features in a complex way */
+#include <tuple>

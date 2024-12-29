@@ -1,0 +1,54 @@
+#include <variant>
+<fim_suffix>n_v`, `variant_alternative`, and `variant_alternative_t`. Use these to create a complex class template that will operate in two modes. */
+template<typename First, typename Second>
+class Example {
+public:
+    Variant(First&& first, Second&& second)
+            : var_(std::forward<First>(first), std::forward<Second>(second))
+    {
+         
+    }
+
+    template <typename Func>
+    Variant<typename std::result_of<Func(First)>::type>
+    visit(Func&& func) const
+    {
+         
+        return std::visit(func, var_);
+    }
+
+    template <typename Func>
+    decltype(auto)
+    index(Func&& func) const
+    {
+        return std::visit(
+                [&func](auto&& arg) -> decltype(auto) {
+                    return std::forward<Func>(func)(typeid(arg));
+                },
+                var_);
+    }
+
+ 
+private:
+    std::variant<First, Second> var_;
+};
+ 
+#include <typeindex>
+#include <typeinfo>
+#include <iostream>
+#include <string>
+
+template <typename First, typename Second>
+class Example
+{
+public:
+    Example(First&& first, Second&& second)
+            : var_(std::forward<First>(first), std::forward<Second>(second))
+    {
+         
+    }
+
+    template <typename Func>
+    auto visit(Func&& func) const
+    {
+         

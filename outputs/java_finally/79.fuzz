@@ -1,0 +1,19 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFInally5 {
+    public static void main(String[] args) {
+        try(BufferedReader br = new BufferedReader(new FileReader("src/myFName.txt"));
+            PrintWriter out = new PrintWriter("src/myData.txt")) {
+
+            String line;
+            while ((line = br.readLine())!= null) {
+                out.println(line);
+            }
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

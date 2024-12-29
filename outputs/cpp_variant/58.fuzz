@@ -1,0 +1,3 @@
+#include <variant>
+<fim_suffix>e `std::shared_ptr` to implement the observer pattern. Each `std::shared_ptr` will hold a reference-counted holder containing a value of `T`, which is to be shared among the set of observers. 
+

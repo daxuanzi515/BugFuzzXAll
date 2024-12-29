@@ -1,0 +1,53 @@
+import java.lang.Object;
+-1) {
+					if (arr[m] < arr[k] && arr[m] < arr[k-1]) {
+						temp = arr[k-1];
+						arr[k-1] = arr[m];
+						arr[m] = temp;
+					}
+				}
+
+				 
+				k++;
+			}
+		}
+
+		return arr;
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int[] arr = {8, 2, 3, 1, 4, 6, 19, 15};
+
+		System.out.println("List before Insertion Sort" + Arrays.toString(arr));
+		for (int i : insertionSort(arr))
+			System.out.print(i + " ");
+	}
+}
+  
+ 
+import java.lang.Object;
+public class Main {
+	public static int[] selectionSort(int[] arr) {
+		int n = arr.length;
+		for(int i = 0; i < n-1; ++i) {
+			int min = arr[i];
+			int minIndex = i;
+			for(int j = i+1; j < n; ++j) {
+				if (arr[j] < min) {
+					min = arr[j];
+					minIndex = j;
+				}
+			}
+
+			int temp = arr[minIndex];
+			arr[minIndex] = arr[i];
+			arr[i] = temp;
+		}
+
+		return arr;
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int[] arr = {8, 2, 3, 1, 4, 6, 19,

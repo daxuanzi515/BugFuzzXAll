@@ -1,0 +1,2965 @@
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+typedef unsigned char uchar;
+
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+
+char *foo(size_t *argc) {
+  char *ptr = NULL;
+  for (*argc--; *argc; (*argc)--, ptr--) {
+    boo(*argc, ptr);
+    break;
+  }
+  return ptr;
+}
+
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  unsigned long int e[2];
+  void *ptr = &c;
+
+  char buffer[12] = "";
+  char *ret = foo(&c);
+  if (strlen(ret) > 4) {
+    ret = strcat(ret, "_");
+  }
+  if (strlen(ret) > 6) {
+    ret = strncat(ret, "abc", 2);
+  }
+  char *ret2 = foo(b);
+
+  memcpy(buffer, ret, d);
+  if (strlen(buffer) > 10) {
+    b[0] = 0;
+    ret2 = realloc(ret2, b[0]);
+    c = 893;
+  }
+  return 0;
+   
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <string.h>
+#include <stdbool.h>
+#include <stdio.h>
+
+ 
+const char *letters_upper_case = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const char *letters_lower_case = "abcdefghijklmnopqrstuvwxyz";
+const char *letters_numbers = "...0123456789...";
+const char *letters_symbols = "...!@#$%^&*()_+~`|}{[]\\-=");
+
+typedef struct user {
+    char *user_name;
+    char *user_surname;
+    char *user_email;
+    char *user_password;
+} user;
+
+void string_to_lowercase(char* string) {
+    str(tolower)(string);
+}
+
+void string_to_uppercase(char* string) {
+    str(toupper)(string);
+}
+
+bool check_symbols(user user) {
+    for (int i = 0; i < strlen(letters_symbols); i++) {
+        if (memchr(user.user_password, letters_symbols[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_numbers(user user) {
+    for (int i = 0; i < strlen(letters_numbers); i++) {
+        if (memchr(user.user_password, letters_numbers[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_all_upper_case(user user) {
+    for (int i = 0; i < strlen(letters_upper_case); i++) {
+        if (memchr(user.user_password, letters_upper_case[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_all_lower_case(user user) {
+    for (int i = 0; i < strlen(letters_lower_case); i++) {
+        if (memchr(user.user_password, letters_lower_case[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_password_strength(user user) {
+
+    if (!check_all_lower_case(user)) {
+        printf("At least one lower case letter must be present!\n");
+        return false;
+    }
+
+    if (!check_all_upper_case(user)) {
+        printf("At least one upper case letter must be present!\n");
+        return false;
+    }
+
+    if (!check_numbers(user)) {
+        printf("At least one number must be present!\n");
+        return false;
+    }
+
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <string.h>
+
+int main() {
+     
+    int8_t int8 = -1;
+    uint8_t uint8 = 0xFFFFFF;  
+    printf("%u\n", uint8);
+    printf("%d\n", int8);
+
+     
+    int16_t int16 = -1;
+    uint16_t uint16 = 0xFFFFFF;  
+    printf("%u\n", uint16);
+    printf("%d\n", int16);
+
+     
+    int32_t int32 = -1;
+    uint32_t uint32 = 0xFFFFFF;  
+    printf("%u\n", uint32);
+    printf("%d\n", int32);
+
+     
+    int64_t int64 = -1;
+    uint32_t uint64 = 0xFFFFFF;  
+    printf("%u\n", uint32);
+    printf("%d\n", int32);
+
+     
+    char8_t char8 = u8'a';
+    char16_t char16 = u'A';
+    char32_t char32 = U'B';
+    printf("%c\n", char8);
+    printf("%c\n", char16);
+    printf("%c\n", char32);
+
+     
+    _Static_assert(1, "ERROR");
+
+    return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <string.h>
+
+ 
+
+#if defined(__has_embed) && defined(__has_include)
+    #if __has_embed("header.embed")
+        #include __has_include("header.embed")"header.embed"
+    #endif
+#endif
+
+ 
+
+#if defined(__has_c_attribute)
+    char(4)   _attribute__((aligned)) aligned4  __attribute__((aligned(4)));
+    char(8)   _attribute__((aligned)) aligned8  __attribute__((aligned(8)));
+    char(3) * _attribute__((aligned)) aligned3p __attribute__((aligned(4)));
+#endif
+
+ 
+
+#ifdef HAVE_HEADER
+    #include "header.h"
+#endif
+
+ 
+
+#if defined(__has_c_attribute)
+    static_assert( alignof(aligned8) >= alignof(aligned3p), "Alignof 3p is larger than alignof aligned8");
+
+    extern char (C23_ALIGN(4) * aligned4) __attribute__ ((aligned(4)));
+    static_assert(alignof(aligned4) >= alignof(aligned3p), "Alignof 3p is larger than alignof 4");
+
+     
+
+    PRINTF(("sizeof(aligned4): %zu\n", sizeof(aligned4)));
+    PRINTF(("sizeof(aligned8): %zu\n", sizeof(aligned8)));
+    PRINTF(("sizeof(aligned3p): %zu\n\n", sizeof(aligned3p)));
+    PRINTF(("%p\n", aligned4));
+    PRINTF(("%p\n", aligned8));
+    PRINTF(("%p\n", aligned3p));
+    PRINTF(("%p\n", sizeof(char(4) )));
+    PRINTF(("%p\n", sizeof(char(8) )));
+    PRINTF(("%p\n", sizeof(char(*) )));
+
+    struct S { int x; };
+    struct S _attribute__((aligned)) ms __attribute__((aligned(4)));
+
+     
+
+    PRINTF(("%p\n", aligned4));
+    PRINTF(("%p\n", aligned8));
+    PRINTF(("%p\n", aligned3p));
+#endif
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <memory.h>
+#include <stdio.h>
+#include <string.h>
+ 
+#include <stdint.h>
+ 
+#include <limits.h>
+#include <alloca.h>
+
+#include "../include/lib/inttypes.h"
+#include "../include/lib/stdbool.h"
+
+#define likely(x)       __builtin_expect((x),1)
+#define unlikely(x)     __builtin_expect((x),0)
+
+int main(int argc, char const *argv[]) {
+	 
+
+	 
+	char *str = malloc(sizeof(char) * 26);
+	printf("String: %s\n", str);
+
+	 
+
+
+	int num;
+	memcpy(&num, "12", sizeof(int));
+	printf("Num: %i\n", num);
+
+	 
+	char* s = strdup("MyString");
+	printf("strdup: %s\n", s);
+	free(s);
+
+	 
+	char* s2 = strndup("MyString", 5);
+	printf("strndup: %s\n", s2);
+	free(s2);
+
+	 
+	int8_t i8bit = -10;
+	int16_t i16bit = -100;
+	int32_t i32bit = -1000;
+	int64_t i64bit = -10000;
+	uint8_t u8bit = 10;
+	uint16_t u16bit = 100;
+	uint32_t u32bit = 10000;
+	uint64_t u64bit = u64bit;
+
+	size_t _Alignas(sizeof(long long)) longlong_alignment;
+	size_t _Alignas(32) alignment_32_value = 0;
+	size_t _Alignas(16) alignment_64_value = 1;
+	size_t _Alignas(8) alignment_8_value = 2;
+
+	longlong_alignment = alignment_64_value;
+    printf("Size of long long: %i\n", sizeof(longlong_alignment));
+    printf("Value of align64bit: %i\n", _Alignof(longlong_alignment));
+
+    longlong_alignment = alignment_8_value;
+    printf("Size of long long: %i\n", sizeof(longlong_alignment));
+    printf("Value of align8bit:
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(size_t *argc) {
+  char *ptr = NULL;
+  for (*argc--; *argc; (*argc)--, ptr--) {
+    boo(*argc, ptr);
+    break;
+  }
+  return ptr;
+}
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  unsigned long int e[2];
+  void *ptr = &c;
+  char buffer[12] = "";
+  char *ret = foo(&c);
+  if (strlen(ret) > 4) {
+    ret = strcat(ret, "_");
+  }
+  if (strlen(ret) > 6) {
+    ret = strncat(ret, "abc", 2);
+  }
+  char *ret2 = foo(b);
+  memcpy(buffer, ret, d);
+  if (strlen(buffer) > 10) {
+    b[0] = 0;
+    ret2 = realloc(ret2, b[0]);
+    c = 893;
+  }
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  unsigned long int e[2];
+  void *ptr = &c;
+  char buffer[12] = "";
+  void *ret = strdup(buffer);
+  b[0] = 2;
+  char *ret2 = realloc (ret, a*sizeof(char));
+  memcpy(ret2, buffer, d);
+  if (strlen(ret2) > 10) {
+    b[0] = 0;
+    ret2 = realloc(ret2, b[0]);
+    c = 893;
+  }
+  free((void *)ret2);
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(size_t *argc) {
+  char *ptr = NULL;
+  for (*argc--; *argc; (*argc)--, ptr--) {
+    boo(*argc, ptr);
+    break;
+  }
+  return ptr;
+}
+char *copy_string(char *string1, char **string2) {
+  *string2 = malloc(sizeof(char *));
+  char *ret2 = malloc(strlen(string1));
+  strcpy(ret2, string1);
+  *string2 = strndup(string1, *argc);
+  return *string2;
+}
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  char *ret = NULL;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#define AAAA 1
+#define BBBB 30
+#define CCCC 16
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(int *frg[]) {
+  char *ptr = NULL;
+  for (*frg[0]--; *frg[0]; (*frg[0])--, ptr--) {
+    boo(*frg[0], ptr);
+    break;
+  }
+  return ptr;
+}
+int main() {
+  uchar a = (uchar)1;
+  int b = 0, c = 10, d = 5;
+  char e[12];
+  void *ptr = &c;
+  char *ret = foo(&b);
+  if (strlen(ret) > 4) {
+    ret = strcat(ret, "_");
+  }
+  if (strlen(ret) > 6
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; ++idx) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(size_t *b) {
+  char *ptr = 0;
+  int argc = *b--;
+  while (argc) {
+    boo(*b, ptr);
+    ptr &= argc;
+    --argc;
+  }
+  return ptr;
+}
+int main() {
+  char a = (char)1;
+  unsigned long int e[2] = {0};
+  while (c) {
+    --c;
+  }
+  void *ptr = &c;
+  char buffer[12] = "";
+  strcpy(buffer, foo(&argc));
+  if (strlen(buffer) > 4) {
+    strcat(buffer, "_");
+  }
+  if (strlen(buffer) > 6) {
+    strncat(buffer, "abc", 2);
+  }
+  if ((unsigned long int)argc
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && (void *)ptr == (void *)ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#define __builtin_prefetch(x)
+#define restrict restrict
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char *__restrict buffer = "\0";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *__restrict foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  };
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+};
+int main() {
+  for (
+    buffer[2] = '\0';
+    buffer[0];
+    ptr++
+  );
+  ptr1 = &d;
+  return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#define a 0x1
+uchar a1 = (uchar)1;
+unsigned int b[2];
+unsigned int e[2];
+void *ptr = &a1;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = 1;
+uchar d1 = 1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1]!=0 && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+uchar a = 1;
+unsigned long long b[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = 1;
+uchar d1 = 1;
+void *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  while (*ptr == d) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (unsigned char)1;
+long int b[2];
+long int e[2];
+void* ptr = &a;
+void* ptr1 = &a;
+static char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char* foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar) 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar) 1;
+uchar d1 = (uchar) 1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  };
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  };
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  };
+  ptr1 = &d;
+  return 0;
+}
+
+ 
+typedef struct {
+  float x;
+  float y;
+  float z;
+} point;
+typedef struct {
+  point p1;
+  point p2;
+  point p3;
+} mystruct;
+int func_name_function(int num1, int num2){
+  mystruct c1 = {
+        {.x = 1.0f + num1,.y = 4.0f + num1,.z = 4.0f + num1},
+        {.x = 2.0f + num2,.y
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  }
+  ptr1 = &d;
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (; b[1] && ptr1 == &d; b[1]--) {
+  }
+  if (strlen(buffer)
+    > 10) {
+    ptr1 = realloc(ptr1, strlen(buffer) + 8);
+  }
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr1!= &d1; ptr1++) {
+  }
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+int main() {
+  uchar a = 1;
+  long int b[2];
+  long int e[2];
+  void *ptr = &a;
+  void *ptr1 = &a;
+  char buffer[12] = "";
+  uchar d = (uchar)1;
+
+  while (1) {
+    for (; b[1] && ptr == ptr1; b[1]--) {
+    }
+    if (strlen(buffer) > 10) {
+      ptr = realloc(ptr, strlen(buffer) + 8);
+    } else {
+      break;
+    }
+  }
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  int ptr = 1;
+  for (; ptr && strlen(buffer) < 10; ptr--)
+    buffer[1] = 1;
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  for (; strlen(buffer) < 10; ptr++) {
+    if (ptr!= 0) {
+    }
+#pragma acc wait
+    buffer[1] = 1;
+  }
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  for (; strlen(buffer) < 10; ptr++) {}
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (; b[1] && ptr == ptr1; b[1]--)
+    ;
+  if (strlen(buffer) > 10)
+    ptr = realloc(ptr, strlen(buffer) + 8);
+}
+int main
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a;  
+long int b[2];
+long int e1[a + b[1]];  
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12];
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (b[1] = 0; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+}
+int main() {
+  for (; b[1] && ptr!= &d; b[1]++);
+  if (!d1) {  
+  }
+  return 0;
+}
+ 
+int *x(int *y);  
+int **x(int *y) {  
+  int **z;
+  z = &y;  
+  return z;
+}
+ 
+/* the type of ‘y’ changes from int ** to int in the first line of the function, which is not compatible with the actual return types of the function in line 11 and 12.  This error shows up only in the C Standard, where these kinds of type inconsistencies are not allowed, e.g. in C++ these would be errors.
+
+In the original program the function ‘func’ was declared to return an int*, but instead it returns an int** through a local variable, which is a different type than the one specified by the function’s return type declaration. Therefore, both the error in the first line and
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+int main(void)
+{
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+    for (int i = 0; i < 500; i++)
+    {
+        puts("Hello, World!");
+        puts("Do it again");
+    }
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void)
+{
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+ 
+#include <stdio.h>
+
+int main()
+{
+   printf("This program shows the new-C23 functionality");
+   printf("\n-------------------------------");
+     
+    int n;
+    int* buf = malloc(n * sizeof(int));
+    free(buf);
+
+    printf("This program shows the old-C functionality");
+    printf("\n-------------------------------");
+
+     
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+uint32_t func_v_void(void);
+void func_void_v(uint32_t *a, uint32_t *b);
+typedef struct f_struct
+{
+    uint32_t num;
+    void *ptr;
+} func_struct_type;
+func_struct_type func_struct(uint32_t *a, void *b);
+ 
+ 
+char *strdup(const char *src);
+ 
+char *strndup(const char *src, size_t max);
+int func(uint32_t num_of_ones,...)
+{
+     
+    void *dest = (void *)malloc(num_of_ones);
+    return 0;
+}
+int func_v_void(void)
+{
+     
+    int n = func(0);
+    return n;
+}
+void func_void_v(uint32_t *a, uint32_t *b)
+{
+     
+    int n = func(1, a, b);
+    return void;
+}
+func_struct_type func_struct(uint32_t *a, void *b)
+{
+     
+    func_struct_type s = {1, (void *)255};
+    return s;
+}
+int main()
+{
+     
+    func_void_v(&a, &b);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+
+ 
+int reverseBits(char *array, int size){
+    for (int i=0; i<size/2; i++){
+        if (array[i]!= '\0' && array[size - i - 1]!= '\0'){
+            char temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
+        }
+    }
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int reverseBits(char *array, int size){
+    for (int i=0; i<size/2; i++){
+        if (array[i]!= '\0' && array[size - i - 1]!= '\0'){
+            char temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
+        }
+    }
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int reverseBits(int size, char *array){
+    for (int i=0; i<size/2; i++){
+        if (array[i]!= '\0' && array[size - i - 1]!= '\0'){
+            char temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
+        }
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+ 
+int reverseBitsBis(char *array, int size){
+    for (int i=0; i<size/4; i++){
+         
+        char temp = 0x0f & ((array[size - 4 - i] << 4) | (array[size - 5 - i] >> 4));
+        array[size - 4 - i] = 0xf0 & ((array[size - 4 - i] << 4) | (array[size - 5 - i] >> 4));
+        array[size - 5 - i] = temp << 4;
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int revBits(char *array, int size){
+    for (int i=0; i<size/2; i++){
+        if (array[i]!= '\0' && array[size - i - 1]!= '\0'){
+            char temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
+        }
+    }
+    return 0;
+}
+int main(int argc, const char * argv[]) {
+    
+    int SIZE;
+    if (argc == 1) {
+        strcpy(array, "Hello, World\n");
+        SIZE = strlen(array)+1;
+    } else {
+        for (int i=0; i<ARRAY_SIZE && argv[1][i]!= '\0'; i++){
+            array[i] = argv[1][i];
+        }
+        SIZE = strlen(array)+1;
+        if (SIZE > ARRAY_SIZE){
+            SIZE = ARRAY_SIZE;
+            strncpy(array, argv[1], ARRAY_SIZE-1);
+        }
+    }
+     
+    return revBits(array, SIZE);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));
+            ++ptr;
+        }
+        return 0;
+}
+int swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;
+
+        return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int main(void){
+    char arr[ARRAY_SIZE];
+    while ((fgets(arr, ARRAY_SIZE, stdin)!= NULL) && strlen(arr))
+        reverseBits(arr, strlen(arr) -1); 
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+int main(void){
+    char buffer[10], *arr = buffer;
+    int arr_size = 0;
+    while ((fgets(buffer, 10, stdin)!= NULL) && strlen(arr)){
+        int count = strlen(arr);
+        reverseBits(arr, count -1);
+        printf("%c", *arr);
+        arr = arr + counter + 1;
+        arr_size = arr_size - cunt + 1;
+    }
+    return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));
+            ++ptr;
+        }
+        return 0;
+}
+int swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;
+        return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define LEN 1024
+int reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+                switch (*ptr) {
+                        case 1:
+                                swap(ptr, ptr + (size - i - 1));
+                                break;
+                }
+                ++ptr;
+        }
+        return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+
+int reverseBits(char *array, int size)
+{
+        char *ptr = array, swap;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+                if (*ptr)
+                {
+                        swap = ptr[size - i - 1];
+                        ptr[size - i - 1] = *ptr;
+                        *ptr = swap;
+                }
+                ptr++;
+        }
+        return 0;
+}
+
+int swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;
+        return 0;
+}
+int main()
+{
+        int length = sizeof(array), result, i;
+        result = reverseBits(array, length);
+        for(i = 0; i < int length; i++)
+                printf("%d, ", i);
+        printf("\n");
+        return (0);
+}
+```
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+char *reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));  
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#ifndef STRING_H_
+#define STRING_H_
+char *strcpy (char *, const char *);
+char *reverseBits (char *, int);
+#include "String_impl.h"
+#endif
+ 
+#ifndef STRING_H_
+#define STRING_H_
+char *strcpy (char *, const char *);
+#include "String_impl.h"
+#endif
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int main(void)
+{
+    char buffer[ARRAY_SIZE] = {0};
+    int rv;
+
+    printf("%s\n", "The string to reverse:");
+    scanf("%s", buffer);
+    rv = reverseBits(buffer, ARRAY_SIZE);
+    printf("%s\n", buffer);
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+char *reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));  
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+ 
+void reverseBits(char *s)
+{
+         
+        for (int i = 0; (i + 1) < strlen(s) / 2; i++) {
+                int end = *(s + strlen(s) - i - 1);
+                end |= (*(s + i) << (strlen(s) - i - 2) * 8);
+                end = reverse(end);
+                
+                *(s + i) = *(s + strlen(s) - i - 1);
+                printf("%c", reverse(end));   
+        }
+}
+ 
+int main(void)
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+                array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+/* Please create a program using bitwise operations for conversion from character to ASCII code and vice
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+char *reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + size - i - 1);  
+            ++ptr;
+        }
+        return array;
+}
+/* In C23, the C Standard Library is expanded with many new functions, such as the addition of the function memset_explicit to copy an array of objects where the order of allocation is reversed and the data copied to the last element of an object before the next object in the allocation is copied to it.
+
+This function is useful when you need to zeroize out an array in order to clear it before setting values on it.
+
+The function memccpy() behaves like the C11 strcpy_s() function, but instead allocates memory for an additional final element of null bytes whenever a terminating character is copied to. It reverses the order of allocation for elements of the data to be copied, allowing a larger array to be copied from a source of similarly-sized data sources with less time and space complexity.
+
+The function strdup() and strndup() operate as strncpy() and strncpy_s() do, but automatically zeroize the terminating character which the length specified of the destination.
+
+The function memalignment() obtains the specified size from alignment bytes and the bit mask of alignment of the memory, such as _Alignof(), and returns a pointer to an address that has that alignment.
+
+The C23 standard proposes a number of bit manipulation functions, including popcount(), rotleft(), rotright(),
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;    
+}
+char *reverseBits(char *array, size_t size)
+{
+        char *ptr = array;
+        unsigned short i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        size_t i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+typedef unsigned short array[ARRAY_SIZE];
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+array reverse_array(array arr)
+{
+        char *a = (char *)arr;
+        int array_size = sizeof(arr) / sizeof(arr[0]);
+        int i, half = array_size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*a)
+                swap(a, a + (array_size - i - 1));
+            ++a;
+        }  
+        return arr;
+}
+int main()
+{
+        int i;
+        array array = {0};
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverse_array(array);
+        return EXIT_SUCCESS;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <errno.h>
+#include <math.h>
+
+pthread_barrier_t done_barrier;
+
+typedef struct thread_argument_values {
+    long number_of_iterations;
+    long number_of_threads;
+} thread_argument_values_t;
+
+static thread_argument_values_t thread_args;
+
+void *thread(void *ptr);
+
+int main()
+{
+    int rc;
+    long number_of_threads, i;
+    double pi = 0;
+
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+#define reverseBits(array, size) char *reverseBits2(char *array, \
+        int size, char *copy) \
+                { \
+                        char *ptr = array; \
+                        int i, half = size / 2; \
+                        for (i = 0; i < half; ++i) \
+                        { \
+                                swap(ptr, ptr + (size - i - 1)); \
+                                ++ptr; \
+                        } \
+                        return copy; \
+                }
+#define swap(a, b) { char temp = a; a = b; b = temp; }
+char *reverseBits(char *array, int size);
+        char array[] = {1, 2, 3, 4, 5, 6};
+        char *ptr = reverseBits(array, ARRAY_SIZE);
+        return *(ptr + 5);
+#undef reverseBits
+        int main()
+{
+        return EXIT_SUCCESS;
+}
+ 
+#if __has_include("stdio.h")
+#include "stdio.h"
+#else
+#include <stdio.h>
+#endif
+#if __has_include("string.h")
+#include "string.h"
+#else
+#include <string.h>
+#endif
+#define ARRAY_SIZE 1024
+void swap(char *a, char *b);
+#undef swap
+int main()
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+                array[i] = 4 * i;
+        for (i = 0, ptr = array + ARRAY_SIZE - 1; i < ARRAY_
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;    
+}
+char *reverseBits(char *array, size_t size)
+{
+        char *ptr = array;
+        unsigned short i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        size_t i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void reverseBits(unsigned short *array, size_t size)
+{
+        unsigned short i, half = size / 2;
+        for (i = 0; i < half; ++i)
+            swap(array[i], array[size - i - 1]);
+}
+char *reverse(char *array)
+{
+        unsigned short i, revI;
+        char *ptr = array;
+        size_t size = strlen(ptr);
+        for (i = 0, revI = size; i < revI; i++, revI--)
+        {
+            if (revI!= 0)
+                swap(*ptr, *(ptr + (revI - 1)));
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        size_t i;
+        unsigned short array[ARRAY_SIZE];
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        reverse(array);
+        return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <math.h>
+#include <string.h>
+typedef long long int ll;
+int main()
+{
+        ll array[5];
+        ll i;
+        for (i = 0; i < 5; ++i)
+            array[i] = i + 1;
+        int arraySize = sizeof(array) / sizeof(ll), half = arraySize / 2;
+        for (i = 0; i < half; ++i)
+            swapl(&array[i], &array[arraySize - i - 1]);
+        return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;    
+}
+char *reverseBits(char *array, size_t size)
+{
+        char *ptr = array;
+        unsigned short i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + (size - i - 1));
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        size_t i;
+        char array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 128;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+/* The C23 standard has been approved by the ISO/IEC JTC 1 as ISO/IEC 23788:2020
+The following is the C23 draft specification
+I encourage you to keep your email and phone numbers from being publicly shown on github. It has been made clear that your email and phone number are mandatory to participate in contests, hackathons, and more. Unfortunately, even with your privacy settings on you will find their existence in the source code of any repository which makes it publicly available, at the time of writing 1124 files were using my email address in the public source code. 
+Due to my having used GitHub since May of 2017 and having been involved with the ISO/IEC JTC 1 since May, 24th of February 2
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void swap(char *a, char *b)
+{
+         char temp = *a;
+         *a = *b;
+         *b = temp;    
+}
+char *reverseBits(char *array, size_t size)
+{
+         char *ptr = array;
+         unsigned short int i, half = size / 2;
+         for (i = 0; i < half; ++i)
+         {
+             if (*ptr)
+                 swap(ptr, ptr + (size - i - 1));
+             ++ptr;
+         }
+         return array;
+}
+int main()
+{
+         size_t i;
+         unsigned short array[ARRAY_SIZE], *ptr;
+         for (i = 0; i < ARRAY_SIZE; ++i)
+                  array[i] = 4 * i;
+         reverseBits(array, ARRAY_SIZE);
+         return EXIT_SUCCESS;
+}
+/* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdbool.h>
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdbool.h>
+
+int main() {
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+ 
+#include <stdlib.h>
+ 
+#include <stdlib.h>
+
+int main( void )
+{
+    return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+ 
+
+
+int main(int argc, char *argv[]) {
+    for (size_t i = 1; i < argc; i++) {
+        printf("Parameter %zu: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char *argv[]) {
+    for (size_t i = 1; i < argc; i++) {
+        printf("Parameter %zu: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
+int main(int argc, char *argv[]) {
+    for (size_t i = 1; i < argc; i++) {
+        printf("Parameter %zu: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+
+#define ARRAY_SIZE(arr) sizeof(arr) / sizeof(arr[0])
+
+int main(int argc, char *argv[]) {
+    for (size_t i = 1; i < ARRAY_SIZE(argv); i++) {
+        printf("Parameter %zu: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main() {
+    printf("Parameter 1: %s\n", "hello1234");
+    printf("Parameter 2: %s\n", "world1234");
+    return 0;
+}
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+typedef unsigned size_t;
+size_t __attribute__((noinline)) GetParamCount(char * const * argv) {
+    size_t i;
+    for (i = 1; argv[i]!= NULL; i++) {
+        ;   
+    }
+    return i;
+}
+size_t main(int argc, char *argv[]) {
+    for (unsigned i = 1; i < GetParamCount(argv); i++) {
+        printf("Parameter %u: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char *argv[]) {
+    for (size_t i = 1; i < argc; i++) {
+        printf("Parameter %zu: %s\n", i, argv[i]);
+    }
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main() {
+    printf("Parameter 1: %s\n", "hello1234");
+    printf("Parameter 2: %s\n", "world1234");
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int a = 1, b = 2;
+int main() {
+    printf("a+b=%d\n", a+b);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main() {
+    int ret1;
+    char* str;
+    char* ptr;
+    printf("Parameter 1: %s\n", "hello1234");
+    str = "world1234";
+    ptr = str;
+    ret1 = putchar(*ptr);
+    ret1 = putchar(*str);
+    free(str);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+int main() {
+    char* str1="hello1234"; 
+    char* str2="world1234"; 
+    printf("Parameter 1: %s\n", str1);
+    printf("Parameter 2: %s\n", str2);
+    return 0;
+}
+  
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdalign.h>
+#include <wchar.h>
+typedef int aligned_uint32_t __attribute__((aligned(4))); 
+int32_t aligned_load( void const* p ) {
+    return ((aligned_uint32_t const*)p)[0];
+} 
+int main() {
+    uint8_t* pMem = static_cast<uint8_t>("some address");
+    uint32_t val = aligned_load(pMem);
+    printf("%u\n", val);
+    float aligned[8]
+__attribute__((aligned(16)))={1.0f,2.0f,3.0f,4.0f,5.0f,6.0f,7.0f,8.0f}; 
+    {
+        char* buf = (char*)(aligned); 
+        for (size_t i = 0; i < sizeof(aligned); i++)
+ printf("index (%zu), val(%f), buf(%d)\n", i * alignof(aligned), aligned[i], buf[i]);
+    }
+    return 0;
+} 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#define NUMBER "10"
+const char* str1 = "hello";
+const char* str2 = "world";
+void main() {
+    printf("Parameter 1: %s\n", str1);
+    printf("Parameter 2: %s\n", str2);
+    return 0;
+}
+ 
+unsigned int a = 1234;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+ 
+int main() {
+  for (int i = 0; i < 1; ++i) {
+    if (!i) {
+      printf("Hello, world!");
+    } else {
+      printf("Goodnight, moon.");
+    }
+  }
+  return 0;
+}
+ 
+int main() {
+    int counter = -12;
+    switch (counter) {
+      case 0:
+        printf("Hello");
+        break;
+      case 100:
+        printf("Goodbye");
+        break;
+      case -12:
+        printf("G'day mate");
+        break;
+    }
+}
+ 
+#include <stdlib.h>
+int main() {
+  int counter = 36;
+  for (int iter = 1; iter < 5; ++iter) {
+    if (counter) {
+      counter = counter - 1;
+    } else {
+      counter = counter + 1;
+    }
+  }
+}
+ 
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <limits.h>
+#include <assert.h>
+#include <math.h>
+typedef enum { false = false, true = true } bool;
+typedef uintptr_t uintptr;
+#define __builtin_bit_cast(type_of, value) ((__typeof__(type_of)(value)))
+#define ALIGNOF(T) __ALIGNOF__(T)
+#define __ALIGNOF__(T) \
+  (((__builtin_types_compatible_p(__typeof__(T), float) \
+    && __FLT_HAS_SIGNIFICAND) \
+     || (__builtin_types_compatible_p(__typeof__(T), double) \
+         && __DBL_HAS_SIGNIFICAND) \
+        || (__builtin_types_compatible_p(__typeof__(T), long double))) \
+      ? 12
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+int main(int argc, char* argv[]) {
+  char* name = malloc(50);
+  memset(name, 0, 50);
+  printf("Parameter 1: %s\n", "hello");
+  printf("Parameter 2: %s\n", "world");
+  printf("Parameter 2: %s\n", argv[0]);
+  printf("Argument #1: %s\n", *(argv + 1));
+  printf("Argument #2: %s\n", *argv);
+  fgets(name, 50, stdin);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello5678");
+  printf("Parameter 2: %s\n", "world5678");
+}
+ 
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "hicpp-deprecated-headers"
+void myfunc(void) {
+    fprintf(stderr, "Hello from C98 %zu-byte integer: %zu\n", sizeof(size_t), SIZE_MAX);
+}
+#pragma clang diagnostic pop
+int main(int argc, char* argv[]) {
+  myfunc();
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  double x = atof(argv[1]);
+
+   
+   
+  printf("Parameter 1: %e\n", x);
+  printf("Parameter 2: %#.12Ea\n", x);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define LEN 150
+char* str2upper(char *string) {
+   
+  int i;
+   
+   
+   
+   
+  for (i = 0; i < strlen(string); ++i) {
+     
+     
+     
+    string[i] = toupper(string[i]);
+  }
+  return string;
+}
+int main(int argc, char* argv[]) {
+   
+  char string[LEN] = "1";
+  str2upper(string);
+  printf("Uppercase string: %s\n", string);
+  return 0;
+}
+
+#undef LEN  
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = (char*) calloc(10, sizeof(char));
+  s[14] = '\\';
+  printf("String: %s\n", s);
+  free(s);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = (char*) calloc(10, sizeof(char));
+  s[14] = '\\';
+  printf("String: %s\n", s);
+  free(s);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main(void) {
+  char* s = (char*) malloc(sizeof(char)*10);
+  s[9] = '\\';
+  printf("String: %s\n", s);
+  free(s);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+int main(int argc, char* argv[]) {
+  char* s = strdup(argv[0]);
+  s[strlen(argv[0])] = '\0';
+  printf("String: %s\n", s);
+   
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char* argv[]) {
+  char* s = strdup(argv[0]);
+  s[strlen(argv[0])] = '\0';
+  printf("String: %s\n", s);
+  return 0;
+}
+
+ 
+
+int main(int argc, char* argv[]) {
+  char* str_local = (char*) calloc(10, sizeof(char));
+  str_local[14] = '|';
+ 
+
+  if (!b) {
+    return 1;
+  }
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+__attribute__((error("This is a bug"))) int foo(int* a) {
+  return *a;
+}
+__attribute__((error("This is a bug"))) void bar(int* a) {
+  *a = 4;
+  baz(a);
+}
+void baz(int* a) {
+  *a -= 3;
+}
+int main(int argc, char* argv[]) {
+  int* p = (int*) malloc(sizeof(int));
+  *p = 2;
+  foo(p);
+  bar(p);
+  printf("result: %d\n", *p);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = (char[]) {123, 125, 0, 'a', '\\', 128};
+  printf("String: %s\n", s);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  int* x;
+  x = (int*) malloc(10 * sizeof(int));
+  int* y = (int*) calloc(10, sizeof(int));
+  *x = 1; *y = 5;
+  printf("x = %i, y = %i\n", *x, *y);
+  free(x); free(y);
+  return 0;
+}
+ 
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Hello Eli\n");
+  return 0;
+}
+ 
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(int argc, char* argv[]) {
+  const char* s = argv[1];
+  char* buf = (char*) calloc(4, 1);
+  int i;
+  int size = strlen(s);
+  for (i = 1; i < size; i++) {
+    if (buf[0] == '\0') {
+       
+      fprintf(stdout, "%c\n", s[i]);
+    } else {
+      if (buf[1] == s[i]) {
+         
+        fprintf(stderr, "%c\n", s[i]);
+      } else {
+         
+        fprintf(stdout, "%c%c\n", buf[0], s[i]);
+         
+        buf[0] = s[i];
+      }
+    }
+  }
+  free(buf);
+  return 0;
+}
+ 
+ 
+ 
+#include <stdio.h>
+#include <string.h>
+typedef struct MyStruct {
+    int x:5;
+    int y:6;
+    _Bool z:1;
+} MyStruct;
+ 
+int main(void)
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = (char[]) {123, 125, 0, 'a', '\\', 128};
+  printf("String: %s\n", s);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  char* s = malloc(sizeof(char) * 6);
+  if (s == NULL) {
+    perror("malloc");
+    return 1;
+  }
+  s[0] = 123;
+  s[1] = 125;
+  s[2] = 0;
+  s[3] = 'a';
+  s[4] = '\\';
+  s[5] = 128;
+  printf("String: %s\n", s);
+  free(s);
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = malloc(5 * sizeof(char));
+  s[0] = 123;
+  s[1] = 125;
+  s[2] = 0;
+  s[3] = 'a';
+  s[4] = '\\';
+  printf("String: %s\n", s);
+}
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#define LENGTH 5
+int main(int argc, char* argv[]) {
+  char* s = "\0abc\\";
+  printf("String: %s\n", s);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+void fun(char* s) {
+  printf("%s\n", s);
+}
+int main(int argc, char* argv[]) {
+  fun("s\0\0");
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+ 
+int main(int argc, char* argv[]) {
+  char *s = "10000000000000000";
+   
+  printf("String: %s\n", s);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = 0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  
+  printf("String: %s\n", str);
+  
+  free(str);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = 0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  printf("String: %s\n", str);
+  free(str);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#ifndef _ISO60559
+#define _ISO60559
+#endif  
+#include <stddef.h>
+#ifdef _ISO60559
+#undef _ISO60559
+#endif  
+#include <uchar.h>
+#ifdef _ISO60559
+#undef _ISO60559
+#endif  
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = (unsigned char)0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  u8_snprintf(str, 20, "String: %s\n", str);
+  u8_puts(str);
+  free(str);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  sprintf(str, "%c%s%d%c", 123, "a", 125, 128);
+  printf("String: %s\n", str);
+  free(str);
+}
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  if (argc!= 2) {
+      exit(EXIT_FAILURE);
+  }
+
+  FILE* file = fopen(argv[1], "r");
+  if (file == NULL) {
+    exit(EXIT_FAILURE);
+  }
+
+  char* line = NULL;
+  size_t len = 0;
+  ssize_t read;
+
+  while ((read = getline(&line, &len, file))!= -1) {
+    printf("%.*s", (int)(read - 1), line);  
+  }
+
+  if (line) {
+    free(line);
+  }
+
+  fclose(file);
+
+  return 0;
+}
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void f() {
+  const int a = 2;
+  static int b = 2;
+  int c = a;
+  printf("%d %d %d\n", a, b, c);
+}
+
+int main(int argc, char* argv[]) {
+  int x;
+  char buffer[5];
+  int y;
+
+  f();
+
+  printf("%d\n", x);
+  printf("%d\n", y);
+  printf("%zu\n", strlen(buffer));
+  
+  return 0;
+}
+#include <stdio.h>
+#include <unistd.h>
+int main(int argc, char *argv[]){
+  for(;;){
+    sleep(1000);
+    puts("The program is still running!");
+  }
+}
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(){
+  int fd = open("test", O_CREAT|
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = 0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  printf("String: %s\n", str);
+  free(str);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)calloc(20, sizeof(char));
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = '\0';
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  printf("String %s\n", str);
+  free(str);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  str[0] = 123;
+  str[1] = 125;
+  str[2] = 0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = 128;
+  printf("String: %s\n", str);
+  free(str);
+} 
+
+[VERBOSE] ========== sample =========

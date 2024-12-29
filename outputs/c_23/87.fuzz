@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+__attribute__((error("This is a bug"))) int foo(int* a) {
+  return *a;
+}
+__attribute__((error("This is a bug"))) void bar(int* a) {
+  *a = 4;
+  baz(a);
+}
+void baz(int* a) {
+  *a -= 3;
+}
+int main(int argc, char* argv[]) {
+  int* p = (int*) malloc(sizeof(int));
+  *p = 2;
+  foo(p);
+  bar(p);
+  printf("result: %d\n", *p);
+}

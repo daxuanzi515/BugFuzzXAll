@@ -1,0 +1,23 @@
+#include <tuple>
+#include <iostream>
+struct f
+{
+  template <typename T>
+  void operator()(const T& x) const
+  {
+    std::cout << x << '\n';
+  }
+};
+struct tuple_helper
+{
+};
+int main()
+{
+  struct tuple_holder : std::tuple<long long int>
+  {
+    tuple_holder(long long int a) : std::tuple<long long int>{a} {}
+  };
+  tuple_helper a{ tuple_holder{99L} };
+  f{} (std::get<0>(a).first);
+  return EXIT_SUCCESS;
+}

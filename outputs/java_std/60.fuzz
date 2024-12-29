@@ -1,0 +1,69 @@
+import java.lang.Object;
+<fim_suffix>tln(l2.pop());
+		System.out.println(l2.pop());
+	}
+}
+ 
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Collections;
+class Ex_1{
+	public static void main(String[] args) {
+	    List<Integer> list = Arrays.asList(1,8,9,7,3);
+
+	    list = Collections.synchronizedList(list);  
+	    List<Integer> listCopy = list.stream().collect(Collectors.toList());
+	    listCopy.remove(1);
+
+	    for(int n : list)
+	        System.out.println(n);
+
+	    for(int n : listCopy)
+	        System.out.println(n);
+	}
+}
+ 
+class Ex_2{
+	public static void main(String[] args) {
+	    List<Integer> list = Arrays.asList(1,8,9,7,3);
+
+	    list = Collections.synchronizedList(list);  
+	    List<Integer> listCopy = list.stream().collect(Collectors.toList());
+
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+
+	    listCopy = listCopy.stream().filter(e -> e!= 1).collect(Collectors.toList());
+
+	    for(int n : list)
+	        System.out.println(n);
+
+	    for(int n : listCopy)
+	        System.out.println(n);
+	}
+}
+
+ 
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello, world!");
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		List<Integer> l = new ArrayList<Integer>();
+		Collections.addAll(l, 1,8,9,7,3);
+		for(int i:l)
+			System

@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+
+ 
+int reverseBits(char *array, int size){
+    for (int i=0; i<size/2; i++){
+        if (array[i]!= '\0' && array[size - i - 1]!= '\0'){
+            char temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
+        }
+    }
+    return 0;
+}

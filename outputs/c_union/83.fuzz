@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct { 
+   int x;
+   int y;
+}point;
+typedef union {
+    int z;
+} t;
+void *p;
+main()
+{
+    int z;
+    t t1;
+    point point ;
+    q1 = &point;
+    p = &t;
+t1.z = 0x1234;
+*(int *)(t1.z) = 0x4321;
+t1.z = 0x4321;
+p = &t1.z;
+t1.z = *(int *)(q1);
+}

@@ -1,0 +1,41 @@
+#include <expected>
+<fim_suffix>nstexpr bool is_true(bool b) noexcept {return b;}
+constexpr bool is_false(bool b) noexcept { return!b;}
+constexpr auto maybe = [](auto value, auto expected=isUnexpected) { return expected == value? std::nullopt : value; };
+
+template <typename T> class MyOptional
+{
+       
+      bool _has_value = false;
+      T _value;
+
+  public:
+    MyOptional(T value): _value{value} {_has_value = isNotEmptyValue;}
+    MyOptional(Unexpected<T> value): _has_value{false}, _value{maybe(std::move(value))} { }
+    MyOptional() : _has_value{false}, _value{maybe(std::nullopt)} {}
+    
+    bool isExpectedValue(T value) {return _has_value && value == _value; }
+    void isValue() {return!_has_value;}
+    
+    typedef T&& MyValue = T&&;
+    
+    template <typename U> MyOptional(MyOptional<U> value): _has_value{value.isValue()}, _value{std::move(value._value)} { }
+    
+    template <typename U> MyOptional<U> tryCastValue(U value) throw( );
+    MyOptional<T>* operator->() { return this; }
+}
+
+MyOptional<MyValue> myOptional{};
+```
+
+```c++
+auto maybe = [](auto value, auto expected = std::unexpected) {return expected == value? std::nullopt: value; };
+maybe(someFunctionReturningAValue());
+```
+
+```c++
+auto value  = maybe(someFunctionReturningAValue(), MyValue{1234});
+```
+
+---
+

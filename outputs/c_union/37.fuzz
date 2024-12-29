@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <inttypes.h>
+int main(void)
+{
+    volatile uint64_t u1, u2;
+    printf("^U1.i: %p\n", &u1);
+    printf("^U1.p: %p\n", &u1);
+    (void)u2;
+    u1 = 0x1234;
+    printf("^U1: %p -- %0.8lx\n", &u1, u1);
+    u2 = 0x5678;
+    printf("U2.i: %d\n", u2);
+    return (EXIT_SUCCESS);
+}
+ 
+

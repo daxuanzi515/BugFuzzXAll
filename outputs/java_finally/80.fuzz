@@ -1,0 +1,38 @@
+import java.lang.Object;
+<fim_suffix>d that this approach may work well with the try-catch-finally approach but is not mandatory.
+    A finally block is not required, but it is good practice if you want to ensure that resources are freed up properly, even if the JVM throws an exception. It is also good for catching errors that might affect the final state of your program, or the state of resources (such as connection or files) that are not closed in the try block.
+    The method returns either a value or throws an exception. If it returns a value, the program can continue. If it throws an exception, the program stops. When the statement throw new IOException() is encountered, it is simply shorthand for the call throw new IOException().
+    In every Java application, a Throwable object is passed into a catch block if an exception is thrown, and this object holds the details about the exception. Throwable is a superclass of several exception classes, so you can check the type and details of the exception without needing to know the specific class.
+    
+    */<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        PrintWriter printWriter = null;
+        try{
+            printWriter = new PrintWriter("src/myData.txt");
+            printWriter.append("Added some data\n");
+            printWriter.flush();
+            PrintWriter printWriter2 = new PrintWriter("src/myData.txt");
+            printWriter2.append("Some more data\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+             
+            if (printWriter!= null){  
+                System.out.println("Closing PrintWriter1");
+                printWriter.close();
+            }
+        }
+    }
+}
+
+
+
+
+ 
+
+ 
+ 
+

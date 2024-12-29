@@ -1,0 +1,46 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+#define reverseBits(array, size) char *reverseBits2(char *array, \
+        int size, char *copy) \
+                { \
+                        char *ptr = array; \
+                        int i, half = size / 2; \
+                        for (i = 0; i < half; ++i) \
+                        { \
+                                swap(ptr, ptr + (size - i - 1)); \
+                                ++ptr; \
+                        } \
+                        return copy; \
+                }
+#define swap(a, b) { char temp = a; a = b; b = temp; }
+char *reverseBits(char *array, int size);
+        char array[] = {1, 2, 3, 4, 5, 6};
+        char *ptr = reverseBits(array, ARRAY_SIZE);
+        return *(ptr + 5);
+#undef reverseBits
+        int main()
+{
+        return EXIT_SUCCESS;
+}
+ 
+#if __has_include("stdio.h")
+#include "stdio.h"
+#else
+#include <stdio.h>
+#endif
+#if __has_include("string.h")
+#include "string.h"
+#else
+#include <string.h>
+#endif
+#define ARRAY_SIZE 1024
+void swap(char *a, char *b);
+#undef swap
+int main()
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+                array[i] = 4 * i;
+        for (i = 0, ptr = array + ARRAY_SIZE - 1; i < ARRAY_

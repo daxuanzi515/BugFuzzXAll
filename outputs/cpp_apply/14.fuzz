@@ -1,0 +1,25 @@
+#include <tuple>
+
+#include <utility>
+
+template<typename... Args>
+void printargs(Args&&... args)
+{
+    auto p = std::make_tuple(std::forward<Args>(args)...);
+    auto s = static_cast<long long>(std::tuple_size<decltype(p)>::value);
+     
+
+     
+    auto lambda = [](long long i, auto&& arg){
+        std::cout << "index:[" << i << "] value:[" << arg << "] ";
+    };
+
+    std::apply(lambda, p);
+    std::cout << "\n"; 
+}
+
+int main (void)
+{
+    printargs(1,2.0,3.0L,4.0f, true, "65535", "0");
+    return 0;
+}

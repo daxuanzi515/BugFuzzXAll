@@ -1,0 +1,24 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+q = qc.qubits
+c = qc.clbits
+switch = qc.switch([1,0],[q[1],q[0]],0)
+switch
+
+
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(2)
+q = qc.qubits
+c = qc.clbits
+
+qc.x(q[1])
+with qc.switch(1) as case1:
+    
+
+qc.x(q[0])
+with qc.switch(0) as case0:
+    
+    
+case0.x(q[1])
+case1.x(q[0])

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <span>
+#include <string>
+#include <string_view>
+template <typename T>
+std::string_view To_string_view(T t)
+{
+   return t;
+}
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      auto strp = To_string_view(argv[2]);
+      auto sp = argv[2] | std::views::all;
+   }
+   else
+   {
+      auto strp = To_string_view(argv[2]);
+      auto sp = std::string_view{argv[2]};
+      std::string_view s{argv[2]};
+      if (s == "someting")
+      {
+         return 1;
+      }
+   }
+   return 0;
+}

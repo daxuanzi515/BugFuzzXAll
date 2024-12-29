@@ -1,0 +1,30 @@
+from qiskit import QuantumCircuit
+
+
+def create_bell():
+    circuit = QuantumCircuit(2) 
+    circuit.reset(range(2))       
+    circuit.h(0)                   
+    circuit.cx(0, 1)               
+    return circuit
+
+
+def run_bell():
+    circuit = create_bell()  
+    simulator = Aer.get_backend('aer_simulator') 
+    result = execute(circuit, simulator).result()  
+    counts = result.get_counts(circuit) 
+    return counts
+
+def run_bellIBMQ(token, device):
+
+    
+    qr = QuantumRegister(2)
+    cr = ClassicalRegister(2)
+
+    
+    
+    backend = least_busy(IBMQ.backends(device=device,simulator=True,
+                                       filters = lambda x: x.configuration()['coupling_map'] == [[0, 2], [2, 4], [6, 8], [8, 10], [7, 9], [9, 11]])
+    print("The least busy backend is " + backend.name())
+

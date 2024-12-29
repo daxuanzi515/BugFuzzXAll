@@ -1,0 +1,38 @@
+import java.lang.Object;
+<fim_suffix>tatic void main(String[] args) {
+        try {
+            System.out.println("Opening a file for reading.");
+            BufferedReader reader1 = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Opening a file for reading.");
+            BufferedReader reader2 = new BufferedReader(new FileReader("src/myData.txt"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+         
+ 
+ 
+            System.out.printf("Closing reader1 and reader2");
+        }
+    }
+    
+     
+    
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader1 = new BufferedReader(new FileReader("src/myData.txt"));
+        try(BufferedReader reader2 = new BufferedReader(new FileReader("src/myData.txt"))) {
+            System.out.println("Opened reader1 and reader2");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+         
+ 
+            System.out.println("Closing reader1, reader2, and resources");
+        }
+    }
+}

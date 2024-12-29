@@ -1,0 +1,51 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+		Integer c = new Integer();
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		b = c;
+		c = new Integer(10);
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		ArrayList<Integer> d = new ArrayList<Integer>();
+		d.add(new Integer(11));
+		d.add(new Integer(12));
+		d.add(new Integer(74));
+		System.out.println("d.get(0) is Integer: " + (d.get(0) instanceof Integer));
+		System.out.println("d.get(1) is Integer: " + (d.get(1) instanceof Integer));
+		System.out.println("d.get(2) is Integer: " + (d.get(2) instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+		Integer c = new Integer();
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		b = c;
+		c = new Integer(10);
+		System.out.println("c is Integer: " + (c instanceof Integer));
+		ArrayList<Integer> d = new ArrayList<Integer>();
+		d.add(d.get(d.get(0)));
+		d.add(d.get(d.get(1)));
+		d.add(d.get(d.get(2)));
+		System.out.println("d.get(0) is Integer: " + (d.get(0) instanceof Integer));
+		System.out.println("d.get(1) is Integer: " + (d.get(1) instanceof Integer));
+		System.out.println("d.get(2) is Integer: " + (d.get(2) instanceof Integer));
+	}
+}
+ 
+class Object {};
+ 
+ 

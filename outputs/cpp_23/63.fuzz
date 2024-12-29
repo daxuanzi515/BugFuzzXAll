@@ -1,0 +1,21 @@
+#include <iostream>
+#include <new>
+using namespace std;
+
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  int i3 {3};
+  auto i {std::make_unique<int>(i1)};
+  i=std::make_unique<int>(i2);
+  std::cout << *i << '\n';
+  i = std::move(i3);
+  std::cout << *i << '\n';
+  i = std::move(i2);
+  std::cout << *i << '\n';
+  return 0;
+}
+ 
+ 
+ 

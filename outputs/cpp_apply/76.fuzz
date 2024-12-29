@@ -1,0 +1,14 @@
+#include <tuple>
+#include <iostream>
+int main() {
+        int x = 2+2;
+        int d = (x + x);
+        float z = 2.1;
+        std::tuple<int,int,float> tuple = std::make_tuple(x, d, z);
+        std::apply([](int& a, int& b,float& c) { a *= b; c -= a; }, tuple);
+        std::apply([](int& a,int& b, float& c) { c /= b; b = a - c; }, tuple);
+        std::apply([](float& a,int& b, int& c) { std::cout << c << '\n'; }, tuple);
+        std::cout << x << '\n';
+        return EXIT_SUCCESS;
+}
+

@@ -1,0 +1,17 @@
+/* The latest working draft of C23 includes several changes and additions to the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax, and other features. 
+
+In the Standard Library, new functions are added to efficiently handle strings, determine byte alignment of pointers, and work with time structures. Also, bit utility functions have been added to examine integer types.
+
+For preprocessor directives, new '#'elifdef' and '#'elifndef' directives have been added. A new '#'embed' directive has been introduced for binary resource inclusion, along with directives for diagnostics and checking availability of headers and attributes.
+
+Regarding types, a null pointer type 'nullptr_t', and bit-precise integers '_BitInt(N)', are introduced among other changes like better support for using const with arrays.
+
+Changes in constants include introduction of 'nullptr' constant for 'nullptr_t' type, binary literal constant prefixes, digit separator for literal constants, and specification of underlying type of an enum.
+
+New keywords include 'true', 'false', 'alignas', 'alignof', 'static_assert', and 'thread_local' among others.
+
+Syntax changes allow labels to appear before declarations and at the end of compound statements, and initializations with {} among other things.
+
+Other notable features include support for the latest IEEE 754 standard for floating-point arithmetic, the 'constexpr' specifier for objects, 'char8_t' type for storing UTF-8 encoded data, and storage class specifiers appearing in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

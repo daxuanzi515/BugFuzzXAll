@@ -1,0 +1,7 @@
+/* The C++23 class template `std::expected` provides an effective means of storing either of two values; the expected value (of type T) or an unexpected value (of type E) at a given time. It optimizes memory by directly allocating the stored value within the storage occupied by the expected object, thus no dynamic memory allocation is required. It imposes restrictions such as disallowing instantiation with a reference type, function type, or specializing std::unexpected, T not being std::in_place_t or std::unexpect_t, and type E must meet the destructible requirements and must be a valid template argument for std::unexpected.
+
+The utilities library includes various member types and types for template parameters, member functions, and non-member functions. These enable construction and destruction of the object, assignment of values, accessing the stored expected value, checking for expected values, returning expected/unexpected values, conducting monadic operations, and modifying the contents or the object itself.
+
+This library also provides helper classes like `unexpected` for representing unexpected value, `bad_expected_access` for exceptions related to unexpected value access, and `unexpect_t`/`unexpect` for tag constructions related to unexpected value in `std::expected`. It's an effective tool for managing and manipulating expected as well as unexpected values without wasting memory. */
+/* Please create a very short program which combines std::expected with new C++ features in a complex way */
+#include <expected>

@@ -1,0 +1,9 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t = std::make_tuple(99);
+  std::apply([](int& x) {x += 66;}, t);
+  std::apply([](const int& x) {std::cout << x << '\n';}, t);
+  return EXIT_SUCCESS;
+}

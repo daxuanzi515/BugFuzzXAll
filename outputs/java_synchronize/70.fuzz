@@ -1,0 +1,43 @@
+import java.lang.Object;
+class SynchTest1 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized(s) {
+            s.doSomething1();
+        }
+        synchronized(Sample.class) {
+            s.doSomething1();
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Synch2 {
+    public void doSomething() {
+        synchronized(this) {
+             
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Synch2 s1 = new Synch2();
+        Synch2 s2 = new Synch2();
+
+         
+        Thread thread1 = new Thread(s1);
+        Thread thread2 = new Thread(s2);
+
+         
+        thread1.start();
+        thread2.start();
+
+         
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

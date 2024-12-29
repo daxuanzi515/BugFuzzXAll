@@ -1,0 +1,44 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, int, float> t{ 1, 2, 1.5f };
+  std::apply([](int& x, int& y) { const std::max<int> b(1); x*= 2, y*= b(x); }, t);
+  std::cout << std::get<0>(t) << '\n';
+  std::cout << std::get<1>(t) << '\n';  
+  std::cout << std::get<2>(t) << '\n';  
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::array<int, 5> x{10, -20, 78, 0, -100};
+  std::cout << "10 + -20 + 78 + 0 + -100 = " << std::apply(std::plus<int>{}, x) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <algorithm>
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::array<int, 14> x{62, 14, 15, 15, 45, 91, 83, 62, 88, 91, 62, 11, -5, 14};
+  int result = std::apply([](int val,...) { 
+     
+    return val; 
+  }, x);
+  std::cout << result << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t{10};
+  std::apply([](auto... args) { std::cout << "tuple size: " << sizeof...(args) << '\n'; }, t);
+  std::cout << "tuple size: " << std::tuple_size<decltype(t)>::value << '\n';  
+  return EXIT_SUCCESS;
+}

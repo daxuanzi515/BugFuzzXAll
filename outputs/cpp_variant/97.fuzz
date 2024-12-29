@@ -1,0 +1,48 @@
+#include <variant>
+<fim_suffix>onst { 
+    std::cout << "The variant has the value " << d << "\n";
+}
+
+V create()
+{
+    V v = { 10, 0.0f, 0.0 };
+
+    return v;
+}
+
+int main()
+{
+    V v = create();
+
+    visit([] (V v) { v.print(); }, v);
+}
+
+ 
+#include <variant>
+#include <iostream>
+
+template <typename... Functions>
+std::invoke_result_t<Functions&&...> apply(std::variant<Functions...> &&v)
+{
+    return std::visit(std::forward<decltype(v)>(v), std::forward<std::tuple<Functions...>>(std::make_tuple(static_cast<Functions>(std::move(v))...)));
+}
+
+void foo()
+{
+    std::cerr << "foo() called!\n";
+}
+
+auto f = [] (int a) { return a * a; };  
+
+struct Bar { int call() { return 42; } };
+
+int main()
+{
+    apply(0);                   
+    apply(f);                   
+    apply(Bar{});               
+    apply([] (int x) { return 2 * x; });  
+    return 0;
+}
+
+/* When to use variant - When we need heterogen

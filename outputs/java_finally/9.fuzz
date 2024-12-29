@@ -1,0 +1,26 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinalJava{
+            public static void main(String[] args) throws IOException{
+                PrintWriter out = null;
+                try{
+                        out = new PrintWriter("write.txt");
+                    out.println("Let's write to a file!");
+                }
+                finally{
+                    if(out!== null){
+                        out.close();
+                    }
+                }
+                PrintWriter out1 = new PrintWriter("write1.txt");
+                out1.println("Test!");
+                out1.close();
+                PrintWriter out = new PrintWriter("write1.txt");
+                PrintWriter out3 = new PrintWriter("write1.txt");
+                out.println("Test!");
+                out.close();
+                out3.println("Test!");
+                out3.close();
+            }
+}

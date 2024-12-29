@@ -1,0 +1,61 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("");
+		Object b = new Integer("");
+		Object c = new Integer("");
+		System.out.println("a: " + a.getClass());
+		System.out.println("b: " + b.getClass());
+		System.out.println("c: " + c.getClass());
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+final class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("10");
+		Object b = new Object();
+		Object c = new Integer("20");
+		System.out.println(b);
+		System.out.println(c);
+	}
+}
+ 
+ 
+class A {
+	void show() {
+		System.out.println("Abstract class A shows in show()");
+	}
+}
+class B extends A {
+	void show() {
+		System.out.println("Derived class B shows in show()");
+	}
+}
+abstract class C extends A {
+	int var;
+	void show() {
+		System.out.println("Abstract class C shows in show()");
+	}
+	void showVar() {
+		System.out.println("var = " + var);
+	}
+	abstract void showAbstract();
+}
+class Test {
+	public static void main(String args[]) {
+		A test = new B();
+		C test2 = new C();
+		B test3 = new B();
+		test.show();
+		test2.show();
+		test3.show();
+		test2.showVar();
+		test2.showAbstract();
+		((B) test).show();
+	}
+}
+/*
+Following is the error log on

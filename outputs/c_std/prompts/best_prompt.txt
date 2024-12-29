@@ -1,0 +1,35 @@
+/* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

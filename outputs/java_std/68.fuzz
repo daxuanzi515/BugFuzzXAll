@@ -1,0 +1,66 @@
+import java.lang.Object;
+<fim_suffix>t, java.awt.event.*
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import javax.swing.*;
+class Hello {
+	public static void main(String[] args) {
+		 
+	     
+	    JFrame frame = new JFrame();
+
+	     
+	    frame.getContentPane().add(new HelloWorldPanel());
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	     
+	    frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	    frame.setVisible(true);
+	}
+}
+class HelloWorldPanel extends JPanel {
+	public void render(Graphics g) {
+        g.clearRect(0, 0, getWidth(), getHeight());
+        g.drawString("Hello World", 20, 30);
+	}
+     
+    public void paintComponent(Graphics g) {
+        render(g);
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Cursor;
+import javafx.scene.canvas.*;
+import javafx.scene.control.*;
+import javafx.scene.effect.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.stage.Screen;
+import javafx.application.Platform;
+import javafx.event.*;
+import javafx.scene.layout.GridPane;
+import java.util.concurrent.TimeUnit;
+public class hello extends Application{
+	public static void main(String [] args)
+	{
+		launch(args);
+	}
+	public void start(Stage s)
+	{
+		  
+		Canvas c = new Canvas(100,100);
+		
+		 
+		GraphicsContext g = c.getGraphicsContext2D();
+		
+		 

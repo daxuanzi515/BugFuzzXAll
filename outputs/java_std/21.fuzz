@@ -1,0 +1,29 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s = new Scanner("Hello Indian\nworld");
+		while (s.hasNextLine())
+			System.out.println(s.nextLine());
+	}
+}
+ 
+
+public class Hello2010 {
+System.out.println("Hello world!"); 
+}
+ 
+import java.util.*;
+class ChatTerminal 
+{ 
+static Scanner Scanner2 = new Scanner(System.in);
+public static void main (String [] args) throws Exception
+{ 
+System.out.print(">");  String name = Scanner2.nextLine();  
+System.out.println(name + " is now logged in."); 
+String response = Scanner2.nextLine(); 
+while (response.equals("bye"))
+  break;   
+System.out.print(">"); response = Scanner2.nextLine(); 
+} 
+}

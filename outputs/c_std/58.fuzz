@@ -1,0 +1,32 @@
+#include <stdlib.h>
+#include <stdio.h>
+int * mutant(int *const i)
+{
+    return i + 1;
+}
+int main()
+{
+    int i;
+    while((i+*mutant(&i)!= 0)) 
+    {
+        printf("Hello World!\n");
+    }
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <math.h>
+int main() {
+  for (int i = 2; i < 20; ++i) {
+    for (int j = 1; i / j!= 0; ++j) {
+      printf("%i ", j);
+    }
+    printf("\n");
+  }
+  return 0;
+}
+ 
+
+ 
+ 
+/* This program prints a

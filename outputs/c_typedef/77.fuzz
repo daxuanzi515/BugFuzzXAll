@@ -1,0 +1,64 @@
+#include <stdlib.h>
+#include <stdio.h>
+const int i = 1;
+const char* j = "abc";
+struct complex{
+	const int i, j;
+};
+struct complex_num{
+	int i, j;
+};
+struct color{
+	float red, green, blue;
+};
+struct color* c = NULL;
+ 
+#include <stdio.h>
+int main(){
+	printf("const int = %d", i);
+	printf("\n const char* = %s",j);
+	return 0;
+}
+ 
+#include <stdio.h>
+typedef struct complex{
+	int i, j;
+} complex1;
+typedef struct complex_num{
+	int i, j;
+} complex2;
+int main(){
+	printf("struct complex i=%d, j=%d",(complex1.i), (complex1.j));
+	printf("\nstruct complex_num i=%d, j=%d", (complex2.i), (complex1.j));
+	return 0;
+}
+ 
+complex3 getComplexNumberFromUser(){
+	complex3 c;
+	printf("Enter a complex number i: ");
+	scanf("%d",&c.i);
+	printf("Enter a complex number j: ");
+	scanf("%d",&c.j);
+	return c;
+}
+int main(){
+	complex1 c1 = getComplexNumberFromUser();
+ 
+	if(c1.i > c1.j)
+		printf("\n%d + %di\n", c1.i, c1.j);
+	else
+		printf("\n(%d) + %di\n", c1.i, c1.j);
+	return 0;
+}
+ 
+#define SUCCESS 0
+#define FAILURE 1
+#define MAX_STRING_SIZE 10
+ 
+int main(void) {
+	int x = 5;
+	char msg[MAX_STRING_SIZE];
+	strcpy(msg,"Hello,world!\n");
+	printf("message %s\n",msg);
+	return SUCCESS;
+}

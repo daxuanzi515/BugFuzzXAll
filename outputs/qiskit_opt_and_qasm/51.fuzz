@@ -1,0 +1,33 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+cir = Aer.get_backend("statevector_simulator")
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.h(1)
+qc.cx(0,1)
+qc.measure_all()
+result_dict = cir.run(qc).result().get_counts(qc)
+print(result_dict)
+def create_circuit():
+    circuit = aer.get_backend('statevector_simulator')
+    circ = QuantumCircuit(2, 2)
+    circ.reset(range(2)) 
+    circ.h(0)
+    return circ
+    
+def run_circuit():
+    results = circuit.run(circ).result()
+    outputs = results.get_statevector(circ)
+    return outputs<jupyter_output><empty_output><jupyter_text>The differences between the code are very minimal, but in the latter the QuantumCircuit object is created within the function, allowing for the code to have a cleaner structure. This is because it allows for the circuit to be only constructed inside the function (and not outside) and allows for the circuit code to be created all in one place.  For someone who has not seen this before, this might be quite confusing but for someone who's been in a web development/design classes and has seen a lot of code that looks very similar to the one below, this should make a lot more sense. As code becomes more and more complicated, it becomes helpful to organize it.<jupyter_code>
+
+x = 123
+def get_x():
+    return x
+
+x = 123
+def get_x():
+    return x
+
+def func_x(i):
+    x = i

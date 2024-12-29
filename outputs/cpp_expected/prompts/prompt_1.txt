@@ -1,0 +1,17 @@
+/* The std::expected class in C++23 is a utility that can store one of two types of values - an expected value of type T or an unexpected value of type E. The object never remains valueless. The memory allocation happens within the storage of the expected object and does not involve dynamic memory allocation.
+
+The expected object can't be instantiated with a function type, reference type, or a std::unexpected specialization. Moreover, T can't be std::in_place_t or std::unexpect_t.
+
+The class template parameters include T, the type of the expected value, and E, the type of the unexpected value. Both T and E must meet the Destructible requirements.
+
+Member functions include constructor, destructor, and operator=, which are used to construct, destroy, and assign contents to the expected object respectively. Observer functions allow access, checks, and returns of the expected and unexpected values.
+
+Monadic operations like and_then, transform, or_else, transform_error allow for manipulations based on whether the expected object holds an expected or an unexpected value.
+
+Modifiers such as emplace and swap, allow in-place construction of the expected value and swapping contents of the expected objects.
+
+Non-member functions include operator== for comparing expected objects and swap(std::expected) for swapping expected objects.
+
+The class also includes helper classes like unexpected, bad_expected_access, unexpect_t, and unexpect for handling unexpected values and exceptions. */
+/* Please create a very short program which combines std::expected with new C++ features in a complex way */
+#include <expected>

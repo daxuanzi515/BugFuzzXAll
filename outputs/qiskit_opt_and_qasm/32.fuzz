@@ -1,0 +1,58 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+def create_circuit_qrng():
+    qrng_circuit = QuantumCircuit(2,2)
+    quantum_register = range(2)
+    classical_register = range(2)
+    qrng_circuit.reset(quantum_register)
+    qrng_circuit.h(quantum_register[0])
+    qrng_circuit.h(quantum_register[1])
+    qrng_circuit.measure(quantum_register, classical_register)
+    qrng_circuit.draw()
+    result = Aer.get_backend('aer_simulator_statevector').run(qrng_circuit, shots=10).result()
+    counts = result.get_counts(qrng_circuit)
+    counts_dict_qrng = {"counts_dict_qrng": counts}
+    return counts_dict_qrng
+def add_entaglement(circuit1, circuit2):
+    circuit1.barrier()
+    circuit1.cx(circuit2.qregs[0][0], circuit2.qregs[0][1])
+    circuit1.cx(circuit2.qregs[0][0], circuit2.qregs[0][0])
+    circuit1.barrier()
+    return circuit1
+
+qrng_circ = create_circuit_qrng()
+display(qrng_circ['circuit_obj'].draw())
+
+single_circ = create_single_circuit_for_bell()
+
+qrng_circ_2 = add_entaglement(single_circ, qrng_circ['circuit_obj'])
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

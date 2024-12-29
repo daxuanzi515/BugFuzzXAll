@@ -1,0 +1,9 @@
+/* The std::apply function in C++17 and beyond is a utility to invoke a Callable object using the elements of a tuple as arguments. It's defined in the <tuple> header. The functional type and tuple are templated.
+
+The effect of std::apply is equivalent to invoking the function 'f' with the elements of tuple 't' as arguments. Here 'f' is a Callable object to be invoked and 't' is a tuple whose elements are used as arguments to 'f'. 
+
+Note, 't' can be any object that supports std::get and std::tuple_size; not just std::tuple, but the likes of std::array and std::pair can also be used.
+
+The return value is the value returned by function 'f'. It doesn't throw an exception. From C++23, the Tuple is constrained to be tuple-like, each type within is required to be a specialization of std::tuple or another type that models tuple-like, such as std::array and std::pair. */
+/* Please create a very short program which combines std::apply with new C++ features in a complex way */
+#include <tuple>

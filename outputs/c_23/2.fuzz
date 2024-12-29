@@ -1,0 +1,42 @@
+#include <stdlib.h>
+
+#include <string.h>
+
+int main() {
+     
+    int8_t int8 = -1;
+    uint8_t uint8 = 0xFFFFFF;  
+    printf("%u\n", uint8);
+    printf("%d\n", int8);
+
+     
+    int16_t int16 = -1;
+    uint16_t uint16 = 0xFFFFFF;  
+    printf("%u\n", uint16);
+    printf("%d\n", int16);
+
+     
+    int32_t int32 = -1;
+    uint32_t uint32 = 0xFFFFFF;  
+    printf("%u\n", uint32);
+    printf("%d\n", int32);
+
+     
+    int64_t int64 = -1;
+    uint32_t uint64 = 0xFFFFFF;  
+    printf("%u\n", uint32);
+    printf("%d\n", int32);
+
+     
+    char8_t char8 = u8'a';
+    char16_t char16 = u'A';
+    char32_t char32 = U'B';
+    printf("%c\n", char8);
+    printf("%c\n", char16);
+    printf("%c\n", char32);
+
+     
+    _Static_assert(1, "ERROR");
+
+    return EXIT_SUCCESS;
+}

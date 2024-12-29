@@ -1,0 +1,61 @@
+import java.lang.Object;
+class SampleData {
+    class Inner {
+        synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+        synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+    }
+    Inner inner = new Inner();
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { data.inner.read(); }
+    public void write_synchronize() { data.inner.write(); }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+public class TestClass {
+    class Inner {
+        String a = "1";
+        synchronized void first() { 
+            System.out.println(a);
+            try { Thread.sleep(1000); } catch (InterruptedException ie){}
+            System.out.println(a);
+            a = "2";
+        }
+    }
+    static synchronized void second() { }
+    public static void main(String[] args) throws InterruptedException {
+        TestClass outer = new TestClass();
+        Inner inner = new Inner();
+        System.out.println("Started...");
+        Thread t1 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    inner.first();
+                }
+            });
+        Thread t2 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                     
+                    TestClass.second();
+                }
+            });
+        t

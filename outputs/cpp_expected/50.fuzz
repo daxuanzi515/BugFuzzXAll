@@ -1,0 +1,66 @@
+#include <expected>
+<fim_suffix>std::nullopt);
+		ASSERT_TRUE(x.has_value());
+
+		x = 5;
+		ASSERT_EQ(x.value(), 5);
+	}
+	std::cout << "\n";
+	{
+		std::expected<int, std::exception_ptr> x(std::in_place, 3);
+		ASSERT_TRUE(x.has_value());
+
+		x = 4;
+		ASSERT_EQ(x.value(), 4);
+
+		x = std::nullopt;
+		ASSERT_FALSE(x.has_value());
+	}
+}<fim_middle>
+
+#include <gtest/gtest.h>
+#include <iostream>
+
+TEST(expected, construction)
+{
+	 
+	{
+		std::expected<int, int> x(5);
+		ASSERT_TRUE(x.has_value());
+
+		 
+		 
+		 
+		std::expected<int, int> y(std::in_place, 6);
+		ASSERT_TRUE(y.has_value());
+	}
+	 
+	{
+		std::expected<int, int> x(std::nullopt);
+		ASSERT_FALSE(x.has_value());
+	}
+}
+
+TEST(expected, usage)
+{
+	{
+		std::expected<int, int> x(std::in_place);
+		ASSERT_TRUE(x.has_value());
+
+		 
+		x = 5;
+		ASSERT_EQ(x.value(), 5);
+	}
+	std::cout << "\n";
+	{
+		 
+		 
+		std::expected<int, int> x(std::in_place, 3);
+		ASSERT_TRUE(x.has_value());
+
+		 
+		x = std::expected<int, int>(4);
+		ASSERT_TRUE(x.has_value());
+
+		 
+		x = std::expected<int, int>(

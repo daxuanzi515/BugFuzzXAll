@@ -1,0 +1,34 @@
+#include <variant>
+  
+#include <iostream>  
+#include <string>  
+#include <vector>  
+
+template <typename ValueTuple, std::size_t... Indices>  
+void printImpl(const ValueTuple& values, std::index_sequence<Indices...>)  
+{
+    std::cout << "(" << std::get<Indices>(values)... << ")";  
+}
+
+template <typename ValueTuple>  
+void print(const ValueTuple& values)  
+{
+    printImpl(values, std::make_index_sequence<std::tuple_size_v<ValueTuple>>{});  
+}
+
+void printVariant(const std::variant<int, float, std::string>& variant)
+{
+    if (std::holds_alternative<int>(variant))  
+        std::cout << std::get<int>(variant);  
+    else if (std::holds_alternative<float>(variant))  
+        std::cout << std::get<float>(variant);  
+    else if (std::holds_alternative<std::string>(variant))  
+        std::cout << std::get<std::string>(variant);  
+}
+
+int main()
+{
+     
+    using V = std::variant<int, float, char>;
+     
+    V v1 =

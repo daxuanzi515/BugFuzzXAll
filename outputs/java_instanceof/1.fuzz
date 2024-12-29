@@ -1,0 +1,27 @@
+import java.lang.Object;
+
+import java.lang.String;
+import java.util.Date;
+import java.lang.Integer;
+class Animal {
+}
+class Cat extends Animal {
+}
+class Dog extends Animal {
+}
+public class instanceofTest {
+public boolean isAnInstanceOf(Animal a, Dog d) {
+    return (d instanceof Dog);
+  }
+  public static void main(String[] args) throws Exception {
+    System.out.println("Program starts");
+    Dog d = new Dog();  
+	Animal a = new Cat();  
+	instanceofTest c1 = new instanceofTest();  
+	boolean ans1 = c1.isAnInstanceOf(a, d);  
+    System.out.println("Answer after instanceof test (a, d): "+ ans1);
+	boolean ans2 = d instanceof Dog;  
+    System.out.println("Answer after instanceof test, (d, Dog): "+  ans2);
+    System.out.println("End.");
+  }
+}

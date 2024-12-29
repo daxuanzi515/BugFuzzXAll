@@ -1,0 +1,69 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("something.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                }
+                }
+                
+                catch(IOException e){
+                    System.out.println("Sorry, something went wrong - " + e);
+                }
+                
+                try {
+                if (in!= null) {
+                    in.close();
+                }
+                System.out.println(2);
+                }
+                finally {
+                    System.out.println(1);
+                }
+            }
+        }
+
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                    }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                        }
+                        }
+                        
+                        catch(IOException e){
+                            System.out.println("Sorry, something has gone wrong : " + e);
+                        }
+                        
+                        try (BufferedReader _in = new BufferedReader(new FileReader("hello.txt"))) {
+                             try {
+                                 System.out.println(_in.readLine());
+                             }finally{
+                                _in.close();
+                            }
+                        }
+}

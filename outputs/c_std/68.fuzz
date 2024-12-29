@@ -1,0 +1,23 @@
+#include <stdlib.h>
+long long getSum(int n) 
+{ 
+    if(n == 1) 
+        return 1; 
+    return getSum(n-1) + n; 
+} 
+ 
+#include <stdio.h> 
+#include <stdlib.h> 
+int main() 
+{ 
+    for(int i=0; i<10; i++) 
+		printf("%d \n",getSum(12)); 
+	return 0; 
+}
+
+long long getSum(int n) 
+{ 
+    if(n == 1) 
+        return 1; 
+    return getSum(n-1) + n; 
+} 

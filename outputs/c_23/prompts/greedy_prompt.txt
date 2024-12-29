@@ -1,0 +1,17 @@
+/* The latest draft of C23 introduces several changes to the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax, and other features. 
+
+In the Standard Library, new functions have been added to <string.h>, <stdlib.h>, <stdbit.h>, and <time.h>. These include functions for erasing sensitive data, concatenating strings, determining byte alignment of a pointer, examining integer types, and converting time structures into calendar time values. Existing functions have been updated with new conversion specifiers and support for binary conversion. 
+
+The Preprocessor now includes new directives for binary resource inclusion, diagnostics, and checking the availability of a header or an attribute. A functional macro for variadic macros has also been added. 
+
+Changes to Types include the addition of nullptr_t, a null pointer type, and _BitInt(N) for bit-precise integers. The use of const with arrays has been improved, and the typeof(...) operator has been standardized. The auto keyword now causes type inference. 
+
+New Constants include nullptr for nullptr_t type, wb and uwb integer literal suffixes for _BitInt(N) types, and binary literal constant prefixes. A digit separator has been added to literal constants. 
+
+New Keywords include true, false, alignas, alignof, bool, static_assert, thread_local, _BitInt, typeof, typeof_unqual, nullptr, and constexpr. 
+
+Syntax changes allow labels to appear before declarations and at the end of compound statements, unnamed parameters in function definitions, and zero initialization with {}. Variadic functions no longer need a named argument before the ellipsis. 
+
+Other features include support for the ISO/IEC 60559:2020, the constexpr specifier for objects, the addition of char8_t type for storing UTF-8 encoded data, and clarification on the encoding of char16_t and char32_t strings and literals. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

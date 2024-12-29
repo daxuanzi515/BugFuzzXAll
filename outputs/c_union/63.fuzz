@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct _s  
+  {  
+    int x;  
+    int y;  
+  } point; 
+  void *p;  
+  union {  
+    struct _s point;  
+    void *p;
+  }t1;  
+  p=&point;
+  point.x= 0x4321;
+  point.y= 0x1234;
+  t1.point.x= 0x1234;
+  t1.p= p;
+  printf("t1.point.y= %d\n", t1.point.y);
+  return (EXIT_SUCCESS);
+}

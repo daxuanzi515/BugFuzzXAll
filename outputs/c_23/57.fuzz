@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+typedef long long int ll;
+int main()
+{
+        ll array[5];
+        ll i;
+        for (i = 0; i < 5; ++i)
+            array[i] = i + 1;
+        int arraySize = sizeof(array) / sizeof(ll), half = arraySize / 2;
+        for (i = 0; i < half; ++i)
+            swapl(&array[i], &array[arraySize - i - 1]);
+        return EXIT_SUCCESS;
+}

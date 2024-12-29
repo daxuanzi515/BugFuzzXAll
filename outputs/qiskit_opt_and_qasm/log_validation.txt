@@ -1,0 +1,759 @@
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 7, in <module>\n    qc.measure(qr = range(3),cr = range(3))\nTypeError: QuantumCircuit.measure() got an unexpected keyword argument \'qr\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 3, in <module>\n    from qiskit import QuantumProgram\nImportError: cannot import name \'QuantumProgram\' from \'qiskit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 4, in <module>\n    qc.add_ancilla_register(3,name="a")\nAttributeError: \'QuantumCircuit\' object has no attribute \'add_ancilla_register\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 3, in <module>\n    from qiskit.aqua.operators import X, Z, StateFn\nModuleNotFoundError: No module named \'qiskit.aqua\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 9, in <module>\n    crz = ClassicalRegister(1, "crz", 2) #, ["classical"])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/register.py", line 89, in __init__\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Exactly one of the size or bits arguments can be provided. Provided size=1 bits=2.\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout='     \nq_0: \n     \nq_1: \n     \nq_2: \n     \nq_3: \n     \n', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='Hello World \n', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 12, in <module>\n    circ.x(q[0:5]).z(q[0:5])\nAttributeError: \'InstructionSet\' object has no attribute \'z\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout='', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout="{'110': 10}\n", stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout='     \nq_0: \n     \nq_1: \n     \nq_2: \n     \nq_3: \n     \nc: 4/\n     \n', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 14, in <module>\n    import simulator \nModuleNotFoundError: No module named \'simulator\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout='', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735358060.8792562.py", line 11, in <module>\n    qasm_simulator = Aer.get_backend(\'qasm_simulator\')\nNameError: name \'Aer\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735358060.8792562.py', returncode=0, stdout='', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/0.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/0.fuzz", line 6, in <module>\n    display(q1.draw())\nNameError: name \'display\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/0.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/0.fuzz", line 6, in <module>
+    display(q1.draw())
+NameError: name 'display' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/1.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/1.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/2.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/2.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/3.fuzz timed out
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/4.fuzz', returncode=1, stdout="QuantumRegister(4, 'my_qreg')\nQuantumRegister(4, 'my_qreg')\n", stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/4.fuzz", line 17, in <module>\n    qc.register(qr)\nAttributeError: \'QuantumCircuit\' object has no attribute \'register\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/4.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/4.fuzz", line 17, in <module>
+    qc.register(qr)
+AttributeError: 'QuantumCircuit' object has no attribute 'register'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/5.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/5.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/6.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/6.fuzz", line 11, in <module>\n    circuit.draw(\'mpl\')\nNameError: name \'circuit\' is not defined. Did you mean: \'circuit_2\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/6.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/6.fuzz", line 11, in <module>
+    circuit.draw('mpl')
+NameError: name 'circuit' is not defined. Did you mean: 'circuit_2'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/7.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/7.fuzz", line 10, in <module>\n    from qiskit.circuits.transforms.unroller import Unroller, JsonBackend\nModuleNotFoundError: No module named \'qiskit.circuits\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/7.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/7.fuzz", line 10, in <module>
+    from qiskit.circuits.transforms.unroller import Unroller, JsonBackend
+ModuleNotFoundError: No module named 'qiskit.circuits'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/8.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/8.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/9.fuzz', returncode=0, stdout="{'00': 1024}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/9.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/10.fuzz', returncode=0, stdout="{'00': 1024}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/10.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/11.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/11.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/12.fuzz', returncode=0, stdout="{'00': 1024}\n{'00': 1024}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/12.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/13.fuzz', returncode=0, stdout="{'01': 255, '10': 270, '00': 236, '11': 263}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/13.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/14.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/14.fuzz", line 9, in <module>\n    circ.measure(1,1)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure\n    return self.append(Measure(), [qubit], [cbit])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 1 out of range for size 1.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/14.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion
+    return [bit_sequence[specifier]]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/14.fuzz", line 9, in <module>
+    circ.measure(1,1)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure
+    return self.append(Measure(), [qubit], [cbit])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 1 out of range for size 1.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/15.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/15.fuzz", line 10, in <module>\n    result = circuit.execute(Aer.get_backend(\'qasm_simulator\')).result()\nAttributeError: \'QuantumCircuit\' object has no attribute \'execute\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/15.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/15.fuzz", line 10, in <module>
+    result = circuit.execute(Aer.get_backend('qasm_simulator')).result()
+AttributeError: 'QuantumCircuit' object has no attribute 'execute'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/16.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/16.fuzz", line 13, in <module>\n    circ.initialize(array)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/quantum_initializer/initializer.py", line 191, in initialize\n    return self.append(Initialize(params, num_qubits), qubits)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/quantum_initializer/initializer.py", line 57, in __init__\n    self._stateprep = StatePreparation(params, num_qubits)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/data_preparation/state_preparation.py", line 99, in __init__\n    num_qubits = self._get_num_qubits(num_qubits, params)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/data_preparation/state_preparation.py", line 198, in _get_num_qubits\n    raise QiskitError("Desired statevector length not a positive power of 2.")\nqiskit.exceptions.QiskitError: \'Desired statevector length not a positive power of 2.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/16.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/16.fuzz", line 13, in <module>
+    circ.initialize(array)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/quantum_initializer/initializer.py", line 191, in initialize
+    return self.append(Initialize(params, num_qubits), qubits)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/quantum_initializer/initializer.py", line 57, in __init__
+    self._stateprep = StatePreparation(params, num_qubits)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/data_preparation/state_preparation.py", line 99, in __init__
+    num_qubits = self._get_num_qubits(num_qubits, params)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/data_preparation/state_preparation.py", line 198, in _get_num_qubits
+    raise QiskitError("Desired statevector length not a positive power of 2.")
+qiskit.exceptions.QiskitError: 'Desired statevector length not a positive power of 2.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/17.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/17.fuzz", line 15, in <module>\n    job_sim = circuit_sim.run(circ)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/deprecation.py", line 182, in wrapper\n    return func(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 424, in run\n    job = BasicAerJob(self, job_id, self._run_job(job_id, qobj))\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 444, in _run_job\n    result_list.append(self.run_experiment(experiment))\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 619, in run_experiment\n    raise BasicAerError(err_msg.format(backend, operation.name))\nqiskit.providers.basicaer.exceptions.BasicAerError: \'qasm_simulator encountered unrecognized operation "h"\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/17.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/17.fuzz", line 15, in <module>
+    job_sim = circuit_sim.run(circ)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/deprecation.py", line 182, in wrapper
+    return func(*args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 424, in run
+    job = BasicAerJob(self, job_id, self._run_job(job_id, qobj))
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 444, in _run_job
+    result_list.append(self.run_experiment(experiment))
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/providers/basicaer/qasm_simulator.py", line 619, in run_experiment
+    raise BasicAerError(err_msg.format(backend, operation.name))
+qiskit.providers.basicaer.exceptions.BasicAerError: 'qasm_simulator encountered unrecognized operation "h"'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/18.fuzz', returncode=1, stdout="{'01': 235, '11': 274, '00': 243, '10': 272}\n", stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/18.fuzz", line 14, in <module>\n    [output_bitstring]\nNameError: name \'output_bitstring\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/18.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/18.fuzz", line 14, in <module>
+    [output_bitstring]
+NameError: name 'output_bitstring' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/19.fuzz', returncode=0, stdout="{'01': 259, '10': 238, '00': 248, '11': 279}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/19.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/20.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/20.fuzz", line 5, in <module>\n    circ_bell = create_circuit_bell()\nNameError: name \'create_circuit_bell\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/20.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/20.fuzz", line 5, in <module>
+    circ_bell = create_circuit_bell()
+NameError: name 'create_circuit_bell' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/21.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/21.fuzz", line 4, in <module>\n    quantum_register = QuantumRegister(2, "q")\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/21.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/21.fuzz", line 4, in <module>
+    quantum_register = QuantumRegister(2, "q")
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/22.fuzz timed out
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/23.fuzz', returncode=0, stdout="{'00': 267, '10': 252, '11': 243, '01': 262}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/23.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/24.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/24.fuzz", line 16, in <module>\n    qc.cx(q,c)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3861, in cx\n    return self.append(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion\n    return [\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>\n    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5176, in _bit_argument_conversion_scalar\n    raise CircuitError(message)\nqiskit.circuit.exceptions.CircuitError: "Incorrect bit type: expected \'Qubit\' but got \'Clbit\'"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/24.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/24.fuzz", line 16, in <module>
+    qc.cx(q,c)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3861, in cx
+    return self.append(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion
+    return [
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>
+    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5176, in _bit_argument_conversion_scalar
+    raise CircuitError(message)
+qiskit.circuit.exceptions.CircuitError: "Incorrect bit type: expected 'Qubit' but got 'Clbit'"
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/25.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 18)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz', returncode=1, stdout="{'10': 261, '00': 253, '01': 256, '11': 254}\n", stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz", line 26, in <module>\n    circ = create_circuit_bell()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz", line 15, in create_circuit_bell\n    circuit = aer.get_backend(\'qasm_simulator\')  \nAttributeError: module \'qiskit_aer\' has no attribute \'get_backend\'. Did you mean: \'aerbackend\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz", line 26, in <module>
+    circ = create_circuit_bell()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/26.fuzz", line 15, in create_circuit_bell
+    circuit = aer.get_backend('qasm_simulator')  
+AttributeError: module 'qiskit_aer' has no attribute 'get_backend'. Did you mean: 'aerbackend'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/27.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/27.fuzz", line 15, in <module>\n    result = backend_sim.run(circ, shots=1024).result()\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/jobs/utils.py", line 41, in _wrapper\n    return func(self, *args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/jobs/aerjob.py", line 106, in result\n    return self._future.result(timeout=timeout)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/_base.py", line 451, in result\n    return self.__get_result()\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result\n    raise self._exception\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/thread.py", line 58, in run\n    result = self.fn(*self.args, **self.kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aerbackend.py", line 437, in _execute_circuits_job\n    aer_circuits = assemble_circuits(circuits)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 552, in assemble_circuits\n    return [assemble_circuit(circuit) for circuit in circuits]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 552, in <listcomp>\n    return [assemble_circuit(circuit) for circuit in circuits]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 429, in assemble_circuit\n    _assemble_op(aer_circ, inst, qubit_indices, clbit_indices,\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 524, in _assemble_op\n    raise AerError(f\'unknown instruction: {name}\')\nqiskit_aer.aererror.AerError: \'unknown instruction: circuit-118\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/27.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/27.fuzz", line 15, in <module>
+    result = backend_sim.run(circ, shots=1024).result()
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/jobs/utils.py", line 41, in _wrapper
+    return func(self, *args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/jobs/aerjob.py", line 106, in result
+    return self._future.result(timeout=timeout)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aerbackend.py", line 437, in _execute_circuits_job
+    aer_circuits = assemble_circuits(circuits)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 552, in assemble_circuits
+    return [assemble_circuit(circuit) for circuit in circuits]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 552, in <listcomp>
+    return [assemble_circuit(circuit) for circuit in circuits]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 429, in assemble_circuit
+    _assemble_op(aer_circ, inst, qubit_indices, clbit_indices,
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit_aer/backends/aer_compiler.py", line 524, in _assemble_op
+    raise AerError(f'unknown instruction: {name}')
+qiskit_aer.aererror.AerError: 'unknown instruction: circuit-118'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/28.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/28.fuzz", line 5, in <module>\n    input_bell = create_circuit_bell()\nNameError: name \'create_circuit_bell\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/28.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/28.fuzz", line 5, in <module>
+    input_bell = create_circuit_bell()
+NameError: name 'create_circuit_bell' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/29.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/29.fuzz", line 11, in <module>\n    circ.draw(output=\'mpl\')\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw\n    return circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer\n    image = _matplotlib_circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer\n    qcd = _matplotlib.MatplotlibDrawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out\n    callback.__get__(obj, objtype)(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__\n    self._tester.require_now(self._feature)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now\n    raise MissingOptionalLibraryError(\nqiskit.exceptions.MissingOptionalLibraryError: "The \'pylatexenc\' library is required to use \'MatplotlibDrawer\'. You can install it with \'pip install pylatexenc\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/29.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/29.fuzz", line 11, in <module>
+    circ.draw(output='mpl')
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw
+    return circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer
+    image = _matplotlib_circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer
+    qcd = _matplotlib.MatplotlibDrawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out
+    callback.__get__(obj, objtype)(*args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__
+    self._tester.require_now(self._feature)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now
+    raise MissingOptionalLibraryError(
+qiskit.exceptions.MissingOptionalLibraryError: "The 'pylatexenc' library is required to use 'MatplotlibDrawer'. You can install it with 'pip install pylatexenc'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/30.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/30.fuzz", line 5, in <module>\n    circuit = create_circuit_bell()\nNameError: name \'create_circuit_bell\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/30.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/30.fuzz", line 5, in <module>
+    circuit = create_circuit_bell()
+NameError: name 'create_circuit_bell' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/31.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/31.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/32.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/32.fuzz", line 25, in <module>\n    display(qrng_circ[\'circuit_obj\'].draw())\nNameError: name \'display\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/32.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/32.fuzz", line 25, in <module>
+    display(qrng_circ['circuit_obj'].draw())
+NameError: name 'display' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz', returncode=1, stdout="{'110': 118, '001': 117, '000': 135, '010': 152, '100': 131, '011': 120, '111': 113, '101': 138}\n", stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz", line 31, in <module>\n    create_circuit_bell()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz", line 16, in create_circuit_bell\n    circuit = aer.get_backend(\'qasm_simulator\')\nAttributeError: module \'qiskit_aer\' has no attribute \'get_backend\'. Did you mean: \'aerbackend\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz", line 31, in <module>
+    create_circuit_bell()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/33.fuzz", line 16, in create_circuit_bell
+    circuit = aer.get_backend('qasm_simulator')
+AttributeError: module 'qiskit_aer' has no attribute 'get_backend'. Did you mean: 'aerbackend'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/34.fuzz', returncode=1, stdout="{'011000111111 000000000000': 1, '000100110111 000000000000': 1, '000111111101 000000000000': 2, '011110110110 000000000000': 1, '011111000011 000000000000': 1, '000001001010 000000000000': 1, '011101001111 000000000000': 2, '011101000000 000000000000': 1, '011101110101 000000000000': 1, '000011111001 000000000000': 1, '011001000100 000000000000': 1, '011010001001 000000000000': 1, '011100110001 000000000000': 1, '000111111110 000000000000': 2, '011100001001 000000000000': 2, '011110000010 000000000000': 1, '000100000011 000000000000': 1, '000100001101 000000000000': 1, '000000001100 000000000000': 1, '000111110101 000000000000': 2, '000001110100 000000000000': 1, '000111000111 000000000000': 1, '000101000000 000000000000': 4, '011010110010 000000000000': 1, '000101110100 000000000000': 2, '000100001110 000000000000': 2, '000010000100 000000000000': 1, '000111001111 000000000000': 1, '011000001010 000000000000': 1, '011011001110 000000000000': 2, '000100110110 000000000000': 3, '000001001011 000000000000': 3, '011000111010 000000000000': 1, '011110110001 000000000000': 1, '000001000111 000000000000': 1, '000011001010 000000000000': 1, '000001000011 000000000000': 2, '011111001010 000000000000': 1, '000011110101 000000000000': 3, '011111111010 000000000000': 1, '011010001111 000000000000': 4, '000110000000 000000000000': 1, '011100111000 000000000000': 1, '000000001001 000000000000': 2, '000101110000 000000000000': 2, '011010110001 000000000000': 4, '000110000011 000000000000': 1, '000111110110 000000000000': 1, '000001111001 000000000000': 1, '000000000010 000000000000': 2, '011000111000 000000000000': 1, '011011000100 000000000000': 1, '011010000100 000000000000': 5, '011110000101 000000000000': 2, '011101000010 000000000000': 3, '011100111001 000000000000': 2, '000100000110 000000000000': 1, '000101001010 000000000000': 1, '000000111001 000000000000': 1, '000110110110 000000000000': 3, '000000110101 000000000000': 2, '000101110111 000000000000': 1, '000110000010 000000000000': 3, '011111110001 000000000000': 1, '011010111111 000000000000': 4, '000001111011 000000000000': 1, '000101001000 000000000000': 3, '011110001000 000000000000': 2, '011111110101 000000000000': 2, '000100110010 000000000000': 4, '011000110011 000000000000': 3, '011100001010 000000000000': 4, '011000110101 000000000000': 3, '011110110011 000000000000': 2, '000111110000 000000000000': 1, '000000111011 000000000000': 3, '000100001010 000000000000': 2, '000011000001 000000000000': 2, '011010001011 000000000000': 3, '000110001100 000000000000': 2, '011000110100 000000000000': 1, '000111001110 000000000000': 3, '011010000101 000000000000': 1, '011101111001 000000000000': 2, '011100000101 000000000000': 2, '000010111100 000000000000': 4, '000110111001 000000000000': 1, '011000111011 000000000000': 2, '000010001100 000000000000': 2, '000101111011 000000000000': 2, '000011110011 000000000000': 2, '011111001001 000000000000': 3, '011011000111 000000000000': 1, '011010000110 000000000000': 1, '000101111010 000000000000': 5, '000100110011 000000000000': 2, '000010000110 000000000000': 1, '011101000100 000000000000': 1, '000101001101 000000000000': 2, '011010000010 000000000000': 2, '011001111100 000000000000': 3, '011001111110 000000000000': 2, '011101000111 000000000000': 2, '011101000011 000000000000': 1, '011010110100 000000000000': 2, '000100000010 000000000000': 5, '011011111001 000000000000': 1, '011101000110 000000000000': 1, '000000111000 000000000000': 3, '011111000111 000000000000': 1, '011000110000 000000000000': 1, '011010111010 000000000000': 3, '000111000001 000000000000': 1, '000011001111 000000000000': 4, '000001111000 000000000000': 2, '011111110000 000000000000': 1, '000010000001 000000000000': 1, '000000110010 000000000000': 5, '000110110100 000000000000': 1, '011100110011 000000000000': 3, '000110001010 000000000000': 3, '000010110011 000000000000': 1, '000101000101 000000000000': 2, '011011110010 000000000000': 1, '011001000001 000000000000': 3, '000110111101 000000000000': 2, '000100110100 000000000000': 2, '011011110011 000000000000': 2, '011001110111 000000000000': 1, '011101110110 000000000000': 2, '000100000111 000000000000': 3, '000101111000 000000000000': 3, '011010001010 000000000000': 3, '000000000101 000000000000': 1, '000000110110 000000000000': 4, '011000111110 000000000000': 2, '000100000100 000000000000': 3, '000001110110 000000000000': 3, '000010110111 000000000000': 3, '011101001010 000000000000': 5, '011100110111 000000000000': 3, '011111111011 000000000000': 2, '000101111111 000000000000': 2, '000001000110 000000000000': 1, '011100110110 000000000000': 1, '011111111110 000000000000': 3, '000011000011 000000000000': 2, '011001000101 000000000000': 3, '000101110011 000000000000': 2, '011111110011 000000000000': 5, '011111000100 000000000000': 2, '000101001001 000000000000': 4, '000011110111 000000000000': 1, '000001000100 000000000000': 3, '011010001100 000000000000': 2, '000001110001 000000000000': 2, '011101110010 000000000000': 3, '011000110010 000000000000': 3, '000110110000 000000000000': 1, '011111000010 000000000000': 3, '000011111010 000000000000': 3, '000011111100 000000000000': 1, '000110001101 000000000000': 2, '011101001100 000000000000': 1, '000100000000 000000000000': 3, '000000000000 000000000000': 3, '011010000000 000000000000': 2, '000100111101 000000000000': 7, '011001111101 000000000000': 6, '011110110101 000000000000': 1, '011011001000 000000000000': 2, '000111001000 000000000000': 3, '011011001011 000000000000': 1, '011110111010 000000000000': 5, '011110000000 000000000000': 5, '011011000001 000000000000': 4, '000000110001 000000000000': 1, '011001111111 000000000000': 1, '000011110000 000000000000': 2, '000000000001 000000000000': 3, '000101111100 000000000000': 1, '000111111111 000000000000': 2, '000001001000 000000000000': 3, '000000000111 000000000000': 2, '011110111111 000000000000': 2, '000011001100 000000000000': 2, '000110000100 000000000000': 2, '011001001001 000000000000': 1, '000101001100 000000000000': 2, '011001001101 000000000000': 2, '011011111111 000000000000': 2, '000111111100 000000000000': 2, '000100110101 000000000000': 3, '011111111001 000000000000': 4, '011000000000 000000000000': 2, '000011001101 000000000000': 3, '011111111111 000000000000': 3, '000000001011 000000000000': 1, '000000000110 000000000000': 1, '011001001111 000000000000': 4, '000101111101 000000000000': 3, '000010001101 000000000000': 2, '011000110110 000000000000': 1, '011011001101 000000000000': 2, '011000001011 000000000000': 5, '011011110001 000000000000': 3, '000010110000 000000000000': 3, '011000000101 000000000000': 4, '000101000010 000000000000': 1, '011101001011 000000000000': 2, '000011001000 000000000000': 6, '000101000011 000000000000': 5, '000011000010 000000000000': 2, '000001001101 000000000000': 1, '011010111101 000000000000': 2, '000111000110 000000000000': 3, '000000111111 000000000000': 1, '000001001111 000000000000': 2, '000010111000 000000000000': 4, '000010001110 000000000000': 2, '011110001100 000000000000': 5, '011001111000 000000000000': 2, '011111111100 000000000000': 4, '011110000011 000000000000': 1, '011101000101 000000000000': 3, '000100001001 000000000000': 2, '000000000100 000000000000': 2, '011001000010 000000000000': 2, '000011000111 000000000000': 2, '000111111010 000000000000': 2, '000000111100 000000000000': 1, '011110000100 000000000000': 1, '011011111010 000000000000': 2, '000010111110 000000000000': 1, '011111000101 000000000000': 2, '011000000001 000000000000': 3, '011111001100 000000000000': 2, '011011000101 000000000000': 3, '000000110111 000000000000': 2, '011110111000 000000000000': 2, '000111110010 000000000000': 2, '000101110001 000000000000': 1, '000111001001 000000000000': 2, '011111001111 000000000000': 4, '011000001111 000000000000': 2, '000110001001 000000000000': 4, '000110001000 000000000000': 1, '011011110100 000000000000': 5, '011110001101 000000000000': 1, '011101110001 000000000000': 1, '000011000101 000000000000': 4, '000101000001 000000000000': 3, '011000110001 000000000000': 2, '011001110011 000000000000': 4, '000011001001 000000000000': 5, '011011110000 000000000000': 4, '000001001110 000000000000': 2, '011100000111 000000000000': 2, '000000111010 000000000000': 2, '000101001011 000000000000': 4, '011001110000 000000000000': 4, '011100110000 000000000000': 2, '000101111110 000000000000': 2, '000000110100 000000000000': 2, '000111000010 000000000000': 3, '011101111000 000000000000': 2, '000011110010 000000000000': 1, '011011111011 000000000000': 3, '011000111101 000000000000': 2, '000110111110 000000000000': 1, '000111111000 000000000000': 2, '000111001100 000000000000': 1, '011101110111 000000000000': 3, '000010110101 000000000000': 3, '011001000011 000000000000': 1, '011010110101 000000000000': 3, '011011000110 000000000000': 3, '011001000110 000000000000': 3, '000001110101 000000000000': 5, '011001111001 000000000000': 1, '000011110100 000000000000': 3, '000011001110 000000000000': 3, '000000001111 000000000000': 3, '000010110110 000000000000': 1, '000100110000 000000000000': 3, '011101111010 000000000000': 2, '000101001110 000000000000': 2, '011110110010 000000000000': 2, '000100001111 000000000000': 2, '011001001010 000000000000': 3, '000101110110 000000000000': 1, '011010000001 000000000000': 2, '011101110100 000000000000': 3, '000111001010 000000000000': 3, '000000110011 000000000000': 1, '000001000000 000000000000': 5, '000011001011 000000000000': 2, '011110001111 000000000000': 1, '011010001101 000000000000': 5, '000100111011 000000000000': 1, '011101000001 000000000000': 2, '011000000010 000000000000': 2, '000110111111 000000000000': 2, '000010111111 000000000000': 1, '011010111011 000000000000': 2, '011011001001 000000000000': 5, '011111001101 000000000000': 3, '000010110100 000000000000': 5, '011110001001 000000000000': 4, '011010110111 000000000000': 2, '011000110111 000000000000': 2, '011000111001 000000000000': 1, '000001111010 000000000000': 1, '000011000000 000000000000': 3, '000100111001 000000000000': 2, '000010000010 000000000000': 2, '000111110001 000000000000': 1, '011100111110 000000000000': 6, '000000001000 000000000000': 4, '000110001011 000000000000': 2, '011011110111 000000000000': 1, '000110001111 000000000000': 1, '000010111001 000000000000': 1, '011000111100 000000000000': 1, '000011111011 000000000000': 1, '011111000001 000000000000': 4, '011100001000 000000000000': 2, '000100001000 000000000000': 2, '000100000001 000000000000': 3, '000101000111 000000000000': 3, '011010110000 000000000000': 4, '000111000100 000000000000': 1, '011100110010 000000000000': 1, '011111110110 000000000000': 1, '011100000011 000000000000': 2, '000011111111 000000000000': 4, '011110110000 000000000000': 3, '011000000011 000000000000': 3, '011100001101 000000000000': 3, '000001111100 000000000000': 2, '011100111101 000000000000': 1, '011110000001 000000000000': 4, '011001111010 000000000000': 2, '011011111110 000000000000': 1, '011100000110 000000000000': 2, '000110001110 000000000000': 4, '011101111110 000000000000': 2, '000010001111 000000000000': 5, '000001110011 000000000000': 3, '000011111110 000000000000': 1, '000010000011 000000000000': 2, '000111000000 000000000000': 4, '000001001001 000000000000': 2, '000011000110 000000000000': 1, '000010111010 000000000000': 3, '000100110001 000000000000': 5, '000110000111 000000000000': 2, '000111001011 000000000000': 1, '011011110110 000000000000': 4, '000000111101 000000000000': 2, '011111110111 000000000000': 3, '011100000000 000000000000': 4, '000111110100 000000000000': 3, '000010111101 000000000000': 3, '011111001000 000000000000': 2, '011101111111 000000000000': 1, '000010001010 000000000000': 2, '011011000000 000000000000': 2, '000110000001 000000000000': 3, '011001110001 000000000000': 1, '011101001000 000000000000': 2, '000100111110 000000000000': 1, '011110111100 000000000000': 3, '000110110111 000000000000': 1, '011101001101 000000000000': 2, '011111111000 000000000000': 3, '000010110001 000000000000': 2, '011111001110 000000000000': 2, '000101001111 000000000000': 3, '000100001100 000000000000': 3, '011010111001 000000000000': 3, '011010111110 000000000000': 1, '011100001100 000000000000': 1, '000110111010 000000000000': 3, '000011000100 000000000000': 2, '011010001110 000000000000': 2, '000110110101 000000000000': 6, '000110110010 000000000000': 3, '011100111111 000000000000': 2, '000000111110 000000000000': 3, '011100111010 000000000000': 3, '000110110011 000000000000': 1, '000010001001 000000000000': 1, '011011001010 000000000000': 3, '000001000010 000000000000': 1, '000001111110 000000000000': 2, '011100000001 000000000000': 2, '011011001100 000000000000': 1, '011100111100 000000000000': 4, '000111111001 000000000000': 4, '011001001000 000000000000': 1, '011100110101 000000000000': 2, '011001001100 000000000000': 4, '000001110111 000000000000': 4, '011011111101 000000000000': 3, '000101111001 000000000000': 4, '000110110001 000000000000': 3, '011100001111 000000000000': 3, '000100001011 000000000000': 1, '011111001011 000000000000': 1, '011010111100 000000000000': 2, '011100111011 000000000000': 2, '000000001110 000000000000': 3, '011110000110 000000000000': 1, '011011000010 000000000000': 2, '000010000000 000000000000': 1, '011001110101 000000000000': 2, '011100000100 000000000000': 2, '011000001110 000000000000': 1, '000000110000 000000000000': 4, '011011001111 000000000000': 4, '000001000101 000000000000': 5, '011101001001 000000000000': 1, '000011110110 000000000000': 2, '000111001101 000000000000': 3, '011100001011 000000000000': 3, '000001000001 000000000000': 1, '011110111011 000000000000': 3, '000001111111 000000000000': 2, '011001000000 000000000000': 3, '011111000110 000000000000': 4, '000010111011 000000000000': 2, '011010001000 000000000000': 1, '011110000111 000000000000': 2, '000010110010 000000000000': 3, '011111110100 000000000000': 3, '000001110000 000000000000': 1, '000110111011 000000000000': 1, '000011110001 000000000000': 2, '011101110000 000000000000': 2, '011101111100 000000000000': 3, '000101110101 000000000000': 2, '011001001110 000000000000': 1, '011000001101 000000000000': 2, '000100111100 000000000000': 2, '000000000011 000000000000': 1, '011111000000 000000000000': 2, '011011000011 000000000000': 4}\n", stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/34.fuzz", line 32, in <module>\n    circuit_qasm = {"counts": counts_dict_4qb, "circuit_obj": circ_qasm, "circuit_name": "QC 4QB"}\nNameError: name \'circ_qasm\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/34.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/34.fuzz", line 32, in <module>
+    circuit_qasm = {"counts": counts_dict_4qb, "circuit_obj": circ_qasm, "circuit_name": "QC 4QB"}
+NameError: name 'circ_qasm' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/35.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 21)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/36.fuzz', returncode=0, stdout="{'00': 251, '10': 252, '11': 279, '01': 242}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/36.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/37.fuzz failed validation with error message: parsing failed expected an indented block after 'for' statement on line 30 (<unknown>, line 30)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/38.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/38.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/39.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/39.fuzz", line 11, in <module>\n    circ.draw(output=\'mpl\')\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw\n    return circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer\n    image = _matplotlib_circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer\n    qcd = _matplotlib.MatplotlibDrawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out\n    callback.__get__(obj, objtype)(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__\n    self._tester.require_now(self._feature)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now\n    raise MissingOptionalLibraryError(\nqiskit.exceptions.MissingOptionalLibraryError: "The \'pylatexenc\' library is required to use \'MatplotlibDrawer\'. You can install it with \'pip install pylatexenc\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/39.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/39.fuzz", line 11, in <module>
+    circ.draw(output='mpl')
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw
+    return circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer
+    image = _matplotlib_circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer
+    qcd = _matplotlib.MatplotlibDrawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out
+    callback.__get__(obj, objtype)(*args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__
+    self._tester.require_now(self._feature)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now
+    raise MissingOptionalLibraryError(
+qiskit.exceptions.MissingOptionalLibraryError: "The 'pylatexenc' library is required to use 'MatplotlibDrawer'. You can install it with 'pip install pylatexenc'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/40.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/40.fuzz", line 5, in <module>\n    circ_bell = create_circuit_bell()\nNameError: name \'create_circuit_bell\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/40.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/40.fuzz", line 5, in <module>
+    circ_bell = create_circuit_bell()
+NameError: name 'create_circuit_bell' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/41.fuzz', returncode=0, stdout="{'01': 263, '10': 237, '00': 278, '11': 246}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/41.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/42.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 5)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/43.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/43.fuzz", line 16, in <module>\n    counts_dict_bell_1 = result_1.get_counts(circ)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/result/result.py", line 269, in get_counts\n    exp = self._get_experiment(key)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/result/result.py", line 380, in _get_experiment\n    raise QiskitError(\'Data for experiment "%s" could not be found.\' % key)\nqiskit.exceptions.QiskitError: \'Data for experiment "circuit-118" could not be found.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/43.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/43.fuzz", line 16, in <module>
+    counts_dict_bell_1 = result_1.get_counts(circ)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/result/result.py", line 269, in get_counts
+    exp = self._get_experiment(key)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/result/result.py", line 380, in _get_experiment
+    raise QiskitError('Data for experiment "%s" could not be found.' % key)
+qiskit.exceptions.QiskitError: 'Data for experiment "circuit-118" could not be found.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/44.fuzz', returncode=0, stdout="{'11': 245, '01': 250, '00': 278, '10': 251}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/44.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/45.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 3)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/46.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/46.fuzz", line 15, in <module>\n    run_circuit(circuit, Aer.get_backend(\'qasm_simulator\'))\nNameError: name \'Aer\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/46.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/46.fuzz", line 15, in <module>
+    run_circuit(circuit, Aer.get_backend('qasm_simulator'))
+NameError: name 'Aer' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/47.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/47.fuzz", line 8, in <module>\n    experiment = Execute(circuit, backend=circuit)\nNameError: name \'Execute\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/47.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/47.fuzz", line 8, in <module>
+    experiment = Execute(circuit, backend=circuit)
+NameError: name 'Execute' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/48.fuzz failed validation with error message: parsing failed unterminated triple-quoted string literal (detected at line 18) (<unknown>, line 14)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/49.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 3)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/50.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/50.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/51.fuzz failed validation with error message: parsing failed unterminated string literal (detected at line 22) (<unknown>, line 22)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/52.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/52.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/53.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/53.fuzz", line 10, in <module>\n    aer_sim = QasmSimulator()\nNameError: name \'QasmSimulator\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/53.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/53.fuzz", line 10, in <module>
+    aer_sim = QasmSimulator()
+NameError: name 'QasmSimulator' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/54.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/54.fuzz", line 8, in <module>\n    qc = create_circuit(True)\nNameError: name \'create_circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/54.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/54.fuzz", line 8, in <module>
+    qc = create_circuit(True)
+NameError: name 'create_circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/55.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/55.fuzz", line 29, in <module>\n    circuit.draw(output =\'mpl\')\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw\n    return circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer\n    image = _matplotlib_circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer\n    qcd = _matplotlib.MatplotlibDrawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out\n    callback.__get__(obj, objtype)(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__\n    self._tester.require_now(self._feature)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now\n    raise MissingOptionalLibraryError(\nqiskit.exceptions.MissingOptionalLibraryError: "The \'pylatexenc\' library is required to use \'MatplotlibDrawer\'. You can install it with \'pip install pylatexenc\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/55.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/55.fuzz", line 29, in <module>
+    circuit.draw(output ='mpl')
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw
+    return circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer
+    image = _matplotlib_circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer
+    qcd = _matplotlib.MatplotlibDrawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out
+    callback.__get__(obj, objtype)(*args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__
+    self._tester.require_now(self._feature)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now
+    raise MissingOptionalLibraryError(
+qiskit.exceptions.MissingOptionalLibraryError: "The 'pylatexenc' library is required to use 'MatplotlibDrawer'. You can install it with 'pip install pylatexenc'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/56.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/56.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/57.fuzz failed validation with error message: parsing failed invalid non-printable character U+200B (<unknown>, line 29)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/58.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/58.fuzz", line 21, in <module>\n    class GroverOperator(Operator):\nNameError: name \'Operator\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/58.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/58.fuzz", line 21, in <module>
+    class GroverOperator(Operator):
+NameError: name 'Operator' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/59.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/59.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/60.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 31)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/61.fuzz failed validation with error message: parsing failed unterminated triple-quoted string literal (detected at line 42) (<unknown>, line 40)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/62.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 11)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/63.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 28)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar\n    return bit_sequence[specifier]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz", line 24, in <module>\n    circuit = create_circuit()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz", line 13, in create_circuit\n    circuit.h(range(3))\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion\n    return [\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>\n    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 1 out of range for size 1.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar
+    return bit_sequence[specifier]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz", line 24, in <module>
+    circuit = create_circuit()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/64.fuzz", line 13, in create_circuit
+    circuit.h(range(3))
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h
+    return self.append(HGate(), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion
+    return [
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>
+    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 1 out of range for size 1.'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/65.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 21)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/66.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/66.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/67.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/67.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/68.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/68.fuzz", line 12, in <module>\n    qasm = circuit.qasm(qeflag=True)\nNameError: name \'circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/68.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/68.fuzz", line 12, in <module>
+    qasm = circuit.qasm(qeflag=True)
+NameError: name 'circuit' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/69.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 18)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/70.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/70.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/71.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/71.fuzz", line 41, in <module>\n    display(counts)\nNameError: name \'display\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/71.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/71.fuzz", line 41, in <module>
+    display(counts)
+NameError: name 'display' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/72.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 25)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/73.fuzz', returncode=1, stdout='', stderr='  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/73.fuzz", line 15\n    from qiskit.tools.jupyter import *\n                                     ^\nSyntaxError: import * only allowed at module level\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/73.fuzz failed validation with error message:   File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/73.fuzz", line 15
+    from qiskit.tools.jupyter import *
+                                     ^
+SyntaxError: import * only allowed at module level
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz", line 16, in <module>\n    run_circuit(create_circuit())\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz", line 11, in run_circuit\n    result = circuit.run(shots=1024).result() \nAttributeError: \'NoneType\' object has no attribute \'run\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz", line 16, in <module>
+    run_circuit(create_circuit())
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/74.fuzz", line 11, in run_circuit
+    result = circuit.run(shots=1024).result() 
+AttributeError: 'NoneType' object has no attribute 'run'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/75.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/75.fuzz", line 20, in <module>\n    create_circuit()\nNameError: name \'create_circuit\' is not defined. Did you mean: \'create_circuit_2\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/75.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/75.fuzz", line 20, in <module>
+    create_circuit()
+NameError: name 'create_circuit' is not defined. Did you mean: 'create_circuit_2'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/76.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/76.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/77.fuzz', returncode=0, stdout="\nTotal count for 00 and 11 are: {'00': 538, '11': 486}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/77.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz", line 24, in <module>\n    main()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz", line 21, in main\n    counts = run_circuit(circuit_bell)\nTypeError: run_circuit() takes 0 positional arguments but 1 was given\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz", line 24, in <module>
+    main()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/78.fuzz", line 21, in main
+    counts = run_circuit(circuit_bell)
+TypeError: run_circuit() takes 0 positional arguments but 1 was given
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/79.fuzz failed validation with error message: parsing failed '{' was never closed (<unknown>, line 19)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/80.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/80.fuzz", line 4, in <module>\n    q = QuantumRegister(3, \'q\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/80.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/80.fuzz", line 4, in <module>
+    q = QuantumRegister(3, 'q')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz", line 8, in <module>\n    append_circuit()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz", line 4, in append_circuit\n    circuit.x(1)\nNameError: name \'circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz", line 8, in <module>
+    append_circuit()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/81.fuzz", line 4, in append_circuit
+    circuit.x(1)
+NameError: name 'circuit' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/82.fuzz failed validation with error message: parsing failed '(' was never closed (<unknown>, line 27)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/83.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/83.fuzz", line 23, in <module>\n    result = execute(circuit, simulator).result()\nNameError: name \'circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/83.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/83.fuzz", line 23, in <module>
+    result = execute(circuit, simulator).result()
+NameError: name 'circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz", line 21, in <module>\n    add_circuit()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz", line 18, in add_circuit\n    circuit_3a.extend(circuit_3b, range(2), range(2))  \nAttributeError: \'QuantumCircuit\' object has no attribute \'extend\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz", line 21, in <module>
+    add_circuit()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/84.fuzz", line 18, in add_circuit
+    circuit_3a.extend(circuit_3b, range(2), range(2))  
+AttributeError: 'QuantumCircuit' object has no attribute 'extend'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/85.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/85.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/86.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/86.fuzz", line 14, in <module>\n    from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, ClassicalBit, assemble\nImportError: cannot import name \'ClassicalBit\' from \'qiskit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/86.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/86.fuzz", line 14, in <module>
+    from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, ClassicalBit, assemble
+ImportError: cannot import name 'ClassicalBit' from 'qiskit' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/87.fuzz', returncode=0, stdout="\nTotal count for 00 and 11 are: {'00': 527, '11': 497}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/87.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/88.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 15)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/89.fuzz', returncode=0, stdout="\nTotal count for 00 and 11 are: {'00': 515, '11': 509}\n", stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/89.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz", line 9, in <module>\n    create_circuit()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz", line 4, in create_circuit\n    circuit = QuantuCircuit(3)\nNameError: name \'QuantuCircuit\' is not defined. Did you mean: \'QuantumCircuit\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz", line 9, in <module>
+    create_circuit()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/90.fuzz", line 4, in create_circuit
+    circuit = QuantuCircuit(3)
+NameError: name 'QuantuCircuit' is not defined. Did you mean: 'QuantumCircuit'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/91.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/91.fuzz", line 7, in <module>\n    qc1 = mutate(qc, 0)\nNameError: name \'qc\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/91.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/91.fuzz", line 7, in <module>
+    qc1 = mutate(qc, 0)
+NameError: name 'qc' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/92.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/92.fuzz", line 6, in <module>\n    new_circuit.draw()\nAttributeError: \'NoneType\' object has no attribute \'draw\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/92.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/92.fuzz", line 6, in <module>
+    new_circuit.draw()
+AttributeError: 'NoneType' object has no attribute 'draw'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/93.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/93.fuzz", line 3, in <module>\n    my_quantum_circuit = create_quantum_circuit()\nNameError: name \'create_quantum_circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/93.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/93.fuzz", line 3, in <module>
+    my_quantum_circuit = create_quantum_circuit()
+NameError: name 'create_quantum_circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/94.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/94.fuzz", line 13, in <module>\n    simulator = Aer.get_backend(\'aer_simulator\')\nNameError: name \'Aer\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/94.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/94.fuzz", line 13, in <module>
+    simulator = Aer.get_backend('aer_simulator')
+NameError: name 'Aer' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/95.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/95.fuzz", line 13, in <module>\n    my_quantum_circuit = create_quantum_circuit()\nNameError: name \'create_quantum_circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/95.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/95.fuzz", line 13, in <module>
+    my_quantum_circuit = create_quantum_circuit()
+NameError: name 'create_quantum_circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/96.fuzz', returncode=0, stdout='Mutated circuit:\nMutated circuit:\n', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/96.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/97.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/97.fuzz", line 14, in <module>\n    counts = run_circuit()\nNameError: name \'run_circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/97.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/97.fuzz", line 14, in <module>
+    counts = run_circuit()
+NameError: name 'run_circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz", line 25, in <module>\n    create_circuit(mutants).draw()\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz", line 15, in create_circuit\n    circuit[0].cphase(-23, 1)\nAttributeError: \'CircuitInstruction\' object has no attribute \'cphase\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz", line 25, in <module>
+    create_circuit(mutants).draw()
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/98.fuzz", line 15, in create_circuit
+    circuit[0].cphase(-23, 1)
+AttributeError: 'CircuitInstruction' object has no attribute 'cphase'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/99.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/99.fuzz", line 7, in <module>\n    mutated_program = mutate_circuit(my_quantum_circuit)\nNameError: name \'my_quantum_circuit\' is not defined. Did you mean: \'QuantumCircuit\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/99.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_opt_and_qasm/99.fuzz", line 7, in <module>
+    mutated_program = mutate_circuit(my_quantum_circuit)
+NameError: name 'my_quantum_circuit' is not defined. Did you mean: 'QuantumCircuit'?
+

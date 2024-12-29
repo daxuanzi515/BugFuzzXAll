@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+struct E
+{};
+void* operator new(std::size_t size, E*)
+{
+    cout << "E *new is running\n";
+    return malloc(size);
+}
+class C : public E
+{
+    protected:
+    virtual ~C() = default;
+};
+static void f()
+{
+    new E;
+    new (C{}) C{};
+}
+int main()
+{
+    f();
+    return 0;
+}
+ 
+struct MyShared
+{
+    MyShared()
+    {
+        ptr = make_shared<int>(10);
+    }
+    shared_ptr

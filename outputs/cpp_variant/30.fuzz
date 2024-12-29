@@ -1,0 +1,27 @@
+#include <variant>
+#include <iostream>
+int main()
+{
+    std::variant<int, float, double> v(10);
+    v = 32.24;
+    std::cout << "The variant has the value " << std::get<1>(v) << ".\n";
+}
+ 
+ 
+using namespace std;
+int main()
+{
+    variant<int, float, double> v {10};
+    v.emplace<float>(32.24);
+    
+    v = 56.0;
+    printf("The variant now has the value %.*f.\n", std::get<int>(v));
+    
+    v.emplace<double>(912.2);
+    printf("The variant now has the value %.*f.\n", std::get<float>(v));
+    
+    v.swap(v);
+    printf("The variant now has the value %.*f\n", std::get<int>(v));
+}
+ 
+ 

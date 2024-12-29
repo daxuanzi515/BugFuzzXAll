@@ -1,0 +1,14 @@
+#include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i = std::make_unique<int>(i1);
+  std::cout << *i;
+  return 0;
+}

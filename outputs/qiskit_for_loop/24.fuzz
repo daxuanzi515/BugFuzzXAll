@@ -1,0 +1,18 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit i
+
+circuit = QumuitCircuit(2)
+circuit.h([0])
+circuit.z(1)
+
+
+with circuit.for_loop():
+    circuit.h(0)
+    circuit.cx(0, 1)
+
+circuit.h([0])
+circuit.x([1])
+circuit.cx(1, 0)

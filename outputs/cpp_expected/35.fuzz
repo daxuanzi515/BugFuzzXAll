@@ -1,0 +1,53 @@
+#include <expected>
+<fim_suffix>::cout << a << " - " << b << std::endl;
+
+    std::cout << expected_sum.ok() << " " << expected_sum << std::endl;
+
+    expected_sum = expected_sum + expected_sum;
+    a = expected_sum.ok();
+    b = expected_sum.ok_or("Invalid argument").value_or(-1).ok();
+
+    std::cout << a << " - " << b << std::endl;
+    std::cout << expected_sum.has_value() << " " << expected_sum.ok() << " " << expected_sum << std::endl;
+
+    std::expected<int, std::error_code> sum_result;
+
+    try {
+        sum_result = divide(11, 0);
+    } catch (const std::invalid_argument& e) {
+        sum_result = std::errc::invalid_argument;
+    }
+
+    std::cout << sum_result.no_error() << " " << sum_result << std::endl;
+
+    sum_result = sum(5, 10);
+    a = sum_result.value_or(-1);
+    b = sum_result.value_or(-1);
+
+    std::cout << a << " - " << b << std::endl;
+    std::cout << sum_result.has_value() << " " << sum_result.ok() << " " << sum_result << std::endl;
+
+    auto expected_string = string_processing::substr("Hello world!", 0, 2);
+
+    a = expected_string[1];
+    b = expected_string.ok_or("Invalid index").map([](const std::string& s){ return s[1]; }).value_or("");
+
+    std::cout << a << " - " << b << " (" << expected_string << ")" << std::endl;
+    std::cout << expected_string.has_value() << " " << expected_string.ok() << " " << expected_string << std::endl;
+
+    expected_string = string_processing::substr("Hello world!", 2).map([](const std::string& s) { return s + "!"; }).value_or("");
+
+    a = expected_string.ok();
+    b = expected_string[0];
+
+    std::cout << a << " - " << b << " (" << expected_string << ")" << std::endl;
+    std::cout << expected_string.has_value() << " " << expected_string.ok() << " " << expected_string << std::endl;
+
+    string_processing::process(std::string("Hello world!"))
+   .map([](const std::string& s){ return s + "."; })
+   .map([](const std::string& s){ return string_processing::substr(s, 0, 2); })
+   .map([](const std::string& s){ return string_processing::substr(s, 1); })
+   .map([](const std::string& s){ return s + "@"; })
+   .match(
+        [](const std::string::value_type& c){ std::cout << c; },
+        [](const std::error_code& ec){ std::cout << ec.value()

@@ -1,0 +1,14 @@
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, float, double> v;
+    v = 10.99;     
+    if (std::holds_alternative<float>(v))    
+        printf("The variant holds a float.\n");
+    if (std::holds_alternative<double>(v))   
+        printf("The variant holds a double.\n");
+    
+    return 0;
+}

@@ -1,0 +1,64 @@
+#include <expected>
+<fim_suffix>_map<std::string, int> mp;
+    for (char c : word)
+        mp[word].value_or_eval(c2i);
+    EXPECT_EQ(mp.size(), 4);
+
+    std::map<int, int> i2i = {[3] = 3, [4] = 4};
+    EXPECT_EQ(word2sum.value_or_eval(i2i), 17);
+}
+
+struct string_mapper {
+    std::map<std::string, int> map;
+
+    constexpr string_mapper() noexcept : map(init_map()) {}
+
+    template <typename T>
+    int from_string_impl(T key, T current_char, int index, int result) {
+        index += 1;
+        if (index == key.size()) {
+            return result;
+        }
+        if (map.count(std::string(key, index, 1))!= 0)
+            return 1 + map[std::string(key, index, 1)] * result;
+        else {
+            return std::numeric_limits<int>::max();
+        }
+    }
+
+    constexpr int from_string(const char *key) const noexcept { return map.at(key); }
+
+    constexpr int from_string(const char *key, int size) const noexcept {
+         
+        return map.at(key);
+    }
+
+    constexpr auto init_map() noexcept {
+        return std::map<std::string, int>{
+        {"", 1}, {"I", 1}, {"V", 5}, {"X", 10}, {"L", 50}, {"C", 100}, {"D", 500}, {"M", 1000}};
+    }
+};
+
+int main() {
+    auto result = std::make_expected(2, string_mapper())
+                   .and_then([&](int) { return std::make_expected("XIV"); })
+                   .and_then([&](auto arg) {
+                        return std::make_expected(string_mapper().from_string(arg, std::strlen(arg)))
+                           .and_then([&](auto num) {
+                                return std::make_expected(num + 2, string_mapper());
+                            });
+                    });
+
+    EXPECT_TRUE(result);
+    EXPECT_EQ(*result, 21);
+
+    using namespace std::literals;
+
+    auto f_val = [](int i) { return i; };
+    auto v_val = []() { return std::vector<int>{}; };
+    auto m_val = [](int a, int b) { return a + b; };
+    auto v_fun = [](int a, std::vector<int> v) { v.push_back(a); return v; };
+    auto f_fun = [](int a, int b) { return a + b; };
+    auto m_fun = [](int a, int b, std::string *s) { *s += std::to_string(a); *s += std::to_string(b); return s; };
+
+    EXPECT_EQ(m_val.and_then(m_fun).and_then(f_fun)(4

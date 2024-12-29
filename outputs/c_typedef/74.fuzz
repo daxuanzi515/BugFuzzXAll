@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i, j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red, green, blue;
+} rgb;
+typedef struct color *rgb_ref;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}

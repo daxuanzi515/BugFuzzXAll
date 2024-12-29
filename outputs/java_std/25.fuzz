@@ -1,0 +1,10 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian3 {
+	public static void main(String[] args) {
+		final String text = "Hello Indian\nworld";
+		Scanner s1 = new Scanner(text);
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}

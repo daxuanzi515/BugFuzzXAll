@@ -1,0 +1,51 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+ 
+public class SFinally2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try {
+
+            br = new BufferedReader(new FileReader("src/data.txt"));
+            
+            String line;
+            
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                catch (Exception e){
+               System.out.println("Oopss, error. Can't read the file. Exiting...");
+         }
+                finally{
+                    System.out.println("And of course print this too.");
+                    System.out.println("We should see first and last");
+                        }
+                    }
+                }
+ 
+
+
+  
+
+
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+ 
+public class STryWithResources2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try (FileReader fr = new FileReader("src/data.txt");br = new BufferedReader(fr)){
+            System.out.println("Let's print that out.");
+            String line;
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                finally{
+                    System.out.println("And of course print this too.");
+                   

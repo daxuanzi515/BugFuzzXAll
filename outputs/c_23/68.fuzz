@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+typedef unsigned size_t;
+size_t __attribute__((noinline)) GetParamCount(char * const * argv) {
+    size_t i;
+    for (i = 1; argv[i]!= NULL; i++) {
+        ;   
+    }
+    return i;
+}
+size_t main(int argc, char *argv[]) {
+    for (unsigned i = 1; i < GetParamCount(argv); i++) {
+        printf("Parameter %u: %s\n", i, argv[i]);
+    }
+    return 0;
+}

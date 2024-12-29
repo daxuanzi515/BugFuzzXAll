@@ -1,0 +1,37 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <time.h>
+#include <locale.h>
+int main(void) {
+   int year = 0;
+   printf("Enter a year between 1950 and 2014: ");
+   scanf("%d", &year);
+   
+   if ( (year > 2014) || (year < 2014) || (year < 1950))
+   {
+       printf("Sorry, this year is unbearable...");
+   }
+   
+   setlocale(LC_ALL, "English_Canadian");
+  
+  switch (year)
+  {
+  
+  case 1950:
+  printf("The year 1950 is not long to remember.\n");
+  break;
+  case 2014:
+  printf("So %d is %s.\n", year, "Happy");
+  break;
+  default:
+  {
+      
+      printf("The year doesn't exist.\n");
+      break;
+  }
+  
+  }
+  
+  return 0;
+}

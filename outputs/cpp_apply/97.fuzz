@@ -1,0 +1,17 @@
+#include <tuple>
+#include <algorithm>
+int main()
+{
+  int x = 42, y = 100;
+  std::tuple<int, int> t{ x, y };
+  std::for_each(std::begin(t), std::end(t), [](auto & p) mutable
+  {
+    std::swap(p, p + x);
+    p /= x;
+  });
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}
+
+ 

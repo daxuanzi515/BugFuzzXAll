@@ -1,0 +1,49 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto args = std::make_tuple(42L, 13L);
+  auto f = [](long, long) { std::cout << "Bar(long, long)" << std::endl; };
+  std::get<0>(args) = 42L;
+  std::get<1>(args) = 13L;
+  std::cout << std::get<0>(args) << std::endl;
+  std::get<1>(args) = 42L;
+  std::cout << std::get<1>(args) << std::endl;
+  std::get<0>(args) = 13L;
+  std::get<1>(args) = 14L;
+  std::cout << std::get<0>(args) << std::endl;
+  std::cout << std::get<1>(args) << std::endl;
+  return EXIT_SUCCESS;
+}
+ 
+struct Foo
+{
+  Foo(long a, long b) : m_a{ a }, m_b{ b }
+  { }
+  long GetA() const
+  {
+    return m_a;
+  }
+  long GetB() const
+  {
+    return m_b;
+  }
+private:
+  long m_a;
+  long m_b;
+};
+void Foo(const std::tuple<Foo, Foo>& foo_tuple)
+{
+  auto [first, second] = std::forward<decltype(foo_tuple)>(foo_tuple);
+  std::cout << first.GetA() << std::endl;
+  std::cout << first.GetB() << std::endl;
+  std::cout << second.GetA() << std::endl;
+  std::cout << second.GetB() << std::endl;
+}
+ 
+std::array<long, 3> array{ 111L, 222L, 333L };
+auto array_tuple = std::make_tuple(array, array, array);
+std::cout << std::get<0>(array_tuple)[0] << std::endl;
+std::cout << std::get<0>(array_tuple)[1] << std::endl;
+std::cout << std::get<2>(array_tuple)[0] << std::endl;  
+/* Please define a global constant `my_tuple` as a tuple which contains a string, an int

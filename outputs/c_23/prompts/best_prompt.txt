@@ -1,0 +1,9 @@
+/* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays and mandatory feature for variably-modified types.
+
+Constants now include nullptr for nullptr_t, wb and uwb suffixes for _BitInt(N) and unsigned _BitInt(N) types and binary digit and literal constant prefixes. Keywords have seen the addition of true, false, alignas, alignof, bool, static_assert, thread_local, among others.
+
+Under syntax, labels can now appear before declarations and there's zero initialization with {}. Other features include support for ISO/IEC 60559:2020, extended binary floating-point arithmetic and optional decimal floating-point arithmetic. There's also the addition of char8_t type for storing UTF-8 data, clarification regarding char16_t and char32_t encodings, and the ability to appear storage class specifiers in compound literal definition. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

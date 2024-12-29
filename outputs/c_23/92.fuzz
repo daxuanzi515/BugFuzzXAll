@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#define LENGTH 5
+int main(int argc, char* argv[]) {
+  char* s = "\0abc\\";
+  printf("String: %s\n", s);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+void fun(char* s) {
+  printf("%s\n", s);
+}
+int main(int argc, char* argv[]) {
+  fun("s\0\0");
+}

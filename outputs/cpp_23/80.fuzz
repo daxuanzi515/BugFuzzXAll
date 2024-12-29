@@ -1,0 +1,9 @@
+#include <iostream>
+#include <string>
+int main (int argc, char **argv)
+{
+   if (std::string(argv[1]) == std::string("something"))
+   {
+      std::string s{ argv[2] };
+   }
+}

@@ -1,0 +1,105 @@
+#include <expected>
+<fim_suffix>e_error(std::string message) {
+  return error_code::make_error(message);
+}
+
+}   
+
+int main() {
+  std::map<int, std::string> people{
+      {0, "Matthew"},
+      {1, "Mark"},
+      {2, "Jamie"},
+      {3, "Alexander"},
+  };
+
+  std::unique_ptr<people_handler> handler =
+      make_handler(std::move(people));
+
+  std::cout << "My favorite person is: " << handler->get_favorite_person()
+            << std::endl;
+
+  auto result = utils::make_success(
+      std::make_unique<std::string>("Mister Mary"));
+
+  auto result_3 = utils::make_error(
+      std::make_unique<std::string>("some error"));
+}
+<fim_middle>
+#include <map>
+#include <iostream>
+#include <unordered_map>
+
+class people_handler {
+  std::unordered_map<int, std::string> favorite_people{};
+
+ public:
+  people_handler(std::unordered_map<int, std::string> favorite_people) :
+      favorite_people(favorite_people) {}
+
+  std::string get_favorite_person() {
+    return favorite_people.empty()? "" : favorite_people.begin()->second;
+  }
+};
+
+template <typename... ReturnType>
+class basic_result;
+template <class T>
+struct result {
+  basic_result<T> unwrap();
+};
+class success {
+  const std::shared_ptr<T>& value;
+
+ public:
+  success(T value) : value(value) {}
+  T get_value() const { return value; }   
+};
+class error {
+  const std::shared_ptr<E>& error_msg;
+
+ public:
+  error(E msg) : error_msg(msg) {}
+  E get_error() const { return error_msg; }   
+};
+template <class T>
+class basic_result {
+  T value;
+
+ public:
+  template <class U>
+  basic_result(const U& value) : expected(value) {}
+
+  bool has_value();
+  T get_value() const;   
+  error* expect_error() const;   
+};
+
+template <class T>
+T result<T>::unwrap() {
+  return value;
+}
+
+template <class T>
+bool basic_result<T>::has_value() const {
+  return (bool)valid;
+}
+
+template <class T>
+T basic_result<T>::get_value() const {
+  if (valid.valid()) return *value; else throw std::runtime_error(*error.message);
+}
+
+template <class T>
+error* basic_result<T>::expect_error() const {
+  if (valid.has_value()) return nullptr; else return error;
+}
+
+namespace utils {
+
+template <class T>
+const T& just_get(const std::shared_ptr<const T>& val) {
+  return val;
+}
+
+inline std::shared_ptr<success> make

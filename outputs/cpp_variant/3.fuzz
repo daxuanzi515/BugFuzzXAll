@@ -1,0 +1,18 @@
+#include <variant>
+
+#include <iostream>
+
+int main()
+{   
+	std::variant<int, float, double> v;
+	v = 10;  
+
+	int result = std::get<int>(v);
+	std::cout << "This should be 10: " << result;
+	
+	 
+	 
+	 
+
+	return 0;
+}

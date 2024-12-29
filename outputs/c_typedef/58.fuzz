@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_t;
+int main()
+{
+	Tag_t tag;
+	tag.x = 1;
+	tag.y = 2;
+	tag.str = (char*)malloc(sizeof(char)*5);
+	tag.str[0] = 'a';
+	tag.str[1] = 'b';
+	tag.str[2] = 'c';
+	tag.str[3] = '\0';
+	printf("str is %s\n", tag.str);
+	free(tag.str);
+	return 0;
+}

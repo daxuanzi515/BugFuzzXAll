@@ -1,0 +1,36 @@
+#include <variant>
+<fim_suffix>1.000, 10, 3};
+    v2 = v1;
+    std::cout << "v2 = v1\n";
+    v2.print();
+    v2 = c;
+    std::cout << "v2 = c\n";
+    v2.print();
+    c = v1;
+    std::cout << "c = v1\n";
+    v2.print();
+    return 0;
+}
+
+ 
+#include <variant>
+#include <iostream>
+struct V1 {
+    int i;
+    float f;
+    void print() const {
+        std::cout << "V1 with i=" << i << " and f=" << f << "\n";
+    }
+};
+V1 v1a;
+void process(std::variant<std::monostate, V1, int>& w) {
+	std::cout << "First alternative is a monostate\n";
+	 
+	std::visit([](auto& v) {
+        std::cout << "Variant holds a value\n";
+        v.print();
+    }, w);
+}
+int main() 
+{
+    V1 v1

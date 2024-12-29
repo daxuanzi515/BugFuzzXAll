@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{ 
+  struct {
+      int x;
+      int y;
+ }a, b, c, d;
+ void *p;
+  c.y = 0x1234;
+  c.x = 0x4321;
+ d.y = 0x3300;
+ d.x = 0x0041;
+  p=(void *)&a;
+  b =  c;
+  b = (struct s ) d;
+  p = (void *)&a;
+  b.y = 0x4321;
+  b.x = 0x1234;
+  a = c;
+  a = (struct s )d;  
+  return (EXIT_SUCCESS);
+}

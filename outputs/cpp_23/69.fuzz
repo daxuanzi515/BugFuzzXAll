@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+   int sum{0};
+   for (int row{1}; row <= 5; ++row) {
+      for(int col{1}; col <= 5; ++ col) {
+         int multiplier{row};
+         for(int factor{1};factor <= col; ++factor)
+            multiplier = multiplier * factor;
+         sum += multiplier;
+      }
+   }
+   cout << sum;
+   return 0;
+}
+ 
+#include <filesystem>
+#include <iostream>
+using namespace std;
+namespace fs = std::filesystem;
+int main(int argc, char* argv[]) {
+   for(fs::directory_entry file : fs::directory_iterator("."))
+      cout << file << endl;
+   return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+int main()
+{
+   namespace my_math = std;
+   cout << my_math::pow(2, 2);
+}
+ 
+#include <format>
+#include <span>
+#include <iostream>
+using namespace std;
+int main()
+{
+   int nums[] = { 1, 2, 3};
+   std::span<int> span (nums, 3);
+   cout << span << std::endl;
+}
+/* The C++20 standard also added:
+
+1. std::filesystem
+
+2. std::ranges::transform
+
+3. std::ranges::accumulate
+
+4. std::ranges::sort
+
+5.

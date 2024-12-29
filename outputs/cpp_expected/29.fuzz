@@ -1,0 +1,33 @@
+#include <expected>
+<fim_suffix>
+auto divide(int x, int y) -> std::expected<int, std::error_code>
+{
+    if (y == 0)
+        return std::make_error_code(std::errc::divbyzero);
+    return x / y;
+}
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<fim_middle>
+#include <optional>
+#include <variant>
+#include <iostream>
+#include <stdexcept>
+
+using expected = std::expected<int, std::optional<std::string>>;
+namespace in_place = std::in_place_t;
+

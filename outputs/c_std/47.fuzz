@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    unsigned seed;
+    printf("Enter a number: ");
+    scanf("%u", &seed);
+    srand(seed);
+    int val = rand() % 20 - 10;
+    printf("Your number has been mutated! ");
+    printf("The new value of your number is %d\n", val);
+    return 0;
+}

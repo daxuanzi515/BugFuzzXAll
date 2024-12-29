@@ -1,0 +1,42 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(2, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+with qc.for_loop(indexset=[0,1,2],
+         loop_parameter='x',
+         body=[[qc.h, q[1]], qc.measure(q[1], q[0])],
+         qubits=q):
+    
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(2, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+with qc.if_test(condition='test'):
+    qc.x(q[0])
+with qc.else_if_test(condition='test'):
+    qc.y(q[0])
+with qc.else_test():
+    qc.z(q[0])
+
+with qc.while_test(condition='test'):
+    qc.z(q[1])
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(1, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+while_loop_op = qc.while_loop(condition='test',
+                              body=[qc.h(q)],
+                              qubits=[q],
+                              )

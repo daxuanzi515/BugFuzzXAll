@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct b
+{
+	int x;
+	int y;
+};
+struct b a1 = {1, 2};
+struct b a2 = {3, 4};
+struct
+{
+	int x;
+} a3 = {.x = 3,};
+int main()
+{
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}

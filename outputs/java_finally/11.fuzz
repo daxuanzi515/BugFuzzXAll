@@ -1,0 +1,18 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        try(PrintWriter out = new PrintWriter("write.txt")){
+            out.println("Let's write to a file!");
+        }
+        try(PrintWriter out1 = new PrintWriter("write.txt", "UTF-8")){
+        }
+        try(PrintWriter out2 = new PrintWriter("write2.txt")){
+            out2.println("I can write more.");
+        }
+        PrintWriter out3 = new PrintWriter("write3.txt");
+        out3.println("OK!");
+        out3.close();
+    }
+}

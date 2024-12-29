@@ -1,0 +1,106 @@
+#include <expected>
+
+	}
+
+	void test_3()
+	{
+
+	}
+};
+
+int main()
+{
+	 
+	 
+
+	Test2<int> t;
+	t.test_2();
+
+	return 0;
+}<fim_middle>
+#include <cassert>
+#include <iostream>
+#include <exception>
+
+using namespace std;
+
+struct MyException : public exception
+{
+	virtual const char *what() const noexcept override
+	{
+		return "I have an exception";
+	}
+};
+
+struct MyValue
+{
+private:
+	int _v;
+public:
+	explicit MyValue(int val = 0) noexcept : _v(val)
+	{
+	}
+
+	int value() const noexcept
+	{
+		return _v;
+	}
+
+	bool operator ==(const MyValue &other) const noexcept
+	{
+		return _v == other._v;
+	}
+
+	bool operator!=(const MyValue &other) const noexcept
+	{
+		return _v!= other._v;
+	}
+};
+
+class Test
+{
+public:
+	void test()
+	{
+        struct MyUnexpected
+        {
+            explicit MyUnexpected(int val) noexcept : value(val) {}
+
+            int value;
+        };
+
+		std::expected<MyValue, MyUnexpected> expected(in_place, 5);
+		assert(expected.has_value());
+		assert(expected.value().value() == 5);
+
+		std::expected<MyValue, MyUnexpected> expected2(in_place, 6);
+		assert(expected2.has_value());
+		assert(expected2.value().value() == 6);
+
+		std::expected<MyValue, int> expected3(in_place, 7);
+		assert(!expected3.has_value());
+		assert(expected3.error() == 7);
+
+		std::expected<MyValue, int> expected4(in_place, 8);
+		assert(!expected4.has_value());
+		assert(expected4.error() == 8);
+
+		std::expected<MyValue, MyUnexpected>  expected5 = std::move(expected2);
+		assert(expected5.has_value());
+		assert(expected5.value().value() == 6);
+
+		std::expected<MyValue, int> expected6 = std::move(expected3);
+		assert(expected6.has_value());
+		assert(expected6.value().value() == 7);
+
+		std::expected<MyValue, int> expected7 = std::move(expected4);
+		assert(!expected7.has_value());
+		assert(expected7.error() == 8);
+
+		std::expected<MyValue, int> expected8 = std::move(expected5);
+		assert(expected8.has_value());
+		assert(expected8.value().value() == 6);
+
+		bool swapped = swap(expected.value(), expected2.value());
+		assert(swapped);
+		swapped = swap(expected2.value

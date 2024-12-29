@@ -1,0 +1,13 @@
+#include <variant>
+;
+    std::visit(print_visitor, l);
+
+    try {
+        p.get<0>();
+        std::cout << "\nShouldn't reach this\n";
+        return -1;
+    }
+    catch (std::bad_variant_access&) {
+        std::cout << "This is wrong, as it got value of type " << p.index() << '\n';
+    }
+}

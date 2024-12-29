@@ -1,0 +1,14 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long sum = 0;
+    for(long long i=00;i<val;i++)
+    {
+        sum += i;
+    }
+    printf("%ld",sum); 
+    return 0;
+}
+ 
+

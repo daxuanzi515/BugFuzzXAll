@@ -1,0 +1,58 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a1=  new Object();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+		System.out.println(a1 instanceof Object);		
+		System.out.println(a1); 
+        System.out.println(a2 instanceof Integer);
+		System.out.println(a1 instanceof Main);
+	}
+}
+ 
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = "Hello";
+		if (b instanceof String) {
+			b = new Integer(10);
+		}
+        System.out.println(b);
+	}
+}
+
+ 
+ 
+class Parent {
+	public void test() {
+		System.out.println("In test method of Parent class");
+	}
+     
+	static void test1() {
+		System.out.println("In Test1 method");
+	}
+}
+ 
+class Child extends Parent{
+	static void test1() {
+		System.out.println("In Child method");
+	}
+}
+class Demo{
+	public static void main(String[] args) {
+		Parent p = new Child();
+		Child c = new Child();
+		Parent p2 = new Parent();
+		Child c2 = new Parent();
+		p.test();
+		c.test();
+		p.test1();
+		c.test1();
+		p2.test();
+		c2.test();
+		p2.test1();
+		c2.test1();
+	}
+}

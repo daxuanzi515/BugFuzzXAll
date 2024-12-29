@@ -1,0 +1,27 @@
+#include <stdlib.h>
+
+#include"stdio.h"
+
+typedef struct node{
+    char word[100];
+    long int line_number;
+    int column_number;
+    struct node* next;
+} Node; 
+
+typedef struct list {
+    struct node* start;
+    struct node* tail;
+} List;
+
+int main(void){
+    printf("--test0\n");    
+    Node* head= malloc(sizeof(Node*));
+    if(head==NULL){
+        exit(EXIT_FAILURE);
+    }
+    printf("--test2\n");
+    head->line_number=100;
+    printf("--test3\n");
+    return 0;
+}

@@ -1,0 +1,38 @@
+#include <expected>
+<fim_suffix>esults.push_back(p_a_string.value());
+    }
+    else
+    {
+    	std::cerr << p_a_string.error().m_errorMsg << '\n';
+    }
+    }
+    return results;
+}
+
+int main()
+{
+	std::vector<std::string> list{"2", "3", "2", "3", "2", "3", "99", "asd", "s12"};
+	std::vector<std::string> results{};
+	if (std::holds_alternative<std::expected<int, std::string>>(2))
+		results = get_all_results_if_first_element_is_two(list);
+	else
+		std::cout << "error found!";
+	std::cout << results[0] << '\n';
+	return 0;
+}
+
+<fim_middle>
+#include <vector>
+#include <iostream>
+
+std::vector<std::string> get_all_results_if_first_element_is_two(const std::vector<std::string>& p_string_list)
+{
+    std::vector<std::string> results{};
+    for (auto p_string : p_string_list)
+    {
+    std::expected<int, std::string> p_a_string = std::stoi(p_string);
+    if (p_a_string.has_value())
+    {
+    	if (!p_a_string.value() == 2)
+    		continue;
+    	r

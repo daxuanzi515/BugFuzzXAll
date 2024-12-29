@@ -1,0 +1,10 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  int x = 42, y = 100;
+  std::tie(x, y) = std::make_pair(y, x);
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}

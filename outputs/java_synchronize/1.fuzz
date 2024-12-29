@@ -1,0 +1,16 @@
+import java.lang.Object;
+
+
+class SynchronizedMethods {
+    int x = 10;
+    synchronized void incrementX() {
+        x++;
+    }
+
+    public static void main(String args[]) {
+        SynchronizedMethods smm = new SynchronizedMethods();
+        smm.incrementX();
+        System.out.println(smm.x);
+    }
+}
+

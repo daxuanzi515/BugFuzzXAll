@@ -1,0 +1,77 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  typedef union {
+    int i; 
+    struct {
+       int x; 
+       int y; 
+    }point; 
+    void *p; 
+  }  u1; 
+  typedef struct {
+    int x; 
+    int y; 
+  } point;
+  u1 t1; 
+  point point; 
+  void *p;  
+  t1.i = 0x1234; 
+  point.x = 0x1234;
+  point.y = 0x4321; 
+  p=(void *)&point;
+  t1.p = (u1 *)p; 
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  typedef union { 
+    int i; 
+    struct { 
+       int x; 
+       int y; 
+       struct { 
+           int px; 
+           int py; 
+       }; 
+    } point; 
+    void *p; 
+  } u1; 
+  typedef struct {
+     int x; 
+     int y; 
+  } point; 
+  u1 t1; 
+  point point; 
+  void *p; 
+  t1.i = 0x1234; 
+  point.x = 0x1234;
+  point.y = 0x4321;
+  point.px = 0x1234;
+  point.py = 0x4321;
+  p=(void *)&point;
+  t1.p = (u1 *)p; 
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <limits.h>
+#define errExit(msg) do { perror(msg); exit(EXIT_FAILURE); \
+                          } while (0)
+#define INDEX_SIZE_T unsigned int
+
+#define MAXLINE 1024
+typedef struct {
+    void *array;
+    INDEX_SIZE_T size;
+    INDEX_SIZE_T (*alloc)(INDEX_SIZE_T newsize);
+    INDEX_SIZE_T elemsize;
+    int (*cmpitem)(const void *a, const void *b);

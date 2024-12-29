@@ -1,0 +1,58 @@
+#include <expected>
+<fim_suffix>   std::cout << f_1() << ", " << 1/0 << ", "  << sqrt(-1) <<  std::endl;
+
+return result;
+}<fim_middle>
+#include <iostream>
+#include <stdexcept>
+#include <cmath>
+#include <string>
+
+int main()
+{
+    using namespace std;
+
+    auto f1 = []() {
+        return std::make_expected<std::string>("test success");
+    };
+    auto f_e = []() {
+        cout << "test e" << endl;
+        return std::make_unexpected(std::runtime_error("test error"));
+    };
+     
+    
+    auto f_2 = []() {
+        cout << "test _2" << endl;
+        return std::make_unexpected(stdexcept_error("exception"));
+    };
+     
+    
+    std::string result;
+    try
+    {
+        std::cerr << "test exception" << endl;
+        f_2().value();
+    }
+    catch (...)
+    {
+        std::cerr << "catch exception: " << std::current_exception() << std::endl;
+         
+        result = "ok";
+    }
+    
+
+    std::string f_1 = f1().value_or("empty");  
+    std::string f_a ="";
+    try
+    {
+        f_a = std::string(f_e().value_or("oops"));
+        f_a = std::string(f_e().value_or("oops"));
+    }
+    catch (...)
+    {
+        std::cerr << "catch exception: " << std::current_exception() << std::endl;
+
+        result = "ok";
+    }
+
+ 

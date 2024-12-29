@@ -1,0 +1,81 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%p\n", u1.p);
+    u2.p = 0x5678;
+    printf("%p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    union __anon_union
+    {
+        char c;
+        int i;
+    }__anon;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.__anon.i = 0x1234;
+    printf("%p\n", &u1.__anon.i);
+    printf("Type of Value %p is %d\n", &u1.__anon, u1.__anon);
+    u2.__anon.c = 'v';
+    printf("%p\n", &u2.__anon.c);
+    printf("Type of Value %p is %c\n", &u2.__anon, u2.__anon);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    union __anon_union
+    {
+        char c;
+        int i;
+        struct __compound_struct
+        {
+            char c1;
+            int i1;
+        }cs;
+    }__anon;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.__anon.i = 0x1234;
+    printf("Type of Value %p is %d\n", &u1.__anon, u1.__anon);
+    u1.__anon.cs.c1 = 'a';
+    printf("Type of Value %p is %c\n", &u1.__anon.cs.c1, u1.__anon.cs.c1);
+    u1.__anon.cs.i1 = 0xf4d4;
+    printf("Type of Value %p is %d\n", &u1.__anon.cs.i1, u1.__anon.cs.i1);
+    return (EXIT_SUCCESS);
+}
+/*
+#include <stdlib.h>
+#include <stdio.h>
+struct __struct_Data
+{
+    char *p;
+    int i;
+    void *ptr;
+    int *tptr;
+};
+int main()
+{
+    struct __struct_Data s1, s2;
+    char str[5] = "Hello";
+    int no = 4567;
+    int *num = &no;
+    s1.p = str;

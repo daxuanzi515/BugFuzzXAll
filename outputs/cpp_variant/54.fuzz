@@ -1,0 +1,69 @@
+#include <variant>
+ 100;
+        else 
+            std::cout << "Invalid index.\n";
+    }   
+    std::cout << "Bye.\n";
+}
+ 
+#include <iostream>
+#include <variant>
+ 
+class Node
+{
+public:
+    virtual int compute() const = 0;
+};
+ 
+class ValueNode : public Node
+{
+public:
+    const int m_value;
+ 
+    explicit ValueNode( int value ) : m_value{ value } {}
+ 
+    int compute() const override {
+        return m_value;
+    }
+};
+ 
+class AddNode : public Node
+{
+public:
+    const Node * m_left;
+    const Node * m_right;
+ 
+    AddNode( const Node * left, const Node * right ) : m_left{ left }, m_right{ right } {}
+ 
+    int compute() const override {
+        return m_left->compute() + m_right->compute();
+    }
+};
+ 
+class ConstantNode : public Node
+{
+public:
+    const int m_value;
+ 
+    explicit ConstantNode( int value ) : m_value{ value } {}
+ 
+    int compute() const override {
+        return m_value;
+    }
+};
+ 
+class NegateNode : public Node
+{
+public:
+    const Node * m_operand;
+ 
+    explicit NegateNode( const Node * operand ) : m_operand{ operand } {}
+ 
+    int compute() const override {
+        return - m_operand->compute();
+    }
+};
+ 
+void visit( const Node * node, bool negate )
+{
+    std::cout << ( ( negate )? - node-> compute() : node-> compute() ) << '\n';

@@ -1,0 +1,49 @@
+#include <expected>
+<fim_suffix>_t> result = {};
+	if (std::string_view(p->name(i)).substr(0, 3) == "Jen")
+		result = EmployeeName{ "<NAME>" };
+	else if (std::string_view(p->name(i)).substr(0, 4) == "Andy")
+		result = EmployeeName{ "<NAME>" };
+	else if (std::string_view(p->name(i)).substr(0, 6) == "Ricard")
+		result = EmployeeName{ "<NAME>" };
+	if (!result)  
+		throw std::runtime_error("Invalid index passed to EmployeeName");
+	EmployeeName retval = empl[i];
+	empl.erase(empl.begin() + i);
+	return retval;
+}
+
+bool modifyEmployeeName(EmployeeName emplName, const char* newEmplName)
+{
+	if (emplName.data() == newEmplName)
+		return false;
+	return true;
+}
+
+int main()
+{
+	std::vector<EmployeeName> empl;
+	empl.emplace_back(EmployeeName{ "<NAME>" });
+	empl.emplace_back(EmployeeName{ "" });
+	empl.emplace_back(EmployeeName{ "<NAME>" });
+	empl.emplace_back(EmployeeName{ "<NAME>" });
+	empl.emplace_back(EmployeeName{ "<NAME>" });
+	std::string newName{ "Ricardio" };
+	EmployeeName anEmployee{ "<NAME>" };
+	if (modifyEmployeeName(std::move(empl[1]), newName.data()))
+		empl.erase(empl.begin() + 1);
+	else
+		empl[1] = newName;
+
+	if (empl[3].data() == std::string(anEmployee))
+		empl[4] = extractName(empl.begin() + 4, empl);
+}<fim_middle>
+#include <string>
+#include <vector>
+#include <set>
+#include <unordered_set>
+typedef std::basic_string<int> EmployeeName;
+std::optional<EmployeeName> extractName(std::vector<EmployeeName>::iterator i, std::vector<EmployeeName>& empl)
+{
+	 
+	std::optional<EmployeeName, decltype(std::nullopt)

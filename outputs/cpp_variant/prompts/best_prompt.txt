@@ -1,0 +1,20 @@
+/* The `std::variant` is a class template in C++17 that represents a type-safe union. At any given time, a `std::variant` holds either a value of one of its alternative types or no value at all in case of an error.
+
+Key features and functionality of `std::variant`:
+
+1. It can hold the same type multiple times and provides a zero-based index to access them.
+2. It cannot hold references, arrays, or the type void. Use `std::monostate` to create 'empty' variants.
+3. Unlike unions, it doesn't allow uncontrolled mutation of its active member, ensuring type safety.
+4. Constructs, destructs, assigns value to a variant efficiently.
+5. It provides observers like `index` (to get the index of the held alternative) and `valueless_by_exception` (checks if variant is in an invalid state).
+6. Modifiers like `emplace` (constructs a value in place) and `swap` (swaps value with another variant).
+7. Non-member functions like `visit` (calls functor with arguments held by variants), `holds_alternative` (checks if a variant holds a certain type), `std::get` (reads value of variant given the index or type), `get_if` (returns pointer to value if variant holds it).
+8. Comparison operators to compare the held values of two variant objects.
+9. Companion types like `monostate` (to allow a variant of non-default-constructible types) and `bad_variant_access` (throws exceptions when there's an invalid access to a variant's value).
+10. Compile-time type and size information functions `variant_size`, `variant_size_v`, `variant_alternative`, and `variant_alternative_t`.
+11. A specialized `std::hash` algorithm for variant types.
+12. The constant `variant_npos` denotes invalid indexes.
+
+This feature introduces strong type-safety and versatility in handling multiple types through a single variable. It's widely used in situations where a variable could take values from multiple types, like return types, function inputs, etc. */
+/* Please create a very short program which combines std::variant with new C++ features in a complex way */
+#include <variant>

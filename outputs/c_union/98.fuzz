@@ -1,0 +1,40 @@
+#include <stdlib.h>
+<fim_suffix>n union members using the address operator  * to access union variables. */
+int main() {
+	int x = 9999, y = 1, z;
+	union Number t;
+
+	t.x = x;
+	t.y = y;
+	z = t.x;	 
+	printf("The value of z is: %d", z);
+	
+	return 0;
+}
+<fim_middle>#include <stdio.h>
+ 
+union Number {
+	int x;	 
+	float y;	 
+};
+
+ 
+#include <stdlib.h>
+#include <stdio.h>
+
+union Number {
+	int x;	 
+	float y;	 
+};
+
+/* To declare a union in C programming language, we need to include union keyword in our program and name our union, for example:
+ union Number{
+ int x;
+ float y;
+ }
+ 
+ Unions are used to define an entity that stores different types of data. For example consider following the above definition, union Number can have two members named x and y. This union can also be defined using a single line as follows,
+ 
+ union Number = int x, float y;
+ 
+We can now access a

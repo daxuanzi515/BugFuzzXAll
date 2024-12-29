@@ -1,0 +1,35 @@
+#include <expected>
+<fim_suffix> << "Value is not available at time = " << time << "\n";
+    std::exit(EXIT_FAILURE);
+  }
+
+  return 0;
+}
+<fim_middle>
+
+#include <chrono>
+#include <thread>
+#include <iostream>
+#include <cstdlib>
+#include <type_traits>
+
+void a_function(int a, int b)
+{
+  if(a < b)
+    throw  std::runtime_error("Expected value is more than actual value");
+  else if(a > b)
+    throw 42;
+  else
+    throw std::string{"My name is <NAME>"};
+}
+
+int main() {
+  int time = 5;
+  try {
+    std::this_thread::sleep_for(std::chrono::seconds{time});
+    a_function(4, 5);
+  } catch (const std::exception& e) {
+    std::cerr << "Exception at time = " << time << ",what() = " << e.what() << "\n";
+    std::exit(EXIT_FAILURE);
+  } catch (...) {
+    std::cerr

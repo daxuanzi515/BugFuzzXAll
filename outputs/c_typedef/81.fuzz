@@ -1,0 +1,77 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_COLS 255
+#define MAX_ROWS 256
+typedef struct {
+  int cols; 	int rows;
+  char array[MAX_ROWS][MAX_COLS];
+} mymatrix;
+
+int main()
+{
+	mymatrix a, b;
+	a.cols = 5;
+	a.rows = 10;
+	b.cols = 8;
+	b.rows = 10;
+	for(int i = 0; i < a.rows; i++)
+		for(int j = 0; j < a.cols; j++)
+			a.array[i][j] = i + j + 1;
+	for(int i = 5; i < b.rows; i++)
+		for(int j = 8; j < b.cols; j++)
+			b.array[i][j] = i + j - 54;
+
+	printf("%d %d\n", a.cols, a.rows);
+	printf("%d %d\n", b.cols, b.rows);
+
+	for(int i = 0; i < 10; i++)
+	{
+		for(int j = 0; j < 5; j++)
+			printf("%d ", a.array[i][j]);
+		printf("\n");
+	}
+
+	for(int i = 5; i < 15; i++)
+	{
+		for(int j = 8; j < 11; j++)
+			printf("%d ", b.array[i][j]);
+		printf("\n");
+	}
+
+	for(int i = 0; i < a.rows; i++)
+		for(int j = 0; j < a.cols; j++)
+			printf("%d ", a.array[i][j]);
+
+	for(int i = 0; i < b.rows; i++)
+		for(int j = 0; j < b.cols; j++)
+			printf("%d ", b.array[i][j]);
+	printf("\n");
+	return 0;
+}
+int main1()
+{
+	mymatrix a;
+	a.cols = 5;
+	a.rows = 8;
+
+	char c[5][10];
+	int i,j,k;
+	for( i = 0 ; i < a.rows ; i++ )
+	{
+		for(j = 0 ; j < a.cols ; j++ )
+		{
+			scanf("%c",&a.array[i][j]);
+		}
+	}
+	for( i = 0 ; i < a.rows ; i++ )
+	{
+		for(j = 0 ; j < a.cols ; j++ )
+		{
+			printf("%c ",a.array[i][j]);
+		}
+		printf("\n");
+	}
+
+	for(i = 

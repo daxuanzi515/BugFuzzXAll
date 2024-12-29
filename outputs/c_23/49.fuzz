@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+int main(void)
+{
+    char buffer[ARRAY_SIZE] = {0};
+    int rv;
+
+    printf("%s\n", "The string to reverse:");
+    scanf("%s", buffer);
+    rv = reverseBits(buffer, ARRAY_SIZE);
+    printf("%s\n", buffer);
+
+    return 0;
+}

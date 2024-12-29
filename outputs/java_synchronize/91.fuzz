@@ -1,0 +1,9 @@
+import java.lang.Object;
+class Main {
+    synchronized void doSomething() {
+        Object lock = new Object();
+        synchronized (lock) {
+            System.out.println(lock.toString() + ": doSomething()");
+        }  
+    }  
+}

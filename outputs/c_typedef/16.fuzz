@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+ 
+typedef int int_t;
+
+ 
+ 
+
+int main() {
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+
+ 
+if (sum == 33)
+    printf("A");
+else
+    printf("N");
+return 0;
+}

@@ -1,0 +1,76 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, num_qubits, matrix):
+        self.size = num_qubits
+        self.params = None
+        self.matrix = matrix
+        self.circuit = None
+
+    def __str__(self):
+        if self.matrix:
+            return self.circuit.__repr__()
+        return'reversible gate'
+
+    def draw(self, backend='text', scale=1, filename=None):
+        if self.circuit:
+            circ = self.circuit.decompose()
+            return circ.draw(backend=backend, scale=scale, filename=filename)
+
+    def control(self, num_ctrl_qubits=1):  
+        import qiskit.qasm as qasm
+        from qiskit.circuit import QuantumCircuit, QasmQobjInstruction
+
+        num = self.size + num_ctrl_qubits
+        circ = QuantumCircuit(num)
+        target_qubits = [i for i in range(self.size)]
+        ctrl_qubits = [i for i in range(self.size, self.size + num_ctrl_qubits)]
+        for ctrl in ctrl_qubits:
+            circ.h(ctrl)
+
+        for j in range(num_ctrl_qubits):
+            circ.x(ctrl_qubits[j])
+
+
+        qasm_str = 'ccx' + str(ctrl_qubits[0]) + \
+                   ',' + str(target_qubits[0]) + ',' + \
+                   str(target_qubits[1]) + ';'
+
+        
+        qasm_circuit = qasm._Qasm(qasm_str)
+        params = qasm_circuit._qasm_ast._params
+        circuit_obj = QasmQobjInstruction(qasm_circuit._qasm_ast
+                                       .name(),
+                                        len(params),
+                                        params)
+        for qubit in ctrl_qubits:
+            circuit_obj.ch += f"h q[{qubit}]\n"
+        circuit_obj
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

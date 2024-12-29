@@ -1,0 +1,41 @@
+from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2, 2)  
+with qc.for_loop(0, range(5), 2, body, qubits=[0,1]) as loop:
+    with loop.if_test(lambda i: i.c0 < 5, [0,1]) as condition_0:
+        
+        qc.cnot(loop.indexset[0], loop.loop_value())
+    with condition_0:
+        
+        qc.cnot(loop.indexset[1], loop.loop_value())
+
+
+
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)  
+loop_value = 420  
+while qc.while_loop(lambda i, _ : i!= 5,
+    loop_value,
+    loop_variable_index=2,  
+    body=body,
+    qubits=[0,1]
+) <=0:
+    with _as.if_test(lambda i, _ : i.c0 < 5, [0,1]) as condition_0:
+        
+        _qc.cnot(loop_value, loop_value)
+
+
+
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)  
+loop_value = 420  
+while qc.no_while_loop(
+    lambda i, _ : i.c0!= 5,
+    loop_value,
+    range(0, 5),
+    loop_variable_index=2,  
+    body=body
+):

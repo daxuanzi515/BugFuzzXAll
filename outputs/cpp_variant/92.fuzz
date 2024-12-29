@@ -1,0 +1,55 @@
+#include <variant>
+<fim_suffix> << f << std::endl;
+}
+
+template <class A, class B>
+auto operator+(const A &a, const B &b) {
+  if constexpr (std::is_arithmetic_v<A>) {
+    if constexpr (std::is_arithmetic_v<B>) {
+      return a + b;
+    }
+  }
+
+  return add(a, b);
+}
+
+int main() {
+  std::variant<int, float> a{12}, b{41};
+  print(a + b);
+}
+
+ 
+class Vector {
+    private:
+        std::variant<int, double, std::string> holder;
+
+    public:
+         
+        Vector() {}
+        Vector(int value) : holder(value) {}
+        Vector(double value) : holder(value) {}
+        Vector(std::string value) : holder(value) {}
+         
+         
+         
+};
+
+int add(int left, int right) {
+    return left + right;
+}
+
+float add(float left, float right) {
+    return left + right;
+}
+
+double add(double left, double right) {
+    return left + right;
+}
+
+std::string add(const std::string &left, const std::string &right) {
+    return left + right;
+}
+
+template <class A, class B>
+auto operator+(const A &a, const B &b) {
+  if

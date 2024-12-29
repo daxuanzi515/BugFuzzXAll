@@ -1,0 +1,32 @@
+#include <expected>
+<fim_suffix>}
+};
+
+int main() {
+     
+    std::optional<int> x;
+
+     
+    if (x)
+        std::cout << *x << std::endl;
+
+     
+    try {
+        std::cout << x.value() << std::endl;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << " " << x.error().value() << std::endl;
+    }
+
+    auto y = std::expected{1.23};
+    x = std::expected{200};
+    auto z = std::expected<int, std::error_code>{std::error_code::io_error};
+
+    std::cout << "y has " << (int) y << " value" << std::endl;
+    std::cout << "x has " << x.value() << " value" << std::endl;
+    std::cout << "z has " << z.error().value() << " error value" << std::endl;
+    return 0;
+}<fim_middle>
+
+template<typename T, typename E>
+T getValue(const std::expected<T, E> &value) {
+    return *value;   

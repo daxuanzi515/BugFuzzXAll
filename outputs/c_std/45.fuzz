@@ -1,0 +1,46 @@
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(char *const str)
+{
+    char *s = str;
+    while (*str)
+    {
+        *str++ = *s++;
+    }
+    return (int*const)s;
+}
+int main()
+{
+    char name[] = "Nahla";
+    changeValue(&name[1]);
+    printf("%s\n",name);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(int *const num)
+{
+    int temp;
+    int *temp2=num;
+    for (size_t i = 0; i < 12; ++i)
+    {
+        temp=*temp2;
+        *temp2=*(temp2+1);
+        *(temp2+1)=temp;
+        for (size_t i =0; i <sizeof(int)* 12; ++i)
+        {
+            *(temp2+1)+=*temp2;
+        }
+        temp2+=2;
+    }
+    return num;
+}
+int main()
+{
+    int val[12];
+    for (size_t i = 0; i < 12; ++i)
+    {
+        val[i]=rand()%100;
+    }
+    changeValue(&val[5

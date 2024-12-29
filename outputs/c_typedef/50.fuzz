@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	FreePoint(p);
+	FreePoint(min_point);
+	FreePoint(max_point);
+	return 0;
+}
+
+ 
+ 
+

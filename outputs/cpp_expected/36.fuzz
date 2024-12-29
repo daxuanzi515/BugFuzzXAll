@@ -1,0 +1,72 @@
+#include <expected>
+<fim_suffix>td::filesystem::path,int>(1) is an ok alternative
+	 
+	auto file = open_file(
+		"a.txt");
+
+	std::cout << "Result of reading the first line" << std::endl;
+	auto line = file.and_then(read_line1);
+
+	line.and_then(
+		[](std::string& line)
+		{
+			std::cout << "The first line was: " << line << std::endl;
+		}
+	);
+
+	return 0;
+}
+
+#endif
+<fim_middle>
+#include <filesystem>
+#include <string>
+#include <iostream>
+
+class MyException : public std::exception
+{
+};
+
+std::expected<std::string, MyException> read_first_line(std::filesystem::path const& file_path)
+{
+	std::cout << "Reading " << file_path << std::endl;
+	std::ifstream fs{file_path};
+	if (!fs.is_open())
+	{
+		return std::make_exception_ptr(MyException{});
+	}
+	std::string line;
+	std::getline(fs, line);
+	return line;
+}
+
+ 
+
+inline std::expected<std::string, std::error_code> open_file(
+	std::filesystem::path const& file_path) noexcept
+{
+	 
+	std::error_code file_error;
+	const std::filesystem::path file = std::filesystem::path(
+		file_path).lexically_normal(file_error);
+	if (file_error)
+		return std::make_error_code(file_error);
+	return file;
+}
+
+inline std::expected<std::string, std::error_code> read_line1(
+	std::filesystem::path const& file_path) noexcept
+{
+	auto file = open_file(file_path);
+	std::error_code ec;
+	return std::filesystem::is_regular_file(file, ec)
+			? read_first_line(file)
+			: std::make_error_code(ec);
+}
+
+#include <system_error>
+#include <iostream>
+
+int main()
+{
+	 

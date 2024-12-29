@@ -1,0 +1,4064 @@
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+public class Final1 {
+    public static void main() {
+        System.out.println("Starting");
+    try{
+            System.out.println("Entering 1st try block");
+            System.out.println(Integer.parseInt("1st try block"));
+            int i1 = Integer.parseInt(input);
+            int j1 = Integer.parseInt(input);
+            int k1 = i + j;
+            System.out.println("Out of 1st try block");
+        }
+    catch(Exception e){
+        System.out.println(e.getMessage());
+    }
+    finally{
+        System.out.println("Clean up");
+        System.out.println("Out of 1st finally block");
+    }
+        
+    
+     
+        System.out.println("2nd try-with-resource block");
+        try(FileWriter writer = new FileWriter("tryResource.txt"); 
+            PrintWriter  pw1 = new PrintWriter(writer); )
+        {
+            pw1.println("Try-with-resource-block");
+        }
+        System.out.println("Out of 2nd try-with-resource block");
+        
+         
+        
+    
+         
+         
+        
+        System.out.println("Done");
+    }
+
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.System;
+import java.lang.Exception;
+
+class ResourceA implements AutoCloseable {
+    public ResourceA() { 
+    }
+
+    @Override
+    public void close() throws Exception {  
+        System.out.println("ResourceA.close() invoked.");
+    }
+}
+
+public class FileOps {
+    public static void main(String[] args) {
+        try (ResourceA rA = new ResourceA()) {
+            throw new Exception("ResourceA exception on open.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+ 
+import java.io.FileWriter;
+import java.io.IOException;
+
+class TextFile {
+    private FileWriter writer;
+    TextFile(String path) throws IOException {
+        writer = new FileWriter(path);
+    }
+    public void add(String text) throws IOException {
+        writer.write(text);
+    }
+    public void close() throws IOException {
+        writer.close();
+    }
+}
+
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+class FileManager {
+     
+    public static void copy(String src, String dst) throws IOException {
+        new TextFile(dst, text -> {
+            text.add("File copy: \n");
+            try (BufferedReader reader = new BufferedReader(new FileReader(src))) {
+                String line = reader.readLine();
+                while(line!=null) {
+                    text.add(line);
+                    text.add("\n");
+                    line = reader.readLine();
+                }
+                 
+            } catch (IOException ex) {
+                 
+                throw ex;
+            } finally {
+                 
+            }
+        });
+    }
+}
+public class UseTryWithResources {
+    public static void main (String [] args) throws IOException {
+        FileManager.copy("C:\\Program Files\\Java\\README.txt", 
+            "C:\\Users\\joe\\Desktop\\test.txt");
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ class FinallyDemo {  
+    public static void main(String args[]) throw IOException{ 
+        BufferedReader br = null;  
+        BufferedWriter bw = null; 
+        String path = null;      
+        String line, name;  
+        int len;    
+        if (args.length!=2)  
+    {
+        System.out.println("Usage: Java finallyDemo file1 file2"); 
+        System.exit(1); 
+    } 
+        path = args[0]; 
+        br = new BufferedReader(new FileReader(path)); 
+        path = args[1]; 
+        bw = new BufferedWriter(new FileWriter(path)); 
+        do   
+    {
+        line = br.readLine(); 
+        len = line.length(); 
+        bw.write(len); 
+        bw.newLine(); 
+    } while (line!= null && len!=0);  
+        bw.close();  
+        br.close();
+    } 
+        
+   
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) {
+		PrintWriter out = null;
+		try{
+			out = new PrintWriter("output.txt");
+			out.println("Hey");
+		}
+		catch (FileNotFoundException e) {
+			System.err.println(e);
+			}
+		out.close();
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.String;
+import java.io.*;
+
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+
+        PrintWriter out = null;
+
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+
+        PrintWriter out1 = new PrintWriter("write1.txt");
+
+        out1.println("Test!");
+        out1.close();
+
+        PrintWriter out2 = new PrintWriter("write1.txt");
+        PrintWriter out3 = new PrintWriter("write1.txt");
+    
+         
+
+        out2.println("Test!");
+        out2.close();
+        out3.println("Test!");
+        out3.close();
+
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out1.println("Test!");
+        out1.close();
+        PrintWriter out2 = new PrintWriter("write1.txt");
+        PrintWriter out3 = new PrintWriter("write1.txt");
+        out2.println("Test!");
+        out2.close();
+        out3.println("Test!");
+        out3.close();
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        PrintWriter out2 = new PrintWriter("write1.txt");
+        try{
+                out2 = new PrintWriter("write1.txt");
+            out2.println("Test!");
+        }
+       finally{
+            if(out2!= null){
+                out2.close();
+            }
+        }
+        PrintWriter out3 = new PrintWriter("write1.txt");
+        out3.println("Test!");
+        out3.close();
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = new PrintWriter("write.txt");
+
+        PrintWriter out1 = new PrintWriter(new BufferedWriter(new FileWriter("write1.txt",true)));
+        try{
+                out1.println("Hi");
+            out1.println("Test!");
+        }
+        finally{
+            if(out1!= null){
+                out1.close();
+            }
+            out.close();
+        }
+
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+            out.close();
+            System.out.println("Closing PrintWriter.");
+               out = new PrintWriter("write.txt", "UTF-8");
+            System.out.println("Opening a new PrintWriter...");
+        }
+        finally{
+            if(out!= null){
+                System.out.println("Closing PrintWriter.");
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out1.println("Test!");
+        out1.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.IOException;
+import java.io.PrintWriter;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+		try{
+			out = new PrintWriter("write.txt");
+			out.close();
+			out.println("Let's write to a file!");
+		}
+		finally{
+			if(out!= null){
+				out.close();
+			}
+		}
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        PrintWriter out2 = new PrintWriter("write1.txt");
+		out2.println("Test!");
+		out1.close();
+		out2.close();
+        PrintWriter out3 = new PrintWriter("write1.txt");
+		out3.println("Test!");
+		out3.close();
+    }
+}
+
+ 
+public class Test{
+    public int number;
+    public void method1(){
+        int number = 20;
+        boolean flag = true;
+        number = 2;
+        if(flag){
+            int number = 10;
+        }
+        System.out.println(this.number);
+    }
+    public static void main(String[] args) {
+        Test test = new Test();
+        test.method1();
+    }
+}
+
+ 
+This would be printed in System.out as 20. The number is 20 because inside method1, when checking "if(flag){}", boolean flag is true, hence the new value of number is assigned as 10. Therefore, inside method1, number is 10 when checking "number = 2;" Hence, the output is 10.
+
+Test 2 */
+This would be printed as 2. The number is being changed from outside method1. Therefore, outside method1, the value of number remains 10. Therefore, the output would be the value of the number outside the method i.e. 20.
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+import java.nio.file.*;
+public class MutatedFinaly{
+    public static void main(String[] args) throws IOException{
+ 
+        try(FileInputStream in = new FileInputStream("read.txt");  
+                    FileOutputStream out = new FileOutputStream("write.txt")){ 
+                out.write(in.read());
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinalJava{
+            public static void main(String[] args) throws IOException{
+                PrintWriter out = null;
+                try{
+                        out = new PrintWriter("write.txt");
+                    out.println("Let's write to a file!");
+                }
+                finally{
+                    if(out!== null){
+                        out.close();
+                    }
+                }
+                PrintWriter out1 = new PrintWriter("write1.txt");
+                out1.println("Test!");
+                out1.close();
+                PrintWriter out = new PrintWriter("write1.txt");
+                PrintWriter out3 = new PrintWriter("write1.txt");
+                out.println("Test!");
+                out.close();
+                out3.println("Test!");
+                out3.close();
+            }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+            out.close();
+            System.out.println("Closing PrintWriter.");
+               out = new PrintWriter("write.txt", "UTF-8");
+            System.out.println("Opening a new PrintWriter...");
+        }
+        finally{
+            if(out!= null){
+                System.out.println("Closing PrintWriter.");
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out1.println("Test!");
+        out1.close();
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyWithResources{
+    public static void main(String[] args) throws IOException{
+        try(PrintWriter out = new PrintWriter("write.txt");){
+            out.println("Let's write to a file!");
+        }
+        try(PrintWriter out1 = new PrintWriter("write1.txt")){
+            out1.println("Test!");
+        }
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* At most one finally block can appear in any try statement, after any variable declarations. This limitation on finally clauses is important. Because the finally clause typically includes code such as closing resources, it can easily result in an exception that might not otherwise occur, making debugging difficult. To ensure that exceptions that occur during the execution of finally blocks will result in exceptions immediately in the invoking code, all resources must be available and all their finalizers executed when the try statement is complete. For example, if an IOException occurs during the execution of a finally block that tries to close a resource, the original IOException should be passed to the exception handler for the try statement. If the exception cannot be handled during the final execution of a finally block, the original IOException should be rethrown.
+
+The flow of execution in the try statement illustrated in the previous section is as shown in the following picture:
+
+Note that each resource is closed if and only if its try clause completes normally without throwing an exception. If the try clause completes abruptly due to a throwing of an exception before all resources are closed, then only those resources that have already been closed will have their finalizers executed.
+
+If one or more resources fail to close, then the finalizer for that particular resource will execute before the finalizers of other resources whose try clause complete normally, and then the process will continue till all the finalizers execute, and finally, the exception will be passed to the associated handler for the try block.
+
+With the Java SE 7 release, a try-finally statement can contain resource declarations of the for, if, while, and foreach statements. These declarations ensure that the resource has been
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        try(PrintWriter out = new PrintWriter("write.txt")){
+            out.println("Let's write to a file!");
+        }
+        try(PrintWriter out1 = new PrintWriter("write.txt", "UTF-8")){
+        }
+        try(PrintWriter out2 = new PrintWriter("write2.txt")){
+            out2.println("I can write more.");
+        }
+        PrintWriter out3 = new PrintWriter("write3.txt");
+        out3.println("OK!");
+        out3.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+             
+            out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+            out.close();
+            System.out.println("Closing PrintWriter.");
+             
+            out = new PrintWriter("write.txt");
+            System.out.println("Opening a new PrintWriter...");
+        }
+        finally{
+            if(out!= null){
+                System.out.println("Closing PrintWriter.");
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out1.println("Test!");
+        out1.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava1{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+            out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out.println("Test!");
+        out1.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+                out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+            out.close();
+            System.out.println("Closing PrintWriter.");
+               out = new PrintWriter("write.txt", "UTF-8");
+            System.out.println("Opening a new PrintWriter...");
+        }
+        finally{
+            if(out!= null){
+                System.out.println("Closing PrintWriter.");
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out1.println("Test!");
+        out1.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava1{
+    public static void main(String[] args) throws IOException{
+        PrintWriter out = null;
+        try{
+            out = new PrintWriter("write.txt");
+            out.println("Let's write to a file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        PrintWriter out1 = new PrintWriter("write1.txt");
+        out.println("Test!");
+        out1.close();
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        MyWriter writer = new MyWriter("write.txt");
+        BufferedReader reader = new BufferedReader(writer.open());
+        String line = reader.readLine();
+        System.out.println(line);
+        reader.close();
+        writer.append("This comes after the end of line");
+    }
+}
+public class MyWriter{
+    public PrintWriter delegate;
+    public MyWriter(String fileName) throws IOException{
+        this.delegate = new PrintWriter(fileName);
+        this.delegate.println("write to file\nI'm a second line!");
+        this.delegate.close();
+    }
+    public Writer open() throws IOException{
+        this.delegate = new PrintWriter("write2.txt");
+        this.delegate.println("Open stream!");
+        return this.delegate;
+    }
+    public void append(String content) throws IOException{
+        this.delegate = new PrintWriter("write2.txt", "UTF-8");
+        delegate.println(content);
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.io.*;
+import java.lang.String;
+public class FinallyJava2{
+    public static void main(String[] args) {
+        FileWriter out = null; 
+        try{
+            out = new FileWriter("write.txt",true);
+            out.write("Let's write to file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        FileWriter out1 = new FileWriter("write1.txt");
+        out1.write("Second");
+        out1.close();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+         
+        try{
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                 
+            }
+        }
+        finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+         
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        int a = 10;
+        a = 20;
+        String b = "b";
+        String c = "c";
+        b = c;
+        PrintWriter out = new PrintWriter("write.txt");
+        out.println("writing to file!");
+        out.close();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        RandomAccessFile random = new RandomAccessFile("test.dat","rw");
+        random.writeInt(1168);
+        random.writeInt(2152);
+
+        random.close();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        try{
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws  IOException{
+        BufferedReader in = null;
+        try{
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+             
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+            System.out.println("Line");
+        }finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        boolean successful = false;
+        try{
+            try{
+                in = new BufferedReader(new FileReader("file.txt"));
+                String line;
+                while((line = in.readline())!= null){
+                    System.out.println(line
+                }
+            }
+            finally{
+                if(in!= null){
+                    in.close();
+                }
+            }
+        }
+        catch(Exception e){
+
+        }
+        finally{
+            if(successful){
+                
+               System.out.println("Done");
+            }    
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2a{
+    public static void main(String[] args) throws IOException{
+        FileReader in = null;
+        try{
+            in = new FileReader("file.txt");
+            String line;
+            while((line = in.readUTF())!= null){
+                System.out.println(line.getBytes());
+            }
+        }
+        finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        finally{
+             
+            in = null;
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        try{
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+            System.err.println("Closing connection");
+        }
+        finally{
+            if(in!= null){
+                in.close();
+                System.err.println("Connection has been closed");
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt")))
+        { 
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+    }
+}
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        finally{
+            in = null;
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try (BufferedReader in = new BufferedReader(new FileReader("newFile.txt"));){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader in2 = null;
+        try{
+            String line;
+            in2 = in;
+            while((line = in2.readLine())!= null){
+                System.out.println(line);
+            }
+        }finally{
+            if(in!= null){
+                in2 = null;
+            }
+        }
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            in = null;
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try(BufferedReader inputBuffer = in){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        if(in!= null){
+            in.close();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.FileNotFoundException;
+import java.io.FileReader ;
+import java.io.IOException;
+public class ThrowsException {
+    public static void main(String[] args) {
+       try{
+           BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+           String line;
+           while((line = in.readLine())!= null){
+               System.out.println(line);
+           }
+       }
+       catch (FileNotFoundException e){
+           e.printStackTrace();
+       }
+       catch (IOException e) {
+           e.printStackTrace() ;
+       }
+       finally{
+           System.out.println("finished");
+       }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            in = null;
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("someFile.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("someOtherFile.txt"));
+            }
+        }
+        finally{
+            in = new BufferedReader(new FileReader("anotherFile.txt"));
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava4{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("anotherFile.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("yetAnotherFile.txt"));
+            }
+        }
+        finally{
+             
+             
+            System.gc();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        File file, file1;
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("file1.txt"));
+                file = new File("file3.txt");
+            }
+        }
+        finally{
+            in = null;
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        try(BufferedReader br = new BufferedReader(new FileReader("FileName.txt"))){
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        BufferedReader br = null;
+        try{
+       		br = new BufferedReader(new FileReader("FileName.txt"));
+            System.out.println(br);
+        }
+        catch (IOException e){
+        	System.out.println(br);
+        }
+        finally{
+        	if (br!= null){
+                System.out.println(br);
+        	}
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        BufferedReader br = null;
+        try{
+        	br = new BufferedReader(new FileReader("FileName.txt"));
+        }
+        catch (IOException e){
+        	br = null;
+        }
+        finally{
+        	if (br!= null){
+                br.close();
+        	}
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null){
+                try{
+                    in.close();
+                }
+                finally{
+                    if(in!= null){
+                        System.out.println(5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Mutated{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        in.close();
+        in = null;
+    }
+}
+ 
+ 
+  
+import java.io.File;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+public class FileLineCounter{
+    public int countLines(String filename, int linesToCount) throws IOException{
+        File file = new File(filename);
+        LineNumberReader line = new LineNumberReader(new FileReader(file));
+        String lineText;
+        while((lineText = line.readLine())!= null){
+            linesToCount--;
+            if(linesToCount == 0){
+                return line.getLineNumber();
+            }
+        }
+        return -1;
+    }
+}
+  
+ 
+  
+import java.io.File;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+
+public class FileLineCounter{
+    public static void main(String[] args) throws IOException{
+        if (args.length!= 2){
+            System.out.println("\nThis method takes two arguments!");
+        }
+        int linesToCountTo = Integer.parseInt(args[1]);
+        int lines = new FileLineCounter().countLines(args[0], linesToCountTo);
+        if (lines == -1){
+            System.out.println("The file contains " + lines + " lines!");
+        }else{
+            System.out.println("The first " + lines + " lines were counted!");
+        }
+    }
+    public int countLines(String filename, int linesToCount) throws IOException{
+        File file = new File(filename);
+        LineNumberReader line = new LineNumberReader(new FileReader(file));
+        String lineText;
+        while((lineText = line.readLine())!= null){
+            linesToCount--;
+            if(linesToCount == 0){
+                return line.getLineNumber();
+            }
+        }
+        return -1;
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class JavaTryWithResources{
+    public static void main(String[] args){
+        int x;
+        String s;
+        try(
+            BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            PrintWriter out = new PrintWriter(new FileWriter("someOther.txt");
+        ){
+            String line;
+            while((line = in.readLine())!= null){
+                out.print(line);
+                s = line;
+                out = null;
+                x = 5;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Got exception: " + e.getMessage());
+        }
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null){
+                try{
+                    in.close();
+                }
+                finally{
+                    if(in!= null){
+                        System.out.println(5);
+                    }
+                }
+            }
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class BetterFinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null){
+                try(BufferedReader in2 = new BufferedReader(new FileReader("file2.txt"))){
+                    String line2;
+                    while((line2 = in2.readLine())!= null){
+                        System.out.println(line2);
+                        in2 = new BufferedReader(new FileReader("something2.txt"));
+                         
+                    }
+                }
+                 
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class TryJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try(BufferedReader in2 = new BufferedReader(new FileReader("file2.txt"))){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                if((line = in2.readLine())!= null){
+                    System.out.println(line);
+                }
+                 
+                 
+            }
+        }
+    }
+}
+ 
+ 
+ 
+import java.lang.String;
+import java.io.*;
+public class OpenStreamsJava{
+    public static void open(String name) throws FileNotFoundException{
+    }
+}
+ 
+import java.lang.String;
+import java.io.*;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null){
+                try{
+                    in.close();
+                }
+                catch(Exception e){
+                    System.out.println("in cannot be closed due to some error");
+                }
+            }
+            try{
+                if(in!= null){
+                    in.close();
+                }
+            }
+            catch(Exception e){
+                System.out.println("in has still not been closed :(");
+            }
+            in = null;
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException, ArithmeticException{
+    long num = 1L;
+        long result = 0;  
+        try{
+            for(int i = 1; i < 10000000; i++){
+                result += num + 1;
+            }
+        }
+        catch(ArithmeticException e){
+            System.out.println("Number is too big and will throw an ArithmeticException!");
+        }
+        catch(IOException ie){
+            System.out.println("Number is too big and will throw an FileNotFoundException!");
+        }
+        catch(Exception e){
+            System.out.println("Unknown exception!");
+        }
+        finally{
+            System.out.println("Result is: " + result);
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Program1{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line;
+        try{
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        finally{
+            if(in!= null){
+                try{
+                    in.close();
+                }
+                finally{
+                    if(in == null){
+                        System.out.println(5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null)in.close();
+            System.out.println(5);
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line = null;
+        while((line = in.readLine())!= null){
+            System.out.println(line);
+            in = new BufferedReader(new FileReader("something.txt"));
+        }
+        if(in!= null){
+                    try{
+                        in.close();
+                    }
+                    finally{
+                        if(in!= null){
+                            System.out.println(5);
+                        }
+                    }
+                }
+
+    }
+}
+
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line = null;
+        while((line = in.readLine())!= null){
+            System.out.println(line);
+            in = new BufferedReader(new FileReader("something.txt"));
+        }
+        if(in!= null){
+                    try{
+                        in.close();
+                    }
+                    finally{
+                        if(in!= null){
+                            System.out.println(5);
+                        }
+                    }
+                }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        try{
+            BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            String line = null;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = null;
+                final BufferedReader bufferedreader = new BufferedReader(new FileReader("something.txt"));
+                if(bufferedreader!= null) continue;
+                bufferedreader.close();
+                throw null;
+              }
+          }catch (IOException e){
+            System.out.println(7);
+            throw e;
+          }finally{
+              if(in!= null){
+                  System.out.println(6);
+              }
+          }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line = null;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+            in = new BufferedReader(new FileReader("something.txt"));
+        }
+        finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+             
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+             
+        
+            if (reader!= null) {
+                reader.close();
+            }
+        
+            if (in!= null) {
+                 
+                in.close();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJAVA1{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line = null;
+        while((line = in.readLine())!= null){
+            System.out.println(line);
+            in.close();
+            try{
+                BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        if(in!= null){
+            try{
+                in.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line = null;
+        while((line = in.readLine())!= null){
+            System.out.println(line);
+            in = new BufferedReader(new FileReader("something.txt"));
+        }
+        if(in!= null){
+                    try{
+                        in.close();
+                    }
+                    catch(Exception e){
+                    }
+                }
+    }
+}
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            if (reader!= null) {
+                reader.close();
+            }
+            if (in!= null) {
+                in.close();
+            }
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyTwo {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+                if (reader!= null) {
+                    reader.close();
+               }
+               if (in!= null) {
+                    in.close();
+               }
+        }
+    }
+}      
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader reader = null;
+        try {
+            String line;
+     
+            while((line = in.readLine())!= null)
+            {
+                reader = new BufferedReader(new FileReader("something.txt"));
+                System.out.println(line);
+            }
+        }
+        catch(IOException e)
+            {
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            reader.close();
+            in.close();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args)throws IOException{
+        Reader r = null;
+        BufferedReader reader = null;
+        try{
+            reader = new BufferedReader(new FileReader("file.txt"));
+            r = new FileReader("something.txt");
+            long numberOfChar = 0;
+            char[] buf = new char[0x80];
+            int read = reader.read();
+            while(read!= -1){
+                numberOfChar += read;
+                read = reader.read(buf);
+                r.read(buf);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally{
+            if(r!= null){
+                r.close();
+            }
+            if(reader!= null){
+                reader.close();
+            }
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in=new BufferedReader(new FileReader("file.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("something.txt"));
+        String line2;
+        System.out.println("First we will print the contents of the file. Then we use try-with-resources to open a second file");
+        try{
+            line2=in.readLine();
+            System.out.println(line2);
+        }
+        catch(IOException e){
+            System.out.println("Sorry, the first name entered is wrong");
+            reader=new BufferedReader(new FileReader("something.txt"));
+            System.out.println(reader.readLine());
+        }
+        finally{
+            if(in!=null){
+                in.close();
+            }
+            if(reader!=null){
+                reader.close();
+            }
+        }
+    }
+
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            try {
+                if (reader!= null) {
+                    reader.close();
+                }
+            }
+            finally {
+                if (in!= null) {
+                    in.close();
+                }
+            }
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            try {
+                if (reader!= null) {
+                    reader.close();
+                }
+            }
+            finally {
+                if (in!= null) {
+                    in.close();
+                }
+            }
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+
+public class Finally {
+    public static void main(String[] args) throws IOException{        
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+    }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+    }
+            if (reader!= null) {
+                reader.close();
+            }
+        finally {
+            if (in!= null) {
+                    in.close();
+            }
+        } 
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            if (reader!= null) {
+                reader.close();
+            }
+            if (in!= null) {
+                in.close();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        try {
+                try {
+                if (reader!= null) {
+                    reader.close();
+                }
+                }
+                finally {
+                    if (in!= null) {
+                        in.close();
+                    }
+                }
+                System.out.println(1);
+                }
+        finally {
+            System.out.println(2);
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyWithException {
+    public static void main(String[] args)
+    {
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            try {
+                if (reader!= null) {
+                    reader.close();
+                }
+            }
+            finally {
+                if (in!= null) {
+                    in.close();
+                }
+            }
+            throw new RuntimeException("Boo!!");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt"); BufferedReader reader = new BufferedReader(new FileReader("something.txt")){
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt");
+                BufferedReader reader = new BufferedReader(new FileReader("something.txt")){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        try {
+                try {
+                if (reader!= null) {
+                    reader.close();
+                }
+                }
+                finally {
+                    if (in!= null) {
+                        in.close();
+                    }
+                }
+                System.out.println(1);
+                }
+        finally {
+            System.out.println(2);
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+            if (in!= null) {
+                in.close();
+            }
+        }
+        System.out.println(1);
+        if (reader!= null) {
+            reader.close();
+        }
+        System.out.println(2);
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                        }
+                        }
+                        catch(IOException e){
+                            System.out.println("Sorry, that was a mistake.");
+                        }
+                        try {
+                            try {
+                            if (reader!= null) {
+                                reader.close();
+                            }
+                        }
+                        finally {
+                            if (in!= null) {
+                                in.close();
+                            }
+                            }
+                            System.out.println(1);
+                        }
+                        finally {
+                            System.out.println(2);
+                        }
+                    }
+                }
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+            BufferedReader reader = new BufferedReader(new FileReader("something.txt"));
+            if (reader!= null) {
+                reader.close();
+            }
+            in.close();
+            System.out.println(1);
+            System.out.println(2);
+    }
+}
+ 
+import java.util.*;
+import java.lang.Object;
+import java.lang.String;
+import java.lang.reflect.*;
+import java.io.*;
+public class FinalKeyword {
+    static void finalFunction(){
+        System.out.println("I am a final function!");
+    }
+    public static void main(String[] args) throws NoSuchMethodException{
+        finalFunction();
+         
+        final int a = 5;
+        final char b = 'A';
+        int c = 15;
+        finalVariable(c);
+        finalVariable(a);
+         
+        Method method = FinalKeyword.class.getMethod("finalFunction", new Class[]{});
+         
+    }
+    static void finalVariable(final int a){
+        
+    }
+}
+/* How would abstract base class concept in Java? As known, class is a template or blueprint. The blueprint of a class defines structure, behavior and characteristics. Abstract base class is a base class and it can't be instantiated. When created
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+public class MyTest {
+    public static void main(String[] args) throws IOException{
+        BufferedInputStream reader = null;
+        InputStream in = null;
+        BufferedInputStream buf = null;
+        try{
+            in = new FileInputStream(new File("text.txt"));
+            reader = new BufferedInputStream(in);
+            int chr;
+            while((chr = reader.read())!= -1){
+                System.out.println((char)chr);
+                buf = new BufferedInputStream(in);
+            }
+        }
+         
+        try {
+            if (reader!= null) {
+                reader.close();
+            }
+            try{
+                if (in!= null) {
+                    in.close();
+                }
+                if (buf!= null) {
+                    in.close();
+                }
+            }
+            finally {
+                System.out.println(1);
+            }            
+        }
+        finally {
+             System.out.println(2);
+        }
+    }
+}
+ 
+
+ 
+ 
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader input = null;
+        try (BufferedReader r = new BufferedReader(new FileReader("file.txt"))) {
+            String line;
+            while ((line = r.readLine())!= null) {
+                System.out.println(line);
+                try (BufferedReader w = new BufferedReader(new FileReader("something.txt"))) {
+                    for (int i = 0;i<4;i++) {
+                        w.readLine();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Sorry, that was a mistake.");
+        }
+        try {
+                try {
+                    if (input!= null) {
+                        input.close();
+                    }
+                } finally {
+                    if (r!= null) {
+                        r.close();
+                    }
+                }
+                System.out.println(1);
+                }
+        finally {
+            System.out.println(2);
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                        }
+                        }
+                        catch(IOException e){
+                            System.out.println("Sorry, that was a mistake.");
+                        }
+                        try {
+                            try {
+                            if (reader!= null) {
+                                reader.close();
+                            }
+                        }
+                        finally {
+                            if (in!= null) {
+                                in.close();
+                            }
+                            }
+                            System.out.println(1);
+                        }
+                        finally {
+                            System.out.println(2);
+                        }
+                    }
+                }
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class STryWithResources {
+    public static void main(String[] args) throws IOException{
+        try (BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("something.txt"))){
+                String line;
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+            try(BufferedReader reader1= new BufferedReader(new FileReader("soethingElse.txt"))){
+                return;
+            }
+            }
+        }
+    }
+ 
+import java.io.*;
+public class STryCatchAndThrows {
+    public static void main(String[] args) throws FileNotFoundException {
+        FileReader in = null;
+        try {
+            in = new FileReader("file.txt");
+        }
+        catch(FileNotFoundException e){
+            System.out.println("An error occured while reading from the file");
+            System.out.println("Please, check that the path is correct.");
+            throw e;
+
+        }
+        try {
+            String data = "";
+            if ((data = in.readUTF())!= null){
+               System.out.println(data);
+            }
+            in.close();
+        }
+        catch (IOException e) {
+            System.out.println("Something went wrong with the code.");
+        }
+    }
+ 
+import java.lang.Object;
+public class SLambda {
+    public static void main(String[] args){
+        System.out.println( (a,b) -> a+b );
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("something.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                }
+                }
+                
+                catch(IOException e){
+                    System.out.println("Sorry, something went wrong - " + e);
+                }
+                
+                try {
+                if (in!= null) {
+                    in.close();
+                }
+                System.out.println(2);
+                }
+                finally {
+                    System.out.println(1);
+                }
+            }
+        }
+
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                    }
+                }
+                finally {
+                    reader = new BufferedReader(new FileReader("something.txt"));
+                        }
+                        }
+                        
+                        catch(IOException e){
+                            System.out.println("Sorry, something has gone wrong : " + e);
+                        }
+                        
+                        try (BufferedReader _in = new BufferedReader(new FileReader("hello.txt"))) {
+                             try {
+                                 System.out.println(_in.readLine());
+                             }finally{
+                                _in.close();
+                            }
+                        }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class ModifyingFinally{
+    public static void main(String[]args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            file.txt
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                try{
+                while((line = in.readLine())!= null){
+                            System.out.println(line);
+                        }
+                        try{
+                            if(reader!= null){
+                                reader.close();
+                                reader = new BufferedReader(new FileReader("something.txt");
+                                }
+                                } catch (Exception e) {
+                                System.out.println("Sorry, that was a mistake.");
+                                }
+                                finally {
+                                    System.out.println(1);
+                                reader = new BufferedReader(new FileReader("anything.txt"));
+                                }
+                                catch(Exception e){
+                                    System.out.println("Ohhh, I have to close the reader.");
+                                }
+                                finally {
+                                    System.out.println(2);
+                                    in = new BufferedReader(new FileReader("somethingElse.txt"));
+                                    }
+                                    } catch (Exception e) {
+                                    System.out.println("Sorry, that was a mistake.");
+                                }
+                                }
+                            }
+                        }
+                    }
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class SFinally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader reader = null;
+        try {
+            try {
+                File file = new File("file.txt");
+                if (file.exists()) {
+                    FileReader fileReader = new FileReader("file.txt");
+                    reader = new BufferedReader(fileReader);
+                        }
+                        else {
+                            reader = new BufferedReader(new FileReader("something.txt"));
+                                }
+                                }
+                                finally {
+                                    if (reader!= null) {
+                                        reader.close();
+                                    }
+                                    }   }
+                                    }
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/data.txt"));
+            System.out.println("Let's print that out.");
+            String line;
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                finally{
+                    System.out.println("And of course print this too.");
+                    System.out.println("We should see first and last");
+                        }
+                    }
+                }
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/data.txt"));
+            System.out.println("Let's print that out.");
+            String line;
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                finally{
+                    System.out.println("And of course print this too.");
+                    System.out.println("We should see first and last");
+                        }
+                    }
+                }
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        finally{
+            try {
+                br = new BufferedReader(new FileReader("src/data.txt"));
+                System.out.println("Let's print that out.");
+                String line;
+                while((line = br.readLine())!= null){
+                    System.out.println(line);
+                    }
+                    }
+                    finally{
+                        System.out.println("And of course print this too.");
+                        System.out.println("We should see first and last");
+                            }
+                        }
+                    }
+
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException{
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/data.out"));
+        
+        bw.write("I wrote this\n");
+        bw.flush();
+
+        System.out.println("I printed this\n");
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader("src/data.txt"));
+                System.out.println("Let's print that out.");
+                br.readLine();
+                }
+                System.out.println("Let's print that out.");
+                String line;
+                while((line = br.readLine())!= null){
+                    System.out.println(line);
+                    }
+                    }
+                finally {
+                    System.out.println("And of course print this too.");
+                    System.out.println("We should see first and last");
+                }
+            }
+        }
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+public class SFinally2 {
+    public static void main(String[] args) {
+        int counter = 0;
+        try {
+            counter += 1;
+            if(counter == 1){
+                throw new IllegalArgumentException();
+            }
+            }
+            finally{
+                counter += 5;
+                }
+                System.out.print("The counter value after modifications are: " + counter);
+                }
+                }
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.lang.IllegalArgumentException;
+public class SFinally2 {
+    public static void main(String[] args) throws IOException,IllegalArgumentException{
+        BufferedReader br = null;
+        Random rand = new Random();
+        int number = rand.nextInt(100-15+1)+15;
+        try {
+            if(number < 15){
+                throw new IllegalArgumentException("Number is too low.");
+            }
+            System.out.print("Random number is "+number);
+            }
+            finally{
+                FileWriter fw = new FileWriter("src/data.txt");
+                fw.write("This has been added to data.txt");
+                fw.close();
+            }
+            }
+            }
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.lang.IllegalArgumentException;
+public class SFinally2 {
+    public static void main(String[] args) throws IOException,IllegalArgumentException{
+        BufferedReader br = null;
+        Random rand = new Random();
+        int number = rand.nextInt(100-15+1)+15;
+        try {
+            if(number < 15){
+                throw new Exception("Number is too low.");
+            }
+            System.out.print("Random number is "+number);
+            }
+            finally{
+                FileWriter fw = new FileWriter("src/data.txt");
+                fw.write("This has been added to data.txt");
+                fw.close();
+            }
+            }
+        }
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+ 
+public class SFinally2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try {
+
+            br = new BufferedReader(new FileReader("src/data.txt"));
+            
+            String line;
+            
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                catch (Exception e){
+               System.out.println("Oopss, error. Can't read the file. Exiting...");
+         }
+                finally{
+                    System.out.println("And of course print this too.");
+                    System.out.println("We should see first and last");
+                        }
+                    }
+                }
+ 
+
+
+  
+
+
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+ 
+public class STryWithResources2 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        try (FileReader fr = new FileReader("src/data.txt");br = new BufferedReader(fr)){
+            System.out.println("Let's print that out.");
+            String line;
+            while((line = br.readLine())!= null){
+                System.out.println(line);
+                }
+                }
+                finally{
+                    System.out.println("And of course print this too.");
+                   
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3Alt {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+            printWriter.append("Added some data\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+ 
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            PrintWriter printWriter = null;
+            try {
+                printWriter = new PrintWriter("src/myData.txt");
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (printWriter!= null) printWriter.close();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            br.close();
+            PrintWriter printWriter = new PrintWriter("src/myData.txt");
+            printWriter.append("Added some data\n");
+            printWriter.close();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*
+import java.nio.file.Files;
+import java.nio.file.Paths;
+public class SFinally4 implements AutoCloseable {
+    private final BufferedReader bufferedReader;
+    private final FileWriter fileWriter;
+    private boolean fileHasBeenClosed = false;
+    public SFinally4() throws IOException {
+        this.bufferedReader = new BufferedReader(new FileReader("src/myData.txt"));
+        this.fileWriter = new FileWriter("src/myData.txt", true);
+    }
+    public SFinally4(String filename) throws IOException {
+        this(Files.newBufferedReader(Paths.get(filename)));
+    }
+    public String readLine() throws IOException {
+        return this.bufferedReader.readLine();
+    }
+    public void println(String str) {
+        System.out.println(str);
+    }
+    @Override
+    public void close() throws Exception {
+        if (!fileHasBeenClosed)
+            try {
+            this.bufferedReader.close();
+            this.fileWriter.close();
+        } finally {
+            this.fileHasBeenClosed = true;
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SFinally3 {
+    public static void main(String[] args) throws IOException {
+        try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Here\n");
+            System.out.println("This message should be appended too.");
+        } catch (Exception e) {
+            System.out.println("An error occured");
+        }
+        System.out.println("This message should still be appended.");
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+             
+             
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try (BufferedReader brFile = new BufferedReader(new FileReader("src/myData.txt"))) {
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = brFile.readLine())!= null) {
+                System.out.println(line);
+            }
+            try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+
+ 
+public class SFinally5 {
+    public static void main(String[] args) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/myData.txt"));
+            PrintWriter printWriter = new PrintWriter("src/myData.txt") ){
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+            printWriter.append("Added some data\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFInally5 {
+    public static void main(String[] args) {
+        try(BufferedReader br = new BufferedReader(new FileReader("src/myFName.txt"));
+            PrintWriter out = new PrintWriter("src/myData.txt")) {
+
+            String line;
+            while ((line = br.readLine())!= null) {
+                out.println(line);
+            }
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>d that this approach may work well with the try-catch-finally approach but is not mandatory.
+    A finally block is not required, but it is good practice if you want to ensure that resources are freed up properly, even if the JVM throws an exception. It is also good for catching errors that might affect the final state of your program, or the state of resources (such as connection or files) that are not closed in the try block.
+    The method returns either a value or throws an exception. If it returns a value, the program can continue. If it throws an exception, the program stops. When the statement throw new IOException() is encountered, it is simply shorthand for the call throw new IOException().
+    In every Java application, a Throwable object is passed into a catch block if an exception is thrown, and this object holds the details about the exception. Throwable is a superclass of several exception classes, so you can check the type and details of the exception without needing to know the specific class.
+    
+    */<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        PrintWriter printWriter = null;
+        try{
+            printWriter = new PrintWriter("src/myData.txt");
+            printWriter.append("Added some data\n");
+            printWriter.flush();
+            PrintWriter printWriter2 = new PrintWriter("src/myData.txt");
+            printWriter2.append("Some more data\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+             
+            if (printWriter!= null){  
+                System.out.println("Closing PrintWriter1");
+                printWriter.close();
+            }
+        }
+    }
+}
+
+
+
+
+ 
+
+ 
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintStream printStream = new PrintStream("src/myData.txt")) {
+            printStream.println("Added some data");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+ 
+<fim_middle>import java.lang.System;
+import java.io.*;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>        if((num!= (temp % 3))) {
+                break;  
+            }
+            else {
+                System.out.println("The number " + num + " is a Fiz");
+            }
+        }
+         
+        for(int i = 6; i <= 100; i++) {
+            System.out.println(i);
+            if(i == 50) {
+                break;  
+            }      
+        }
+        int j = 0;
+        while(j < 10) {
+            System.out.println(++j);
+            if(j == 5) {
+                break;  
+            }
+        }
+         
+        1. Print the numbers from 1 to 5 in a single line.
+        2. Comment the following statement to illustrate the effect of
+            break.
+            System.out.println("The for loop is terminated");
+
+         
+        for(int i = 0; i < 10; i++) {
+            System.out.println("i:"+i);
+            if(i == 5) {
+                break;
+            }
+        }
+         
+        for (int k=1; k<=5; k=k++){
+            System.out.println(k);
+        }
+         
+        for (int l=5;l>=1;l=l--){
+            System.out.println(l);
+        }*/  
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Create a program that illustrates the break statement.
+
+The break statement is used to exit a loop. Once a break statement is encountered in a loop, no more iterations will be performed.
+
+The break statement must come after any loop conditional statement and needs not be followed by {}. There can be
+a single statement after the break statement. If a break statement is not encountered before the end of a loop, the
+loop is executed normally
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ngs = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            System.out.println(daysOfTheWeek[dayofWeek]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: A number should be between 1 and 7");
+        } finally {
+            System.out.println("Finally: Closing file");
+        }
+    }
+} 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix> finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+ 
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+            throw new Exception("Something went wrong");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        }
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>(FileWriter fileWriter = new FileWriter("src/myData.txt")) {
+            fileWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(FileWriter fileWriter = new FileWriter("src/myData.txt")) {
+            fileWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>tStream fileInputStream = new FileInputStream("src/myData.txt")) {
+            fileOutputStream.write(fileInputStream.readAllBytes());
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to read/write the file.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Close all the streams, then exit.");
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Close all resources, then exit.");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ if (System.nanoTime() % 5000000 < 200) {
+                try {
+                    throw new NullPointerException("This exception will be caught");
+                } finally {
+                    System.out.println("Finally block executed");
+                }
+            } else {
+                System.out.print(".");
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Caught the exception");
+    }
+
+}
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        PrintWriter printWriter= new PrintWriter("src/myData.txt");
+        printWriter.append("Added some data\n");
+        FileWriter fileWriter =new FileWriter("src/myData.txt");
+        try ( printWriter;fileWriter ) {
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* What’s the difference between the following implementations?
+A)
+public class SFinally5 {
+    public int divide(int x, int y) {
+        try {
+            int z = x / y;
+            return z;
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            return 0;
+        }
+    }
+} 
+
+C)
+public class SFinally5 {
+    public void divide() throws Exception {
+        int x = Integer.parseInt(System.console().readLine());
+        int y = Integer.parseInt(System.console().readLine());
+        int z = 0;
+        if (y == 0) {
+            throw new Exception("Invalid value");
+        } else {
+            z = x / y;
+            }
+        } 
+        System.out.println("Result: " + z);
+    } 
+}
+
+D)
+public class SFinally5 {
+    int divide(){
+        try{
+            int x = Integer.parseInt(System.console().readLine());
+            int y = Integer.parseInt(System.console().readLine());
+            return (x/y);
+        } catch (Exception e){
+            System.out.println("Invalid input : " + e.getMessage());
+            return 0;
+        } 
+    }
+} 
+
+E)  public class SFinally5 {
+    public int divide() throws Exception {
+        int z = 0, x, y;
+        try {
+            x = Integer.parseInt(System.console().readLine());
+            y = Integer.parseInt(System.console().readLine());
+            z = x / y;
+        } finally {
+        }
+        return z;
+    } 
+}
+
+F)  public class SFinally5 {
+    public static int divide() throws Exception {
+        int z = 0, x, y
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>rintln("Finally block executed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+        System.out.println("Out of try block");
+         
+         
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        PrintWriter printWriter = new PrintWriter("src/myData.txt");
+        try{
+            try(printWriter) {
+                printWriter.append("Added some data\n");
+                System.out.println("This line will not be printed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>w PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+"This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+ 
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(FileWriter fileWriter = new FileWriter("src/myData.txt")) {
+            fileWriter.append("Added some data\n");
+            System.out.println(
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>tatic void main(String[] args) {
+        try {
+            System.out.println("Opening a file for reading.");
+            BufferedReader reader1 = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Opening a file for reading.");
+            BufferedReader reader2 = new BufferedReader(new FileReader("src/myData.txt"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+         
+ 
+ 
+            System.out.printf("Closing reader1 and reader2");
+        }
+    }
+    
+     
+    
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader reader1 = new BufferedReader(new FileReader("src/myData.txt"));
+        try(BufferedReader reader2 = new BufferedReader(new FileReader("src/myData.txt"))) {
+            System.out.println("Opened reader1 and reader2");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+         
+ 
+            System.out.println("Closing reader1, reader2, and resources");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ed with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        Writer writer = null;
+        try {
+            writer = new FileWriter("src/myData2.txt");
+            writer.write("Hello World");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            if (writer!= null) {
+                System.out.println("Resource managed by try-with-resources statement is closed");
+            } else {
+                System.out.println("Resource not managed by try-with-resources statement");
+            }
+        }
+        writer.write("This line will not be printed");
+    }
+}
+/* Below is a demo for finalizing resource deallocation using a try() with a finally block*/
+
+    void call() throws Exception {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+/* Below is a demo for finalizing resource deallocation using try-with-resources */
+
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    void call() throws Exception {
+        try(Writer writer = new FileWriter("src/myData4.txt")) {
+            writer.write("Hello World");
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+    void call() throws Exception {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+18a.append ("Java 8, Chapter 11, Code Example 1 of 2\n");
+	System.out.println(s18a.toString());
+	StringBuilder s18b = new StringBuilder ("Hello World!\n");
+	s18b.append ("Java 8, Chapter 11, Code Example 2 of 2\n");
+	System.out.println(s18b.toString());
+	String s18c = "Hi, There!";
+	System.out.println(s18c);
+	
+    }
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+
+    public static void main(String[] args) throws Exception {
+        
+	String s
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>    System.out.println("Closing output streams");
+        }
+    }
+}
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+public class SFinally7
+{
+    private void doSomething()
+    {
+        try (InputStream in = new FileInputStream("myfilename")) {
+            int c;
+            do {
+                c = in.read();
+                System.out.print((char)c);
+            } while ( c!= -1);
+        } catch (IOException e) {
+            System.out.print(e.getMessage());
+             
+        }
+    }
+}
+ <fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        int num1=10, num2=9;
+        try(FileWriter fw = new FileWriter("src/outputText.txt")) {
+            fw.write(num1+""+num2+"\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("End");
+        
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>s will be executed. The only exception to this is when the JVM exits while the try block is executing, in which case the finally block will not be executed, leaving the file open. */<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        try {
+            int i = 0;
+            if(i > 5) {
+                throw new Exception("Error...");
+            }
+            System.out.println("This will never be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is cleaned up");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>xception e) {
+            e.printStackTrace();
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main() throws IOException {
+        try {
+            BufferedReader bufferedReader =
+                new BufferedReader(new FileReader("files/src/myData.txt"));
+            String line;
+            while((line = bufferedReader.readLine())!= null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream("files/src/myData.txt");
+                fileOutputStream.close();
+                System.out.println("File is now closed");
+                throw new RuntimeException();
+            } catch (IOException ioException) {
+                System.out.println("Caught inner exception.");
+                ioException.printStackTrace();
+                throw e;
+            } finally {
+                System.out.println("Trying to close file after throwing exception.");
+                try {
+                    FileOutputStream fileOutputStream =
+                                new FileOutputStream("files/src/myData.txt");
+                    fileOutputStream.close();
+                    System.out.println("File is now closed");
+                } catch (Exception e2) {
+                    System.out.println("Caught exception at the end");
+                    e2.printStackTrace();
+                }
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class SFinally7 {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream("src/myData.txt");
+        } catch (IOException e) {
+            System.out.println("Failed to create output stream!");
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (fileOutputStream!= null) {
+                fileOutputStream.close();
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ion e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(
+            PrintWriter printWriter = new PrintWriter("src/myData.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("src/myData.txt")))
+        {
+            String str;
+            while ((str = bufferedReader.readLine())!= null) {
+                printWriter.println(str);
+            }
+        } catch (Except
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ {
+        FileWriter printWriter = new FileWriter("src/myData.txt"); 
+        try{
+       printWriter.append("Added some data");
+       System.out.println("This line will not be printed");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+            printWriter.close();
+        }
+    }
+}
+
+
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>    try (InputStreamReader reader = new InputStreamReader(System.in)) {
+            if (reader.read()!= -1)
+            System.out.println("You entered some text, but that's all.");
+        } catch (IOException e) {
+            System.err.println("There was a problem reading your input. Try again.");
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally8 {
+    public static void main(String[] args) throws Exception {
+            System.out.print("Please enter some text.");
+        
+[VERBOSE] ========== sample =========

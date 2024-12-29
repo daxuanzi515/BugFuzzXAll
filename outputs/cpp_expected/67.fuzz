@@ -1,0 +1,73 @@
+#include <expected>
+<fim_suffix>rrectly
+  int f = static_cast<int>(x);
+   
+  return x;
+}
+
+ 
+std::expected<int, std::exception_ptr> foo() {
+   
+  throw std::exception("some exception message");
+}
+
+ 
+std::expected<int, std::exception_ptr> get_foo() {
+   
+  throw std::exception("some exception message");
+}
+
+std::expected<int, std::exception_ptr> baz() {
+  auto e = foo();
+  if (!e) {
+     
+       
+     
+       
+     
+    return std::make_expected<int>(bar(e.value()));
+  } else if (e == 42) {
+    return std::make_expected<int>(100);
+  } else if (e == 4) {
+    return std::unexpected(std::make_unexpected<std::string>("some number that's unlikely. e=4"));
+  } else {
+    return e;
+  }
+}
+
+int main() {
+  auto expected_value = foo();
+  auto unexpected_value = baz();
+
+  if (expected_value) {
+     
+    std::cout << *expected_value << std::endl;
+  } else {
+     
+    std::cout << unexpected_value.error() << std::endl;
+  }
+
+   
+  std::variant<int, std::string, std::exception_ptr> get_expected = get_foo().value_or("I'm really really bad at C++, and i only know some basic exceptions, and i will just return a string");
+   
+  std::cout << get_expected.value_or("I'm really really bad at C++, and i only know some basic exceptions, and i will just return a string")
+          << std::endl;
+}<fim_middle>
+#include <iostream>
+#include <string>
+#include <variant>
+
+ 
+std::expected<std::string, std::exception_ptr> bar() {
+   
+
+   
+
+   
+  return "ok";
+   
+   
+}
+
+std::expected<int, std::exception_ptr> foo(bool throw_exception = false) {
+   

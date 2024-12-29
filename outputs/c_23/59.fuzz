@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void swap(char *a, char *b)
+{
+         char temp = *a;
+         *a = *b;
+         *b = temp;    
+}
+char *reverseBits(char *array, size_t size)
+{
+         char *ptr = array;
+         unsigned short int i, half = size / 2;
+         for (i = 0; i < half; ++i)
+         {
+             if (*ptr)
+                 swap(ptr, ptr + (size - i - 1));
+             ++ptr;
+         }
+         return array;
+}
+int main()
+{
+         size_t i;
+         unsigned short array[ARRAY_SIZE], *ptr;
+         for (i = 0; i < ARRAY_SIZE; ++i)
+                  array[i] = 4 * i;
+         reverseBits(array, ARRAY_SIZE);
+         return EXIT_SUCCESS;
+}
+/* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+
+The Preprocessor sees the introduction of directives like #elifdef and #elifndef, #embed, #warning, as well as macros like __has_embed, __has_include and __has_c_attribute. Under Types, nullptr_t, _BitInt(N) and unsigned _BitInt(N) have been added, along with const support for arrays

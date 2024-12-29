@@ -1,0 +1,31 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float, double, const char[], bool, int, char*> t{12, 14.5, 23.5, "haha", true, -1, "abc"};
+  auto it = std::make_tuple(std::ref(12), std::ref(14.5), std::cout, std::ref(true), std::addressof(-1));
+  std::apply([&](auto&...args) { ( std::forward<decltype(args)>(std::get<0>(args)) = std::forward<decltype(args)>(std::get<1>(args)),...); }, t); 
+  std::apply([](std::ostream& os, bool b) {os << ((b)? "yes" : "no");}, it);   
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int*, float*, const char*, bool> t{12, 14.5, "haha", true};
+  std::apply([](int* ip, float* fp, const char* cstr, const bool& b) {std::cout << *ip + *fp * ((b)? 1 : -1) <<'' << cstr << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float, const char*> t{ 120, 56.7, "haha" };
+  std::cout << "Initial values:\n";
+  std::apply([](int x, float y, const char * s) {std::cout << x <<'' << y <<'' << s << '\n'; }, t);
+   
+  auto add{ [](auto&...args) { ( std::get<0>(args) = std::get<0>(args) + std::get<1>(args),...); } };
+  auto mul{ [](auto&...args) { ( std::get<0>(args) = std::get<0>(args) * std::get<1>(args),...); } };
+  /* The lambda takes `std::tuple` of iterators (a tuple whose members are iterators

@@ -1,0 +1,45 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import ZZFeatureMap
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.circuit.library import EfficientSU2
+from qiskit.quantum_info import Statevector
+from qiskit.opflow import Zero, I, One
+
+n_features = 2
+
+
+feature_map = ZZFeatureMap(n_features, reps=2)
+
+
+feature_map2 = ZZFeatureMap(n_features, reps=1)
+feature_map3 = EfficientSU2(n_features, reps=2)
+
+my_circuit = QuantumCircuit(4)
+
+
+my_circuit.append(feature_map, range(feature_map.num_qubits))
+my_circuit.z(0)  
+my_circuit.append(feature_map2, range(feature_map2.num_qubits))
+my_circuit.append(feature_map3, range(feature_map.num_qubits, feature_map2.num_qubits+feature_map.num_qubits))
+my_circuit.cz(1, 2)
+
+my_circuit.switch(ControlRegister, 0, [Circuit1, Circuit2])
+
+print(my_circuit)
+
+'''The QuantumCircuit instance my_circuit contains all the instructions as we defined as inputs. This circuit is built from scratch with the QuantumCircuit.append() API and then it is applied the QuantumCircuit.append and QuantumCircuit.switch() statements to make them work. After the compilation, we expect that the circuit will be represented in the desired form. The output should be the following:
+q0_0: ───ZZFeatureMap(d=2,reps=2)───Z───ZZFeatureMap(d=2,reps=1)────────ZZFeatureMap(d=2,reps=3)───
+q0_1: ───ZZFeatureMap(d=2,reps=2)───Z───ZZFeatureMap(d=2,reps=1)(c:q0_0)───ZZFeatureMap(d=2,reps=3)───
+q0_2: ───ZZFeatureMap(d=2,reps=2)───Z──────────────────────────────────────────────────────────ZZFeatureMap(d=2,reps=3)───
+q0_3: ───ZZFeatureMap(d=2,reps=2)─────┬───                                                ┌────────────────┐
+                                                                       ┌────────────────┤ ControlRegister ├────────────────┤
+q1_0: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤├───────────────┤ ControlCircuit ├───────────────┤
+q1_1: ──────────────────────────────────────────┤ X ├──────────────────────────────────────││                │                ├
+q1_2: ──────────────────────────────────────────┤ X ├──────────────────────────────────────││                └────────────────┘
+q0_0: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤│┌────────────────┐
+q0_1: ──────────────────────────────────────────┤ X ├──────────────────────────────────────│││ ControlCircuit │
+q0_2: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤││                ├
+q0_3: ──────────────────────────────────────────┤ X ├───────────────────────────────■││                │
+q1_0: ──────────────────────────────────────────┤ X ├─────────────────────────────────         │                │
+q1_1: ──────────────────────────────────────────┤ X ├─────────────────────────────────         │                │

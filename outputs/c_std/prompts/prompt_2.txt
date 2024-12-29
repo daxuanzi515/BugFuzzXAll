@@ -1,0 +1,68 @@
+/* The C Standard Library is composed of various headers, each performing unique functionalities:
+
+
+
+<assert.h> - Compares its argument to zero.
+
+<complex.h> - Performs complex number arithmetic.
+
+<ctype.h> - Defines functions to identify the type of character data.
+
+<errno.h> - Reports error conditions.
+
+<fenv.h> - Manages the floating-point environment.
+
+<float.h> - Defines limits of floating-point types.
+
+<inttypes.h> - Handles format conversion of integer types.
+
+<iso646.h> - Provides alternative operator spellings.
+
+<limits.h> - States ranges of integer types.
+
+<locale.h> - Provides localization utilities.
+
+<math.h> - Contains common mathematics functions.
+
+<setjmp.h> - Assists with nonlocal jumps.
+
+<signal.h> - Manages signal handling.
+
+<stdalign.h> - Offers alignas and alignof convenience macros.
+
+<stdarg.h> - Aids in handling with variable arguments.
+
+<stdatomic.h> - Handles atomic operations.
+
+<stdbit.h> - Provides macros for working with byte and bit representations.
+
+<stdbool.h> - Contains macros for the boolean type.
+
+<stdckdint.h> - Offers macros for performing checked integer arithmetic.
+
+<stddef.h> - Houses common macro definitions.
+
+<stdint.h> - Specifies fixed-width integer types.
+
+<stdio.h> - Supports input/output.
+
+<stdlib.h> - Includes general utilities.
+
+<stdnoreturn.h> - Contains the noreturn convenience macro.
+
+<string.h> - Controls string handling.
+
+<tgmath.h> - Provides type-generic math macros.
+
+<threads.h> - Provides a thread library.
+
+<time.h> - Assists with time/date utilities.
+
+<uchar.h> - Supports UTF-16 and UTF-32 character utilities.
+
+<wchar.h> - Defines extended multibyte and wide character utilities.
+
+<wctype.h> - Defines functions for identifying the type within wide character data.
+ */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

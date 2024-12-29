@@ -1,0 +1,19 @@
+import java.lang.Object;
+<fim_suffix>s will be executed. The only exception to this is when the JVM exits while the try block is executing, in which case the finally block will not be executed, leaving the file open. */<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        try {
+            int i = 0;
+            if(i > 5) {
+                throw new Exception("Error...");
+            }
+            System.out.println("This will never be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is cleaned up");
+        }
+    }
+}

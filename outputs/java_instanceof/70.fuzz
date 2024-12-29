@@ -1,0 +1,9 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList a = new ArrayList();
+		System.out.println("a is ArrayList: " + (a instanceof ArrayList));
+	}
+}

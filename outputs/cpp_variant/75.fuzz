@@ -1,0 +1,18 @@
+#include <variant>
+2() {
+    std::vector<std::monostate> a;
+    std::optional<int> b;
+    a.emplace_back();
+    std::variant<monostate, int> x = 2;
+    std::variant<monostate, int> y;
+    x = y = b;
+    std::cout << x.index() << " " << y.index() << '\n'; 
+    std::cout << std::get<0>(std::move(x)) << "\n";
+}
+int main() 
+{
+    std::variant<std::vector<int>, int> v = 6;
+    v.emplace<0>().push_back(2);
+    test0();
+}
+ 

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct SecretData {
+    int secretData{};
+    void printSecretData() {
+        cout << "SecretData: " << secretData << '\n';
+    }
+    void destructor() {
+        cout << "destructor\n";
+    }
+};
+void printEmployeeSecretDataPtrNoDelete(Employee emp, SecretData* data)
+{
+    data->secretData = emp.secretDataPtr;
+    cout << "Employee: " << emp.myAddressPtr << '\n';
+    cout << "SecretData: " << emp.secretDataPtr << '\n';
+    cout << "SecretData: "  << data->secret

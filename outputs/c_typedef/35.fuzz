@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+ 
+Date_t* getCurrentDate()
+{
+	Date_t* date = (Date_t*)malloc(sizeof(Date_t));
+	date->day = 0;
+	date->month = 1;
+	date->year = 2018;
+	return date;
+}
+int main()
+{
+	Date_t* date = getCurrentDate();
+	printf("Date is %d/%d/%d\n", date->month, date->day, date->year);
+	free(date);
+	return 0;
+}

@@ -1,0 +1,10 @@
+#include <iostream>
+
+int main() {
+	std::cout<<[]
+	{
+		constexpr auto x = 8_k;
+		return int(x/3840*114080);
+	}()<<std::endl;
+}
+ 

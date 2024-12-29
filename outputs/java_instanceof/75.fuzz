@@ -1,0 +1,18 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.lang.String;
+import java.lang.Number;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");
+		 
+		Object aObj = new Object();
+		if (aObj instanceof Integer) System.out.println("aObj is Integer: " + (aObj instanceof Integer));
+		else System.out.println("aObj is not Integer");
+		aObj = 1;
+		if (aObj instanceof Integer) System.out.println("aObj is Integer: " + (aObj instanceof Integer));
+		else System.out.println("aObj is not Integer");   
+	}
+}

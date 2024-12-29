@@ -1,0 +1,35 @@
+#include <tuple>
+
+#include <type_traits>
+
+template<class Tuple1, class Tuple2,
+	size_t... I1, size_t... I2>
+inline constexpr std::tuple<Tuple1, Tuple2> apply_impl(
+	std::index_sequence<I1...>&& index1,
+	Tuple1&& tuple1,
+	std::index_sequence<I2...>&& index2,
+	Tuple2&& tuple2
+)
+{
+	return std::tuple
+	{
+		(std::get<I1>(std::forward<Tuple1>(tuple1)),
+		 std::get<I2 + sizeof...(I1)>(std::forward<Tuple2>(tuple2)))...
+	};
+}
+
+template<class F, class Tuple1, class Tuple2>
+inline constexpr std::tuple<Tuple1, Tuple2> apply(
+	F&& f,
+	const Tuple1& tuple1,
+	const Tuple2& tuple2
+)
+{
+	return apply_impl
+	(
+		std::make_index_sequence<std::tuple_size<typename std::remove_reference<Tuple1>::type>::value>(),
+		tuple1,
+		std::make_index_sequence<std::tuple_size<typename std::remove_reference<Tuple2>::type>::value>(),
+		tuple2
+	);
+}

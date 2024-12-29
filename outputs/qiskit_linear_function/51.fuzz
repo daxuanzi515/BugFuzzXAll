@@ -1,0 +1,59 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self):
+        self.gate.rx(1, 0)
+        self.gate.rz(0 + 1, 1)
+        self.gate.rx(1, 0)
+    def swap(self):
+        self.gate.cx(0, 1)
+        self.gate.cx(1, 0)
+        self.gate.cx(0, 1)
+ 
+
+func = LinearFunction()
+func.set(0, 1, 2)
+func.swap(0, 1)
+
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister, ClassicalRegister
+from qiskit import QuantumCircuit, execute, Aer
+
+class Gate(QuantumCircuit):
+    def __init__(self, name, num_qubits):
+        QuantumCircuit.__init__(self, name=name)
+        self.q_reg = QuantumRegister(num_qubits, "q")
+        self.c_reg = ClassicalRegister(num_qubits, "c")
+        self.quantum_circuit = QuantumCircuit(self.q_reg, self.c_reg)
+        self.params = []
+    def add_parameters(self, param_list):
+        self.params += param_list
+    def set_condition(self, classical_condition):
+        self.classical_register.classical_condition = classical_condition
+    def add_instruction(self, instruction, args):
+        instruction(self,...args)
+    def get_qasm_instruction(self):
+        qasm_instruction = QuantumCircuit()
+        qasm_instruction += self.quantum_circuit
+        return qasm_instruction
+    def inverse(self):
+        instructions = []
+        for i in range(len(self.quantum_circuit.data) - 2):
+            print("Reverse i is", i)
+            instructions.append(self.quantum_circuit.data[i])
+            instructions.append(self.quantum_circuit.data[(i % 2) + i])
+            instructions.append(self.quantum_circuit.data[i])
+            instructions.append(self.quantum_circuit.data[3])
+            instructions.append(self.quantum_circuit.data[(i % 2) + 3])
+            instructions.append(self.quantum_circuit.data[3])
+        return instructions
+
+    def gate_exponent(self, exponent):
+        if exponent == 1.0:
+            return self
+        elif exponent == 3.0 / 2.0:
+            return self.c_controlled().inverse().c_controlled().c_controlled()
+        else:

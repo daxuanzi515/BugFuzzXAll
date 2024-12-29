@@ -1,0 +1,37 @@
+#include <variant>
+#include <string>
+#include <iostream>
+int main()
+{   
+    std::variant<int, float, double> v {10.99};
+     
+    std::cout << std::get<double>(v) << std::endl;
+}
+ 
+ 
+#include <map>
+#include <iostream>
+int main()
+{
+    std::map<std::string, int> mymap = {{"key1", 5}, {"key2", 10}};
+    std::cout << "The value of key1 is " << mymap["key1"] << std::endl;  
+    return 0;
+}
+ 
+#include <iostream>
+int main()
+{
+    std::map<int, int> mymap;
+    mymap[3] = 15;
+    std::cout << "The value of key 3 is " << mymap[3];  
+    return 0;
+}
+ 
+#include <iostream>
+#include <map>
+int main()
+{
+    std::map<std::string, int> mymap = {{"hello", 1}, {"world", 2}};
+    std::cout << "There are: " << mymap.size() << " elements in mymap" << std::endl;
+    mymap.insert({ "foo", 3 });
+    std::cout << "The value of key foo is " << mymap["foo"];  

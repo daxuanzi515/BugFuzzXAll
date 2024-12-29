@@ -1,0 +1,35 @@
+from qiskit import QuantumCircuit
+
+q = qiskit.QuantumRegister(1)
+c = qiskit.ClassicalRegister(1)
+qc = qiskit.QuantumCircuit(q, c)
+qc.h(q)
+qc.cswap(0, 2, 3)
+qc.h(q)
+qc.measure(q, c)
+qc.draw()
+
+
+
+from qiskit import QuantumCircuit; from qiskit import QuantumRegister; from qiskit import ClassicalRegister; from qiskit import QuantumCircuit
+
+
+q = qiskit.QuantumRegister(1)
+c = qiskit.ClassicalRegister(1)
+qc = qiskit.QuantumCircuit(q, c)
+qc.h(q)
+qc.cswap(0, 2, 3)
+qc.h(q)
+qc.measure(q, c)
+qc.draw()
+
+
+gate = qiskit.Gate('swap', 2, [0, 1])
+
+de_swap = ['swap q[0], q[1]', '']
+gate_swapped = gate.definition
+print(gate)
+print(gate_swapped)
+
+swap q[0], q[1]
+swap q[1], q[0]

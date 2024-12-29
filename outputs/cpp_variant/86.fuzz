@@ -1,0 +1,72 @@
+#include <variant>
+<fim_suffix>ndow* win);
+void on_window_closed(const WindowClosedEvent& e, Window* win);
+
+void on_mouse_button_pressed(MouseButtonPressedEvent& e, Window* win)
+{
+     
+}
+
+void on_mouse_scrolled(MouseScrolledEvent& e, Window* win)
+{
+     
+}
+
+void on_key_pressed(KeyPressedEvent& e, Window* win)
+{
+
+}
+
+void on_key_released(KeyReleasedEvent& e, Window* win)
+{
+
+}
+
+void on_key_typed(KeyTypedEvent& e, Window* win)
+{
+
+}
+
+void on_mouse_moved(MouseMovedEvent& e, Window* win)
+{
+
+}
+
+void on_mouse_button_released(MouseButtonReleasedEvent& e, Window* win)
+{
+
+}
+
+void on_mouse_entered(MouseEnteredEvent& e, Window* win)
+{
+
+}
+
+void on_mouse_left(MouseLeftEvent& e, Window* win)
+{
+
+}
+
+void on_file_dropped(FileDroppedEvent& e, Window* win)
+{
+
+}
+
+void on_file_selected(FileSelectedEvent& e, Window* win)
+{
+
+}
+
+void on_window_opened(const WindowOpenedEvent& e, Window* win)
+{
+    win->set_title(e.get_title());
+}
+
+void on_window_closed(const WindowClosedEvent& e, Window* win)
+{
+    win->close();
+}
+
+void Application::run()
+{
+    auto window = create_window

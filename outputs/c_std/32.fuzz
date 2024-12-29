@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while (!feof(file))
+    {
+        c = fgetc(file);
+        if (c == '\0')
+        {
+            printf("Invalid character\n");
+            break;
+        }
+        printf("%c\n", c);
+    }
+    fclose(file);
+    return 0;
+}
+ 
+int main(void)
+{
+    int *pointer;
+    unsigned int a;
+    return a + *pointer;
+}
+ 
+ 
+const char *g = "hello world!";
+const char *f = "hello";
+char *malloc_strconcat(int f_len, char *s1, char *s2);
+int strcmp(char *s1, char *s2);
+char *strconcat();
+ 

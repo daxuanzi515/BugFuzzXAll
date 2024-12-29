@@ -1,0 +1,34 @@
+#include <variant>
+<fim_suffix>or_t;
+    template < typename T1
+}
+*/
+<fim_middle>#include <iostream>
+struct X {
+    int i;
+    float f[10];
+    double d;
+    void print() { std::cout << "The variant has the value " << d << '\n'; }
+};
+std::variant<int, float[10], double> create()
+{
+    X v;
+    v.f[2] = 0.0f;
+    v.f[5] = 32.24f;
+    return v;
+}    
+int main()
+{
+    std::variant<int,float[10],double> v = create();
+    const double* d = std::get_if<double>(&v);
+    std::cout << *d << '\n';
+}
+ 
+ 
+
+ 
+ 
+enum class E
+{
+    Val1 = 1,
+    Val2

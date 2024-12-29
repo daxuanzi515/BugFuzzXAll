@@ -1,0 +1,10 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		String a = "1";
+		Object b = "2";
+		System.out.println("a instance of Integer: " + (a instanceof Integer));
+		System.out.println("b instance of Integer: " + (b instanceof Integer));
+	}
+}

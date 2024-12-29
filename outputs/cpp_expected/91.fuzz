@@ -1,0 +1,82 @@
+#include <expected>
+3, 15 };
+	std::optional<int> o1(42);
+	std::optional<int> o2 = o1.value_or(7);
+	return o2.value();
+}
+<fim_middle>
+#include <string>
+#include <optional>
+
+struct MyNewLib
+{
+	static std::string getString()
+	{
+		return "MyNewLib::getString()";
+	}
+};
+
+std::optional<std::string> getValue()
+{
+	return std::nullopt;
+}
+
+std::optional<int> getValue2(int x)
+{
+	if (x == 1234)
+	{
+		return 555;
+	}
+	return std::nullopt;
+}
+
+struct MyError
+{
+	int a, b, c;
+};
+
+std::optional<std::string> getValue3(int x)
+{
+	if (x == 1234)
+	{
+		auto exp = std::expected<std::string, MyError>{ "123", 222, 333 };
+		return exp;
+	}
+	return std::nullopt;
+}
+
+std::optional<int> getValue4(int x)
+{
+	if (x == 1234)
+	{
+		 
+		std::error_code ec = std::make_error_code(std::errc::protocol_error);
+		 
+		 
+		 
+
+		auto e1 = std::make_ unexpected<int, std::error_code>(ec);
+		std::optional<std::error_code> e2 = e1.error();
+		 
+		if (!e2.has_value())
+		{
+			auto e3 = e2.value();
+			return 555;
+		}
+		else
+		{
+			auto e3 = e2.value();
+			return 666;
+		}
+
+		 
+		 
+
+	}
+	return std::nullopt;
+}
+
+std::optional<int23> getValue5(int x)
+{
+
+	auto f = []() ->expected<int, int23>{ if (1) return 

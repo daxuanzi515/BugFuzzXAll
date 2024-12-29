@@ -1,0 +1,26 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <math.h>
+#include <stdarg.h>
+#include <string.h>
+#define ERROR printf("Error: "); perror("");
+int main(int argc, char* argv[]) {
+     
+     
+
+    char* str = malloc(12 * sizeof(char));   
+    if(str == NULL) ERROR;
+    strncpy(str, "Hello, ", 6);    
+    strncat(str, "World", 5);     
+    strcat(str, ".\n");
+     
+    char* str1 = malloc(25 * sizeof(char));   
+    if(str1 == NULL) ERROR;
+    printf("%s %d\n", str, strlen(str));   
+    printf("%s %d\n", str1, strlen(str1));   
+
+    char* str2 = realloc(str, 30 * sizeof(char));
+    if(str2 == NULL) ERROR;
+    printf("%s %d\n", str, strlen(str));   
+    printf("%s %d\n", str1, strlen(str1));   

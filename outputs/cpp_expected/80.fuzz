@@ -1,0 +1,95 @@
+#include <expected>
+ {
+    std::string msg;
+
+    msg.resize(10);
+    msg[msg.size() - 1] = '\0';
+    std::cin.getline(msg.data(), msg.size());
+    
+    return msg;
+}
+
+int main(int argc, char* argv[])
+{
+    int n;
+
+    std::cout << "Give a number or hit return for the default value = 0" << std::endl;
+    if (std::cin >> n) {
+        std::cout << "You sent us the number: " << n << std::endl;
+    }
+    else {
+        std::cout << "We are sorry, but we could not capture any number." << std::endl <<
+            "The reason is this: "<< e.msg << std::endl;
+    }
+
+    std::cout << "Give me a message or hit return for the default value = hello" << std::endl;
+    try {
+        auto msg = askMsg();
+        std::cout << "Your message is: " << msg << std::endl;
+    }
+    catch(const std::exception& err) {
+        std::cout << err.what() << std::endl;
+    }
+
+    std::cout << "Give a number or hit return for the default value = 0" << std::endl;
+    
+    auto n2 = std::expected<int, std::string>(read());
+    if (n2) {
+        std::cout << "You sent us the number: " << *n2 << std::endl;
+    }
+    else {
+        std::cout << "We are sorry, but we could not capture any number." << std::endl <<
+            "The reason is the following line is " << e.value() << std::endl;
+    }
+
+    std::cout << "Give me a message or hit return for the default value = hello" << std::endl;
+
+    auto msg = std::expected<std::string, std::string>(askMsg());
+    if (msg) {
+        std::cout << "Your message is: " << *msg << std::endl;
+    }
+    else {
+        throw std::runtime_error(msg.value());
+    }
+
+    return 0;
+}
+
+
+<fim_middle>
+#include <iostream>  
+#include <vector>
+#include <string>
+
+std::expected<int, std::string> read()
+{
+    int x;
+    if (!std::cin >> x) {
+        return nullopt;
+    }
+
+    return x;
+}
+
+class MyException : public std::runtime_error
+{
+public:
+    MyException(std::string errTxt, int errCode) : std::runtime_error { errTxt },
+        m_errCode { errCode } 
+    {   }
+    
+    int getErrMsgCode() const noexcept { return m_errCode; }
+private:
+    int m_errCode;
+};
+
+std::expected<std::string, std::exception_ptr> askMsg()
+{
+    std::string msg;
+
+    msg.resize(10);
+    msg[msg.size() - 1] = '\0';
+    std::cin.getline(msg.data(), msg.size());
+
+    if (msg[0] == '\0') {
+        return std::runtime

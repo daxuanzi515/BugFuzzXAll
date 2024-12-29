@@ -1,0 +1,62 @@
+#include <variant>
+ }
+};
+int main()
+{}<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n"; 
+    }
+};
+V create()
+{
+    return V{.d = 2178.43};
+}
+int main()
+{
+    V v = create();
+    v.print();
+}
+ 
+#include <iostream>
+#include <utility>  
+template<typename... Tn>
+class variant {
+public:
+    variant(Tn const &... args) : data(args...) {}
+
+    template <size_t n>
+    decltype(auto) get() &
+    {
+        return std::get<n>(data);
+    }
+
+    template <size_t n>
+    decltype(auto) get() const &
+    {
+        return std::get<n>(data);
+    }
+
+     
+    template <size_t n>
+    decltype(auto) get() && 
+    {
+        return std::move(std::get<n>(data));
+    }
+
+    template<typename T>
+    decltype(auto) get() const &&
+    {
+        if constexpr (std::is_trivially_destructible_v<T> || std::is_floating_point_v<T>)
+             
+            return std::forward<T>(*this);
+        else
+             
+            return std::move(std::get<T>(data));
+    }
+
+    template<size_t n>
+    decltype(auto) get

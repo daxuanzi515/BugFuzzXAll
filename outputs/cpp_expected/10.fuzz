@@ -1,0 +1,81 @@
+#include <expected>
+.value() << std::endl;
+    }
+    catch (expected_value &ex) {
+        std::cout << "Got unexpected: " << ex.value() << std::endl;
+    }
+
+    return 0;
+}
+
+ <fim_middle>
+#include <iostream>
+
+class expected_value : public std::exception {
+private:
+    int value_;
+
+public:
+    explicit expected_value(int value) : value_(value) {}
+
+    int value() {
+        return value_;
+    }
+};
+
+ 
+int foo() {
+    return 1;
+}
+
+void bar() {
+     
+    throw expected_value{ -1 };
+}
+
+ 
+std::expected<int, expected_value> baz() {
+    return 1;
+}
+
+void qux() {
+     
+     
+    throw expected_value{ -1 };
+}
+
+std::expected<int, int> goo() {
+    throw expected_value{ -2 };
+}
+
+int main() {
+
+    try {
+
+         
+        int result = foo();
+        std::cout << "Expected: " << result << std::endl;
+
+         
+        bar();
+
+    }
+    catch (expected_value &ex) {
+        
+         
+        std::cout << "Got unexpected: " << ex.value() << std::endl;
+    }
+
+    try {
+         
+        int result = baz();
+        std::cout << "Expected: " << result << std::endl;
+
+         
+        qux();
+
+         
+         
+    }
+    catch (std::bad_expected_access &ex) {
+        std::cerr << "Expected std::unexpected exception: " << ex

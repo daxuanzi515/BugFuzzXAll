@@ -1,0 +1,61 @@
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+
+int main(){
+    
+    std::variant<int, float> v(10);    
+    std::visit([](auto t) {
+        printf("This is visiting %i.\n", t); }, v);
+    
+    auto v2 = std::get<0>(v);    
+    v2 = 5;
+    
+    
+    auto v3 = std::get<1>(v);  
+    v3 = (float)5;
+    
+    std::visit([](auto t) {
+        printf("This is visiting %l.\n", t); }, v);
+}
+int main()
+{
+    std::variant<int, float, double> v {10.99};
+    
+    std::visit([](auto t) {
+        std::cout << t << '\n'; }, v);
+}
+ 
+#include <variant>
+#include <string>
+
+struct Person {
+    std::string name, surname;
+};
+
+struct Date {
+    int day, month, year;
+};
+
+struct Time {
+    int hour, minute, second;
+};
+
+struct DateTime {
+    Person p;
+    Date d;
+    Time t;
+};
+
+int main()
+{
+    std::variant<Person, Date, Time, DateTime> v 
+    { DateTime { Person { "Bob", "Brownie" }, Date { 12, 3, 2019 }, Time { 2, 30, 0 } } };
+
+    bool foundPerson = false;
+    bool foundDate = false;
+    bool foundTime = false;
+    bool foundDateTime = false;
+
+    std::visit([&foundPerson](Person) { foundPerson = true; }, v);
+    std::visit([&foundDate](Date

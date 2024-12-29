@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct tagx
+{
+    int x;
+    int y;
+};
+struct tagy
+{
+    int i;
+    struct tagx p;
+};
+int main()
+{
+    struct tagy t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p.x = 1;
+    t1.p.y = 2;
+    printf("t1.x y: %d %d\n", t1.p.x, t1.p.y);
+    return (EXIT_SUCCESS);
+}

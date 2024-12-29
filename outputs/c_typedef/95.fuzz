@@ -1,0 +1,9 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef int x[5];
+x a1 = {1, 2, 3, 4, 5};
+int main()
+{
+
+    return 0;
+}

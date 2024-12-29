@@ -1,0 +1,38 @@
+from qiskit import QuantumCircuit
+
+from qiskit.visualization import plot_histogram
+%qiskit_version_table
+from qiskit import *
+import sys
+print("Python %s on %s" % (sys.version, sys.platform))
+n = 4
+f = LinearFunction.from_random_oracle(n, n_trials=5)
+qc = f.to_circuit()
+qc.draw()
+
+
+
+
+
+qc.draw()
+
+n = 3
+f = LinearFunction.from_random_oracle(3, n_trials=5)
+qc = f.synthesize_into_backend(FakeRigetti())
+
+backend = FakeMumbai()
+qc = f.synthesize_into_backend(FakeMumbai())
+counts = backend.run(qc, shots=1000).result().get_counts()
+print(counts)
+
+plot_histogram(counts)
+
+n = 8
+f = LinearFunction.from_random_oracle(n, n_trials=5)
+qc = f.synthesize_into_backend(FakeQuilBackend())
+display(qc.draw())
+
+backend = FakeRigetti()
+qc = f.synthesize_into_backend(FakeRigetti())
+counts = backend.run(qc.bind_parameters({**f.parameters}), shots=1000).result().get_counts()
+plot_histogram(counts)

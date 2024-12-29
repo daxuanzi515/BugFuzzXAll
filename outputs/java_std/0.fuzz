@@ -1,0 +1,39 @@
+import java.lang.Object;
+
+import java.lang.Character;
+import java.util.Vector;
+import java.util.function.Supplier;
+
+ 
+@SuppressWarnings("javadoc")
+public class new_in_java {
+	private static char[] generate_message() {
+		Vector<Character> charVec = new Vector<>();
+		char[] carr = new char[12];
+		final Supplier<Character> charSupplier = () -> (char) (Math.random() * 26 + 97),
+				charSupplier2 = () -> (char) ('A' + Integer.parseInt(
+						String.valueOf((Math.random() * 10 + 48))))
+				;
+		for (int i = 0; i < 12; i++) {
+			char c = charSupplier.get();
+			System.out.print((char) c);
+			carr[i] = new Character((char) c);
+		}
+		return carr;
+	}
+
+	public static void main(String[] args) {
+		 
+		char[] carr = generate_message();
+		for (char c : carr) {
+			if (Character.isUpperCase(c)) {
+				Character lowerCase = Character.toLowerCase(c);
+				System.out.print(lowerCase);
+			} else {
+				Character upperCase = Character.toUpperCase(c);
+				System.out.print(upperCase);
+			}
+		}
+	}
+
+}

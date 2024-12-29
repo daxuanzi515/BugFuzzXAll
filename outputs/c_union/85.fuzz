@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(){
+  union Number{
+        int z;
+      };
+  int *p;
+  union Number t;
+  t. z = 100;
+  p = &t. z;
+  printf("%x\n", *p);
+  
+};

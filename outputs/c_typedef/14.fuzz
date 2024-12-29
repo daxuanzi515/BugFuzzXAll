@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int_t main() {
+    int x = 10;
+    int_t value = 10;
+    printf("x: %d, value: %d\n", x, value);
+    exit (EXIT_SUCCESS);
+}
+ 

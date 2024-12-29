@@ -1,0 +1,58 @@
+import java.lang.Object;
+<fim_suffix>emote Method Call (RMI) Java Bean. If you try to create a client that calls the Bean in the remote JVM from outside of a Remote Environment, you'll fail with a security exception.
+
+*/
+import javax.ejb.*;
+import java.rmi.*;
+public interface Server extends java.rmi.Remote
+{
+	ArrayList<String> execute(String text);
+	public void execute2(String text, String[] options)
+	void sendHello(ClientHello c);
+}
+import javax.ejb.*;
+import javax.rmi.PortableRemoteObject;
+import java.rmi.*;
+import java.rmi.server.*;
+import javax.ejb.*;
+public class RMIClient extends UnicastRemoteObject implements Client{
+	private static ArrayList<Object> mData;
+	static String mOutput = "";
+	public RMIClient(String host, int port)throws RemoteException{
+		super();
+		mData = new ArrayList<Object>();
+		ClientHandle cHandle = new ClientHandle();
+		PortableRemoteObject pr;
+		mOutput += "\nConnecting";
+		cHandle.mOutput += "\nConnecting";
+		try{
+			pr = (ClientHandle) Naming.lookup("//"+host+":"+port+"/RMIBean");
+			cHandle.mOutput += "\nGot a client";
+			mOutput += "\nGot a client";
+			mData.add(pr);
+		}catch(NotBoundException e) {
+			mOutput += "\nNo client found";
+			cHandle.mOutput+="/nNo client found";
+		}catch(Exception e){
+			mOutput += "\n\Error:";
+			cHandle.mOutput += "\n\Error:";
+			mOutput += e.toString();
+			cHandle.mOutput += e.toString();
+		}
+		 
+		 
+		mData.add(cHandle);
+	}
+	public static void SendtoServer(String text){
+		try{
+			Object o = (Object) mData.get(1);
+			((Server)o).execute2(text,new String(new char[text.length()]));
+		}catch(Exception e){e.printStackTrace();}
+		 
+	}
+	public int getSize(){
+		return mData.size();
+	}
+	public static void main(String[] args){
+		 
+		String host = "

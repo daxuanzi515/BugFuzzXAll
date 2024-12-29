@@ -1,0 +1,64 @@
+#include <expected>
+;
+    EXPECT_EQ(res.value()->getValue(), 80);
+    EXPECT_EQ(res.value()->getNext()->getValue(), 9);
+    EXPECT_EQ(res.value()->getNext()->getNext()->getValue(), 8);
+
+    std::vector<int*> ptrList{nullptr, nullptr, nullptr};
+    std::swap(res.value()->ptr, ptrList[0]);
+    res = res.value()->getNext()->getNext();
+    std::swap(res.error()->someErrorVariable, val);
+
+    ptrList[1] = res.error_or(std::make_unexpected(std::error_condition()));
+    ptrList[2] = res.value()->ptr;
+
+    EXPECT_EQ(ptrList[0], ptrList[2]);
+    EXPECT_EQ(val, ptrList[1]->getSomeVal());
+    ptrList[0] = nullptr;
+    res = res.value();
+    EXPECT_EQ(ptrList[1], reallocateMemory(ptrList));
+    ptrList[2] = res.error_or(std::make_unexpected(std::error_condition()));
+    EXPECT_EQ(ptrList[2], nullptr);
+}
+
+TEST(Expected, SwapValueReference) {
+    std::list<std::unique_ptr<Item>> list;
+
+    auto res = std::make_expected<PtrWithNext<Item>>(std::in_place, 60);
+    EXPECT_EQ(res.value()->getValue(), 60);
+
+    res = res.value()->getNext().value();
+
+    EXPECT_EQ(res.value()->getValue(), 70);
+    const int val{180};
+
+    EXPECT_EQ(res.value()->getNext()->getValue(), 9);
+    EXPECT_EQ(res.value()->getNext().value()->getValue(), 8);
+
+    std::vector<Item*> ptrList{nullptr, nullptr};
+    std::swap(res.value()->ptr, ptrList[0]);
+    res = res.value()->getNext().value();
+    std::swap(res.error()->someErrorVariable, val);
+
+    ptrList[1] = res.error_or(std::make_unexpected(std::error_condition(errc::invalid_argument)));
+    ptrList[2] = res.value()->ptr;
+
+    EXPECT_EQ(ptrList[0], ptrList[2]);
+    EXPECT_EQ(val, ptrList[1]->getSomeVal());
+    ptrList[0] = nullptr;
+    res = res.value();
+    EXPECT_EQ(ptrList[1], reallocateMemory(ptrList));
+    ptrList[2] = res.error_or(std::make_unexpected(std::error_condition(errc::invalid_argument)));
+    EXPECT_EQ(ptrList[2], nullptr);
+}
+
+TEST(Unexpected, ExpectedType) {
+    auto ex = std::make_unexpected(std::in_place, 12);
+    std::expected<int, std::exception_ptr> ex2{ex};
+    EXPECT_NE(ex2, ex);
+}
+
+TEST(UnexpectdCopyAndMove, ExpectedType) {
+    std::exception e;
+    std::unexpected<std::exception> e1{std::in_place, e};
+    auto ex = e1

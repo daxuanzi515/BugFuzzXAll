@@ -1,0 +1,50 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, function, num_qubits): 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+	def _get_matrix(self):
+		pass
+	def _get_qasm(self):
+		pass
+if __name__ == '__main__':
+from qiskit import QuantumCircuit
+
+import numpy as np
+import copy
+
+class LinearFunction(object):
+	def __init__(self, function, input_qubits): 
+		self.input_qubits = input_qubits
+		self.function = function
+		self.output_qubits = list(range(self.input_qubits[0], self.input_qubits[-1] + 1))
+	def get_circuit(self): 
+		if self.is_perm(): 
+			gate = Gate(list(range(1, 2 * (len(self.input_qubits) + 1), 2)), self.function, len(self.input_qubits)) 
+			circuit = gate.synthesis()  
+		else: 
+			circuit = self._get_synth(0, len(self.input_qubits) - 2) 
+		return circuit 
+	def is_perm(self): 
+		function_length = len(self.function)
+		if not isinstance(self.function[0], int): 
+			return False 
+		elif np.amax(self.function) >= function_length or np.amin(self.function) <= 0: 
+			False 
+		else: 
+			for i in self.function: 
+				if self.function.count(i)!= 1: 
+					return False 
+			return True 
+	def _get_synth(self, start_idx, end_idx): 
+		if start_idx > end_idx: 
+			return QuantumCircuit(*self.num_qubits) 
+		else:
+			gate_list = []
+			if len(list(self.input_qubits)) > 1:

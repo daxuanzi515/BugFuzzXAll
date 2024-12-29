@@ -1,0 +1,57 @@
+import java.lang.Object;
+<fim_suffix>s.add("java.util.Scanner.hasNextBoolean()");
+    c.setAccessible(true);
+    boolean result = (boolean)c.invoke(scanner, (Object[])new Object[0]);
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Method;
+public class HelloIndian{
+	public static void main(String[] args) throws Exception {
+		Class c1 = scanner.getClass();
+		Method m1 = c1.getDeclaredMethod("hasNext", String.class);
+		System.out.println(m1);
+		Method m2 = c1.getMethod("nextInt", new Class[0]);
+		System.out.println(m2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+public class HelloIndian{
+	public static void main(String[] args) throws Exception {
+		Class c1 = scanner.getClass();
+		Constructor[] constructors = c1.getConstructors();
+		for(Constructor c : constructors)
+			System.out.println(c);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+public class HelloIndian{
+	public static void main(String[] args) throws SecurityException {
+		int n2 = 42;
+		Field f1 = scanner.getClass().getDeclaredField("n");
+		f1.setAccessible(true);
+		f1.setInt(scanner, scanner.n);
+		System.out.println(n2);
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Scanner;
+public class HelloIndian2{
+	public static void main(String[] args) throws InvocationTargetException,
+        IllegalAccessException,NoSuchMethodException{
+		Scanner s1 = new Scanner(System.in);
+		String s2 = s1.next();
+		Method m1 = System.class.getMethod("out.", String.class);
+	}
+}
+/* Let's now print the content of

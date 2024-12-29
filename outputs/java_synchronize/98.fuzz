@@ -1,0 +1,37 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        System.out.println(Sample.class + ": doSomething()");
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();  
+    }
+}
+ 
+import java.lang.Object;
+class Main {
+    public static void main(String [] args) {
+        Sample s1 = new Sample();
+        Sample s2 = new Sample();
+        s1.lock();  
+        s2.lock();  
+         
+        s1.unlock();  
+         
+        s2.unlock();  
+    }
+}
+    class Sample extends Object {
+        public static synchronized void lock(Sample s) {
+            System.out.println("Lock acquired");
+            System.out.println("lock: " + "Lock acquired");
+        }
+        public static synchronized void unlock(Sample s) {
+            System.out.println("Lock released");
+        }
+    }
+
+

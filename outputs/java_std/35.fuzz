@@ -1,0 +1,71 @@
+import java.lang.Object;
+  int max = 0;
+		    int count = 1;
+		    for(j=0;j < arr.length - 1; ++j)
+		    {
+		        int diff = arr[j + 1] - arr[j] - 1;
+		        if(diff == 1)        
+		        {
+		            max = 1;
+		            count = 1;
+		        }
+		        else if(diff <= 3)
+		        {
+		            max = Math.max(max, count);
+		            ++count;
+		        }
+		        else
+		        {
+		            max = Math.max(max, count);
+		            count = 1;     
+		        }
+		    }
+		    max = Math.max(max, count);
+		    System.out.print(max);
+		}
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+class Prime { 
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n= sc.nextInt();
+		boolean isPrime,isFound = true;
+		for (int i=2; i< Math.sqrt(n); ++i){
+			isFound = true;
+			if(n%1==0)isPrime=true;
+			for(int j=2; j<i; ++j){
+				if(i%j==0) { 
+					isFound= false;
+					break;
+				}
+			}
+			if(isFound){
+				System.out.println(i);
+				if(n==i)break;
+			}
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+
+class RangeWithMinDivisors { 
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n= sc.nextInt();
+		int min=0, max=(n>5)?n-5:1;
+		int count = 6 - n;
+		boolean flag = false;
+		boolean valid = true;
+		int res = 0;
+		while(valid){
+			valid = true;
+			for(int i=2; i <= Math.sqrt(max); ++i)
+				if(isPrime(i)){
+					int cnt=primeCo(i,min,max); 
+					if(cnt >= count){
+						flag = true;
+						res

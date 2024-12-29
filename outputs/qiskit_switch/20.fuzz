@@ -1,0 +1,24 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import transpile
+from qiskit.compiler import assemble
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import XGate, CXGate
+from qiskit.extensions import C Swap
+
+qr = QuantumRegister(1)
+
+circuit = QuantumCircuit(qr)
+
+
+classical_input = 0
+
+switch = CSwap(1, [0, 1])
+
+
+circuit.append(switch.control(classical_input), [qr[0], qr[1], qr[2], qr[3]])
+
+print(circuit)

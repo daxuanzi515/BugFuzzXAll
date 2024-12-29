@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+int main() 
+{
+   int j[5]{5, 6, 7, 8}; 
+ 
+   for (const auto k : j)
+      std::cout << k << " ";
+   std::cout << std::endl;
+   string str{"Goodbye"};
+ 
+   for (auto const &ch : str)
+      std::cout << ch << " ";
+   std::cout << std::endl;
+   return 0;
+}
+ 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+struct Phone
+{
+  Phone() = default;
+  explicit Phone(int code) : code_{code} {}
+  int code() const 
+  {
+    return code_;
+  }
+private:
+  int code_{};
+};
+ostream &operator<<(ostream &os, const Phone &p)
+{
+   os << p.code();
+   return os;
+}
+int main()
+{
+  string input{};
+  getline(cin, input);
+  vector<int> numbers{};
+  string delimiter{};
+  istringstream is{input};
+  while (getline(is, delimiter, ','))
+  {
+    try
+    {
+      numbers.emplace_back(stoi(delimiter));
+    }
+    catch (...)
+    {
+    }
+  }
+  sort(numbers.begin(), numbers.end());
+  for (auto i = numbers.begin(); i!= numbers.end(); i++)
+    cout << *i << " ";
+  cout << endl;
+  unordered_map<int, vector<string>> phones{};
+  for (auto &pair : phones) {
+      cout << pair.first << " " <<

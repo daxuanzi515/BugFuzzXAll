@@ -1,0 +1,46 @@
+#include <expected>
+<fim_suffix>d_return_value);
+
+    return 0;
+}
+
+ <fim_middle>
+int main() {
+    std::expected<double, int> d = 27;
+    std::expected<double, int> e = static_cast<std::error_code>(std::errc::invalid_argument);
+
+     
+    std::cout << "is_error " << e.value() << std::endl;
+
+     
+
+     
+    std::cout << "unwrapped_value " << e.value_or(100.2) << std::endl;
+
+     
+    std::cout << "was_unwapped_expected " << e.value() << std::endl;
+
+     
+    std::cout << "is_unexpected " << e.error() << std::endl;
+
+     
+    std::cout << "was_unwapped_unexpected " << e.error() << std::endl;
+
+     
+    std::cout << "is_error " << std::boolalpha << (std::is_error_code_enum<int>::value) << std::endl;
+    std::expected<double, int> d_return_value = e.expect([](auto&& e) { return e.value() + 3; });
+
+    std::cout << "unwrapped_value " << d_return_value << std::endl;
+
+    std::cout << "was_unwapped_expected " << d_return_value.value() << std::endl;
+
+    std::cout << "is_unexpected " << e << std::endl;
+
+    std::cout << "was_unwapped_unexpected " << e.error() << std::endl;
+    std::cout << "Error value is: " << e.value() << std::endl;
+
+     
+    std::expected<std::string, int> f = std::move(e).map([](auto&& e) { return std::string{e} + "_return_string"; });
+    std::cout << "value is " << f.value() << std::endl;
+
+     

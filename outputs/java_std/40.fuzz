@@ -1,0 +1,46 @@
+import java.lang.Object;
+<fim_suffix>	 
+		int x = 100, y = 101, j = 5;
+		while (j <= 4)
+			x = x + y,--j;
+		 
+		System.out.println(x++ + x-- + x);
+		 
+		System.out.println(x + " " + x++ + ++y);
+		 
+		System.out.println(y + " " + y-- + --j);
+		 
+		while (j < 200)
+			System.out.println(++j);
+	}
+}
+ 
+package hello;
+public class Test extends String{
+	public void method(){
+		System.out.println("Printing package name");
+		System.out.println(getClass().getName());
+	}
+}
+ 
+/* For the purpose of the following exercise, assume that you will be using the JDK and compile the following program using the javac (java compiler) command:
+
+class Test {
+	public static void main(String[] args) {
+		boolean isTrue = false;
+		float value;
+		System.out.println("Using try-catch block.");
+		if (isTrue == true) {
+			System.out.println("True!");
+		} else {
+			System.out.println("Not true.");
+		}
+		System.out.println("Returning value in a try block.");
+		try {
+			value = 5.0f / 0.0f;
+		} catch (ArithmeticException e) {
+			System.out.println("Caught ArithmeticException");
+			value = 0.0f;
+		}
+		System.out.println("Value returned is: "+value);
+		System.out.println

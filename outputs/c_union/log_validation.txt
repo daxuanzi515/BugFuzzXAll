@@ -1,0 +1,1858 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/0.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/0.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/0.fuzz:45:6: 错误： ‘complex’ {或称 ‘struct sComplex’}没有名为‘xCoordinate’的成员
+   45 |     c.xCoordinate = getRandom(0, 100);
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/0.fuzz:46:6: 错误： ‘complex’ {或称 ‘struct sComplex’}没有名为‘yCoordinate’的成员
+   46 |     c.yCoordinate = getRandom(0, 100);
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/0.fuzz:47:21: 错误： ‘printCoordinate’的第 1 个实参类型不兼容
+   47 |     printCoordinate(&c.c2);
+      |                     ^~~~~
+      |                     |
+      |                     coordinate *
+/home/cxx/fuzz4all/outputs/c_union/0.fuzz:32:33: 附注： 需要类型‘coordinate’，但实参的类型为‘coordinate *’
+   32 | void printCoordinate(coordinate coordinate);
+      |                      ~~~~~~~~~~~^~~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/1.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/1.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:18:50: 警告： 没有声明任何东西
+   18 |     enum { sunday = 1, day, week, month, month2 };
+      |                                                  ^
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:21:5: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   21 | stun.ch = 'c';
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:21:5: 错误： expected expression before ‘.’ token
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:22:1: 错误： ‘stun’未声明(在此函数内第一次使用)
+   22 | stun.number = 9;
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:22:1: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:24:1: 错误： ‘dun’未声明(在此函数内第一次使用)
+   24 | dun = 50.95;
+      | ^~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:26:1: 错误： ‘number_of_months’未声明(在此函数内第一次使用)
+   26 | number_of_months = 12;
+      | ^~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:32:9: 警告： 隐式声明函数‘puts’ [-Wimplicit-function-declaration]
+   32 |         puts("Today is a Sunday.");
+      |         ^~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘puts’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | 
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:36:9: 警告： 隐式声明函数‘putc’ [-Wimplicit-function-declaration]
+   36 |         putc(sunday, stdout);
+      |         ^~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:36:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘putc’
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:36:22: 错误： ‘stdout’未声明(在此函数内第一次使用)
+   36 |         putc(sunday, stdout);
+      |                      ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:36:22: 附注： ‘stdout’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:37:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   37 |         printf("\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:37:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:37:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:37:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:42:1: 错误： expected declaration or statement at end of input
+   42 | return EXIT_SUCCESS;
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/1.fuzz:42:1: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/2.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/2.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/2.fuzz:21:16: 错误： 无效的初始值设定
+   21 |         u u2 = 9;
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/2.fuzz:25:14: 错误： 将‘int’赋值给‘u’时类型不兼容
+   25 |         u2 = 19;
+      |              ^~
+/home/cxx/fuzz4all/outputs/c_union/2.fuzz:29:14: 错误： 将‘int’赋值给‘u’时类型不兼容
+   29 |         u2 = 129;
+      |              ^~~
+/home/cxx/fuzz4all/outputs/c_union/2.fuzz:43:15: 错误： 将‘int’赋值给‘u’时类型不兼容
+   43 |         *p1 = b;
+      |               ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/3.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/4.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/5.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/5.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz:13:5: 警告： 浮点常量向零截断 [-Woverflow]
+   13 |     u.fval = 1e-320f;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz:24:7: 错误： ‘union Data’重定义
+   24 | union Data
+      |       ^~~~
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz:3:7: 附注： 原先在这里定义
+    3 | union Data
+      |       ^~~~
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz:29:5: 错误： ‘main’重定义
+   29 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/5.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/7.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/7.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/7.fuzz:27:5: 错误： ‘characters_written’ undeclared (first use in this function); did you mean ‘chars_written’?
+   27 |     characters_written += fwrite(&u2.name, 80 * sizeof(u2.name[0]), 1, stdout);
+      |     ^~~~~~~~~~~~~~~~~~
+      |     chars_written
+/home/cxx/fuzz4all/outputs/c_union/7.fuzz:27:5: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/8.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/8.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/8.fuzz:37: 错误： expected ‘)’ at end of input
+/home/cxx/fuzz4all/outputs/c_union/8.fuzz:36:12: 附注： to match this ‘(’
+   36 |     return (EXIT_SUCCESS
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/8.fuzz:36:5: 错误： expected declaration or statement at end of input
+   36 |     return (EXIT_SUCCESS
+      |     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/9.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/10.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/11.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/11.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/11.fuzz:17:22: 错误： assignment to expression with array type
+   17 |     vals[0].dat.name = "Sinhala";
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/11.fuzz:19:18: 错误： assignment to expression with array type
+   19 |     vals[1].chrs = "Kumar";
+      |                  ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/12.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/13.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/13.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:19:11: 错误： ‘Data’定义为类型错误的标记
+   19 |     union Data u1, u2;
+      |           ^~~~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:19:16: 错误： ‘u1’的存储大小未知
+   19 |     union Data u1, u2;
+      |                ^~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:19:20: 错误： ‘u2’的存储大小未知
+   19 |     union Data u1, u2;
+      |                    ^~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:20:12: 错误： ‘Data’定义为类型错误的标记
+   20 |     struct Data u3;
+      |            ^~~~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:20:17: 错误： ‘u3’的存储大小未知
+   20 |     struct Data u3;
+      |                 ^~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:23:5: 警告： 隐式声明函数‘strcpy’ [-Wimplicit-function-declaration]
+   23 |     strcpy(u1.name, "Sinhala");
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:3:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+    2 | #include <stdio.h>
+  +++ |+#include <string.h>
+    3 | 
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:23:5: 警告： 隐式声明与内建函数‘strcpy’不兼容 [-Wbuiltin-declaration-mismatch]
+   23 |     strcpy(u1.name, "Sinhala");
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/13.fuzz:23:5: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/14.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/14.fuzz:4:16: 错误： expected identifier before ‘false’
+    4 | typedef enum { false = 0, true = 1 } bool;
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:4:38: 错误： expected ‘;’, identifier or ‘(’ before ‘bool’
+    4 | typedef enum { false = 0, true = 1 } bool;
+      |                                      ^~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:4:38: 警告： 空声明中类型名无用
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz: 在函数‘fgets_u’中:
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:37:17: 警告： 隐式声明函数‘strcpy’ [-Wimplicit-function-declaration]
+   37 |                 strcpy(data->name, str + 1);
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:4:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+    3 | #include <errno.h>
+  +++ |+#include <string.h>
+    4 | typedef enum { false = 0, true = 1 } bool;
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:37:17: 警告： 隐式声明与内建函数‘strcpy’不兼容 [-Wbuiltin-declaration-mismatch]
+   37 |                 strcpy(data->name, str + 1);
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:37:17: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:50:5: 警告： 隐式声明函数‘set_errno’ [-Wimplicit-function-declaration]
+   50 |     set_errno(error);
+      |     ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz: 在函数‘fputs_u’中:
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:70:60: 错误： expected ‘;’ at end of input
+   70 |             success = fprintf(stream, "%s", data.name) >= 0
+      |                                                            ^
+      |                                                            ;
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:70:13: 错误： expected declaration or statement at end of input
+   70 |             success = fprintf(stream, "%s", data.name) >= 0
+      |             ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:70:13: 错误： expected declaration or statement at end of input
+/home/cxx/fuzz4all/outputs/c_union/14.fuzz:70:13: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/15.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/16.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/17.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/18.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/19.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/19.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/19.fuzz:24:11: 错误： ‘__union__complex_15_9’定义为类型错误的标记
+   24 |     union __union__complex_15_9 u;
+      |           ^~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/19.fuzz:24:33: 错误： ‘u’的存储大小未知
+   24 |     union __union__complex_15_9 u;
+      |                                 ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/21.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/21.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:10:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   10 |     u1.p = 0x1234;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:12:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   12 |     u2.p = 0x5678;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:19:8: 错误： ‘struct __union_Data’重定义
+   19 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:3:8: 附注： 原先在这里定义
+    3 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:27:5: 错误： ‘main’重定义
+   27 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:7:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    7 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:41:8: 错误： ‘struct __union_Data’重定义
+   41 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:19:8: 附注： 原先在这里定义
+   19 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:43:11: 错误： ‘union __anon_union’重定义
+   43 |     union __anon_union
+      |           ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:21:11: 附注： 原先在这里定义
+   21 |     union __anon_union
+      |           ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:54:5: 错误： ‘main’重定义
+   54 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:7:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    7 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/21.fuzz:65:1: 错误： 未结束的注释
+   65 | /*
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/22.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/22.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz:18:9: 错误： expected expression before ‘{’ token
+   18 |     v = {u.num};
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz:25:8: 错误： ‘struct __union_Data’重定义
+   25 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz:3:8: 附注： 原先在这里定义
+    3 | struct __union_Data
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz:34:5: 错误： ‘main’重定义
+   34 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/22.fuzz:14:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   14 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/23.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/25.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/28.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/29.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/29.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:23:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   23 |     u1.p = 0x1234;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:28:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   28 |     u2.p = 0x5678;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:50:5: 错误： ‘main’重定义
+   50 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:10:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   10 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:58:12: 警告： 缺少结尾的 " 字符
+   58 |     printf("%#1
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:58:12: 错误： 缺少结尾的 " 字符
+   58 |     printf("%#1
+      |            ^~~~
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:58:5: 错误： expected expression at end of input
+   58 |     printf("%#1
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/29.fuzz:58:5: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/31.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/31.fuzz:9:3: 错误： 未知的类型名‘__union_Data’
+    9 |   __union_Data __data_union;
+      |   ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/31.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/31.fuzz:21:20: 错误： 在非结构或联合中请求成员‘size_of_data_type’
+   21 |     u1.__data_union.size_of_data_type = sizeof(int);
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/31.fuzz:25:20: 错误： 在非结构或联合中请求成员‘size_of_data_type’
+   25 |     u1.__data_union.size_of_data_type = "long";
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/31.fuzz:26:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   26 |     u1.p = 0x1234;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/31.fuzz:29:20: 错误： 在非结构或联合中请求成员‘size_of_data_type’
+   29 |     u1.__data_union.size_of_data_type = sizeof(void);
+      |                    ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/32.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/33.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/34.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/35.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/35.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/35.fuzz:16:11: 错误： ‘__union_Data’定义为类型错误的标记
+   16 |     union __union_Data u;
+      |           ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/35.fuzz:16:24: 错误： ‘u’的存储大小未知
+   16 |     union __union_Data u;
+      |                        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/36.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/36.fuzz:16:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   16 | u.size_of_data_type = "long";
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:17:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   17 | u.p = 0x1;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:19:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   19 | printf("^U1.i -- %p\n", &u.i);
+      |        ^~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:19:25: 错误： expected declaration specifiers or ‘...’ before ‘&’ token
+   19 | printf("^U1.i -- %p\n", &u.i);
+      |                         ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:20:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   20 | printf("^U1 -- %p\n", &u);
+      |        ^~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:20:23: 错误： expected declaration specifiers or ‘...’ before ‘&’ token
+   20 | printf("^U1 -- %p\n", &u);
+      |                       ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:21:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   21 | printf("U1.p: %p\n", u.p);
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:21:22: 错误： expected declaration specifiers or ‘...’ before ‘u’
+   21 | printf("U1.p: %p\n", u.p);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:22:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   22 | u.i = 0x1234;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:23:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   23 | printf("U1.i: %d\n", u.i);
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:23:22: 错误： expected declaration specifiers or ‘...’ before ‘u’
+   23 | printf("U1.i: %d\n", u.i);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:24:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   24 | u.p = 0x5678;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:25:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   25 | printf("U1.p: %p\n", u.p);
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:25:22: 错误： expected declaration specifiers or ‘...’ before ‘u’
+   25 | printf("U1.p: %p\n", u.p);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:26:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   26 | u.size_of_data_type = "short";
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:27:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   27 | u.p = 0x1234;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:28:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   28 | printf("U1.p: %p\n", u.p);
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:28:22: 错误： expected declaration specifiers or ‘...’ before ‘u’
+   28 | printf("U1.p: %p\n", u.p);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:29:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   29 | u.i = 0x5678;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:30:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   30 | printf("U1.i: %d\n", u.i);
+      |        ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:30:22: 错误： expected declaration specifiers or ‘...’ before ‘u’
+   30 | printf("U1.i: %d\n", u.i);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/36.fuzz:31:1: 错误： expected identifier or ‘(’ before ‘return’
+   31 | return (EXIT_SUCCESS);
+      | ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/37.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/38.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/38.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/38.fuzz:5:24: 错误： ‘u1’的存储大小未知
+    5 |     union __union_Data u1, u2;
+      |                        ^~
+/home/cxx/fuzz4all/outputs/c_union/38.fuzz:5:28: 错误： ‘u2’的存储大小未知
+    5 |     union __union_Data u1, u2;
+      |                            ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/39.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/41.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/42.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/42.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/42.fuzz:14:26: 警告： assignment to ‘size_t’ {或称 ‘long unsigned int’} from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   14 |     u1.size_of_data_type = "char";
+      |                          ^
+/home/cxx/fuzz4all/outputs/c_union/42.fuzz:15:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   15 |     u1.p = 0x1234;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/42.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/42.fuzz:22:13: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘main’
+   22 | int __cdecl main(void)
+      |             ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/43.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/43.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:15:14: 警告： 没有声明任何东西
+   15 |             };
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:19:10: 警告： 没有声明任何东西
+   19 |         };
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:20:6: 警告： 没有声明任何东西
+   20 |     };
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:24:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   24 |         printf("%p", &k);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:3:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | 
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:24:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   24 |         printf("%p", &k);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:24:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:25:27: 错误： ‘__Union’未声明(在此函数内第一次使用)
+   25 |             printf("%p", &__Union);
+      |                           ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:25:27: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:26:5: 错误： expected statement before ‘)’ token
+   26 |     )
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:29:5: 错误： ‘main’重定义
+   29 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:38:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   38 |         printf("%d\n",u1.i);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:38:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:48:5: 错误： ‘main’重定义
+   48 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/43.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main(void)
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/44.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/45.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/46.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/46.fuzz:8:16: 错误： ‘struct __test’重定义
+    8 | typedef struct __test
+      |                ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/46.fuzz:3:16: 附注： 原先在这里定义
+    3 | typedef struct __test
+      |                ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/46.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/46.fuzz:19:10: 警告： assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   19 |     t1.p = 0x5678;
+      |          ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/48.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/48.fuzz:8:1: 错误： ‘__test’定义为类型错误的标记
+    8 | {
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:10:12: 错误： ‘__test’定义为类型错误的标记
+   10 |     struct __test t;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:10:19: 错误： 字段‘t’的类型不完全
+   10 |     struct __test t;
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:12:1: 错误： ‘__test’定义为类型错误的标记
+   12 | };
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:15:11: 错误： ‘__test’定义为类型错误的标记
+   15 |     union __test t1;
+      |           ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:15:18: 错误： ‘t1’的存储大小未知
+   15 |     union __test t1;
+      |                  ^~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:25:11: 错误： 字段‘a1’的类型不完全
+   25 |   union a a1;
+      |           ^~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:26:11: 错误： 字段‘b1’的类型不完全
+   26 |   union b b1;
+      |           ^~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:32:5: 错误： ‘main’重定义
+   32 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:13:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:34:44: 错误： ‘a1’ undeclared (first use in this function); did you mean ‘a’?
+   34 |     printf("sizeof(union a a1) %d", sizeof(a1));
+      |                                            ^~
+      |                                            a
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:34:44: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:49:5: 错误： ‘main’重定义
+   49 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:13:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:59:7: 错误： ‘union data_type’重定义
+   59 | union data_type{
+      |       ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:42:7: 附注： 原先在这里定义
+   42 | union data_type{
+      |       ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:66:5: 错误： ‘main’重定义
+   66 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:13:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:72:5: 错误： expected ‘,’ or ‘;’ before ‘printf’
+   72 |     printf("0x%02llX\n", u);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/48.fuzz:78:1: 错误： 未结束的注释
+   78 | /* The below snippet will print the
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/49.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/50.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/51.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/51.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:43:14: 错误： 将‘u1’赋值给‘struct u2’时类型不兼容
+   43 |         u2 = t1;
+      |              ^~
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:44:155: 错误： ‘struct <匿名>’没有名为‘C’的成员
+   44 |         printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+      |                                                                                                                                                           ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:44:164: 错误： ‘struct <匿名>’没有名为‘D’的成员
+   44 |         printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+      |                                                                                                                                                                    ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:44:173: 错误： ‘struct <匿名>’没有名为‘A’的成员
+   44 |         printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+      |                                                                                                                                                                             ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:44:182: 错误： ‘struct <匿名>’没有名为‘B’的成员
+   44 |         printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+      |                                                                                                                                                                                      ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:49:14: 错误： ‘struct <匿名>’没有名为‘C’的成员
+   49 |         u2.t1.C = 0x1234;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:50:14: 错误： ‘struct <匿名>’没有名为‘D’的成员
+   50 |         u2.t1.D = 0x1234;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:53:14: 错误： 将‘u1’赋值给‘struct u2’时类型不兼容
+   53 |         u3 = t1;
+      |              ^~
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:54:9: 错误： expected expression at end of input
+   54 |         printf("u3: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u3.t1.A, u3.t1.B,
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:54:9: 错误： expected declaration or statement at end of input
+/home/cxx/fuzz4all/outputs/c_union/51.fuzz:54:9: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/52.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/53.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/53.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:37:7: 错误： expected expression before ‘}’ token
+   37 |     })});
+      |       ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:37:8: 错误： expected identifier or ‘(’ before ‘)’ token
+   37 |     })});
+      |        ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:38:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   38 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:38:35: 错误： 未知的类型名‘u1’
+   38 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |                                   ^~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:39:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   39 |     printf("value of u1 is %d\n", u1.y.x.f);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:39:35: 错误： 未知的类型名‘u1’
+   39 |     printf("value of u1 is %d\n", u1.y.x.f);
+      |                                   ^~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:40:5: 错误： expected identifier or ‘(’ before ‘return’
+   40 |     return 0;
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:41:1: 错误： expected identifier or ‘(’ before ‘}’ token
+   41 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:42:3: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   42 | u1.y = (void *) f;
+      |   ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:43:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   43 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:43:35: 错误： 未知的类型名‘u1’
+   43 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |                                   ^~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:44:3: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   44 | u1.y = f;
+      |   ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:45:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   45 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:45:35: 错误： 未知的类型名‘u1’
+   45 |     printf("value of u1 is %d\n", u1.y.x.i);
+      |                                   ^~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:46:5: 错误： expected identifier or ‘(’ before ‘return’
+   46 |     return 0;
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:47:2: 错误： expected identifier or ‘(’ before ‘/’ token
+   47 | */
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:62:5: 错误： ‘main’重定义
+   62 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:8:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    8 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:64:20: 错误： ‘obj’的存储大小未知
+   64 |     struct complex obj;
+      |                    ^~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:76:12: 警告： 缺少结尾的 " 字符
+   76 |     printf("size of f = %lu\n
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:76:12: 错误： 缺少结尾的 " 字符
+   76 |     printf("size of f = %lu\n
+      |            ^~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:76:5: 错误： expected expression at end of input
+   76 |     printf("size of f = %lu\n
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/53.fuzz:76:5: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/54.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/56.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/57.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/58.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/58.fuzz:7:1: 错误： expected ‘;’, identifier or ‘(’ before ‘union’
+    7 | union {
+      | ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/59.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/59.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/59.fuzz:21:8: 错误： ‘struct s’重定义
+   21 | struct s {
+      |        ^
+/home/cxx/fuzz4all/outputs/c_union/59.fuzz:14:5: 附注： 原先在这里定义
+   14 |     s
+      |     ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/60.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/61.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/61.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:18:9: 错误： ‘point’被重新声明为不同意义的符号
+   18 |   point point;
+      |         ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:16:5: 附注： previous declaration of ‘point’ with type ‘point’
+   16 |   } point;
+      |     ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:31:5: 错误： ‘main’重定义
+   31 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:50:9: 错误： ‘point’被重新声明为不同意义的符号
+   50 |   point point;
+      |         ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:48:5: 附注： previous declaration of ‘point’ with type ‘point’
+   48 |   } point;
+      |     ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:55:9: 错误： ‘point’ has no member named ‘px’; did you mean ‘x’?
+   55 |   point.px = 0x1234;
+      |         ^~
+      |         x
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:56:9: 错误： ‘point’ has no member named ‘py’; did you mean ‘y’?
+   56 |   point.py = 0x4321;
+      |         ^~
+      |         y
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/61.fuzz:77:5: 错误： expected specifier-qualifier-list at end of input
+   77 |     int (*cmpitem)(const void *a, const void *b);
+      |     ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/62.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/63.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/65.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/66.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/66.fuzz:27:5: 错误： ‘main’重定义
+   27 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/66.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/66.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/66.fuzz:53:3: 错误： expected declaration or statement at end of input
+   53 |   printf("un1.integer=%d\n", un1.integer);
+      |   ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/67.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/68.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/68.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/68.fuzz:16:15: 错误： 请求转换到非标量类型
+   16 |   b = (struct s ) d;
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/68.fuzz:21:15: 错误： 请求转换到非标量类型
+   21 |   a = (struct s )d;
+      |               ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/69.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/69.fuzz:53:5: 错误： ‘main’重定义
+   53 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz:67:10: 警告： 联合初始值设定项中有多余元素
+   67 |   }t= {2,3,4};
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz:67:10: 附注： (在‘t’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz:67:12: 警告： 联合初始值设定项中有多余元素
+   67 |   }t= {2,3,4};
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/69.fuzz:67:12: 附注： (在‘t’的初始化附近)
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/70.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/71.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/71.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/71.fuzz:34:8: 错误： 将‘struct <匿名>’赋值给‘struct <匿名>’时类型不兼容
+   34 |  v.r = m.a;
+      |        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/72.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/73.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/73.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:21:5: 警告： assignment to ‘struct <匿名> *’ from incompatible pointer type ‘struct s *’ [-Wincompatible-pointer-types]
+   21 |  p2 = (struct s *)(q);
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:23:14: 错误： 将‘struct <匿名> *’赋值给‘struct <匿名>’时类型不兼容
+   23 |   t0.point = p1;
+      |              ^~
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:35:5: 错误： ‘main’重定义
+   35 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:53:5: 警告： assignment to ‘struct <匿名> *’ from incompatible pointer type ‘struct s *’ [-Wincompatible-pointer-types]
+   53 |  p2 = (struct s *)(q);
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:55:14: 错误： 将‘struct <匿名>’赋值给‘struct <匿名>’时类型不兼容
+   55 |   t0.point = *p1;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:56:3: 错误： expected identifier at end of input
+   56 |   t0.
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_union/73.fuzz:56:3: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/74.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/74.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:16:14: 错误： invalid use of undefined type ‘struct s’
+   16 |   t0.point = *((struct s *)p1);
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:21:17: 错误： ‘g_point’ undeclared (first use in this function); did you mean ‘point’?
+   21 |   p2 = (void *)&g_point;
+      |                 ^~~~~~~
+      |                 point
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:21:17: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:22:14: 错误： invalid use of undefined type ‘struct s’
+   22 |   t1.point = *((struct s *)p2);
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:26:5: 错误： ‘union <匿名>’没有名为‘p’的成员
+   26 |   t0.p = (struct s *)&g_point;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:27:5: 错误： ‘union <匿名>’没有名为‘p’的成员
+   27 |   t1.p = (struct s *)&g_t1;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:27:23: 错误： ‘g_t1’ undeclared (first use in this function); did you mean ‘t1’?
+   27 |   t1.p = (struct s *)&g_t1;
+      |                       ^~~~
+      |                       t1
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:28:3: 错误： ‘i’未声明(在此函数内第一次使用)
+   28 |   i=4;
+      |   ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:29:5: 错误： ‘union <匿名>’没有名为‘p’的成员
+   29 |   t0.p=&i;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:30:5: 错误： ‘union <匿名>’没有名为‘p’的成员
+   30 |   t1.p=&i;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:31:5: 错误： ‘union <匿名>’没有名为‘i’的成员
+   31 |   t0.i=0x1234;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:32:5: 错误： ‘union <匿名>’没有名为‘i’的成员
+   32 |   t1.i=0x4321;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:33:34: 错误： ‘union <匿名>’没有名为‘p’的成员
+   33 |   printf("t0.p=%p,t0.i=0x%x\n",t0.p,t0.i);
+      |                                  ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:33:39: 错误： ‘union <匿名>’没有名为‘i’的成员
+   33 |   printf("t0.p=%p,t0.i=0x%x\n",t0.p,t0.i);
+      |                                       ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:34:54: 错误： ‘union <匿名>’没有名为‘p’的成员
+   34 |   printf("t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.p->point.px,t0.p->point.py);
+      |                                                      ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:34:69: 错误： ‘union <匿名>’没有名为‘p’的成员
+   34 |   printf("t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.p->point.px,t0.p->point.py);
+      |                                                                     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:35:64: 错误： ‘union <匿名>’没有名为‘i’的成员
+   35 |   printf("t0.i=0x%x,t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.i,t0.p[0].point.px,t0.p[0].point.py);
+      |                                                                ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:35:69: 错误： ‘union <匿名>’没有名为‘p’的成员
+   35 |   printf("t0.i=0x%x,t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.i,t0.p[0].point.px,t0.p[0].point.py);
+      |                                                                     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:35:86: 错误： ‘union <匿名>’没有名为‘p’的成员
+   35 |   printf("t0.i=0x%x,t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.i,t0.p[0].point.px,t0.p[0].point.py);
+      |                                                                                      ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:36:5: 错误： ‘union <匿名>’没有名为‘i’的成员
+   36 |   t0.i=0;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/74.fuzz:49:1: 错误： expected expression at end of input
+   49 | double t1[2][2][
+      | ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/75.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/76.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/76.fuzz:10:1: 错误： unknown type name ‘complex’; use ‘union’ keyword to refer to the type
+   10 | complex z, zz;
+      | ^~~~~~~
+      | union 
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:12:20: 错误： 在非结构或联合中请求成员‘real’
+   12 |      p = (char *)&z.real;
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:13:7: 错误： 在非结构或联合中请求成员‘real’
+   13 |      z.real = 8015968879;
+      |       ^
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:15:7: 错误： 在非结构或联合中请求成员‘imaginary’
+   15 |      z.imaginary = (struct {
+      |       ^
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:20:7: 错误： 在非结构或联合中请求成员‘real’
+   20 |      z.real = 8182506688;
+      |       ^
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:21:10: 错误： 将‘union complex’赋值给‘int’时类型不兼容
+   21 |      z = (union complex) {
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/76.fuzz:24:11: 错误： expected expression before ‘{’ token
+   24 |      zz = {
+      |           ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/77.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/77.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/77.fuzz:29:6: 错误： ‘union1’没有名为‘m’的成员
+   29 |    t2.m = 0x1234;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/77.fuzz:32:6: 错误： ‘union1’没有名为‘m’的成员
+   32 |    t0.m = 0x4321;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/77.fuzz:36:6: 错误： ‘union2’没有名为‘m’的成员
+   36 |    t1.m = 0x4321;
+      |      ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/78.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/79.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/79.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:17:5: 警告： assignment to ‘struct <匿名> *’ from incompatible pointer type ‘struct s *’ [-Wincompatible-pointer-types]
+   17 |  q1 = (struct s *)&point;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:18:2: 错误： ‘p’未声明(在此函数内第一次使用)
+   18 |  p = (void *)&t1;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:18:2: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:18:15: 错误： expected expression before ‘t1’
+   18 |  p = (void *)&t1;
+      |               ^~
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:19:6: 错误： expected identifier or ‘(’ before ‘.’ token
+   19 |    t2.m = 0x1234;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:20:6: 错误： expected identifier or ‘(’ before ‘.’ token
+   20 |    t2.n = (struct s *)q1;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:21:6: 错误： expected identifier or ‘(’ before ‘.’ token
+   21 |    t0.m = 0x4321;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:22:6: 错误： expected identifier or ‘(’ before ‘.’ token
+   22 |    t0.n = (struct s *)p;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/79.fuzz:23:8: 错误： expected expression before ‘t2’
+   23 |    p = t2.n;
+      |        ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/80.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/81.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/81.fuzz:11:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   11 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:14:7: 错误： expected identifier or ‘(’ before ‘=’ token
+   14 |    q1 = &point;
+      |       ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:15:9: 错误： expected expression before ‘t’
+   15 |    p = &t;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:16:2: 错误： expected identifier or ‘(’ before ‘.’ token
+   16 | t.z = 0x1234;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:17:11: 错误： expected ‘)’ before ‘.’ token
+   17 | *(int *)(t.z) = 0x4321;
+      |         ~ ^
+      |           )
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:17:15: 错误： expected expression before ‘=’ token
+   17 | *(int *)(t.z) = 0x4321;
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:18:2: 错误： expected identifier or ‘(’ before ‘.’ token
+   18 | t.z = 0x4321;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:19:6: 错误： expected expression before ‘t’
+   19 | p = &t.z;
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:20:2: 错误： expected identifier or ‘(’ before ‘.’ token
+   20 | t.z = *(int *)(q1);
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:34:5: 错误： ‘main’重定义
+   34 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:11:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+   11 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:39:10: 警告： 隐式声明函数‘square’ [-Wimplicit-function-declaration]
+   39 |      y = square(3);
+      |          ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:49:8: 错误： conflicting types for ‘square’; have ‘double(number)’ {或称 ‘double(int)’}
+   49 | double square(number x)
+      |        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:39:10: 附注： previous implicit declaration of ‘square’ with type ‘int()’
+   39 |      y = square(3);
+      |          ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/81.fuzz:58:1: 错误： 未结束的注释
+   58 | /* Define a union called color that has two members black and white. Define 2 variables of type color and use them to show values. Make sure compiler does not accept the definition of other variables of color type in the same program as the defined color variables.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/82.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/83.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/83.fuzz:11:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   11 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/83.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/83.fuzz:16:5: 错误： ‘q1’ undeclared (first use in this function); did you mean ‘t1’?
+   16 |     q1 = &point;
+      |     ^~
+      |     t1
+/home/cxx/fuzz4all/outputs/c_union/83.fuzz:16:5: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/83.fuzz:17:10: 错误： expected expression before ‘t’
+   17 |     p = &t;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/83.fuzz:19:2: 警告： 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+   19 | *(int *)(t1.z) = 0x4321;
+      |  ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/84.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/85.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/86.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/87.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/87.fuzz:8:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+    8 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:34:5: 错误： ‘main’重定义
+   34 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:8:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+    8 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:38:2: 警告： assignment to ‘Test *’ from incompatible pointer type ‘int *’ [-Wincompatible-pointer-types]
+   38 | q=&z;
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:39:4: 错误： 将‘int’赋值给‘Test’时类型不兼容
+   39 | *q=50;
+      |    ^~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:45:5: 错误： ‘main’重定义
+   45 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:8:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+    8 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/87.fuzz:50:4: 错误： 将‘int’赋值给‘Test’时类型不兼容
+   50 | *q=50;
+      |    ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/88.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/88.fuzz:4:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+    4 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/88.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/88.fuzz:7:4: 错误： 无法转换为指针类型
+    7 |    int *x1 = (int *)x;
+      |    ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/89.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/90.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/90.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>xit(0);
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:3:1: 错误： expected identifier or ‘(’ before ‘}’ token
+    3 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:4:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    4 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:4:13: 错误： 程序中有游离的‘#’
+    4 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:9:3: 警告： 数据定义时没有类型或存储类
+    9 | } Array;
+      |   ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:9:3: 警告： 在‘Array’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:10:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   10 | main ()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:14:14: 错误： expected ‘;’ before ‘array’
+   14 |         Array array;
+      |              ^~~~~~
+      |              ;
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:16:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   16 |         printf ( "\n%d - Enter numbers \n",getpid());
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | <fim_suffix>xit(0);
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:16:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   16 |         printf ( "\n%d - Enter numbers \n",getpid());
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:16:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:16:44: 警告： 隐式声明函数‘getpid’ [-Wimplicit-function-declaration]
+   16 |         printf ( "\n%d - Enter numbers \n",getpid());
+      |                                            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:17: 警告： 隐式声明函数‘scanf’ [-Wimplicit-function-declaration]
+   18 |                 scanf ("%d",&array. numbers[i]);
+      |                 ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:17: 附注： include ‘<stdio.h>’ or provide a declaration of ‘scanf’
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:17: 警告： 隐式声明与内建函数‘scanf’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:17: 附注： include ‘<stdio.h>’ or provide a declaration of ‘scanf’
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:30: 错误： ‘array’ undeclared (first use in this function); did you mean ‘Array’?
+   18 |                 scanf ("%d",&array. numbers[i]);
+      |                              ^~~~~
+      |                              Array
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:18:30: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:27:9: 错误： ‘e’未声明(在此函数内第一次使用)
+   27 |         e
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:27:10: 错误： expected ‘;’ at end of input
+   27 |         e
+      |          ^
+      |          ;
+/home/cxx/fuzz4all/outputs/c_union/90.fuzz:27:9: 错误： expected declaration or statement at end of input
+   27 |         e
+      |         ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/91.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/91.fuzz:4:9: 警告： 数据定义时没有类型或存储类
+    4 |         q1 = calloc(1,sizeof(struct Point));
+      |         ^~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:4:9: 警告： 在‘q1’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:4:30: 错误： invalid application of ‘sizeof’ to incomplete type ‘struct Point’
+    4 |         q1 = calloc(1,sizeof(struct Point));
+      |                              ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:5:5: 警告： 数据定义时没有类型或存储类
+    5 |     q2 = calloc(1,sizeof(struct Point));
+      |     ^~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:5:5: 警告： 在‘q2’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:5:26: 错误： invalid application of ‘sizeof’ to incomplete type ‘struct Point’
+    5 |     q2 = calloc(1,sizeof(struct Point));
+      |                          ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:7:12: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+    7 |         q2 -> x = 5;
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:8:9: 警告： 数据定义时没有类型或存储类
+    8 |         p = & t;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:8:9: 警告： 在‘p’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:8:9: 错误： conflicting types for ‘p’; have ‘int’
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:3:31: 附注： previous declaration of ‘p’ with type ‘union Number *’
+    3 |                 union Number *p;
+      |                               ^
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:8:15: 错误： ‘t’未声明(不在函数内)
+    8 |         p = & t;
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:9:3: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+    9 | p -> z = 1;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:10:3: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+   10 | p -> t = q1;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:25:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   25 | main(){
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:38:1: 错误： expected identifier or ‘(’ before ‘<’ token
+   38 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:38:13: 错误： 程序中有游离的‘#’
+   38 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:47:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   47 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:47:1: 错误： ‘main’重定义
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:25:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+   25 | main(){
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:49:22: 错误： ‘point1’的存储大小未知
+   49 |         struct Point point1, point2, *q1, *q2;
+      |                      ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:49:30: 错误： ‘point2’的存储大小未知
+   49 |         struct Point point1, point2, *q1, *q2;
+      |                              ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/91.fuzz:50:15: 错误： expected declaration or statement at end of input
+   50 |         union Number t;
+      |               ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/92.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/92.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>)
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/92.fuzz:12:2: 错误： expected identifier or ‘(’ before ‘<’ token
+   12 | }<fim_middle>#include <stdio.h>
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/92.fuzz:12:14: 错误： 程序中有游离的‘#’
+   12 | }<fim_middle>#include <stdio.h>
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/92.fuzz:16:1: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ at end of input
+   16 | main
+      | ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/93.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/93.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>r = x;
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:3:5: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+    3 | a[1]. x = 200;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:4:5: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+    4 | a[1]. y = x = 3000;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:5:5: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+    5 | a[1]. z = 0xABCDEA;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:6:5: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+    6 | a[2]. x = x = 3000;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:7:1: 警告： 数据定义时没有类型或存储类
+    7 | *ptr = x = 1000;
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:7:2: 警告： 在‘ptr’的声明中，类型默认为‘int’ [-Wimplicit-int]
+    7 | *ptr = x = 1000;
+      |  ^~~
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:7:8: 错误： ‘x’未声明(不在函数内)
+    7 | *ptr = x = 1000;
+      |        ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:8:1: 错误： expected identifier or ‘(’ before ‘}’ token
+    8 | }<fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:8:2: 错误： expected identifier or ‘(’ before ‘<’ token
+    8 | }<fim_middle>#include <stdio.h>
+      |  ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:8:14: 错误： 程序中有游离的‘#’
+    8 | }<fim_middle>#include <stdio.h>
+      |              ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:20:30: 错误： 字段‘p’的类型不完全
+   20 |                 struct Point p;
+      |                              ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:23:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   23 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:25:22: 错误： ‘point1’的存储大小未知
+   25 |         struct Point point1;
+      |                      ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:42:5: 警告： assignment to ‘char *’ from incompatible pointer type ‘int *’ [-Wincompatible-pointer-types]
+   42 | ptr = & a[0]. x;
+      |     ^
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:43:2: 错误： ‘pt’ undeclared (first use in this function); did you mean ‘ptr’?
+   43 | *pt
+      |  ^~
+      |  ptr
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:43:2: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:43:4: 错误： expected ‘;’ at end of input
+   43 | *pt
+      |    ^
+      |    ;
+/home/cxx/fuzz4all/outputs/c_union/93.fuzz:43:1: 错误： expected declaration or statement at end of input
+   43 | *pt
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/94.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/94.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>ruct is allocated on the heap
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:16:9: 警告： 数据定义时没有类型或存储类
+   16 |         ptr = (struct Student *)malloc(sizeof(struct Student));
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:16:9: 警告： 在‘ptr’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:16:9: 错误： conflicting types for ‘ptr’; have ‘int’
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:13:24: 附注： previous declaration of ‘ptr’ with type ‘struct Student’
+   13 |         struct Student ptr;
+      |                        ^~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:19:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   19 |         printf("\n\nthe address of student value inside ptr is %p", (ptr));
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:19:69: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   19 |         printf("\n\nthe address of student value inside ptr is %p", (ptr));
+      |                                                                     ^
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:22:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   22 |         printf("\nthe address of ptr is %p", &ptr);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:22:46: 错误： expected declaration specifiers or ‘...’ before ‘&’ token
+   22 |         printf("\nthe address of ptr is %p", &ptr);
+      |                                              ^
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:25:12: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+   25 |         ptr->rollno = 100;
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:26:19: 错误： expected ‘)’ before ‘->’ token
+   26 |         strcpy(ptr->name, "Jake");
+      |                   ^~
+      |                   )
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:27:12: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+   27 |         ptr->percentage = 9.05;
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:30:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   30 |         printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:30:65: 错误： expected declaration specifiers or ‘...’ before ‘ptr’
+   30 |         printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+      |                                                                 ^~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:30:78: 错误： expected declaration specifiers or ‘...’ before ‘ptr’
+   30 |         printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+      |                                                                              ^~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:30:89: 错误： expected declaration specifiers or ‘...’ before ‘ptr’
+   30 |         printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+      |                                                                                         ^~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:33:9: 错误： expected identifier or ‘(’ before ‘return’
+   33 |         return 0;
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:35:1: 错误： expected identifier or ‘(’ before ‘}’ token
+   35 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/94.fuzz:38:9: 致命错误： conio.h：没有那个文件或目录
+   38 | #include<conio.h>
+      |         ^~~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/95.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/95.fuzz:2:1: 错误： 整数常量的“_t”后缀无效
+    2 | 32_t k;
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:2:1: 错误： expected identifier or ‘(’ before numeric constant
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:3:9: 错误： expected identifier or ‘(’ before ‘for’
+    3 |         for(j=0;j<n;++j)
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:3:18: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+    3 |         for(j=0;j<n;++j)
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:3:21: 错误： expected identifier or ‘(’ before ‘++’ token
+    3 |         for(j=0;j<n;++j)
+      |                     ^~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:11:9: 错误： expected identifier or ‘(’ before ‘for’
+   11 |         for(i = 0; i < n-1; i++){
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:11:22: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+   11 |         for(i = 0; i < n-1; i++){
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:11:30: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘++’ token
+   11 |         for(i = 0; i < n-1; i++){
+      |                              ^~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:14:9: 错误： expected identifier or ‘(’ before ‘}’ token
+   14 |         }
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:15:1: 错误： expected identifier or ‘(’ before ‘<’ token
+   15 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:15:13: 错误： 程序中有游离的‘#’
+   15 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:27:35: 错误： ‘S_IRWXU’未声明(在此函数内第一次使用)
+   27 |         int queue_id =msgget(1000,S_IRWXU | S_IRGRP | S_IROTH);
+      |                                   ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:27:35: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:27:45: 错误： ‘S_IRGRP’未声明(在此函数内第一次使用)
+   27 |         int queue_id =msgget(1000,S_IRWXU | S_IRGRP | S_IROTH);
+      |                                             ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:27:55: 错误： ‘S_IROTH’未声明(在此函数内第一次使用)
+   27 |         int queue_id =msgget(1000,S_IRWXU | S_IRGRP | S_IROTH);
+      |                                                       ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:30:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   30 |         printf("1-Get(first in queue) 2-Send messages\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:21:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+   20 | #include <unistd.h>
+  +++ |+#include <stdio.h>
+   21 | struct message{
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:30:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   30 |         printf("1-Get(first in queue) 2-Send messages\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:30:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:32:9: 警告： 隐式声明函数‘fgets’ [-Wimplicit-function-declaration]
+   32 |         fgets(m->mtext, 20,"\n");
+      |         ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:36:42: 警告： 传递‘msgctl’的第 3 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   36 |                 msgctl(queue_id,IPC_STAT,m);
+      |                                          ^
+      |                                          |
+      |                                          struct message *
+In file included from /home/cxx/fuzz4all/outputs/c_union/95.fuzz:19:
+/usr/include/x86_64-linux-gnu/sys/msg.h:61:61: 附注： 需要类型‘struct msqid_ds *’，但实参的类型为‘struct message *’
+   61 | extern int msgctl (int __msqid, int __cmd, struct msqid_ds *__buf) __THROW;
+      |                                            ~~~~~~~~~~~~~~~~~^~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:56:28: 错误： 提供给函数‘strcmp’的实参太少
+   56 |                         if(strcmp(m->mtext)==0)
+      |                            ^~~~~~
+In file included from /home/cxx/fuzz4all/outputs/c_union/95.fuzz:16:
+/usr/include/string.h:137:12: 附注： 在此声明
+  137 | extern int strcmp (const char *__s1, const char *__s2)
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/95.fuzz:64:1: 错误： 未结束的注释
+   64 | /* This program is in C language and is intended to understand the array. It is supposed to take m=number of
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/96.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/96.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>ucts:
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:16: 错误： 变量‘student’有初始值设定但类型不完全
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:36: 错误： ‘struct Student’没有名为‘age’的成员
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                    ^~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:42: 警告： 结构初始值设定项中有多余元素
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                          ^~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:42: 附注： (在‘student’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:46: 错误： ‘struct Student’没有名为‘marks’的成员
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                              ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:57: 警告： 结构初始值设定项中有多余元素
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                                         ^~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:57: 附注： (在‘student’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:61: 错误： ‘struct Student’没有名为‘marks’的成员
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                                             ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:72: 警告： 结构初始值设定项中有多余元素
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                                                        ^~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:72: 附注： (在‘student’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:76: 错误： ‘struct Student’没有名为‘marks’的成员
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                                                            ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:87: 警告： 结构初始值设定项中有多余元素
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                                                                                       ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:87: 附注： (在‘student’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:8:16: 错误： expected declaration specifiers or ‘...’ before string constant
+    8 |         printf("student = %d\n", student.age);
+      |                ^~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:8:34: 错误： expected declaration specifiers or ‘...’ before ‘student’
+    8 |         printf("student = %d\n", student.age);
+      |                                  ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:9:16: 错误： expected declaration specifiers or ‘...’ before string constant
+    9 |         printf("student = %d\n", student.marks[3]);
+      |                ^~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:9:34: 错误： expected declaration specifiers or ‘...’ before ‘student’
+    9 |         printf("student = %d\n", student.marks[3]);
+      |                                  ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:11:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   11 |         printf("student = %lu\n",*((unsigned long*)&student.marks[0]));
+      |                ^~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:11:34: 错误： expected declaration specifiers or ‘...’ before ‘*’ token
+   11 |         printf("student = %lu\n",*((unsigned long*)&student.marks[0]));
+      |                                  ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:13:55: 警告： 结构或联合后没有分号
+   13 |         struct Test{int a, b[3], c, d[5], e[10][10], f};
+      |                                                       ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:15:1: 错误： expected identifier or ‘(’ before ‘}’ token
+   15 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:17:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   17 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:27:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   27 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:27:1: 错误： ‘main’重定义
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:17:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:31:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   31 |         printf("The value of a[0] is %d\n", a[0]);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | <fim_suffix>ucts:
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:31:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   31 |         printf("The value of a[0] is %d\n", a[0]);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:31:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:41:5: 错误： ‘main’重定义
+   41 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:17:1: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:42:1: 错误： expected declaration or statement at end of input
+   42 | {
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_union/96.fuzz:7:24: 错误： ‘student’的存储大小未知
+    7 |         struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+      |                        ^~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/97.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/97.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘,’ token
+    2 | ,0,0,0,0,0,0,0};
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:5:19: 错误： ‘buff1’ undeclared here (not in a function); did you mean ‘buff2’?
+    5 |         char *q = buff1;
+      |                   ^~~~~
+      |                   buff2
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:9:9: 警告： 数据定义时没有类型或存储类
+    9 |         q = p;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:9:9: 警告： 在‘q’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:9:9: 错误： conflicting types for ‘q’; have ‘int’
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:5:15: 附注： previous definition of ‘q’ with type ‘char *’
+    5 |         char *q = buff1;
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:10:9: 警告： 数据定义时没有类型或存储类
+   10 |         *q = 57;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:10:10: 警告： 在‘q’的声明中，类型默认为‘int’ [-Wimplicit-int]
+   10 |         *q = 57;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:11:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   11 |         printf("The value of buff1 is %s\n",buff1);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:11:45: 错误： expected declaration specifiers or ‘...’ before ‘buff1’
+   11 |         printf("The value of buff1 is %s\n",buff1);
+      |                                             ^~~~~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:12:9: 警告： 数据定义时没有类型或存储类
+   12 |         q = p;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:12:9: 警告： 在‘q’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:13:6: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+   13 | print:
+      |      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:15:9: 错误： expected identifier or ‘(’ before ‘if’
+   15 |         if (!q1)
+      |         ^~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:17:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   17 |         printf("end of function");
+      |                ^~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:18:9: 错误： expected identifier or ‘(’ before ‘}’ token
+   18 |         }
+      |         ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:29:11: 警告： 未定义任何实例的无名结构/联合
+   29 |           };
+      |           ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:36:11: 错误： expected identifier or ‘(’ before ‘}’ token
+   36 |           };
+      |           ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:42:9: 错误： expected identifier or ‘(’ before ‘if’
+   42 |         if(sizeof(PRINT_TYPE)==4&&sizeof(int)==4) {
+      |         ^~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:44:11: 错误： expected identifier or ‘(’ before ‘else’
+   44 |         } else {
+      |           ^~~~
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:47:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   47 |         P(short);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:47:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   47 |         P(short);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:48:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   48 |         P(float);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:48:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   48 |         P(float);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:49:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   49 |         P(double);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:49:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   49 |         P(double);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:50:20: 错误： expected declaration specifiers or ‘...’ before string constant
+   50 |         P(long long);
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:50:20: 错误： expected declaration specifiers or ‘...’ before string constant
+   50 |         P(long long);
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:52:15: 错误： expected declaration specifiers or ‘...’ before string constant
+   52 |         P(char); P(char *);
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:52:15: 错误： expected declaration specifiers or ‘...’ before string constant
+   52 |         P(char); P(char *);
+      |               ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:52:26: 错误： expected declaration specifiers or ‘...’ before string constant
+   52 |         P(char); P(char *);
+      |                          ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:52:26: 错误： expected declaration specifiers or ‘...’ before string constant
+   52 |         P(char); P(char *);
+      |                          ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:53:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   53 |         P(int [4]);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:53:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   53 |         P(int [4]);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:54:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   54 |         P(float*);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:54:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   54 |         P(float*);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:55:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   55 |         P(double*);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:55:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   55 |         P(double*);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:57:19: 错误： expected declaration specifiers or ‘...’ before string constant
+   57 |         P(struct x);
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:57:19: 错误： expected declaration specifiers or ‘...’ before string constant
+   57 |         P(struct x);
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:58:19: 错误： expected declaration specifiers or ‘...’ before string constant
+   58 |         P(struct u);
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:58:19: 错误： expected declaration specifiers or ‘...’ before string constant
+   58 |         P(struct u);
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:59:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   59 |         P(struct);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:59:17: 错误： expected declaration specifiers or ‘...’ before string constant
+   59 |         P(struct);
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:60:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   60 |         P(union);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:60:16: 错误： expected declaration specifiers or ‘...’ before string constant
+   60 |         P(union);
+      |                ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:61:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   61 |         P(union u);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:61:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   61 |         P(union u);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:63:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   63 |         P(*);
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:63:12: 错误： expected declaration specifiers or ‘...’ before string constant
+   63 |         P(*);
+      |            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:64:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   64 |         P(char[X]);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:64:18: 错误： expected declaration specifiers or ‘...’ before string constant
+   64 |         P(char[X]);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:65:22: 错误： expected declaration specifiers or ‘...’ before string constant
+   65 |         P(char (*)[4]);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:65:22: 错误： expected declaration specifiers or ‘...’ before string constant
+   65 |         P(char (*)[4]);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:66:20: 错误： expected declaration specifiers or ‘...’ before string constant
+   66 |         P(const int);
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:22: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:66:20: 错误： expected declaration specifiers or ‘...’ before string constant
+   66 |         P(const int);
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:23:44: 附注： in definition of macro ‘P’
+   23 | #define P(a) printf(#a" is of type %s.\n",#a)
+      |                                            ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:67:1: 错误： expected identifier or ‘(’ before ‘<’ token
+   67 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:67:13: 错误： 程序中有游离的‘#’
+   67 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/97.fuzz:78:17: 错误： expected identifier or ‘(’ at end of input
+   78 |                 int
+      |                 ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/98.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/98.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>n union members using the address operator  * to access union variables. */
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/98.fuzz:14:1: 错误： expected identifier or ‘(’ before ‘<’ token
+   14 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/98.fuzz:14:13: 错误： 程序中有游离的‘#’
+   14 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/98.fuzz:30:1: 错误： 未结束的注释
+   30 | /* To declare a union in C programming language, we need to include union keyword in our program and name our union, for example:
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_union/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_union/99.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_union/99.fuzz:2:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    2 | <fim_suffix>    *ptr = malloc(10);
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:4:12: 错误： expected declaration specifiers or ‘...’ before string constant
+    4 |     printf("%s", *ptr);
+      |            ^~~~
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:4:18: 错误： expected declaration specifiers or ‘...’ before ‘*’ token
+    4 |     printf("%s", *ptr);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:5:10: 错误： expected declaration specifiers or ‘...’ before ‘*’ token
+    5 |     free(*ptr);
+      |          ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:6:16: 错误： expected declaration specifiers or ‘...’ before string constant
+    6 |         printf("Done\n");
+      |                ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:7:1: 错误： expected identifier or ‘(’ before ‘}’ token
+    7 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:8:1: 错误： expected identifier or ‘(’ before ‘<’ token
+    8 | <fim_middle>#include <stdio.h>
+      | ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:8:13: 错误： 程序中有游离的‘#’
+    8 | <fim_middle>#include <stdio.h>
+      |             ^
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:14:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   14 |         printf("\nSize of a pointer: %d\n", size);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:10:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    9 | #include <string.h>
+  +++ |+#include <stdio.h>
+   10 | int main()
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:14:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   14 |         printf("\nSize of a pointer: %d\n", size);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:14:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_union/99.fuzz:14:9: 错误： expected declaration or statement at end of input
+

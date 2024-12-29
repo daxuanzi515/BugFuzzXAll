@@ -1,0 +1,66 @@
+import java.lang.Object;
+<fim_suffix>        if((num!= (temp % 3))) {
+                break;  
+            }
+            else {
+                System.out.println("The number " + num + " is a Fiz");
+            }
+        }
+         
+        for(int i = 6; i <= 100; i++) {
+            System.out.println(i);
+            if(i == 50) {
+                break;  
+            }      
+        }
+        int j = 0;
+        while(j < 10) {
+            System.out.println(++j);
+            if(j == 5) {
+                break;  
+            }
+        }
+         
+        1. Print the numbers from 1 to 5 in a single line.
+        2. Comment the following statement to illustrate the effect of
+            break.
+            System.out.println("The for loop is terminated");
+
+         
+        for(int i = 0; i < 10; i++) {
+            System.out.println("i:"+i);
+            if(i == 5) {
+                break;
+            }
+        }
+         
+        for (int k=1; k<=5; k=k++){
+            System.out.println(k);
+        }
+         
+        for (int l=5;l>=1;l=l--){
+            System.out.println(l);
+        }*/  
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* Create a program that illustrates the break statement.
+
+The break statement is used to exit a loop. Once a break statement is encountered in a loop, no more iterations will be performed.
+
+The break statement must come after any loop conditional statement and needs not be followed by {}. There can be
+a single statement after the break statement. If a break statement is not encountered before the end of a loop, the
+loop is executed normally

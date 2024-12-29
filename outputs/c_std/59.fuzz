@@ -1,0 +1,34 @@
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+int main()
+{
+    int val = rand() % 100;
+    int newNum = val/2;
+    changeValue(&val, &newNum);
+    printf("%d",val); 
+    return 0;
+}
+ 
+typedef enum colour{
+    black = 0,
+    red = 1,
+    purple = 2,
+    blue = 4,
+    green = 8
+}colour;
+colour stringToColour(char *colour)  
+{
+    if (!strcmp(colour, "black\0")) {
+        return black;
+    }
+    if (!strcmp(colour, "red\0")) {
+        return red;
+   

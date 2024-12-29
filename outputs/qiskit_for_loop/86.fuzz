@@ -1,0 +1,67 @@
+from qiskit import QuantumCircuit
+
+
+def f(qc, q, c, n):
+    for i in range(2**n):
+        qc.x(q[i % n])
+        
+qc = QuantumCircuit(5,5)
+q = list(range(5))
+c = list(range(5))
+n = 3
+n_qubits = 5
+n_clbits = 5
+with QuantumCircuit(5,5).for_loop(indexset=range(2**n),
+                          loop_parameter=q,
+                          body=f, 
+                          qubits=q, clbits=c, label="test")  as forLoopOp: 
+    
+    
+    
+    
+    
+    
+    
+
+forLoopOp = for_loop(2, range(5), f, q, c, 0)
+
+    
+qc.reset(q)
+qc.barrier(q)
+forLoopOp.body_builder()
+forLoopOp.set_index(0)
+forLoopOp.set_index(4)
+forLoopOp.set_index(19)
+forLoopOp.set_index(458)
+forLoopOp.set_index(7961)
+qc.barrier(q)
+qc.draw()
+
+
+
+from qiskit import QuantumCircuit
+
+def f(qc, q, c, n):
+    for i in range(2**n):
+        qc.x(q[i % n])
+
+qc = QuantumCircuit(5,5)
+q = list(range(5))
+c = list(range(5))
+n = 3
+n_qubits = 5
+n_clbits = 5
+
+
+
+
+with QuantumCircuit(5,5).for_loop(indexset=range(2**n),
+                          loop_parameter=q,
+                          body=f, 
+                          qubits=q, clbits=c, label="test")  as forLoopOp: 
+    forLoopOp = f(forLoopOp, q, c, n)
+
+
+
+
+forLoopOp = for_loop(2**n, q, f, q, c, "test")

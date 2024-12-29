@@ -1,0 +1,44 @@
+#include <variant>
+std::variant<int, const int> i = 100;  
+int main(){
+    return 0;
+}
+ 
+#include <variant>
+#include <cstdio>
+int main()
+{   
+    std::variant_pair<int,float> v = std::make_pair<int, float>(10, 2.5f);
+    float sum = std::get<float>(v.second) + std::get<int>(v.first);
+    std::printf("sum = %d", sum);
+    return sum;
+}
+ 
+#include <variant>
+std::variant_pair<const int, float> v = std::make_pair<const int, float>(10, 2.5f);  
+#include <cstdio>
+int main()
+{
+    return 0;
+}
+ 
+#include <variant>
+#include <iostream>
+#include <typeinfo>
+
+void f(int i) { printf("%d\n", i); }
+void f(float i) { printf("%f\n", i); }
+
+int main()
+{   
+    std::variant<int,float> v = 10;
+    std::visit(f, v);
+    return 0;
+}
+ 
+#include <variant>
+#include <stdio.h>
+#include <cstdio>
+#include <iostream>
+#include <typeinfo>
+

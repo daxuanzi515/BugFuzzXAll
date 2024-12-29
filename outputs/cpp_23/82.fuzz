@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+#define string_view const char *
+int main(int argc, char const *argv[])
+{
+   if (0 == strcmp("something", argv[1]) || 0 == strcmp("not something", argv[1]))
+   {
+      string_view s{argv[2]};
+   }
+   return 0;
+}

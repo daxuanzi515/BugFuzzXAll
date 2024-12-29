@@ -1,0 +1,50 @@
+#include <tuple>
+
+#include <array>
+#include <iostream>
+
+template<class F, class... Ts>
+decltype(auto) myapply(F&& f, std::tuple<Ts...> const& t)
+{
+    return std::apply(std::forward<F>(f), t);
+}
+
+template<class F, class... Ts>
+decltype(auto) myapply(F&& f, std::tuple<Ts...>& t)
+{
+    return std::apply(std::forward<F>(f), t);
+}
+
+template<class F, class... Ts>
+decltype(auto) myapply(F&& f, std::tuple<Ts...>&& t)
+{
+    return std::apply(std::forward<F>(f), std::move(t));
+}
+
+int main()
+{
+    std::array<int,5> arr = { 1, 2, 3, 4, 5 };
+
+    auto mysquare_std = [](auto&& in)
+        {
+            return in * in;
+        };
+
+    auto mysquare_my = [](const auto& in)
+        {
+            return in * in;
+        };
+
+    auto x1 = myapply(mysquare_std, arr);
+    auto x2 = myapply(mysquare_my, arr);
+    std::cout << "Square of the array elements: " << std::endl;
+    std::cout << x1 << std::endl;
+    std::cout << x2 << std::endl;
+
+    const auto x3 = myapply(mysquare_std, std::pair{1,2});
+    const auto x4 = myapply(mysquare_my, std::pair{1,2});
+    std::cout << "Square of the pair's elements: " << std::endl;
+    std::cout << x3 << std::endl;
+    std::cout << x4 << std::endl;
+}
+

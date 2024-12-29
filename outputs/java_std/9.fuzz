@@ -1,0 +1,61 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+	    	System.out.println("Hello Indian");
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+if(true)
+	do {
+		System.out.println("Hello Indian");
+	} while(true);
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+		do {
+		System.out.println("Hello Indian");
+	} while(true);
+}
+ 
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String [] args) {
+	class A {
+		int a = 10;
+	}
+	
+	class B {
+		int b = 15;
+		static A c = new A();
+	}
+
+	try {
+		B ob = new B();
+		{
+		System.out.println(ob.a + " " + ob.c.a);
+		}
+		int x = 10;
+		x = x * ++ob.c.a;
+		System.out.print(x);
+	} catch(Exception e) {
+		System.out.println("Exception caught :" + e);
+	}
+	}
+}
+ 
+import java.lang.Object;
+import

@@ -1,0 +1,62 @@
+#include <expected>
+<fim_suffix>d::cout << "Unexpected error";
+	}
+	return 0;
+}
+<fim_middle>
+
+#include <iostream>
+
+template <typename T>
+void print() {
+	std::cout << "Good " << sizeof(T) << " " << typeid(T).name() << '\n';
+	return;
+}
+
+void print_all_specializations(int) {
+	print<std::byte>();  
+}
+
+int main(int argc, char** argv) {
+	print<std::expected<std::string, std::error_code>>();
+	print_all_specializations(argc);
+	return 0;
+}
+ 
+
+ 
+#include <iostream>
+#include <memory>
+#include <algorithm>
+
+template <typename Container, typename T>
+void print_type(const Container &c, const T &type_name) {
+	if (std::any_of(c.begin(), c.end(),
+		[type_name](const auto &type) {
+			return type.name() == type_name; })) {
+		std::cout << "Good " << type_name << '\n';
+	}
+	return;
+}
+
+constexpr inline const char *cstrings[] = { "std::expected<std::string, std::error_code>" };
+
+int main(int argc, char **argv) {
+	print_type(std::type_index(typeid(std::expected<std::string, std::error_code>)), typeid(typeid(std::string)).name());
+	print_type(std::type_index(typeid(std::expected<std::string, std::error_code>)), "std::string");
+	print_type(std::type_index(typeid(std::expected<std::string, std::error_code>)), "sstdt::string");
+	print_type(std::type_index(typeid(std::expected<std::string, std::error_code>)), nullptr);  
+	return 0;
+}
+ 
+
+/* Expected Type - Value and Error
+The expected type has two constructors:
+template <typename T, typename E> expected() noexcept;
+constexpr expected(in_place_t, Args&&... args);
+The std::expected<T, E> expects T to be default constructible while E to be std::constructible_from<E>. For instance, the following code is fine:
+std::expected<int, size_t> f();
+However, the following will not compile:
+std::expected<int, Container> g();
+
+If the object expected

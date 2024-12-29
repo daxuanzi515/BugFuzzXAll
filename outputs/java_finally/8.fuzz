@@ -1,0 +1,13 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+import java.nio.file.*;
+public class MutatedFinaly{
+    public static void main(String[] args) throws IOException{
+ 
+        try(FileInputStream in = new FileInputStream("read.txt");  
+                    FileOutputStream out = new FileOutputStream("write.txt")){ 
+                out.write(in.read());
+        }
+    }
+}

@@ -1,0 +1,34 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyWithException {
+    public static void main(String[] args)
+    {
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally {
+            try {
+                if (reader!= null) {
+                    reader.close();
+                }
+            }
+            finally {
+                if (in!= null) {
+                    in.close();
+                }
+            }
+            throw new RuntimeException("Boo!!");
+        }
+    }
+}

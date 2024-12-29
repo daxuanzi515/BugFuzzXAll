@@ -1,0 +1,43 @@
+#include <stdlib.h>
+<fim_suffix>ucts:
+	 
+	 
+	 
+	printf("sizeof(struct Student) = %d\n",sizeof(struct Student));
+	struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+	printf("student = %d\n", student.age);
+	printf("student = %d\n", student.marks[3]);
+
+	printf("student = %lu\n",*((unsigned long*)&student.marks[0]));
+
+	struct Test{int a, b[3], c, d[5], e[10][10], f};  
+	struct Test var1;
+}
+  
+main()
+{
+	char *s1;
+	char **s2;
+	s1 = (char *)malloc(1024);
+	free(s1);
+	s2 = (char **)malloc(sizeof(char *) * 10);
+}
+  
+
+main()
+{
+	int * a[10];
+	a[0] = (int*)malloc(sizeof(int)*3);
+	printf("The value of a[0] is %d\n", a[0]);
+	a[1] = (int*)malloc(sizeof(int)*4);
+	printf("The value of a[1] is %d\n", a[1]);
+	
+
+}
+
+ 
+#include <stdio.h>
+
+int main()
+{
+	

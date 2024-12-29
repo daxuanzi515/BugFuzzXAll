@@ -1,0 +1,19 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0, 1)
+circ.measure_all()
+
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+print("----------------")
+circ_bell = create_circuit_bell()
+print(circ_bell["counts"])
+print("----------------")<jupyter_output>{'01': 484, '10': 512}
+----------------
+{'01': 493, '10': 507}

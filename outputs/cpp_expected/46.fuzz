@@ -1,0 +1,81 @@
+#include <expected>
+<fim_suffix>  cout << "This works now" << endl;
+    return 0;
+} 
+<fim_middle>
+ 
+using namespace std;
+ 
+ 
+ 
+template <class E>
+struct IntResult
+{
+    double result;
+    E error;
+ 
+     
+     
+    template <class T>
+    void set(const T& r)
+    {
+        result = static_cast<double>(r);
+    }
+     
+    void set(const result_of<IntResult::set(const int&)>::type& r)
+    {
+        result = r;
+    }
+ 
+    void set(const result_of<IntResult::set(const double&)>::type& r)
+    {
+        result = r;
+    }
+ 
+    double get() const
+    {
+        return result;
+    }
+ 
+     
+    IntResult() : result{0.0}, error{} {}
+     
+    IntResult(const E& error) : result{0.0}, error{error} {}
+};
+ 
+int main()
+{
+     
+    IntResult<int> result{9};
+ 
+     
+    if (result)
+    {
+        cout << "The result is " << result.get() << endl;
+    }
+    else
+    {
+        cout << "Cannot do calculation with result: " << result.error + 1000 << endl;
+    }
+         
+     
+    result.set(IntResult<string>{3.5});
+    if (auto error = result)
+    {
+        cout << "The result is " << (result.get() + 25 * 2 * 3) << endl;
+    }
+    else
+    {
+        cout << "Bad input in form: " << error << endl;
+    }
+    if (result)
+    {
+        cout << "The result is " << (279 * 2 * 3) << endl;    
+    }
+    else
+    {
+        cout << "Cannot do calculation with result: " << (*error + 1000) << endl;
+    }
+    result.set("test");
+    cout << "\n----------------------------------> ";
+  

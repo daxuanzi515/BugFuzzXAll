@@ -1,0 +1,44 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+
+QASM simulator
+backend_sim = Aer.get_backend('qasm_simulator')
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.h(1)
+circ.cx(0,1)
+circ.measure_all()
+circ.draw(output='mpl')
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+
+
+result = execute(circ, backend_sim).result()
+
+
+counts = result.get_counts()
+print(counts)
+
+from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(2)
+circ.h(0)
+circ.cx(0,1)
+circ.measure_all()
+circ.draw()
+import qiskit.tools.visualization as visualization
+
+
+job = execute(circ, backend_sim)
+result = job.result()
+
+
+visualization.plot_histogram(result.get_counts(circ))
+
+
+
+
+visualization.plot_histogram(result.get_counts(circ), bar_labels=False)

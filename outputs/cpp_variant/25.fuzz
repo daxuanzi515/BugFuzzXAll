@@ -1,0 +1,9 @@
+#include <variant>
+#include <iostream>
+class my_type{};
+int main()
+{   
+    std::variant<my_type, int, float, double> v {};
+    v = 25;
+    printf("The variant has the value %d.\n", static_cast<int>(v));
+}

@@ -1,0 +1,91 @@
+#include <expected>
+<fim_suffix>{
+	return 42;
+}
+
+class CustomException {
+public:
+	CustomException(const char *errMsg) : mMsg(errMsg) {};
+	const char* getMsg() const {return mMsg.c_str();};
+private:
+	std::string mMsg;
+};
+
+int addTwo() {
+	return 2 + 2;
+}
+
+std::expected<int, std::string> addTwoWithExcp() {
+	static int counter = 0;
+	counter ++;
+	if(counter > 1) {
+		CustomException exc("The counter is too high :(");
+		return std::error(exc);
+	}
+	return 2 + 2;
+}
+
+int main() {
+	std::cout << addTwo() << std::endl;
+	std::cout << addTwoWithExcp() << std::endl;
+
+	std::expected<int, std::string> res = addTwoWithExcp();
+
+	auto counteredRes = res.and_then(countered_handler);
+	std::cout << counteredRes.value_or(-1) << std::endl;
+
+	counteredRes.map(countered_lambda_handler).value_or(-1);
+
+	counteredRes.or_else(exception_handler).value_or(-1);
+
+	counteredRes.or_else(std::string{"The counter is too high :("}).value_or(-1);
+
+	counteredRes.or_else([] {
+		throw std::exception("The counter is too high :(");
+	}).value_or(-1);
+
+	counteredRes.inspect(std::cout);
+
+	counteredRes.filter(countered_handler).value_or(-1);
+
+	std::cout << counteredRes.value_or_throw() << std::endl;
+}
+<fim_middle>
+
+#include <iostream>
+#include <string>
+
+int twice_handler (int a) {
+	return a * 2;
+}
+
+std::expected<int, std::string> handle_twice (std::expected<int, std::string> const num) {
+	return num.map(twice_handler);
+}
+
+std::string add_to_error (std::string error, int i) {
+	return error + std::to_string(i);
+}
+
+std::expected<int, std::string> handle_error (std::expected<int, std::string> const num) {
+	return num.map_error(add_to_error);
+}
+
+int handle_two(int a) {
+	return a + 2;
+}
+
+std::expected<int, std::string> handle_one(std::expected<int, std::string> const num) {
+	return num.map(handle_two);
+}
+
+int twice_three(int a) {
+	return a * 2;
+}
+
+int add_four(int a) {
+	return a + 4;
+}
+
+int throw_handler() {
+	throw std

@@ -1,0 +1,65 @@
+from qiskit import QuantumCircuit
+
+from qiskit.qpy import *
+import qiskit.tools.visualization
+
+print()
+qc = QuantumCircuit(5) 
+
+qc.h(0)
+qc.cx(0, 1)
+qc.cx(0, 2)
+qc.cx(0, 3)
+
+
+qc.add_register(ClassicalRegister(1, "input")) 
+
+
+case0 = QuantumCircuit(5)
+case0.cx(0, 1)
+case0.cx(0, 2)
+case0.cx(0, 3)
+qc.switch(0, case0)
+
+
+case1 = QuantumCircuit(5)
+case1.h(0)
+case1.cx(0, 1)
+case1.cx(0, 2)
+case1.cx(0, 3)
+qc.switch(1, case1)
+
+
+case2 = QuantumCircuit(5)
+case2.h(1)
+case2.cx(1, 2)
+case2.cx(1, 3)
+qc.switch(2, case2)
+
+
+case3 = QuantumCircuit(5)
+case3.h(2)
+qc.switch(3, case3)
+
+
+qc.barrier()
+qc.measure(0, 0)
+
+if_success("Qiskit has introduced the switch operation with the new control flow operation. This switch "+\
+          "statement can either be represented using the QuantumCircuit.switch() method or the new"+\
+          "SwitchCaseOp instruction. The switch API is context sensitive and uses the new "+\
+          "SwitchCaseOp instruction to automatically build the instructions that execute the "+\
+          "circuit when the case is matched.")
+
+try:
+    QuantumCircuit.save_as_qpy(qc, "ifdemo.qpy")
+except qiskit.providers.exceptions import BackendV1SchemaError as ex:
+    if_fail("The qpy file was saved although it was an invalid file.")
+
+try:
+    qc1 = QuantumCircuit.load_from_qpy("ifdemo.qpy")
+    if_success("QPY load succeeded and the result is valid:\n\n"+
+                qiskit.tools.visualization.circuit_drawer(qc1)
+               )
+except qiskit.providers.exceptions.QiskitError as ex:
+    if_fail("The qpy file was not generated correctly.")

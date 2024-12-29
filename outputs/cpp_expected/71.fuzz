@@ -1,0 +1,89 @@
+#include <expected>
+<fim_suffix>
+    cout << e.value() << '\n';
+    return 0;
+}<fim_middle>
+#include <string_view>
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main()
+{
+    auto string_sum = [](string_view s1, string_view s2)  
+    {
+         
+        if (s1.length()!= s2.length())
+            return string{};
+        char chars[s1.length()];  
+        int x = 0;
+        for (auto i = 0u; i < s1.length(); ++i)
+        {
+            chars[x] = (s1[i] - '0') + (s2[i] - '0');
+            ++x;
+        }
+        string res{};  
+        for (int i = 1; i < chars[0]; ++i)
+            chars[0] = 0;
+        for (; i > 0; --i)
+            chars[0] += chars[i];
+        chars[0] += '0';
+        for (auto i = 0u; i < s1.length(); ++i)
+            res.push_back(chars[i]);
+        return res;
+    };
+
+    auto is_positive = [](int i)
+    {
+        return i > 0?
+            i :
+                string{"The parameter cannot be less than zero"};
+    };
+
+    auto is_positive_ex2 = [](int i) -> expected<int, string>
+    {
+        if (i < 1)
+            return string{"The parameter cannot be less than one"};
+        else
+            return i;
+    };
+
+    auto x1 = is_positive_ex2(9223372036854775807);
+    auto x2 = is_positive_ex2(2);
+
+    expected<int, string> x3 = 999, x4 = "hello";
+
+    if (x2)
+        cout << "x2 has value " << *x2 << '\n';
+
+    string str1 = "This", str2 = "is a";
+    string str = string_sum(str1, str2);
+    cout << str << '\n';
+
+    x2 = string_sum(str1, str2);
+
+    cout << "The second result:\n";
+    if (x4)  
+        cout << *x4 << '\n';  
+
+    x4 = 10;
+    if (x4)
+        cout << *x4 << '\n';  
+
+    expected<std::string, std::exception_ptr> err{std::runtime_error("Failed")};
+    if (err)
+    {
+        try
+        {
+            throw std::runtime_error("another kind of error");
+        }
+        catch (std::exception& e)
+        {
+            err = current_exception();  
+            cout << "An exception that wasn't caught inside the expected\n";
+            cout << e.what();
+        }
+    }
+
+     
+     

@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main( int argc, char *argv[] )
+{
+    FILE *file_ptr = fopen("../src/file.txt", "r");
+    if (!file_ptr ) {
+       printf("Error reading file!\n");
+       exit(1);
+    }
+    char *string = NULL;
+    size_t str_length;
+    fseek(file_ptr, 0L, SEEK_END);
+    str_length = ftell(file_ptr);
+    str_length++;
+    rewind(file_ptr);
+    string = (char* )malloc( (int )str_length * sizeof(char));
+    fread(string, (int )str_length-1, 1, file_ptr);
+    string[str_length-1] = ('\0');
+    fclose(file_ptr);
+    printf("%s\n", string);
+    free(string);
+    return 0;   
+}
+/* Please create a semantically equivalent program to

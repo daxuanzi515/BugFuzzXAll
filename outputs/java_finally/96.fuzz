@@ -1,0 +1,62 @@
+import java.lang.Object;
+<fim_suffix>xception e) {
+            e.printStackTrace();
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main() throws IOException {
+        try {
+            BufferedReader bufferedReader =
+                new BufferedReader(new FileReader("files/src/myData.txt"));
+            String line;
+            while((line = bufferedReader.readLine())!= null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream("files/src/myData.txt");
+                fileOutputStream.close();
+                System.out.println("File is now closed");
+                throw new RuntimeException();
+            } catch (IOException ioException) {
+                System.out.println("Caught inner exception.");
+                ioException.printStackTrace();
+                throw e;
+            } finally {
+                System.out.println("Trying to close file after throwing exception.");
+                try {
+                    FileOutputStream fileOutputStream =
+                                new FileOutputStream("files/src/myData.txt");
+                    fileOutputStream.close();
+                    System.out.println("File is now closed");
+                } catch (Exception e2) {
+                    System.out.println("Caught exception at the end");
+                    e2.printStackTrace();
+                }
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class SFinally7 {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream("src/myData.txt");
+        } catch (IOException e) {
+            System.out.println("Failed to create output stream!");
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (fileOutputStream!= null) {
+                fileOutputStream.close();
+            }
+        }
+    }
+}

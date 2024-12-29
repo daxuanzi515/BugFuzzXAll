@@ -1,0 +1,45 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+int roll;
+int marks;
+}Marks;
+ 
+marks *create(int, int);
+int main() {
+Marks *m;
+m = create(3, 44);
+printf("Roll = %d, Marks = %d\n", m->roll, m->marks);
+return 0;
+}
+
+int marks = 0;
+marks *create(int r, int k) {
+marks *p;
+p = (marks *)malloc(sizeof(marks));
+if (p!= NULL) {
+    p->roll = r;
+    p->marks = k;
+}
+return p;
+}
+
+ 
+typedef int Integer;
+typedef struct {
+char first[10];
+char last[10];
+int age;
+}Student;
+
+int main() {
+Student* p=0;
+p= (Student*) malloc(sizeof(*p));
+p->age = 18;
+puts("Enter your information");
+fgets(p->first, 10, stdin);
+fgets(p->last, 10, stdin);
+printf("Hello %s %s! You are %d years old.",
+p->first, p->last, p->age);
+return 0;
+}

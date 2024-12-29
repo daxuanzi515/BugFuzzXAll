@@ -1,0 +1,40 @@
+#include <tuple>
+#include <iostream>
+template<typename... Args>
+auto add(Args&&... args)
+{
+  auto tp = std::make_tuple(std::forward<Args>(args)...);
+  auto result = std::get<0>(tp);
+  std::apply(
+    [](auto&&...args)
+    {
+      (void)(std::get<0>(tp) = (std::forward<decltype(args)>(args) +...));
+    },
+      tp
+  );
+  return result;
+}
+int main()
+{
+  std::cout << add(1, 2, 3, 4, 5) << '\n';
+}
+ 
+#include <iostream>
+#include <tuple>
+
+template<typename... Args>
+auto add(Args&&... args)
+{
+  auto tp = std::make_tuple(std::forward<Args>(args)...);
+  auto result = std::get<0>(tp);
+  std::get<0>(tp) = result + std::apply([&](auto&&...args)
+    {
+      return 0 + (std::get<0>(tp) = (std::forward<decltype(args)>(args) +...));
+    },
+      tp);
+  return result;
+}
+int main()
+{
+  std::cout << add(1, 2, 3, 4, 5) << '\n';
+}

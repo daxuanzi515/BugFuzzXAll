@@ -1,0 +1,69 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Mutated{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        in.close();
+        in = null;
+    }
+}
+ 
+ 
+  
+import java.io.File;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+public class FileLineCounter{
+    public int countLines(String filename, int linesToCount) throws IOException{
+        File file = new File(filename);
+        LineNumberReader line = new LineNumberReader(new FileReader(file));
+        String lineText;
+        while((lineText = line.readLine())!= null){
+            linesToCount--;
+            if(linesToCount == 0){
+                return line.getLineNumber();
+            }
+        }
+        return -1;
+    }
+}
+  
+ 
+  
+import java.io.File;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+
+public class FileLineCounter{
+    public static void main(String[] args) throws IOException{
+        if (args.length!= 2){
+            System.out.println("\nThis method takes two arguments!");
+        }
+        int linesToCountTo = Integer.parseInt(args[1]);
+        int lines = new FileLineCounter().countLines(args[0], linesToCountTo);
+        if (lines == -1){
+            System.out.println("The file contains " + lines + " lines!");
+        }else{
+            System.out.println("The first " + lines + " lines were counted!");
+        }
+    }
+    public int countLines(String filename, int linesToCount) throws IOException{
+        File file = new File(filename);
+        LineNumberReader line = new LineNumberReader(new FileReader(file));
+        String lineText;
+        while((lineText = line.readLine())!= null){
+            linesToCount--;
+            if(linesToCount == 0){
+                return line.getLineNumber();
+            }
+        }
+        return -1;
+    }
+}

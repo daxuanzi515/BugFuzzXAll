@@ -1,0 +1,97 @@
+#include <expected>
+.set_success();
+    return false;
+}
+
+class ErrorCategory : public std::error_category{
+public:
+    const char* name() const noexcept override;
+    std::string message(int ev) const override;
+};
+
+const std::error_category& get_error_category(){
+    static ErrorCategory c;
+    return c;
+}
+
+const char* ErrorCategory::name() const noexcept
+{
+    return "MyCategory";
+}
+
+std::string ErrorCategory::message(int value) const
+{
+    return "MyCategory::" + std::to_string(value);
+}
+
+std::error_code make_error_code(ResultError value){
+    return std::error_code(value, get_error_category());
+}
+
+
+int main() 
+{  
+    try 
+    {
+        std::promise<int> prms;
+        std::future<int> fut = prms.get_future();
+
+        prms.set_value(0);
+        
+        MyException error;
+        std::make_expected<int, MyException>(fut, [&]()
+        {
+            throw error;
+        });
+    }    
+    catch (std::exception& e)
+    {
+        std::cout << "catch exception\n";
+    }    
+
+	return 0;
+}<fim_middle> 
+#include <future>
+#include <iostream>
+#include <memory>
+
+class MyException{};
+
+enum class ResultError{
+    invalid = -1
+};
+
+class ExpectedWrapper{
+public:
+    std::expected<int, ResultError> x;   
+};
+
+
+std::expected<int, MyException> make_expected(std::future<int> ft, bool error)
+{
+    auto w = std::make_shared<ExpectedWrapper>();
+    std::packaged_task<int()> task([ft, w](){ return ft.get(); });
+    std::future<int> result = task.get_future();
+
+    if (error)
+        w->x = std::make_expected<int, MyException>(std::move(task));
+    else
+        w->x = 42;
+
+    return w->x; 
+}
+
+void do_the_thing() 
+{
+    std::future<int> ft;
+    auto exp_int = make_expected(ft, true);
+    if(exp_int.has_unexpected())
+    {
+        std::cout << exp_int.error().message() << std::endl; 
+        return;
+    }
+    do_work();   
+    ft.set_value(42);
+}
+ 
+/* The std::expected class can be used to easily handle both expected and unexpected values in a program and make operations on them more manageable, readable and in turn easier to test. It proves to be helpful especially in situations where

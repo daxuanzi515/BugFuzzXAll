@@ -1,0 +1,66 @@
+import java.lang.Object;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        File file, file1;
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("file1.txt"));
+                file = new File("file3.txt");
+            }
+        }
+        finally{
+            in = null;
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        try(BufferedReader br = new BufferedReader(new FileReader("FileName.txt"))){
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        BufferedReader br = null;
+        try{
+       		br = new BufferedReader(new FileReader("FileName.txt"));
+            System.out.println(br);
+        }
+        catch (IOException e){
+        	System.out.println(br);
+        }
+        finally{
+        	if (br!= null){
+                System.out.println(br);
+        	}
+        }
+    }
+}
+ 
+import java.io.*;
+public class MyClass{
+    public void readFile(){
+        BufferedReader br = null;
+        try{
+        	br = new BufferedReader(new FileReader("FileName.txt"));
+        }
+        catch (IOException e){
+        	br = null;
+        }
+        finally{
+        	if (br!= null){
+                br.close();
+        	}
+        }
+    }
+}

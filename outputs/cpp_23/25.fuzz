@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+struct Employee {
+    unique_ptr<int> secretDataPtr{nullptr};
+    int* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        p->myAddressPtr = &p;
+    }
+    template<typename _Tp> friend Employee swapEmployees(_Tp&& lhs, _Tp&& rhs);
+};
+Employee swapEmployees(Employee lhs, Employee rhs)
+{
+    std::swap(lhs.secretDataPtr, rhs.secretDataPtr);
+    std::swap(lhs.myAddressPtr, rhs.myAddressPtr);
+    return lhs;
+}
+int main()
+{
+    Employee emp{};
+    cout << emp.myAddressPtr << endl;
+    Employee emp2{emp};
+    cout << emp2.myAddressPtr << endl

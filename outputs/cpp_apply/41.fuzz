@@ -1,0 +1,48 @@
+#include <tuple>
+#include <functional>
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  std::apply([](const auto& x) { std::cout << x << '\n'; }, tuple);
+  return EXIT_SUCCESS;
+}
+ 
+decltype
+
+ 
+ 
+ 
+#include <iostream>
+#include <numeric>
+#include <memory>
+#include <array>
+#include <string>
+int main(int argc, char* argv[])
+{
+    std::array<std::string, 3> names = { "<NAME>",
+                                          "<NAME>",
+                                          "<NAME>" };
+
+    for (const std::string& n : names)
+    {
+        std::cout << n << '\n';
+        std::cout << std::addressof(n) << '\n';
+        std::cout << &(n) << '\n';
+        std::replace(std::addressof(n), std::addressof(n[0]) + 1, "", "J-");
+         
+        std::cout << n << '\n';  
+
+        std::cout << &n << '\n';  
+        std::cout << (n) << '\n';  
+
+         
+         
+
+    }
+
+     
+
+    auto const_pointer = std::addressof(a);  
+    auto const_ref = std::addressof(x);  
+
+    return EXIT_SUCCESS;

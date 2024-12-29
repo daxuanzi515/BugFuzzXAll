@@ -1,0 +1,38 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define A_SIZE 12
+#define B_SIZE A_SIZE * 3
+typedef unsigned char ARRAY_t[B_SIZE];
+int main() {
+	ARRAY_t a;
+	
+	a[0] = 'A';
+	return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main()
+{
+	enum { ZERO, ONE, TWO };
+	
+	printf("%d", ZERO);
+	return 0;
+}
+ 
+ 
+ 
+#include <stdio.h>
+#include <errno.h>
+struct Bitfield
+{
+	short :1;
+	short int :7;
+}bf;
+int main(void)
+{
+	printf("Bitfield is at %p\n",(void*)&bf);
+	printf("Bitfield size is %ld bytes\n",sizeof(struct Bitfield));
+	return 0;
+}
+/* There are a few limitations associated with bit fields. In particular, multiple bit fields can't be used in a single storage object, which is a rule of the C language. In fact, a storage object can contain only one bit

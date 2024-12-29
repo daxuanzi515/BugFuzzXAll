@@ -1,0 +1,53 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+ 
+#include <time.h>
+#include <stdio.h>
+int main ()
+{
+ 
+time_t ltime;
+struct tm *today;
+ 
+time (&ltime);
+ 
+today = localtime (&ltime);
+printf("Current time : %d:%02d:%02d\tDate : %02d/%02d/%d",
+today->tm_hour, today->tm_min, today->tm_sec, today->tm_mday, today->tm_mon + 1, 1900 + today->tm_year);
+ 
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+int month;
+printf("Enter Month : ");
+scanf("%d", &month);
+switch(month)
+{
+case 1:
+case 3:
+case 5:
+case 7:
+case 8:
+case 10:
+case 12:
+printf("Jan Feb Mar Apr May Jun Jul Aug Sep Oct & Dec :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 2:
+printf("Feb :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 4:
+printf("Apr :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 6:
+printf("Jun :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 9:
+printf("Sep :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 11:
+printf

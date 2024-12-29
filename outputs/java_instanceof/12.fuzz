@@ -1,0 +1,8 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		System.out.println(true instanceof boolean);
+		System.out.println(10 instanceof boolean);
+    }
+}

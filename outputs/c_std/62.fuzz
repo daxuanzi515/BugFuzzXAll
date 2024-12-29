@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int i,m,p,q;
+    m = random()%10;
+    int arr[10] = {};
+    for(i=0;i<m;i++)
+    {
+        p = random()%10;
+        for(int j=0;j<10;j++)
+           if(arr[j] == p)
+               break;
+            else if(j==9)
+                arr[j] = p;
+    }
+    for(q=0;q<10;q++)
+        printf("%d ", arr[q]);
+return 0;
+}
+/* 
+1) Create a program that has more than 40% of your code commented out. Compile and run. Find out which lines of code are still not being executed, why and how do you solve those problems so that
+comments are not required.
+2) Use assert() to validate input in a C program.
+3) Use locale-specific functions such as setlocale().
+4) Handle errors gracefully.
+5

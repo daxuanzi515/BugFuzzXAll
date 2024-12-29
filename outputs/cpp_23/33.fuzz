@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+using namespace std;
+struct Test_Secret_Ptr {
+    void* secretDataPtr{ nullptr };
+    Test_Secret_Ptr()
+    {
+        Test_Secret_Ptr* p{ this };
+        secretDataPtr = (void*)new int;
+        p->secretDataPtr = secretDataPtr;
+    }
+    ~Test_Secret_Ptr()
+    {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+};
+int main()
+{
+    Test_Secret_Ptr* p1{ new Test_Secret_Ptr };
+    Test_Secret_Ptr* p2{ p1 };
+    delete p2;
+    return 0;
+}
+int x[100];
+vector arrPtr[100];
+int main()
+{
+    std::allocator<int> alloc;
+   

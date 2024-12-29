@@ -1,0 +1,49 @@
+#include <variant>
+<fim_suffix>  int age;
+  std::vector<int> marks;
+};
+
+void read_from_excel(const std::string& filepath) {
+  Student st = read_student(filepath);
+  visit(PrintNameAgeAndMarks{std::cout}, st);
+}
+
+int main() {
+  read_from_excel("data.xls");
+}
+ 
+#include <variant>
+#include <iostream>
+#include <string>
+#include <vector>
+
+ 
+ 
+ 
+struct Student {
+  std::string name;
+  int age;
+  std::vector<int> marks;
+};
+
+ 
+ 
+ 
+
+template <typename... Types>
+struct Visitor;
+
+ 
+ 
+template <typename F, typename T>
+struct Visitor<std::variant<T>, F> {
+  using var_t = std::variant<T>;
+  using arg_t = typename std::remove_reference<T>::type;
+
+  Visitor(var_t var, F f)
+      : var_{std::move(var)}, f_{std::move(f)} {}
+
+  auto operator()(int index) -> decltype(
+    ::apply_visitor(Visitor(std::declval<var_t>(), std::forward<F>(f_)), index)
+  ) {
+    return ::apply_visitor

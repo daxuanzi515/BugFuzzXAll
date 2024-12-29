@@ -1,0 +1,80 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = 1;
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = 1L;
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.lang.Long;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Object temp = new Character('c');
+		Integer temp2 = (Integer) temp;
+		System.out.println(temp2);
+	}
+}
+ 
+abstract class ExpressionTree {
+	
+	abstract Object compute(Map<String, Integer> values);
+}
+class LiteralExpressionTree extends ExpressionTree {
+	long value;
+	LiteralExpressionTree(long value) {
+		this.value = value;
+	}
+	@Override
+	Object compute(Map<String, Integer> values) {
+		return value;
+	}
+}
+class UnaryExpressionTree extends ExpressionTree {
+	char operator;
+	ExpressionTree child;
+	UnaryExpressionTree(char operator, ExpressionTree child) {
+		this.operator = operator;
+		this.child = child;
+	}
+}
+class BinaryExpressionTree extends ExpressionTree {
+	char operator;
+	ExpressionTree left;
+	ExpressionTree right;
+	BinaryExpressionTree(char operator, ExpressionTree left, ExpressionTree right) {
+		this.operator = operator;
+		this.left = left;
+		this.right = right;
+	}
+}
+ 
+/* public Map<String, Integer> evaluateTree(ExpressionTree expr, Collection<String> variables) {
+	Map<String, Integer> values = new HashMap<>();
+	
+	if (expr instanceof LiteralExpressionTree) {
+		LiteralExpressionTree lit = (LiteralExpressionTree) expr;
+		values.put("constant", (int) lit.value);
+	} else if (expr instanceof UnaryExpressionTree) {
+		UnaryExpressionTree un = (UnaryExpressionTree) expr;
+		switch (un.operator) {
+			case '-':
+				values.put("leftValue", ((int) un.child.compute(values)));
+				break;

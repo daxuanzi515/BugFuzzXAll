@@ -1,0 +1,47 @@
+#include <stdlib.h>
+
+typedef unsigned char uchar;
+
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+
+char *foo(size_t *argc) {
+  char *ptr = NULL;
+  for (*argc--; *argc; (*argc)--, ptr--) {
+    boo(*argc, ptr);
+    break;
+  }
+  return ptr;
+}
+
+int main() {
+  uchar a = (uchar)1;
+  size_t *b = 0, c = 10, d = 5;
+  unsigned long int e[2];
+  void *ptr = &c;
+
+  char buffer[12] = "";
+  char *ret = foo(&c);
+  if (strlen(ret) > 4) {
+    ret = strcat(ret, "_");
+  }
+  if (strlen(ret) > 6) {
+    ret = strncat(ret, "abc", 2);
+  }
+  char *ret2 = foo(b);
+
+  memcpy(buffer, ret, d);
+  if (strlen(buffer) > 10) {
+    b[0] = 0;
+    ret2 = realloc(ret2, b[0]);
+    c = 893;
+  }
+  return 0;
+   
+}

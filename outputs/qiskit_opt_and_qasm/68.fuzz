@@ -1,0 +1,98 @@
+from qiskit import QuantumCircuit
+
+from qiskit.tools.visualization import plot_histogram
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.draw()
+
+qasm = circuit.qasm(qeflag=True)
+
+file_name = "bell.qasm"
+with open(file_name, "w") as f:
+    f.write(qasm)
+f.close()
+            
+qobj = QuantumCircuit.from_qasm_file(file_name)
+counts_dict = simulator.run(qobj, shots=1024).result().get_counts()
+plot_histogram(counts_dict)
+print(counts_dict)
+
+dir(circuit)
+
+circuit._data 
+
+circuit.h(0)
+circuit._data
+
+
+circuit.draw()
+
+circuit.reset(range(2))
+
+circuit.rx(0.4, 0)
+
+circuit.draw('c3dg') 
+
+circuit.draw(output='mpl',justify='None', style={'opaque': '0.4'})        
+
+
+for method in dir(circuit):
+    print(method)<jupyter_output>__class__
+__delattr__
+__dict__
+__dir__
+__doc__
+__eq__
+__format__
+__ge__
+__getattribute__
+__getstate__
+__gt__
+__hash__
+__init__
+__init_subclass__
+__le__
+__lt__
+__module__
+__ne__
+__new__
+__reduce__
+__reduce_ex__
+__repr__
+__setattr__
+__setstate__
+__sizeof__
+__str__
+__subclasshook
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

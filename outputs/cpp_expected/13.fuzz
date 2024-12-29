@@ -1,0 +1,66 @@
+#include <expected>
+4_t;
+using uint64_t = ::std::uintptr_t;
+
+template< typename T, typename E >
+using expected = ::std::expected< T, E >;
+
+
+ 
+ 
+
+ 
+
+namespace std
+{
+     
+
+    template< typename T, typename U >
+    constexpr T to_underlying(U value) noexcept;
+
+    template< template<class...> class T, typename E >
+    struct is_error_constructible
+        : is_constructible< T<E> >
+    {
+    };
+
+    template< template<class...> class T, typename... E >
+    struct is_error_constructible< T, expected<E...> >
+        : is_constructible< T<error_code, E...> >
+    {
+    };
+}  
+
+
+ 
+ 
+
+ 
+
+namespace std
+{
+ 
+ 
+ 
+ 
+ 
+ 
+
+    [[nodiscard]] constexpr std::string_view::difference_type std::string_view::compare(const char* str, size_type len) const noexcept;
+    [[nodiscard]] constexpr std::string_view::difference_type std::string_view::compare(size_type pos1, size_type count1, const char* str) const;
+    [[nodiscard]] constexpr std::string_view::difference_type std::string_view::compare(size_type pos1, size_type count1, const char* str, size_type count2) const;
+    [[nodiscard]] constexpr std::string_view::difference_type std::string_view::compare(size_type pos1, size_type count1, const char* str, size_type count2, std::locale const& loc) const;
+    [[nodiscard]] constexpr std::string_view::difference_type std::string_view::compare(const string_view&) const noexcept;
+
+    [[nodiscard]] constexpr bool std::string_view::starts_with(char c) const noexcept;
+    [[nodiscard]] constexpr bool std::string_view::starts_with(string_view x) const noexcept;
+    [[nodiscard]] constexpr bool std::string_view::starts_with(std::string_view x) const noexcept;
+    [[nodiscard]] constexpr bool std::string_view::ends_with(char c) const noexcept;
+    [[nodiscard]] constexpr bool std::string_view::ends_with(string_view x) const noexcept;
+    [[nodiscard]] constexpr bool std::string_view::ends_with(std::string_view x) const noexcept;
+    constexpr std::string_view& std::string_view::remove_prefix(size_type n);
+    constexpr std::string_view& std::string_view::remove_suffix(size_type n);
+    constexpr std::string_view& std::string_view::swap(std::string_view& x) noexcept;
+    constexpr std::string_view& std::string_view::clear() noexcept;
+
+    [[nodiscard]] constexpr size_type std

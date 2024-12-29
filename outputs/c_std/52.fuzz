@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define LEN 10
+void printLong(long num)
+{
+    char buffer[LEN];
+    sprintf(buffer, "%ld", num);
+    for (int i = 0; buffer[i]!= '\0'; i++) 
+    {
+        putchar(buffer[i]);
+    }
+    putchar('\n');
+}
+int main()
+{
+    long val = 123456789;
+    printLong(val);
+    return 0;
+}

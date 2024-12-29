@@ -1,0 +1,84 @@
+#include <stdlib.h>
+#include <stdio.h>
+ 
+int compare(int, int);
+ 
+int num1;
+ 
+int sum(int, int);
+int main() {
+    printf("Enter two number: ");
+    scanf("%d", &num1);
+    int num2;
+     
+    scanf("%d", &num2);
+     
+    struct {
+        int n1;
+        int n2;
+    } num;
+     
+    char str[50];
+    num.n1 = num1;
+    num.n2 = num2;
+    scanf("%s", str);
+    printf("The sum of %d and %d is %d.", num.n1, num.n2, sum(num.n1,num.n2));
+    return 0;
+}
+ 
+int sum(int n1, int n2) {
+    int sum = n1 + n2;
+    return sum;
+}
+ 
+int compare(int, int);
+ 
+double absolute(double num) {
+    return (num >= 0)? num: -num;
+}
+ 
+extern int int_val(void);
+int int_val() {
+    int num;
+    scanf("%d", &num);
+    return num;
+}
+
+ 
+int intsum(int a, int b) {
+    int value = a + b;
+    return value;
+}
+ 
+extern int int_val(void);
+int int_val() {
+    int var;
+    scanf("%d", &var);
+    return var;
+}
+ 
+int num;
+ 
+extern void print_value(void);
+ 
+struct { char c1, c2; } charpair;
+ 
+char* chptr;
+ 
+int var = 100;
+ 
+int sum(int, int);
+ 
+typedef unsigned char byte_t;
+byte_t arr[50]="Hello, World!";
+char* name = arr;
+ 
+struct {
+    int n01;
+    int n02;
+} num;
+ 
+struct {
+    char c1, c2, c3, c4;
+} string;
+/* The structure of a structure is often called a "nested" or "compound" structure. Structures in C also contain tag names, which are used to create a namespace for each structure. Such tag names, together with the typedef qualifier, can act as a form of naming convention to simplify struct naming. Please make

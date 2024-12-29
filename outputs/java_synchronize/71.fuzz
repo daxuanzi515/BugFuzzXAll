@@ -1,0 +1,27 @@
+import java.lang.Object;
+import java.lang.reflect.Method;
+class Sample {
+    void doSomething1() {
+        Method m;
+        try {
+            m = this.getClass().getMethod("doSomething1", new Class[]{});
+        } catch (NoSuchMethodException e) {
+            throw new NullPointerException(e.getMessage());
+        } catch (SecurityException e) {
+            throw new IllegalStateException(e.getMessage());
+        }
+        synchronized(this) {
+            try {
+                m.invoke(this, new Object[]{});
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}

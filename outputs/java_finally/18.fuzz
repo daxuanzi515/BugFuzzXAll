@@ -1,0 +1,15 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava{
+    public static void main(String[] args) throws IOException{
+        int a = 10;
+        a = 20;
+        String b = "b";
+        String c = "c";
+        b = c;
+        PrintWriter out = new PrintWriter("write.txt");
+        out.println("writing to file!");
+        out.close();
+    }
+}

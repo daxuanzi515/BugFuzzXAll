@@ -1,0 +1,64 @@
+import java.lang.Object;
+<fim_suffix>		int y = 10;
+		int z = x % y;
+	}
+	public void modulusAssignment(){
+		int x = 8;
+		int y = 10;
+		x %= y;
+	}
+	public void bitwiseAndExpression(){
+		int x = 5, y = 4, z;
+		z = x & y;
+	}
+	public void bitwiseAndAssignment(){
+		int x = 7, y = 8, z;
+		z = (y = (x &= 3));
+	}
+	public static void main(String[] args) {
+		BinaryOperator obj = new BinaryOperator();
+		obj.mod();
+		obj.modulus();
+		obj.modAssign();
+		obj.and();
+		obj.andAssign();
+	}
+}
+ 
+class UnaryOperator{
+	public static void main(String[] args) {
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		int x = 5;
+		System.out.println(x++);
+		System.out.println(++x);
+		--x;
+		System.out.println(x);
+	}
+}
+ 
+class TernaryOperator {
+	void ternary(){
+		boolean truth = false;
+		String msg;
+		truth? msg = "This is true" : msg = "This is false";
+		System.out.println(msg);
+	}
+	static void ternary(int x){
+		byte c = (byte) x;
+		System.out.println((c < 10? "Small" : "Big ")+c);
+	}
+	void tAnd(int x, int y) {
+	

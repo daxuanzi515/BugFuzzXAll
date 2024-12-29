@@ -1,0 +1,33 @@
+#include <variant>
+<fim_suffix>std::get_if<1>(&my_v);
+    std::cout << *int_of_my_v << '\n';
+    char* char_of_my_v = std::get_if<char>(&my_v);
+    std::cout << char_of_my_v;
+    return 0;
+}
+ 
+ 
+template <class...Ts>
+std::variant<Ts...> get_variant(std::variant<Ts...>& my_variant) 
+{
+    return my_variant;
+}
+ 
+template <class T, class...Ts>
+T get_variant(const std::variant<Ts...>& my_variant, const T& default_value) 
+{
+    return std::get_if<T>(&my_variant)? *std::get_if<T>(&my_variant) : default_value;
+}
+int main() 
+{
+    std::variant<int, float> some_v = 4.5f;  
+    float f = get_variant(some_v, 0.0f); 
+    std::cout << f;
+    some_v.emplace<2> (20.5f);
+    float f2 = get_variant(some_v, 0.0f);
+    std::cout << f2 << '\n';
+    get_variant(some_v, 20.0) = 0.0f;
+    std::cout << f2;
+    return 0;
+}
+<fim_middle>#include <

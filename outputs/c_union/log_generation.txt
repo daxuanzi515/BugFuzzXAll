@@ -1,0 +1,4417 @@
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <time.h>
+#include <stdio.h>
+
+#define STRUCT_SIZE 1000;
+
+typedef struct 
+{
+    int xCoordinate; 
+    int yCoordinate;
+} coordinate;
+
+typedef struct sComplex 
+{
+    coordinate c1;
+    union 
+    {
+        coordinate c2;
+        struct 
+        {
+             int a;
+             int b;
+        };
+    }; 
+
+    int x;  
+
+} complex;
+
+void getCoordinate(coordinate *coordinate);
+void printCoordinate(coordinate coordinate);
+
+int getRandom (int min, int max);
+
+int main(void)
+{
+    srand(time(NULL));
+     
+    complex c;
+    coordinate c3 ;
+
+     
+    getCoordinate(&c.c1);
+    c.xCoordinate = getRandom(0, 100);
+    c.yCoordinate = getRandom(0, 100);
+    printCoordinate(&c.c2);
+
+    getCoordinate(&c3);  
+    printCoordinate(c3);
+}
+
+void getCoordinate(coordinate *coordinate) 
+{
+    coordinate -> xCoordinate = getRandom( 0, 300);
+    coordinate -> yCoordinate = getRandom( 0, 300);
+}
+
+void printCoordinate(coordinate coordinate) 
+{
+    printf("(%d, %d)", coordinate.xCoordinate, coordinate.yCoordinate);
+}
+
+int getRandom(int min, int max) 
+{
+    return (rand() % max) + min;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+
+enum { e1, e2 };  
+
+int main(void) {
+	int i;
+	union {  
+    struct {
+        char ch;
+        short number;
+    }
+    stun;
+    double dun;
+
+    unsigned number_of_months : 4;  
+
+    enum { sunday = 1, day, week, month, month2 };  
+}
+
+stun.ch = 'c';
+stun.number = 9;
+
+dun = 50.95;
+
+number_of_months = 12;
+
+i = sunday;
+
+switch(i) {
+    case sunday: {
+        puts("Today is a Sunday.");
+    }
+    break;
+    case e1:   {
+        putc(sunday, stdout);
+        printf("\n");
+}
+
+system("pause");
+
+return EXIT_SUCCESS;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+typedef union {
+	int a;
+	long b;
+} u;
+int main()
+{
+	printf("\nThe size of union\n");
+	printf("sizeof(u) = %d bytes\n", sizeof(u));
+	printf("The size of int and long\n");
+	printf("sizeof(int) = %d bytes\n", sizeof(int));
+	printf("sizeof(long) = %d bytes\n", sizeof(long));
+	u u1;
+	 
+	printf("\nu1.a = %d\n", u1.a);   
+	printf("u1.b = %ld\n", u1.b);  
+	 
+	u u2 = 9;  
+	printf("\nu2.a = %d\n", u2.a);   
+	printf("u2.b = %ld\n", u2.b);  
+	 
+	u2 = 19;
+	printf("\nu2.a = %d\n", u2.a);   
+	printf("u2.b = %ld\n", u2.b);  
+	 
+	u2 = 129;
+	printf("\nu2.a = %d\n", u2.a);   
+	printf("u2.b = %ld\n", u2.b);  
+	printf("sizeof(u2) = %ld bytes\n", sizeof(u2));
+#if!defined(TEST_WITH_MAIN)
+	printf("\nTEST_WITH_MAIN must be defined\n");
+	return -1;
+#endif
+	int *x = malloc(sizeof(int));
+	long *y = malloc(sizeof(long));
+	u *p1 = malloc(sizeof(u));
+	int b = -12;
+	*x = 91;
+	*y = b;
+	*p1 = b;
+	printf("\n*x = %d\n", *x);  
+	printf("*y = %ld\n", *y);  
+	printf("*p1 = %d\n", *p1);  
+	printf("\n(a)sizeof(int) = %d bytes\n", sizeof(int));
+	printf("(b)sizeof(long) = %d bytes\n", sizeof(long));
+	printf("(c)sizeof(u) = %d bytes\n", sizeof(u));	
+	free(x);
+	free(y);
+	free(p1);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+ 
+union example
+{
+    int type;
+    struct
+    {
+        int n;
+        short a[10];
+    } numeral;
+    char name[10];
+} user, user2;
+
+ 
+void initialize()
+{
+    user.numeral.n = 100;
+    user.numeral.a[5] = 50;
+    user.name[8] = 'u';
+    strcpy(user2.name, "new name");
+}
+
+ 
+int main()
+{
+     
+    initialize();
+    printf("Number: %d\n", user.numeral.n);
+    printf("Character: %c\n", user.name[9]);
+    printf("New name: %s\n", user2.name);
+}
+
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+union Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+
+int main()
+{
+    union Data u1, u2;
+    struct
+    {
+        union
+        {
+            float fval;
+            double dval;
+        };
+        char name[98];
+    } u3;
+
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    u1.name[0] = 'S';
+    u1.name[1] = 'i';
+    u1.name[2] = 'n';
+    u1.name[3] = 'h';
+    u1.name[4] = 'a';
+    u1.name[5] = 'l';
+    u1.name[6] = 'a';
+    u1.name[7] = '\0';
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+     
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    union Data u1, u2;
+    struct
+    {
+        union
+        {
+            float fval;
+            double dval;
+        };
+        char name[98];
+    } u3;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    u1.name[0] = 'S';
+    u1.name[1] = 'i';
+    u1.name[2] = 'n';
+    u1.name[3] = 'h';
+    u1.name[4] = 'a';
+    u1.name[5] = 'l';
+    u1.name[6] = 'a';
+    u1.name[7] = '\0';
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    int ival;
+};
+int main()
+{
+    union Data u;
+    printf("u = %lld\n", sizeof(u));
+    u.fval = 1e-320f;
+    printf("u = %lld\n", sizeof(u));
+    u.dval = 1e-320;
+    printf("u = %lld\n", sizeof(u));
+    u.ival = 1e-320;
+    printf("u = %lld\n", sizeof(u));
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+};
+int main()
+{
+    union Data u1 = {.fval = 1.234e-38f,.dval = -1e-320}, u2 = {.fval = 1.25e-38f,.dval = 5.8741e-320};
+    if (u1.fval == u2.fval && u1.dval == u2.dval)
+    {
+        printf("Contents of u1 and u2 are same\n");
+    }
+    else
+    {
+        printf("Contents of u1 and u2 are not same\n");
+    }
+    printf("%f", u1.fval);
+    return (EXIT_SUCCESS);
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int test = (short)((char)1 << 8);
+    test = (short)((short)3 + (short)4);
+    printf("%d\n", test);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct
+{
+    float fval;
+    char name[80];
+} DataUnion;
+int main()
+{
+    DataUnion u1, u2;
+    size_t chars_written = 0, chars_read = 0, idx = 0;
+    u1.fval = -1e-35f;
+    u1.name[0] = 'A';
+    u1.name[1] = 'l';
+    u1.name[2] = 'k';
+    u1.name[3] = 'a';
+    u1.name[4] = 'y';
+    u1.name[5] = 'a';
+    u1.name[6] = '\0';
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%f\n", u2.fval);
+    for (idx = 0; u2.name[idx]!= '\0'; idx++)
+        ;
+    for (idx = 0; u1.name[idx]!= '\0'; idx++)
+        u2.name[idx] = u1.name[idx];
+    characters_written += fwrite(&u2.name, 80 * sizeof(u2.name[0]), 1, stdout);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    union Data u1, u2;
+    struct
+    {
+        float fval;
+        double dval;
+        char str[120];
+    } u3;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    u1.name[0] = 'S';
+    u1.name[1] = 'i';
+    u1.name[2] = 'n';
+    u1.name[3] = 'h';
+    u1.name[4] = 'a';
+    u1.name[5] = 'l';
+    u1.name[6] = 'a';
+    u1.name[7] = '\0';
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    union Data u1, u2;
+    struct
+    {
+        union
+        {
+            float fval;
+            double dval;
+        };
+        char name[98];
+    } u3;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    strcpy(u2.name, "Kumar");
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    union Data u1, u2;
+    struct
+    {
+        union
+        {
+            float fval;
+            double dval;
+        };
+        char name[98];
+    } u3;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    strcpy(u2.name, "Kumar");
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct
+{
+    union
+    {
+        float fval;
+        double dval;
+    };
+    char name[98];
+} u1;
+int main()
+{
+    struct
+    {
+        union
+        {
+            float fval;
+            double dval;
+        };
+        char name[98];
+    } u2;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    strcpy(u2.name, "Kumar");
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Datas
+{
+    union Datas *ptr;
+    struct datatags
+    {
+        double Data;
+        char name[80];
+    } dat;
+    double dval;
+    char chrs[80];
+};
+int main(void) {
+    union Datas vals[2], vals2[2];
+    vals[0].dat.Data = -1e-37;
+    vals[0].dat.name = "Sinhala";
+    vals[1].dval = 3.32;
+    vals[1].chrs = "Kumar";
+    FILE *fptr;
+    fptr = fopen("union_write_data.dat", "wb");
+    fwrite(&vals[0], sizeof(vals), 1, fptr);
+    fclose(fptr);
+    fptr = fopen("union_read_data.dat", "rb");
+    fread(&vals2[0], sizeof(vals[0]), 1, fptr);
+    for (int i = 0; i < sizeof(vals[0]) / sizeof(char); i++) {
+        putchar(vals2[0].chrs[i]);
+    }
+    putchar('\n');
+    fread(&vals2[1], sizeof(vals[0]), 1, fptr);
+    putchar((char)vals2[1].dval);
+     
+    fclose(fptr);
+    return (0);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+struct __union_Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    struct
+    {
+        struct
+        {
+            union
+            {
+                float fval;
+                double dval;
+            };
+            char name[98];
+        } u3;
+    };
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    sscanf(u1.name, "%lf", &u2.fval);
+    printf("%.19s\n", u2.name);
+    u2.dval = 3.926e21;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read = fread(&u2.name, 80, 1, stdin);
+    sscanf(u2.name, "%lf", &u2.dval);
+    printf("%.19s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+ 
+ 
+ 
+ 
+struct Data
+{
+    union
+    {
+        float fval;
+        double dval;
+    };
+    char name[98];
+};
+int main()
+{
+    union Data u1, u2;
+    struct Data u3;
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    chars_read = fread(&u2.fval, sizeof(u2.fval), 1, stdin);
+    printf("%s\n", u2.name);
+    u2.dval = 3.9110;
+    strcpy(u2.name, "Kumar");
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read += fread(&u2.name, 80 * sizeof(u2.name[0]), 1, stdin);
+    printf("%s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+typedef enum { false = 0, true = 1 } bool;
+#define BUFFER_LENGTH 255
+typedef char Buffer[BUFFER_LENGTH + 1];
+union Data
+{
+    float fval;
+    double dval;
+    struct
+    {
+        Buffer name;
+        int id;
+    };
+};
+bool fgets_u(Buffer str, union Data * data)
+{
+    unsigned error =!fgets(str, BUFFER_LENGTH, stdin);
+    if (!error)
+        error = 2;
+    if (!error) {
+        switch(str[0]) {
+            case 'f': {
+                data->fval = atof(str + 1);
+                return true;
+            }
+            case 'd': {
+                data->dval = atof(str + 1);
+                return true;
+            }
+            case 'p': {
+                data->id = atoi(str + 1);
+                return true;
+            }
+            case 'n': {
+                strcpy(data->name, str + 1);
+                return true;
+            }
+            default : {
+                error = 19;
+                break;
+            }
+        }
+    }
+    if (error == 2 || ferror(stdin)) {
+        fputs(str, stderr);
+    }
+    errno = error;
+    set_errno(error);
+    return false;
+}
+bool fputs_u(union Data data, FILE * stream)
+{
+    bool success = false;
+    switch (data.name[0]) {
+        case 'f': {
+            success = fprintf(stream, "%f", data.fval) >= 0;
+            break;
+        }
+        case 'd': {
+            success = fprintf(stream, "%f", data.dval) >= 0;
+            break;
+        }
+        case 'p': {
+            success = fprintf(stream, "%d", data.id) >= 0;
+            break;
+        }
+        case 'n': {
+            success = fprintf(stream, "%s", data.name) >= 0
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+struct __union_Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    struct
+    {
+        struct
+        {
+            union
+            {
+                float fval;
+                double dval;
+            };
+            char name[98];
+        } u3;
+    };
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    sscanf(u1.name, "%lf", &u2.fval);
+    printf("%.19s\n", u2.name);
+    u2.dval = 3.926e21;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read = fread(&u2.name, 80, 1, stdin);
+    sscanf(u2.name, "%lf", &u2.dval);
+    printf("%.19s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+struct __union_Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    struct __union_Data u1, u2, u3;
+    fread(&u1, sizeof(u1), 1, stdin);
+    fread(&u2, sizeof(u1), 1, stdin);
+    printf("u3.fval : %-21.10g\nu3.dval: %19.17g\nu3.val : %-21.10g\n", u2.fval, u1.dval, u1.fval);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+struct __union_Data
+{
+    char *a;
+    float *b;
+    double *c;
+};
+int main()
+{
+    struct __union_Data u1;
+    struct __union_Data u2;
+    struct __union_Data v1;
+    u1.a = "I am a string";
+    u2.b = 0;
+    v1.c = 0;
+    printf("%-5s %p %p\n", "U1", u1.a, u1.b);
+    printf("%-5s %p %p\n", "U2", u2.a, u2.b);
+    printf("%-5s %p %p\n", "V1", v1.a, v1.b);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%p\n", u1.p);
+    u2.p = 0x5678;
+    printf("%p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+struct __union_Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    struct
+    {
+        struct
+        {
+            union
+            {
+                float fval;
+                double dval;
+            };
+            char name[98];
+        } u3;
+    };
+    u1.fval = -1e-37f;
+    u1.dval = +1e-308;
+    strcpy(u1.name, "Sinhala");
+    size_t chars_written = 0, chars_read = 0;
+    chars_written = fwrite(&u1.fval, sizeof(u1.fval), 1, stdout);
+    sscanf(u1.name, "%lf", &u2.fval);
+    printf("%.19s\n", u2.name);
+    u2.dval = 3.926e21;
+    chars_written += fwrite(&u2.dval, sizeof(u2.dval), 1, stdout);
+    chars_read = fread(&u2.name, 80, 1, stdin);
+    sscanf(u2.name, "%lf", &u2.dval);
+    printf("%.19s\n", u2.name);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define PI 3.14159
+extern int ipi;
+extern int getint(void);
+extern double getfloat(void);
+extern char *getstring(void);
+int main()
+{
+    struct __union__complex_15_9
+    {
+        float real;
+        struct
+        {
+            int ipi[2];
+            union
+            {
+                char str[10];
+                int integer;
+            };
+        };
+    };
+    union __union__complex_15_9 u;
+    char *c;
+    ipi = 26;
+    u.integer = 0x78;
+    c = u.str;
+    printf("%c%c%c%c%c%c%c%c%c%c\n", c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
+    fflush(stdout);
+    return (EXIT_SUCCESS);
+}
+extern int ipi;
+extern int getint(void);
+extern double getfloat(void);
+extern char *getstring(void);
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%p\n", u1.p);
+    u2.p = 0x5678;
+    printf("%p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%p\n", u1.p);
+    u2.p = 0x5678;
+    printf("%p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    union __anon_union
+    {
+        char c;
+        int i;
+    }__anon;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.__anon.i = 0x1234;
+    printf("%p\n", &u1.__anon.i);
+    printf("Type of Value %p is %d\n", &u1.__anon, u1.__anon);
+    u2.__anon.c = 'v';
+    printf("%p\n", &u2.__anon.c);
+    printf("Type of Value %p is %c\n", &u2.__anon, u2.__anon);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    union __anon_union
+    {
+        char c;
+        int i;
+        struct __compound_struct
+        {
+            char c1;
+            int i1;
+        }cs;
+    }__anon;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.__anon.i = 0x1234;
+    printf("Type of Value %p is %d\n", &u1.__anon, u1.__anon);
+    u1.__anon.cs.c1 = 'a';
+    printf("Type of Value %p is %c\n", &u1.__anon.cs.c1, u1.__anon.cs.c1);
+    u1.__anon.cs.i1 = 0xf4d4;
+    printf("Type of Value %p is %d\n", &u1.__anon.cs.i1, u1.__anon.cs.i1);
+    return (EXIT_SUCCESS);
+}
+/*
+#include <stdlib.h>
+#include <stdio.h>
+struct __struct_Data
+{
+    char *p;
+    int i;
+    void *ptr;
+    int *tptr;
+};
+int main()
+{
+    struct __struct_Data s1, s2;
+    char str[5] = "Hello";
+    int no = 4567;
+    int *num = &no;
+    s1.p = str;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    int num;  
+};
+struct __union_Data operator1()
+{
+    struct __union_Data u1, u2;
+    printf("Enter number: ");
+    scanf("%d", &u1.num);
+    return u1;
+}
+int main()
+{
+    struct __union_Data u, v;
+    u = operator1();
+    v = {u.num};  
+    printf("You Entered :%d\n", v.num);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+struct __union_Data
+{
+    int num1;
+};
+struct __union_Data operator()
+{
+    struct __union_Data x = {.num1 = 0};
+    return x;
+}
+int main()
+{
+    struct __union_Data y = operator();
+    printf("%d\n", y.num1);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%zx\n", (size_t)u1.p);
+    u2.p = 0x5678;
+    printf("%zx\n", (size_t)u2.p);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+struct __union_Data
+{
+    void *p;  
+    int i;     
+     
+     
+     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+     
+    printf("u1.i: %d\n", u1.i);
+    printf("u1.p: %p\n", u1.p);
+    u2.p = 0x5678;
+    printf("u2.p: %p\n", u2.p);
+     
+     
+     
+     
+    return (EXIT_SUCCESS);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    printf("u1.p: %p\n", u1.p);
+    u2.p = 0x5678;
+    printf("u2.p: %p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+    int i;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("u1 is at address:\n%p\n", &u1);
+    u1.i = 0x1234;
+    printf("u1 is at address:\n%p\n", &u1);
+    u1.p = (void *)0x1234;
+    printf("u1 is at address:\n%p\n", &u1);
+    printf("u1.i is %d, u1.p is %p\n", u1.i, u1.p);
+    u2.i = 0x5678;
+    printf("u2.i is %d, u2.p is %p\n", u2.i, u2.p);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    void * p;         
+    int i;             
+};
+int main()
+{
+    union Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    printf("u1.p: %p\n", u1.p);
+    u2.p = 0x5678;
+    printf("u2.p: %p\n", u2.p);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+	void *v;
+	short i;
+};
+int main()
+{
+	struct __union_Data u1, u2;
+	printf("&u1.i -- %p\n", &u1.i);
+	printf("&u1.v -- %p\n", &u1.v);
+	u1.i = 0x1234;
+	printf("&u1.i -- %p\n", &u1.i);
+	u1.v = 0x1234;
+	printf("&u1 -- %p\n", &u1);
+	printf("u1.i: %d\n", u1.i);
+	printf("u1.v: %p\n", u1.v);
+	u2.v = 0x5678;
+	printf("u2.v: %p\n", u2.v);
+	return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.size_of_data_type = sizeof(int);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.p: %p\n", u1.p);
+    u1.size_of_data_type = sizeof(void);
+    u2.i = 0x5678;
+    printf("u2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+union Data
+{
+    int  n;
+    void *p;
+};
+
+int main()
+{
+    union Data u1, u2;
+    
+    printf("address of u1.n --> %p\n", &u1.n);
+    printf("address of u1.p --> %p\n", &u1.p);
+    printf("address of u1    --> %p\n", &u1);
+    
+    u1.n = 0x1234;
+    printf("now value of u1.n --> %d\n", u1.n);
+    printf("now address of u1 --> %p\n", &u1);
+    printf("u1      --> %p\n", u1);
+    
+    u1.p = 0x1234;
+    printf("address of u1      --> %p\n", &u1);
+    printf("new value of u1.p --> %p\n", u1.p);
+    printf("now value of u1   --> %p\n", u1);
+    
+    u2.p = 0x5678;
+    printf("new value of u2.p  --> %p\n", u2.p);
+    printf("now value of u2   --> %p\n", u2);
+
+    return (EXIT_SUCCESS);
+}
+
+ 
+
+ 
+#include <stdlib.h>
+#include <stdio.h>
+
+union data_types
+{
+    struct
+    {
+        float number;
+        int integer;
+    };
+    unsigned long long int big;
+};
+int main()
+{
+    union data_types my_data;
+    printf("Size of union: %ld bytes.\n", sizeof(my_data));
+    printf("The union's members are:\n");
+    printf("float: %f\n", my_data.number);
+    printf("int: %d\n", my_data.integer);
+    printf("unsigned long long: ");
+    printf("%#1
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.size_of_data_type = sizeof(int);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.p: %p\n", u1.p);
+    u1.size_of_data_type = sizeof(void);
+    u2.i = 0x5678;
+    printf("u2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    struct 
+    {
+        size_t size_of_data_type;
+        void *p;  
+        int i;     
+    };  
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.size_of_data_type = sizeof(int);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.p: %p\n", u1.p);
+    u1.size_of_data_type = sizeof(void);
+    u2.i = 0x5678;
+    printf("u2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data{
+    size_t size_of_data_type;
+};
+struct __data
+{
+   
+  __union_Data __data_union;
+  union{
+    void *p;  
+    int i;
+  };
+};
+int main()
+{
+    struct __data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.__data_union.size_of_data_type = sizeof(int);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    u1.__data_union.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.p: %p\n", u1.p);
+    u1.__data_union.size_of_data_type = sizeof(void);
+    u2.i = 0x5678;
+    printf("u2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    size_t size_of_data_type;
+    void *p;
+    int i;
+};
+int main()
+{
+    union Data u1, u2;
+    printf("&u1.i -- %p\n", &u1.i);
+    printf("&u1.p -- %p\n", &u1.p);
+    printf("&u1 -- %p\n", &u1);
+    u1.size_of_data_type = sizeof(int);
+    u1.i = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.i: %d\n", u1.i);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("&u1 -- %p\n", &u1);
+    printf("u1.p: %p\n", u1.p);
+    u1.size_of_data_type = sizeof(void);
+    u2.i = 0x5678;
+    printf("u2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("^U1.i -- %p\n", &u1.i);
+    printf("^U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("^U1 -- %p\n", &u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int type;
+typedef void* type2;
+
+struct _data
+{
+    size_t stype;
+    type t;
+    type2 t2;
+};
+
+void* fun()
+{
+    return (0);
+}
+
+int main()
+{
+    struct _data data;
+    void* p = fun();
+    data.stype = sizeof(type);
+    data.t = 0x1234;
+    data.stype = sizeof(type2);
+    data.t2 = 0x1234;
+    printf("data.t: %d\n",data.t);
+    data.stype = sizeof(void*);
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("^U1.i -- %p\n", &u1.i);
+    printf("^U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("^U1 -- %p\n", &u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;
+    int i;   
+};
+void *convert(struct __union_Data *data)
+{
+    data->i = 0x5678;
+    return data->p;
+}
+int main()
+{
+    union __union_Data u;
+    printf("u.i: %d\n", u.i);
+    printf("u.p: %p\n", u.p);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+ 
+
+union Data {
+	size_t size_of_data_type;
+	void *p;
+	int i;
+};
+ 
+
+union Data u;
+ 
+
+u.size_of_data_type = "long";
+u.p = 0x1;
+
+printf("^U1.i -- %p\n", &u.i);
+printf("^U1 -- %p\n", &u);
+printf("U1.p: %p\n", u.p);
+u.i = 0x1234;
+printf("U1.i: %d\n", u.i);
+u.p = 0x5678;
+printf("U1.p: %p\n", u.p);
+u.size_of_data_type = "short";
+u.p = 0x1234;
+printf("U1.p: %p\n", u.p);
+u.i = 0x5678;
+printf("U1.i: %d\n", u.i);
+return (EXIT_SUCCESS);
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <inttypes.h>
+int main(void)
+{
+    volatile uint64_t u1, u2;
+    printf("^U1.i: %p\n", &u1);
+    printf("^U1.p: %p\n", &u1);
+    (void)u2;
+    u1 = 0x1234;
+    printf("^U1: %p -- %0.8lx\n", &u1, u1);
+    u2 = 0x5678;
+    printf("U2.i: %d\n", u2);
+    return (EXIT_SUCCESS);
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union __union_Data u1, u2;
+    printf("^U1.i -- %p\n", &u1.i);
+    printf("^U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("^U1 -- %p\n", &u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("U1.i -- %p\n", &u1.i);
+    printf("U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("U1 -- %ld\n", u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("U1.i -- %p\n", &u1.i);
+    printf("U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("U1 -- %ld\n", u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("U1.i -- %p\n", &u1.i);
+    printf("U1.p -- %p\n", &u1.p);
+    u1.i = u2.i = 0x1234;
+    u2.i = u1.i = 56789;
+    printf("U1.i: %d\n", u1.i);
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data {
+    size_t size_of_data_type;
+    void *p;
+    int i;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    static int a = 0;
+    if(!a)
+    {
+    printf("u1.i Address %p\n", &u1.i );
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("U1 value = %ld\n", u1);
+    printf("u1.p Address %p\n", &u1.p );
+    printf("U1.p value = %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("u2.i value = %d\n", u2.i);
+    printf("U2.i Address %p\n", &u2.i);
+    a = 1;
+    }
+    return (EXIT_SUCCESS);
+}
+ 
+  
+  
+  
+  
+  
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;
+    int i;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("U1.i -- %p\n", &u1.i);
+    printf("U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "char";
+    u1.p = 0x1234;
+    printf("U1 -- %d\n", u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+int __cdecl main(void)
+{
+     
+     
+     
+    union U1
+    {
+
+        long l;
+        char c;
+        long long ll;
+    };
+
+     
+     
+    union U2
+    {
+        int i;
+        wchar_t h;
+    };
+
+    union U1 a = { 10l }, b = { 20l };  
+
+    printf("a = %ld b = %ld\n", a.ll, b.c);
+
+     
+    union Number
+    {
+        short sh_num;
+        int i_num;
+        long l_num;
+        int x;
+
+    } num1, num2;
+
+    num1.x = 10;
+    printf("num1.x: %d\n", num1.x);
+
+     
+    union P1 {
+        int i;
+        char c;
+    };
+
+    union P1 var1;
+
+    var1.i = 100;
+    var1.char = 'a';
+    printf("var1.i: %d var1.c: %c\n", var1.i, var1.c);
+
+     
+     
+
+    union Expanded
+    {
+        char c[10];
+        short s;
+    } ex;
+
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <string.h>
+ 
+int main(void)
+{
+    union __Union {
+        union _nested_union
+        {
+            char ch[100];
+             
+            struct _subStruct
+            {
+                int _member1;
+                int _member2;
+            };
+            int i;
+            struct __s1{
+                char s1_me1;
+        };
+    };
+    int k;
+};
+    int k;
+        printf("%p", &k);
+            printf("%p", &__Union);
+    )
+}
+ 
+int main()
+{
+    union __Struct
+        {
+            int i;
+            char ch[100];
+            int k;
+        }u1;
+        u1.i = 0x5678;
+        printf("%d\n",u1.i);
+         
+        u1.ch[10] = '0';
+}
+ 
+#include<stdio.h>
+union __Union {
+    int a;
+    char s;
+}u;
+int main()
+{
+    u.a=1000;
+    printf("%d\n",u.a);  
+    u.s='c';
+    printf("%c\n",u.s);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union __test
+{
+    int i; 
+    struct 
+    {
+      int x;
+      int y;
+     }point;
+    void *p;  
+
+};
+int main()
+{
+    union __test t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+union __test
+{
+    int i; 
+    struct 
+    {
+      int x;
+      int y;
+     }point;
+    void *p;  
+};
+int main()
+{
+    union __test t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct tagx
+{
+    int x;
+    int y;
+};
+struct tagy
+{
+    int i;
+    struct tagx p;
+};
+int main()
+{
+    struct tagy t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p.x = 1;
+    t1.p.y = 2;
+    printf("t1.x y: %d %d\n", t1.p.x, t1.p.y);
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct __test
+{
+    int x;
+    int y;
+}point_t;
+typedef struct __test
+{
+    int i; 
+    point_t point;
+    void *p;  
+}test_t;
+int main()
+{
+    test_t t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        int i; 
+        struct 
+        {
+          int x;
+          int y;
+        }point;
+        void *p;  
+    }t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __test
+{
+  int __x;
+};
+union __test
+{
+    int i; 
+    struct __test t;
+    void *p;  
+};
+int main()
+{
+    union __test t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdio.h>
+union a {
+  union a a1;
+  union b b1;
+};
+typedef union b {
+  int i;
+  union a u;
+} b;
+int main(void)
+{
+    printf("sizeof(union a a1) %d", sizeof(a1));
+  return (0);
+}
+ 
+ 
+ 
+ 
+#include <stdio.h>
+union data_type{
+  unsigned char bitfield;
+  struct {
+    unsigned char b0 :1;
+    unsigned char b1 :3;
+  };
+};
+int main(void)
+{
+    union data_type data;
+    data.b0 = 1;
+    data.b1 = 7;
+    printf("0x%02X\n", data.bitfield);
+    return (0);
+}
+ 
+#include <stdio.h>
+union data_type{
+  unsigned char bitfield;
+  struct {
+    unsigned char b0 :1;
+    unsigned char b1 :3;
+  };
+};
+int main(void)
+{
+    union data_type data;
+    data.b0 = 1;
+    data.b1 = 7;
+    unsigned long long int u = data.bitfield
+    printf("0x%02llX\n", u);  
+    return (0);
+}
+ 
+ 
+ 
+/* The below snippet will print the
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct __t1 {
+  int i; 
+  int p;
+}; 
+int main()
+{
+    struct __t1 t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        int i; 
+        struct 
+        {
+          int x;
+          int y;
+        }point;
+        void *p;  
+    }t1;
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = 0x5678;
+    printf("t1: %p type: %s\n ", (int *)t1.p, "unknown");
+    return (EXIT_SUCCESS);
+}
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        struct 
+        {
+          int size;
+          int *ptr;
+        }mem;
+        struct
+        {
+            union {
+              int numerator;
+              int real_part;
+            } real;
+
+            union {
+                int denominator;
+                int imag_part;
+            } img;
+        } complex;
+    }t1; 
+    t1.mem.size = 32;
+    t1.mem.ptr = 0x5678;
+    printf("t1: %d %p\n", t1.mem.size, (int *)t1.mem.ptr);
+    t1.complex.real.numerator = 123;
+    t1.complex.real.real_part = 0;
+    t1.complex.img.denominator= 5434;
+    t1.complex.img.imag_part = 5454;
+
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef union 
+    {
+        struct 
+        {
+            int A;
+            int B;
+        } t1;
+        struct  				 
+        {
+            int C;
+            int D;
+        } t2; 
+    } u1;
+    u1 t1, t2;
+    printf("sizeof(u1): %ld\n", sizeof(u1));
+    printf("sizeof(t1): %ld\n", sizeof(t1));
+    printf("sizeof(t2): %ld\n", sizeof(t2));
+    printf("sizeof(t1.t1): %ld\n", sizeof(t1.t1));
+    printf("sizeof(t1.t2): %ld\n", sizeof(t1.t2));
+    printf("sizeof(t2.t1): %ld\n", sizeof(t2.t1));
+    printf("sizeof(t2.t2): %ld\n", sizeof(t2.t2));
+
+    struct u2
+    {
+        struct 
+        {
+            int A;
+            int B;
+        } t1;
+        struct  				 
+        {
+            int C;
+            int D;
+        } t2;
+    } u2, u3;
+     
+    if (0)
+    {
+        u2 = t1;
+        printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+    }
+    
+    else
+    {
+        u2.t1.C = 0x1234;
+        u2.t1.D = 0x1234;
+
+
+        u3 = t1;
+        printf("u3: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u3.t1.A, u3.t1.B,
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        int i; 
+        struct 
+        {
+            int x;
+            int y;
+        }point;
+        void (*fn)();  
+    }t1;
+    t1.fn = main;
+    t1.fn();
+    return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int f(int n)
+{
+    n = n * 3;
+    return n;
+}
+int main()
+{
+    union 
+    {
+        int (*fun)(int);
+        struct
+        {
+          char c;
+          union
+          {
+            int i;
+            float f;
+          }x;
+        }y;
+    }u1;
+     
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.y.x.i = 100;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.fun = f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.y = (struct 
+            {
+            char c;
+            union
+            {
+                int i;
+                float f;
+            }x;
+    })});
+    printf("value of u1 is %d\n", u1.y.x.i);
+    printf("value of u1 is %d\n", u1.y.x.f);
+    return 0;
+}
+u1.y = (void *) f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+u1.y = f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    return 0;
+*/
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct complex{
+    char c;
+    union{
+        struct {
+            int x;
+            int y;
+        } point;
+        float f;
+    }y1;
+};
+int main()
+{
+    struct complex obj;
+    int *ip = &obj.y1.point.x;
+    float *fp = &obj.y1.f;
+    obj.y1.point.x = 10;
+    obj.y1.point.y = 20;
+
+    obj.y1.f = 3.56;
+    printf("x = %d\n", obj.y1.point.x);
+    printf("y = %d\n", obj.y1.point.y);
+    printf("f = %f\n", obj.y1.f);
+    printf("size of x = %lu\n", sizeof(obj.y1.point.x));
+    printf("size of y = %lu\n", sizeof(obj.y1.point.y));
+    printf("size of f = %lu\n
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+union 
+{
+    int i; 
+    struct 
+    {
+        int x;
+        int y;
+    }point;
+    void *p;  
+}t1; 
+
+struct s {
+    int a;
+    int b;
+  };
+  t1.i = 0x1234;
+  printf("t1: %d\n", t1.i);
+  t1.p = (void *)malloc(sizeof(struct s));
+  ((struct s *)t1.p)->a = 0x4321;
+  ((struct s *)t1.p)->b = 0xabcd;
+  printf("t1: %p type: %s\n ", t1.p, "unknown");
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+union 
+{
+    int i; 
+    struct 
+    {
+        int x;
+        int y;
+    }point;
+    void *p;  
+}t1; 
+struct s {
+    int a;
+    int b;
+  };
+  t1.i = 0x1234;
+  printf("t1: %d\n", t1.i);
+  t1.p = (void *)malloc(sizeof(struct s));
+  ((struct s *)t1.p)->a = 0x4321;
+  ((struct s *)t1.p)->b = 0xabcd;
+  printf("t1: %p type: %s\n ", t1.p, "unknown");
+  return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+int t1; 
+t1 = 0x1234;
+printf("t1: %d (i: %d)\n", t1, t1);
+t1 += sizeof(int) -1; 
+((int *)(&t1))[1] = 0xabcd;
+printf("t2: %d (x: %d -> %d y: %d -> %d)\n ", t1, t1 & 0xffffffff, ((int *)(&t1))[1], (t1 >> 32) & 0xffffffff, ((int *)(&t1))[2]);
+return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+  struct {
+      int x;
+      int y;
+  }point;
+  void *p; 
+  union {
+    int i; 
+    struct {
+        int x;
+        int y;
+    }point;
+    void *p;  
+  }t1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p=(void *)&point;
+  t1.i = 0x1234; 
+  t1.p= (struct s *)p;
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+struct s {
+    int a;
+    int b;
+  };
+struct s *t1 = (struct s *)malloc(sizeof(struct s));
+t1->a = 0x4321;
+t1->b = 0xabcd;
+printf("t1: %p type: %s\n", t1, "unknown");
+return (EXIT_SUCCESS);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h> 
+struct s {
+    int a;
+    int b;
+    } 
+union { 
+    int i; 
+    struct s point; 
+    void *p;    
+} t1;  
+int main()
+{
+    t1.i = 0x1234;
+    printf("t1: %d\n", t1.i);
+    t1.p = (void *)malloc(sizeof(struct s));
+    ((struct s *)t1.p)->a = 0x4321;
+    ((struct s *)t1.p)->b = 0xabcd;
+    printf("t1: %p type: %s\n ", t1.p, "unknown");
+
+    return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h> 
+int main()
+{
+union 
+{
+    int j;  
+    struct  
+    {
+        int x;
+        int y;
+    }t2; 
+    struct           
+    s
+    {
+        int a;  
+        int b;  
+    }t3; 
+    void *p; 
+}t1; 
+struct s {
+    int a;
+    int b;
+  };
+  t1.j = 0x1234;
+  printf("t1: %d\n", t1.j);
+  t1.p = (void *)malloc(sizeof(struct s));
+  ((struct s *)t1.p)->a = 0x4321;
+  ((struct s *)t1.p)->b = 0xabcd;
+  printf("t1: %p type: %s\n ", t1.p, "unknown");
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+  struct {
+      int x;
+      int y;
+  }point;
+  void *p; 
+  union {
+    int i; 
+    struct {
+        int x;
+        int y;
+    }point;
+    void *p;  
+  }t1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p=(void *)&point;
+  t1.i = 0x1234; 
+  t1.p= (struct s *)p;
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{  
+  struct point { 
+      int x; 
+      int y; 
+  }; 
+  void *p; 
+  struct { 
+      union { 
+          struct point t1; 
+          int i; 
+          struct { 
+              int x; 
+              int y; 
+          } t2; 
+          void *p; 
+      }t;  
+  }t3; 
+  t3.t.t1.x = 0x1234; 
+  p=(void *)&(t3.t.t1.y); 
+  t3.t.i= 0x1234; 
+  t3.t.p= (struct s *)p;
+  printf("t3: %d\n", t3.t.i); 
+  return (EXIT_SUCCESS);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  typedef union {
+    int i; 
+    struct {
+       int x; 
+       int y; 
+    }point; 
+    void *p; 
+  }  u1; 
+  typedef struct {
+    int x; 
+    int y; 
+  } point;
+  u1 t1; 
+  point point; 
+  void *p;  
+  t1.i = 0x1234; 
+  point.x = 0x1234;
+  point.y = 0x4321; 
+  p=(void *)&point;
+  t1.p = (u1 *)p; 
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  typedef union { 
+    int i; 
+    struct { 
+       int x; 
+       int y; 
+       struct { 
+           int px; 
+           int py; 
+       }; 
+    } point; 
+    void *p; 
+  } u1; 
+  typedef struct {
+     int x; 
+     int y; 
+  } point; 
+  u1 t1; 
+  point point; 
+  void *p; 
+  t1.i = 0x1234; 
+  point.x = 0x1234;
+  point.y = 0x4321;
+  point.px = 0x1234;
+  point.py = 0x4321;
+  p=(void *)&point;
+  t1.p = (u1 *)p; 
+  printf("t1: %d\n", t1.i);
+  return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <limits.h>
+#define errExit(msg) do { perror(msg); exit(EXIT_FAILURE); \
+                          } while (0)
+#define INDEX_SIZE_T unsigned int
+
+#define MAXLINE 1024
+typedef struct {
+    void *array;
+    INDEX_SIZE_T size;
+    INDEX_SIZE_T (*alloc)(INDEX_SIZE_T newsize);
+    INDEX_SIZE_T elemsize;
+    int (*cmpitem)(const void *a, const void *b);
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h> 
+  
+struct point  
+{
+  int x;
+  int y;
+};
+
+union type1{
+    int i;
+    struct point point;
+    void* p;
+};
+
+int main()
+{
+  int i; 
+  struct point point; 
+  union type1 t1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  t1.i = 0x1234; 
+  t1.p=&point;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct _s  
+  {  
+    int x;  
+    int y;  
+  } point; 
+  void *p;  
+  union {  
+    struct _s point;  
+    void *p;
+  }t1;  
+  p=&point;
+  point.x= 0x4321;
+  point.y= 0x1234;
+  t1.point.x= 0x1234;
+  t1.p= p;
+  printf("t1.point.y= %d\n", t1.point.y);
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+ void *q; 
+ union {
+   int i; 
+   struct {
+       int x;
+       int y;
+   }point;
+   void *p;  
+ }t0, t1;  
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  printf("%d", t0.point.x);
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+ void *q; 
+ union {
+   int i; 
+   struct {
+       int x;
+       int y;
+   }point;
+   void *p;  
+ }t0, t1;  
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  printf("%d", t0.point.x);
+  return (EXIT_SUCCESS);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+void *q; 
+union {
+  int i; 
+  struct {
+       int x;
+       int y;
+   }point;
+  void *p;  
+ }t0, t1;  
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+  union u {
+    int i;
+    double d;
+  }u1;
+  u1.i=123;
+  printf("u1.i=%d\n", u1.i);
+  printf("u1.d=%.1f\n", u1.d);  
+  u1.d = u1.d + 8.88;
+  u1.i = u1.i + (int)u1.d;
+  printf("i=%d, d=%.1f", u1.i, u1.d);
+  return (EXIT_SUCCESS);
+
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+struct {
+  int character;
+}un;
+int temp;
+char ch;
+int main()
+{
+  struct {
+    char integer;
+  }un1;
+  float f;
+  int i;
+
+
+  printf("Enter integer followed by a character\n");
+  scanf("%d %c", &i, &ch);
+  un.character = i;
+  printf("un.character=%d\n", un.character);
+  printf("Enter decimal number and press enter\n");
+  scanf("%f", &f);
+  un1.integer  =(char)(f-un1.integer);
+  un1.integer -= 48;
+  printf("un1.integer=%d\n", un1.integer);
+  temp = un.character;
+  printf("Enter integer followed by character\n");
+  scanf("%d %c", &i, &ch);
+  un.character = i;
+  printf("Enter decimal number\n");
+  scanf("%f", &f);
+  un1.integer  =(char)(f-un1.integer);
+  un1.integer -= 48; 
+  printf("un1.integer=%d\n", un1.integer);
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct {
+      int x;
+      int y;
+  }point, p1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p1 = point;
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{ 
+  struct {
+      int x;
+      int y;
+ }a, b, c, d;
+ void *p;
+  c.y = 0x1234;
+  c.x = 0x4321;
+ d.y = 0x3300;
+ d.x = 0x0041;
+  p=(void *)&a;
+  b =  c;
+  b = (struct s ) d;
+  p = (void *)&a;
+  b.y = 0x4321;
+  b.x = 0x1234;
+  a = c;
+  a = (struct s )d;  
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main(void)
+{
+  int num;
+  int i;
+  void *p; 
+  union {
+   int i; 
+   void *p;
+ }ptr;
+  printf("\n Enter a number: ");
+  scanf("%d", &num);
+  ptr.i = num;
+  p = ptr.p;
+  union { 
+   struct{
+     int *p;
+     int f0;
+     float f1;
+    } t;
+    union { 
+      int *p; 
+      float *q;} u0;
+     union{
+       int *p; 
+      float *q; } u1,u,u_test;
+   struct {
+     int a,b,c;
+   } u2,u3;
+  }t;
+  t.t.p = p;
+  t.t.p-=sizeof(int)/4;
+  t.t.f1 *= 3.0;
+  for(i=0;i<3;i++){
+    t.t.p += sizeof(int)/4;
+    *t.t.p -= 1;
+  }
+  num = t.t.f1;
+  int *t_ptr = t.t.p;
+  printf("\n t_ptr = 0x%x",*t_ptr);
+  printf("\n ");
+  t_ptr += sizeof(int)/4;
+  t_ptr[-1] -= 1;
+  t_ptr[0] += 1;
+  t_ptr++;
+  printf("\n %f", t.t.f1);
+  return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+int main(void)
+{
+    int num;
+    union {
+      int i;
+      struct {
+         char c1: 4,c2: 4;
+       }n;
+      struct {
+         int x,y;
+         struct {
+           int c1,c2,c3,c4;
+        }n;
+    } s;
+  }t= {2,3,4};
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+void *q; 
+union {
+  int i; 
+  struct {
+       int x;
+       int y;
+   }point;
+  void *p;  
+ }t0, t1;  
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  return (EXIT_SUCCESS);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+void *q; 
+union {
+  int i; 
+  struct {
+       int x;
+       int y;
+   }point;
+  void *p; 
+ }t0, t1;  
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t1.p = t0.p;
+  t1.point.x = 0x4321;
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct {
+  union {
+         int x;
+         int y;
+     }t;
+     struct {
+       int z;
+       int q; 
+     }r;
+}u, v; 
+ union 
+ {
+    struct {
+         int e;
+         int r;
+     }c;
+    struct {
+         int w;
+          int p;
+     }a;
+}m; 
+ m.c.e = 0x01;
+ m.c.r = 0x02;
+ m.a.w= 0x03;
+ m.a.p = 0x04;
+ u.r.q= 0x05;
+ u.t.x = u.r.z = m.c.e + m.c.r;
+ v.t = u.t;
+ v.r = u.r;
+ v.r = m.a;
+ v.t.y= m.a.w + m.a.p;
+  return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+struct { 
+      int x;
+      int y;
+}point, *q1, *q2;
+void *p;
+
+union {
+     int m;
+      struct {
+           int x;        
+           int y;        
+     }point;
+     void *n;
+ } t0, t1, t2, t3;
+int main() {
+ q1 = (struct s *)&point;
+ p = (void *)&t1;
+   t2.m = 0x1234;
+   t2.n = (struct s *)q1;
+   t0.m = 0x4321;
+   t0.n = (struct s *)p;
+   p = t2.n;
+   return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+void *q; 
+union {
+  int i; 
+  struct {
+       int x;
+       int y;
+   }point;
+  void *p; 
+}t0, t1;  
+  p1=&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.point = p1;
+  t0.p = p2;
+  p2=t0.p;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  return (EXIT_SUCCESS);
+}
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+void *q; 
+union {
+  int i; 
+  struct {
+       int x;
+       int y;
+   }point;
+  void *p; 
+}t0, t1;  
+  p1=&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.point = *p1;
+  t0.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>  
+int main(void)
+{
+  double r;
+  struct {
+      double px, py;
+}point, *p1, *p2;
+union {
+        double x;
+        struct {
+               double px, py;
+           }point;
+   }t0, t1;
+  p1 = (void *)&point;
+  t0.point = *((struct s *)p1);
+  t1.x = t0.point.px*t0.point.py;
+  t0.x = 1234.0;
+  t0.point.px = 1234.0;
+  t0.point.py = t1.x;
+  p2 = (void *)&g_point;
+  t1.point = *((struct s *)p2);
+  t1.x = t1.point.px*t1.point.py;
+  t1.point.px = 0.0;
+  t1.point.py = t1.x;
+  t0.p = (struct s *)&g_point;
+  t1.p = (struct s *)&g_t1;
+  i=4;
+  t0.p=&i;
+  t1.p=&i;
+  t0.i=0x1234;
+  t1.i=0x4321;
+  printf("t0.p=%p,t0.i=0x%x\n",t0.p,t0.i);
+  printf("t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.p->point.px,t0.p->point.py);
+  printf("t0.i=0x%x,t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.i,t0.p[0].point.px,t0.p[0].point.py);
+  t0.i=0;
+  return (EXIT_SUCCESS);        
+  
+ 
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+struct s
+{
+    double px, py;
+   
+}; 
+double t1[2][2][
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct { 
+      int x;
+      int y;
+}point, *q1, *q2;
+void *p;
+union {
+     int m;
+      struct {
+           int x;        
+           int y;        
+     }point;
+     void *n;
+ } t0, t1, t2, t3;
+int main() {
+ q1 = (struct s *)&point;
+ p = (void *)&t1;
+   t2.m = 0x1234;
+   t2.n = (struct s *)q1;
+   t0.m = 0x4321;
+   t0.n = (struct s *)p;
+   p = t2.n;
+   return (EXIT_SUCCESS);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct { 
+     int x;
+     int y;
+}point, *q1, *q2;
+union {
+      int z; 
+} t;
+void *p;
+main()
+{
+   int z;
+   q1 = &point;
+   p = &t;
+t.z = 0x1234;
+*(int *)(t.z) = 0x4321;
+t.z = 0x4321;
+p = &t.z;
+t.z = *(int *)(q1);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+union complex {
+      long int real;
+      struct {
+           int x, y;
+      } imaginary;
+ };
+char *p;
+complex z, zz;
+int main() {
+     p = (char *)&z.real;
+     z.real = 8015968879;
+    
+     z.imaginary = (struct {
+                 int x, y;
+           }) {
+                45, 50
+           };
+     z.real = 8182506688;
+     z = (union complex) {
+                8076495884
+           };     
+     zz = {
+                102, {33, 45}
+           };    
+     return (EXIT_SUCCESS);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+     int x;
+     int y;
+}struct1;
+typedef struct {
+      struct {
+           int x;                      
+           int y;                 
+      }point;
+      void *n;
+ } union1, union2, union3, union4;
+typedef union {
+     int m;  
+     struct {
+      int x;             
+     int y;                  
+     }point;
+     void *n;  
+ } union5, union6;
+struct1* q1;
+void *p;
+union1 t2, t0;
+union2 t1;
+int main(void) {
+ q1 = (struct1 *)&t0.point;
+ p = (void *)&t1.point.y;
+   t2.m = 0x1234;
+   t2.point.x = 7;
+   t2.point.y = 6;
+   t0.m = 0x4321;
+   t0.point.x = 2;
+   t0.point.y = 4;
+   t0.n = (struct s*)q1;
+   t1.m = 0x4321;
+   t1.point.y = 0;
+   t1.n = (void*)&t2.point.x;
+   return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct { 
+  int x;
+  int y;
+}point;
+struct s{
+      int x;
+      int y;
+}*q1,*q2;
+int main() {
+     q1=(struct s *)&point;
+     q2 = q1;
+     q1->x=1;
+     q1->y=2;
+     return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct { 
+      int x;
+      int y;
+}point, *q1, *q2;
+
+typedef union {
+     int m;
+      struct {
+           int x;        
+           int y;        
+     }point;
+     void *n;
+ } t0, t1, t2, t3;
+int main() {
+ q1 = (struct s *)&point;
+ p = (void *)&t1;
+   t2.m = 0x1234;
+   t2.n = (struct s *)q1;
+   t0.m = 0x4321;
+   t0.n = (struct s *)p;
+   p = t2.n;
+   return (EXIT_SUCCESS);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct { 
+     int x;
+     int y;
+}point, *q1, *q2;
+union {
+      int z; 
+} t;
+void *p;
+main()
+{
+   int z;
+   q1 = &point;
+   p = &t;
+t.z = 0x1234;
+*(int *)(t.z) = 0x4321;
+t.z = 0x4321;
+p = &t.z;
+t.z = *(int *)(q1);
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int t;
+struct {
+     int x;
+     int y; 
+} *q1;
+main()
+{
+   int z;
+   q1 = (struct{ 
+      int x;
+      int y; 
+   } *)malloc(sizeof(struct { 
+      int x;
+      int y; 
+      }));
+   scanf("%i",&t);
+   z = t;
+   (*q1).x = z;
+   (*q1).y = z;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct { 
+     int x;
+     int y;
+}point, *q1, *q2;
+typedef struct {
+      int z; 
+} t;
+void *p;
+main()
+{
+   int z;
+   q1 = &point;
+   p = &t;
+t.z = 0x1234;
+*(int *)(t.z) = 0x4321;
+t.z = 0x4321;
+p = &t.z;
+t.z = *(int *)(q1);
+}
+ 
+typedef int number;     
+  
+
+enum DAY {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
+
+int add (int x1, int y1)
+       
+{
+     return x1 + y1;
+}
+
+int main()
+{
+     number x;
+     x = 3;
+     int y;
+     y = square(3);
+     double z;
+     z = 3.14;
+     int m;
+     m = add(z, y);
+     printf("m =%d\n", m);
+     add (0, 0);
+     return x;
+}
+
+double square(number x)
+{
+     return x * x;
+}
+
+int triple(int y)
+{
+     return y * 3;
+}
+/* Define a union called color that has two members black and white. Define 2 variables of type color and use them to show values. Make sure compiler does not accept the definition of other variables of color type in the same program as the defined color variables.
+As you know that in C programming, the data types like char, int, float, double can also be referred as 1, 2, 3, 4 bytes. However, in this case these variable types can
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+      int z;
+};
+void *p;
+main()
+{
+   struct Point point;
+   struct Point *q1;
+   union Number t;
+   q1 = &point;
+   p = &t;
+t. z = 0x1234;
+p = &(t. z);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct { 
+   int x;
+   int y;
+}point;
+typedef union {
+    int z;
+} t;
+void *p;
+main()
+{
+    int z;
+    t t1;
+    point point ;
+    q1 = &point;
+    p = &t;
+t1.z = 0x1234;
+*(int *)(t1.z) = 0x4321;
+t1.z = 0x4321;
+p = &t1.z;
+t1.z = *(int *)(q1);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct {
+     int x;
+     int y;
+}point,*q1,*q2;
+int *p;
+int z;
+main()
+{
+      
+      q1=&point;
+p = &z;
+*p = 0x4321;
+printf("\n*p = %p",p);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+      int z;
+};
+void *p;
+main()
+{
+   struct Point point;
+   struct Point *q1;
+   union Number t;
+   q1 = &point;
+   p = &t;
+t. z = 0x1234;
+p = &(t. z);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(){
+  union Number{
+        int z;
+      };
+  int *p;
+  union Number t;
+  t. z = 100;
+  p = &t. z;
+  printf("%x\n", *p);
+  
+};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+struct Point{
+    int x;
+    int y;
+} point;
+
+union Number{
+      int z;
+}t;
+
+int *p;
+int *q;
+
+
+
+int *p1,*p2;
+
+
+main()
+{
+   p = &t;
+   p1 = &point; 
+   
+printf("value at p = %d\n", *p);   
+printf("value at p = %d\n", *p1); 
+
+q = p2;  
+printf("value at q = %d\n", *q);  
+
+
+
+t. z = 0x1234;
+p = &(t. z);
+
+q = p;
+ 
+printf("value at q = %d\n", *q);
+
+
+point. x = 0x12;
+}
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+struct Point *q;
+main()
+{
+   struct Point point;
+   struct Point *p;
+   point.x=0x01234565;
+   point.y=0xabcd;
+   p = &point;
+   q = p ;
+   q->x=0xef123456;
+   printf("the pointer's x is %d \n ", (*p).x);
+   printf("the value of the point struct is %d\n", (*p).y);
+      
+   printf("the x is %d \n ", (*q).x);
+   printf("the y is %d\n", (*q).y);
+   }
+
+ 
+#include <stdio.h>
+
+#include <stdlib.h>
+
+typedef struct{
+int x;
+int y;
+char *name;
+}Test;
+int main()
+{
+Test *q;
+int z=42;
+q=&z;
+*q=50;
+printf(" * q = %d * &z=%u", *q, *&z);
+return 0;
+
+}
+
+int main()
+{
+Test a;
+Test *q;
+q=&a;
+*q=50;
+printf(" * q = %d", *q);
+return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+main()
+{
+   long double x = 16538;
+   int *x1 = (int *)x;
+   int *y =  x1+1;
+   printf("%x\n",*y);
+   printf("%x\n",x1);
+}
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+struct Point{
+    int x;
+    int y;
+};
+
+union Number{
+		int z;
+};
+
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Number t;
+	union Number *p;
+	q1 = & point1;
+	p = & t;
+	t.z = 0x1234;
+t. z = 0x1234;
+p = &(t. z);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+		int z;
+};
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Number t;
+	union Number *p;
+	q1 = & point1;
+	p = & t;
+	t.z = 0x1234;
+t. z = 0x1234;
+p = &(t. z);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>xit(0);
+}
+<fim_middle>#include <stdio.h>
+#define size 10
+typedef	struct _Array {
+	int numbers [size];
+	unsigned int count;
+} Array;
+main ()
+{
+	int i;
+	char *ptrstring;
+	Array array;
+	ptrstring=malloc(30*sizeof(char));
+	printf ( "\n%d - Enter numbers \n",getpid());
+	for (i=0;i<size;i++) {
+		scanf ("%d",&array. numbers[i]);
+		array. count +=array. numbers[i];
+	}
+	array. count -= (array. numbers [size -1]);
+	for (i=0;i<size;i++) {
+		printf ("Elements in %d array %d\n", getpid(),array. numbers[i]);
+	}
+	printf ("Count of all values %d\n",array. count);
+	free ( ptrstring);
+	e
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+		union Number *p;
+	q1 = calloc(1,sizeof(struct Point));
+    q2 = calloc(1,sizeof(struct Point));
+
+	q2 -> x = 5; 
+	p = & t;
+p -> z = 1;
+p -> t = q1;
+	
+ 
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+union Booleans{
+        unsigned x : 1;
+        unsigned y : 1;
+        unsigned z : 1;
+        unsigned a : 1;
+        unsigned b : 1;
+};
+main(){
+        union Booleans x;
+        x.a = 0;
+        x.y = 1;
+        printf("Bitfields is %x \n",x.b);
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+    int z;
+    struct Point *t;
+};
+main()
+{
+	struct Point point1, point2, *q1, *q2;
+	union Number t;
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>)
+{
+	struct P  q;
+	struct P* ptr = &q;
+	int t = 2345;
+	char x = 'A';
+	(t) = (x) = 40;
+	(ptr->y) = (t);
+	printf("%s %d\n",x, y);
+	return 0;
+}<fim_middle>#include <stdio.h>
+struct S {
+double data;
+}
+main
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>r = x;
+a[1]. x = 200;
+a[1]. y = x = 3000;
+a[1]. z = 0xABCDEA;
+a[2]. x = x = 3000;
+*ptr = x = 1000;
+}<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+struct Point2{
+   char c;
+};
+union Integer{
+		char c;
+		int x;
+		short y;
+		struct Point p;
+		struct Point2 p2;
+};
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Integer a[5];
+	int x = 0xFE;
+	a[0]. x = x = 100;
+a[0]. p. x = 120;
+a[0]. p. y = 240;
+a[0]. y = 0x1020;
+a[0]. c = 6;
+a[1]. p. x = 340;
+a[1]. p. y = 280;
+a[1]. c = 8;
+a[2]. c = 0x20;
+a[3]. p2. c = 0x1F;
+q1 = & point1;
+char *ptr = & a[4]. p2. c;
+
+ptr = & a[0]. x;
+*pt
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>ruct is allocated on the heap
+	 
+	printf("\n\nThe following structure will be allocated on the heap");
+
+	struct Student
+	{
+		int rollno;
+		char name[100];
+		float percentage;
+	};
+
+	struct Student ptr;
+
+	 
+	ptr = (struct Student *)malloc(sizeof(struct Student));
+
+	 
+	printf("\n\nthe address of student value inside ptr is %p", (ptr));
+
+	 
+	printf("\nthe address of ptr is %p", &ptr);
+
+	 
+	ptr->rollno = 100;
+	strcpy(ptr->name, "Jake");
+	ptr->percentage = 9.05;
+
+	 
+	printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+
+
+	return 0;
+
+}
+ 
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+struct Student{
+	int rollno;
+	char name[100];
+	float percentage;
+};
+
+main(){
+	struct Student ptr1;
+	
+	 
+	printf("\npointer address of ptr1 is %p", &ptr1);	
+	
+	 
+	printf("\n\naddress of rollno member is %p and it contains value",ptr1.rollno);
+	
+	 
+	ptr1.rollno = 33;
+	strcpy(ptr1.name, "Jake");
+	
+	 
+	printf("\the following values of the structure object are %i %s", ptr1.rollno, ptr1.name);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+union Student{
+	struct{
+		int rollno;
+		char name[100];
+		float percentage;
+		};
+};
+
+main()
+{
+union Student union1;
+
+
+ 
+printf("\n\nnadress of rollno member is %p and rollno value is",(&union1.rollno));
+union1.rollno = 100;
+
+ 
+printf("\n\naddress of name member is %p and
+[VERBOSE] ========== sample =========
+[VERBOSE] /* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+		int z;
+};
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Number t;
+	union Number *p;
+	q1 = & point1;
+	p = & t;
+	t.z = 0x1234;
+t. z = 0x1234;
+p = &(t. z);
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+32_t k;
+	for(j=0;j<n;++j)
+	{
+		printf("\nEnter a number:\n");
+		scanf("%d",&k);
+		array1[j]= k;
+	
+		printf("\nElement on index[%d]= %d\n",j,array1[j]);
+	}
+	for(i = 0; i < n-1; i++){
+		printf("\n");
+	}
+	}
+<fim_middle>#include <stdio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <unistd.h>
+struct message{
+	long mtype;
+	char mtext[20];
+};
+int main(void)
+{
+	int queue_id =msgget(1000,S_IRWXU | S_IRGRP | S_IROTH); 
+	struct message msg,*m;
+	m = & msg;
+	printf("1-Get(first in queue) 2-Send messages\n");
+	printf("3-Get the front messages 4-Get all messages\n");
+	fgets(m->mtext, 20,"\n");
+	switch(atoi(m->mtext))
+	{
+		case 1:
+		msgctl(queue_id,IPC_STAT,m);
+		strcpy(m->mtext, "The front message is...\n");
+		msgsnd(queue_id, m, sizeof(struct message) -sizeof(long), 0);
+		break;
+		case 2:
+		for(int i = 0; i < 5; i++)
+		{
+		printf("Input the message %d\n", i + 1);
+		fgets(m->mtext, 20,"\n");
+		msgsnd(queue_id, m, sizeof(struct message) -sizeof(long), 0);}
+		break;
+		case 3:
+		printf("front message is...\n");
+		msgrcv(queue_id, m, sizeof(struct message) -sizeof(long), 0, 0);
+		printf("%s \n", m->mtext);
+		break;
+		case 4:
+			while(1)
+			{
+			msgrcv(queue_id, m, sizeof(struct message) -sizeof(long), 0, IPC_NOWAIT);
+			if(strcmp(m->mtext)==0)
+			{
+				break;}
+			printf("%s \n", m->mtext);
+			}
+	}
+	return 0;
+	}
+/* This program is in C language and is intended to understand the array. It is supposed to take m=number of
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>ucts:
+	 
+	 
+	 
+	printf("sizeof(struct Student) = %d\n",sizeof(struct Student));
+	struct Student student = {.age = 20,.marks[0] = 40,.marks[3] = 20,.marks[4] = 0};
+	printf("student = %d\n", student.age);
+	printf("student = %d\n", student.marks[3]);
+
+	printf("student = %lu\n",*((unsigned long*)&student.marks[0]));
+
+	struct Test{int a, b[3], c, d[5], e[10][10], f};  
+	struct Test var1;
+}
+  
+main()
+{
+	char *s1;
+	char **s2;
+	s1 = (char *)malloc(1024);
+	free(s1);
+	s2 = (char **)malloc(sizeof(char *) * 10);
+}
+  
+
+main()
+{
+	int * a[10];
+	a[0] = (int*)malloc(sizeof(int)*3);
+	printf("The value of a[0] is %d\n", a[0]);
+	a[1] = (int*)malloc(sizeof(int)*4);
+	printf("The value of a[1] is %d\n", a[1]);
+	
+
+}
+
+ 
+#include <stdio.h>
+
+int main()
+{
+	
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+,0,0,0,0,0,0,0};
+	char buff2[8] = {"abcde"};
+	char *p = buff2;
+	char *q = buff1;
+	char *temp;
+	 
+	 
+	q = p;
+	*q = 57;
+	printf("The value of buff1 is %s\n",buff1);
+	q = p;
+print:
+	printf("The value of buff2 is %s\n",buff2);
+	if (!q1)
+		goto print;
+	printf("end of function");
+	}
+
+ 
+__asm__("int %$ 15");
+ 
+#define P(a) printf(#a" is of type %s.\n",#a)
+#define PRINT_TYPE typeof __asm__("int $0x80")
+	struct {
+	  char a;
+	  char b[2];
+	  char* c;
+	  };
+	 
+	  int   s0;          
+	  short s1;          
+	  char  s2[4];      
+	  int   s3;          
+      int   s4;          
+	  };
+	union u {
+	  char a;           
+	  int  b;           
+	  long long c;     
+	  };
+	if(sizeof(PRINT_TYPE)==4&&sizeof(int)==4) {
+	  P(int);
+	} else {
+	  P(int);
+	}
+	P(short);
+	P(float);
+	P(double);
+	P(long long);
+	 
+	P(char); P(char *);
+	P(int [4]);
+	P(float*);
+	P(double*);
+	 
+	P(struct x);
+	P(struct u);
+	P(struct);
+	P(union);
+	P(union u);
+	 
+	P(*);
+	P(char[X]); 
+	P(char (*)[4]); 
+	P(const int); 
+<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+    int z;
+};
+union Number{
+		int a;
+		int b;
+		int c;
+		int d;
+		int
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>n union members using the address operator  * to access union variables. */
+int main() {
+	int x = 9999, y = 1, z;
+	union Number t;
+
+	t.x = x;
+	t.y = y;
+	z = t.x;	 
+	printf("The value of z is: %d", z);
+	
+	return 0;
+}
+<fim_middle>#include <stdio.h>
+ 
+union Number {
+	int x;	 
+	float y;	 
+};
+
+ 
+#include <stdlib.h>
+#include <stdio.h>
+
+union Number {
+	int x;	 
+	float y;	 
+};
+
+/* To declare a union in C programming language, we need to include union keyword in our program and name our union, for example:
+ union Number{
+ int x;
+ float y;
+ }
+ 
+ Unions are used to define an entity that stores different types of data. For example consider following the above definition, union Number can have two members named x and y. This union can also be defined using a single line as follows,
+ 
+ union Number = int x, float y;
+ 
+We can now access a
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+<fim_suffix>    *ptr = malloc(10);
+     
+    printf("%s", *ptr);
+    free(*ptr);
+	printf("Done\n");
+}
+<fim_middle>#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char *ptr;
+	int size = sizeof(ptr);
+	printf("\nSize of a pointer: %d\n", size);
+
+
+[VERBOSE] ========== sample =========

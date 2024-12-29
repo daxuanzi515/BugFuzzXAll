@@ -1,0 +1,40 @@
+#include <variant>
+<fim_suffix>n value;
+        default: 
+            std::cout << "The variant has the value " << n << "\n";
+            break;
+    }
+}
+char x = find_if_exists<char>(v);
+```
+https: 
+
+## Conclusion
+
+In this article, we explored what `std::variant` is, what makes it more useful for our work, how to use it in our modern C++ projects and the differences in functionality that can occur when C++17 or C++20 is being used. Overall, `std::variant` seems interesting with potential to make certain aspects of C++ safer and more efficient. But the most noticeable and important part of this article was when the concept really starts to shine! It really is an extremely powerful and versatile class that we can take advantage of, to prevent data types from mixing up and help us write code that will work with a more manageable amount of different types.
+
+
+
+
+<fim_middle>#include <iostream>
+#include <vector>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V create() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+int main() 
+{
+    V v = create();
+    std::variant<int, float, double> v2 = v.d;
+     
+     
+    if (auto* p = std::get_

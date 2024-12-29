@@ -1,0 +1,100 @@
+#include <tuple>
+
+#include <array>
+#include <iostream>
+
+namespace example_0{
+
+int foo(int i, char* s){
+    std::cout << i << std::endl;
+    return 0;
+}
+
+void run(){
+    {
+        std::cout << "[example_0] --> " << std::endl;
+        std::apply(foo, std::make_tuple(1, (char*)"one"));
+    }
+}
+
+}  
+
+
+namespace example_1{
+
+ 
+int foo(int i, char* s){
+    return i;
+}
+
+ 
+int bar(int i, char* s){
+    ++i;
+    ++s;
+    return i;
+}
+
+void run(){
+    {
+        std::cout << "[example_1] --> " << std::endl;
+        int const value{std::apply(foo, std::make_tuple(1, (char*)"one"))};
+
+        std::cout << value << std::endl;
+    }{
+        std::cout << "[example_1] --> " << std::endl;
+        int const value{std::apply(bar, std::make_tuple(1, (char*)"one"))};
+
+        std::cout << value << std::endl;
+    }
+}
+
+}  
+
+
+namespace example_2{
+
+void foo(int) const{ std::cout << "int" << std::endl; }
+
+void foo(char) const{ std::cout << "char" << std::endl; }
+void bar(int) const{ std::cout << "int" << std::endl; }
+
+ 
+void foo(double) const{ std::cout << "double" << std::endl; }
+
+void run(){
+    {
+        std::cout << "[example_2] --> " << std::endl;
+        std::array arr{2.0, 'a', 4};
+        std::tuple x{2.0, 'a', 4};
+
+        std::apply(
+            [] (auto const&... args) constexpr {
+                using expand_function_return_types_t = void(const*);
+
+                 
+                 
+                 
+                 
+                 
+                std::apply(foo, std::tuple{args...});
+
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                std::apply(bar, arr);
+
+                 
+                 
+                std::apply(bar, x);
+            }
+             
+             
+             
+             
+             

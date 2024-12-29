@@ -1,0 +1,12 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}

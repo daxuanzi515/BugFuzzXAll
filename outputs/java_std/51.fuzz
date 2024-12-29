@@ -1,0 +1,62 @@
+import java.lang.Object;
+ * @param 	args
+	 */
+	public static void main(String[] args){	
+		Scanner s1 = new Scanner("Hello\nworld");
+		ArrayList<Integer> aryList = new ArrayList<>();
+		aryList.add(1);
+		aryList.add(2);
+		aryList.add(3);
+		String stringList = null;	
+		stringList = s1.next();		
+		System.out.println(stringList);
+	}	
+}
+ 
+import java.util.*;
+public class ArrayList1{
+	public static void main(String[] args){	
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Rama");
+		list.add("Mohammad");
+		list.set(0, "Ramesha");
+		Iterator<String> iterator = list.iterator();
+		while(iterator.hasNext())
+			System.out.println(iterator.next());
+	}	
+}
+ 
+import java.util.*;
+public class ArrayList1{
+	public static void main(String[] args){	
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Rama");
+		list.add("Mohammad");
+		list.set(0, "Ramesha"); 
+		System.out.println(list.indexOf("Ramesha"));
+	}	
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			if(s1.hasNextLine()){
+				System.out.println(s1.nextLine());
+			}
+			else{
+				System.out.println(s1.next());
+			}	
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian{
+	public static void main(String[] args) {
+		int[][] intArr = {
+			{1, 2},
+			{3, 4}
+		};
+		char[][][] charArr = new char[5][6][7];
+		charArr["x=1.y=1"][1][2] = 'a';
+		charArr[1]

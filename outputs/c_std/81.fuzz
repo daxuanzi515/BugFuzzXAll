@@ -1,0 +1,9 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", (val %= 129));
+    return 0;
+}

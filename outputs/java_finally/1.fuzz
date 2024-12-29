@@ -1,0 +1,75 @@
+import java.lang.Object;
+
+import java.lang.System;
+import java.lang.Exception;
+
+class ResourceA implements AutoCloseable {
+    public ResourceA() { 
+    }
+
+    @Override
+    public void close() throws Exception {  
+        System.out.println("ResourceA.close() invoked.");
+    }
+}
+
+public class FileOps {
+    public static void main(String[] args) {
+        try (ResourceA rA = new ResourceA()) {
+            throw new Exception("ResourceA exception on open.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+ 
+import java.io.FileWriter;
+import java.io.IOException;
+
+class TextFile {
+    private FileWriter writer;
+    TextFile(String path) throws IOException {
+        writer = new FileWriter(path);
+    }
+    public void add(String text) throws IOException {
+        writer.write(text);
+    }
+    public void close() throws IOException {
+        writer.close();
+    }
+}
+
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+class FileManager {
+     
+    public static void copy(String src, String dst) throws IOException {
+        new TextFile(dst, text -> {
+            text.add("File copy: \n");
+            try (BufferedReader reader = new BufferedReader(new FileReader(src))) {
+                String line = reader.readLine();
+                while(line!=null) {
+                    text.add(line);
+                    text.add("\n");
+                    line = reader.readLine();
+                }
+                 
+            } catch (IOException ex) {
+                 
+                throw ex;
+            } finally {
+                 
+            }
+        });
+    }
+}
+public class UseTryWithResources {
+    public static void main (String [] args) throws IOException {
+        FileManager.copy("C:\\Program Files\\Java\\README.txt", 
+            "C:\\Users\\joe\\Desktop\\test.txt");
+    }
+}

@@ -1,0 +1,3646 @@
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <math.h>
+#include <stdarg.h>
+#include <string.h>
+#define ERROR printf("Error: "); perror("");
+int main(int argc, char* argv[]) {
+     
+     
+
+    char* str = malloc(12 * sizeof(char));   
+    if(str == NULL) ERROR;
+    strncpy(str, "Hello, ", 6);    
+    strncat(str, "World", 5);     
+    strcat(str, ".\n");
+     
+    char* str1 = malloc(25 * sizeof(char));   
+    if(str1 == NULL) ERROR;
+    printf("%s %d\n", str, strlen(str));   
+    printf("%s %d\n", str1, strlen(str1));   
+
+    char* str2 = realloc(str, 30 * sizeof(char));
+    if(str2 == NULL) ERROR;
+    printf("%s %d\n", str, strlen(str));   
+    printf("%s %d\n", str1, strlen(str1));   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+
+int main(int argc, char **argv) {
+    const unsigned long long N = atoll(argv[1]);
+     
+     
+    double A1[N];
+    double A2[N];
+
+    for (int i = 0; i < N; ++i) {
+        
+        
+       A1[i] = 1;
+       A2[i] = 1;
+    }
+    int64_t sum = 0;
+    for(int i = 0; i < N; ++i) {
+       for (int j = 0; j < N; ++j) {
+          sum += A1[i] * A2[j];
+       }
+    }
+    printf("sum: %ld\n", sum);
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <time.h>
+#include <locale.h>
+int main(void) {
+   int year = 0;
+   printf("Enter a year between 1950 and 2014: ");
+   scanf("%d", &year);
+   
+   if ( (year > 2014) || (year < 2014) || (year < 1950))
+   {
+       printf("Sorry, this year is unbearable...");
+   }
+   
+   setlocale(LC_ALL, "English_Canadian");
+  
+  switch (year)
+  {
+  
+  case 1950:
+  printf("The year 1950 is not long to remember.\n");
+  break;
+  case 2014:
+  printf("So %d is %s.\n", year, "Happy");
+  break;
+  default:
+  {
+      
+      printf("The year doesn't exist.\n");
+      break;
+  }
+  
+  }
+  
+  return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include<math.h>
+
+float cube(float y)
+{
+    float x = 3 * y - sin(y);
+    x = cos(y);
+    x = sqrt(y);
+    return x;
+}
+
+float f(float a, float x)
+{
+   float b = cos(a);
+   float c = sqrt(a);
+   return x * x + sin(a);
+}
+
+int main()
+{
+    float b = 1, h = 1e-3;
+    float x = 1e-6;
+    float n = 1.1;
+
+    printf("%d\n", int(x * x + sin(10)));
+    printf("%d\n", int(pow(x, 2)));
+
+     
+
+    for(float i = 0; i <= 1; i += h)
+    {
+        float d = f(cube(n) * cube(cube(i)), i);
+        printf("f(cube(%.1f), %.1f) = %.10f\n", n, i, d);
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdint.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <iso646.h>
+int main()
+{
+	printf("C++17 can even perform complex operations easily\n");
+	{
+		int64_t a = 0x20000001;
+		uint64_t b = 0x1000000000000001;
+		bool c = 0xFF_00_00 and true;
+		int64_t d = a << 2 | (b >> 2);
+		fgetc(stdin);
+		printf("If statement for complex calculations\n");
+		if (c)
+			printf("and the %s statement can be mixed\n", "other than");
+		else
+			printf("The new %s statement also allows\n", "if");
+	}
+	printf("We can even nest the statements properly\n");
+	return(0);
+}
+int main()
+{
+	int64_t* memory = malloc(sizeof(*memory) * 2);
+	memory[0] = 0x300000000000001;
+	memory[1] = 0x20000002;
+	uint64_t* pointer = (uint64_t*)malloc(sizeof(uint64_t));
+	*pointer = 0x20000004;
+	printf("@%jx\n", *pointer - 0x0000000200000004);
+	*pointer = memory[1];
+	*pointer = *pointer + memory[0] * 2;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+ 
+#include <random>
+#include <iostream>
+
+ 
+#include <ctime>
+#include <string>
+
+int main(int argc, char** argv) {
+     
+    std::mt19937 generator(std::time(nullptr));
+
+     
+    std::uniform_int_distribution<int> distribution(0, 10);
+    std::cout << distribution(generator) << std::endl;
+    int x = distribution(generator);
+
+    return EXIT_SUCCESS;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+ 
+#include <stdio.h>
+#include <ctype.h>
+#include <limits.h>
+#include <stdbool.h>
+#include <stdint.h> 
+#include <stddef.h> 
+int main(int argc, char **argv) 
+{ 
+enum { 
+  SUCCESS=0, 
+  WRONG_PARAMETERS=1, 
+  DIVISOR_IS_ZERO=2, 
+  WRONG_INPUT=3, 
+  INCORRECT_RESULT=4 
+}; 
+long double val; 
+if (argc!= 2) { 
+  return WRONG_PARAMETERS; 
+} 
+if (sscanf(argv[1], "%Lf", &val)!= 1) { 
+    return WRONG_INPUT; 
+} 
+  val*=1.0/val-1; 
+  if (0.0<val && val<SQRT_EPSILON) { 
+    return SUCCESS; 
+} 
+return INCORRECT_RESULT; 
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <string.h>
+#include <stdio.h>
+#include <assert.h>
+
+int main(){
+    char* buf;
+    buf = malloc(1024);
+    int size = 1000000, i = 0, j = 0;
+
+    assert(buf);
+    double sum = 0;
+
+    for(i = 0; i < size; i++){
+        double a = 0;
+        for(j = 0; j < size; j++){
+            a += j;
+        }
+        buf[i] = a;
+        sum += a;
+    }
+    printf("sum of matrix elements = %lf\n", sum);
+
+    sum = 0;
+
+    for(i = 0; i < size; i++){
+        double a = 0;
+        for(j = 0; j < size; j++){
+            a += buf[i+j];
+        }
+        buf[i] = a;
+        sum += a;
+    }
+    printf("sum of matrix elements = %lf\n", sum);
+
+    free(buf);
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+void print_int(int* x,int* y) {
+	printf("x = %d, y = %d\n",*x,*y++);
+}
+
+int main() {
+	int x = 1, y = 200;
+	printf("Calling %p\n",print_int);
+	printf("Passing %p as x\n",&x);
+	printf("And %p as y\n",&y);
+	printf("Before calling %p\n",&x);
+	printf("Before calling %p\n",&y);
+	print_int(&x,&y);
+	printf("After returning from %p\n",&x);
+	printf("After returing from %p\n",&y);
+    puts("");  
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <assert.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <vector>
+#include <chrono>
+
+void taskToRun(int tid, int num) {
+  printf("I am Thread number %d, my number is %d.\n", tid, num);
+}
+
+int main(int argc, char** argv) {
+  std::vector<std::thread> threads;
+   
+  int numThreads = std::stoi(argv[1]);
+  for (int i = 1; i <= numThreads; ++i) {
+    std::thread td(taskToRun, i, argv[i]);
+    threads.push_back(td);
+  }
+  for(auto& t : threads) {
+    t.join();
+  }
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <assert.h>
+int main(){
+    char *p = calloc(5, sizeof(char));
+    assert(p!= NULL);
+    free(p);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <unistd.h>
+#include <stdio.h>
+
+ 
+int main()
+{
+    int age = 25;
+    float income = 426397.8f;
+    char* name = "Kate";
+    printf("Hello %s, your age is %d, and your income is %f\n", name, age, income);
+    system("echo \"Hello world\"");
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <termios.h>
+#include <linux/kd.h>
+#include <linux/vt.h>
+#include <asm/ioctls.h>
+#include <errno.h>
+static const int KDGETKEYCODE  =_IOR('K', 1, int);
+static const int KDFONTOP       =_IOW('K', 2, struct kd_fops);
+static const int KDMAPDISP      =_IOR('K', 3, int);
+int main(int argc, char *argv[]) {
+  int fd;
+  if((fd = open("/dev/tty1", O_RDWR))<0) {
+    perror("open");
+    exit(EXIT_FAILURE);
+  } else {
+    int status;
+    if(ioctl(fd, KDGETKEYCODE, &status)<0) {
+      if(errno == ENOTTY) {
+        perror("ioctl");
+      }
+      exit(EXIT_FAILURE);
+    } else {
+      printf("status:\n\tc=%i\nv=%i\ne=%i\ns=%i\nh=%i\np=%i\n", (status&4)>>2, (status&2)>>1, status&1, (status&16)>>4, (status&32)>>5, (status&64)>>6);
+    }
+  }
+  if((fd =open("/dev/tty1", O_RDWR))<0) {
+    perror("open");
+    exit(EXIT_FAILURE);
+  } else {
+    long value=4;
+    if(ioctl(fd, KDFONTOP, &value)<0) {
+      if(errno == ENOTTY)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(){
+puts("Enter a string:");
+char input[64];
+fgets(input,64,stdin);
+puts(input);   }
+/* The C++ Standard Library is a collection of headers that define functionality in the C++ programming language. Here is a summary of each:
+1. `<algorithm>`: Algorithms: sort, search, etc.
+2. `<atomic>`: Atomic types: std::atomic, std::atomic_flag etc.
+3. `<bitset>`: Bitsets: std::bitset.
+4. `<cassert>`: Assertions.
+5. `<cctype>`: Character tests, etc.
+6. `<cerrno>`: Extraction of errno from exceptions.
+7. `<cfenv>`: Floating-point environment: std::fenv_t etc.
+8. `<cfloat>`: Floating-point class: std::float_t.
+9. `<chrono>`: High resolution time: std::chrono.
+10. `<cinttypes>`: Integer-like number conversions, output.
+11. `<ciso646>`: Alternative forms of logical operators: and, bitand, bitor, compl, not, and not.
+12. `<climits>`: Size and range limits for fundamental types.
+13. `<clocale>`: Locale class: std::locale.
+14. `<cmath>`: Mathematical: sqrt, hypot, etc.
+15. `<complex>`: Complex numbers: std::complex.
+16. `<csetjmp>`: Setjmp/longjmp facility.
+17. `<csignal>`: Signal handling:
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+
+    char *text = NULL;
+
+    size_t len = 0;
+
+    fseek(file, 0, SEEK_END);
+
+    len = ftell(file)+1;  
+
+    rewind(file);
+
+     
+    text = (char *)malloc(len * sizeof(char));
+    fread(text,len-1,1,file);
+
+     
+    fflush(file);
+    fclose(file);
+
+     
+    printf("%s\n", text);
+
+    free(text);
+
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *text = NULL;
+    size_t len = 0;
+    fseek(file, 0, SEEK_END);
+    len = ftell(file)+1;  
+    rewind(file);
+    text = (char *)malloc(len * sizeof(char));
+    fread(text,len-1,1,file);
+    fflush(file);
+    fclose(file);
+    printf("%s\n", text);
+    free(text);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <locale.h>
+#include <math.h>
+#include <limits.h>
+#include <complex.h>
+#include <ctype.h>
+#include <assert.h>
+#include <string.h>
+#include <stdalign.h>
+#include <signal.h>
+#include <fenv.h>
+#include <time.h>
+#include <tgmath.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <setjmp.h>
+typedef uint32_t __u__uint32_t;
+typedef uint64_t __u__uint64_t;
+typedef uintptr_t __u__uintptr_t;
+typedef float __u__float;
+typedef double __u__double;
+typedef long double __u__
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen("src/file.txt", "r");
+    if( file == NULL ) {
+        printf("Error:\n");
+        exit(1);
+    }
+    char *text = NULL;
+    long int fileLen = 0;
+    fseek(file, 0, SEEK_END);
+    fileLen = ftell(file)+1;  
+    rewind(file);
+    text = malloc(fileLen * sizeof(char));
+    fread(text, fileLen-1, 1, file);
+    fflush(file);
+    fclose(file);
+    printf("%s\n", text);
+    free(text);
+    return 0;
+}
+ 
+/* Write a program which makes use of the new C standard library. Be
+sure that everything works on all systems. This assignment will only
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *text = NULL;
+    size_t i = 0;
+    while ( (text[i++] = (char)getchar())!= '\n') {}  
+    rewind(file);
+    printf("%s\n", text);
+    return 0;
+}
+ 
+ 
+ 
+/* A program in which we are reading the contents in the RAM once is a bit more efficient.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *fd;
+    char *text = NULL;
+    int len;
+    if ( ( fd = fopen( "src/file.txt", "r" ) ) == NULL ) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    if ( ( len = filelength( fd ) ) == EOF ) {
+        printf("Error getting length of file\n");
+        return 1;
+    }
+    if ( ( text = ( char * ) malloc( len ) ) == NULL ) {
+        printf("Error allocating memory\n");
+        return 1;
+    }
+    if ( fread( text, len-1, 1, fd ) < 1 ) {
+        printf("Error reading file\n");
+        return 1;
+    }
+    printf("%s\n", text);
+    free(text);
+    fclose(fd);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <err.h>
+#include <fcntl.h>
+#include <unistd.h>
+int main(int argc, char *argv[])
+{
+    int fd = open( "src/file.txt", O_RDONLY);
+    if (fd < 0)
+        err(1, "open");
+    char *text = NULL;
+    ssize_t len = 0;
+    len = read(fd, NULL, 0);
+    if (len < 0)
+        err(1, "read");
+    text = (char *)malloc(len * sizeof(char));
+    if (lseek(fd, 0, SEEK_SET) < 0)
+        err(1, "lseek");
+    ssize_t bytes_read = read(fd, text, len);
+    if (bytes_read < 0)
+        err(1, "read");
+    text[bytes_read] = '\0';
+    close(fd);
+    printf("%s\n", text
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *text = NULL;
+    size_t len = 0;
+    fseek(file, 0, SEEK_END);
+    len = ftell(file)+1;  
+    rewind(file);
+    text = (char *)malloc(len * sizeof(char));
+    fread(text,len-1,1,file);
+    fflush(file);
+    fclose(file);
+    printf("%s\n", text);
+    free(text);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main( int argc, char *argv[] )
+{
+    FILE *file_ptr = fopen("../src/file.txt", "r");
+    if (!file_ptr ) {
+       printf("Error reading file!\n");
+       exit(1);
+    }
+    char *string = NULL;
+    size_t str_length;
+    fseek(file_ptr, 0L, SEEK_END);
+    str_length = ftell(file_ptr);
+    str_length++;
+    rewind(file_ptr);
+    string = (char* )malloc( (int )str_length * sizeof(char));
+    fread(string, (int )str_length-1, 1, file_ptr);
+    string[str_length-1] = ('\0');
+    fclose(file_ptr);
+    printf("%s\n", string);
+    free(string);
+    return 0;   
+}
+/* Please create a semantically equivalent program to
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    char *text = NULL;
+    long length = 0;
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+	fseek(file, 0, SEEK_END);
+    length = ftell(file);  
+    rewind(file);
+    text = (char *)malloc(length + 1);
+    fread(text,length,1,file);
+    fflush(file);
+    fclose(file);
+    printf("%s\n", text);
+    free(text);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen( "test files/hello.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char text[1];
+    do {
+        fread(text,1,1,file);
+        fflush(file);
+        printf("%c", text[0]);
+    } while(text[0]!= '\0');
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+    FILE *file = fopen( "src/file.txt", "r");
+
+    if (!file ) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    
+    size_t len;
+    char *text = NULL;
+    size_t read_chars;
+
+    fseek(file, 0, SEEK_END);
+    len = ftell(file) + 1;
+    fseek(file, 0, SEEK_SET);
+
+    text = (char *)malloc(len * sizeof(char));
+    if (!text ) {
+        fclose(file);
+        fclose(file);
+        return -1;
+    }
+
+    read_chars = fread(text, sizeof(char), len-1, file);
+    if ( read_chars == -1 ) {
+        free(text);
+        text = NULL;
+        fclose(file);
+        return -1;
+    }
+
+    fclose(file);
+
+    if ( read_chars == 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define LEN (6)
+char *text = NULL;
+size_t len;
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "rb");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    len = LEN;
+    text = (char *)malloc(len * sizeof(char));
+    fread(text, len * sizeof(char),1, file);
+    printf("%s\n", text);
+    fclose(file);
+    free(text);
+    return 0;
+}
+ 
+
+/*./
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen( "test files/hello.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char text[1];
+    do {
+        fread(text,1,1,file);
+        fflush(file);
+        printf("%c", text[0]);
+    } while(text[0]!= '\0');
+    fclose(file);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main() {
+  FILE *file = fopen("test files/hello.txt", "r");
+  if (file == NULL) {
+    fprintf(stderr, "Test failed, opening file\n");
+    exit(1);
+  }
+  int i = 0;
+  char text[1];
+  while (text[i]!= EOF) {
+    text[i] = (char)fgetc(file);
+  }
+  text[i+1] = '\0';
+  printf("%s", text);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    char *txt = malloc(20);
+    FILE *f = fopen("test files/hello.txt","r");
+    if(!f){
+        printf("Error opening file\n");
+        return 0;
+    }
+    int c;
+    int i = 0;
+    while((c = fgetc(f))!= EOF){
+        txt[i] = c;
+        i++;
+    }
+    txt[i] = '\0';
+    printf("%s",txt);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen( "test files/hello.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while( (c = getc(file))!= EOF ) {
+        printf("%c", c);
+    }
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    int c;
+    while ((c = getc(file))!= '\0')
+        printf("%c\n", c);
+
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <assert.h>
+int main() {
+    FILE *file = NULL;
+    assert((file = fopen("test files/hello.txt", "r")) || "Error opening file.\n");
+    char *text = (char *) maloc(sizeof(1));
+    do {
+        fread(text,1,1,file);
+        fflush(file);
+        printf("%c", text[0]);
+    } while(text[0]!= '\0' &&!error);
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    int c;
+    while ((c = getc(file))!= '\0')
+        printf("%c\n", c);
+    fclose(file);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file;
+    if ((file = fopen("test files/hello.txt", "r")) == NULL)
+    {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+    int c, count = 0;
+    while ((c = fgetc(file))!= EOF)
+    {
+        count++;
+        printf("%c\n", c);
+    }
+    printf("Total characters read: %d\n", count);
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while ((c = fgetc(file))!= EOF)
+        printf("%c\n", c);
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while (!feof(file))
+    {
+        c = fgetc(file);
+        if (c == '\0')
+        {
+            printf("Invalid character\n");
+            break;
+        }
+        printf("%c\n", c);
+    }
+    fclose(file);
+    return 0;
+}
+ 
+int main(void)
+{
+    int *pointer;
+    unsigned int a;
+    return a + *pointer;
+}
+ 
+ 
+const char *g = "hello world!";
+const char *f = "hello";
+char *malloc_strconcat(int f_len, char *s1, char *s2);
+int strcmp(char *s1, char *s2);
+char *strconcat();
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+
+struct Reader;
+struct Stream
+{
+    char *content;
+    int (*begin)(struct Stream*, struct Reader*);
+    int state;
+};
+
+struct Reader
+{
+    struct Stream stream;
+    short line;
+};
+
+char getChar(struct Reader*);
+
+int beginFile(struct Stream*, struct Reader*);
+
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    struct Stream stream;
+    stream.state = 0;
+    stream.begin = beginFile;
+    if (file)
+    {
+        printf("File successfully opened\n");
+        struct Reader reader;
+        reader.stream = stream;
+        reader.line = 1;
+        if (!reader.stream.begin(&reader.stream, &reader))
+        {
+            char c;
+            c = getChar(&reader);
+            while (c!= '\0')
+            {
+                printf("%c\n", c);
+                c = getChar(&reader);
+            }
+        }
+        fclose(file);
+    }
+    else
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while (!feof(file))
+    {
+        c = getc(file);
+        if (!feof(file))
+            printf("%c\n", c);
+    }
+    fclose(file);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while (!feof(file))
+    {
+        c = getc(file);
+        if (!feof(file))
+            printf("%c\n", c);
+    }
+    fclose(file);
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main()
+{
+    int val1 = 5, val2 = 6;
+    printf("Before swapping %d and %d\n", val1, val2);
+    swap(&val2, &val1);
+    printf("After swapping %d and %d\n", val1, val2);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    char *q = (char *)malloc(100);
+    printf("%d\n", *p - 5);
+    printf("%f\n", *q);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *s;
+    size_t size;
+    fseek(file, 0L, SEEK_END);
+    size = ftell(file);
+    rewind(file);
+    s = (char *)malloc(size + 1);
+    if (!s)
+    {
+        printf("Memory allocation error\n");
+        fclose(file);
+        return 1;
+    }
+    fread(s, sizeof(char), size, file);
+    s[size] = '\0';
+    fclose(file);
+    printf("%s\n", s);
+    free(s);
+    return 0;
+}
+ 
+
+ 
+
+#include <sys/stat.h>
+#include <errno.h>
+int main()
+{
+    mkdir("mydir", 0755);
+    mkdir("/home/aaplab/mydir", 0755);
+    return 0;
+}
+ 
+ 
+#include <sys
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+int main()
+{
+    FILE *file1 = fopen("test files/wrong-filename.txt", "r");
+    if (!file1)
+        fprintf(stderr, "Error opening file : %s", strerror(errno));
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct book
+{
+    char name[50];
+    char authors[50];
+    char year[];
+};
+void printBook(struct book book)
+{
+    printf(
+"Title:%-30s\tAuthors:%-30s\tPublished:%-5s\n\n",
+        book.name, book.authors, book.year);
+}
+void addBook(struct book book)
+{
+    FILE *file = fopen("new-books.txt", "a+");
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    int value = fseek(file, 1, SEEK_SET);
+    printf("value=%d\n", value);
+
+    value = fwide(file, 1);
+    printf("value=%d\n", value);
+
+    value = fgetwc(file);
+    printf("value=%lc\n", value);
+
+    value = ungetc(value, file);
+    c = getc(file);
+    printf("value=%lc, c=%c\n", value, c);
+    fclose(file);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    char *q = (char *)malloc(100);
+    printf("%d\n", *p - 5);
+    printf("%f\n", *q);
+    return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int i = 0;
+    int *p = &i;
+    for (i = 0; i < 100; i++)
+    {
+        void *r[] = {(void *)p};
+    }
+    printf("%d\n", i);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    char *q = (char *)malloc(100);
+    *p = *p - 5;
+    printf("%d\n", *p);
+    printf("%f\n", b);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    char *q = (char *)malloc(100);
+    *p = *p - 5;
+    printf("%d\n", *p);
+    printf("%f\n", b);
+    *q = *q - 1;
+    printf("%d\n", a);
+    printf("%f\n", *q);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    char s[] = "hello, world";
+    printf("%s", s);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    printf("%f\n", b ** -24);
+    printf("%d\n", *p + 20);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+
+int* changeValue(int *const num) 
+{
+    *num = (*num)/2;
+    return num;
+}
+
+int main()
+{
+    int val = rand() % 100;
+    changeValue(&val);
+    printf("%d\n", val);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(int *const num) 
+{
+    *num = (*num)/2;
+    return num;
+}
+int main()
+{
+    int val = rand() % 100;
+    changeValue(&val);
+    printf("%d\n", val);
+    return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(char *const str)
+{
+    char *s = str;
+    while (*str)
+    {
+        *str++ = *s++;
+    }
+    return (int*const)s;
+}
+int main()
+{
+    char name[] = "Nahla";
+    changeValue(&name[1]);
+    printf("%s\n",name);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(int *const num)
+{
+    int temp;
+    int *temp2=num;
+    for (size_t i = 0; i < 12; ++i)
+    {
+        temp=*temp2;
+        *temp2=*(temp2+1);
+        *(temp2+1)=temp;
+        for (size_t i =0; i <sizeof(int)* 12; ++i)
+        {
+            *(temp2+1)+=*temp2;
+        }
+        temp2+=2;
+    }
+    return num;
+}
+int main()
+{
+    int val[12];
+    for (size_t i = 0; i < 12; ++i)
+    {
+        val[i]=rand()%100;
+    }
+    changeValue(&val[5
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int x = rand() % 8 + 1;  
+    int y = rand() % 9 - 1;  
+    int *ptr = &y;
+    printf("Pointer is %x\n", (int)ptr);
+    int z = x + y;
+    printf("The answer is %d\n", z);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    unsigned seed;
+    printf("Enter a number: ");
+    scanf("%u", &seed);
+    srand(seed);
+    int val = rand() % 20 - 10;
+    printf("Your number has been mutated! ");
+    printf("The new value of your number is %d\n", val);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+     
+    *newNum = *num/2;
+    return newNum;
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+     
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+char* addString(const char *const s, char* const buf)
+{
+    for (const char* b = s ; *b!= '\0' ; b++, buf++) 
+    {
+        *buf = *b;
+    }
+    return buf;
+}
+char* main()
+{
+    char buffer[50] = "";
+    addString("Hello world, this is a test", buffer); 
+    printf("%s\n", buffer);
+    return 0;
+}
+ 
+#include <stdlib.h> 
+#include <stdio.h> 
+int* addValue(const int *const n, const int *const m, int *const out) 
+{
+    int c = *n * -1 * *m;
+    if (c > 10);  
+    *out = c;
+    return out;
+}
+int main()
+{
+    int n = rand() % 100;
+    int m = rand() % 100;
+    int out = 0;
+    addValue(&n, &m, &out); 
+    printf("%d\n", out);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    *newNum = *num/2;
+    return newNum;
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int changeValue(int *const num, int newNum) 
+{
+    *num = *num + newNum;
+    return newNum;
+}
+int main()
+{
+    int value = rand() % 100;
+    int val2 = changeValue(&value, 100);
+    printf(value); 
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum)
+{
+    *newNum = *num/2;
+    return newNum;
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define LEN 10
+void printLong(long num)
+{
+    char buffer[LEN];
+    sprintf(buffer, "%ld", num);
+    for (int i = 0; buffer[i]!= '\0'; i++) 
+    {
+        putchar(buffer[i]);
+    }
+    putchar('\n');
+}
+int main()
+{
+    long val = 123456789;
+    printLong(val);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+enum { red, green, blue };
+
+void set_color(int color)
+{
+	switch (color) {
+	case red: printf("Color is Red\n");
+		break;
+	case green: printf("Color is Green\n");
+		break;
+	case blue: printf("Color is Blue\n");
+		break;
+	default: printf("Unknown Color\n");
+		break;
+	}
+}
+
+int main()
+{
+	set_color(red);
+	set_color(green);
+	set_color(blue);
+	set_color(4);
+	return 0;
+}
+ 
+CC = gcc
+CFLAGS = -std=c99 
+
+target1 : source1.c source2.c source3.c
+      	   $(CC) $(CFLAGS) -o target1 source1.c source2.c source3.c
+
+target2 : source1.c source2.c source3.c
+      	   $(CC) $(CFLAGS) -o target
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *temp = *num/2;
+    *newNum = num/2;
+    num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num) 
+{
+    long *newNum = (long *) malloc(sizeof(long));
+    *newNum = *num/2;
+    *num = *newNum;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long * newNum = changeValue(num);
+    return newNum;
+}
+int main(int argc, char* argv[])
+{
+    int val = rand() % 100; 
+    long *val2 = longChangeValue(val);
+    printf("%ld",*val2);
+    return 0; 
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&num, &newNum);
+    newNum = num;
+    return &newNum;
+} 
+
+int main(void)
+{
+    int val = rand() % 50;
+    long val2 = longChangeValue(val);
+    char *str = (char*)&val;
+    for (int index = 0; index < sizeof (val); index++)
+    {
+        str[index] = val%10 + '9';
+    }
+    str[sizeof (val)] = '\0';
+    printf("%s",str);
+
+    return 0;
+}
+/* You can get the time from your hardware in the program
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int * mutant(int *const i)
+{
+    return i + 1;
+}
+int main()
+{
+    int i;
+    while((i+*mutant(&i)!= 0)) 
+    {
+        printf("Hello World!\n");
+    }
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <math.h>
+int main() {
+  for (int i = 2; i < 20; ++i) {
+    for (int j = 1; i / j!= 0; ++j) {
+      printf("%i ", j);
+    }
+    printf("\n");
+  }
+  return 0;
+}
+ 
+
+ 
+ 
+/* This program prints a
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+int main()
+{
+    int val = rand() % 100;
+    int newNum = val/2;
+    changeValue(&val, &newNum);
+    printf("%d",val); 
+    return 0;
+}
+ 
+typedef enum colour{
+    black = 0,
+    red = 1,
+    purple = 2,
+    blue = 4,
+    green = 8
+}colour;
+colour stringToColour(char *colour)  
+{
+    if (!strcmp(colour, "black\0")) {
+        return black;
+    }
+    if (!strcmp(colour, "red\0")) {
+        return red;
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2); 
+    return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = (*num)/2;
+    *num = *temp;
+    return newNum;
+}
+
+long* longChangeValue(int num, char* buf)
+{
+    long newNum = num;
+    changeValue(&newNum, (long *)buf);
+    newNum = num;
+    return &newNum;
+}
+
+int main()
+{
+    char *buffer = "abcdefghijklmnopqrstuvwxyz";
+    int val = rand() % 26;
+    char val2 = buffer[val]+0;
+    int val3 = val2%7;
+    val3 = val2/7;
+    long *val4 = longChangeValue(val3, buffer);
+    buffer = (char *)val4;
+    long val5 = val4;
+    printf("%ld",val5); 
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long * const num,int* a) 
+{
+    int b = rand() % 100;
+    a = num*b + num;
+    return a;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int i,m,p,q;
+    m = random()%10;
+    int arr[10] = {};
+    for(i=0;i<m;i++)
+    {
+        p = random()%10;
+        for(int j=0;j<10;j++)
+           if(arr[j] == p)
+               break;
+            else if(j==9)
+                arr[j] = p;
+    }
+    for(q=0;q<10;q++)
+        printf("%d ", arr[q]);
+return 0;
+}
+/* 
+1) Create a program that has more than 40% of your code commented out. Compile and run. Find out which lines of code are still not being executed, why and how do you solve those problems so that
+comments are not required.
+2) Use assert() to validate input in a C program.
+3) Use locale-specific functions such as setlocale().
+4) Handle errors gracefully.
+5
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * temp = newNum;
+    
+    if(num > newNum)
+    {
+        *newNum = *num/2;
+        *num = *newNum;
+        temp = num;
+    }
+    else
+    {
+        *newNum = *num*2;
+        *temp = *newNum;
+        temp = num;
+    }
+    
+    return temp;
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    double temp = num /10.9;
+    if(temp%2!=0)
+    {
+        temp = temp + 1;
+    }
+    else
+    {
+        temp = temp - 1;
+    }
+
+    num = num + temp;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 20;
+    long val2 = longChangeValue(val);
+    printf("%
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = temp + val2;
+    printf("%ld",val2); 
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = temp + val2;
+    printf("%ld",val2); 
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    int x = rand() % 20;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = x + fmod(val2,temp);
+    printf("%ld",val3); 
+    return 0;
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = temp + val2;
+    printf("%ld",val3); 
+    return 0;
+}
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long long val2 = val/2;
+    long long temp = val;
+    long long val3 = temp + val2;
+    printf("%ld",val2); 
+    return 0;
+}
+
+#include<stdio.h>
+
+int main()
+{
+    int k;
+    printf("Give me a number: \n");
+    scanf("%d", &k);
+    
+    int sum = 2 * k + 1;
+    int power = sum * sum;
+    
+    printf("2 * k + 1: %d\n", sum);
+    printf("k^2: %d\n", power); 
+    
+    int a = 10, b = 15, hcf = 0;
+     
+    for (int d = 1; d <= a && d <= b; d++)
+    {
+        if (a%d==0 && b%d==0)
+            hcf = d;
+    }
+    
+    printf("The G.C.D. of %d and %d is %d\n", a, b, hcf);
+    
+return 0;
+}
+
+#include<stdio.h>
+
+int main()
+{
+    int k;
+    printf("Give me a number: \n");
+    
+    scanf("%d", &k);
+    
+    int sum =
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+long long getSum(int n) 
+{ 
+    if(n == 1) 
+        return 1; 
+    return getSum(n-1) + n; 
+} 
+ 
+#include <stdio.h> 
+#include <stdlib.h> 
+int main() 
+{ 
+    for(int i=0; i<10; i++) 
+		printf("%d \n",getSum(12)); 
+	return 0; 
+}
+
+long long getSum(int n) 
+{ 
+    if(n == 1) 
+        return 1; 
+    return getSum(n-1) + n; 
+} 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = val + temp;
+    printf("%ld",val2); 
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = val + temp;
+    printf("%ld",val2); 
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = (long)(val + val);
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    int val2 = val/2;
+    int val3 = val + val2;
+    printf("%d",val3); 
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int x,y,z;
+    scanf("%d",&x);
+    scanf("%d",&y);
+    scanf("%d",&z);
+    int w = x/2;
+    int v = y/2;
+    int u = z/2;
+    int n = x+w;
+    int m = y+v;
+    int q = z+u;
+    int temp;
+    if(n>x){
+        temp = n;
+        n = x;
+        x = temp;
+    }
+    if(m>y){
+        temp = m;
+        m = y;
+        y = temp;
+    }
+    if(q>z){
+        temp = q;
+        q = z;
+        z = temp;
+    }
+    printf("%d %d %d",n,m,q);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long sum = 0;
+    for(long long i=00;i<val;i++)
+    {
+        sum += i;
+    }
+    printf("%ld",sum); 
+    return 0;
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    int val2 = val/2;  
+    int val3 = val + val;
+    printf("%d",val2); 
+    return 0;
+}
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val + val2;
+    printf("%ld",val3);
+    return 0;
+}
+ 
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val + val2;
+    printf("%ld",val3);
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+    char character1 = getchar();
+    for (int i = 0; i < character1 ; i++) {
+        putchar('a')
+    }
+    putchar('\n');
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <stdlib.h>
+ 
+void print_error(char* err_str)
+{
+    perror(err_str);
+    exit(EXIT_FAILURE);
+}
+
+int main(int argc, char *argv[])
+{
+    ssize_t retval, readbytes;
+    FILE* file_ptr = fopen(argv[1],"r");
+    if(file_ptr!= NULL) {
+        int fd = dup(fileno(file_ptr));
+        retval = get_file_size(file_ptr);
+        const char *path = argv[1];
+        int destfile = open(path, O_CREAT|O_WRONLY);
+        if(destfile == -1) {
+            print_error("Unable to open file.");
+        }
+ 
+        readbytes = 0;
+ 
+        char buff[3
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    unsigned randnum = rand();
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val + val2;
+    printf("%ld",val3);
+    return 0;
+}
+
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int add(int val1, int val2)
+{
+    return val1 + val2;
+}
+int main()
+{
+    printf("%d", add(2, 5));
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int add(int val1, int val2)
+{
+    return val1 - val2;
+}
+int subtract(int val1, int val2, int val3)
+{
+    int sub = add(val1, val2);
+    int subtract = sub - val3;
+    return subtract;
+}
+int main()
+{
+    printf("%d", add(5, 7));
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+void swap(int val1, int val2)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = exp(1);
+    long val2 = val;
+    long val3 = val2/2;
+    long val4 = val3 * val;
+    printf("%ld",val4);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    short val = 2;
+    if (val % 2 == 0)
+    {
+        printf("even");
+    }
+    else
+    {
+        printf("odd");
+    }
+    return 0;
+}
+ 
+int division_is_zero(int x, int y)
+{
+    int k = (x/y);
+    return k;
+}
+int main()
+{
+    int val = division_is_zero(15,1);
+    printf("%d",val);
+    return 0;
+}
+ 
+int func()
+{
+    return 5;
+}
+void main()
+{
+    func();
+    return 0;
+}
+ 
+int *add(int *a, int *b)
+{
+    *a = *(a) + *(b);
+    return *a;
+}
+int
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", (val %= 129));
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    int val2 = val/2;
+    long val3 = val + val2;
+    printf("%ld\n",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    float val3 = val/val2;
+    printf("%f",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    float val3 = val/val2;
+    printf("%f\n",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    int val3 = val/val2;
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", (val %= 129));
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    if (val > 128 || val < -128) {
+        printf("%d\n", (val %= UCHAR_MAX + 1));
+    } else {
+        printf("%d\n", (val %= 129));
+    }
+    return 0;
+}
+```
+
+To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+    int val = 0;
+    val %= 129;
+    printf("%d\n", val);
+    return 0;
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", (val += 2 * val));
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int a = 1;
+    for (;;)
+    {
+        printf("%d\n", log(a));
+        if (a == 0)
+            break;
+        ++a;
+    }
+    return 0;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val;
+    printf("%d\n", (val = 129));
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", val);
+    val %= 129;
+    printf("%d\n", val);
+    return 0;
+}
+ 
+ 
+ 
+int convert(char s[]);
+ 
+int a[7], b = 0, i = 0;
+while(scanf("%c", &a[i]) == 1 && a[i]!='')
+{
+    i++;
+}
+printf("%d\n", convert(a));
+ 
+ 
+int main()
+{
+    int val = 0;
+    return 0;
+}
+ 
+ 
+ 
+/* and assign the values of the following variables (y
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val;
+    printf("%d\n", (val = 129));
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <time.h>
+int main()
+{
+    if(4294967295!= UINT_MAX)  
+    return 0;
+
+    if(0xffffff!= 16777215)
+    return 0;
+
+    for(int val = 16777216; val!= INT_MAX; ++val);
+    return 0;
+}
+ 
+#include <assert.h>
+ 
+#include <stdio.h>
+int main()
+{
+    double a = 10;
+    double b = 5;
+    assert(a > b || "assertion error!");
+    printf("I am outside the assert().\n");
+    return 0;
+}
+/* Please
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val;
+    unsigned char ch = 129;
+    val = ch + ((-1)*ch);
+    printf("%d\n", val);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    char* const text = "129";
+    int value;
+    printf("%d\n", value = strtol(text, NULL, 10));  
+    return 0;
+}
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    printf("No problem\nJust a teensy bit too large\nYou fat fingered it horribly.");
+    return 0;
+}
+/* If we want to use the same macro to print "You had one too many" we would need to change it:
+#include <stdio.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int val;
+    printf("%d\n", (val = 127));
+    return 0;
+}
+ 
+ 
+ 
+ 
+#include <stdio.h>
+int main()
+{
+    printf("\74");
+    return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main()
+{
+    printf("\33");
+    return 0;
+}
+/* C 11 includes new keywords. Add the necessary keyword which may be required to compile the C program in each of the following cases. Hint: Google ‘c11 keyword’. 
+#include <stdio.h>
+double mypi = 3.14;
+int main(){
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    signed char *valptr = malloc(sizeof(signed char));
+*valptr = 127;
+printf("%d\n", *valptr);
+ 
+return 0;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C Standard Library is a collection of headers that define the interfaces for various functionalities commonly used in C programming. Here is a summary of each:
+
+1. `<assert.h>`: Contains macros for diagnostic testing.
+2. `<complex.h>`: Provides complex number arithmetic operations.
+3. `<ctype.h>`: Determines the type of character data.
+4. `<errno.h>`: Reports error conditions.
+5. `<fenv.h>`: Handles the floating-point environment.
+6. `<float.h>`: Defines limits of floating-point types.
+7. `<inttypes.h>`: Manages format conversion of integer types.
+8. `<iso646.h>`: Offers alternative operator spellings.
+9. `<limits.h>`: Specifies ranges for integer types.
+10. `<locale.h>`: Contains localization utilities.
+11. `<math.h>`: Provides common mathematical functions.
+12. `<setjmp.h>`: Manages non-local jumps within code blocks.
+13. `<signal.h>`: Handles signal interruptions.
+14. `<stdalign.h>`: Provides 'alignas' and 'alignof' convenience macros.
+15. `<stdarg.h>`: Manages variable arguments for functions.
+16. `<stdatomic.h>`: Handles atomic operations.
+17. `<stdbit.h>`: Provides macros for byte and bit representations of types.
+18. `<stdbool.h>`: Defines macros for the boolean type.
+19. `<stdckdint.h>`: Provides macros for checked integer arithmetic.
+20. `<stddef.h>`: Contains common macro definitions.
+21. `<stdint.h>`: Defines fixed-width integer types.
+22. `<stdio.h>`: Manages input/output operations.
+23. `<stdlib.h>`: Provides general utilities, such as memory management, program utilities, random numbers and more.
+24. `<stdnoreturn.h>`: Contains 'noreturn' convenience macro.
+25. `<string.h>`: Manages string handling tasks.
+26. `<tgmath.h>`: Provides type-generic math operations.
+27. `<threads.h>`: Handles threading operations.
+28. `<time.h>`: Manages time and date operations.
+29. `<uchar.h>`: Provides UTF-16 and UTF-32 character utilities.
+30. `<wchar.h>`: Contains utilities for extended multibyte and wide characters.
+31. `<wctype.h>`: Determines the type contained in wide character data. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    signed char *valptr = malloc(sizeof(signed char));
+*valptr = 127;
+printf("%d\n", *valptr);
+return 0;
+}
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main(int argc, char *argv[])
+{
+int val;
+    printf("Enter a value in range [0 to 7]: ");
+scanf("%d", val);
+int is_negative;
+is_negative[1] = (val) % 2;
+    if(is_negative)
+    {
+        printf("The value of %d is negative.\n", val);
+    }
+    else
+    {
+        printf("The value of %d is positive.\n", val);
+    }
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <math.h>
+#include<stdio.h>
+int main()
+{
+    float *valptr = malloc(sizeof(float));
+*valptr = (127 + 2) / 2;
+printf("%f\n", *valptr);
+return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int maxval(int arr[], int size)
+{
+    int i, max;
+    max = arr[0];
+    for (i = 1; i < size; i++)
+        if (arr[i] > max)
+        {
+            max = arr[i];
+}
+return max;
+}
+int main()
+{
+    int arr[] = { 2, 3, 2, 5, 7, 15 };
+    int i, size, max;
+    size = sizeof(arr) / sizeof(arr[0]);
+    max = maxval(arr, size);
+    printf("Max value is %d", max);
+    return 0;
+}
+ 
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int i, size, temp;
+int arr[] = { 7, 6, 5, 4, 3, 2, 1 };
+size = sizeof(arr)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <complex.h>
+int main()
+{
+    const char* msg = "Hello World!";
+    complex num = {12, 34};
+    printf("The Complex number is %f + %fi\n", creal(num), cimag(num));
+    printf("%s\n", num);
+    putchar(msg[1]);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+int main()
+{
+    setlocale(LC_NUMERIC, "");
+    printf("%g\n", -2.3e-21);
+    printf("%.10f\n", 32897654321.56789L);
+    return EXIT_SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    unsigned char *valptr = malloc(sizeof(unsigned char));
+*valptr = 127;
+printf("%u\n", *valptr);
+return 0;
+}
+
+[VERBOSE] ========== sample =========

@@ -1,0 +1,32 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024U + 1
+void reverseBits(unsigned short *array, size_t size)
+{
+        unsigned short i, half = size / 2;
+        for (i = 0; i < half; ++i)
+            swap(array[i], array[size - i - 1]);
+}
+char *reverse(char *array)
+{
+        unsigned short i, revI;
+        char *ptr = array;
+        size_t size = strlen(ptr);
+        for (i = 0, revI = size; i < revI; i++, revI--)
+        {
+            if (revI!= 0)
+                swap(*ptr, *(ptr + (revI - 1)));
+            ++ptr;
+        }
+        return array;
+}
+int main()
+{
+        size_t i;
+        unsigned short array[ARRAY_SIZE];
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        reverse(array);
+        return EXIT_SUCCESS;
+}

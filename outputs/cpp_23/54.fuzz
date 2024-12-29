@@ -1,0 +1,55 @@
+#include <iostream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <cstddef>
+#include <memory>
+#include <iterator>
+#include <cctype>
+#include <algorithm>
+class string
+{
+public:
+    string(const char* c = "");
+    string(const string&);
+    string& operator=(const string&);
+    string& operator+=(const string&);
+    string& operator+=(const char*);
+private:
+    std::size_t len;
+    char* data;
+};
+string::string(const char* c) : len{ strlen(c) }, data{ strcpy(new char[len + 1], c) }
+{ };
+string::string(const string& s) : len{ s.len }, data { strcpy(new char[len + 1], s.data) }
+{ };
+string& string::operator=(const string& s)
+{
+    delete[] data;
+    len = s.len;
+    data = new char[len + 1];
+    strcpy(data, s.data);
+    return *this;
+};
+string& string::operator+=(const string&)
+{
+   
+}
+string& string::operator+=(const char* s)
+{
+   
+}
+int main() 
+{
+   
+  string s1 {""s};
+  string s2;
+  string s3;
+  string s4;
+  const char * c1 =  "Hello ";
+  const char * c2 = "world!";
+  s2 = s3 += s1;
+  cout << s2;
+  return 0;   
+}

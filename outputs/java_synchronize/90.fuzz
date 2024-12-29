@@ -1,0 +1,19 @@
+import java.lang.Object;
+class Sample {
+    public void doSomething() {
+        synchronized (Object.class) {
+            System.out.println(Object.class + ": doSomething()");
+        }
+    }
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (Sample.class) {
+            s.doSomething();
+        }
+    }
+}
+ 
+ 
+ 

@@ -1,0 +1,24 @@
+import java.lang.Object;
+<fim_suffix>s java.lang
+import java.util.*;
+import java.lang.String;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+		    System.out.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Set s = new HashSet();
+		s.add("A");
+		s.add("A");
+		s.add("B");
+		if(s.contains("A"))
+			System.out.println("Contains ");
+	}
+}
+ 
+import java.lang.Object;  

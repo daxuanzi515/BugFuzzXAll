@@ -1,0 +1,47 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  def __init__(self, n, bits): 
+    self.n = n
+    self.bits = bits 
+    self.a = 16; 
+    self.matrix = np.zeros((n,n)) 
+    self.reverse = np.zeros((n,n), dtype=np.int8)
+    self.reversed = False
+    def swap(self): 
+      def inner(i, j): 
+        k = i ^ j
+        self.reverse[i][j] = 0 
+        self.reverse[j][i] = 1 
+        self.reverse[k][j] = 1 
+        self.reverse[j][k] = 0
+      for s in range(self.n>>1):
+        for x in range(self.n):
+          inner(x, (x + 1) % self.n)
+    def unswap(self): 
+      def inner(i, j): 
+        k = i ^ j
+        self.reverse[i][j] = 0 
+        self.reverse[j][i] = 0 
+        self.reverse[k][j] = 1
+        self.reverse[j][k] = 1
+      for s in range(self.n>>1):
+        for x in range(self.n):
+          inner(x, (x + 1) % self.n)
+    def invert(self): 
+    def inverse(self): 
+      if self.reversed: 
+        return self.reverse 
+      self.swap()
+      self.reversed = True 
+      return self.reverse 
+  def __str__(self): 
+    return str(self.matrix)
+    if (row!= column): 
+      for x in range(self.n):
+        if (row == x): 
+          for j in range(self.n):
+            if(j!= column and self.matrix[row][j]!= 0): 
+              self.matrix[column][column] += self.matrix[row][j] * (-1) ** j
+          break 
+      self.matrix[column][row] = 0 

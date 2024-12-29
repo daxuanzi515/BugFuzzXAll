@@ -1,0 +1,12 @@
+import java.lang.Object;
+<fim_suffix>w PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}

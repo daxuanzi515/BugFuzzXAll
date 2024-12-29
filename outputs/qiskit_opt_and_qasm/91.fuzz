@@ -1,0 +1,62 @@
+from qiskit import QuantumCircuit
+
+def mutate(qc, qubit):
+    
+    qc.x(qubit)
+
+qc1 = mutate(qc, 0)
+qc2 = mutate(qc, 1)
+
+
+def measure_state(qc):
+    return qc.h(range(qc.num_qubits)).measure_all(aer_sim).result()
+
+state1 = measure_state(qc1)
+state2 = measure_state(qc2)
+
+print("\nMeasure output:", state1, state2)
+
+
+same = state1 == state2
+print("\nIs the quantum state the same?", same)
+qc.draw()
+qc.cx(0, 1)
+qc.draw()
+my_circuit = QuantumCircuit(2, 2)
+my_circuit.measure_all()
+aer_sim = Aer.get_backend('aer_simulator')
+
+result = qc.run(aer_sim)
+
+result.result()
+counts = qc.run(aer_sim).result().get_counts()
+plot_histogram(counts)
+from qiskit import QuantumCircuit, Class
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

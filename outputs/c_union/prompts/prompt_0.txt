@@ -1,0 +1,15 @@
+/* Unions in the C language serve as special data types that allow the storage of different types of variables in the same memory location. A union is like a struct in that it can have multiple members, but only one member can contain a value at any given time. Here's how you'd declare it:
+
+```c
+union attr-spec-seq(optional) name(optional) { struct-declaration-list }
+```
+- `name`: the name of the union that's being defined.
+- `struct-declaration-list`: variable declarations, bit-field declarations, and static assert declarations. 
+
+The union only takes as much space as its largest member. Any other member would be allocated within the same bytes as the largest member. If the member to access the union's content is not the same as the one last used to store a value, the stored value's object representation is reinterpreted as an object representation of the new type (type punning). 
+
+In C99, an anonymous union can be declared within a structure or another union. Each member of an anonymous union is directly considered as a member of the enclosing entity.
+
+Unions cannot be defined without any named member, and doing this results in undefined behavior. Union initialization follows the same rules as struct initialization. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>

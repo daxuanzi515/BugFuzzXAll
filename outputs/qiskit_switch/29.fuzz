@@ -1,0 +1,67 @@
+from qiskit import QuantumCircuit
+
+from qiskit import CompositeGate, QuantumRegister, ClassicalRegister
+from qiskit.circuit.quantumregister import Qubit
+from qiskit.dagcircuit import DAGCircuit
+
+def main():
+  
+    q = QuantumRegister(1, 'qr')
+    c = ClassicalRegister(1, 'cr')
+    qr2 = QuantumRegister(1, 'qr2')
+    composite = QuantumCircuit(q, c)
+    
+    qc0 = QuantumCircuit(q)
+    qc0.h(q)
+    composite.append(qc0.to_instruction(), [*q])
+    
+    qc1 = QuantumCircuit(q)
+    qc1.x(q)
+    composite.cx(q, qr2)
+    composite.append(qc1.to_instruction(), [*q])
+    
+    composite.barrier(q)
+    
+    composite.append(CompositeGate(name='my_comp', circuits=(qc0, qc1,)), [*q])
+    composite.cx(q, qr2)
+    
+    composite.measure(q, c)
+   
+    composite.h(qr2)
+    composite.switch_case(ClassicalRegister(8, 'cr8'), {1: composite}, 'check_func')
+    composite.h(qr2)
+  
+    composite.draw(output='mpl', idle_wires=False)
+
+if __name__ == '__main__':
+  main()
+    
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

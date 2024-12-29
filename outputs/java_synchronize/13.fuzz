@@ -1,0 +1,65 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class Sample1115 {
+    private static Scanner scanner = new Scanner(System.in);
+    public static void main(String args[]) {
+        Sample1115 first = new Sample1115();
+        Sample1115 second = new Sample1115();
+        first.setData();
+        second.setData();
+        System.out.println("Input a number:");
+        if(scanner.nextBoolean())
+            first = second;
+        System.out.println("Result: "+first.sum);
+    }
+    private void setData() {
+        System.out.println("Input a new number:");
+        sum += scanner.nextInt();
+    }
+
+    public int sum = 0;
+}
+ 
+import java.lang.Object;
+public class SynchSample {
+    public synchronized static void synch() {
+        System.out.println("Thread "+Thread.currentThread().getName()+" entered sync method");
+        try{Thread.sleep(5000);}catch (InterruptedException e){ }
+        System.out.println("Thread "+Thread.currentThread().getName()+" left.");
+    }
+    public static void main(String[] args) {
+        Thread t = new Thread(new Runnable() { public void run() {
+            Sample1115.synch();
+        }});
+        Thread t2 = new Thread(new Runnable() { public void run() {
+            Sample1115.synch();
+        }});
+        t.start();
+        t2.start();
+    }
+}
+ 
+
+ 
+public class PrimitiveSynchronised {
+    
+    public static void main(String[] args) {
+        int n = randomNumber();
+        int i = 0, j, k;
+        j = (int)(Math.random()*998);
+        k = (int)(Math.random()*998);
+
+
+        i++;
+        int x = 10;
+
+
+
+
+
+    }
+
+    public static int randomNumber() {
+        return (int)(Math.random()*998);
+    }
+}

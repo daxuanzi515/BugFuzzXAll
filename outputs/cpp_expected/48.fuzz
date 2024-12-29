@@ -1,0 +1,68 @@
+#include <expected>
+<fim_suffix>rn value, std::nullopt otherwise
+	std::vector<int> vectWithVal = e1.value_or(std::vector<int>{});
+	std::cout << "\nVect With Val Size : " << vectWithVal.size() << '\n';
+	std::cout << "E1 Size : " << e1.value().size() << '\n';
+	std::cout << "E1 value or -1000 : " << e1.value_or(-1000) << '\n';
+}
+
+int main(int argc, char** argv)
+{
+	expectedTest();
+	return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+using namespace std::literals;
+int expectedTest()
+{
+	expected<vector<int>, string> e1{ std::vector<int>{15, 50, 88, 33} };
+
+	 
+	for (auto& v : e1.value()) cout << v <<'';
+
+	 
+	for (auto& v : *e1) cout <<'' << v;
+
+	 
+	cout << " and 3rd elem:" << e1.value()[2];
+
+	 
+	if (e1)
+		cout << "\n e1 has value." << endl;
+	else
+		cout << "\n no e1." << endl;
+
+	std::cout << "If not an error but what? : " << std::boolalpha << e1.has_value() << "\n";
+
+	std::string msg = e1.error();
+	cout << "\nErr: " << msg << '\n';
+
+	 
+	 
+	try
+	{
+		int x = e1.value()[0];
+		std::cout << "x is " << x << '\n';
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Exception " << e.what();
+	}
+
+	 
+	auto val = std::move(e1).value_or(std::vector<std::string>{"A"});
+	std::cout << "New value  : ";
+	for (auto& v : val) std::cout <<'' << v;
+	std::cout << '\n';
+
+	 
+	auto cval = e1.value_or_else([] { return std::vector<std::string>{"A"}; });
+	std::cout << "New value  : ";
+	for (auto& v : cval) std::cout <<'' << v;
+
+	 

@@ -1,0 +1,46 @@
+#include <variant>
+<fim_suffix>e_error("Error"));
+}
+
+ 
+std::ofstream out("output.txt");
+if (!out) {   }
+for (const auto& v : vec) {
+    out << to_string(v) << '\n';
+}
+out.close();
+
+std::cout << "The last 5 values in the vector: ";
+for (auto j = std::size(vec) - 5; j!= std::size(vec) && j!= 0; ++j) {
+    std::cout << to_string(vec[j]) <<'';
+}
+
+ 
+std::ofstream out("output.json");
+if (!out) {   }
+nlohmann::json j;
+
+for (const V& v : vec) {
+    j.emplace_back(to_json(v));
+}
+
+out << j.dump(4);
+out.close();
+}
+ 
+std::string to_string(const V& v) {
+    std::ostringstream s;
+     
+    return s.str();
+}
+
+template <std::size_t... I>
+auto from_json_impl(const nlohmann::json& j,
+                    std::index_sequence<I...>) 
+{
+    return V{j.at(I)...};
+}
+
+V from_json(const nlohmann::json& j) 
+{
+    return from_json_impl<0, 1, 2>(j, std::make_index_sequence<3>{});

@@ -1,0 +1,69 @@
+import java.lang.Object;
+0];
+		while(i<num)
+		{
+			while(num%i!=0)
+			{
+				if(i<=n3)
+				{
+					n3=i;
+					break;
+				}
+				i++;
+			}
+			i++;
+		}
+		System.out.println("\n"+n3);
+	}
+}
+<fim_middle>import java.util.*;
+public class HellowWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		 
+		System.out.println("Enter the number of times you want to ask a question: ");
+		Scanner n1 = new Scanner(System.in);
+		int num = n1.nextInt();
+		int i=0;
+		String str1[] = new String[num];
+		for(i=0; i<num; i++)
+		{
+			System.out.println("Enter the Question");
+		}
+		int n2;
+		System.out.println("Enter the number of times you want to answer: ");
+		Scanner n3 = new Scanner(System.in);
+		n2 = n3.nextInt();
+		for( ; n2<num; n2+=1)
+		{
+			System.out.println("Enter the answer");
+		}
+		i = n2;
+ 
+	int n3=1;
+		do
+		{
+			 
+			while(num%i!= 0)
+			{
+				 
+				if(i > 2)
+				{
+					i = i-1;
+					continue;
+				}
+				break;
+			}
+			n3 = n3 + 1;
+			 
+			i = n3;
+		}while(i<=n3);
+		i=n3;
+		 
+		 
+		int num = i-1;
+		 
+ 
+	int a

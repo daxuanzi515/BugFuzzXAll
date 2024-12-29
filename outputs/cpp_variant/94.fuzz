@@ -1,0 +1,33 @@
+#include <variant>
+<fim_suffix>int main() 
+{
+    V v1{10,0.0f,0.0};
+    V v2{18,0.0f,513.33f};
+     
+    std::variant<int,float,double> v = 5u;
+     
+    v.emplace<2u>(22d);
+     
+    v = 3.1416f;
+    float f = std::get<float>(v);
+    std::cout << v.index() << "=" << f << std::endl;  
+
+    int i = 5;
+     
+    auto x = std::holds_alternative<double>(v);
+    std::cout << "v: " << std::get<double>(v) << std::endl;
+     
+    x = std::holds_alternative<V>(v);
+     
+    return 0;
+}
+const std::size_t N = 6;
+std::size_t n = __builtin_popcount(N);
+std::cout << n << std::endl;
+ 
+ 
+void f1()
+{
+    const int numbers {1, 2, 3}; 
+     
+    std::cout << "sum: " << std::get<double>(numbers) << std::endl

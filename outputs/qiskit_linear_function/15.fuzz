@@ -1,0 +1,97 @@
+from qiskit import QuantumCircuit
+
+
+class LinearFunction:
+    
+    def __init__(self, n):
+        
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    
+    def set(self, row, column, value): 
+        
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column] = value
+
+    def add(self, left, right, sum):
+        
+        tmp = self.A[sum][left]^self.A[sum][right]
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= sum:
+                self.A[sum][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp
+
+    def mul(self, left, right, product):
+        
+        tmp1 = self.A[product][left]^(self.A[product][right]&self.A[right][left])
+        tmp2 = self.A[product][right]^(self.A[product][left]&self.A[left][right])
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= product:
+                self.A[product][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp1 and not tmp2   
+
+    def eval(self, x): 
+        
+        res = []
+        for i in range(len(x)):
+            if x[i] == 0:
+                res.append(0)
+            else:
+                s = 0
+                for j in range(len(x)):
+                    if j!= i and x[j] == 1:
+                        s = self.add(j, s, i)
+                res.append(s)
+        return res
+    
+    def valid(self):
+        
+        one = False   
+        for i in range(len(self.A)):
+            if OneBitPermutation.valid(self, i):
+                one = True
+        if not one: 
+            return False
+        tmp = LinearFunction(self.n)
+        one = self.mul(0, 1, 0)
+        two = self.mul(0, 1, 1)
+        for i in range(1, len(self.A)):
+            if i == 1: 
+                nine = tmp.mul(0, 1, i)
+            elif i >= 2 and i <= 4:
+                nine = tmp.mul(tmp.eval(tmp.eval(tmp.eval(self.eval(tmp.eval(one)))), 1), 1, i)
+            else: 
+                nine = self.mul(nine, 1, i)
+            tmp.copy(nine)
+            one = self.mul(one, 0, 1)
+            two = self.mul(two, 0, 1)
+       
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

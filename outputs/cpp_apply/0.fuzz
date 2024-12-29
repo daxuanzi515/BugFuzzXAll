@@ -1,0 +1,82 @@
+#include <tuple>
+
+#include <string>
+#include <iostream>
+#include <map>
+#include <algorithm>
+#include <numeric>
+
+ namespace example {
+ 
+     
+    template <typename Pair> 
+    static void print_elements(const Pair& p)
+    {
+       std::cout << "key: " << p.first << " value: " << p.second << '\n';        
+    }
+ 
+
+     
+	 
+	template <typename MapClass, typename ClassType>  
+	static MapClass accumulate_pairs(const ClassType& value)
+	{
+		MapClass out = std::make_map<std::string, std::string>();   
+		
+		 
+		for (const auto& elem : value)
+		{
+           
+
+			if (elem.first.empty())   
+				continue;				
+			if (elem.first.length() > 6)  
+				continue;
+
+			 
+			out.emplace(elem.first, elem.second);
+		}
+		return out;
+	}  
+
+
+
+	 
+	template <typename MapClass, typename ClassType>
+	static MapClass accumulate_pairs_by_object(const ClassType& value)
+	{
+
+		MapClass out{};   
+		
+		 
+		for (const auto& elem : value)
+		{
+			out = accumulate_pairs<MapClass>(elem.second);
+		}		
+		return out;
+	}
+
+
+
+int main()
+{
+	namespace tuple_examples = std;
+	std::cout << "\nExample 1a: Using std::apply with std::map to combine pairs in a tuple with std::apply\n";
+
+	 
+	const std::map<std::string, std::string> a = {
+		{"key1", "value1"},
+		{"key2", "value2"},
+		{"key3", "value3"},
+		{"key4", "value4"},
+	};
+
+	const std::map<std::string, std::string> b = {
+		{"key5", "value5"},
+		{"key6", "value6"},
+		{"key7", "value7"},
+		{"", "value_empty_string"},
+		{"key8", "value8"},
+	};
+
+	const std::tuple<std::map<std::

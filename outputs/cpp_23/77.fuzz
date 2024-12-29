@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+  int i = 1;
+  std::string word{"Hello"};
+  std::cout << i <<'';
+  std::cout << word <<'' << word.substr(2,4) <<'' << word.size() << std::endl;
+}
+ 
+ 
+#include <stdio.h>
+#include <iostream>
+#include <sstream>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <atomic>
+#include <memory>
+#include <array>
+#include <forward_list>
+
+void threadfunction(long secs)
+{
+    std::unique_lock<std::mutex> lock {stdcoutmutex};
+    std::cout << "Start thread "
+              << std::this_thread::get_id()
+              << '\n';
+
+    std::this_thread::sleep_for(std::chrono::seconds {secs});
+    lock.unlock();
+    std::cout << "End thread "
+              << std::this_thread::get_id()
+              << '\n';
+
+}
+
+void threadfunction_shared(long secs)
+{
+    for (int i{0}; i < 3; ++i) {
+        std::unique_lock<std::mutex> lock {stdcoutmutex};
+        std::cout << "Start thread "
+                << std::this_thread::get_id() << ": "
+                << "count is: " << count.load() << '\n';
+
+        std::this_thread::sleep_for(std::chrono::seconds {secs});
+        count++;
+        lock.unlock();
+        std::cout << "End thread "
+                << std::this_thread::get_id() << ": "
+                << "count is: " << count.load() << '\n';
+    }
+}
+
+template <typename T>
+void print_address(

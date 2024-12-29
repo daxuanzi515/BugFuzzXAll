@@ -1,0 +1,64 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}
+ 
+int main() {
+  for (int i = 0; i < 1; ++i) {
+    if (!i) {
+      printf("Hello, world!");
+    } else {
+      printf("Goodnight, moon.");
+    }
+  }
+  return 0;
+}
+ 
+int main() {
+    int counter = -12;
+    switch (counter) {
+      case 0:
+        printf("Hello");
+        break;
+      case 100:
+        printf("Goodbye");
+        break;
+      case -12:
+        printf("G'day mate");
+        break;
+    }
+}
+ 
+#include <stdlib.h>
+int main() {
+  int counter = 36;
+  for (int iter = 1; iter < 5; ++iter) {
+    if (counter) {
+      counter = counter - 1;
+    } else {
+      counter = counter + 1;
+    }
+  }
+}
+ 
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <limits.h>
+#include <assert.h>
+#include <math.h>
+typedef enum { false = false, true = true } bool;
+typedef uintptr_t uintptr;
+#define __builtin_bit_cast(type_of, value) ((__typeof__(type_of)(value)))
+#define ALIGNOF(T) __ALIGNOF__(T)
+#define __ALIGNOF__(T) \
+  (((__builtin_types_compatible_p(__typeof__(T), float) \
+    && __FLT_HAS_SIGNIFICAND) \
+     || (__builtin_types_compatible_p(__typeof__(T), double) \
+         && __DBL_HAS_SIGNIFICAND) \
+        || (__builtin_types_compatible_p(__typeof__(T), long double))) \
+      ? 12

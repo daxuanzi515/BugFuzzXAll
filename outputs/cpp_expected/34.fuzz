@@ -1,0 +1,78 @@
+#include <expected>
+[&] {
+        std::cout << std::get<1>(x).message() << "\n";
+        std::exit(1);
+        });
+
+    if(ret.has_exception())
+    {
+        std::cout << ret.get_exception()->what() << "\n";
+    }
+}
+
+ 
+<fim_middle>
+#include <iostream>
+#include <any>
+
+class error
+{
+    int id;
+    std::string message;
+public:
+    error(int i, std::string msg = "")
+        : id{i}, message{msg}
+        {}
+    std::string message() const
+    {
+        return "error " + std::to_string(id) + ": " + message;
+    }
+}; 
+
+using namespace std;
+int main()
+{
+    std::error_code ec{};  
+    try{
+        throw error{100};
+    }catch(const std::exception& e)
+    {
+        cout << e.what() << "\n";
+    }
+
+    char* arr = new char[10];
+    
+    std::any err = error{100};
+
+    std::expected<void,char*> x(in_place, 100, "Error 100");
+
+    if(x.has_value())
+    {
+        std::cout << "Value is held\n";
+    }
+    else
+    {
+        std::cout << "Value is not held\n";
+    }
+
+     
+    expected<void,std::any> x1{in_place, 100, string{"Error 100.1"}};
+    expected<void,std::any> x2{x1}; 
+    x2 = x1;
+
+     
+    expected<int,std::error_code> y{4};
+
+     
+    cout << y.value() << "\n";
+
+     
+    expected<int,const char*> z(y);
+
+    using type = std::any;
+
+    cout << boolalpha;
+    std::cout << "\texpected<type,error_code> value is default constructed => ";
+    std::cout << std::is_default_constructible<expected<type,error_code>>::value << "\n";
+    std::cout << "\texpected<type,error_code> value is trivially default constructible => ";
+    std::cout << std::is_trivially_default_constructible<expected<type,

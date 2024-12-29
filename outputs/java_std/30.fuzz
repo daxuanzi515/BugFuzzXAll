@@ -1,0 +1,61 @@
+import java.lang.Object;
+> 10)
+		System.out.println(s + " is greater than 10");			
+	else {
+		System.out.println(s + " is less than 10");
+	}
+	 
+	System.out.println(s);
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class SquareAbove{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner(System.in);
+		System.out.print("please input a number: ");
+		if(s2.hasNextInt()) {
+			int num = s2.nextInt();
+
+			if(num < 0) {
+				System.out.println("invalid input");
+				return;
+			}
+
+			System.out.println(num + " to the square is " + (num * num));
+
+		} else {
+			s2.next();
+			System.out.println("invalid input");
+		}
+	}
+}
+ 
+import java.lang.StringBuffer;
+public class StringBufferApp{
+	public static void main(String[] args) {
+		StringBuffer s = new StringBuffer("Hello ");
+		s.append("World");
+		System.out.println(s.toString());
+
+		System.out.print("Hello");
+		System.out.print(" - ");
+		System.out.print("World");
+		System.out.println();
+	}
+}	
+ 
+import java.util.*;
+public class PrintNumValue{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		float num = s1.nextFloat();
+		System.out.println(num);
+	}
+}
+ 
+import java.util.Scanner;
+public class GetDouble{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner(System.in);
+		

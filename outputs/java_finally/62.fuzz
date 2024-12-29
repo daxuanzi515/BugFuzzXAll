@@ -1,0 +1,45 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class ModifyingFinally{
+    public static void main(String[]args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            file.txt
+            try {
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+                try{
+                while((line = in.readLine())!= null){
+                            System.out.println(line);
+                        }
+                        try{
+                            if(reader!= null){
+                                reader.close();
+                                reader = new BufferedReader(new FileReader("something.txt");
+                                }
+                                } catch (Exception e) {
+                                System.out.println("Sorry, that was a mistake.");
+                                }
+                                finally {
+                                    System.out.println(1);
+                                reader = new BufferedReader(new FileReader("anything.txt"));
+                                }
+                                catch(Exception e){
+                                    System.out.println("Ohhh, I have to close the reader.");
+                                }
+                                finally {
+                                    System.out.println(2);
+                                    in = new BufferedReader(new FileReader("somethingElse.txt"));
+                                    }
+                                    } catch (Exception e) {
+                                    System.out.println("Sorry, that was a mistake.");
+                                }
+                                }
+                            }
+                        }
+                    }

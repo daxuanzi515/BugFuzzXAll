@@ -1,0 +1,36 @@
+#include <stdlib.h>
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; ++idx) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(size_t *b) {
+  char *ptr = 0;
+  int argc = *b--;
+  while (argc) {
+    boo(*b, ptr);
+    ptr &= argc;
+    --argc;
+  }
+  return ptr;
+}
+int main() {
+  char a = (char)1;
+  unsigned long int e[2] = {0};
+  while (c) {
+    --c;
+  }
+  void *ptr = &c;
+  char buffer[12] = "";
+  strcpy(buffer, foo(&argc));
+  if (strlen(buffer) > 4) {
+    strcat(buffer, "_");
+  }
+  if (strlen(buffer) > 6) {
+    strncat(buffer, "abc", 2);
+  }
+  if ((unsigned long int)argc

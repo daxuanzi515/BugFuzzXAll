@@ -1,0 +1,13 @@
+import java.lang.Object;
+<fim_suffix>	System.out.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndianMutant{
+	public static void main(String[] args) {
+		Scanner s = new Scanner("Hello\nworld");
+		String[] arr = {"Hello"};
+		System.out.println(arr.length);
+		Scanner s1 = new Scanner("hello");
+		System.out.println((s1.hasNext()).toString());
+	

@@ -1,0 +1,4 @@
+#include <expected>
+<fim_suffix>int main() {
+	return 0;
+}<fim_middle>

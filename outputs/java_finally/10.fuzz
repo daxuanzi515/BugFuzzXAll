@@ -1,0 +1,28 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyWithResources{
+    public static void main(String[] args) throws IOException{
+        try(PrintWriter out = new PrintWriter("write.txt");){
+            out.println("Let's write to a file!");
+        }
+        try(PrintWriter out1 = new PrintWriter("write1.txt")){
+            out1.println("Test!");
+        }
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* At most one finally block can appear in any try statement, after any variable declarations. This limitation on finally clauses is important. Because the finally clause typically includes code such as closing resources, it can easily result in an exception that might not otherwise occur, making debugging difficult. To ensure that exceptions that occur during the execution of finally blocks will result in exceptions immediately in the invoking code, all resources must be available and all their finalizers executed when the try statement is complete. For example, if an IOException occurs during the execution of a finally block that tries to close a resource, the original IOException should be passed to the exception handler for the try statement. If the exception cannot be handled during the final execution of a finally block, the original IOException should be rethrown.
+
+The flow of execution in the try statement illustrated in the previous section is as shown in the following picture:
+
+Note that each resource is closed if and only if its try clause completes normally without throwing an exception. If the try clause completes abruptly due to a throwing of an exception before all resources are closed, then only those resources that have already been closed will have their finalizers executed.
+
+If one or more resources fail to close, then the finalizer for that particular resource will execute before the finalizers of other resources whose try clause complete normally, and then the process will continue till all the finalizers execute, and finally, the exception will be passed to the associated handler for the try block.
+
+With the Java SE 7 release, a try-finally statement can contain resource declarations of the for, if, while, and foreach statements. These declarations ensure that the resource has been

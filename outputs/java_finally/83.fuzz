@@ -1,0 +1,10 @@
+import java.lang.Object;
+<fim_suffix>ngs = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            System.out.println(daysOfTheWeek[dayofWeek]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: A number should be between 1 and 7");
+        } finally {
+            System.out.println("Finally: Closing file");
+        }
+    }
+} 

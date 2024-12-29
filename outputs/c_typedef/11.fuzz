@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(){
+    int_t a=5,b=0,c=7;
+    b=a+c;
+     
+    typedef int int_t;
+     
+    int get_int(void)
+}
+
+ 

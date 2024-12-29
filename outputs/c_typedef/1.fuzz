@@ -1,0 +1,58 @@
+#include <stdlib.h>
+;
+#include <stdio.h>
+#define PRINT_INT char *int_to_str(int i) { char *str = (char *)malloc((i+1)*sizeof(char)); itoa(i,str,10); return str;}
+typedef void (*PF)(void);
+
+typedef void *Handle;
+typedef void *Pointer;
+typedef int size_t;
+ 
+ 
+ 
+typedef struct {
+    unsigned len;
+    double *elements;
+} Vector;
+void destroyVector(Vector v){
+    if(v.elements!=NULL)
+        free(v.elements);
+}
+#define TEST_PRINT_INT int i = 1; printf("%s\n", int_to_str(i));
+int main() {
+    PRINT_INT;
+    TEST_PRINT_INT;
+    Vector *v;
+     
+    size_t lenV;
+    size_t lenVV;
+    double *elemV;
+    double *elemVV;
+    v = (Vector *)malloc(sizeof(Vector));
+    lenV = 4;
+     
+    lenVV = lenV + lenV;
+     
+    elemV = (double *)malloc(lenV * sizeof(double));
+     
+    elemVV = (double *)malloc((lenVV + lenVV - 1) * sizeof(double));
+    destroyVector(*v);
+    free(elemVV);
+    free(elemV);
+    free(v);
+    free(v->elements);
+    free(v);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

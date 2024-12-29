@@ -1,0 +1,4 @@
+from qiskit import QuantumCircuit
+
+
+class LinearFunction:

@@ -1,0 +1,30 @@
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(np.pi, 0)
+    circuit.ry(np.pi, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.execute(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+from qiskit import QuantumCircuit
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+from qiskit import QuantumCircuit
+from qiskit.providers.aer import noise
+from qiskit.tools.visualization import plot_histogram
+import qiskit
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+circuit.measure([0,1], [0,1])
+circuit.draw()
+noise_model = noise.NoiseModel()
+basis_gates = noise_model.basis_gates
+
+print(noise_model.basis_gates)

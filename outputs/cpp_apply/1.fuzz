@@ -1,0 +1,36 @@
+#include <tuple>
+
+#include <iostream>
+#include <cassert>
+
+using namespace std;
+
+template <typename T>
+void f(T i)
+{
+  std::cout << "f1 called with " << i << std::endl;
+}
+template <typename T, typename U>
+void f(T i, U j)
+{
+  std::cout << "f2 called with " << i << " " << j << std::endl;
+}
+template <typename T, typename U, typename... V>
+void f(T i, U j, V... k)
+{
+  std::cout << "f3 called with " << i << " " << j << " ";
+  (std::cout <<... << " " << k);
+  std::cout << std::endl;
+}
+
+int main(void)
+{
+  const int n = 3;
+  int values[n] = {1, 2, 3};
+  std::tuple<int, int, int> t(values);
+  std::apply(f<int, int, int>, t);
+
+  return EXIT_SUCCESS;
+}
+
+ 

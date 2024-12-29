@@ -1,0 +1,11 @@
+/* Unions in C language are a data type that allows storing different data types in the same memory location. They are similar to structures, but the key difference is that the union uses the same memory location for all its member's and only one member can contain a value at any given time. 
+
+Defining a union follows this syntax: "union attr-spec-seq(optional) name(optional) { struct-declaration-list }". The attr-spec-seq denotes optional attributes applied to the union type. The struct-declaration-list includes variable declarations, static assert declarations, and bit-field declarations.
+
+The size of a union is determined by the largest union member, and pointers to a union can be cast to pointers of each of its members. When accessing union content, if the member used isn't the same as the member last used to store a value, the hex representation is reinterpreted as an object representation of the new type.
+
+Unions can also have unnamed members which are known as anonymous unions. Anonymous union members are considered to be members of the enclosing struct or union, retaining their union layout. Defining a union without any named members results in undefined behavior. 
+
+Lastly, only one union member can be initiated at a time. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>

@@ -1,0 +1,8 @@
+#include <variant>
+#include <iostream>
+int main()
+{   
+	std::variant<int, float, double> v;
+	std::cout << std::holds_alternative<std::monostate>(v) << "\n";
+	return 0;
+}

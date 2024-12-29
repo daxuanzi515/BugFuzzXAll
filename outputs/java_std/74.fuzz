@@ -1,0 +1,49 @@
+import java.lang.Object;
+800802112233445566778899L;
+	}
+}
+<fim_middle>public class HelloIndian{
+	public static void main(String[] args) { 
+		Integer x = 1492;
+		long y = x.longValue();
+	}
+}
+class Integer extends Number implements java.io.Serializable {
+	private static final long serialVersionUID = -3617455986540544835L;
+	private final int value;
+	public int intValue() {
+		return this.value;
+	}
+}
+ 
+class HelloIndian {
+	public static long x = 47L;
+	public static final int A = 883414239L;
+}
+ 
+class HelloIndian {
+	public static void main(String[] args) {
+		long a = 999999;
+	}
+}
+ 
+class HelloIndian {
+	public static void main(String[] args) {
+		long a = 01;
+	}
+}
+ 
+public final class HelloIndian extends GregorianCalendar {
+	public HelloIndian() {
+		 
+	}
+	public long getTime(){
+		long x = new HelloIndian().currentTimeMillis();
+		System.out.println(x);
+		return x;
+	}
+}
+ 
+ 
+public final class ExampleClass implements java.io.Serializable {
+	private static final long serialVersionUID = 8888

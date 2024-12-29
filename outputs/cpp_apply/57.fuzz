@@ -1,0 +1,50 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t1 = std::make_tuple(99);
+  std::tuple<int, int, int, int> t2 = std::tuple_cat(
+  std::make_tuple(9), t1, std::make_tuple(7));
+  std::apply([](const int&... values) {
+    ((std::cout <<... << " ") << values... << '\n');}, t2);
+   
+  std::tuple<int> t4 = std::make_tuple(5, 5, 5, 5, 5, 5);
+  std::apply([](const int&... values) {
+    ((std::cout <<... << " ") << values... << '\n');}, t4);
+   
+  std::tuple<int> t5 = std::make_tuple(5);
+  std::apply([](const int&... values) {
+    ((std::cout <<... << " ") << values... << '\n');}, t5);
+   
+  return EXIT_SUCCESS;
+}
+int main()
+{
+  auto t1 = std::make_tuple(99, 77);
+  const int x = std::get<0>(t1);
+  const int y = std::get<1>(t1);
+  t1 = std::make_tuple(x + y, 22);
+  std::cout << "get<0>(t1) = " << std::get<0>(t1) << '\n';
+  std::cout << "get<1>(t1) = " << std::get<1>(t1) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+ 
+template <typename F, typename C = typename F::container_type,
+          typename Tuple = typename C::const_iterator,
+          typename... Args>
+int for_each(F f, const C& c, Tuple t, Args... args) {
+  f(*t, args...);
+  return for_each(f, c, std::next(t), args...);
+}
+template <typename F, typename... Args>
+int for_each(F f, Args... args) {
+  auto t = std::make_tuple(args...);
+  return f.forward_to(t);
+}
+template <typename F>
+int for_each_test() {
+  F f;
+  std::tuple

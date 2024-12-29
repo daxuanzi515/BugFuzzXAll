@@ -1,0 +1,9 @@
+#include <iostream>
+
+int main()
+{
+  std::cout << "Please choose your option"
+            << std::endl;
+   char option[32];
+   cin >> option;
+}

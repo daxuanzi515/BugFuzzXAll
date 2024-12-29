@@ -1,0 +1,42 @@
+#include <stdlib.h>
+
+
+enum { e1, e2 };  
+
+int main(void) {
+	int i;
+	union {  
+    struct {
+        char ch;
+        short number;
+    }
+    stun;
+    double dun;
+
+    unsigned number_of_months : 4;  
+
+    enum { sunday = 1, day, week, month, month2 };  
+}
+
+stun.ch = 'c';
+stun.number = 9;
+
+dun = 50.95;
+
+number_of_months = 12;
+
+i = sunday;
+
+switch(i) {
+    case sunday: {
+        puts("Today is a Sunday.");
+    }
+    break;
+    case e1:   {
+        putc(sunday, stdout);
+        printf("\n");
+}
+
+system("pause");
+
+return EXIT_SUCCESS;

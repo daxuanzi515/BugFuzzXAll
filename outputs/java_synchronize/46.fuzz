@@ -1,0 +1,41 @@
+import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest1 {
+    public static void main(String[]args){
+    Sample s=new Sample();
+    synchronized(SynchTest.class){
+        System.out.println("Synchronization works");
+    }
+    synchronized(s.doSomething().doSomethingElse()){
+        System.out.println("Synchronization works");
+    }
+    }
+}
+ 
+import java.lang.Object;
+class Sample {
+  synchronized Sample doSomething() {
+    return this;
+  }
+  synchronized Sample doSomethingElse() {
+    return this;
+  }
+}
+public class SynchTest2 {
+  public static void main(String[]args){
+    Sample s=new Sample();
+    synchronized(SynchTest2.class){
+      synchronized(s.doSomething().doSomethingElse()){
+        System.out.println("Synchronization works");
+      }
+    }
+  }
+}
+ 

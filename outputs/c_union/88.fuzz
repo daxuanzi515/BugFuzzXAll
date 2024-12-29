@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+main()
+{
+   long double x = 16538;
+   int *x1 = (int *)x;
+   int *y =  x1+1;
+   printf("%x\n",*y);
+   printf("%x\n",x1);
+}
+
+
+

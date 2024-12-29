@@ -1,0 +1,35 @@
+from qiskit import QuantumCircuit
+
+def create_circuit(circuit, qub, tub):
+    circuit.cx(qub, tub)
+    circuit.rx(0.5, tub)
+    circuit.h(tub)
+    circuit.draw()
+
+create_circuit(circuit, 0, 1)
+
+def new_circuits(circuit, qubits):
+    qubit_set = set()
+    circuit_dict = {}
+    for i, qubit in enumerate(qubits):
+        print("This is qubit {}\n".format(qubit))
+        for j in qubits:
+            print("j is {}".format(j))
+            if i < j:
+                qubit_set.add(round(float(i+j)))
+        print("i and j are {}".format(qubit_set))
+        for qubit in qubit_set:
+            print("In this loop {}".format(qubit))
+            for j in qubits:
+                if qubit < j:
+                    circuit_obj = QuantumCircuit(2)
+                    circuit_obj = create_circuit(circuit_obj, qubit, j)    
+                    circuit_dict[qubit, j] = circuit_obj
+        qubit_set.remove(round(float(i+j)))
+    return circuit_dict<jupyter_output><empty_output><jupyter_text>Please create a function with two inputs:    1.- a list of qubits   2.- a list of unique pairs of qubits     The function should return a dictionary in which the key is a triple (each pair of aqubit) (of the form (a, b) and the value is the respective modified circuit. Make sure that the qubits are not modified. You can choose the values ​​of α and φ to any you want.<jupyter_code>qubit_list = [34, 10, 15, 1, 14, 26, 7, 18, 7]
+
+
+
+print(new_circuits(circuit, qubit_list))<jupyter_output>This is qubit 34
+
+j is 34

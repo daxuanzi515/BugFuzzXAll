@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t, *ptr_t, arr_t[3]; 
+int main() {
+ptr_t p1, p2, p3;
+arr_t a1, a2, a3;
+p1 = &a1;
+p2 = &a2;
+p3 = &a3;
+*p1 = 12;
+*(p1 + 1) = 10;
+p2[0] = 11;
+p3 = p2 + 1;
+a1[0] = 12;
+return 0;
+}

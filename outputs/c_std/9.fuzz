@@ -1,0 +1,27 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <assert.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <vector>
+#include <chrono>
+
+void taskToRun(int tid, int num) {
+  printf("I am Thread number %d, my number is %d.\n", tid, num);
+}
+
+int main(int argc, char** argv) {
+  std::vector<std::thread> threads;
+   
+  int numThreads = std::stoi(argv[1]);
+  for (int i = 1; i <= numThreads; ++i) {
+    std::thread td(taskToRun, i, argv[i]);
+    threads.push_back(td);
+  }
+  for(auto& t : threads) {
+    t.join();
+  }
+  return 0;
+}

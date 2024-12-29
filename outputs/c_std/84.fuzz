@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    int val2 = val/2;
+    long val3 = val + val2;
+    printf("%ld\n",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    float val3 = val/val2;
+    printf("%f",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    float val3 = val/val2;
+    printf("%f\n",val3);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 8;
+    int val2 = 32;
+    int val3 = val/val2;

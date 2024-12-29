@@ -1,0 +1,89 @@
+#include <expected>
+<fim_suffix>ndl << ex.error().name()->c_str() << std::endl;
+		}
+		else
+		{
+			std::cout << ex.unwrap().name()->c_str() << std::endl;
+		}
+		return 0;
+	} while (0);
+	return -1;
+}<fim_middle>
+#include <iostream>
+#include <filesystem>
+#include <exception>
+#include <system_error>
+
+class Entity
+{
+public:
+	explicit Entity(std::string n) : name(n) {}
+	const std::string& name_get() const
+	{
+		if (!name)
+			throw std::system_error(std::make_error_code(std::errc::result_out_of_range));
+		return *name;
+	}
+	void name_set(std::string n)
+	{
+		name = n;
+	}
+	const std::string& name_get2() { return *name; }
+	void name_set2(std::string n) { name = n; }
+	const std::string& name2_get()const { return name.value(); }
+	void name2_set(std::string n) { name = std::move(n); }
+	const std::optional<std::string>& name2_get2()const { return name; }
+	void name2_set2(std::string n) { name = std::move(n); }
+	std::optional<std::string> get_name() const { return name; }
+	void set(std::string n)
+	{
+		name = std::move(n);
+	}
+	friend bool operator==(const Entity &e1, const Entity &e2) { return e1.name == e2.name; }
+
+private:
+	std::optional<std::string> name;
+};
+
+class Entity2
+{
+public:
+	explicit Entity2(std::string n)
+		: name_(n)
+	{
+	}
+	const std::string& name() const { return *name_; }
+	friend bool operator==(const Entity2& lhs, const Entity2& rhs)
+	{
+		return rhs.name_ == lhs.name_;
+	}
+private:
+	std::optional<std::string> name_;
+};
+
+void foo_impl(std::filesystem::path p, std::error_code &ec)
+{
+	Entity e("foo_impl");
+	Entity e1(e.get_name());
+}
+
+void foo_impl2(std::filesystem::path p, std::error_code& ec)
+{
+    try
+    {
+        Entity e("foo_impl");
+        Entity e1(e.name2_get2());
+    }
+    catch(const std::system_error& e)
+    {
+        ec = e.code();
+    }
+}
+
+int main()
+{
+	try
+	{
+		using namespace std::literals::string_literals;
+		std::filesystem::path p{"foo"};
+		foo_impl(p, std

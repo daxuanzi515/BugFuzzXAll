@@ -1,0 +1,14 @@
+#include <iostream>
+
+#include <array>
+
+template <typename... Args>
+void do_something(Args const&... args)
+{
+  (std::cout <<... << args) << "\n";
+}
+
+int main()
+{
+  do_something("Hello", "World", 42);
+}

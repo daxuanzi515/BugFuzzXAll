@@ -1,0 +1,28 @@
+import java.lang.Object;
+import java.util.ArrayList;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		ArrayList a = new ArrayList(args);
+		if (!(a instanceof Main$2)) 
+			throw new IllegalArgumentException("a is not Main$2");
+		if (!(((ArrayList)a).add("Hello, I am not Main!"))
+			throw new IllegalArgumentException("a is not mutable!");
+		if (((Main$2)a).toString(2)!= "a = new ArrayList(args); a.add(\"2\");")
+			throw new IllegalArgumentException("wrong toString() logic in Main$2");
+		System.out.println("a is mutated: " + (((Main$2)a).toString(2)));
+	}
+}
+class Main$2 extends ArrayList {
+	private final int mod = 2;
+	public String toString(int depth) {
+		String l = "a = new ArrayList(args); ";
+		if (mod > 1) l += "a.add(\"1\"); ";
+		if (mod > 2) l += "a.add(\"2\"); ";
+		if (mod > 3) l += "a.add(\"3\"); ";
+		String indent = "";
+		for (; depth > 0; depth--) indent += "|  ";
+		return indent + l;
+	}
+}
+ 

@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    unsigned char *valptr = malloc(sizeof(unsigned char));
+*valptr = 127;
+printf("%u\n", *valptr);
+return 0;
+}

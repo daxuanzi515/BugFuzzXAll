@@ -1,0 +1,31 @@
+#include <variant>
+<fim_suffix>nst float f;
+explicit SomeDouble(int a, float f): a(a), f(f) {}
+};
+bool operator ==(SomeDouble const &lhs, SomeDouble const &rhs) { return (lhs.a == rhs.a) && (lhs.f == rhs.f); }
+struct SomeInt {
+int a;
+explicit SomeInt(int a): a(a) {}
+};
+bool operator ==(SomeInt const &lhs, SomeInt const &rhs) { return lhs.a == rhs.a; }
+int main() 
+{
+    std::variant<SomeDouble, SomeInt> va1(SomeDouble(10, 3.14f));
+    std::variant<SomeDouble, SomeInt> va2(SomeInt(64));
+    if(std::get<SomeInt>(va1) == std::get<SomeInt>(va2)) 
+    {
+        std::cout << std::get<0>(va1).a << " == " << std::get<0>(va2).a << "\n";
+    } 
+    else 
+    {
+        throw std::runtime_error("Something went wrong!");
+    }
+}
+ 
+#include <optional>
+struct SomeDouble {
+int a;
+float f;
+explicit SomeDouble(int a, float f): a(a), f(f) {}
+SomeDouble& operator =(SomeInt si) { return *this; }
+SomeDouble& operator =(SomeDouble const& sd) {

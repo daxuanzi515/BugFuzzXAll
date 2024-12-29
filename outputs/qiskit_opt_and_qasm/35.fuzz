@@ -1,0 +1,42 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ = QuantumCircuit(2)
+circ.h(1)
+circ.cx(1,0)
+circ1=circ.compose(circ)
+circ1.draw(output='mpl')
+result = backend_sim.run(circ1, shots=1024).result()
+counts_dict_double_bell = result.get_counts(circ1)
+counts_dict_double_bell
+circuits_dict = {
+    "1Bell": create_circuit_bell(), 
+    "2Bell": create_circuit_brownbell(),
+    "3Bell": create_circuit_multipleballs(), 
+    "4Bell": create_circuit_random(),
+    "2xBell": create_circuit_entanglement(),
+}
+
+%matplotlib inline
+matplotlib inline
+circuits_dict
+from qiskit import visualize
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+import seaborn as sns
+
+
+
+
+plt.style.use("ggplot")
+
+figsize=(20,5)
+
+
+
+for key in circuits_dict.keys():
+    value = circuits_dict[key]
+    value["histogram"] = dict(zip(value["counts"].keys(), [x/1024 for x in value["counts"].values()]))
+    counts = value["counts"] 

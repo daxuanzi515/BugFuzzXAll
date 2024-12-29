@@ -1,0 +1,51 @@
+#include <variant>
+<fim_suffix>t) {
+        case '0':
+        return false;
+        case '1':
+        return true;
+        }
+    }
+    bool operator==(const bool_array& rhs) const {
+        if (n!= rhs.n) {
+        return false;
+        }
+         for (size_type i = 0; i < n; ++i) {
+        if (a[i]!= rhs.a[i]) {
+        return false;
+        }
+        }
+        return true;
+    }
+};
+
+template<typename T, size_t Size>
+bool operator!=(const bool_array<T, Size>& a, const bool_array<T, Size>& b) {
+    return!(a == b);
+}
+
+template<typename T, size_t Size>
+struct bit_array {
+    static_assert(std::is_unsigned<T>::value, "Type T of bit_array<T, Size> must be unsigned");
+    using size_type = size_t;
+    using value_type = T;
+    static constexpr size_type num_blocks = (Size + CHAR_BIT - 1) / CHAR_BIT;
+    static constexpr size_type num_bits = 8 * num_blocks;
+    value_type a[num_blocks]{};
+
+    constexpr size_type size() const {
+        return Size;
+    }
+
+    bool empty() const {
+        return Size == 0;
+    }
+
+    size_type count() const {
+        return std::accumulate(a, a + num_blocks, 0, [](const size_type count, const value_type b) {
+            return count + std::bitset<CHAR_BIT>(b).count();
+        });
+    }
+
+    bool operator[](const size_type i) const {
+        return (a[i /

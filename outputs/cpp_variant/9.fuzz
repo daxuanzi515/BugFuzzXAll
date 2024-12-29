@@ -1,0 +1,51 @@
+#include <variant>
+#include <iostream>
+int main()
+{   
+	std::variant<int, float, double> v;
+	v = 10;
+	
+	float result = std::get<float>(v);
+	std::cout << "This will give an error!\n";
+	std::cout << "Value stored in std::variant: " << result;
+	
+	return 0;
+}
+
+ 
+#include <variant>
+#include <iostream>
+#include <string>
+
+enum class Fruit : char { ORANGE, BANANA, APPLE };
+
+std::string render(const Fruit& fruit)
+{
+	switch (fruit)
+	{
+	case Fruit::ORANGE:
+		return "Orange";
+	case Fruit::BANANA:
+		return "Banana";
+	case Fruit::APPLE:
+		return "Apple";
+	}
+
+	return "";
+}
+
+int main()
+{
+	 
+	std::variant<Fruit, double> fruit{ Fruit::BANANA };
+	std::variant<Fruit, double> fruit2{ 5.0 };
+
+	 
+	std::cout << render(std::get<Fruit>(fruit));
+	std::cout << "\n";
+	std::cout << render(std::get<Fruit>(fruit2));
+
+	return 0;
+}
+
+/* In our example, we had to add `operator==` to `Fruit` and `operator<<` which made `Fruit

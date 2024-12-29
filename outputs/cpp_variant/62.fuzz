@@ -1,0 +1,26 @@
+#include <variant>
+<fim_suffix>= std::in_place_index<0>,
+      std::variant<int, double, const char*>
+      > type;
+    }  
+    
+    std::variant<int, double, char> some_var = 12;
+    std::visit(variant_test::print_variant_handler(), some_var);
+}
+ 
+ 
+#include <variant>
+#include <iostream>
+struct visitor_1 {
+   result_type operator()() { std::cout << "the value held by this variant is an int"; }
+};
+struct visitor_2 {
+   result_type operator()(const long& some_variable) { std::cout << "the value held by this variant is a long"; }
+};
+  
+int main() {
+   std::variant<int, long> int_or_long{42l};
+   std::visit(visitor_1{}, int_or_long);  
+ 
+   std::visit(visitor_2{}, std::get<1>(int_or_long));  
+}

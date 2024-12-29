@@ -1,0 +1,53 @@
+import java.lang.Object;
+class Sample2 {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    static class Sample2Class {
+        static synchronized void staticDoSomething1() {
+            System.out.println(this + ": staticDoSomething1()");
+        }
+        synchronized void doSomething2() {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+    Sample2Class c = new Sample2Class();
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample2.Sample2Class.staticDoSomething1();
+        Sample2.Sample2Class c = new Sample2.Sample2Class();
+        synchronized (c) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + c.hashCode() + "...");
+            try {
+                Sample2.Sample2Class.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + c.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            c.doSomething2();
+            new Object() {
+                void  doSomething3() {
+                    System.out.println(this + ": doSomething3()");
+                }
+            };
+            Sample2.Sample2Class.class.notify();
+        }
+    }
+}
+/* 1. The output is:
+Sample$Sample2Class: staticDoSomething1()
+Thread-0: Waiting for 1397763327...
+Awoken!!!
+Sample$Sample2Class$1: doSomething3()
+Sample$Sample2Class$1@102e54c
+ Sample2$Sample2Class$1@102e54c: doSomething3()
+2. What went wrong?
+The program is not synchronized because one method is synchronized and other is not synchronized.
+Synchronizing a static method does not synchronize on a class.
+Synchronizing a non-static method does synchronize on a class.
+Synchronizing a non-static method also synchronizes on an instance of a class.
+4. What is wrong in the following code?
+SynchronizedTest synchTest = new SynchronizedTest();
+synchronized (syn

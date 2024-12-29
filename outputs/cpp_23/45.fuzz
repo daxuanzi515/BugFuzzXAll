@@ -1,0 +1,31 @@
+#include <iostream>
+#include <exception>
+using namespace std;
+class myexception
+{
+    virtual const char *errmsg(void) const
+    {
+        return "Base class";
+    };
+};
+class derivedexception : public myexception
+{
+    virtual const char *errmsg(void) const
+    {
+        return "Derived class";
+    };
+};
+int main(int argc, char *argv[])
+{
+    myexception e;
+    try
+    {
+        throw e;
+    }
+    catch (myexception &x)
+    {
+        cout << "Caught " << x.errmsg();
+    }
+    return 0;
+}
+ 

@@ -1,0 +1,40 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+} Tag_t;
+int main()
+{
+	Tag_t* list = (Tag_t*)malloc(sizeof(*list));
+	list->x = 1;
+	list->y = 2;
+	list->str = (char*)malloc(sizeof(*list->str));
+	list->str[0] = 'a';
+	list->str[1] = 'b';
+	list->str[2] = 'c';
+	list->str[3] = '\0';
+	printf("str is %s\n", list->str);
+	free(list->str);
+	free(list);
+	return 0;
+}
+ 
+ 
+#include <stdio.h>
+#define SIZE 100
+int main()
+{
+	char * str = (char *)malloc(SIZE * sizeof(char));
+	scanf("%s", str);
+	int counter = 0; 
+	while (str[counter]!= 0) counter++;
+	printf("the string lenght is:%d\n", counter);
+	free(str);
+	return 0;
+}
+/* In this project, we will see how to include C header files.
+
+First, create a header file that includes <stdio.h>

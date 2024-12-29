@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+union 
+{
+    int i; 
+    struct 
+    {
+        int x;
+        int y;
+    }point;
+    void *p;  
+}t1; 
+
+struct s {
+    int a;
+    int b;
+  };
+  t1.i = 0x1234;
+  printf("t1: %d\n", t1.i);
+  t1.p = (void *)malloc(sizeof(struct s));
+  ((struct s *)t1.p)->a = 0x4321;
+  ((struct s *)t1.p)->b = 0xabcd;
+  printf("t1: %p type: %s\n ", t1.p, "unknown");
+  return (EXIT_SUCCESS);
+}

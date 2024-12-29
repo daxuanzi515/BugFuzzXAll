@@ -1,0 +1,37 @@
+import java.lang.Object;
+import java.util.concurrent.locks.ReentrantLock;
+class Synch2 {
+    ReentrantLock r = new ReentrantLock();
+    synchronized void doSomething1() {
+        System.out.println(Thread.currentThread().getName() + ": Waiting for doSomething1()...");
+        try {
+            r.acquire();
+        }
+        catch (InterruptedException exception) {
+            System.out.println("Interrupted!");
+            return;
+        }
+        System.out.println("gotcha!");
+        System.out.println(Thread.currentThread().getName() + ": Releasing doSomething1()...");
+        r.release();
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Sample.class.wait();
+                    System.out.println("Awakened!");
+                    s.doSomething1();
+                    Sample.class.notify();
+                }
+                catch (InterruptedException e) {
+                    System.err.println("Interrupted!");
+                }
+            }
+        }).start();
+        Sample.class.notify();
+    }
+}

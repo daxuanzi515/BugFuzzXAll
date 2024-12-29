@@ -1,0 +1,48 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long long val2 = val/2;
+    long long temp = val;
+    long long val3 = temp + val2;
+    printf("%ld",val2); 
+    return 0;
+}
+
+#include<stdio.h>
+
+int main()
+{
+    int k;
+    printf("Give me a number: \n");
+    scanf("%d", &k);
+    
+    int sum = 2 * k + 1;
+    int power = sum * sum;
+    
+    printf("2 * k + 1: %d\n", sum);
+    printf("k^2: %d\n", power); 
+    
+    int a = 10, b = 15, hcf = 0;
+     
+    for (int d = 1; d <= a && d <= b; d++)
+    {
+        if (a%d==0 && b%d==0)
+            hcf = d;
+    }
+    
+    printf("The G.C.D. of %d and %d is %d\n", a, b, hcf);
+    
+return 0;
+}
+
+#include<stdio.h>
+
+int main()
+{
+    int k;
+    printf("Give me a number: \n");
+    
+    scanf("%d", &k);
+    
+    int sum =

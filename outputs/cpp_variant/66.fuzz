@@ -1,0 +1,33 @@
+#include <variant>
+	return 0;
+}
+<fim_middle>#include <iostream>
+class V {
+public:
+    int i;
+    float f;
+    double d;
+     
+
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+
+V create() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+int main() 
+{
+    V v = create(); 
+    v.print();
+}
+ 
+ 
+int main()
+{
+	std::variant<int, double> a(3);
+	std::variant<int, double> b(a);
+	std::cout << b;

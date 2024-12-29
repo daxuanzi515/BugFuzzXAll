@@ -1,0 +1,27 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+ 
+public class SFinally4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+        } finally {
+            PrintWriter printWriter = null;
+            try {
+                printWriter = new PrintWriter("src/myData.txt");
+                printWriter.append("Added some data\n");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (printWriter!= null) printWriter.close();
+            }
+        }
+    }
+}

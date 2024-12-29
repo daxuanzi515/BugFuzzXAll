@@ -1,0 +1,21 @@
+#include <tuple>
+#include <iostream>
+
+struct Print{
+  template <typename T>
+        void operator()(T t){
+  std::cout<< t << '\n';
+}
+};
+
+int main()
+{
+  std::tuple<int> t = std::make_tuple(101);
+  std::apply(Print{}, t);
+  return EXIT_SUCCESS;
+}
+
+#elif
+ 
+#error NOT IMPLEMENTED: mutated_example_apply_mem_fn_short
+#elif

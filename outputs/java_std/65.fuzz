@@ -1,0 +1,58 @@
+import java.lang.Object;
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+		   { int x=10;int y =3; x=x+y+4; System.out.println(x+" " +y);}
+		}
+}
+<fim_middle>public class HelloIndian1{
+	public static void main(String [] args){	
+		String [] arr={"Nishant","Java","18","Bangalore"};
+		String [] arr1 = {"Shyam","Python","17","Delhi","Haryana"};
+ 		for(int i=0; i<arr.length; i++)
+	  	    System.out.println(arr[i]);
+	  	    for(int i=0; i<=3; i++)
+	  	    System.out.println(arr1[i]);
+		for (int x: arr) {
+			System.out.println(x);
+		}	
+		for (String x:arr1){
+		System.out.println(x);
+		}
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian2{
+	public static void main(String args[]){
+	    int x = 5, y = 12;
+	    for(int i=1;i<=4;i++)
+	    {
+	        System.out.print("\n For "+i+"st iteration, ");
+	        for(int j=1;j<=y;j++)
+	        {
+	            System.out.print(x+", ");
+	        }
+	    }
+	}
+	 
+	 
+}
+ 
+import java.lang.Object;
+public class HelloIndian3{
+   public static void main(String... abc)
+        {
+	    int sumOfAllNumbers = 0;
+	    int [] arr = {10,20,25,30,35};
+	    for (int a: arr)
+	    {
+	        sumOfAllNumbers = sumOfAllNumbers + a;
+	    }
+	    System.out.println(sumOfAllNumbers);
+        }
+}
+ 
+import java.lang.Object;
+public class HelloIndian4{
+   public static void main(String... abc)
+        {
+		int count =

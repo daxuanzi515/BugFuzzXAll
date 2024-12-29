@@ -1,0 +1,10 @@
+#include <variant>
+<fim_suffix>"The variant has the value " << std::get<double>(v) << "\n";
+    }
+}
+ 
+ 
+
+ 
+ 
+#include <variant>

@@ -1,0 +1,9 @@
+import java.lang.Object;
+ 'M', 'A', 'D'};
+		StringBuilder sb= new  StringBuilder();
+		System.out.println(String.join(":", a));
+	}
+}
+<fim_middle>public class HelloAgain {
+	public static void main(String[] args) {
+		String[] a = {'R', 'A', 'W', 'O', 'L',

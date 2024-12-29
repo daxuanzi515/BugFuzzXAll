@@ -1,0 +1,9 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto x = 99L;
+  auto tuple = std::make_tuple(x);
+  std::cout << std::get<sizeof...(tuple) - 1>(tuple);
+  return EXIT_SUCCESS;
+}

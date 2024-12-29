@@ -1,0 +1,58 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[]]
+    def set(self, row, col, val):
+        self.mat[row].append((col, val))
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str__(self):
+        out = ""
+        for r in self.mat:
+            for c in r:
+                if c == (r, 1):
+                    out += "I"
+                elif c == (r, -1):
+                    out += "-I"
+                elif c == (r, 0):
+                    out += " Z "
+                elif c[1] < 0:
+                    out += " ( Z " + str(c[1] // -1) + ")"
+                else:
+                    out += " ( I " + str(c[1] // 1) + ")"
+            out += "\n"
+        return out
+    
+    def is_perm(self):
+        mat = { (0,0): [1], (0,1): [0], (0,2): [0],
+                (1,0): [0], (1,1): [1], (1,2): [0],
+                (2,0): [0], (2,1): [0], (2,2): [1]
+               }
+        f = 0
+        for row in range(self.size):
+            for col in range(self.size):
+                for (row_mat, col_mat), val_mat in enumerate(mat):
+                    if val_mat[row] == row and val_mat[col] == col and row_mat == row_mat:
+                        f += 1
+        return f == self.size**2 - 1
+    
+    def _qasm_swap_circuit_from_row(self, row1, row2, n):
+        qc = QuantumCircuit(n, name="swap_rows_" + str(row1) + '_' + str(row2))
+        qc.h(list(range(n)))
+        for r in range(n):
+            for x in self.mat[row1]:
+                if x[0] == r:
+                    if x[1] < 0:
+                        qc.u3(-(x[1] / -1), 0, 0, r)
+                    elif x[1] > 0:
+                        qc.phase(x[1] / 2, r)
+        for r in range(n):
+            for x in self.mat[row2]:
+                if x[0] == r:
+                    if x[1] < 0:
+                        qc.u3((x[1] / - 1), 0, 0, r)
+                    elif x[1] > 0:

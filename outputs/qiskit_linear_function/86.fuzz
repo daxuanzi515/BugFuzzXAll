@@ -1,0 +1,81 @@
+from qiskit import QuantumCircuit
+
+def create_gate(matrix): 
+	
+	pass
+
+class Gate(object): 
+    def __init__(self, matrix=None): 
+        self.matrix = matrix
+        self.params = []
+        self.decompositions = []
+
+    def add_decomposition(self, gate):
+        self.decompositions.append(gate)
+
+    def add_params(self):
+        pass
+
+    def unitary_gate(self):
+        return self.matrix
+
+    def controlled_gate(self):
+        pass
+
+    def set_label(self):
+        pass
+
+
+class LinearFunction(Gate): 
+    pass
+
+
+class CnRy(LinearFunction):
+    def __init__(self, theta, n):
+        super(CnRy, self).__init__(matrix=None)
+        self.matrix = nRy(theta, n)
+        self.set_label("CnRy" + str(theta) + "," + str(n))
+
+class Rx(LinearFunction):
+    def __init__(self, theta, n):
+        self.theta = theta
+        self.n = n
+        super(Rx, self).__init__(matrix=None)
+        self.matrix = Rx(theta, n).unitary()
+        self.set_label("Rx" + str(theta) + "," + str(n))
+
+def test_create_gate(self):
+    self.assertTrue(np.array_equal(np.eye(2), create_gate([[1, 0], [0, 1]])))
+    self.assertTrue(np.array_equal([[1, 0], [0, -1]], create_gate([[0, 1], [1, 0]], None, [1, 1])))
+
+    self.assertRaises(TypeError, create_gate)
+    self.assertRaises(TypeError, create_gate, "Not a list")
+    
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

@@ -1,0 +1,57 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+typedef unsigned short array[ARRAY_SIZE];
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+array reverse_array(array arr)
+{
+        char *a = (char *)arr;
+        int array_size = sizeof(arr) / sizeof(arr[0]);
+        int i, half = array_size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*a)
+                swap(a, a + (array_size - i - 1));
+            ++a;
+        }  
+        return arr;
+}
+int main()
+{
+        int i;
+        array array = {0};
+        for (i = 0; i < ARRAY_SIZE; ++i)
+            array[i] = 4 * i;
+        reverse_array(array);
+        return EXIT_SUCCESS;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <errno.h>
+#include <math.h>
+
+pthread_barrier_t done_barrier;
+
+typedef struct thread_argument_values {
+    long number_of_iterations;
+    long number_of_threads;
+} thread_argument_values_t;
+
+static thread_argument_values_t thread_args;
+
+void *thread(void *ptr);
+
+int main()
+{
+    int rc;
+    long number_of_threads, i;
+    double pi = 0;
+
+   

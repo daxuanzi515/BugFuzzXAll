@@ -1,0 +1,9 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian2 {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}

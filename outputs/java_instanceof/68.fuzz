@@ -1,0 +1,32 @@
+import java.lang.Object;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<Integer> list1 = new ArrayList<Integer>();
+		list1.add(1);
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		list2.add(2);
+		System.out.println("list1: " + list1);
+		System.out.println("list2: " + list2);
+		ArrayList<Integer> superList;
+		superList = list1;
+		while(list2.size() > 0) {
+			Integer i = list2.get(0);
+			superList.remove(0);
+			System.out.println(superList);
+		}
+		System.out.println("superList: " + superList);
+	}
+}
+ 
+ 
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+	    Integer i = 1;
+	    ArrayList<Integer> arraylist = new ArrayList<Integer>();
+        arraylist.add(i);
+    }
+
+}
+  

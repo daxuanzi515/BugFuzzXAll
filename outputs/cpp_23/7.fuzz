@@ -1,0 +1,9 @@
+#include <iostream>
+#include <optional>
+int main()
+{
+	optional<int> n{ 1 };
+	if (!!n) {
+		cout << "n has a value" << endl;
+	}
+}

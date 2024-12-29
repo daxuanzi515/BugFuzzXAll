@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+struct __union_Data
+{
+    char *a;
+    float *b;
+    double *c;
+};
+int main()
+{
+    struct __union_Data u1;
+    struct __union_Data u2;
+    struct __union_Data v1;
+    u1.a = "I am a string";
+    u2.b = 0;
+    v1.c = 0;
+    printf("%-5s %p %p\n", "U1", u1.a, u1.b);
+    printf("%-5s %p %p\n", "U2", u2.a, u2.b);
+    printf("%-5s %p %p\n", "V1", v1.a, v1.b);
+    return (EXIT_SUCCESS);
+}

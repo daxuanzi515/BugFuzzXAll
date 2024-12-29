@@ -1,0 +1,39 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<short, char> t{ 'H', '2' };
+  std::apply([](short a, char b, char c) {std::cout << (int)a << c << (int)b << "\n";}
+  	, std::tuple_cat(std::move(t), 
+      std::make_tuple('X'), std::make_tuple('.'))); 
+  	return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main() {
+  std::cout << "Please, copy the tuple:\n";
+  std::tuple<char, short, unsigned char> t{ 'H', 44, 'F'};
+  std::tuple<char, short, unsigned char> u = t;
+  std::cout << "Please, move the tuple:\n";
+  std::tuple<char, short, unsigned char> v = std::move(t);
+  return EXIT_SUCCESS;
+}	
+ 
+#include <tuple>
+#include <iostream>
+int main() {
+	return EXIT_SUCCESS;
+}	
+ 
+#include <functional>
+#include <iostream>
+int main() {
+  std::function<void()> f1 = []() {std::cout << "Hello world!\n";}
+  std::function<double()> f2 = []() {return 3.1415927;};
+  std::function<int(int)> f3 = [](int n) {return n*n;};
+  f1();
+  std::cout << f2() << '\n';
+  std::cout << f3(5) << '\n';
+  return EXIT_SUCCESS;
+  }

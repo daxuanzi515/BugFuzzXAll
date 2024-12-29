@@ -1,0 +1,71 @@
+import java.lang.Object;
+2;
+		int sum = 0;
+		for(int i  = 0; i<arr.length; i++) {
+			if( arr[i] % 2 == 0)
+				sum += arr[i];
+			else
+				sum = sum - arr[i];
+		}
+		System.out.println(sum);
+		return;
+	}
+}
+ 
+abstract class Flower{
+	abstract public String name();
+}
+
+class PetalFlower extends Flower{
+	public String name() {
+		return("Petalflower");
+	}
+}
+
+class Rose extends Flower{
+	public String name() {
+		return("Rose");
+	}
+}
+
+class YellowFlower extends Flower{
+	public String name() {
+		return("YellowFlower");
+	}
+}
+
+class NewFlower{
+	Flower f;
+	NewFlower(int r) {
+		Random randomGenerator=new Random();
+		if(r == 0)
+			f = new PetalFlower();
+		else if(r==1)
+			f = new Rose();
+		else if(r==2)
+			f = new YellowFlower();
+	}
+	void printName() {
+		System.out.println("The name of the flower is: "+f.name());
+	}
+}
+
+public class MainFlower{
+	public static void main(String[] args) {
+		Scanner sca = new Scanner(System.in);
+		NewFlower obj[] = new NewFlower[5];
+		int r;
+		System.out.println("enter the integer to generate the specific flower object");
+		r = sca.nextInt();
+		for(int i = 0; i<obj.length;i++) {
+			obj[i] = new NewFlower(r);
+			obj[i].printName();
+		}
+	}
+}
+ 
+import java.lang.reflect.*;
+
+class TestInterface extends InterfaceTest.A {
+	public static void main(String[] args) throws ClassNotFoundException{
+		System.out.println(InterfaceTest.class.getInterfaces()[0].getName()); 

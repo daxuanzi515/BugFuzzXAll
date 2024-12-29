@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    int num;  
+};
+struct __union_Data operator1()
+{
+    struct __union_Data u1, u2;
+    printf("Enter number: ");
+    scanf("%d", &u1.num);
+    return u1;
+}
+int main()
+{
+    struct __union_Data u, v;
+    u = operator1();
+    v = {u.num};  
+    printf("You Entered :%d\n", v.num);
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+struct __union_Data
+{
+    int num1;
+};
+struct __union_Data operator()
+{
+    struct __union_Data x = {.num1 = 0};
+    return x;
+}
+int main()
+{
+    struct __union_Data y = operator();
+    printf("%d\n", y.num1);
+    return (EXIT_SUCCESS);
+}

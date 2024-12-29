@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main() {
+  FILE *file = fopen("test files/hello.txt", "r");
+  if (file == NULL) {
+    fprintf(stderr, "Test failed, opening file\n");
+    exit(1);
+  }
+  int i = 0;
+  char text[1];
+  while (text[i]!= EOF) {
+    text[i] = (char)fgetc(file);
+  }
+  text[i+1] = '\0';
+  printf("%s", text);
+}

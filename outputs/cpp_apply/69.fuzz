@@ -1,0 +1,11 @@
+#include <tuple>
+#include <utility>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply([](auto&&... args) -> decltype(auto) {return std::make_tuple(std::get<1>(std::forward_as_tuple(args))...);}, t)
+  return EXIT_SUCCESS;
+}
+```
+___
+References:

@@ -1,0 +1,47 @@
+#include <variant>
+<fim_suffix>h this approach */
+#include <variant>
+#include <iostream>
+
+ 
+namespace {
+    struct visitor
+    {
+        template <typename T>
+        void operator()(T const& x) const
+        {
+            std::cout << "I received a " << typeid(x).name() << " with value " << x << '\n';
+        }
+    };
+}
+
+int main()
+{
+     
+    std::variant<int, float, std::string> v1(42);
+    std::visit(visitor{}, v1);
+    std::variant<int, float, std::string> v2(3.14f);
+    std::visit(visitor{}, v2);
+    std::variant<int, float, std::string> v3("hello world");
+    std::visit(visitor{}, v3);
+}
+ 
+#include <variant>
+#include <iostream>
+
+template <std::size_t I>
+class Foo
+{
+    std::string name_ = "bar";
+    int value_ = 10;
+public:
+    const char* name() const { return name_.c_str(); }
+    int value() { return value_; }
+};
+
+int main()
+{
+    std::variant<int, Foo<0>, Foo<1>> x(0);
+    if(auto val = std::get_if<1>(&x); val!= nullptr) {
+        std::cout << "name: " << val->name() << '\n';
+        std::cout << "value: " << val->value() <<

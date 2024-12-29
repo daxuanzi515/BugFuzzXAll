@@ -1,0 +1,39 @@
+#include <expected>
+
+    assert(b == a);
+    a = std::make_error_code(errc());
+    assert(0 == a.error());
+
+    printf("success!\n");
+    return 0;
+}
+
+ 
+
+}   
+<fim_middle>
+#include <cassert>
+#include <cerrno>
+#include <cstdio>
+#include <iostream>
+
+ 
+
+namespace wigwag {
+
+template <typename T>
+using expected = std::expected<T, std::error_code>;
+ 
+ 
+
+}  
+
+struct some_error_code_domain_type
+{
+/* 	std::error_code &		to_error_code(std::errc & code)
+	{
+		std::error_code ret(static_cast<int, std::errc>(code), *this);
+		return ret;
+	}
+
+	std::error_code const& to_error_code(std::errc const&

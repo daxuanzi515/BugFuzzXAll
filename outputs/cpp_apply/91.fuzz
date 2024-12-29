@@ -1,0 +1,51 @@
+#include <tuple>
+#include <iostream> 
+
+int main()
+{
+  int x = 42, y = 100;
+  int l, r;             
+  std::tie(l, r) = std::make_tuple(x, y);
+  l = r - l;
+  r = l - r;
+  std::tie(x, y) = std::make_tuple(l, r);
+
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream> 
+
+int main()
+{
+  int x = 42, y = 100;
+  int l, r;             
+  std::tie(x, y) = std::make_tuple(x, y) 
+                   | std::make_pair(x, y) 
+                   | std::make_tuple(x, y);
+  std::tie(l, r) = std::make_pair(x, y);              
+  std::tie(l, r) = std::make_tuple(l, r) 
+                   | std::make_pair(l, r) 
+                   | std::make_tuple(l, r);
+  l = r - l;
+  r = l - r;
+  std::tie(l, r) = std::make_pair(l, r);              
+  std::tie(x, y) = std::make_tuple(l, r) 
+                   | std::make_pair(l, r) 
+                   | std::make_tuple(l, r);
+  std::tie(l, r) = std::make_pair(x, y);              
+  std::tie(l, r) = std::make_tuple(l, r) 
+                   | std::make_pair(l, r) 
+                   | std::make_tuple(l, r);
+  l = r - l;
+  r = l - r;
+  std::tie(x, y) = std::make_tuple(l, r) 
+                   | std::make_pair(l, r) 
+                   | std::make_tuple(l, r);
+
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}

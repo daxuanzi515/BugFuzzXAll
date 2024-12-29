@@ -1,0 +1,55 @@
+import java.lang.Object;
+
+import java.lang.Runnable;
+
+interface K extends Runnable
+{
+}
+
+class J implements Runnable
+{
+}
+
+enum G implements Runnable {
+	C1,C2
+}
+
+class F implements K
+{
+}
+
+public class Demo172 
+{
+	public static void main(String[] args)
+	{
+		Object obj = new J();
+		 
+		 
+		 
+		 
+		
+		if(obj instanceof J)
+		{
+			System.out.println("obj is J");
+		}
+		 
+		 
+		else if(obj instanceof G)
+		{
+			System.out.println("obj is G");
+		}
+		 
+		 
+		else
+		{
+			System.out.println("obj is other");
+		}
+		 
+		 
+		 
+		 
+	}
+}
+ 
+ 
+ 

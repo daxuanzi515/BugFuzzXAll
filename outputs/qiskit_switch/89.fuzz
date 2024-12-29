@@ -1,0 +1,19 @@
+from qiskit import QuantumCircuit
+
+q = QuantumCircuit(2,3)
+q.x(0)
+with q.switch(1) as case_zero:
+    z=case_zero.zero_state
+    q.x(0)
+    with case_zero.case(1):
+        z.x(0)
+        case_zero.break_switch()   
+        q.h(0)
+    with case_zero.case(0,ctrl_state=2):
+        z.x(0)
+        q.h(0)   
+q.y(0)
+q.barrier(0)
+q.append(z,range(2))
+q.draw('mpl')
+with open('SwitchCase.qpy','w') as f:

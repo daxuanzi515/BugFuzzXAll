@@ -1,0 +1,9 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+ 
+int main(int argc, char* argv[]) {
+  char *s = "10000000000000000";
+   
+  printf("String: %s\n", s);
+}

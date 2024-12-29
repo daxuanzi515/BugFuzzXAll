@@ -1,0 +1,73 @@
+#include <stdlib.h>
+int main() { 
+char *p;
+p = (char *) malloc(20);
+strcpy(p,'H');
+strcpy(p +1,, 'I');
+printf("%s", p);
+free(p);
+return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main() { 
+char p1[]="hello";
+char *p2; 
+char p3[20] = "hello";
+printf("%s World\n", p1);
+printf("%s World\n", p3);
+ 
+return 0; 
+}
+ 
+#include <stdio.h>
+int main() { 
+int i;
+char text[] = {'H','e','l','l','o','W'};
+char texts[] = "Hello World";
+for(i = 0; i < 11; i++) printf("%c", text[i]);
+printf("\n");
+for(i = 0; i < 11; i++) printf("%c", texts[i]);
+printf("\n");
+return 0; 
+}
+ 
+#include <stdio.h>
+int main() { 
+int i; 
+char text1[] = "Hello World"; 
+for(i = 0; i < 11; i++) printf("%c", text1[i]);
+printf("\n");
+return 0; 
+}
+  
+#include <stdio.h>
+#include <string.h>
+int main() { 
+char text[] = "hello, world";
+int counter = 13; 
+while(counter--) printf("%c", text[counter]);
+printf("\0");
+return 0; 
+}
+  
+#include <stdio.h>
+#include <string.h>
+int main() { 
+char text[] = "Hello World";
+char *p, *q; 
+ p = text;
+ q = text;
+printf("%s %s", p, q);
+return 0; 
+}
+ 
+#include <stdio.h>
+typedef unsigned int ui;
+int main() {
+ui i;
+ui array[100]; 
+for(i = 0; i < 100; i++) 
+ array[i] = i * 2;
+printf("%d\

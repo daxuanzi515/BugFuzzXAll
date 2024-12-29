@@ -1,0 +1,64 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef char charr[3];
+typedef char* str2;
+int main()
+{
+	charr a = {'b','c','d'};
+	str2 b = "abc";
+	return 0;
+}
+#include <stdio.h>
+typedef unsigned int WORD;
+typedef unsigned short unsigned SHORT;
+typedef unsigned long DWORD;
+typedef struct _test
+{
+	WORD i;
+	SHORT s;
+	DWORD d;
+}Test_t;
+#define SELF_TEST
+#ifdef SELF_TEST
+#include <stdio.h>
+int main()
+{
+	Test_t t1;
+	t1.i = 0x4523;
+	t1.s = 0x23;
+	t1.d = 0x012398;
+	printf("t1.s=%d\nt1.i=%u\nt1.d=%lu\n",t1.s,t1.i,t1.d);
+	return 0;
+}
+#endif
+
+ 
+#include <stdio.h>
+#define MAX 20
+void sum(int a[], int n);
+int main(){
+	int n, i, sumarry[MAX];
+	int sum = 0;
+	printf("Enter number of elements in aray :");
+	scanf("%d", &n);
+	printf("Enter %d elements in aray :", n);
+	for (i=0;i<n;i++){
+		scanf("%d", &n);
+		sumarry[i] = n;
+		sum += sumarry[i];
+	}
+	sum(sumarry,n);
+	return 0;
+}
+
+void sum(int a[],  int n){
+	int i;
+	int sum = 0;
+	for(i=0;i<n;i++){
+		printf("sumarry[%d]=%d\n", i, a[i]);
+		sum += a[i];
+	}
+
+	printf("The sum is %d\n", sum);
+}
+

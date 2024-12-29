@@ -1,0 +1,27 @@
+#include <variant>
+_v<std::uint8_t> << "\n";  
+ 
+std::cout << u.index();  
+ 
+u = 80;  
+std::cout << u.index();  
+
+ 
+typedef std::variant< std::monostate, int > my_variant_t;
+my_variant_t n{10};
+n = 0;
+n = std::monostate{};
+std::cout << n.index();  
+ <fim_middle>struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V create() {
+    V v;
+    v.i = 10;
+    v.d = 32.24;  
+    v.f = 32.

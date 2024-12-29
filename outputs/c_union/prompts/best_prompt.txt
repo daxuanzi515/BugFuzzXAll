@@ -1,0 +1,9 @@
+/* A union in C language is a data type that allows storing different types of data on the same memory location. It is similar to struct, but only one of its members can hold a value at a time. The union occupies as much memory as its largest member and other members overlap on that space. The syntax for a union declaration includes a union keyword and an optional attribute specifier followed by a name and group of struct declarations.
+
+Type punning is the act of writing a value to a union using one member, and reading from it using another. If the member used to read the data differs from the one last used to write, the stored value's representation is reinterpreted to match the new member's type.
+
+Unions can also include anonymous unions and structs, considered as part of the enclosing union or struct. However, defining a union without any named members leads to undefined behavior. 
+
+A point to remember, similar to structs, rules of initialization need to be followed while initializing unions. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>

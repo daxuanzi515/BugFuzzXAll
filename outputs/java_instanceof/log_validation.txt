@@ -1,0 +1,680 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/0.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:12: 错误: 不兼容的类型: C无法转换为R
+        System.out.println((new C()) instanceof R);
+                           ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/1.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/2.fuzz failed validation with error message: /tmp/temp1735454007.5162055/Demo172.java:9: 错误: J不是抽象的, 并且未覆盖Runnable中的抽象方法run()
+class J implements Runnable
+^
+/tmp/temp1735454007.5162055/Demo172.java:13: 错误: G不是抽象的, 并且未覆盖Runnable中的抽象方法run()
+enum G implements Runnable {
+^
+/tmp/temp1735454007.5162055/Demo172.java:17: 错误: F不是抽象的, 并且未覆盖Runnable中的抽象方法run()
+class F implements K
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/3.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/4.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/5.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/7.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/8.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:16: 错误: 类重复: Main
+class Main {
+^
+/tmp/temp1735454007.5162055.java:8: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+		Object a = new Integer(10);
+		           ^
+/tmp/temp1735454007.5162055.java:9: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+		Object b = new Integer(10);
+		           ^
+1 个错误
+2 个警告
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/9.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/10.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:15: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/11.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:9: 错误: 可能尚未初始化变量b
+		System.out.println(b); 
+		                   ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/12.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:5: 错误: 意外的类型
+		System.out.println(true instanceof boolean);
+		                   ^
+  需要: 引用
+  找到:    boolean
+/tmp/temp1735454007.5162055.java:5: 错误: 意外的类型
+		System.out.println(true instanceof boolean);
+		                                   ^
+  需要: 类或数组
+  找到:    boolean
+/tmp/temp1735454007.5162055.java:6: 错误: 意外的类型
+		System.out.println(10 instanceof boolean);
+		                   ^
+  需要: 引用
+  找到:    int
+/tmp/temp1735454007.5162055.java:6: 错误: 意外的类型
+		System.out.println(10 instanceof boolean);
+		                                 ^
+  需要: 类或数组
+  找到:    boolean
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/13.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:6: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+		Integer a = new Integer(10);
+		            ^
+/tmp/temp1735454007.5162055.java:10: 错误: 二元运算符 '+' 的操作数类型错误
+        System.out.println(b + a instanceof Integer);
+                             ^
+  第一个类型:  Object
+  第二个类型: Integer
+1 个错误
+1 个警告
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/14.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:36: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/15.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/16.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/17.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:9: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735454007.5162055.java:30: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:38: 错误: 需要 class、interface、enum 或 record
+import static java.lang.System.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/18.fuzz failed validation with error message: /tmp/temp1735454007.5162055/Main.java:25: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055/Main.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.List;
+^
+/tmp/temp1735454007.5162055/Main.java:27: 错误: 需要 class、interface、enum 或 record
+import java.util.Collections;
+^
+/tmp/temp1735454007.5162055/Main.java:44: 错误: 需要 class、interface、enum 或 record
+import java.beans.XMLEncoder;
+^
+/tmp/temp1735454007.5162055/Main.java:45: 错误: 需要 class、interface、enum 或 record
+import java.io.IOException;
+^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/19.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/21.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/22.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:6: 警告: [removal] Integer 中的 Integer(String) 已过时, 且标记为待删除
+		Integer a = new Integer("10");
+		            ^
+/tmp/temp1735454007.5162055.java:8: 错误: 找不到符号
+		b = (Object)$LOCK$INTEGERS.lock(a);
+		            ^
+  符号:   变量 $LOCK$INTEGERS
+  位置: 类 Main
+/tmp/temp1735454007.5162055.java:9: 错误: 已在方法 main(String...)中定义了变量 b
+        Integer b = (Integer)$LOCK$INTEGERS.lock(a);
+                ^
+/tmp/temp1735454007.5162055.java:9: 错误: 找不到符号
+        Integer b = (Integer)$LOCK$INTEGERS.lock(a);
+                             ^
+  符号:   变量 $LOCK$INTEGERS
+  位置: 类 Main
+/tmp/temp1735454007.5162055.java:10: 错误: 找不到符号
+        b = (Object)$LOCK$INTEGERS.lock(a);
+                    ^
+  符号:   变量 $LOCK$INTEGERS
+  位置: 类 Main
+/tmp/temp1735454007.5162055.java:10: 错误: 不兼容的类型: Object无法转换为Integer
+        b = (Object)$LOCK$INTEGERS.lock(a);
+            ^
+5 个错误
+1 个警告
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/23.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/25.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/28.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:15: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:16: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/29.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/31.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/32.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/33.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/34.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/35.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:7: 错误: 找不到符号
+        System.out.println("a instanceof Integer b: " + (a instanceof b));
+                                                                      ^
+  符号:   类 b
+  位置: 类 Main
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/36.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:7: 错误: 不兼容的类型: String无法转换为Integer
+		System.out.println("a instance of Integer: " + (a instanceof Integer));
+		                                                ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/37.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/38.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/39.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/41.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/42.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/43.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:18: 错误: 类重复: Main
+class Main {
+^
+/tmp/temp1735454007.5162055.java:26: 错误: 类重复: Main
+class Main {
+^
+/tmp/temp1735454007.5162055.java:35: 错误: 类重复: Main
+class Main {
+^
+/tmp/temp1735454007.5162055.java:7: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+		a = new Integer(5);
+		    ^
+3 个错误
+1 个警告
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/44.fuzz failed validation with error message: /tmp/temp1735454007.5162055/Main.java:18: 错误: 类重复: Main
+public class Main {
+       ^
+/tmp/temp1735454007.5162055/Main.java:9: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+        Integer c = new Integer(10);
+                    ^
+/tmp/temp1735454007.5162055/Main.java:10: 警告: [removal] Integer 中的 Integer(int) 已过时, 且标记为待删除
+        Object d = new Integer(10);
+                   ^
+1 个错误
+2 个警告
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/45.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/46.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/48.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/49.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/50.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/51.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/52.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:9: 错误: 非法字符: '`'
+```
+^
+/tmp/temp1735454007.5162055.java:9: 错误: 非法字符: '`'
+```
+ ^
+/tmp/temp1735454007.5162055.java:9: 错误: 非法字符: '`'
+```
+  ^
+/tmp/temp1735454007.5162055.java:10: 错误: 进行语法分析时已到达文件结尾
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/53.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:8: 错误: 非法的类型开始
+		System.out.println("a instanceof Integer: " + (a instanceof(Integer.class)));
+		                                                           ^
+/tmp/temp1735454007.5162055.java:8: 错误: 需要<标识符>
+		System.out.println("a instanceof Integer: " + (a instanceof(Integer.class)));
+		                                                                    ^
+/tmp/temp1735454007.5162055.java:8: 错误: 需要<标识符>
+		System.out.println("a instanceof Integer: " + (a instanceof(Integer.class)));
+		                                                                         ^
+/tmp/temp1735454007.5162055.java:9: 错误: 非法的类型开始
+		System.out.println("b instanceof Integer: " + (b instanceof(Integer.class)));
+		                                                           ^
+/tmp/temp1735454007.5162055.java:9: 错误: 需要<标识符>
+		System.out.println("b instanceof Integer: " + (b instanceof(Integer.class)));
+		                                                                    ^
+/tmp/temp1735454007.5162055.java:9: 错误: 需要<标识符>
+		System.out.println("b instanceof Integer: " + (b instanceof(Integer.class)));
+		                                                                         ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/54.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/56.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:14: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:15: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735454007.5162055.java:60: 错误: 未结束的注释
+/*
+^
+/tmp/temp1735454007.5162055.java:61: 错误: 进行语法分析时已到达文件结尾
+Following is the error log on
+                             ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/57.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:13: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:14: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:21: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:22: 错误: 需要 class、interface、enum 或 record
+export class Test {
+^
+/tmp/temp1735454007.5162055.java:23: 错误: 需要<标识符>
+	export class Test2 {
+	      ^
+/tmp/temp1735454007.5162055.java:26: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735454007.5162055.java:27: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:35: 错误: 非法的类型开始
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:35: 错误: 需要<标识符>
+import java.util.ArrayList;
+                          ^
+/tmp/temp1735454007.5162055.java:36: 错误: 非法的类型开始
+import static java.lang.System.out;
+^
+/tmp/temp1735454007.5162055.java:36: 错误: 需要<标识符>
+import static java.lang.System.out;
+                                  ^
+/tmp/temp1735454007.5162055.java:44: 错误: 非法的类型开始
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:44: 错误: 需要<标识符>
+import java.util.ArrayList;
+                          ^
+/tmp/temp1735454007.5162055.java:45: 错误: 非法的类型开始
+import static java.lang.System.out;
+^
+/tmp/temp1735454007.5162055.java:45: 错误: 需要<标识符>
+import static java.lang.System.out;
+                                  ^
+/tmp/temp1735454007.5162055.java:53: 错误: 非法的类型开始
+import java.lang.System;
+^
+/tmp/temp1735454007.5162055.java:53: 错误: 需要<标识符>
+import java.lang.System;
+                       ^
+/tmp/temp1735454007.5162055.java:60: 错误: 非法的类型开始
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:60: 错误: 需要<标识符>
+import java.util.ArrayList;
+                          ^
+/tmp/temp1735454007.5162055.java:73: 错误: 未结束的字符串文字
+		System.out.println("Hello World
+		                   ^
+/tmp/temp1735454007.5162055.java:73: 错误: 进行语法分析时已到达文件结尾
+		System.out.println("Hello World
+		                               ^
+21 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/58.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:12: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:13: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735454007.5162055.java:14: 错误: 需要 class、interface、enum 或 record
+import java.lang.Long;
+^
+/tmp/temp1735454007.5162055.java:15: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735454007.5162055.java:26: 错误: 需要 class、interface、enum 或 record
+import java.lang.Long;
+^
+/tmp/temp1735454007.5162055.java:27: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735454007.5162055.java:69: 错误: 未结束的注释
+/* public Map<String, Integer> evaluateTree(ExpressionTree expr, Collection<String> variables) {
+^
+/tmp/temp1735454007.5162055.java:80: 错误: 进行语法分析时已到达文件结尾
+				break;
+				      ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/59.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/60.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/61.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/62.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:13: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:14: 错误: 需要 class、interface、enum 或 record
+import java.lang.Double;
+^
+/tmp/temp1735454007.5162055.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.Double;
+^
+/tmp/temp1735454007.5162055.java:34: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/63.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/64.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:12: 错误: 需要 class、interface、enum 或 record
+}
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/65.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/66.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:26: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735454007.5162055.java:27: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/67.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:7: 错误: 需要']'
+    System.out.println(b[0] instanceof Integer[][2]);
+                                                 ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/68.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:23: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/69.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:27: 错误: 找不到符号
+		z = 0;
+		^
+  符号:   变量 z
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:31: 错误: 找不到符号
+		x=1;
+		^
+  符号:   变量 x
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:37: 错误: 找不到符号
+		if(x==0 && y == 0) y=1;
+		           ^
+  符号:   变量 y
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:37: 错误: 找不到符号
+		if(x==0 && y == 0) y=1;
+		                   ^
+  符号:   变量 y
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:38: 错误: 不兼容的类型: 从long转换到int可能会有损失
+		return x;
+		       ^
+/tmp/temp1735454007.5162055.java:44: 错误: 找不到符号
+		x=3;
+		^
+  符号:   变量 x
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:48: 错误: 找不到符号
+		++x;
+		  ^
+  符号:   变量 x
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:49: 错误: 找不到符号
+		return x;
+		       ^
+  符号:   变量 x
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:54: 错误: 找不到符号
+		if(y==0 && x==0) z=1;
+		   ^
+  符号:   变量 y
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:54: 错误: 找不到符号
+		if(y==0 && x==0) z=1;
+		                 ^
+  符号:   变量 z
+  位置: 类 Muggal
+/tmp/temp1735454007.5162055.java:55: 错误: 不兼容的类型: 从long转换到int可能会有损失
+		return x;
+		       ^
+/tmp/temp1735454007.5162055.java:60: 错误: 找不到符号
+		--x;
+		  ^
+  符号:   变量 x
+  位置: 类 Muggal
+12 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/70.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/71.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:9: 错误: 不兼容的类型: Integer[]无法转换为Integer
+		System.out.println("b is Integer: " + (arr instanceof Integer));
+		                                       ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/72.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/73.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:7: 错误: 找不到符号
+		Arraylist b = new Arraylist();
+		^
+  符号:   类 Arraylist
+  位置: 类 Main
+/tmp/temp1735454007.5162055.java:7: 错误: 找不到符号
+		Arraylist b = new Arraylist();
+		                  ^
+  符号:   类 Arraylist
+  位置: 类 Main
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/74.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/75.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/76.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/77.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/78.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:7: 错误: 不兼容的类型: int无法转换为boolean
+		if (Boolean.compare(ans, true)) System.out.println("a is Integer");
+		                   ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/79.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/80.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:6: 错误: 未报告的异常错误NoSuchMethodException; 必须对其进行捕获或声明以便抛出
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getConstructor(Integer.class).newInstance(a));
+		                                                                               ^
+/tmp/temp1735454007.5162055.java:6: 错误: 未报告的异常错误InstantiationException; 必须对其进行捕获或声明以便抛出
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getConstructor(Integer.class).newInstance(a));
+		                                                                                                          ^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/81.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:6: 错误: 意外的类型
+		if (1 instanceof Object) System.out.println("TRUE");
+		    ^
+  需要: 引用
+  找到:    int
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/82.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:14: 错误: 类重复: Main
+class Main {
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/83.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/84.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/85.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:11: 错误: 需要 class、interface、enum 或 record
+}
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/86.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/87.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/88.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/89.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/90.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:12: 错误: 非法字符: '`'
+```
+^
+/tmp/temp1735454007.5162055.java:12: 错误: 非法字符: '`'
+```
+ ^
+/tmp/temp1735454007.5162055.java:12: 错误: 非法字符: '`'
+```
+  ^
+/tmp/temp1735454007.5162055.java:13: 错误: 进行语法分析时已到达文件结尾
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/91.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/92.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:10: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object; 
+^
+/tmp/temp1735454007.5162055.java:32: 错误: 需要 class、interface、enum 或 record
+package Outer;
+^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/93.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/94.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:52: 错误: 进行语法分析时已到达文件结尾
+				if (Character.isWhitespace(charArray[j])) {  
+				                                           ^
+/tmp/temp1735454007.5162055.java:3: 错误: 文件名错误：temp1735454007.5162055
+class Main {
+^
+注: /tmp/temp1735454007.5162055.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/95.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:12: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735454007.5162055.java:13: 错误: 需要 class、interface、enum 或 record
+import java.lang.IllegalArgumentException;
+^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/96.fuzz failed validation with error message: /tmp/temp1735454007.5162055.java:9: 错误: 需要')'
+		if (!(((ArrayList)a).add("Hello, I am not Main!"))
+		                                                  ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/97.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/98.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_instanceof/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_instanceof/99.fuzz failed validation with error message: /tmp/temp1735454007.5162055/MainRuntimeStatic1.java:13: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+1 个错误
+

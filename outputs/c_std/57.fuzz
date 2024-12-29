@@ -1,0 +1,34 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&num, &newNum);
+    newNum = num;
+    return &newNum;
+} 
+
+int main(void)
+{
+    int val = rand() % 50;
+    long val2 = longChangeValue(val);
+    char *str = (char*)&val;
+    for (int index = 0; index < sizeof (val); index++)
+    {
+        str[index] = val%10 + '9';
+    }
+    str[sizeof (val)] = '\0';
+    printf("%s",str);
+
+    return 0;
+}
+/* You can get the time from your hardware in the program

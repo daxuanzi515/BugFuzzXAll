@@ -1,0 +1,20 @@
+import java.lang.Object;
+<fim_suffix>ng a simple program with an infinite loop. */
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+
+ 
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(new FileReader("test.txt"));
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* The following was the beginning of the program before. It was an interactive printi

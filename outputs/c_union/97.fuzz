@@ -1,0 +1,78 @@
+#include <stdlib.h>
+,0,0,0,0,0,0,0};
+	char buff2[8] = {"abcde"};
+	char *p = buff2;
+	char *q = buff1;
+	char *temp;
+	 
+	 
+	q = p;
+	*q = 57;
+	printf("The value of buff1 is %s\n",buff1);
+	q = p;
+print:
+	printf("The value of buff2 is %s\n",buff2);
+	if (!q1)
+		goto print;
+	printf("end of function");
+	}
+
+ 
+__asm__("int %$ 15");
+ 
+#define P(a) printf(#a" is of type %s.\n",#a)
+#define PRINT_TYPE typeof __asm__("int $0x80")
+	struct {
+	  char a;
+	  char b[2];
+	  char* c;
+	  };
+	 
+	  int   s0;          
+	  short s1;          
+	  char  s2[4];      
+	  int   s3;          
+      int   s4;          
+	  };
+	union u {
+	  char a;           
+	  int  b;           
+	  long long c;     
+	  };
+	if(sizeof(PRINT_TYPE)==4&&sizeof(int)==4) {
+	  P(int);
+	} else {
+	  P(int);
+	}
+	P(short);
+	P(float);
+	P(double);
+	P(long long);
+	 
+	P(char); P(char *);
+	P(int [4]);
+	P(float*);
+	P(double*);
+	 
+	P(struct x);
+	P(struct u);
+	P(struct);
+	P(union);
+	P(union u);
+	 
+	P(*);
+	P(char[X]); 
+	P(char (*)[4]); 
+	P(const int); 
+<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+    int z;
+};
+union Number{
+		int a;
+		int b;
+		int c;
+		int d;
+		int

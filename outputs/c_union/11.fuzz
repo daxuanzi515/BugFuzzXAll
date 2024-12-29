@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <stdio.h>
+union Datas
+{
+    union Datas *ptr;
+    struct datatags
+    {
+        double Data;
+        char name[80];
+    } dat;
+    double dval;
+    char chrs[80];
+};
+int main(void) {
+    union Datas vals[2], vals2[2];
+    vals[0].dat.Data = -1e-37;
+    vals[0].dat.name = "Sinhala";
+    vals[1].dval = 3.32;
+    vals[1].chrs = "Kumar";
+    FILE *fptr;
+    fptr = fopen("union_write_data.dat", "wb");
+    fwrite(&vals[0], sizeof(vals), 1, fptr);
+    fclose(fptr);
+    fptr = fopen("union_read_data.dat", "rb");
+    fread(&vals2[0], sizeof(vals[0]), 1, fptr);
+    for (int i = 0; i < sizeof(vals[0]) / sizeof(char); i++) {
+        putchar(vals2[0].chrs[i]);
+    }
+    putchar('\n');
+    fread(&vals2[1], sizeof(vals[0]), 1, fptr);
+    putchar((char)vals2[1].dval);
+     
+    fclose(fptr);
+    return (0);
+}

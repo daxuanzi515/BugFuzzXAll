@@ -1,0 +1,43 @@
+#include <variant>
+#include <typeinfo>     
+#include <iostream>     
+#include <memory>     
+#include <type_traits>     
+
+struct Widget     
+{     
+  std::string name;     
+  Widget(const std::string& name): name{name} {}     
+};     
+
+struct ButtonWidget: public Widget     
+{     
+  ButtonWidget(const std::string& name): Widget{name} {}     
+};     
+
+int main()     
+{     
+  std::variant<ButtonWidget, Widget> v;     
+   
+
+  v = std::in_place_type<ButtonWidget>;     
+
+  std::visit([](auto&& arg) { std::cout << arg.name << "\n"; }, v);     
+  return 0;     
+}
+ 
+#include <variant>
+#include <string_view>
+#include <iostream>
+
+ 
+enum class CmdType {
+  Add = 0,
+  Remove = 1,
+};
+
+std::variant<CmdType, int>
+parse(std::string_view const cmd);
+
+ 
+struct MyCmd {

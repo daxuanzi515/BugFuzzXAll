@@ -1,0 +1,93 @@
+from qiskit import QuantumCircuit
+
+qc =  QuantumCircuit(2)
+qc.x(1)
+
+
+qc.x(0)
+
+
+qc.cx(0,1)
+
+qc.name = "SwitchTest"
+
+qc.draw()
+
+
+qc.decompose().qasm()
+
+
+from qiskit import transpile, assemble, Aer
+
+device = 'ibmq_santiago'
+trans_qc = transpile(qc, backend=device, optimization_level=3, seed_transpiler=42)
+qobj = assemble(trans_qc, shots=1000)
+results = Aer.run(qobj, backend=device, shots=1000).result()
+counts = results.get_counts(trans_qc)
+print(counts)
+
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.extensions.quantum_initializer import apply_initializer
+from qiskit.circuit.library import QFT
+from qiskit.circuit.library.arithmetic.adders import Incrementer
+from qiskit.circuit.library.arithmetic.subtraction import FullSubtraction
+from qiskit.circuit.library.arithmetic.arithmetic_paulis import (
+    ArithmeticAddativeEquality,
+)
+from qiskit.circuit.library.arithmetic.reversible_lookup import (
+    ReversibleBooleanLiteralLookup,
+)
+
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.library import QFT
+from qiskit.extensions.quantum_initializer import apply_state_vector
+from qiskit.quantum_info import Statevector
+from qiskit.quantum_info.operators import Operator
+from qiskit.circuit.library.arithmetic.adders import Incrementer
+from qiskit.circuit.library.arithmetic.arithmetic_paulis import (
+    ArithmeticAddativeEquality,
+)
+from qiskit.circuit.library.arithmetic.subtraction import FullSubtraction
+from qiskit.circuit.library.arithmetic.reversible_lookup import (
+    ReversibleBooleanLiteralLookup,
+)
+qc = QuantumCircuit(4)
+qc.xgate(0)
+qc.hgate(2)
+qc.measure([0, 2], [0, 2])
+
+from qiskit.extensions.quantum_initializer import apply_state_vector
+apply_state_vector([0] + [1] * 3, qc.qubits, qc)
+qc.draw()
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

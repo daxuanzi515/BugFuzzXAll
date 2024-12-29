@@ -1,0 +1,97 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, circuit, registers):
+        self._circuit = circuit
+        self._registers = registers
+        self._reversed_order = None
+
+    @property
+    def data(self):
+        
+        return self._circuit[self._registers[0]]
+def create_circuit(f, initial_input):
+    size = len(f)
+    qc = QuantumCircuit()
+    for qreg in range(size):
+        qc.add_register(qreg)
+    if initial_input:
+        for qubit, input_bit in zip(qc[0:size], initial_input[::-1]):
+            if input_bit:
+                qc.x(qubit)
+    return qc
+f = [-1, -1, 0, -1, 0, 1, -1, -1]
+create_circuit(f, [0])
+
+
+
+
+class Gate(LinearFunction):
+    def __init__(self, matrix, label):
+        self._matrix = matrix
+        self._reversed_order = None
+        self._label = label
+
+    @property
+    def label(self):
+        
+        return self._label
+
+def test_create_circuit(self):
+    pass
+
+class SimpleGate(Gate):
+    def __init__(self, c, g, label):
+        super().__init__(c, [c, g], label)
+
+    @property
+    def qsize(self):
+        
+        return self.data[0].length
+
+    @property
+    def a(self):
+        
+        return self.qsize
+
+from qiskit import QuantumCircuit
+
+
+class Gate(LinearFunction):
+    def __init__(self, matrix, label):
+        self._matrix = matrix
+        self._label = label
+
+    @property
+    def data(self):
+        
+        return self._matrix
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

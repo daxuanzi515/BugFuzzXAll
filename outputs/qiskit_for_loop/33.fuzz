@@ -1,0 +1,20 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumregister import QuantumRegister
+
+qreg = QuantumRegister(5, "q")
+creg = QuantumRegister(1, "c")
+my_for = QuantumCircuit(qreg, creg)
+for (i, j) in my_for.for_loop([0, 1, 2, 3, 4], loop_parameter="cbit", body=QuantumCircuit.h,
+                              qubits=[1]) as i:
+  print(f"The index is: {i}")
+  my_for.mct(qubits=[0,1], clbits=[i], target=[2])
+  my_for.h(qubit=0)
+  for (j, k, l, m, n) in my_for.if_else(i, [1], QuantumCircuit.x,
+                                          QuantumCircuit.z, qubits=[0, 1, 2],
+                                          clbits=[2, 0, 1]) as b:
+    if b > 0:
+      my_for.mcx([0], [2])
+    else:
+      my_for.mcu1(theta=1.0, control=[1], target=2)
+  my_for.cz(qubits=[3,4])

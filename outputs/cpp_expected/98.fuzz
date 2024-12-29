@@ -1,0 +1,19 @@
+#include <expected>
+<fim_suffix>
+#include <string>
+#include <vector>
+
+std::pair<std::vector<int>, char> create_result()
+{
+  return std::make_pair(std::vector<int>{1, 2, 3}, 'r');
+}
+
+
+int main()
+{
+   
+
+   
+}
+<fim_middle>
+#include <cstdint>

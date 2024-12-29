@@ -1,0 +1,12 @@
+#include <tuple>
+#include <utility>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t = std::make_tuple(99);
+  auto a(std::apply([](const int& x){return x;}, t));
+  auto b(std::apply([](const int& x){return x;}, t));
+  std::apply([](int& x) {x += 66;}, std::make_tuple(a, b));
+  std::cout << a << '\t' << b << '\n';
+  return EXIT_SUCCESS;
+}

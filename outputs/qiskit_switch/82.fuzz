@@ -1,0 +1,27 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+
+switch_gate = qc.switch([0, 1, 2, 3, 4, 5, 6], 1, 2)
+
+print(switch_gate.condition_value)
+print(switch_gate.default_value)
+print(switch_gate.conditions)
+print(switch_gate.value_index)
+print(switch_gate.value_format)
+print(switch_gate)
+
+from qiskit import QuantumCircuit, QuantumRegister
+qc = QuantumCircuit(2)
+qc.h(0)
+
+print(qc.qasm())<jupyter_output>OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[2];
+h q[0];
+cx q[0],q[1];
+h q[0];
+switch q[0],{0,1,2,3,4,5,6,7,8,9,16,17,10,18,11,19,12,20,13,21,14,22,15,23},{2,3} q[1]

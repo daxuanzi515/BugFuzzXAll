@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+template<int _Val> struct size_t final
+{
+    constexpr size_t(int i = _Val) noexcept : val{i} {}
+    constexpr size_t(double d) : val{static_cast<int>(_Val * d)} {}
+    constexpr operator double() const noexcept {return val / _Val;}
+    constexpr operator int() const noexcept {return val;}
+    constexpr size_t operator *(int i) noexcept {return size_t{val * i};}
+    constexpr size_t operator +() noexcept {return *this;}
+    constexpr size_t operator -() noexcept {return size_t{-

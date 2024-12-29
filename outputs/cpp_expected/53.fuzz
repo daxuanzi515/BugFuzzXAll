@@ -1,0 +1,14 @@
+#include <expected>
+<fim_suffix>nclude <sstream>
+
+int main() {
+    const char* s = "Hello, world!";
+    const auto word = split(s);
+    std::cout << "the longest word in \"" << s << "\" is \"" << word << "\"" << std::endl;
+    return 0;
+}
+
+<fim_middle>
+#include <string>
+#include <iostream>
+#i

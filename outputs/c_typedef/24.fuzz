@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include <stdint.h>
+int main() {
+uint32_t n1, n2, sum;
+n1 = 5;
+n2 = 5;
+sum = n1 + n2;
+printf("%d + %d = %u\n", n1, n2, sum);
+return 0;
+}

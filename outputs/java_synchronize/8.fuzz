@@ -1,0 +1,32 @@
+import java.lang.Object;
+public class SynchronizedBlock {
+    synchronized void message() {
+        System.out.println("This is printed by thread " + Thread.currentThread().getName() );
+        try {
+            Thread.sleep( 50 );
+            System.out.println("Printing done by thread " + Thread.currentThread().getName() );
+        }
+        catch (InterruptedException ex) {
+            System.out.println("Exception message : " + ex.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        Runnable runnable = new Runnable () {
+            SynchronizedBlock obj = new SynchronizedBlock();
+            public void run() {
+                obj.message();
+            }
+        };
+        Thread thread = new Thread( runnable );
+        thread.setName("Thread 1");
+        thread.start();
+        System.out.println("Enter a character");
+        try
+        {
+            String s = System.console().readLine();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

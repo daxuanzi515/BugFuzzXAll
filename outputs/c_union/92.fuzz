@@ -1,0 +1,16 @@
+#include <stdlib.h>
+<fim_suffix>)
+{
+	struct P  q;
+	struct P* ptr = &q;
+	int t = 2345;
+	char x = 'A';
+	(t) = (x) = 40;
+	(ptr->y) = (t);
+	printf("%s %d\n",x, y);
+	return 0;
+}<fim_middle>#include <stdio.h>
+struct S {
+double data;
+}
+main

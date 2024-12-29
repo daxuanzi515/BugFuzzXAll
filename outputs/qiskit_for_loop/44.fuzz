@@ -1,0 +1,48 @@
+from qiskit import QuantumCircuit
+
+
+with QuantumCircuit(2) as loop_circ:
+    for i in range(3):
+        loop_circ.h(i)
+        loop_circ.cx(i, i+1)
+
+    for j, (first, second) in loop_circ.for_loop((0,0), (1,1), range(2)):
+        loop_circ.cx(first, second)
+
+print(loop_circ)
+
+
+with QuantumCircuit(2) as loop_circ_2:
+    loop_circ_2.h(0)
+    loop_circ_2.h(1)
+    loop_circ_2.cx(*loop_circ_2.for_loop((0,0), (1,1), range(1)))
+    loop_circ_2.cx(0, 1)
+
+print(loop_circ_2)
+
+with QuantumCircuit(4) as while_circ:
+    while_circ.h(0)
+    while_circ.h(1)
+    
+    
+    
+    with while_circ.while_loop(0, body=lambda i: while_circ.cx(i,i+1), qubits=(0,1)):
+        while_circ.cx(2,3)
+
+print(while_circ)
+
+with QuantumCircuit(4) as while_circ_2:
+    while_circ_2.h(0)
+    while_circ_2.h(1)
+    
+    
+    with while_circ_2.while_loop(4, body=while_circ_2.cx, qubits=(0,1)):
+        while_circ_2.cx(2,3)
+
+print(while_circ_2)
+
+with QuantumCircuit(4) as circ:
+    circ.cx(3,2)
+    circ.ccx(2,1,0)
+    with circ.if_test(0xff,
+                        body=circ.x(0),

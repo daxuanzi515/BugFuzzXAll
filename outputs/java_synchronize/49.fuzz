@@ -1,0 +1,63 @@
+import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        System.out.println("doSomething");
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        System.out.println("doSomethingElse");
+        return this;
+    }
+    synchronized void mutatorSomethingElse() {
+        System.out.println("mutatorSomethingElse");
+        return;
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.doSomething()) {
+            s = new Sample();
+            synchronized(s.doSomethingElse()) {
+                new Sample().mutatorSomethingElse();
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Sample implements Runnable {
+    private Object lock = new Object();
+    int x = 0;
+    Sample() {
+        Thread t = new Thread(this);
+        t.start();
+    }
+    public void run() {
+        synchronized (lock) {
+            System.out.println("Hello from the other thread!");
+            sleep(1000);
+            x = 1;
+            lock.notify();
+        }
+    }
+    synchronized void mutatorSomethingElse() {
+        System.out.println("mutatorSomethingElse " + x);
+    }
+}
+public class SynchTest1 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.lock) {
+            while (x == 0) {
+                try {
+                    s.lock.wait();
+                }
+                catch (Exception e) {
+                    System.err.println("Exception");
+                }
+            }
+        }
+        s.mutatorSomethingElse();
+    }
+}

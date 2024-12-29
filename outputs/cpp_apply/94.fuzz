@@ -1,0 +1,48 @@
+#include <tuple>
+#include <functional>
+#include <iostream>
+int main()
+{
+  int x = 42, y = 100;
+  std::tuple<int, int> t{ x, y };
+   std::function<void(int, int)> f = [&](int &l, int &r){
+    l = r - l;
+    r = l - r;    
+  };
+  f(std::get<0>(t), std::get<1>(t));
+  std::cout << "x is now : " << x << '\n';
+  std::cout << "y is now : " << y << '\n';  
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  int x = 42;
+  int y = 101;
+  std::tuple<int, int> t{ x, y };
+  std::apply([&](int l, int r) {std::cout << "first call, l = " << l <<  " and r is " << r << '\n'; l = r - l; r = l - r; }, t);
+  std::apply([&](int l, int r) {std::cout << "second call, l = " << l <<  " and r is " << r << '\n'; l = r - l; r = l - r; }, t);
+  std::cout << "x is now : " << x << '\n';
+  std::cout << "y is now : " << y << '\n';  
+  return EXIT_SUCCESS;
+}
+ 
+
+#include <array>
+#include <tuple>
+#include <string>
+#include <functional>
+#include <iostream>
+int main()
+{
+  double x = 4.2;
+  int d = 101;
+  std::string str = "Hello world!";
+  int arr[] = {42, 43, 44};
+  std::cout << sizeof(std::array<int,5>) << '\n';
+  std::apply([&](const double &a, const int b, const std::string &s, const int arr[]) {std::cout << "A double : " << a << '\n'; std::cout << "An int : " << b << '\n';  std::cout << "That string was " << s << '\n';  for (const auto & i : arr) std::cout << i << '\n'; }, std::make_tuple(x, d, str, arr));
+  return EXIT_SUCCESS;
+}
+ 

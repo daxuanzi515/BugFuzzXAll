@@ -1,0 +1,29 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in=new BufferedReader(new FileReader("file.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("something.txt"));
+        String line2;
+        System.out.println("First we will print the contents of the file. Then we use try-with-resources to open a second file");
+        try{
+            line2=in.readLine();
+            System.out.println(line2);
+        }
+        catch(IOException e){
+            System.out.println("Sorry, the first name entered is wrong");
+            reader=new BufferedReader(new FileReader("something.txt"));
+            System.out.println(reader.readLine());
+        }
+        finally{
+            if(in!=null){
+                in.close();
+            }
+            if(reader!=null){
+                reader.close();
+            }
+        }
+    }
+
+}

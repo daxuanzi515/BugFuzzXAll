@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef int Int_t;
+typedef Int_t my_int_t;
+Int_t get_int_t();
+my_int_t another_int_t_variable = get_int_t();
+
+Int_t get_int_t()
+{
+	return 5;
+}
+int main()
+{
+	printf("another_int_t_variable  is %d\n", another_int_t_variable);
+	return 0;
+}

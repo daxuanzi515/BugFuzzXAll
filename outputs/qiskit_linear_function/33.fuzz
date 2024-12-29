@@ -1,0 +1,9 @@
+from qiskit import QuantumCircuit
+
+class OneBitPermutation:
+    def __init__(self, qubit, n):
+        self.qc = QuantumCircuit(n)
+    def mul(self, A, B, sum):
+        self.qc.add_gates([A, B, sum])
+        assert one_bit_permutation(qc.to_gate(), 4): "Wrong."
+    def copy(self, fcn1):

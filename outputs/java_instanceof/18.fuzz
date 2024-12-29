@@ -1,0 +1,55 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+        System.out.println("before");
+        Print();
+        System.out.println("after");
+	}
+
+    public static void Print() {
+        Object b = new Object();
+		Integer a = new Integer(10);
+		System.out.println(b.getClass().getName());
+        System.out.println(a instanceof Integer);
+        System.out.println(b instanceof Object);
+        System.out.println(b);
+        System.out.println(b instanceof Integer);
+		Object a1 = new Main();
+		Integer a2 = new Integer(10);
+		System.out.println(a1 instanceof Integer);
+	}
+
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+public class Main{
+    public static void main(String[] args) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(null);
+		list.add(2);
+		list.add(null);
+		list.add(null);
+		list.add(null);
+		list.add(null);
+		list.add(3);
+		Collections.sort(list);
+		System.out.println(list);
+	}
+}
+
+ 
+import java.beans.XMLEncoder;
+import java.io.IOException;
+ 
+class Main {
+	public static void main(String... args) {
+		try {
+			new File("test");
+		} catch(RuntimeException e) {
+			System.out.println("got a checked exception!!!");
+		}
+	}
+}

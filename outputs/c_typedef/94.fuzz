@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define TRUE true
+#define FALSE false
+typedef enum {TRUE, FALSE} boolean;
+int main()
+{
+    boolean a = TRUE;
+    if (a) printf("a is true\n");
+    else printf("a is false\n");
+    return 0;
+}

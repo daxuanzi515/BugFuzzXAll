@@ -1,0 +1,30 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+int main()
+{
+    FILE *file1 = fopen("test files/wrong-filename.txt", "r");
+    if (!file1)
+        fprintf(stderr, "Error opening file : %s", strerror(errno));
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct book
+{
+    char name[50];
+    char authors[50];
+    char year[];
+};
+void printBook(struct book book)
+{
+    printf(
+"Title:%-30s\tAuthors:%-30s\tPublished:%-5s\n\n",
+        book.name, book.authors, book.year);
+}
+void addBook(struct book book)
+{
+    FILE *file = fopen("new-books.txt", "a+");
+   

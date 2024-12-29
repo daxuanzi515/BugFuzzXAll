@@ -1,0 +1,40 @@
+from qiskit import QuantumCircuit
+
+def create_circuit_entangle():
+    circuit = QuantumCircuit(2, 2)    
+    circuit.h(0) 
+    circuit.cx(0, 1) 
+    circuit.measure(range(2), range(2))    
+    circuit.draw()
+    return circuit, circuit
+
+def run_circuit_entangle(_circuit):
+
+    counts_dictionary = _circuit.run(shots=1024).result().get_counts()
+
+    circuit_bell = {"count": counts_dictionary, "circuit_obj": _circuit}
+
+    return counts_dictionary
+create_circuit()
+_circuit, _circuit_entangled = create_circuit_entangle()
+run_circuit_entangle(_circuit)
+<jupyter_output><empty_output><jupyter_text>IBM Q ExperienceBackend<jupyter_code>from qiskit.providers.ibmq.backends import IBMQBackend
+from qiskit.providers.ibmq import least_busy
+
+from pprint import pprint
+
+def create_circuit_IBM():
+    _circuit = QuantumCircuit(2, 2)
+    _circuit.h(0)
+    _circuit.cx(0,1)
+    _circuit.draw()
+    return _circuit
+_circuit_IBM = create_circuit_IBM()
+available_backends()
+IBMQ_provider.backends()
+least_busy(IBMQ_provider.backends())<jupyter_output><empty_output><jupyter_text>Backend Class<jupyter_code>try:
+    
+    IBMQ_least_busy = least_busy(IBMQ_provider.backends(hub='ibm-q', group='open', project='main'))
+except:
+    
+    

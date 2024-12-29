@@ -1,0 +1,74 @@
+from qiskit import QuantumCircuit
+
+
+def parameter_function(t):
+  return 0.1
+
+
+t = 0.0
+
+
+gate = Gate(LinearFunction(), 3, 2, parameter_function, "p")
+
+
+gate.add_decompositions([("CX p q", [0, 2]), ("CX r s", [0, 1])])
+
+
+qobj = gate.get_instruction()
+
+
+circuit = QuantumCircuit(3)
+circuit.append(qobj, [0, 2, 1])
+circuit.draw(output="text")
+
+
+
+parameters = {'t': 0.1}
+result = execute(circuit, Aer.get_backend('qasm_simulator'), shots=16000, memory=True, coupling_map=coupling_map, basis_gates=basis_gates, parameters=parameters).result()
+
+
+print(result.get_memory()[0])
+```
+
+The first step is importing the Qiskit SDK from the `qiskit` module and printing the version.
+
+```
+{'t': 0.1}
+```
+
+We can also print the Qobj. We pass in a circuit which has a single instruction, which is a gate G.
+
+```
+{'t': 0.1}
+```
+
+We then define the parameter and execute the simulation.
+
+```
+Gate(LinearFunction(), n, k, parameter_function, string)
+```
+
+The first argument represents the LinearFunction class, which takes up 2 qubits and depends on 1 parameters called string.
+
+```
+.add_decompositions(circuit_name, parameters)
+```
+
+This step adds a decomposition. The first argument represents the instruction or label of the decomposition. The second argument represents a list of parameters.
+
+```
+.add_decompositions([("CX p q", [0, 2]), ("CX r s", [0, 1])])
+```
+
+After we add the decomposition, we can assemble and inspect the Qobj.
+
+```
+.get_instruction()
+```
+
+This step uses the information inside the gate to return a Qiskit Instruction object.
+
+```
+qobj = gate.get_instruction()
+circuit = QuantumCircuit(3)
+circuit.append(qobj, [0, 2, 1])

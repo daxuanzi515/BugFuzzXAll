@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct {
+      int x;
+      int y;
+  }point, p1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p1 = point;
+  return (EXIT_SUCCESS);
+}

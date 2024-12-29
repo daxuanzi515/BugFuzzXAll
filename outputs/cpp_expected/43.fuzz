@@ -1,0 +1,76 @@
+#include <expected>
+<fim_suffix>es.
+
+To be able to use std::exception_ptr we need to make the following changes:
+ - Add the header
+#include <exception>
+- Replace noexcept by noexcept(false) in constructor of NoExcept
+*/
+
+struct NoExcept {
+	NoExcept() = default;
+	NoExcept(NoExcept&&) = default;
+	NoExcept& operator =(NoExcept&&) = default;
+
+	bool empty() const noexcept(false) {
+        if (value > 3 || value < 0)
+        	throw std::exception();
+		return value == 0;
+	}
+	explicit operator bool() const noexcept(false) {
+		return!empty();
+	}
+	NoExcept& operator ->() const noexcept(false) {
+		if (empty())
+			throw std::exception();
+		return *this;
+	}
+private:
+	int value = 0;
+};
+
+int main()
+{
+	return 0;
+}
+<fim_middle>
+#include <string>
+
+void test_std_expected_empty_value()
+{
+	 
+}
+
+using str_opt = std::expected<std::string, std::string>;
+
+str_opt add_vowels(std::string str)
+{
+	if (str.empty())
+		return str_opt{ std::in_place, 1, '?', -2, "empty string" };
+	if (str == "")
+		return str_opt{ std::in_place, 1,'m', -3, "an empty string" };
+
+	 
+	str[2] = 'O';
+	str.push_back(str[1]);
+	str.push_back(str[0]);
+	return str;
+}
+
+std::string_view test_add_vowels_result_to_string_view()
+{
+	 
+	return "{ \"OOO\" }";
+}
+
+/*
+The function add_vowels adds leading O to the original string. If the result of this operation was empty 
+(like an empty string or a string with all leading characters removed) it is not desirable to return an empty string since it is 
+the same as an error condition. For this reason we want to return an std::expected holding an optional std::string which only 
+contains a non-empty value when the string was modified.
+In the tests only the string returned needs to be checked but in a complete program a different action should be taken 
+depending if the returned result was empty using error codes, different exception types,...
+
+The std::string class is implicitly constructible from most or all of the standard library value-types:
+int, long, float, double, bool, nullptr_t, std::string_view, std::string, std::wstring_view, std::wstring, std::u32string_view, 
+std::u32string, std::basic_string_view, std::u16string_view, std::u16string, and std

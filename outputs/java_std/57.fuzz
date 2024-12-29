@@ -1,0 +1,25 @@
+import java.lang.Object;
+<fim_suffix>(args[0])+"\r\n";
+		}
+		System.out.print(s+"a. ");
+		s = s+"b. "+args[1];
+		System.out.print(s);
+	}
+}<fim_middle>import java.util.*;
+import java.text.SimpleDateFormat;
+class Greeting{
+	public static String time(String s) {
+		return s+" (at "+new SimpleDateFormat("h:ms a, E d MMM yyyy z").format(new Date())+")\r\n";
+	}
+}
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println(Greeting.time("Hello World"));
+	}
+}
+ 
+public class Greeting{
+	public static void main(String[] args) {
+		String s= new String(args[0]);
+		for(int i=1;i<args.length;i++){
+			s=s+" "+new String

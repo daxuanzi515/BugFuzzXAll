@@ -1,0 +1,105 @@
+#include <expected>
+<fim_suffix>= 5 };
+
+		using unexpected_type = std::unexpected<int>;
+
+		expected_type e = expected_type{ 23 };
+		if (e)
+		{
+			std::string_view test = *e; 
+			cout << *e;
+			*e = 4;
+			cout << *e;
+		}
+
+		unexpected_type u = unexpected_type{ 46 };
+		if (u)
+		{
+			std::string_view test = *u;
+		}
+		else
+		{
+			cout << *u;
+		}
+
+		try
+		{
+			auto [val, has_value] = e.get();
+			cout << val;
+		}
+		catch (const expected_type& e)
+		{
+			cout << *e;
+		}
+		catch (const unexpected_type& u)
+		{
+			cout << *u;
+		}
+	}
+}<fim_middle>
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	{
+		using expected_type = std::expected<int, int>;
+
+		expected_type e = expected_type{ 23 };
+		if (e)
+		{
+			cout << "success: " << *e << '\n';
+		}
+
+		expected_type f{ std::in_place, 7 };
+		if (f)
+		{
+			cout << "success: " << *f << '\n';
+		}
+	}
+
+	{
+		using expected_type = std::expected<int, int>;
+
+		constexpr expected_type e = expected_type{ 23 };
+
+		decltype((e.value())) x = 25;
+
+		if (e)
+		{
+			cout << "success: " << *e << '\n';
+		}
+	}
+
+	{
+		using expected_type = std::expected<string, int>;
+
+		constexpr string test = std::in_place_t{};
+
+		 
+		 
+	}
+
+	{
+		using expected_type = std::expected<std::variant<char, int>, int>;
+		const char* s = "this is a test";
+		expected_type e = expected_type{ 25 };
+
+		if (e)
+		{
+			if (auto t = get_if<int>(&e.value()))
+			{
+				cout << *t;
+			}
+
+			cout << e->index();  
+		}
+
+		e = s;
+		cout << e->data();
+	}
+
+	{
+		using expected_type 

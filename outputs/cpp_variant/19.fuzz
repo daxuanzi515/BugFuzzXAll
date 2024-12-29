@@ -1,0 +1,19 @@
+#include <variant>
+#include <iostream>
+#include <cstdio>
+void change_var(std::variant<int, float, double>& var) {
+    if (auto* i = std::get_if<int>(&var)) {
+        *i = 100;
+    }
+}
+
+int main() {
+    std::variant<int, float, double> var1 = 50;
+    printf("Var1 holds the int %d.\n", std::get<int>(var1));
+    change_var(var1);
+    printf("Var2 holds the int %d.\n", std::get<int>(var1));
+}
+ 
+/* Given the number of games we will need to store (possibly millions) and the amount of space we can allocate (4 KB), we should probably choose to store pointers to the structs, and we should also be able to query that struct's type without having to have any other information about it. This would improve our memory locality and make finding the right type easier (because we don't have to have an array filled with types that we need each time).
+
+What would make our life

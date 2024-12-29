@@ -1,0 +1,34 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            new Object() {
+                synchronized void doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+ 
+class Sample {
+    static int i;  
+    static float f[] = new float[10];  
+}
+ 
+class Sample2 {
+    static String s1 = "hello", s2 = "world";  
+    static Object o = new Object();  
+}
+/* 11.5. The static modifier
+Recall from the previous chapters that each Java program gets its own class loader, with its own separate namespace. A static member of a class is visible to all objects of the class. Therefore, static variables are visible to all objects of the class, but not visible to any particular object. A static array is not shared by all objects, because the elements are each the objects themselves.
+
+When the new variable is constructed, the space for all of the elements (or, for an

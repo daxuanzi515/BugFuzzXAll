@@ -1,0 +1,55 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float, char> t = std::make_tuple(99, 50.0, 'a');
+   
+  std::apply([](int& x, float& y, char& z) {x = x + y + z + 1;}, t);
+  std::cout << "The tuple looks after its modification: ";
+  std::apply([](int& x, float& y, char& z) {std::cout << x << ',';}, t);
+  std::apply([](int& x, float& y, char& z) {std::cout << y << ',';}, t);
+  std::apply([](int& x, float& y, char& z) {std::cout << z << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+#include <string>
+#include <tuple>
+#include <iostream>
+constexpr auto print_result1 = [](int& x, int& y){
+  std::cout << x << y << '\n';
+};
+constexpr auto print_result2 = [](float& x, float& y){
+  std::cout << x << y << '\n';
+};
+constexpr auto print_result3 = [](char& x, float& y){
+  std::cout << x << y << '\n';
+};
+constexpr auto print_result4 = [](std::string& x, float& y){
+  std::cout << x << y << '\n';
+};
+int main()
+{
+   
+  std::tuple tpl{ 1, 2, 3, 4, 5, 6.1F, 8.2F };
+  std::tuple<int&, char&> tpl2{ 
+    std::get<0>(tpl), std::get<3>(tpl), 
+  };
+  std::tuple<char&, int&, int> tpl3{ 
+    std::get<3>(tpl), std::get<4>(tpl), 112
+  };
+   
+  std::apply(print_result1, tpl2);
+  std::apply(print_result2, tpl3);
+   
+  std::apply(print_result3, tpl2);
+  std::apply(print_result4, tpl2);
+  return EXIT_SUCCESS;
+}
+ 
+#include <iostream>
+#include <tuple>
+#include <vector>
+int main()
+{
+  
+   

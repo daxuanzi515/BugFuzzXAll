@@ -1,0 +1,59 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct { 
+     int x;
+     int y;
+}point, *q1, *q2;
+typedef struct {
+      int z; 
+} t;
+void *p;
+main()
+{
+   int z;
+   q1 = &point;
+   p = &t;
+t.z = 0x1234;
+*(int *)(t.z) = 0x4321;
+t.z = 0x4321;
+p = &t.z;
+t.z = *(int *)(q1);
+}
+ 
+typedef int number;     
+  
+
+enum DAY {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY };
+
+int add (int x1, int y1)
+       
+{
+     return x1 + y1;
+}
+
+int main()
+{
+     number x;
+     x = 3;
+     int y;
+     y = square(3);
+     double z;
+     z = 3.14;
+     int m;
+     m = add(z, y);
+     printf("m =%d\n", m);
+     add (0, 0);
+     return x;
+}
+
+double square(number x)
+{
+     return x * x;
+}
+
+int triple(int y)
+{
+     return y * 3;
+}
+/* Define a union called color that has two members black and white. Define 2 variables of type color and use them to show values. Make sure compiler does not accept the definition of other variables of color type in the same program as the defined color variables.
+As you know that in C programming, the data types like char, int, float, double can also be referred as 1, 2, 3, 4 bytes. However, in this case these variable types can

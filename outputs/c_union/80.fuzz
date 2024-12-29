@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+int t;
+struct {
+     int x;
+     int y; 
+} *q1;
+main()
+{
+   int z;
+   q1 = (struct{ 
+      int x;
+      int y; 
+   } *)malloc(sizeof(struct { 
+      int x;
+      int y; 
+      }));
+   scanf("%i",&t);
+   z = t;
+   (*q1).x = z;
+   (*q1).y = z;
+}

@@ -1,0 +1,30 @@
+import java.lang.Object;
+<fim_suffix>ean isValid(String id) {
+  return get(id)!= null;
+}
+private String get(String id)     {
+	try {
+		return id;
+	}
+	catch (Exception e) {
+		return null;
+	}
+}
+}
+*/
+<fim_middle>import java.util.*;
+public class HelloBaby{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next().toString().toUpperCase());
+	}
+}
+ 
+ 
+/* Finally, here is a question for you to answer on your own:
+
+What do you have to do when an exception is thrown by your code?
+Use Scanner to read in a string consisting of a single word. 
+The method must then output back the reversed string.
+

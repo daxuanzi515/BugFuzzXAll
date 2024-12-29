@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <string.h>
+void swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;  
+}
+char *reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+            if (*ptr)
+                swap(ptr, ptr + size - i - 1);  
+            ++ptr;
+        }
+        return array;
+}
+/* In C23, the C Standard Library is expanded with many new functions, such as the addition of the function memset_explicit to copy an array of objects where the order of allocation is reversed and the data copied to the last element of an object before the next object in the allocation is copied to it.
+
+This function is useful when you need to zeroize out an array in order to clear it before setting values on it.
+
+The function memccpy() behaves like the C11 strcpy_s() function, but instead allocates memory for an additional final element of null bytes whenever a terminating character is copied to. It reverses the order of allocation for elements of the data to be copied, allowing a larger array to be copied from a source of similarly-sized data sources with less time and space complexity.
+
+The function strdup() and strndup() operate as strncpy() and strncpy_s() do, but automatically zeroize the terminating character which the length specified of the destination.
+
+The function memalignment() obtains the specified size from alignment bytes and the bit mask of alignment of the memory, such as _Alignof(), and returns a pointer to an address that has that alignment.
+
+The C23 standard proposes a number of bit manipulation functions, including popcount(), rotleft(), rotright(),

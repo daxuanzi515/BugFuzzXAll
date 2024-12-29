@@ -1,0 +1,35 @@
+from qiskit import QuantumCircuit
+
+QFT = [[1/2, -0.25j, 0],
+       [1/2, 0, 1/2],
+       [-0.25j, -1/2, 0]]
+
+swap = [[1, 0, 0, 0],
+        [0, 0, 1, 0]
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+        ]
+
+def circuit(qubits, gate):
+    for ii, _ in enumerate(qubits):
+
+        for _ in range(ii % 2, gate.num_gates, 2):
+            gate.swap(ii, ii + 1)
+
+N = 3;
+gate = MatrixFunction();
+gate.num_gates
+gate.gate.
+
+
+N = 3;
+gate_1 = MatrixFunction()
+gate_1.set(0.0, 1/3, 2)
+gate_1.set(0, 2, 1)
+gate_1.set(0, 1, 1/3)
+gate_2 = MatrixFunction()
+gate_2.set(0.0, 3, 3/4)
+gate_2.set(0, 2, 1/2)
+gate_2.set(0, 1, 5/8)
+
+circuit(range(2), gate_1, gate_2)

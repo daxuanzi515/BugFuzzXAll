@@ -1,0 +1,8 @@
+#include <variant>
+
+#include <vector>
+
+int main() 
+{
+    const std::vector<std::variant<int, double, char>> v = { 3, 2.2, '0' };
+}

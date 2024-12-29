@@ -1,0 +1,75 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  sprintf(str, "%c%s%d%c", 123, "a", 125, 128);
+  printf("String: %s\n", str);
+  free(str);
+}
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  if (argc!= 2) {
+      exit(EXIT_FAILURE);
+  }
+
+  FILE* file = fopen(argv[1], "r");
+  if (file == NULL) {
+    exit(EXIT_FAILURE);
+  }
+
+  char* line = NULL;
+  size_t len = 0;
+  ssize_t read;
+
+  while ((read = getline(&line, &len, file))!= -1) {
+    printf("%.*s", (int)(read - 1), line);  
+  }
+
+  if (line) {
+    free(line);
+  }
+
+  fclose(file);
+
+  return 0;
+}
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void f() {
+  const int a = 2;
+  static int b = 2;
+  int c = a;
+  printf("%d %d %d\n", a, b, c);
+}
+
+int main(int argc, char* argv[]) {
+  int x;
+  char buffer[5];
+  int y;
+
+  f();
+
+  printf("%d\n", x);
+  printf("%d\n", y);
+  printf("%zu\n", strlen(buffer));
+  
+  return 0;
+}
+#include <stdio.h>
+#include <unistd.h>
+int main(int argc, char *argv[]){
+  for(;;){
+    sleep(1000);
+    puts("The program is still running!");
+  }
+}
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(){
+  int fd = open("test", O_CREAT|

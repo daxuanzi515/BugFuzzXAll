@@ -1,0 +1,54 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int x[5];
+    for (int i = 0; i < 5; i++)
+    {
+        scanf("%d", &x[i]);
+    }
+}
+ 
+void display (int *array, int n)
+{
+    for (int i = 0; i < n; i++){
+        printf ("%d ", array[i]);
+    }
+    printf ("\n");
+}
+int main ()
+{
+    int n, array [100];
+
+    printf ("Enter amount of elements\n");
+    scanf ("%d", &n);
+
+    for (int i = 0; i < n; i++){
+        printf ("Enter element \n");
+        scanf ("%d", &array[i]);
+    }
+
+    int element = 0;
+    printf ("Enter element which you want to find\n");
+    scanf ("%d", &element);
+
+    int result = LinearSearch (array, 0, n - 1, element);
+
+    if (result == -1)
+        printf ("Element is not found");
+    else
+        printf ("Element is found at index %d", result);
+}
+ 
+int LinearSearch (int array [], int start, int end, int element)
+{
+    int i;
+
+    for (i = start; i <= end; i++)
+    {
+        if (array [i] == element)
+            return i;
+    }
+    return -1;
+}
+

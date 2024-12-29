@@ -1,0 +1,23 @@
+import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Sample2 {
+    synchronized void callDoSomething() {
+        doSomething();
+    }
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread().getName() + ", doing something " + Math.random());
+    }}
+class NewMain {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+        Sample2 s2 = new Sample2();
+        s2.doSomething();
+        s2.callDoSomething();
+    }}

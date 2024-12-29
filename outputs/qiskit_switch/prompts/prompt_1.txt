@@ -1,0 +1,25 @@
+'''The QuantumCircuit.switch() in Qiskit is a new method that allows execution of circuits based on a numeric input. It supports a builder interface to construct switch statements. The input can be a classical register, bit, or slice and the corresponding circuit will execute based on the matching value. Multiple values can connect to the same circuit, and an always-matching label, CASE_DEFAULT, can also be utilized.
+
+An example of a switch() statement:
+
+```python
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+
+qreg = QuantumRegister(2)
+creg = ClassicalRegister(2)
+qc = QuantumCircuit(qreg, creg)
+
+qc.h([0, 1])
+qc.measure([0, 1], [0, 1])
+with qc.switch(creg) as case:
+  with case(0):  # if the register is '00'
+    qc.z(0)
+  with case(1, 2):  # if the register is '01' or '10'
+    qc.cx(0, 1)
+  with case(case.DEFAULT):  # the default case
+    qc.h(0)
+```
+
+The switch() statement supports Qiskit compiler stack and can be serialized to QPY. In its full form, it will return a set of instructions, and in its context-manager mode, it can be repeatedly entered to produce cases for the switch statement. Incorrect calling conventions raise a CircuitError exception.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit

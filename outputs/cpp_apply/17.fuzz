@@ -1,0 +1,30 @@
+#include <tuple>
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <utility>
+template<typename... Types>
+struct overload : Types... { using Types::operator()...; };
+template<typename... Types>
+overload<Types...> overloaded(Types... args)
+{
+    return {};
+}
+using my_tuple1_type = std::tuple<std::string, std::pair<int, double>, std::vector<int>, std::vector<float>>;
+
+ 
+auto my_function = [](auto a, auto b, auto c, auto d)
+{
+    return std::apply(overloaded
+    {
+        [](auto t1, auto t2, auto t3) { std::cout << t1 << " | " << t2 << " | " << t3; },
+        [](auto t1, auto t2, auto t3, auto t4) { std::cout << t1 << " | " << t2 << " | " << t3 << " | " << t4; }
+    }, std::forward_as_tuple(a,b,c,d));
+};
+int main()
+{
+    my_tuple1_type mytuple1{"Test string", {11, 4.1}, {11, 12, 13}, {1.0f, 2.0f, 3.0f, 4.0f}};
+    my_function(mytuple1);  
+    return (0);
+}

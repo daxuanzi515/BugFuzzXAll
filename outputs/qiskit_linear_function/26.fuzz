@@ -1,0 +1,40 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, input_list=''):
+        n = len(input_list)
+        m = 2**n
+        A = [[0]*m for j in range(m)]
+        for row in range(m):
+            temp = row2binary(row, n)
+            for col_ind in range(n):
+                col = binary2dec(temp[:col_ind]+temp[col_ind+1:])
+                A[row][col]
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

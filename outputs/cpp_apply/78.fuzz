@@ -1,0 +1,11 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::pair<int, float> p{ 88, 22.22 };
+  std::tuple<int&, const float&> t{ std::get<0>(p), std::get<1>(p) };
+  std::apply([](int& x, const float& y) {x=x* y;}, t);
+  std::cout << std::get<0>(p) << '\n';
+  std::cout << std::get<1>(p) << '\n';  
+  return EXIT_SUCCESS;
+}

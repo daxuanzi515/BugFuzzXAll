@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer("10");
+		System.out.println(b instanceof Object);
+		b = (Object)$LOCK$INTEGERS.lock(a);
+        Integer b = (Integer)$LOCK$INTEGERS.lock(a);
+        b = (Object)$LOCK$INTEGERS.lock(a);
+	}
+}

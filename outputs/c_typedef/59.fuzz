@@ -1,0 +1,45 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+void print_point(Point_t* p)
+{
+	printf("(%d, %d)\n", p->x, p->y);
+}
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int less_than(int a, int b)
+{
+	return a < b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	FunctionPtr less = less_than_than;
+	if(greater(p->x, p->y))
+	{
+		print_point(p);
+	}
+	else
+	{
+		less(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+		print_point(&max_point);
+	}
+	free(p);
+	return 0;
+}

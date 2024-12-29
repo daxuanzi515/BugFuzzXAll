@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef char* string;
+int main()
+{
+    string* name;
+    name = malloc(26*sizeof(char));
+    printf("Please enter your name\n");
+    scanf("%25s", *(name));
+    name = realloc(name, strlen(*(name))+26*sizeof(char));
+    printf("Hi %s, your ID is %ld\n", *(name), (size_t)(*(name)));
+    return 0;
+}

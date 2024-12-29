@@ -1,0 +1,55 @@
+from qiskit import QuantumCircuit
+
+print('Create quantum circuit in Qiskit in Python that uses the switch API.')
+
+
+print('Create a quantum circuit that uses a bit value as an input to control operations on a quantum wire.')
+
+
+print('Create a quantum circuit that uses an Integer as an input to control operations on a quantum wire.')
+
+
+print('Create a quantum circuit that uses a quantum wire value as an input to control operations.')
+
+quant = QuantumCircuit(2,2)
+quant.h(0)
+quant.cx(0,1)
+
+
+print('The QISKIT SwitchCase statement provides a convenient solution for defining the case based on input.')
+
+
+print('When compiled, this circuit is equivalent to the following circuit. The SwitchCase statement is compiled into a series of conditional gates, that provide the condition for the controlled gates to be used. The SwitchCase statement is executed when the circuit is executed.')
+
+
+
+print("In the next example that will not be executed in this section, a quantum circuit that uses the SwitchCase statement is demonstrated.")
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

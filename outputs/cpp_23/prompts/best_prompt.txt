@@ -1,0 +1,23 @@
+/* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>

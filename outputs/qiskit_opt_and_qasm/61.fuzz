@@ -1,0 +1,42 @@
+from qiskit import QuantumCircuit
+
+def create_circuit_with_decompose(shots):
+    circuit_decomposer = QuantumCircuit(3, 3, name="Decomposer Circ")
+    circuit_decomposer.h(0)
+    circuit_decomposer.cx(0, 1)
+    circuit_decomposer.rz(0.432, 2)
+    circuit_decomposer.cx(1, 2)
+    circuit_decomposer.ry(0.543, 1)
+    return circuit_decomposer
+def run_circuit_with_decompose(circuit_decomposer, shots):
+    result = circuit_decomposer.decompose().run(shots).result()
+    counts_dict = result.get_counts()
+    circuit_dict = {"circuit_obj": "circuit_decomposer", "count": counts_dict}
+    return circuit_dict
+def run_circuit(circuit_decomposer, shots):
+    result = circuit_decomposer.run(shots).result()
+    counts_dict = result.get_counts()
+    circuit_dict = {"circuit_obj": "circuit_decomposer", "count": counts_dict}
+    return circuit_dict
+from qiskit import (
+    QuantumCircuit, ClassicalRegister, QuantumRegister
+)
+import pandas as pd
+
+circ = QuantumCircuit(
+    QuantumRegister(1),
+    ClassicalRegister(1),
+    name='qc0'
+
+)
+circ.h(0)
+circ.h(0)
+circ.h(0)
+
+circ.ccx(range(3))
+circ.ccx(range(3))
+circ.ccx(range(3))
+
+circ.draw(output='mpl', style=('style.mplstyle','styles_mplstyle', '''h { width: 0.208925em; }
+.s0 { fill: none; stroke: 
+.s1 { fill: none; stroke: 

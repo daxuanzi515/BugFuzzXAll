@@ -1,0 +1,15 @@
+/* `std::variant` is a class template in C++17 that represents a type-safe union. An instance of `std::variant` holds a value of one of its alternative types at any given time. The types are specified as template parameters and should meet the Destructible requirements. 
+
+Key features: 
+
+- It cannot hold references, arrays, or the void type. 
+- It can hold the same type more than once, and cv-qualified versions of the same type.
+- By default, a `std::variant` holds a value of its first alternative.
+- `std::variant` offers several member functions such as constructors, destructors, assignment operators, observers (`index`, `valueless_by_exception`), and modifiers (`emplace`, `swap`).
+- Non-member functions include `visit`, `holds_alternative`, `std::get(std::variant)`, `get_if`, comparison operators, and `std::swap(std::variant)`.
+- Helper classes include `monostate` (placeholder type), `bad_variant_access` (exception), `variant_size/v`, `variant_alternative/t`, and `std::hash<std::variant>`.
+- `variant_npos` is a helper object representing the index of the variant in an invalid state.
+
+In general, `std::variant` is a powerful and flexible tool in C++ that helps you to manage a collection of different types in a type-safe manner. */
+/* Please create a very short program which combines std::variant with new C++ features in a complex way */
+#include <variant>

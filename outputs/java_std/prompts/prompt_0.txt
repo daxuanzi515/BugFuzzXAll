@@ -1,0 +1,11 @@
+/* The document describes the functionalities of various modules in the Java Platform, Standard Edition (Java SE) and the Java Development Kit (JDK) API Specification Version 20. 
+
+The Java SE section includes modules like 'java.base' for foundational APIs, 'java.desktop' for UI toolkits, and 'java.sql' for the JDBC API. These APIs form the core foundation of general-purpose computing in Java.
+
+The JDK section has specifications like 'jdk.compiler' for system Java compiler, 'jdk.jfr' for JDK Flight Recorder, and 'jdk.jlink' for creating run-time images. These modules are specific to the JDK and offer advanced functionality beyond the standard Java SE.
+
+Furthermore, there are special modules like 'jdk.accessibility' for assistive technologies and 'jdk.httpserver' for the HTTP server API.
+
+The document collectively serves as an overview of the fundamental and advanced application programming interfaces available in Java SE and JDK, providing the complete suite of tools for developing, compiling, debugging, and managing Java applications. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;

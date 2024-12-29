@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    signed char *valptr = malloc(sizeof(signed char));
+*valptr = 127;
+printf("%d\n", *valptr);
+ 
+return 0;
+}
+ 

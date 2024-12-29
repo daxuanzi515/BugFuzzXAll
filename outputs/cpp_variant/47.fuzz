@@ -1,0 +1,52 @@
+#include <variant>
+<fim_suffix>   std::cout << "The variant has the value " << v << "\n";
+    assert(!v.has_value() && "There's an error at the variable!");
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    V() = default;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+    V(const V& other) = default;  
+    V(V&& other) = default;  
+};
+V create() {
+    V v;
+    v.i = 10;
+    v.d = 0.0;
+    v.f = 0.3224f;
+    return v;
+}
+int main() 
+{
+    V v = create(); 
+    v.print();
+}
+ 
+#include <variant>
+#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+
+V create() {  
+    V v;
+    std::cout << "Enter values";
+    std::cin >> v.i;
+    std::cin >> v.f;
+     
+    
+    return v;
+}
+int main() {
+    V v = create(); 
+ 

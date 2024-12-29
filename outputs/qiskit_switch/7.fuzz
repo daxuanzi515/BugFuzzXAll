@@ -1,0 +1,47 @@
+from qiskit import QuantumCircuit
+
+qr = QuantumRegister(6)
+cr = ClassicalRegister(6)
+circuit = QuantumCircuit(qr, cr)
+
+circuit.h(qr[3])
+
+circuit.cx(qr[3], qr[2])
+
+circuit.measure(qr, cr)
+with Switch(circuit, 3): 
+    
+    with Switch.case(1):
+        
+        circuit.h(qr[0])
+    
+    with Switch.case(0):
+        
+        circuit.x(qr[2])
+    
+    with Switch.default():
+        
+        circuit.x(qr[5])
+
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.circuit.controlflow import for_loop 
+from qiskit.circuit.controlflow import BreakLoop, ContinueLoop 
+qr = QuantumRegister(3)
+cr = ClassicalRegister(3)
+circuit = QuantumCircuit(qr, cr)
+
+circuit.h(qr[0])
+circuit.h(qr[1])
+
+with for_loop(circuit, range(5)):
+    
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    
+    with BreakLoop():
+        
+        circuit.measure(qr[2], cr[2])
+        circuit.add_condition(cr[2], 1, BreakLoop())
+'''The builder interface allows a circuit to branch out to two new blocks, using the “if” statement with a register. Branching on registers will not be supported by the final Qiskit 0.23.0 version, but the new conditional operation will. This requires a conditional gate on the QuantumCircuit with a register as input. A new operation will allow users to add a block of code that corresponds to a given input.

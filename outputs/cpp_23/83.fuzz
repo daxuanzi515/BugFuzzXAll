@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string s{argv[2]};
+   }
+   return 0;
+}
+ 
+ 
+It solves the memory reclaiming issue when using strings of unknown length.
+It makes it easier to work with strings with a certain length.
+It adds a std::string_view class to pass a reference to a string
+*/

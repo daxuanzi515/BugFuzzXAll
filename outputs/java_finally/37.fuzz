@@ -1,0 +1,26 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Program1{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line;
+        try{
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+        finally{
+            if(in!= null){
+                try{
+                    in.close();
+                }
+                finally{
+                    if(in == null){
+                        System.out.println(5);
+                    }
+                }
+            }
+        }
+    }
+}

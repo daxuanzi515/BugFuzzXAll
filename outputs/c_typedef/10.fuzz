@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+int_t f(int_t arg1, int_t arg2)
+{
+    return arg1 + arg2;
+}
+int main(void)
+{
+    int_t i;
+    int_t count = 0;
+    char c;
+    i = 20;
+    while( (c = getchar())!= '\n' ) {
+        ++count;
+    }
+   printf("Count = %d \n", count);
+   return EXIT_SUCCESS;
+}

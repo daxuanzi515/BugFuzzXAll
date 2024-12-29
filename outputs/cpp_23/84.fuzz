@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[]) 
+{
+   if (argv[1] == "something")
+   {
+      std::string s = argv[2]
+   }
+   return 0;
+}

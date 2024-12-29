@@ -1,0 +1,56 @@
+from qiskit import QuantumCircuit
+
+quantum_circuit = QuantumCircuit(2, 2)
+quantum_circuit.reset(range(2)) 
+quantum_circuit.h(0)
+quantum_circuit.draw()
+from qiskit.visualization import plot_histogram
+qc = create_circuit(True)
+qc.draw(output='mpl')
+result = run_circuit(qc, True)
+plot_histogram(result[circuit_bell['counts']])
+def bell():
+    my_circuit = QuantumCircuit(2, 2)
+    my_circuit.h(0)
+    my_circuit.cx(0, 1)
+    my_circuit.measure(range(2), range(2))
+
+    job = execute(my_circuit, backend=backend_sim, shots=4096)
+
+    counts = job.result().get_counts()
+    print(counts)
+bell()
+
+def bell_circuit():
+    bell_circuit = QuantumCircuit(2, 2)
+    bell_circuit.h(0)
+    bell_circuit.cx(0,1)
+    barrier(bell_circuit)
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

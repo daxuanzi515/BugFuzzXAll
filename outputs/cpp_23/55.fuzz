@@ -1,0 +1,20 @@
+#include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <limits>
+#include <memory>
+#include <optional>
+#include <tuple>
+#include <type_traits>
+#include <vector>
+#include <variant>
+int main() 
+{
+  int i = 10;
+  int x = i;
+  std::unique_ptr p = std::make_unique<int>(10);
+  std::cout << *p << std::endl;
+  int *pp = new int;
+  delete pp;
+  return 0;
+};

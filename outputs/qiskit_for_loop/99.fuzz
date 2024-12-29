@@ -1,0 +1,88 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, execute, Aer, IBMQ
+
+q = QuantumRegister(2, 'q')
+
+
+index_set = QuantumRegister(1)
+q.add_register(index_set)
+
+c = ClassicalRegister(2, 'c')
+qcn = QuantumCircuit(q,c, name='for_circuit')
+
+from math import pi
+
+loop_parameter = Parameter('k')
+
+
+circuit_body = QuantumCircuit(q,c, name="body")
+circuit_body.rz(2*pi*loop_parameter/10, q[0])
+circuit_body.cx(q[0], q[1])
+circuit_body.measure(q, c)
+
+
+qcn = qcn.for_loop(index_set, loop_parameter, circuit_body)
+
+
+
+
+
+
+
+qcn.for_loop(index_set, loop_parameter, body = circuit_body).draw()
+
+sim = Aer.get_backend('aer_simulator')
+execute(qcn, backend=sim, shots=1024).result().get_counts()
+
+
+
+
+import math
+N = 10           
+q = QuantumRegister(N)    
+c = ClassicalRegister(N)
+qc = QuantumCircuit(q,c)
+
+index = QuantumRegister(1)
+param = Parameter('theta')
+
+body = QuantumCircuit(q,c)
+
+body.rz(param / 5, q)
+body.cx(q[0],q[-1])
+body.x(q[0])
+body.measure(q, c)
+
+for i in range(N-1):
+    qc.rx(1.5*math.pi/2, q[i])
+    qc.barrier()
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

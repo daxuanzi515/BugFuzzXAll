@@ -1,0 +1,32 @@
+#include <variant>
+<fim_suffix> 10.09};
+    v = d;
+    std::cout << std::get<0>(v) << '\n';
+    std::cout << std::get<1>(v) << '\n';
+    std::cout << std::get<2>(v) << '\n';
+}
+
+bool comp(std::variant <int, std::string> a, std::variant <int, std::string> b) {
+    if (a.index() == b.index()) {
+        if (holds_alternative<int>(a)) {
+            return std::get<int>(a) < std::get<int>(b);
+        }
+        else if (holds_alternative<std::string>(a)) {
+            return std::get<std::string>(a) < std::get<std::string>(b);
+        }
+        else if((a == b)) {
+            std::cout << "Equal\n";
+            return true;
+        }
+    }
+    return false;
+}
+ 
+#include <variant>
+#include <iostream>
+#include <typeinfo>
+
+ 
+std::variant <std::string, int> variant1 = "hello";
+ 
+std::sort(v.begin(), v.end(), [](std::variant <int, std::string, double> lhs, std::variant <int, std::string, double> rhs) { return std::visit([](auto &&arg1, auto &&arg2){ return arg1.

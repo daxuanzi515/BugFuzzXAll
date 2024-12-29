@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        RandomAccessFile random = new RandomAccessFile("test.dat","rw");
+        random.writeInt(1168);
+        random.writeInt(2152);
+
+        random.close();
+    }
+}

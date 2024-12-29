@@ -1,0 +1,37 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int&, float&> t = std::make_tuple(static_cast<int&>(42), static_cast<float&>(42.5));
+  std::apply([](int& x, float& y) {x + y;}, t);
+  std::apply([](const int& x, const float& y) {std::cout << x << y << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+#include <iostream>
+#include <string>
+int main()
+{
+  std::string a2("Hello, world!");
+  std::string b2(std::forward(a2));
+   
+  const std::string& a = a2;
+   
+  const std::string c = std::forward(b2);
+   
+  std::cout << a << '\n';
+  std::cout << b2 << '\n';
+  std::cout << c << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float, std::string, bool, std::array<char, 4>> tuple = {42, 42.0, "Hello, world!", true};  
+   
+  std::cout << std::get<0>(tuple) << '\n';
+  std::cout << std::get<1>(tuple) << '\n';
+  std::cout << std::get<2>(tuple) << '\n';
+  std::cout << std::get<3>(tuple) <<

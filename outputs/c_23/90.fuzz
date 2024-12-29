@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  char* s = malloc(sizeof(char) * 6);
+  if (s == NULL) {
+    perror("malloc");
+    return 1;
+  }
+  s[0] = 123;
+  s[1] = 125;
+  s[2] = 0;
+  s[3] = 'a';
+  s[4] = '\\';
+  s[5] = 128;
+  printf("String: %s\n", s);
+  free(s);
+  return 0;
+}

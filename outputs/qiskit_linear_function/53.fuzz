@@ -1,0 +1,53 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+    def set(self, x, y, z, label=''):
+        self.instructions = []
+        instructions = []
+        instructions += [('rx', x, y, label=label)]
+        instructions += [('rz', y + z, x, label=label)]
+        instructions += [('rx', x, y, label=label)]
+        for function, target, control, label in instructions:
+            instruction = QuantumCircuit()
+            instruction.append(function, [target], label=label)
+            if control:
+                instruction.cx(*control, target)
+            self.instructions += [instruction]
+    def __matmul__(self, gate):
+        return Gate.__mul__(self, gate)
+    def __mul__(self, gate):
+        instructions = []
+        for instruction in gate.instructions:
+            self.instructions += [instruction]
+        return self
+    def swap(self, x, y):
+        for instruction in self.instructions:
+            instruction.swap(x, y)
+
+
+
+
+from qiskit import QuantumCircuit
+q = QuantumCircuit(2)
+
+
+from qiskit.quantum_info import unitary
+from qiskit.providers import aer
+
+
+gate = Gate()
+gate.set(0, 0, 0, label='h')
+
+
+backend = aer.QasmSimulator()
+qobj = backend.run(gate.qasm()).result().get_unitary(gate.qasm())
+control_unitary = unitary(gate.control())
+target_unitary = unitary(gate.unitary())
+
+
+assert round(qobj[1][0], 8) == round(control_unitary[0][0], 8)
+assert round(qobj[1][1], 8) == round(target_unitary[0][0], 8)
+assert round(qobj[1][2], 8) == round(target_unitary[0][1], 8)
+assert round(qobj[1][3], 8) == round(-1j * target_unitary[0][2], 8)
+assert round(qobj[1][4], 8) == round(control_unitary[1][0], 8)
+assert round(qobj[1][5], 8) == round(target_unitary[1][0], 8)

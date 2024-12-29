@@ -1,0 +1,54 @@
+#include <stdlib.h>
+#include <string.h>
+ 
+int main(void)
+{
+    union __Union {
+        union _nested_union
+        {
+            char ch[100];
+             
+            struct _subStruct
+            {
+                int _member1;
+                int _member2;
+            };
+            int i;
+            struct __s1{
+                char s1_me1;
+        };
+    };
+    int k;
+};
+    int k;
+        printf("%p", &k);
+            printf("%p", &__Union);
+    )
+}
+ 
+int main()
+{
+    union __Struct
+        {
+            int i;
+            char ch[100];
+            int k;
+        }u1;
+        u1.i = 0x5678;
+        printf("%d\n",u1.i);
+         
+        u1.ch[10] = '0';
+}
+ 
+#include<stdio.h>
+union __Union {
+    int a;
+    char s;
+}u;
+int main()
+{
+    u.a=1000;
+    printf("%d\n",u.a);  
+    u.s='c';
+    printf("%c\n",u.s);
+}

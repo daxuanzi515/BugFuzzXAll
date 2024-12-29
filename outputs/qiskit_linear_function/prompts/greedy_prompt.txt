@@ -1,0 +1,5 @@
+'''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit

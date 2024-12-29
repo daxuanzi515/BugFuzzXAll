@@ -1,0 +1,25 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.FileNotFoundException;
+import java.io.FileReader ;
+import java.io.IOException;
+public class ThrowsException {
+    public static void main(String[] args) {
+       try{
+           BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+           String line;
+           while((line = in.readLine())!= null){
+               System.out.println(line);
+           }
+       }
+       catch (FileNotFoundException e){
+           e.printStackTrace();
+       }
+       catch (IOException e) {
+           e.printStackTrace() ;
+       }
+       finally{
+           System.out.println("finished");
+       }
+    }
+}

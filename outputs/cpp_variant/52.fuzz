@@ -1,0 +1,42 @@
+#include <variant>
+"Variant: " << i << "\n";
+    }
+    void visit_v(const std::string &i) const {
+        std::cout << "Variant: " << i << "\n";
+    }
+    void visit(int i) {
+        std::cout << "Variant: " << i << "\n";
+    }
+    void visit_v(int i) const {
+        std::cout << "Variant: " << i << "\n";
+    }
+};
+int main() 
+{
+    std::variant<int, std::string> var;
+    var = "test";
+    Visitor v;
+    var.visit(v);
+    var.visit(std::move(v));
+}
+ 
+ 
+template <class T>
+int getTupleSize(const std::tuple<T>& v) {
+    return 0;
+}
+template <class T, class... Ts>
+int getTupleSize(const std::tuple<T, Ts...> v) {
+    return 1 + std::get<0>(v) + getTupleSize(std::tuple<Ts...>(std::get<1>(v)));
+}
+ 
+ 
+ 
+ 
+template <class T>
+using TUPLE = std::tuple<T>;
+int main() {
+    int m = 8;
+    V v = {m, 8.f, 2.5};
+     
+     

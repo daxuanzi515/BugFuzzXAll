@@ -1,0 +1,32 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t{ 5, 8.0 };
+  std::apply([&](auto... args) {((std::cout << args << std::endl, 0)...);}, t);  
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::array<int, 2> a{4, 5};
+  decltype(a) ar1{ a };
+  decltype(std::get<0>(a)) ar2{ std::get<0>(a) };
+  decltype(std::get<0>(a)) ar3{ std::get<1>(a) };
+  std::cout << *ar2 << '\n';   
+  std::cout << *ar3 << '\n';  
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <iterator>
+#include <iostream>
+int main()
+{
+  std::array<int, 2> a{4, 5};
+   
+  std::copy_n(std::begin(a), 3, std::ostream_iterator<std::string>{std::cout, " "});
+  return EXIT_SUCCESS;
+}

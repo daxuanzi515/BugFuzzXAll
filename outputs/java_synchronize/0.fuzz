@@ -1,0 +1,90 @@
+import java.lang.Object;
+
+import java.lang.RuntimeException;
+import java.lang.String;
+import java.lang.System;
+import java.lang.NullPointerException;
+import java.lang.InterruptedException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+
+import java.util.List;
+
+class Thread_2 extends Thread {
+    public synchronized void run() {  
+        System.out.println("Thread: Running...");
+        System.out.println("Thread: Synchronized method call");
+    };
+    public synchronized static void srun() {  
+        System.out.println("Thread: Static method call");
+        System.out.println("Thread: Synchronized state change");
+    };
+    public void foo() {  
+        System.out.println("Thread: foo method");
+        synchronized (obj) {}
+        System.out.println("Thread: bar method");
+    }
+    public static void main(String[] args) {
+        Thread_2 thread = new Thread_2();
+         
+         
+         
+        obj.synchronized (thread) {  
+             
+             
+             
+        }
+         
+         
+         
+    }
+};
+class Thread_3 extends Thread {
+    public synchronized void run() {  
+        System.out.println("Thread: Synchronized method call");
+    };
+    public synchronized static void srun() {  
+        System.out.println("Thread: Static method call");
+        System.out.println("Thread: Synchronized state change");
+    };
+    public synchronized void foo() {  
+        System.out.println("Thread: foo method");
+        System.out.println("Thread: bar method");
+    }
+    public static void main(String[] args) {
+        new Thread_3().foo();  
+        Thread_3 thread = new Thread_3();
+        thread.start();  
+        thread.srun();  
+        thread.run();  
+        thread.foo();  
+    }
+};
+
+
+
+public class Java_02_Synchronize_2 {
+    public static void main(String[] args) {
+         
+         
+         
+    }
+
+    public static void thread2() {
+        new Thread_2().start();
+    }
+
+    public static void thread3() {
+        new Thread_3().start();
+    }
+
+    public static void thread4() {
+        synchronized (list) {
+            System.out.println(list.size());
+        }
+    }
+}
+
+ 
+/* 

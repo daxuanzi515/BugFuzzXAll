@@ -1,0 +1,3359 @@
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import ForLoopOp, ForLoopOpBuilder
+
+
+n = 3
+indexset = list(range(n))
+
+
+for loop_var in indexset:
+    loop_body = QuantumCircuit(1)
+    loop_body.h(0)
+    loop_body.cx(0,0)
+    loop_body.measure_all()
+circuit = QuantumCircuit(1)
+with circuit.for_loop(indexset, loop_parameter='i', body=loop_body) as loop:
+    circuit.u1(1.57,0)
+    circuit.u2(0, 1.57, 0)
+    circuit.u3(0, 0, 1.57, 0)
+    circuit.u2(3.14, 2.71, 0)
+circuit.repeat_measure(0, range(n), [0,1,2])
+
+
+
+
+display(circuit.draw())
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def if_func(params, x):
+    if x < 1.5:
+        return 0
+    return 1
+def if_else_func(params, x):
+    if x > 1:
+        return 0
+    else:
+        return 1
+circuit = QuantumCircuit(4, name='if-test-circuit')
+
+
+
+
+circuit.qam.set_available_regs(['c', 'aux'])
+
+circuit.if_test(lambda params: if_func(params, circuit.q[0].value),
+                lambda params: if_else_func(params, circuit.q[1].value),
+                circuit.q[0],
+                circuit.q[1],
+                circuit.c,
+                circuit.q[2],
+                circuit.q[3],
+                circuit.aux[0],
+                circuit.aux[1])
+print(circuit)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+def body(circuit, loop_parameter):
+    circuit.h(loop_parameter)
+    circuit.z(loop_parameter)
+    
+
+q = QuantumRegister(5, 'q')
+c = ClassicalRegister(3, 'c')
+circuit = QuantumCircuit(q, c)
+with circuit.for_loop(indexset=range(0, 3), loop_parameter=q[0], body=body, qubits=q[3:], clbits=c[:]) as flop:
+    circuit.y(q[flop.index])
+    
+circuit.draw(output='mpl')
+
+from qiskit import QuantumRegister, QuantumCircuit, ForLoopOp, LoopOp
+from qiskit.compiler import transpile
+from qiskit.transpiler import CouplingMap
+from qiskit.circuit.library.n_local import RY
+
+q = QuantumRegister(2)
+
+fop = ForLoopOp(
+    body=quantum_rabi_oscillation(QuantumCircuit()),
+    indexset=range(1, 7),
+    loop_parameter=q,
+)
+
+
+circuit = QuantumCircuit(q, register_name='q')
+for i in range(1, 7):
+    
+    
+    qc = quantum_rabi_oscillation(circuit, i)        
+print(qc)
+
+
+print(transpile(fop.to_circuit(), CouplingMap([(1, 0), (2, 1), (3, 2), (4, 3), (5, 4), (6, 5)]), optimization_level=0))
+
+
+circuit = QuantumCircuit(q, register_name='q')
+for i in range(1, 7):
+    
+    
+    circuit.append(RYGate(0.628 * i, 'q[0]').to_instruction(), [q[0]], [])
+circuit.append(RYGate(2.721, 'q[0]').to_instruction(), [q[0]], [])
+print(circuit)
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit()
+x = qc.for_loop([0, 1, 2, 3, 4, False],  
+                 'x', 
+                 
+                 QuantumCircuit(1, 1).\
+                   h(0).\
+                   measure(0, 0)
+                 )\
+                 
+y = qc.for_loop([0, 1, 2, 3, 4, False],  
+                 'y', 
+                 
+                 QuantumCircuit().x(0).y(0).z(0).barrier(0)
+                 
+                 
+         )
+ 
+
+
+with qc.for_loop([0, 1, 2, 3, 4, False],
+                 'x', 
+                 QuantumCircuit(1, 1).\
+                   h(0).\
+                   measure(0, 0)
+        ) as cx:
+     with cx.for_loop([1, 2, 3, 4, False],
+                     'y', 
+                     QuantumCircuit(1, 1).\
+                       h([0]).\
+                       measure(0, 0)
+       ) as cy:
+         cy.cz(0, 0) 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter
+
+
+qr = QuantumRegister(2, 'qr')
+circuit = QuantumCircuit(qr)
+circuit.h(qr[0])
+circuit.cx(qr[0], qr[1])
+
+my_indexset = range(2)        
+my_loop_parameter = Parameter('a')   
+
+
+
+
+
+
+
+
+
+for_loop_circuit = circuit.for_loop(indexset=my_indexset, loop_parameter=my_loop_parameter, body=circuit)
+
+my_test_circuit = QuantumCircuit(qr)
+with my_test_circuit.for_loop(indexset=my_indexset, loop_parameter=my_loop_parameter):
+	my_test_circuit.cx(qr[0], qr[1])
+
+print("Circuit w/o for loop body argument:")
+print(circuit)
+print("Loop body is empty because the loop body function was not called.")
+
+print("Circuit w/ with loop body context-manager:")
+print(for_loop_circuit)
+print("Operation: \t", circuit.data[-1][0])
+print("Instruction: \t", circuit.data[-1][1])
+
+my_result_1 = execute(circuit, "aer_simulator").result()
+my_result_2 = execute(my_test_circuit, "aer_simulator").result()
+
+print("Result of executing with loop body as context manager:")
+print(my_result_1)
+print("Result of executing with loop body used in a block:")
+print(my_result_2)
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+num_qubits = 3
+q = QuantumRegister(num_qubits)
+c = ClassicalRegister(num_qubits)
+qc = QuantumCircuit(q,c)
+
+
+for i in range(1,10,2):
+    with qc.for_loop(
+        range(3),
+        i,
+        QuantumCircuit(q,c).h(q[0]),
+        qubits=q,
+        clbits=c
+    ) as loop:
+        loop.append(
+            QuantumCircuit(q,c).barrier(q),
+            qubits=q,
+            clbits=c
+        )
+        loop.append(
+            QuantumCircuit(q,c).measure(q,c),
+            qubits=q,
+            clbits=c,
+        )
+qc.draw('mpl') 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import QuantumRegister, ClassicalRegister
+qc = QuantumCircuit()
+with qc.for_loop(indexset=[0,1,2],loop_parameter='i',body=(QuantumRegister(1),ClassicalRegister(1))):
+    qc.h(0)
+    qc.measure(0,0)
+print(qc)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(2, 'q')
+cr = ClassicalRegister(2, name='c')
+circuit = QuantumCircuit(qr, cr)
+
+quantum_circuit = QuantumCircuit(2)
+
+with quantum_circuit.for_loop(range(10), 'i', 0, [qr[1]], [cr[1]]):
+    quantum_circuit.x(qr[0])
+    quantum_circuit.c_if(cr, 2)
+        
+    
+quantum_circuit.draw(output='mpl')
+
+qr = QuantumRegister(2, 'q')
+cr = ClassicalRegister(2, name='c')
+circuit = QuantumCircuit(qr, cr)
+
+quantum_circuit = QuantumCircuit(2)
+
+with quantum_circuit.while_loop('i', 1, [qr[1]], [cr[1]]):
+    quantum_circuit.x(qr[0])
+    quantum_circuit.c_if(cr, 2)
+    quantum_circuit.measure_all()
+    
+    
+quantum_circuit.draw(output='mpl')<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circuit = QuantumCircuit()
+with circuit.for_loop(indexset=[2, 4, 6], loop_parameter='i'):
+  circuit.h(0)
+  circuit.measure(0, 'b')
+
+print(circuit)
+
+
+circuit = QuantumCircuit()
+loop = circuit.for_loop(indexset=[2, 4, 6], loop_parameter='i',
+   body=QuantumCircuit(), qubits=[0, 1], clbits=[2, 3])
+circuit.h(0)
+circuit.measure(0, 'b')
+
+print(circuit)
+for ket in loop[::-1]:
+  print(ket)
+
+for_loop_circuit = QuantumCircuit()
+index_set = [2, 4, 6]
+loop_param = 'index_string'
+qr = [0, 1]
+cr = [2, 3]
+inner_circuit = QuantumCircuit()
+
+index_value = Integer(0, rmin=0, rmax=6)
+index_string = String(index_value.name)
+for_loop = for_loop_circuit.for_loop(indexset=index_set, loop_parameter=index_string)
+with for_loop:
+  inner_circuit.h(0)
+  inner_circuit.measure(qr[0], cr[0])
+
+
+for j in for_loop_circuit:
+  measurement = for_loop_circuit.measure(qr[1], cr[1])
+  assign = index_value.assign(measurement)
+  for_loop_circuit.append(assign, for_loop)
+
+
+print(for_loop_circuit)
+"""
+The circuit class supports tomography which enables the construction of quantum classifiers using quantum circuits. These classifiers take the form of a probabilistic classification function which maps a state to a conditional state with a given set of parameters.
+For example, a classifier is given by the Bell State:
+1/√2 ( |00⟩ + |11⟩ )
+One can then take two such states and measure their conditional distributions
+|A >〉 ∈ ∫∫ |𝜓〉( |𝜓⟩1 ∣𝜓2) d2𝜓^2
+|B >〉 ∈ ∫∫ |𝜓〉( |𝜓⟩1 ∣𝜓2) d2𝜓^2
+where 𝜓1, 𝜓2 are random states and 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qsphere import QSphere
+
+
+circuit = QuantumCircuit(2)
+
+
+circuit.h(0)
+
+
+
+with circuit.for_loop([0, 1, 2], 'q', circuit.h) as loop:
+    
+    
+    loop.cnot([loop.q, loop.q + 1])
+
+
+circuit.draw()
+QSphere().draw(circuit)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+
+with QuantumCircuit() as qr:
+    qr.h(range(2))
+    for index in range(2, 4, 1):
+        
+        
+        qr.x(index)
+
+display(qr.draw(output='mpl'))
+    
+
+
+qr = QuantumCircuit(2)
+with qr.for_loop(range(2,4,1)) as index:
+    qr.x(index)
+
+display(qr.draw(output='mpl'))
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import ForLoopOp
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+qc = QuantumCircuit(1)
+
+with ForLoopOp(0, 4, body = lambda i: qc[0].h()) as for_loop:
+    for_loop.create_iteration(label ='mylabel')
+qcs = QuantumCircuit(1)
+qcs.h(0)
+qcs = qcs.for_loop(body = lambda i: qc[0].h(), label ='mylabel', indexset = range(4), loop_parameter = 'i')
+print(qcs.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumcircuit import QuantumCircuit, QuantumRegister, ClassicalRegister
+
+indexset = range(0, 8)
+
+
+loop_parameter = indexset
+
+
+with QuantumCircuit() as circuit:
+    
+    with circuit.for_loop(loop_parameter, indexset, 1) as for_loop:
+        for_loop.rxc(0, 1)
+
+    
+    print(circuit)
+
+qr = QuantumRegister(2)
+
+cr = ClassicalRegister(2)
+
+
+circuit = QuantumCircuit(qr, cr)
+
+
+
+
+
+circuit.ch(qr[0], qr[1]).h(qr[0]).m(qr[0], cr[0]).h(qr[1]).cx(qr[0], qr[1]).h(qr[1]).m(qr[1], cr[1])
+
+
+print(circuit)
+
+print(circuit.data[0])
+
+
+print(circuit.data[0][0])
+
+
+circuit = QuantumCircuit(qr, cr)
+
+
+circuit.h(qr[0])
+
+
+
+circuit.crz(1, qr[0], qr[1]).m(qr, cr)
+
+
+print(circuit)
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.circuit import ForLoopOp
+
+qr = QuantumRegister(2, 'qr')
+cr = ClassicalRegister(2, 'cr')
+circuit = QuantumCircuit(qr, cr)
+
+
+circuit.h(qr[0])
+
+body = []
+
+body.append(circuit.h(qr[1]))
+
+body.append(circuit.x(qr[1]))
+
+body.append(circuit.cx(qr[0], qr[1]))
+
+body.append(
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(2)
+
+def control(qc):
+    qc.i(0)
+    qc.h(1)
+    qc.t(0)
+    qc.sdg(1)
+    return qc
+
+with circ.for_loop(range(4), 'i') as qc:
+    qc += control(QuantumCircuit(2))
+
+qasm_source =circ.qasm()
+with open("test.qasm", "w") as file:
+    file.write(qasm_source)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import ForLoopOp
+
+
+def loop() -> QuantumCircuit.for_loop:
+    
+
+    circuit = QuantumCircuit.for_loop(range(10), 'i', [
+        QuantumCircuit.h(1),
+        QuantumCircuit.cx(0, 1),
+        ForLoopOp.for_loop([4, 3, 5], 'r', [
+            QuantumCircuit.r(0.5, 1),
+            QuantumCircuit.cx(1, 2),
+            QuantumCircuit.u1(1.5, 3)
+        ]),
+        QuantumCircuit.measure(3, 1)
+    ])
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    return circuit
+
+
+
+print(loop().draw())
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def if_statement(q: QuantumCircuit):
+    q.h(0)
+    q.h(1)
+    
+    with q.if_test((0,), (1,)):
+        q.cx(0, 1)
+
+    q.x(0)
+
+
+def test():
+    q = QuantumCircuit()
+    if_statement(q)
+    print(q.draw())
+
+    print(q.for_loop(indexset=range(5), loop_parameter=0, body=q.h, qubits=[0, 1], clbits=[]).circuit.draw())
+
+test()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+import sys
+sys.path.append('../../')
+
+qc = QuantumCircuit(4)
+
+with qc.for_loop(0, 100, 6, 0, label="A"):
+    n = qc.loop_variable
+    qc.x(n)
+    qc.reset(n)
+
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.tools.visualization import circuit_drawer
+
+
+qr = QuantumRegister(4, name='q')
+cr = ClassicalRegister(4, name='c')
+qc = QuantumCircuit(qr, cr)
+
+
+index = loop_var(range(10))
+
+
+qc = for_loop(qc, index).label("for_loop_"+str(index)).set_indexset(range(index)).set_loop_parameter(index).set_body(
+    measure(qr[index], cr[index])
+    ).set_qubits([qr[index]*[index]]).set_clbits([cr[index]*[index]])
+
+
+circuit_drawer(qc)
+
+
+
+from qiskit import QuantumCircuit
+from qiskit.tools.visualization import
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+indexset = [-1, 0, 1]
+loop_parameter = 'i'
+body = QuantumCircuit(1).h(0)
+qc = QuantumCircuit(2, 2)
+
+with qc.for_loop(indexset, loop_parameter, body) as loop:
+    loop.measure(0,0)
+res = [qc.measure(m, m) for m in [0, 1]]
+
+loop_variable = 'i'
+with QuantumCircuit(1).for_loop(indexset, loop_parameter, loop_variable=loop_variable) as loop:
+    loop.h(0)
+    loop.measure(0,0)
+res = [qc.measure(m, m) for m in [0, 1]]
+
+with QuantumCircuit(1).for_loop(loop_variable=loop_variable, indexset=indexset) as loop:
+    loop.h(0)
+    loop.measure(0,0)
+res = [qc.measure(m, m) for m in [0, 1]]
+result = 0
+with QuantumCircuit(1).for_loop(indexset=range(10)) as loop:
+    loop_variable = loop.get_loop_variable()
+    loop.h(0)
+    loop.measure(0, 0)
+bitstring = "{0:b}".format(result)
+qc.y(0).c_if(bitstring, 0)
+print(qc)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(2, 'qr')
+cr = ClassicalRegister(2, 'cr')
+qc = QuantumCircuit(qr, cr)
+
+with qc.for_loop((0, 1, 2), 'i', QuantumCircuit(qr, cr).x(qr[0]), [qr[1]], [cr[1]]):
+    qc.x(qr[0])
+
+qc.measure(qr, cr)
+qc.draw(fold=-1)
+
+from qiskit import QuantumCircuit
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+with qc.if_test((100, 100), QuantumCircuit(qr).h(qr[0])):
+    qc.h(qr[1])
+
+qc.measure_all()
+qc.draw(fold=-1)
+with qc.if_test(1 > 0):
+    qc.h(qr[1])
+
+from qiskit import QuantumCircuit
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+with qc.if_test(QuantumCircuit(qr).h(qr[0]), QuantumCircuit(qc).h(qr[0]), [qr[0]]):
+    qc.h(qr[1])
+
+qc.measure_all()
+qc.draw(fold=-1)
+
+from qiskit import QuantumCircuit
+import numpy as np
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+with qc.while_loop(QuantumCircuit(qr).h(qr[0]).measure(), np.array([[1],[1]])) as qc1:
+    qc1.h(qr[1])
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+with qc.while_loop(QuantumCircuit(qr).h(qr[0]).h(qr[1]).measure(), np.array([[1, 0],[1, 1]])) as qc1:
+    qc1.h(qr[1])
+
+qc.draw(fold=-1)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+loop = qc.for_loop(indexset=[0], loop_parameter=0, qubits=[0], body=[qc.h(0), qc.cx(0, 1)])
+
+
+print(qc)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circ = QuantumCircuit(3)
+
+
+
+
+with circ.for_loop(range(2), loop_parameter="i", indexset=[2,3,4], body=(circ, "q", "i", "label")):
+    circ.cx("q", "r")
+    circ.measure("r", "o")
+
+
+print(circ)
+
+from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(1)
+
+
+
+
+
+with circ.if_test():
+    circ.rz(2, 0)
+
+with circ.else_():
+    circ.rz(-3, 0)
+
+
+print(circ)
+
+
+from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(1)
+
+
+
+
+with circ.while_loop(0, "j", body=(circ, "q", "j")):
+    circ.rz(2, 0)
+
+
+print(circ)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4, 4) 
+for i in list(range(2)): 
+    with qc.for_loop(indexset=list(range(2)), loop_parameter='i', qubits=[0], body=lambda i : qc.cx(0, 1), label="for_loop" ): 
+    
+    qc.cx(i, i)
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import QFT
+
+
+qft = QFT(4, input_registers=None, input_clbits=None)
+qft.draw(output='mpl')
+
+
+with QuantumCircuit() as circuit:
+    circuit.h(0)
+    for index_val in range(2,7):
+        qubit_val = 5
+        qubit_str_val = '1'
+        with circuit.for_loop(range(index_val, qubit_val, qubit_str_val), 7, op, 2, 2, 2) as loop_label:
+            circuit.h(index_val)
+            circuit.x(index_val)
+            circuit.h(index_val)
+            
+            qub1 = _build_reference_map(index_val+1)
+            qubits_qft = circuit.qubits[:-2], circuit.qubits[-2:]
+            clbits_qft = circuit.clbits[:], tuple()
+            qft_qubits = list(qub1[qubits_qft[0]]) + list(qub1[qubits_qft[1]])
+            op = qft(qft_qubits,
+                     qubits_ancilla=None,
+                     input_quanta=0,
+                     mode='default')
+            op.c_if(clbits_qft[0], _build_reference_map(index_val+1)[index_val+1])
+            op.c_if(clbits_qft[1], _build_reference_map(index_val+2)[index_val+2])
+            op.c_if(clbits_qft[2], _build_reference_map(index_val+3)[index_val+3])
+            op.c_if(clbits_qft[3], _build_reference_map(index_val+4)[index_val+4])
+            
+
+    circuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit i
+
+circuit = QumuitCircuit(2)
+circuit.h([0])
+circuit.z(1)
+
+
+with circuit.for_loop():
+    circuit.h(0)
+    circuit.cx(0, 1)
+
+circuit.h([0])
+circuit.x([1])
+circuit.cx(1, 0)
+
+print(circuit)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import QFT
+qr = QuantumRegister(4)
+circuit = QuantumCircuit(qr)
+
+for i in circuit.for_loop(range(4), 'a', QFT(4)):
+    circuit.cx(i, qr[i])
+circuit.draw()
+
+
+
+from qiskit import QuantumRegister,QuantumCircuit
+qr2 = QuantumRegister(4)
+cr = ClassicalRegister(4)
+circuit2=QuantumCircuit(qr2,cr)
+
+for i in circuit.for_loop(range(4), 'a',  QFT(4)):
+    circuit.cx(i,qr2[i])
+
+with circuit2.if_test((qr2.size%2)==0,range(4)) as even_circuit:
+
+    for i in circuit2.for_loop(range(4), 'i', [q2_op]):
+        circuit2.h(q2_op)
+
+with circuit2.if_test((qr2.size%2)==1,range(4)) as odd_circuit:
+
+    count=0
+
+    with circuit2.while_loop(count<qr2.size%2,range(4)) as even_circuit:
+        circuit2.h(q2_op)
+        circuit2.mcrx(i,i,i,qr2)
+        circuit2.h(i)
+        count=count+1
+
+circuit2.draw()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def incrementing_oracle():
+	
+	return QuantumCircuit(1).x(0)
+
+def oracle():
+	
+	return QuantumCircuit(3).x(1)
+
+def incrementer():
+	
+	raise NotImplementedError()
+
+circuit = QuantumCircuit(4)
+with circuit.for_loop(0, 1, 5) as for_loop:
+	for_loop.h(0)
+	for_loop.barrier()
+	with for_loop.for_loop(0, 1, 5) as nested_for_loop:
+		nested_for_loop.cx(0, 1)
+		if (True):
+			with nested_for_loop.for_loop(0, 1, 5) as second_nested_for_loop:
+				second_nested_for_loop.cx(1, 2)
+			second_nested_for_loop.cx(1, 3)
+		nested_for_loop.cx(0, 3)
+
+circuit.draw('mpl')
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(2)
+with circuit.for_loop(indexset=[1, 3, 5], loop_parameter='i'):
+    circuit.x(0)
+    circuit.measure_all()
+circuit.to_qasm()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit_addon_for_loop import ForLoopOp
+from qiskit.circuit.quantumregister import QuantumRegister
+
+def body_fn(qc: QuantumCircuit, index_var: int, loop_var: int):
+    qc.barrier(index_var)
+    qc.h(loop_var)
+    qc.barrier(loop_var)
+
+qubits = QuantumRegister(2)
+for_loop = ForLoopOp('indexset',
+                     'loop_var',
+                     body_fn,
+                     qubits=qubits,
+                     clbits=None,
+                     label='for')
+
+print('for loop:', for_loop)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def test(qc, parameter_name, indexset, body, qubits, clbits, label):
+    if not qubits:
+        qubits = tuple(qc.qubits)
+    if not clbits:
+        clbits = tuple(qc.clbits)
+    loop_var = qc.loop_var(parameter_name)
+    loop_op = body.build(qubits, clbits, loop_var, label=label)
+    return qc.for_loop(indexset, loop_var, loop_op)
+q = QuantumCircuit(1)
+q.h(0)
+with test(q, 'theta', [0, 1, 2, 3], body=q, qubits=(0,), clbits=(), label="hello") as qc:
+    qc.h(0)
+
+print(q)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+q = QuantumRegister(7)
+c = ClassicalRegister(2)
+qc = QuantumCircuit(q,c)<jupyter_output><empty_output><jupyter_text>ForLoopOp(body, qubits, clbits, indexset, loop_parameter)Creates a for loop on the given qubits and classical bits. The loop indices are contained in the indexset and incremented according to the order defined in its collection. The loop body contains the gates or other instructions for which the iteration indices are bound to the loop parameter, which can then be used to construct iteration dependent circuits. ForExample:<jupyter_code>with qc.for_loop(range(5), q, c, loop_parameter='i'):
+    qc.measure(q[0], c[1])<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit()
+
+
+with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', qubits=['q0[index]'], body=QuantumCircuit().h('q0[index]')):
+    qc.barrier()
+qc.draw('mpl')
+
+print('-------')
+print('')
+
+
+with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', qubits=['q0[index]'], body=QuantumCircuit().h('q0[index]'), label='outer_barrier'):
+    with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', body=QuantumCircuit().h(i), label='inner_barrier'):
+        qc.barrier()
+qc.draw('mpl')
+'''
+The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+q = QuantumCircuit(6)
+
+
+q.for_loop(indexset=range(2), loop_parameter='index', body=q.x(3+index), label='for_loop_test')
+
+print(q)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumregister import QuantumRegister
+
+qreg = QuantumRegister(5, "q")
+creg = QuantumRegister(1, "c")
+my_for = QuantumCircuit(qreg, creg)
+for (i, j) in my_for.for_loop([0, 1, 2, 3, 4], loop_parameter="cbit", body=QuantumCircuit.h,
+                              qubits=[1]) as i:
+  print(f"The index is: {i}")
+  my_for.mct(qubits=[0,1], clbits=[i], target=[2])
+  my_for.h(qubit=0)
+  for (j, k, l, m, n) in my_for.if_else(i, [1], QuantumCircuit.x,
+                                          QuantumCircuit.z, qubits=[0, 1, 2],
+                                          clbits=[2, 0, 1]) as b:
+    if b > 0:
+      my_for.mcx([0], [2])
+    else:
+      my_for.mcu1(theta=1.0, control=[1], target=2)
+  my_for.cz(qubits=[3,4])
+my_for.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(10)
+cr = ClassicalRegister(8)
+circuit = QuantumCircuit(qr, cr)
+
+
+index_set = [0,1]
+loop_parameter = 'i'
+circuit.h(qr)
+with circuit.for_loop(index_set, loop_parameter, circuit.h, qubits=[circuit.qubits[0]], clbits=[circuit.clbits[0]]):
+    circuit.h(qr)
+    circuit.measure(qr, cr)
+
+
+for i in range(0, 4):
+    circuit.u1(i, circuit.qubits[0])
+for i in range(0, 4):
+    circuit.u2(i, i, circuit.qubits[0])
+for i in range(0, 4):
+    circuit.u3(i, i, i, circuit.qubits[0])
+
+
+with circuit.while_loop(range(10, 2, -1)):
+    circuit.barrier()
+    circuit.h(circuit.qubits[0])
+    circuit.barrier()
+    circuit.measure(circuit.qubits[0], circuit.clbits[0])
+
+
+circuit.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit()
+
+indexset = [0, 1, 2, 3]
+loop_var = 2
+
+
+with qc.for_loop(indexset, loop_var) as f:
+    
+    f.measure(1, 1)
+
+print(qc.qasm())
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def body(*qubits): 
+    qc.x(q)
+    return
+
+with QuantumCircuit() as qc:
+    for i in range(3):
+        qc.for_loop(indexset=range(4), loop_parameter=i, body=body())
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circ = QuantumCircuit(2)
+with circ.circuit.for_loop(indexset=[0, 1], loop_parameter='j', body=None):
+    circ.h(0)
+    circ.h(1)
+    circ.measure_all()
+circ.draw()
+
+
+
+from qiskit import QuantumCircuit
+
+
+circ = QuantumCircuit(2)
+
+
+with circ.circuit.if_test(condition='1', body = None):
+    circ.h(0)
+
+
+with circ.circuit.if_test(condition='0', body = None):
+    circ.h(1)
+
+
+circ.h(0)
+
+circ.draw()
+
+
+
+
+
+
+from qiskit import QuantumCircuit
+
+
+
+circ = QuantumCircuit(2)
+
+
+
+with circ.circuit.while_loop(condition='1', body = None):
+    circ.h(0)
+    circ.h(1)
+
+
+
+circ.h(1)
+
+circ.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import ForLoopOp
+from qiskit import QuantumRegister, ClassicalRegister
+
+
+qr = QuantumRegister(2, "qr")
+
+cr = ClassicalRegister(2, "cr")
+qc = QuantumCircuit(qr, cr)
+
+
+for_loop_ctx = qc.for_loop([0, 1], loop_parameter="i0", body=[
+    (qr[0], cr[0], "measure"), 
+    (qr[1], cr[1], "measure"), 
+    (qr[0], cr[0], "measure"), 
+    ], label="For Loop") 
+
+
+
+
+
+
+
+
+
+    
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import ForLoopOp
+
+index_set = [11, 4, 7, 16, 9]
+loop_parameter = "index_variable"
+quantum_circuit = QuantumCircuit(18)
+
+
+for_loop_object = (quantum_circuit.for_loop(
+    index_set = index_set, 
+    loop_parameter = loop_parameter, 
+    body = quantum_circuit.x ))
+    
+with for_loop_object:
+    
+    pass
+
+
+with quantum_circuit.for_loop(index_set=index_set, 
+                loop_parameter = loop_parameter ) as for_loop_object:
+     
+     pass
+
+
+with quantum_circuit.for_loop(index_set=index_set, 
+                loop_parameter = loop_parameter,
+                body = quantum_circuit.x,
+                qubits = [quantum_circuit.qregs[0][1]]
+                ) as for_loop_object:
+     pass
+
+
+with quantum_circuit.for_loop(index_set=index_set, 
+                loop_parameter = loop_parameter,
+                body = quantum_circuit.x,
+                qubits = ( quantum_circuit.qregs[0][1], quantum_circuit.qregs[0][2] ),
+                label = "Loop_with_registers_and_loop_parameters" ) as for_loop_object:
+     pass
+
+
+with QuantumCircuit(5) as circuit:
+    for_loop = ForLoopOp(index_set, "index_variable", circuit.x, circuit.qubits)
+    circuit.add(for_loop)
+    for i, j in zip(*for_loop.loop_header):
+        circuit.barrier(j)    
+        circuit.x(j)        
+        circuit.measure(j, i)
+
+
+with QuantumCircuit(5) as circuit:
+    for_loop = ForLoopOp(index_set, "index_variable", quantum_circuit.x(quantum_circuit.clbits[1]), circuit.qubits)
+    circuit.add(for_loop)
+    
+    body = for_loop.body
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def create_loop_for(indexset, loop_parameter, body):
+    loop_body = []
+    if indexset is None:
+        return for_qubits_with_body(body)
+    else:
+        for i in indexset:
+            assignment = "assign %s %s" % (loop_parameter, i)
+            loop_body.append(assignment)
+            loop_body.append(body)
+        return for_indices(loop_body,
+                           loop_parameter=loop_parameter,
+                           indexset=indexset)
+
+def for_qubits_with_body(body, _create_args={}):
+    return ForLoop.qubits_for_loop(body, **_create_args)
+
+def for_indices_with_body(body, loop_parameter, indexset, _create_args={}):
+    return ForLoop.indices_for_loop(body, loop_parameter, indexset, **_create_args)
+
+def for_indices(body, loop_parameter, indexset, _create_args={}):
+    loop = create_loop_for_with_body(body, loop_parameter, indexset, **_create_args)
+    return [loop]
+
+def create_loop_for_with_body(body, loop_parameter, indexset, _create_args={}):
+    return ForLoop.indices_for_loop(body, loop_parameter, indexset, **_create_args)
+
+class ForLoop:
+
+    @staticmethod
+    def indices_for_loop(body, loop_parameter, indexset, **qasm_args):
+        qasm_args.update({
+            "indexset": indexset,
+            "loop_parameter": loop_parameter,
+            "body": "; ".join(body) + ";",
+        })
+        return ForLoopOp(**qasm_args)
+
+    @staticmethod
+    def qubits_for_loop(body, **qasm_args):
+        class Builder:
+
+            def __init__(self, index):
+                self._create_args = qasm_args.copy()
+                self.index = index
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, type, value, traceback):
+                qasm_args.update(self._create_args)
+                qasm_args["indexset"] = [self.index]
+                qasm_args["body"] = self._create_str()
+                return ForLoopOp(**qasm_args)
+
+            def _create_str(self):
+                loop_body = []
+                index = self.index
+                for j in range(10):
+                    assignment = "assign {} {} ;".format(loop_parameter, index)
+                    loop_body.append(assignment)
+                    loop_body.append(body)
+                    index += 1
+                return "; ".join(loop_body)
+
+        if "indexset" in qasm_args:
+            raise QISKitError("qubits_for_loop can't take index in call")
+        return Builder(0)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0]).loopvar
+qc.measure(index, total)
+qc.draw()
+
+from qiskit import QuantumRegister
+index = QuantumRegister(1, 'index')
+total = QuantumRegister(1, 'total')
+qc = QuantumCircuit(index, total)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0, 1]).loopvar
+qc.measure(index, total)
+
+
+qc.draw()
+
+
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(3)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0]).loopvar
+qc.measure(index, total)
+
+
+qc.draw()
+
+
+
+from qiskit import QuantumRegister, QuantumCircuit
+
+index = QuantumRegister(1, 'index')
+total = QuantumRegister(1, 'total')
+qc = QuantumCircuit(index, total)
+[index, total] = qc.while_loop(indexset=[i for i in range(3)], 
+    loop_parameter='j', 
+    body=qc.h(index[0]),
+    qubits=[0]).loopvar
+qc.measure(index, total)
+
+qc.draw()
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, execute, BasicAer, IBMQ
+from qiskit.tools.visualization import plot_histogram
+from qiskit.tools.monitor import job_monitor
+my_index = [1, 3, 5, 8]
+q = QuantumRegister(9, name="q")  
+r = ClassicalRegister(9, name="r")
+qc = QuantumCircuit(q, r, name="q_qr_circuit")
+
+
+with qc.for_loop(loop_parameter=r, indexset=my_index) as f:
+    f.measure(q, r)
+
+
+
+i, j, k = qc.for_loop(loop_parameter=r, indexset=my_index)
+
+qc.h(i)
+qc.measure(i, k)
+i, j, k, l, m, n = qc.for_loop(
+    loop_parameter=r, indexset=my_index, qubits=[
+        q[0], q[1], q[2], q[3], q[4], q[5]], clbits=[
+        r[0], r[1], r[2], r[3], r[4], r[5]])
+qc.x(m)
+qc.save_statevector
+qc.draw(output='mpl')
+
+
+qc.save_unitary()
+qc.barrier(m)
+
+i, j = qc.for_loop(
+    loop_parameter=q, indexset=my_index, qubits=[
+        q[0], q[1]])
+qc.h(i)
+qc.h(j)
+i, j, k, l, m, n = qc.for_loop(
+    loop_parameter=q, indexset=my_index, qubits=[
+        q[0], q[1], q[2], q[3], q[4], q[5]], clbits=[
+        r[0], r[1], r[2], r[3], r[4], r[5]
+    ])
+qc.cx(i, k)
+qc.cx(i, l)
+qc.measure(i, k)
+qc.measure(i, m)
+
+
+qc.depth()
+qc.draw(output='mpl')
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import ForLoopOp
+
+q = QuantumRegister(3)
+circuit = QuantumCircuit(q)
+
+loop = circuit.for_loop(1, 4, 1, q[0])
+circuit.cx(q[0], q[1])
+circuit.x(q[1])
+
+with loop:
+  circuit.h(q[0])
+  circuit.cx(q[0], q[2])
+  circuit.measure_single_qubit(q[0])
+  circuit.measure_single_qubit(q[1], q[2])
+
+
+print(circuit)
+
+
+print(F"Qubits: {circuit.qubits}")
+print(F"Clbits: {circuit.clbits}")
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+with QuantumCircuit(2) as loop_circ:
+    for i in range(3):
+        loop_circ.h(i)
+        loop_circ.cx(i, i+1)
+
+    for j, (first, second) in loop_circ.for_loop((0,0), (1,1), range(2)):
+        loop_circ.cx(first, second)
+
+print(loop_circ)
+
+
+with QuantumCircuit(2) as loop_circ_2:
+    loop_circ_2.h(0)
+    loop_circ_2.h(1)
+    loop_circ_2.cx(*loop_circ_2.for_loop((0,0), (1,1), range(1)))
+    loop_circ_2.cx(0, 1)
+
+print(loop_circ_2)
+
+with QuantumCircuit(4) as while_circ:
+    while_circ.h(0)
+    while_circ.h(1)
+    
+    
+    
+    with while_circ.while_loop(0, body=lambda i: while_circ.cx(i,i+1), qubits=(0,1)):
+        while_circ.cx(2,3)
+
+print(while_circ)
+
+with QuantumCircuit(4) as while_circ_2:
+    while_circ_2.h(0)
+    while_circ_2.h(1)
+    
+    
+    with while_circ_2.while_loop(4, body=while_circ_2.cx, qubits=(0,1)):
+        while_circ_2.cx(2,3)
+
+print(while_circ_2)
+
+with QuantumCircuit(4) as circ:
+    circ.cx(3,2)
+    circ.ccx(2,1,0)
+    with circ.if_test(0xff,
+                        body=circ.x(0),
+                        qubits
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def get_square(qc, indexset, loop_parameter):
+    qc.ry(indexset * loop_parameter, 0)
+
+circ = QuantumCircuit(1,1)
+with circ.for_loop([0, 1, 2], loop_parameter=0.5, body=get_square) as inst:
+    circ.cx(0,0)
+    circ.measure(0,0)
+
+print(circ.draw())
+
+
+from qiskit import QuantumCircuit
+
+def get_square(qc, indexset, loop_parameter):
+    qc.ry(indexset * loop_parameter, 0)
+
+circ = QuantumCircuit(1,1)
+with circ.if_test([0], loop_parameter=0.5, body=get_square) as inst:
+    circ.cx(0,0)
+    circ.measure(0,0)
+
+print(circ.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+qr = QuantumRegister(5)
+cr = ClassicalRegister(5)
+
+
+circuit = QuantumCircuit(qr, cr)
+
+
+
+
+def loop_body(index, count):
+    print('index: ', index, 'count: ', count)
+circuit.h(qr[0])
+with circuit.for_loop(indexset=[0, 1, 2],
+                      loop_parameter='j',
+                      qubits=qr,
+                      clbits=cr,
+                      label="example_loop",
+                      body=loop_body):
+    circuit.measure(qr, cr)
+
+
+
+
+
+
+
+
+
+
+def outer_loop_body(i):
+    for j in [0, 1, 2]:
+        circuit.h(qr[j])
+        print('Outer loop index: ', i, 'Inner loop index: ', j)
+        
+        
+        circuit.measure(qr, cr)
+
+
+
+
+
+circuit.h(qr[0])
+
+
+
+
+
+with circuit.for_loop(indexset=[0, 1, 2],
+                      loop_parameter='i',
+                      body=outer_loop_body):
+    
+    
+    circuit.measure(qr, cr)
+
+
+print('Total gates: ', circuit.count_ops())
+circuit.draw()
+
+import qiskit.tools.jupyter
+%qiskit_version
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+simulator = Aer.get_backend("qasm_simulator")
+
+
+q = QuantumRegister(3,name="q")
+c = ClassicalRegister(3,name="c")
+qc = QuantumCircuit(q,c)
+loop = qc.for_loop(3,{"j":range(3)}, body = lambda j: qc.cx(0,1)
+                                     .barrier()
+                                     .measure(1,0))
+
+
+qc.append(loop.loop_body(),range(3))
+qc.measure(range(3), range(3))
+
+
+qc.draw()
+
+
+qc.append(loop.build(), [(0,1),(1,0),(2,1)])
+
+
+job = execute(qc, backend=simulator, shots=1000)
+c = job.result().get_counts()
+
+print("\n", c)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2)
+
+body = QuantumCircuit(2) 
+for i in range(15):
+    body.h(i)
+    body.cx(i, (1 - i) % 2) 
+body.measure_all()
+
+
+for_loop = qc.for_loop(range(15), "index", body)
+
+
+
+from grover_noisy_simulation import noisy_grover
+
+
+noisy_result = noisy_grover.simulate(num_iterations=15, do_plot=False) 
+
+noisy_for = noisy_result.for_variable_dict
+
+print("Noisy simulation")
+print(noisy_for)
+print("Circuit for loop output:")
+print(for_loop)
+
+
+import qiskit.tools.jupyter
+%qiskit_version_table
+%qiskit_copyright
+try:
+    from qiskit.tools.jupyter import *
+except:
+    %pip install -qq qiskit-terra
+    %pip install -qq qiskit-aer
+    %pip install -qq qiskit-ignis
+    %pip install -qq qiskit-ibmq-provider
+    %pip install -qq qiskit-aqua
+    %pip install -qq qiskit
+    %pip install -qq jupyter-book
+    %pip update
+    %pip install -qq matplotlib-inline<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+for i in [0,5]:
+    with QuantumCircuit.for_loop(
+        indexset = [i, i+1],
+        loop_parameter = 'p',
+        body = [
+            (QuantumCircuit.u3(10,1,2,'p'), [0]),
+            (QuantumCircuit.u2(0,0,'p'), [0])
+            ],
+        qubits = [1],
+        label = 'for_test',
+        insert_barriers = True
+        ) as circuit: 
+        (QuantumCircuit.h(0), [0,1])
+        
+
+for i in ['a','b']:
+    with QuantumCircuit.for_loop(
+        indexset = [i, i+1],
+        loop_parameter = 'p',
+        body = [
+            (QuantumCircuit.u3(10,1,2,2+int(p)%2), [0])
+            ],
+        qubits = [1],
+        label = 'for_test2',
+        insert_barriers = True 
+    ) as circuit:
+        (QuantumCircuit.h(0), [0,1])
+        
+
+
+
+
+
+
+for i in range(10):
+    with QuantumCircuit.for_loop(
+        indexset = [i, i+1, i+2], 
+        body = [
+            (QuantumCircuit.x, (j, 4)),
+            (QuantumCircuit.h, (3,)),
+            (QuantumCircuit.u3(10,1,2,'p'), (3,))
+            ],
+        max_iterations = None,       
+        insert_barriers = False,      
+        label = 'for_test0'
+    ) as circuit:
+        (QuantumCircuit.h(3), [0,1])
+        
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(1)
+
+with qc.for_loop((0,1,2,3), 'x', QuantumCircuit(2)) as fl_op:
+    fl_op.h(0)
+    fl_op.barrier()
+    fl_op.cx(fl_op[0], fl_op[1])
+    fl_op.cx(fl_op[1], fl_op[0])
+
+print(qc)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import RealAmplitudes, EfficientSU2
+import numpy as np
+
+qc = QuantumCircuit(1)
+
+index = 10
+values = [0.1, 0.2, 0.3] * index
+loop_values = np.linspace(start=0, stop=1.0, num=len(values))
+    
+with qc.for_loop(loop_values=loop_values, loop_parameter="fp", body=[(1,2), EfficientSU2(), RealAmplitudes()], label="For_Loop"):
+    qc.h(0)
+
+qc.draw("mpl")
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit.library import RealAmplitudes, EfficientSU2
+import numpy as np
+
+qc = QuantumCircuit(1)
+
+
+with qc.while_loop(index=index, body=[(1,2),EfficientSU2(), RealAmplitudes()]):
+    qc.h(0)
+
+qc.draw("mpl")
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit(4, 2)
+
+
+with circuit.for_loop(0, range(4)):
+    circuit.h(circuit.index)
+
+
+for _ in circuit.for_loop(range(2)):
+    circuit.cx(circuit.index, circuit.index + 1)
+
+
+with circuit.for_loop(3):
+    circuit.mcry(
+        circuit.index, circuit.index_qubit, circuit.index + 2, circuit.index, 1 / 4
+    )
+
+
+for _ in circuit.for_loop([(1, 2, 3, 0)]):
+    for _ in circuit.for_loop([2, 3, 1, 0]):
+        circuit.x(circuit.index)
+
+circuit.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import for_loop
+
+num_qubits = 3
+cir=QuantumCircuit(num_qubits)
+
+with for_loop(range(5), 'q', cir, range(1, 2)):
+	cir.h(2)
+	cir.h(1)
+
+cir.draw
+
+
+cir.measure_all()
+cir.draw()
+
+
+
+
+with for_loop(range(5), 'q', cir):
+	cir.h(2)
+	cir.h(1)
+
+cir.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit_addon_execute import ForLoopOp, IfElseOp, WhileLoopOp
+import numpy as np
+
+circuit = QuantumCircuit(2)
+
+with circuit.for_loop(range(10), index_variable = '%1'):
+    circuit.h('%1')
+    circuit.measure('%1', '%1')
+
+
+
+
+
+
+
+
+
+
+print(circuit)
+
+
+
+from qiskit import execute, ClassicalRegister, QuantumRegister
+from qiskit.tools.visualization import circuit_drawer
+from qiskit.backends import available_backends, least_busy
+from qiskit.providers.ibmq import least_busy, least_busy as old_less_busy
+
+backend = 'ibmq_qasm_simulator'
+backend = available_backends(filter(lambda b: b.configuration().n_qubits >= circuit.num_qubits,
+                                     available_backends()))[0]
+q_reg = QuantumRegister(circuit.num_qubits, 'qreg')
+c_reg = ClassicalRegister(circuit.num_qubits, 'creg')
+circuit.add_register(q_reg)
+circuit.add_register(c_reg)
+print(circuit.num_qubits)
+result = execute(circuit, backend).result()
+print(result.get_counts(circuit))
+print(result.get_statevector(circuit))
+print(result.get_unitary(circuit))
+circuit.draw('mpl')
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit()
+
+with circuit.for_loop(indexset = [2, 1, 0], loop_parameter="r", qubits=[5, 9]) as loop_var:
+         
+         circuit.r(loop_var, 2)
+circuit.draw()
+
+from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit()
+
+with circuit.if_else(condition=False) as c:
+    c.rz(1, 1)
+    c.ry(1, 1)
+    c.r(1, 1)
+c.else_
+circuit.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+loop_index = 0
+
+for_loop_var = 0
+with qc.for_loop(indexset=range(3), loop_parameter='loop_index', body=for_loop_var):
+     qc.cx(qr[loop_index], qr[loop_index+1])
+     
+     loop_index += 1
+qc.draw()<jupyter_output><empty_output><jupyter_text>The QuantumCircuit.while_loop() method accepts additional parameters just like QuantumCircuit.for_loop(). However, unlike the for loop, the while loop will only iterate if the condition evaluates to True, or an empty loop block is executed. The parameters for the while loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), label (the string label of the instruction in the circuit), and condition (the condition evaluated at each iteration to determine if the body should be repeatedly executed).<jupyter_code>
+qr = QuantumRegister(2)
+qc = QuantumCircuit(qr)
+
+
+loop_index = 0
+with qc.while_loop(indexset=range(3), loop_parameter='loop_index', body=loop_index, condition=loop_index > 2):
+    qc.cx(qr[loop_index], qr[loop_index+1])
+    loop_index += 1
+qc.draw()<jupyter_output><empty_output><jupyter_text>In some scenarios, the values of indexes or indices in the body are required. In this case, Qiskit allows one to define and access a separate index register through the QuantumCircuit.while_loop() and QuantumCircuit.for_loop() methods. The user can then create an auxiliary index register and use the QuantumCircuit.set_loop_register() method to assign it to be used for the loop instead of the index variable that is automatically created within the scope of the QuantumCircuit.while_loop(). The index register can then be read/written as any other classic register in the QuantumCircuit.while_loop() and QuantumCircuit.for_loop() methods using the QuantumCircuit.read_from_register() and QuantumCircuit.write_to_register() methods.The following pseudocode will explain
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import PhaseOracle, ZZFeatureMap
+from numpy import pi as π, array
+
+
+state = array([1, 1, 0, 1, 1, 1, 0, 0, 1, 0])
+
+
+oracle = PhaseOracle(state)
+
+
+initial_state = QuantumCircuit(8)
+initial_state.append(oracle, range(8))
+
+zz_map = ZZFeatureMap(feature_dimension=3, reps=1)
+
+
+circuit = QuantumCircuit(10, 10)
+
+
+
+with circuit.for_loop(0, indexset=range(3), loop_parameter="i"):
+    circuit.append(zz_map, circuit.qubits)
+
+
+
+with circuit.for_loop(1, loop_parameter="i"):
+    circuit.cz(2, 9)
+
+
+with circuit.for_loop(2, loop_parameter="item"):
+    circuit.h([2, 8])
+
+
+with circuit.for_loop(
+    3, indexset=range(3), loop_parameter=["i", "j"], condition="i < j"
+):
+    circuit.x([3, 8])
+    circuit.y([3, 8])
+    
+circuit.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def my_range(x, y):
+    while True:
+        if y <= x:
+            break
+        yield y
+        y -= 1
+
+with QuantumCircuit() as quantum_circuit:
+    for_loop = QuantumCircuit.for_loop(
+            indexset=my_range(10, 0),
+            loop_parameter="i",
+            body=[
+                QuantumCircuit.h(
+                    qubit="i"
+                ),
+                QuantumCircuit.measure(
+                    qubits=["i"],
+                    clbits=["i"]
+                ),
+            ],
+            qubits=4,
+            clbits=4,
+            label="my_range_loop"
+        )
+        
+    quantum_circuit.append(
+            for_loop,
+            qubits=list(range(len(quantum_circuit.qubits))),
+            clbits=list(range(len(quantum_circuit.clbits)))
+        )
+
+print(quantum_circuit)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+with qc.for_loop(range(3), i='j') as f:           
+    f.mct(0, 1, 2)
+
+
+
+
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import EfficientSU2
+
+qc = QuantumCircuit(2, 1)
+
+qc.append(EfficientSU2(4, reps=1, insert_barriers=False), qubits=[0, 1])
+
+
+with qc.for_loop(range(1, 10), loop_parameter='i') as f:
+    f.append(EfficientSU2(4, reps=1, insert_barriers=False, name='layer{}'.format(f.i)))
+
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def fizz_buzz_for_loop(i, q):
+    for_circuit = QuantumCircuit(2)
+    
+    for_circuit.h(0)
+    for_circuit.cx(0, 1)
+    with for_circuit.for_loop(body=for_circuit, indexset=range(0, 5), loop_parameter="i", qubits=[0, 1], label="f1") as fizzbuzz:
+        fizzbuzz.measure(0, 0)
+    
+    for_circuit.h(0)
+    for_circuit.cx(0, 1)
+    with for_circuit.for_loop(indexset=range(0, 3), i=i, loop_parameter="i", qubits=[0, 1], label="f2") as fizzbuzz:
+        fizzbuzz.measure(0, 0)
+    fizzbuzz.measure(0, 1)
+    for_circuit.draw()
+    
+    backend = Aer.get_backend("qasm_simulator")
+    job = execute(for_circuit, backend, shots=5)
+    res = job.result()
+    print(res.get_counts(for_circuit))
+
+i = 5 
+q = QuantumRegister(2,"q")
+fizz_buzz_for_loop(i, q)
+
+
+
+from qiskit import QuantumCircuit
+def fizz_buzz_while_loop(i, q):
+    while_circuit = QuantumCircuit(5)
+    
+    while_circuit.h(q[0])
+    while_circuit.cx(i, q[1])
+    while_circuit.measure(q[0], q[2])
+    while_circuit.measure(q[1], q[3])
+    with while_circuit.while_loop(loop_parameter="i", indexset=range(0, 5), body=while_circuit, label="w1") as fizzbuzz:
+        fizzbuzz.measure(q[0], q[1])
+    
+    while_circuit.h(q[1])
+    while_circuit.cx(i, q[1])
+    while_circuit.measure(q[0], q[2])
+    while_circuit.measure(q[1], q
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import XGate
+
+qc = QuantumCircuit(3)
+
+with qc.for_loop(range(2), "m", append=True):
+    qc.x(0)
+
+qc.measure_quantum(range(3), range(3))
+
+qc.draw('mpl')
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit.library import XGate
+
+qc = QuantumCircuit(3)
+
+with qc.if_test(
+    lambda m: sum([m("m", i) for i in reversed(range(m("length", 0)))]) % 2 == 1
+):
+    qc.x(2)
+
+qc.measure_quantum(range(3), range(3))
+
+qc.draw("mpl")
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit(3)
+num_iterations = 4
+with circuit.for_loop(range(num_iterations), "i"):
+    circuit.rx(2, 0)
+    circuit.rz(1, 1)
+
+print(f"Circuit: {circuit}")
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import for_loop
+
+q = QuantumRegister(2, 'q')
+c = ClassicalRegister(2, 'c')
+qc = QuantumCircuit(q, c)
+
+
+
+
+
+with for_loop(range(2, 4), indexset=q, loop_parameter='i', body=qc.h[q[{'i', 'i+1'}]]).loop_ctrl() as ctrl:
+    
+
+qc.measure(q, c)
+print(qc)
+
+<jupyter_output>WARNING:qiskit.transpiler.passes.optimization.passes.BarrierBeforeFinalMeasurements:Disabling measurement mapping pass because `meas_map` or `meas_level` has been set to `0`. 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(1, 1)
+for_qubits = [qubit for qubit in range(2)]
+body = q.h
+for_loop = q.for_loop([0,1], loop_parameter="i", body=body)
+type(for_loop)
+
+with QuantumCircuit(name='for_test') as circuit:
+    circuit.h(0)
+    for_loop_instr = circuit.for_loop([0,1], loop_parameter="i", body=q.h)
+    circuit.mct(range(2, 4), [0], [])
+    circuit.rz(0.2, 0)
+    circuit.measure(0, 0)
+
+for_test = circuit<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+
+
+circuit = QuantumCircuit(2,3)
+state = QuantumCircuit(2)
+
+for qubit_index in range(0,4): 
+    
+    
+    state = state.h(qubit_index).s(qubit_index)   
+    
+    
+    state = state.cu1(0.55357, qubit_index,1)
+    
+    circuit = circuit.measure(qubit_index,qubit_index)
+    
+    if qubit_index!= 3: 
+        with circuit.for_loop(qubit_index, range(0,4), "qubit_index", state) as circuit2: 
+            
+            circuit2 = circuit2.append(state,[qubit_index]) 
+            
+            if qubit_index!= 3:          
+                
+                circuit2 = circuit2.measure(qubit_index,qubit_index)
+
+print("Circuit with two for_loops:")
+print(circuit)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import QuantumRegister, ClassicalRegister
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+qc = QuantumCircuit(qr,cr)
+
+
+n = 3
+
+with qc.for_loop(range(n)) as loop:
+    loop.append(qr[0], [0])
+    
+    loop.repeat_until(lambda: loop.index < n-1)
+
+
+
+print(qc.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(3)
+loop_var = circuit.for_loop(indexset=[0,1,2]) 
+
+with loop_var(body=circuit.cx, qubits=[1,0], clbits=[1], label="loop_var") as circuit2:
+	print("I'm in the loop!")
+circuit.cx(1,0) 
+print(circuit)
+
+
+
+
+
+
+
+from qiskit import QuantumCircuit
+circuit = QuantumCircuit(2)
+body = CircuitResult(circuit.cx) 
+with circuit.for_loop(indexset=[0,1]) as loop_var: 
+	print("loop variable value:",loop_var)
+with CircuitResult(body(circuit.x, circuit.y, circuit.z, [circuit[1], circuit[0]]), clbits=[2,3]): 
+	print("Yay I can run a circuit directly")
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2) 
+
+for i in qc.for_loop(8):
+   qc.h(i)
+   qc.mct([0,1,2],[i],None)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter
+
+indexset = [i for i in range(3)]
+loop_parameter = Parameter('w')
+
+with QuantumCircuit() as circuit:
+
+    for i, _ in circuit.for_loop(indexset, loop_parameter, None):
+        circuit.h(i)
+        circuit.cx(i, (i + 1) % 3)
+        circuit.barrier()
+
+print(circuit)
+
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit import Parameter, ForLoopOp
+
+
+indexset = [i for i in range(3)]
+loop_parameter = Parameter('w')
+body = QuantumCircuit(3, 3)
+body.h(0).cx(0, 1)
+body.cx(0, 2)
+
+for_loop = ForLoopOp(indexset=indexset,
+                    loop_parameter=loop_parameter,
+                    body=body)
+
+circuit = QuantumCircuit(3, 3)
+circuit.append(for_loop, [0, 1, 2])
+
+print(circuit)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+
+
+
+def loop_body_i(qc, loop_register, i):
+    
+    qc.h(loop_register)
+    qc.cx(loop_register, loop_register+1)
+    if i.integer is not None:
+        return qc
+    
+    
+
+
+def for_loop_explicit():
+    with qc.for_loop(loop_body_i, loop_register=0) as loop:
+        loop.block._quantum_circuit = QuantumCircuit(2)
+        
+        i.set_values(range(2))
+        
+        
+        
+        
+        
+        block.barrier()
+        
+        
+        block.append(loop_body_i, qargs=[loop_register, i], cargs=[i])
+        
+        
+        block.z(loop_register)
+
+
+def for_loop_implicit():
+    qc.for_loop(loop_register=qc.clbits).loop_parameter = i
+    
+    i.integer = 0 
+    i.set_values(range(2)) 
+    
+    
+
+    qc.barrier()
+    
+    
+    
+    
+    qc.if_(i >= 1).then(qc.measure(loop_register, loop_register+1).loop_label='measure_1')
+    
+    
+    
+    
+    i.integer = 1
+
+for_loop_implicit()
+qc.display()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter  
+
+p = Parameter('p')
+
+with QuantumCircuit(1) as circuit:
+    for i, (indexset, register) in circuit.for_loop(indexset=[0, 1, 2],
+                                                     loop_parameter=p,
+                                                     body=QuantumCircuit(1,
+                                                                   1).append(
+                                                               QuantumCircuit.h,
+                                                               [0],
+                                                               []),
+                                                     register=p,
+                                                     label="pH operation"):
+        circuit.append(QuantumCircuit.h, [0])
+
+print(circuit)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+reg = QuantumRegister(3, 'qreg')
+creg = ClassicalRegister(reg.size(), 'creg')
+qc = QuantumCircuit(reg, creg)
+
+def loop_body(qc, qubits, clbits, i, j):
+    qc.p(0.125*i, 0)
+    qc.p(0.125*j, 1)
+    qc.cx(qubits[0], qubits[1])
+    qc.cx(qubits[0], qubits[2])
+
+with qc.for_loop(indexset=range(15)) as for_loop_handler:
+    body = loop_body
+    for_loop_handler.p(0.25, 2)
+    for_loop_handler.cx(0, 1).c_if(creg, 2)
+    for_loop_handler.barrier([0, 1])
+    for_loop_handler.m(0.5, [0, 1]).c_if(creg, 2)
+    for_loop_handler.p(0.125, 1)
+    for_loop_handler.measure_each(*creg).c_if(creg, 2)
+
+print(qc)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import for_loop
+
+circ = QuantumCircuit(2)
+
+
+
+with circ.for_loop(range(10)) as loop:
+    loop.loop_parameter(0)  
+    circ.cz(loop.index, 0)
+
+print(circ)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+loop_body = QuantumCircuit(1,1)
+loop_body.x(0)
+for i in range(5):
+    circuit = QuantumCircuit(1,1)
+    with circuit.for_loop(range(3), loop_parameter='i', body=loop_body, qubits=range(1)):
+        circuit.barrier()
+        circuit.measure(range(1),range(1))
+    print(circuit)
+circuit2 = QuantumCircuit(1,1)
+loop_variable = 0
+with circuit2.for_loop(range(3), body=loop_body, qubits=range(1)):
+    loop_variable += 1
+print(circuit2)
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def body(qc, i):
+    qc.barrier(i)
+    qc.h(i)
+    qc.barrier(i)
+
+def test():
+    circuit = QuantumCircuit(2)
+
+    with circuit.for_loop(range(2), loop_parameter="j") as loop:
+        loop.header_qubits.add(0)
+        loop.add_loop_body(body, 1)
+
+    circuit.draw()
+
+test()
+
+
+
+
+from qiskit import QuantumCircuit
+
+def body(qc):
+    qc.h(0)
+    qc.x(1)
+    
+def test():
+    circuit = QuantumCircuit(2)
+
+    with circuit.while_loop(0, (0, 1), 1) as while_loop:
+        while_loop.header_qubits.add(0)
+        while_loop.add_loop_body(body)
+
+    circuit.draw(fold=-1)
+
+test()
+
+
+'''The if_test method creates a IfElseOp operator to evaluate the conditional
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(2, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+with qc.for_loop(indexset=[0,1,2],
+         loop_parameter='x',
+         body=[[qc.h, q[1]], qc.measure(q[1], q[0])],
+         qubits=q):
+    
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(2, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+with qc.if_test(condition='test'):
+    qc.x(q[0])
+with qc.else_if_test(condition='test'):
+    qc.y(q[0])
+with qc.else_test():
+    qc.z(q[0])
+
+with qc.while_test(condition='test'):
+    qc.z(q[1])
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+qc = QuantumCircuit()
+q = QuantumRegister(1, name='q')
+qc.add_register(q)
+qc.h(q[0])
+
+while_loop_op = qc.while_loop(condition='test',
+                              body=[qc.h(q)],
+                              qubits=[q],
+                              )
+print(while_loop_op)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2,2)
+
+with qc.for_loop([0,1,2], loop_var = 'j', body = qc.h) as loop:
+    
+    loop.repeat(2)
+    
+qc.draw()
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit()
+
+
+qr1 = qc.add_register(QuantumRegister(3,'qr1'))
+qr2 = qc.add_register(QuantumRegister(2,'qr2'))
+cr = qc.add_register(ClassicalRegister(3,'cr'))
+
+
+
+for i in qc.for_loop(range(3), loop_var=i):
+    
+    
+    
+    qc.add_register(QuantumRegister(2, f'qr{i}1'))
+    qc.h(f'qr{i}1')
+
+    
+    
+    
+    
+    qc.h(f'qr{i}1')
+    
+    
+    
+    qc.barrier(f'qr{i}1')
+    
+    
+    qc.measure_all()
+    
+qc.draw('mpl')
+
+
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+qc = QuantumCircuit()
+
+qr = qc.add_register([QuantumRegister(2, 'qr'), ClassicalRegister(2, 'cr')])
+
+qc.h(qr[0])
+
+
+qr_other = ClassicalRegister(2, name='qr1')
+qc.add_register(qr_other)
+
+
+
+
+qc.barrier()
+
+
+
+if_result = qc.if_else(qc.measure(qr[0], cr[0]))
+  
+qc.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+num_qubits = 3
+num_clbits = 2
+
+qc = QuantumCircuit(num_qubits, num_clbits, name='for loop')
+
+
+
+index_param = Parameter('i')
+loop_body = QuantumCircuit(num_qubits, num_clbits, name='loop body')
+loop_body.ry(index_param, [0, 1])
+loop_body.rz(index_param, [1, 2])
+loop_body.measure_all()
+for_loop = qc.for_loop(range(5), index_param, loop_body, [0, 1], [2])
+
+
+with for_loop as loop_indexset:
+    loop_indexset.measure_all()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library.standard_gates import RYGate
+circuit = QuantumCircuit(4)
+with circuit.for_loop(range(4), circuit.qubits, circuit.clbits):
+    RYGate(0.1)(circuit.qubits[0])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2,2)
+
+with qc.for_loop([0,1,2,3], loop_index='myloopindex'):
+  qc.h(loop_index)
+  qc.measure(loop_index, loop_index)
+
+with qc.for_loop([0,1], loop_parameter='j', body = [qc.cx(j, j+1) for j in range(4)], label= 'MyForLoop'):
+  qc.cx(4, 5)
+  qc.h(4)
+
+qc.draw(output='mpl')
+
+
+qc = QuantumCircuit(2,2)
+with qc.if_test(condition = lambda: myBooleanCondition, body = QuantumCircuit(1), qubits = [5], clbits = [6]):
+  qc.h(0)
+  qc.p(1,3)
+  qc.measure(5, 5)
+
+qc.draw(output='mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc1 = QuantumCircuit()
+
+
+with qc1.for_loop(indexset=[0, 1], loop_parameter="i") as loop:
+    loop.h(loop.index)
+    if_block = loop.if_test(lambda val: val == 0)
+    if_block.h(loop.index)
+    if_block.measure()
+
+print(qc1)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+with qc.for_loop((0, 1), "i", "ancilla") as for_q:
+    for_q.rz(1.0, 0)
+    with for_q.for_loop((0, 1), "j", "ancillb") as for_b:
+        for_b.cz(for_q["i"], 1)
+        with for_b.for_loop((0, 1), "k", "ancillc") as for_c:
+            for_c.h(0)
+    for_q.ry(5.0, 1)
+qc.draw()<jupyter_output><empty_output><jupyter_text>The QuantumCircuit.if_test() method can be used in any of two ways. If the first two parameters are provided (except possibly the label), it creates a IfElseOp with the given body (if_true) and else body (if_false). If the body, qubits, and clbits are not passed, it acts as a context manager that provides the test conditions within a test context and automatically builds a IfElseOp based on the scope when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it. An error is raised if an incorrect calling convention is used.Create a quantum circuit in Qiskit that uses the for loop API with nested loop.'''
+from  qiskit import QuantumCircuit
+qc = QuantumCircuit(2, 2)
+with qc.for_loop((0, 1), "i", "ancilla") as for_q:
+    for_q.rz(1.0, 0)
+    with for_q.if_test(for_q["i"], 0) as if_b:
+        if_b.h(0)
+        with if_b.for_loop((0, 1), "j", "ancillb") as for_b:
+            for_b.cz(if_b["a"], 1)
+    for_q.ry(5.0, 1)
+qc.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit import QuantumCircuit, QuantumRegister, ClassicalRegister, Qubit
+from IPython.core.display import display
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+qc = QuantumCircuit(qr,cr)
+
+with qc.for_loop( [0,1], loop_parameter = 'i', label = 'f1') as for_loop:
+    qc.measure(for_loop.index_variable, for_loop.iteration_tracker)
+
+display(qc.draw())<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+for_loop_0 = QuantumCircuit(2,2)
+x = 2
+for i in for_loop_0.for_loop( 0,range(x) ):
+    for q in range(2):
+        for_loop_0.h(q)
+
+x = 3
+for i in for_loop_0.for_loop( 1,range(x) ):
+    for q in range(2):
+        for_loop_0.h(q)
+
+
+
+for_loop_2 = QuantumCircuit(3,3)
+for i in for_loop_2.for_loop( 0,range(3),qubits = [1,2],clbits = [1,0] ):
+    for q in (0,1):
+        for_loop_2.h(q)
+    for_loop_2.cx(0,1)
+    for_loop_2.cx(1,2)
+    for_loop_2.h(2)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def f(qc, q, c, n):
+    for i in range(2**n):
+        qc.x(q[i % n])
+        
+qc = QuantumCircuit(5,5)
+q = list(range(5))
+c = list(range(5))
+n = 3
+n_qubits = 5
+n_clbits = 5
+with QuantumCircuit(5,5).for_loop(indexset=range(2**n),
+                          loop_parameter=q,
+                          body=f, 
+                          qubits=q, clbits=c, label="test")  as forLoopOp: 
+    
+    
+    
+    
+    
+    
+    
+
+forLoopOp = for_loop(2, range(5), f, q, c, 0)
+
+    
+qc.reset(q)
+qc.barrier(q)
+forLoopOp.body_builder()
+forLoopOp.set_index(0)
+forLoopOp.set_index(4)
+forLoopOp.set_index(19)
+forLoopOp.set_index(458)
+forLoopOp.set_index(7961)
+qc.barrier(q)
+qc.draw()
+
+
+
+from qiskit import QuantumCircuit
+
+def f(qc, q, c, n):
+    for i in range(2**n):
+        qc.x(q[i % n])
+
+qc = QuantumCircuit(5,5)
+q = list(range(5))
+c = list(range(5))
+n = 3
+n_qubits = 5
+n_clbits = 5
+
+
+
+
+with QuantumCircuit(5,5).for_loop(indexset=range(2**n),
+                          loop_parameter=q,
+                          body=f, 
+                          qubits=q, clbits=c, label="test")  as forLoopOp: 
+    forLoopOp = f(forLoopOp, q, c, n)
+
+
+
+
+forLoopOp = for_loop(2**n, q, f, q, c, "test")
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+indices = range(5)
+loop_variable = 3
+
+
+my_loop = QuantumCircuit.for_loop(indexset=indices,
+                                    loop_parameter=loop_variable,
+                                    body=lambda x: QuantumCircuit.x(x))
+
+
+my_loop.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+
+
+
+
+def quantum_circuits(a, b, c, d):
+    
+    return QuantumCircuit(2, 2) 
+
+q_circuit = quantum_circuits(0,1,2,3)
+q_circuit.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4)
+with qc.for_loop(indexset=[1, 2], loop_parameter='j'):
+    qc.h(j)
+    qc.cx(j, j-1)
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumcircuit import QuantumCircuit as qiskitQuantumCircuit
+
+qiskit_quantum_circuit=qiskitQuantumCircuit()
+iteration_value =qiskit_quantum_circuit.for_loop(index_set=[1, 2, 3], loop_parameter="val") 
+with iteration_value:
+    qiskit_quantum_circuit.h("q0")
+    qiskit_quantum_circuit.x("q1")
+    pass
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def control_flow_circuit():
+    
+    circ = QuantumCircuit(2, 2, name='control_flow_circuit')
+    with circ.for_loop([0, 1, 2], 'j', QuantumCircuit(3, name='for'), [0], [1]) as floop:
+        floop.h(0)
+        floop.h(1)
+        floop.h(2)
+
+    return circ
+
+
+control_flow_circuit().decompose().draw()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+
+class H_gate(Gate):
+    def __init__(self):
+        name = 'h'
+        num_qubits = 1
+        params = []
+        super().__init__(name, num_qubits, params)
+    def _define(self):
+        from qiskit.circuit import QuantumCircuit
+        from qiskit.circuit import QuantumRegister
+        definition = QuantumCircuit(1)
+        definition.h(0)
+        self.definition = definition
+    def control(self, c, num_ctrl_qubits=1, label=None, ctrl_state=None):
+        	if ctrl_state == None:
+        	    
+                
+        	    return MultiControlledGate(num_ctrl_qubits, self, label=label)
+        		
+        		
+        		
+                
+        	    pass
+    
+    
+    
+        	
+        	
+                
+        	
+
+
+
+circ = QuantumCircuit(2, 2)
+
+
+circ.append(H_gate(), [0,1])
+
+'''def for_loop(indexset, loop_parameter=Parameter('i'), body=None, qubits=None, clbits=None)
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provide (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2, 2)  
+with qc.for_loop(0, range(5), 2, body, qubits=[0,1]) as loop:
+    with loop.if_test(lambda i: i.c0 < 5, [0,1]) as condition_0:
+        
+        qc.cnot(loop.indexset[0], loop.loop_value())
+    with condition_0:
+        
+        qc.cnot(loop.indexset[1], loop.loop_value())
+
+
+
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)  
+loop_value = 420  
+while qc.while_loop(lambda i, _ : i!= 5,
+    loop_value,
+    loop_variable_index=2,  
+    body=body,
+    qubits=[0,1]
+) <=0:
+    with _as.if_test(lambda i, _ : i.c0 < 5, [0,1]) as condition_0:
+        
+        _qc.cnot(loop_value, loop_value)
+
+
+
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)  
+loop_value = 420  
+while qc.no_while_loop(
+    lambda i, _ : i.c0!= 5,
+    loop_value,
+    range(0, 5),
+    loop_variable_index=2,  
+    body=body
+):
+    with _as.if_test(lambda
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+for_loop = QuantumCircuit(1)
+for loop_index in range(1, 5):
+    for_loop.x(0)
+
+for_loop = for_loop.for_loop(range(1, 5), "i", for_loop)
+print(for_loop.draw())
+
+
+from qiskit import QuantumCircuit
+
+for_loop_2 = QuantumCircuit(1)
+
+for_loop_2.barrier()
+for loop_index_2 in range(1, 6):
+    
+    for_loop_2.barrier()
+    for_loop_2.x(0)
+
+for_loop_2 = for_loop_2.for_loop(range(1, 5), "i", for_loop_2)
+for_loop_2 = for_loop_2.for_loop(range(1, 6), "j", for_loop_2)
+print(for_loop_2.draw())
+
+
+from qiskit import QuantumCircuit
+
+for_loop = QuantumCircuit(1)
+with for_loop.for_loop(range(1, 4), "i"):
+    for_loop.x(0)
+
+print(for_loop.draw())
+
+
+for_loop.barrier()
+
+for_loop = for_loop.for_loop(range(1, 4), "i", for_loop, label='label_name')
+print(for_loop.draw())
+
+
+from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(32)
+
+circuit.x(2 * 7)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.
+
+The parameters for the for_loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), and label (the string label of the instruction in the circuit).
+
+The method either returns a context manager for creating the for loop or an InstructionSet handle to the appended loop operation, depending on the call signature. An error is raised if an incorrect calling convention is used.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def create_test_for_loop():
+    circuit = QuantumCircuit(3)
+    
+    with circuit.for_loop():
+        
+        for i in range(5):
+            with circuit.if_test():
+                
+                circuit.x(0)
+
+        circuit.x(1)
+
+print(create_test_for_loop())
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumcircuit import QuantumCircuit, ForLoopOp
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+
+registers = [QuantumRegister(2, 'qr'), ClassicalRegister(2, 'cr')]
+
+with QuantumCircuit(*registers) as looped_circuit:
+    looped_circuit.h(0)
+    
+    loop_range = list(range(2**2))
+    
+    loop_body = QuantumCircuit(2)
+    loop_body.h(1)
+    loop_body.cz(0, 1)
+
+    looped_circuit = looped_circuit.for_loop(
+        loop_range,
+        loop_parameter='i',
+        loop_register=0
+    )
+    looped_circuit.add(loop_body)
+    looped_circuit.measure([0, 1], [0, 1])
+    
+    print(looped_circuit)
+
+result = looped_circuit.execute()
+
+print(result.get_counts(0))
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import for_loop
+
+
+n = 50
+bitlist = [7, 29, 31]
+circuit = QuantumCircuit(len(bitlist))
+
+
+with for_loop(range(n), circuit.cx, bitlist):
+    circuit.cu1(0.1, 0, 1)
+    circuit.mct(bitlist, circuit.ancilla)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+with QuantumCircuit() as qc:
+    qc.h(0)
+    qc.x(1)
+    
+    i = 0
+    for q in qc.qubits:
+        qc.h(q)
+    for q_i, q_f in qc.qubit_span([1, 4]):
+        for q in qc.qubits[q_i:q_f]:
+            qc.x(q)
+    for c in qc.clbits:
+        qc.measure(c, c)
+assert qc.num_instructions() == 14
+
+
+
+from qiskit import QuantumCircuit
+
+with QuantumCircuit() as qc:
+    qc.h(0)
+    qc.x(1)
+    
+    i = 0
+    prev_q_i = None
+    while i < 3:
+        i += 1
+        qd_q_i = 0
+        while qd_q_i < 2:
+            qd_q_i += 1
+            qc.x(0)
+            qc.x(1)
+    qc.y(2)
+    for c in qc.clbits:
+        qc.measure(c, c)
+assert qc.num_instructions() == 14
+
+
+'''For illustration purposes, we have commented out one of these two implementations
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter, QuantumCircuit, QuantumRegister
+from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, execute, Aer, IBMQ
+
+q = QuantumRegister(2, 'q')
+
+
+index_set = QuantumRegister(1)
+q.add_register(index_set)
+
+c = ClassicalRegister(2, 'c')
+qcn = QuantumCircuit(q,c, name='for_circuit')
+
+from math import pi
+
+loop_parameter = Parameter('k')
+
+
+circuit_body = QuantumCircuit(q,c, name="body")
+circuit_body.rz(2*pi*loop_parameter/10, q[0])
+circuit_body.cx(q[0], q[1])
+circuit_body.measure(q, c)
+
+
+qcn = qcn.for_loop(index_set, loop_parameter, circuit_body)
+
+
+
+
+
+
+
+qcn.for_loop(index_set, loop_parameter, body = circuit_body).draw()
+
+sim = Aer.get_backend('aer_simulator')
+execute(qcn, backend=sim, shots=1024).result().get_counts()
+
+
+
+
+import math
+N = 10           
+q = QuantumRegister(N)    
+c = ClassicalRegister(N)
+qc = QuantumCircuit(q,c)
+
+index = QuantumRegister(1)
+param = Parameter('theta')
+
+body = QuantumCircuit(q,c)
+
+body.rz(param / 5, q)
+body.cx(q[0],q[-1])
+body.x(q[0])
+body.measure(q, c)
+
+for i in range(N-1):
+    qc.rx(1.5*math.pi/2, q[i])
+    qc.barrier()
+[VERBOSE] ========== sample =========

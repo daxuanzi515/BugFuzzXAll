@@ -1,0 +1,19 @@
+#include <tuple>
+#include <memory>
+int main()
+{
+  std::tuple<std::unique_ptr<int>> t = std::make_tuple(std::make_unique<int>(44));
+  std::apply([](auto& u) {u.reset(new int(11));}, t);
+  std::apply([](int* i) {std::cout << *i << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+
+std::unique_ptr<std::tuple<Args...>>
+make_unique_tuple(Args&&... args)
+{
+  return std::unique_ptr<std::tuple<Args...>>{
+    new std::tuple<Args...>(std::forward<Args>(args)...)
+  };
+}
+ 

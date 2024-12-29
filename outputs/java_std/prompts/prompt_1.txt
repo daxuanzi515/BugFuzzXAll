@@ -1,0 +1,9 @@
+/* This documentation discusses the API specification for Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK) version 20. The two broad categories are Java SE APIs, which outline the fundamental Java platform for general-purpose computing, and JDK APIs, specific to the JDK and potentially unavailable on all implementations of Java SE Platform.
+
+Key modules include 'java.base' providing foundational APIs and 'java.sql' that defines the JDBC API, among many others that cater to everything from data transfer and remote method invocation to cryptography and HTTP client services.
+
+For JDK-specific APIs, the modules include 'jdk.compiler', 'jdk.crypto.cryptoki', and 'jdk.jdi', to name a few. These range from utility tools for Java Archive manipulation ('jdk.jartool') and JVM diagnostics ('jdk.jcmd'), to the API for JDK Flight Recorder ('jdk.jfr') and the implementation of DNS Java Naming provider ('jdk.naming.dns').
+
+Each Java SE or JDK module has a specific role in the Java ecosystem, enabling developers to construct applications with sophisticated features such as distributed transactions, XML processing, accessibility, etc. Providing a wide range of functionalities, these APIs constitute the 20th version of the Java SE and JDK platforms. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;

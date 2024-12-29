@@ -1,0 +1,68 @@
+#include <expected>
+<fim_suffix>es/1630788 (RIP).
+#endif
+
+namespace fizz {
+  class State {
+   public:
+    State(std::string pathIn);
+    std::unexpected<std::exception_ptr> close();
+
+   private:
+    std::unique_ptr<folly::File> f;
+    std::string path;
+  };
+
+  std::unique_ptr<uint8_t[]> readAll(std::string filename);
+}
+#endif  
+<fim_middle>
+#include <string>
+#include <memory>
+#include <exception>
+#include <utility>
+#include <folly/File.h>
+
+#ifndef FIZZ_EXAMPLE_HH
+#define FIZZ_EXAMPLE_HH
+
+#ifdef __cpp_lib_expected
+#  error Your implementation of the C++23 std::expected is in the standard library and may be adequate.
+#endif
+#ifndef __clang__
+ 
+ 
+ 
+ 
+#  error Your C++23 std::expected class appears to lack some features. Consider disabling these tests.
+#elif __has_include(<concepts>)
+#  undef HAVE_STD_EXPECTED
+#else
+#  error Your C++23 std::expected class appears to lack the <concepts> library. Consider disabling this test. It may be adequate to just disable the test.
+#endif
+
+
+#if defined(__GLIBCXX__) && __GLIBCXX__ < 20150123
+#   warning Your libc++ appears to be too old. Consider disabling this test.
+#  undef HAVE_STD_EXPECTED
+#elif defined(_GLIBCXX_EXPERIMENTAL_CXX0X)
+#  warning Your libc++ appears to have the experimental features enabled. Consider disabling this test.
+#  undef HAVE_STD_EXPECTED
+#elif!defined(__GNUC__) && std::expected<int,int>::unexpected_type()!= int  
+#  warning Your compiler appears to lack __GNUC__. Expect errors as expected_error does not use exceptions for unmet requirements of std::expected, including copy assignment and move assignment.
+#elif __GNUC__ < 6
+#  warning Your compiler appears to be too old. Expect errors due to -Wsuggest-override in gcc6.
+#endif
+
+#ifdef HAVE_STD_EXPECTED
+
+#include <cassert>
+
+namespace fizz {
+
+  std::unique_ptr<uint8_t[]> readAll(std::string filename);
+
+  using FileResult = std::expected<void, std::exception_ptr>;
+  FileResult openFile(std::string path);
+  FileResult writeAll(std::string path, std::unique_ptr<uint8_t[]> buf, size_t size);
+ 

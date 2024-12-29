@@ -1,0 +1,50 @@
+#include <stdlib.h>
+
+		union Number *p;
+	q1 = calloc(1,sizeof(struct Point));
+    q2 = calloc(1,sizeof(struct Point));
+
+	q2 -> x = 5; 
+	p = & t;
+p -> z = 1;
+p -> t = q1;
+	
+ 
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+union Booleans{
+        unsigned x : 1;
+        unsigned y : 1;
+        unsigned z : 1;
+        unsigned a : 1;
+        unsigned b : 1;
+};
+main(){
+        union Booleans x;
+        x.a = 0;
+        x.y = 1;
+        printf("Bitfields is %x \n",x.b);
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+<fim_middle>#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+union Number{
+    int z;
+    struct Point *t;
+};
+main()
+{
+	struct Point point1, point2, *q1, *q2;
+	union Number t;

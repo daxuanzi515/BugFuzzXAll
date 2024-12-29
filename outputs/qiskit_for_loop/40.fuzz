@@ -1,0 +1,99 @@
+from qiskit import QuantumCircuit
+
+
+def create_loop_for(indexset, loop_parameter, body):
+    loop_body = []
+    if indexset is None:
+        return for_qubits_with_body(body)
+    else:
+        for i in indexset:
+            assignment = "assign %s %s" % (loop_parameter, i)
+            loop_body.append(assignment)
+            loop_body.append(body)
+        return for_indices(loop_body,
+                           loop_parameter=loop_parameter,
+                           indexset=indexset)
+
+def for_qubits_with_body(body, _create_args={}):
+    return ForLoop.qubits_for_loop(body, **_create_args)
+
+def for_indices_with_body(body, loop_parameter, indexset, _create_args={}):
+    return ForLoop.indices_for_loop(body, loop_parameter, indexset, **_create_args)
+
+def for_indices(body, loop_parameter, indexset, _create_args={}):
+    loop = create_loop_for_with_body(body, loop_parameter, indexset, **_create_args)
+    return [loop]
+
+def create_loop_for_with_body(body, loop_parameter, indexset, _create_args={}):
+    return ForLoop.indices_for_loop(body, loop_parameter, indexset, **_create_args)
+
+class ForLoop:
+
+    @staticmethod
+    def indices_for_loop(body, loop_parameter, indexset, **qasm_args):
+        qasm_args.update({
+            "indexset": indexset,
+            "loop_parameter": loop_parameter,
+            "body": "; ".join(body) + ";",
+        })
+        return ForLoopOp(**qasm_args)
+
+    @staticmethod
+    def qubits_for_loop(body, **qasm_args):
+        class Builder:
+
+            def __init__(self, index):
+                self._create_args = qasm_args.copy()
+                self.index = index
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, type, value, traceback):
+                qasm_args.update(self._create_args)
+                qasm_args["indexset"] = [self.index]
+                qasm_args["body"] = self._create_str()
+                return ForLoopOp(**qasm_args)
+
+            def _create_str(self):
+                loop_body = []
+                index = self.index
+                for j in range(10):
+                    assignment = "assign {} {} ;".format(loop_parameter, index)
+                    loop_body.append(assignment)
+                    loop_body.append(body)
+                    index += 1
+                return "; ".join(loop_body)
+
+        if "indexset" in qasm_args:
+            raise QISKitError("qubits_for_loop can't take index in call")
+        return Builder(0)
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

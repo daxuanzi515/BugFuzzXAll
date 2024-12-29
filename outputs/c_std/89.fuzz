@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", val);
+    val %= 129;
+    printf("%d\n", val);
+    return 0;
+}
+ 
+ 
+ 
+int convert(char s[]);
+ 
+int a[7], b = 0, i = 0;
+while(scanf("%c", &a[i]) == 1 && a[i]!='')
+{
+    i++;
+}
+printf("%d\n", convert(a));
+ 
+ 
+int main()
+{
+    int val = 0;
+    return 0;
+}
+ 
+ 
+ 
+/* and assign the values of the following variables (y

@@ -1,0 +1,32 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args)throws IOException{
+        Reader r = null;
+        BufferedReader reader = null;
+        try{
+            reader = new BufferedReader(new FileReader("file.txt"));
+            r = new FileReader("something.txt");
+            long numberOfChar = 0;
+            char[] buf = new char[0x80];
+            int read = reader.read();
+            while(read!= -1){
+                numberOfChar += read;
+                read = reader.read(buf);
+                r.read(buf);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+        }
+        finally{
+            if(r!= null){
+                r.close();
+            }
+            if(reader!= null){
+                reader.close();
+            }
+        }
+    }
+}

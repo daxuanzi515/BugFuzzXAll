@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <type_traits>
+#include <variant>
+#include <ranges>
+using namespace std;
+struct Employee {
+	  vector<int> secretData;
+    static Employee makeEmp();
+	  void printMyAddressPtr();
+	  template<typename T> friend Employee operator>>(const Employee& emp, T& x);
+    template<typename T>
+    bool operator==(T t) { return false; }
+};
+Employee Employee::makeEmp() {
+    Employee emp{};
+    emp.secretData = vector<int>{3};
+    emp.printMyAddressPtr();
+    return emp;
+}
+Employee operator>>(const Employee& emp, Employee& x) {
+    x.secretData = emp.secretData;
+    return x;
+}
+void print

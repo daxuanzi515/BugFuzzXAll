@@ -1,0 +1,12 @@
+#include <expected>
+<fim_suffix> 3; });
+auto result = e1 * e2;
+
+ 
+```
+
+
+[std::expected]: https: 
+[examples/expected]: https: 
+[expected-example-colab]: https: 
+[std::optional::

@@ -1,0 +1,84 @@
+import java.lang.Object;
+class Sample {
+    void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+    public void test() {
+        synchronized (this) {
+            doSomething1();
+            doSomething2();
+        }
+    }
+    public synchronized void another() {
+        doSomething1();
+        doSomething2();
+    }
+}
+public class Test1 {
+    public static void main(String [] args) {
+        Sample sync = new Sample();
+        sync.test();
+        sync.another();
+    }
+}
+ 
+class Account {
+    int ibalance;
+    void deposit(int b)
+    {
+        ibalance=ibalance+b;
+    }
+    void withdraw(int b)
+    {
+        if(ibalance>=b)
+        {
+            ibalance=ibalance-b;
+        }
+        else
+        {
+            System.out.println("Withdrawal Failed: Insufficient Funds");
+        }
+    }
+    void getDetails()
+    {
+        System.out.println("Your Balance is"+ibalance);
+    }
+}
+ 
+public class test {
+    volatile boolean bool = true;
+    public static void main(String[] args)
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(bool) {
+                    System.out.println("thread 1 is running.");
+                }
+                System.out.println("thread 1 is exiting.");
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(bool) {
+                    System.out.println("thread 2 is running.");
+                }
+                System.out.println("thread 2 is exiting.");
+            }
+        }).start();
+    }
+}
+ 
+/* What is static? What is the difference between a static field and instance field?
+
+A field declared as static in a class is known as static field. The field belongs to the class and can be accessed without creating object instance.
+
+A field declared inside the class but outside of the methods is known as instance fields. The field belongs to an instance and can be accessed by creating and object instance.
+
+The static keyword can be used with other modifiers except private and final. It means that the variable is shared by all the instances of the class.
+
+The static modifier with methods does two things. It means that

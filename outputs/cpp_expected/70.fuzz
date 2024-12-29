@@ -1,0 +1,41 @@
+#include <expected>
+<fim_suffix>nt main() {
+  try {
+     
+    int x = 10;
+
+     
+    std::expected<int> e = x;
+
+     
+    std::expected<int> e2 = 2 * e;
+
+     
+    std::expected<int> e3 = 10 / e2;
+
+     
+    if (e3) {
+       
+      std::cout << "e3 is expected to be 5\n";
+    } else {
+      std::cout << "e3 is unexpected with error code " << e3.error() << "\n";
+    }
+
+     
+    std::expected<int> e4 = std::make_unexpected(
+        std::error_code(static_cast<int>(::errc::invalid_argument),
+                        get_error_category()));
+
+     
+    std::cout << "e4 is unexpected with error code " << e4.error()
+              << " and error message " << e4.error().message() << "\n";
+  } catch (const std::exception& ex) {
+     
+    std::cout << "An unhandled exception occured: " << ex.what() << "\n";
+  }
+
+  return 0;
+}
+<fim_middle>
+
+i

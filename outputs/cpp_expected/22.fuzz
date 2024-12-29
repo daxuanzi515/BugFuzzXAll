@@ -1,0 +1,57 @@
+#include <expected>
+<fim_suffix>
+    try {
+        std::cout << "Enter second: ";
+        int second;
+        std::cin >> second;
+
+        return std::expected<int, std::string>{first + second};
+    } catch(...){
+         
+        std::cerr << "Exception: " << boost::current_exception_diagnostic_information() << std::endl;
+        return std::expected<int, std::string>{std::errc::invalid_argument};
+    }
+}
+
+std::expected<int, std::string> subtract(){
+    int first, second;
+
+    std::cout << "Enter first: ";
+    std::cin >> first;
+
+    try {
+        std::cout << "Enter second: ";
+        std::cin >> second;
+
+        return std::expected<int, std::string>{first - second};
+    } catch(...){
+         
+        std::cerr << "Exception: " << boost::current_exception_diagnostic_information() << std::endl;
+        return std::expected<int, std::string>{std::errc::invalid_argument};
+    }
+}
+
+
+int main() {
+    std::cout << add() << std::endl;
+    std::cout << subtract() << std::endl;
+
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <string>
+#include <chrono>
+#include <system_error>
+#include <boost/exception/diagnostic_information.hpp>
+
+using std::experimental::expected;
+using std::cout;
+using std::string;
+using std::chrono::milliseconds;
+
+std::expected<int, std::string> add(){
+    int first;
+
+    std::cout << "Enter first: ";
+    std::cin >> first;

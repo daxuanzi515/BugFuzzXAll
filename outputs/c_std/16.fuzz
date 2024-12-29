@@ -1,0 +1,26 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen("src/file.txt", "r");
+    if( file == NULL ) {
+        printf("Error:\n");
+        exit(1);
+    }
+    char *text = NULL;
+    long int fileLen = 0;
+    fseek(file, 0, SEEK_END);
+    fileLen = ftell(file)+1;  
+    rewind(file);
+    text = malloc(fileLen * sizeof(char));
+    fread(text, fileLen-1, 1, file);
+    fflush(file);
+    fclose(file);
+    printf("%s\n", text);
+    free(text);
+    return 0;
+}
+ 
+/* Write a program which makes use of the new C standard library. Be
+sure that everything works on all systems. This assignment will only

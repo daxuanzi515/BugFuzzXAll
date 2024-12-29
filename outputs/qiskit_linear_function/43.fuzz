@@ -1,0 +1,16 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[[]]]
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(val)
+    def set(self, row, col, val):
+        self.mat[i].append(val)
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str

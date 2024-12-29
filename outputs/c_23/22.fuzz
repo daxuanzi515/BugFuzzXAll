@@ -1,0 +1,49 @@
+#include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  int ptr = 1;
+  for (; ptr && strlen(buffer) < 10; ptr--)
+    buffer[1] = 1;
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  for (; strlen(buffer) < 10; ptr++) {
+    if (ptr!= 0) {
+    }
+#pragma acc wait
+    buffer[1] = 1;
+  }
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+int main() {
+  char buffer[12] = "";
+  for (; strlen(buffer) < 10; ptr++) {}
+  return 0;
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (; b[1] && ptr == ptr1; b[1]--)
+    ;
+  if (strlen(buffer) > 10)
+    ptr = realloc(ptr, strlen(buffer) + 8);
+}
+int main

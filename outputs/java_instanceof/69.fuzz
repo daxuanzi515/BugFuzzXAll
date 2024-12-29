@@ -1,0 +1,72 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+        static Integer a = 1;
+	public static void main(String... args) {
+		Integer b = 1;
+		Object c = new int[2];
+		Integer d = (Integer) 1;
+		Integer e = (Integer) b;
+		Integer f = (Integer) ((Integer) 1);
+		int g = (int)(b);
+		System.out.println("a is Integer: " + (a instanceof Integer));
+		System.out.println("b is Integer: " + (b instanceof Integer));
+	}
+}
+
+class Muggal
+{
+	private int i;
+	private long l;
+	public Muggal()
+	{
+		i=2;
+		l=3;
+		x();
+		z = 0;
+	}
+	public void x()
+	{
+		x=1;
+		int x;
+	}
+	public int y(int i)
+	{
+		long x;
+		if(x==0 && y == 0) y=1;
+		return x;
+		int y;
+	}
+	public static void z()
+	{
+		long y=2;
+		x=3;
+	}
+	public static int a()
+	{
+		++x;
+		return x;
+	}
+	public static int b(int i)
+	{
+		long x;
+		if(y==0 && x==0) z=1;
+		return x;
+		int z;
+	}
+	public static void c(int i,int l)
+	{
+		--x;
+	}
+	
+}
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		Muggal m=new Muggal();
+	}
+}
+

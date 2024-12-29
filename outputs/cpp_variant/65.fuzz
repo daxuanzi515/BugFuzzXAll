@@ -1,0 +1,53 @@
+#include <variant>
+<fim_suffix>:forward<Args>(Args)...));
+        }
+
+        template<class T, int I = 0> decltype(auto) visit_impl(std::integer_sequence<int, I...>, int (*f)(T*), T*... args) const
+        {
+            if constexpr (I == sizeof...(args))
+            {
+                throw std::variant_error("visit must take at least 1 argument");
+            }
+            else
+            {
+                return f(std::get_if<I>(std::addressof(*this))
+                       ? *std::get_if<I>(std::addressof(*this))
+                        : visit_impl<T, I + 1>(std::integer_sequence<int, I + 1>(), f, args...));
+            }
+        }
+    };
+}
+ 
+class S
+{
+    bool b{false};
+public:
+    S(bool b_) : b(b_) {}
+    void print() const {
+        std::cout << "Class S value: " << b << std::endl;
+    }
+};
+class Z
+{
+    bool b{false};
+public:
+    Z(bool b_) : b(b_) {}
+    void f() const {
+        std::cout << "Class Z value: " << b << std::endl;
+    }
+    void print() const {
+        std::cout << "Class Z value: " << b << std::endl;
+    }
+};
+
+void a(const S& s)
+{
+    std::cout << "Called variant method" << std::endl;
+    s.print();
+};
+void a(const Z& v)
+{
+    std::cout << "Called non-variant method" << std::endl;
+    v.f();
+};
+void a2(const S&

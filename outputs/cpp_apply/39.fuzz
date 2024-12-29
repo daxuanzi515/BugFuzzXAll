@@ -1,0 +1,55 @@
+#include <tuple>
+#include <iostream>
+
+template<typename... Types>
+int display(std::tuple<Types...> tuple)
+{
+   
+  std::apply([](auto&... x ) { (std::cout <<... << '\n', std::cout << x << '\n'); }, t);
+}
+int main()
+{
+  display(std::make_tuple( 99 ) );
+}
+
+
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  std::apply([](auto& x) { std::cout << x << '\n'; }, tuple);
+  return EXIT_SUCCESS;
+}
+
+  >>;
+std::true_type is_default_constructible_v<int, std::enable_if_t<std::is_signed_v<int>>>;
+
+is_default_constructible_v<bool>::type
+
+*/
+ 
+struct Foo {};
+std::tuple_element<0, Foo>::type x;
+std::cout << std::is_default_constructible<x>::value << '\n';
+ 
+struct Baz { int x; void func(int) {} };
+Foo f2{};
+std::tuple<Baz, Foo> baz_foo = {Baz{}, f2};
+ 
+ 
+constexpr size_t array_size = 4;
+int intArray[array_size] = {1, 2, 3, 4};
+ 
+int main()
+{
+  std::array<int, array_size> arr;
+  for (int i = 0; i < array_size; i++)
+  {
+    arr[i] = intArray[i];
+  }
+   
+   
+  return 0;
+}

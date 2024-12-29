@@ -1,0 +1,30 @@
+#include <variant>
+<fim_suffix>raits.
+    using Variant = std::variant<int, double>;
+    const Variant varA = 42;             
+    const Variant varB = 3.14669247;      
+    std::visit([](auto&& value)  {           
+        std::cout << "The held element is of type " << typeid(value).name() << '\n';
+    }, varA);              
+    std::visit([](auto&& value)  {
+        std::cout << "The held element is of type " << typeid(value).name() << "\n";
+    }, varB);
+    if (std::holds_alternative<double>(varB)) {   
+        std::cout << "The double value is " << varB.template get<double>() << '\n';
+    } else {
+        std::cout << "The variant does not hold an double.\n";
+    }
+}
+ 
+std::variant<int, double> my_func(bool which, bool bool) {
+    if (which) {
+        return 3;           
+    } else {
+        return 3.13669247;  
+    }
+}
+ 
+#include <chrono>
+#include <variant>
+int main() {
+    std::variant<std::

@@ -1,0 +1,62 @@
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Object)) 
+			throw new IllegalArgumentException("a is not Object");
+		System.out.println("a is Object: " + (a instanceof Object));
+	}
+}
+
+ 
+import java.lang.Object;
+class Mutability {
+	int value;
+}
+
+ 
+public class MainRuntimeStatic1 extends Object {
+	public static void main(String[] args) {
+		new MainRuntimeStatic1().run();
+	}
+
+	public void run() {
+		try {
+			this.staticCall();
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private static void staticCall() {
+		new Mutability();
+	}
+}
+
+ 
+public class MainRuntimeInstance1 extends Object {
+
+	public void run() {
+		try {
+			this.instanceCall(this);
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}		
+	}
+
+	private void instanceCall(MainRuntimeInstance1 instance) {
+		new Mutability();
+	}
+
+	public static void main(String[] args) {
+		new MainRuntimeInstance1().run();
+	}
+}
+
+ 
+public class MainInstance extends Object {
+	public void run() {
+		throw new IllegalArgumentException();
+	}
+}

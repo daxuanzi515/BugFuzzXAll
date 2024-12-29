@@ -1,0 +1,5 @@
+'''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit

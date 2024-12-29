@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#define a 0x1
+uchar a1 = (uchar)1;
+unsigned int b[2];
+unsigned int e[2];
+void *ptr = &a1;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  for (buffer[2] = '\0'; buffer[0]; ptr++) ptr++;
+  ptr1 = &d;
+  return 0;
+}

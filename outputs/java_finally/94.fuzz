@@ -1,0 +1,37 @@
+import java.lang.Object;
+<fim_suffix>    System.out.println("Closing output streams");
+        }
+    }
+}
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+public class SFinally7
+{
+    private void doSomething()
+    {
+        try (InputStream in = new FileInputStream("myfilename")) {
+            int c;
+            do {
+                c = in.read();
+                System.out.print((char)c);
+            } while ( c!= -1);
+        } catch (IOException e) {
+            System.out.print(e.getMessage());
+             
+        }
+    }
+}
+ <fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    public static void main(String[] args) throws Exception {
+        int num1=10, num2=9;
+        try(FileWriter fw = new FileWriter("src/outputText.txt")) {
+            fw.write(num1+""+num2+"\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("End");
+        

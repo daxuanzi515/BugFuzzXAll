@@ -1,0 +1,38 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <termios.h>
+#include <linux/kd.h>
+#include <linux/vt.h>
+#include <asm/ioctls.h>
+#include <errno.h>
+static const int KDGETKEYCODE  =_IOR('K', 1, int);
+static const int KDFONTOP       =_IOW('K', 2, struct kd_fops);
+static const int KDMAPDISP      =_IOR('K', 3, int);
+int main(int argc, char *argv[]) {
+  int fd;
+  if((fd = open("/dev/tty1", O_RDWR))<0) {
+    perror("open");
+    exit(EXIT_FAILURE);
+  } else {
+    int status;
+    if(ioctl(fd, KDGETKEYCODE, &status)<0) {
+      if(errno == ENOTTY) {
+        perror("ioctl");
+      }
+      exit(EXIT_FAILURE);
+    } else {
+      printf("status:\n\tc=%i\nv=%i\ne=%i\ns=%i\nh=%i\np=%i\n", (status&4)>>2, (status&2)>>1, status&1, (status&16)>>4, (status&32)>>5, (status&64)>>6);
+    }
+  }
+  if((fd =open("/dev/tty1", O_RDWR))<0) {
+    perror("open");
+    exit(EXIT_FAILURE);
+  } else {
+    long value=4;
+    if(ioctl(fd, KDFONTOP, &value)<0) {
+      if(errno == ENOTTY)

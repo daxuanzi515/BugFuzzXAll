@@ -1,0 +1,58 @@
+import java.lang.Object;
+ (char c : s1.toCharArray())
+			s2[c+'a'-'@']=true;
+		Scanner s3 = new Scanner("Welcome to Java\n");
+		while(s3.hasNext()) {
+			String word = s3.next().toLowerCase();
+			if (s2[word.charAt(0)]==true)
+				System.out.println(word);
+		}
+	}
+}
+ 
+public class LowercaseAndCapitalize {
+	public static void main(String[] args) {
+		Scanner input= new Scanner(System.in);
+		Scanner wordinput = new Scanner(input.nextLine());
+		String array[] = new String[100];
+		int i = 0;
+		String str = "";
+		while (wordinput.hasNext()) {
+			str = wordinput.next();
+			str = str.toLowerCase();
+			str=Character.toUpperCase(str.charAt(0)) + str.substring(1);
+			array[i]=str;
+			i=i+1;
+		}
+		for (i = 0; i<array.length-1; i++)
+			System.out.println(array[i]);
+		System.out.println(array[i]);
+	}
+}
+ 
+public class ArrayList {
+	public static void main(String[] args) {
+		ArrayList<String> namesList = new ArrayList<String>();
+		namesList.add("Zamith");
+		namesList.add("Othman");
+		namesList.add("Osmani");
+		namesList.add("Mohammed");
+		Iterator itr=namesList.iterator();
+		while(itr.hasNext())
+			System.out.println(itr.next().toString());
+	}
+}
+ 
+public class AppendReverseArrayList {	
+	public static void main(String[] args) {
+		ArrayList myList = new ArrayList();
+		myList.add("Zamith");
+		myList.add("Othman");
+		myList.add("Mohammed");
+		myList.add("Osmani");
+		Iterator itr = myList.descendingIterator();
+		while (itr.hasNext())
+			System.out.println(itr.next().toString());
+	}
+}
+/* Please create a java program that

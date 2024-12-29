@@ -1,0 +1,58 @@
+from qiskit import QuantumCircuit
+
+def create_circuit2(f, initial_input): 
+    def f1(x): 
+        return x & (x >> 1)
+    circuit = QuantumCircuit(10)
+    i = initial_input
+    for _ in range(10):
+        
+        i ^= i & (i >> 1)
+        if i & 1:
+            circuit.x(0)
+        i >>= 1
+        if i & 1:
+            circuit.x(2)
+        i >>= 1
+    return circuit
+def input_labels2(n): 
+    labels = []
+    for j in range(n):
+        labels.append(str(j))
+    return labels
+def create_linear_function(): 
+  pass
+def _set_classical_equality(labels, equal): 
+  	if len(labels)!= len(equal): 
+  		raise ValueError("Labels and equality check vectors are not equal in length") 
+  self._classical_equality = (labels, equal) 
+  return self 
+
+def _controlled_gate(self): 
+	params = []
+	
+	return
+def invert_gate(self): 
+	params = deepcopy(gate)
+	params[0:2] = [params[1], params[0]]
+	return
+def repeat(self, times, params): 
+	_assert_same_shape(params)
+	params = deepcopy(params)
+	for _ in range(times):
+		self._params.append(params)
+	return
+def reverse(self,params): 
+	_assert_linear_function_shape(params)
+	params = deepcopy(params)
+	params.reverse()
+	return
+def soft_compare(self,other): 
+	if isinstance(other, Gate): 
+		return self._params == other._params 
+	else: 
+		return False 
+def gate_exponent(self, exponent): 
+	gate = deepcopy(self)
+	gate.repeat(exponent)
+	return gate 

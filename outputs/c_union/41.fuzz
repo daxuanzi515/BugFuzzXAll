@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data {
+    size_t size_of_data_type;
+    void *p;
+    int i;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    static int a = 0;
+    if(!a)
+    {
+    printf("u1.i Address %p\n", &u1.i );
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("U1 value = %ld\n", u1);
+    printf("u1.p Address %p\n", &u1.p );
+    printf("U1.p value = %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("u2.i value = %d\n", u2.i);
+    printf("U2.i Address %p\n", &u2.i);
+    a = 1;
+    }
+    return (EXIT_SUCCESS);
+}
+ 
+  
+  
+  
+  
+  
+ 

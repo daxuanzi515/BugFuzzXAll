@@ -1,0 +1,39 @@
+#include <variant>
+(10, 0.0f, {1.2, 1.3});
+
+v.foo();
+```
+
+However, with `std::variant`, we'll have:
+
+```bash
+v.call_if_bar_with(10, 0.0f);
+```
+
+This allows us to avoid having to deal with undesired implicit conversions that may occur with C `switch` statements. 
+
+In conclusion... `while (i < 100) v = i + 10;` becomes `v = i < 100? i + 10 : v`.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+So... we're done here right? We can use `std::variant` with ease and, with a little imagination, use `std::visit` with a complex functor. What good is a functional library like this if we can't use it with the help of this function? Let's check it out.
+
+So... Let's modify `program.cpp`, again, after the last section:
+
+```cpp
+struct foo
+{
+    foo() = delete;
+    void operator()(const int&){}
+    void operator()(const float&){}
+    void operator()(const V&){
+         
+    }
+}
+```
+
+This is a function that will do its job if our variant contains an int, a float, or a V-type value.
+
+```cpp
+void function(const std::variant<int, float, V>& var) {
+    std::visit(

@@ -1,0 +1,94 @@
+#include <expected>
+ = unexpect_value(myExn)) {
+		std::cout << "oops... " << ex.what() << "\n";
+	}
+
+	 
+	try {
+		for (const auto& c : expectRange(obj.anotherMethod()))
+		{
+			std::cout << c << "\n";
+		}
+	} catch (const std::exception& ex) {
+		std::cout << "oops... " << ex.what() << "\n";
+	}
+
+	 
+	 
+	try {
+		std::cout << *obj.multiplyByTwo() << "\n";
+	} catch (const std::exception& ex) {
+		std::cout << "oops... " << ex.what() << "\n";
+	}
+}<fim_middle>
+
+
+int main() {
+	using MyReturn = std::expected<int, std::exception_ptr>;
+
+	struct Obj
+	{
+		MyReturn divideBy5(int x) { return x / 5; }
+		MyReturn divideByZero(int x) { return x / 0; }
+
+		MyReturn anotherMethod() { return 42; }
+
+		void setX(int x)
+		{
+			if (x == 0)
+			{
+				throw std::invalid_argument{ "0 can't be a valid value!" };
+			}
+			x_ = std::move(x);
+		}
+
+		MyReturn multiplyByTwo()
+		{
+			if (!has_value())
+			{
+				throw "unexpected";
+			}
+			return x_ * 2;
+		}
+
+		 
+	public:
+		std::expected<int, std::exception_ptr> x_;
+	};
+
+	Obj obj;
+	try
+	{
+		auto myValue = obj.divideBy5(20);  
+	}
+	catch (const std::logic_error& ex)
+	{
+		std::cout << "Exception! " << ex.what() << "\n";
+	}
+
+	char myVal = 25;
+	try
+	{
+		int myResult = MyReturn(myVal);
+		std::cout << myResult << "\n";
+	}
+	catch (const std::logic_error& ex)
+	{
+		std::cout << "bad move (1): " << ex.what() << "\n";
+	}
+
+	try
+	{
+		MyReturn myResult = myVal;
+		std::cout << *myResult << "\n";
+	}
+	catch (const std::logic_error& ex)
+	{
+		std::cout << "bad Move (2): " << ex.what() << "\n";
+	}
+
+	 
+	obj.setX(2);
+
+	 
+	 

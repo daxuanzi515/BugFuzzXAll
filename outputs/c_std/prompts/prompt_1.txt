@@ -1,0 +1,37 @@
+/* The C Standard Library contains a range of headers that fulfill different functions:
+
+- <assert.h> is used for error handling, it compiles a macro that compares its argument to zero.
+- <complex.h> handles complex number arithmetic.
+- <ctype.h> determines the type in character data.
+- <errno.h> reports error conditions.
+- <fenv.h> manages the floating-point environment.
+- <float.h> specifies the limits of floating-point types.
+- <inttypes.h> deals with format conversion of integer types.
+- <iso646.h> provides alternative operator spellings.
+- <limits.h> outlines the ranges of integer types.
+- <locale.h> has localization utilities.
+- <math.h> includes common mathematical functions.
+- <setjmp.h> allows nonlocal jumps.
+- <signal.h> handles signals.
+- <stdalign.h> offers alignas and alignof convenience macros.
+- <stdarg.h> provides variable arguments.
+- <stdatomic.h> allows for atomic operations.
+- <stdbool.h> specifies macros for boolean types.
+- <stddef.h> offers common macro definitions.
+- <stdint.h> is for fixed-width integer types.
+- <stdio.h> is for input/output.
+- <stdlib.h> provides general utilities: memory management, program utilities, random numbers, algorithms.
+- <string.h> handles string.
+- <tgmath.h> has type-generic math.
+- <threads.h> provides a thread library.
+- <time.h> has time/date utilities.
+- <uchar.h> handles UTF-16 and UTF-32 character utilities.
+- <wchar.h> handles extended multibyte and wide character utilities.
+- <wctype.h> determines the type contained in wide character data. 
+- <stdbit.h> provides macros for byte and bit representation.
+- <stdchkdint.h> includes checked integer arithmetic macros.
+- <stdnoreturn.h> provides the noreturn convenience macro.
+
+In summary, the C Standard Library headers provide functions for a variety of operations, including arithmetic, string handling, error reporting, complex number arithmetic, and more. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

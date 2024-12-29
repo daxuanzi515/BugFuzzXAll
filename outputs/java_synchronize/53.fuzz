@@ -1,0 +1,67 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+         
+        s.doSomething2();
+         
+    }
+}
+
+ 
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+        throw new Error();
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+
+ 
+
+1.	Space for statics is reserved when the app loads, and never unloaded.  There is a one time initialization of them.
+2.	Space for instances isn’t reserved.  They grow and are collected when the app needs them.
+
+ 
+
+A program's execution context contains:
+•	The program’s stack;
+•	The values of any local variables and parameters in the program;
+•	The program’s heap;
+•	A reference to the method area; and
+•	An instance of java.lang.Thread.
+
+/* In a multi-threading program, which one of the following statements would most likely be correct?
+
+	a) Once the start() called, the thread would always continue to run.
+	b) Once the suspend() called, the thread can never continue to run.
+	c) Once the stop() called, the thread can never reach any code.
+	d) Once the resume() called, the thread would continue to run.
+
+
+//b
+suspend() and resume() can be called any time a thread object knows that the thread has been suspended or it's going to be resumed from suspend(pause or stop).
+
+ 
+
+Because internally, the API is using the Unix system call nanosleep and therefore is also affected by the OS scheduling of the CPU
+
+
+ 
+
+•	

@@ -1,0 +1,33 @@
+#include <expected>
+<fim_suffix>t main() {
+        std::string r;  
+        my_func().and_get_ref(r);
+        return 0;
+}
+
+<fim_middle>
+#include <functional>
+
+#include <memory>
+#include <mutex>
+#include <string>
+
+ 
+class my_error_info final {
+public:
+        explicit my_error_info(const std::string& message) : m_message { message } {}
+
+        const char* what() const noexcept {
+                return m_message.c_str();
+        }
+
+private:
+        const std::string m_message;
+};
+
+ 
+auto my_func() -> std::expected<std::string, my_error_info> {
+        return "SUCCESS";
+}
+
+in

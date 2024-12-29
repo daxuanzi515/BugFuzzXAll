@@ -1,0 +1,94 @@
+#include <expected>
+<fim_suffix>t();
+		bool hasValue = e.hasValue();
+	}
+
+class Baz
+{
+public:
+	Baz() : val(42) {LOG("Baz()");}
+	int val;
+	~Baz() {LOG("~Baz()");}
+	void f() {LOG("f(s, const int &) " << val);}
+	void f(const int &i) {LOG("f(s, const int &) " << i);}
+	void f(int &&i) {LOG("f(s, int &&): " << i);}
+};
+
+	int main(int, char**)
+	{
+		try {
+			 
+			std::expected<int, int> foo()
+			{
+				std::cout << "About to get the value.\n";
+				 
+				std::string str = "123"; std::istringstream istr{ str };
+				int value; if (istr >> value)
+					 
+					return value;
+				else
+					return istr.rdstate();
+			}
+
+			std::cout << "After foo(): ";
+			if (const auto res = foo())
+			{
+				std::cout << "Success: " << *res << '\n';
+				 
+				*res = 20;
+			}
+			else
+			{
+				std::cout << "Error: (expected integer, got " << res << ")\n";
+			}
+
+			std::cout << "After foo(): ";
+			if (auto res = foo())
+			{
+				std::cout << "Success: " << *res << '\n';
+			}
+			else
+			{
+				std::cout << "Error: (expected integer, got " << res << ")\n";
+			}
+
+			std::cout << "After foo(): ";
+			try
+			{
+				foo().value();
+			}
+			catch (const std::system_error& e)
+			{
+				std::cout << "Error: (" << e.what() << ")\n";
+			}
+
+			try
+			{
+				foo().value_or(123);
+			}
+			catch (const std::system_error& e)
+			{
+				std::cout << "Error: (" << e.what() << ")\n";
+			}
+
+			std::cout << "After foo(): ";
+			try
+			{
+				if (auto res = foo())
+				{
+					std::cout << "Success: " << *res << '\n';
+					 
+					*res = 123;
+				}
+				else
+					throw std::system_error(res);
+			}
+			catch (const std::system_error& ex)
+			{
+				throw;
+			}
+
+			std::cout << "After foo(): ";
+			try
+			{
+				

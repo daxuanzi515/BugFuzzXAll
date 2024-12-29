@@ -1,0 +1,22 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qr = QuantumRegister(2, 'qr')
+qc = QuantumCircuit(qr)
+
+loop_index = 0
+
+for_loop_var = 0
+with qc.for_loop(indexset=range(3), loop_parameter='loop_index', body=for_loop_var):
+     qc.cx(qr[loop_index], qr[loop_index+1])
+     
+     loop_index += 1
+qc.draw()<jupyter_output><empty_output><jupyter_text>The QuantumCircuit.while_loop() method accepts additional parameters just like QuantumCircuit.for_loop(). However, unlike the for loop, the while loop will only iterate if the condition evaluates to True, or an empty loop block is executed. The parameters for the while loop method include indexset (a collection of integers to loop over), loop_parameter (the parameter used within the body to which the values from indexset will be assigned), body (the loop body to be repeatedly executed), qubits (the circuit qubits over which the loop body should be run), clbits (the circuit clbits over which the loop body should be run), label (the string label of the instruction in the circuit), and condition (the condition evaluated at each iteration to determine if the body should be repeatedly executed).<jupyter_code>
+qr = QuantumRegister(2)
+qc = QuantumCircuit(qr)
+
+
+loop_index = 0
+with qc.while_loop(indexset=range(3), loop_parameter='loop_index', body=loop_index, condition=loop_index > 2):
+    qc.cx(qr[loop_index], qr[loop_index+1])
+    loop_index += 1

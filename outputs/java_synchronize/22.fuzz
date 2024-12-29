@@ -1,0 +1,53 @@
+import java.lang.Object;
+class SampleData {
+    void write() {
+        System.out.println("Write call is invoked!");
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException ie) {}
+    }
+    void read() {
+        System.out.println("Read call is invoked!");
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException ie) {}
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize() {
+        synchronized (this) { 
+            data.read(); 
+        }
+    }
+    public void write_synchronize() {
+        synchronized (this) { 
+            data.write(); 
+        }
+    }
+}
+public class SampleTest2 {
+    public static void main(String [] args) {
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() {
+                    for (int k = 0; k < 5; k ++)
+                        data.read_synchronize();
+                }
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() {
+                    for (int k = 0; k < 5; k ++)
+                        data.write_synchronize();
+                }
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}

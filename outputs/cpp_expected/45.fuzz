@@ -1,0 +1,33 @@
+#include <expected>
+<fim_suffix>    expected_divide(std::make_unexpected(5), std::make_unexpected(5));
+    std::cout << result.error().val << '\n';
+}
+<fim_middle>
+
+inline auto no_divide(int a, int b)
+{
+    if (b == 0)
+    {
+        throw std::runtime_error{""};
+    }
+    return a / b;
+}
+
+auto expected_divide(int a, int b)
+{
+    try
+    {
+        return std::expected<int>{no_divide(a, b)};
+    }
+    catch (...)
+    {
+        return std::make_unexpected(std::runtime_error{""});
+    }
+}
+
+int main()
+{
+    std::expected<int> result = expected_divide(9, 3);
+    std::cout << result.value() << '\n';
+
+  

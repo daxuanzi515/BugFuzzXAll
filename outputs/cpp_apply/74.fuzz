@@ -1,0 +1,52 @@
+#include <tuple>
+#include <type_traits>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t;
+  std::cout << std::apply([](auto&... x) {return std::make_tuple(std::size(x)...);}, t).get<0>() << '\n';
+  std::cout << std::apply([x = 0, &...y](auto&... a) {return std::tuple_cat(std::forward_as_tuple(std::ref(x)), std::forward_as_tuple(y)...);}, t).get<0>() << '\n';
+  return EXIT_SUCCESS;
+}
+
+ 
+#include <mt19937>
+#include <utility>
+void randomize(std::mt19937& g) {return;}
+class sized {
+public:
+struct error : std::exception {};
+sized(int s) : size_(s) {
+  if (size_ <= 0) throw error();
+}
+int size() const noexcept {
+  return size_;
+}
+private:
+int size_;
+};
+int main() {
+  std::mt19937 g(0);
+  std::uniform_int_distribution<int> gen;
+  for (int i = 0; i < 100; +i) {
+    std::cout << gen(g) % sized(0).size() << '\n';
+  }
+}
+ 
+#include <functional>
+#include <memory>
+#include <iostream>
+int fibonacci(int i) {
+  std::function<int(int)> fib;
+  fib = [&fib](int i) {
+    return (i < 3)? 1 : fib(i - 1) + fib(i - 2);
+  };
+  return fib(i);
+}
+int main() {
+  std::cout << fibonacci(20) << '\n';
+  std::cout << fibonacci(40) << '\n';
+}
+ 
+#include <iostream>
+int foo

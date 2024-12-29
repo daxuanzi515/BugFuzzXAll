@@ -1,0 +1,51 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3)
+qc.x(0)
+qc.y(1)
+qc.z(2)
+qc.cx(0,1)
+qc.h(2)
+qc.barrier()
+qc.switch(0, 10, 2)
+qc.draw() 
+
+
+
+from qiskit.circuit.library import ToffoliGate
+qc = QuantumCircuit(3)
+qc.h(0)
+qc.ch(0,1)
+target = slice(2)
+T = ToffoliGate(target)
+qc.append(T, [0,1,2])
+qc.draw() 
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

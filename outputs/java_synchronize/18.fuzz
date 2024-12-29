@@ -1,0 +1,44 @@
+import java.lang.Object;
+ 
+class SampleData {
+    String value;
+    synchronized void write(String s) {
+        value = s;
+    }
+    synchronized String read() {
+        return value;
+    }
+}
+ 
+public class MyThread extends Thread{
+    Task task;
+    MyThread(Task t) { task = t; }
+    public void run() { task.doTask(); }
+}
+ 
+class Task {
+     
+    public void doTask() {
+        System.out.print("Hello ");
+        System.out.println("World");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Task task = new Task();
+        MyThread t = new MyThread(task);
+         
+        t.start();
+    }
+}
+ 
+ 
+public class Main {
+    public static void main(String[] args) {
+        Object obj = new Object();
+        obj.synchronized(obj) {
+            System.out.println("Synchronized block!");
+        }
+    }
+}
+ 

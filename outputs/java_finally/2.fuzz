@@ -1,0 +1,30 @@
+import java.lang.Object;
+ class FinallyDemo {  
+    public static void main(String args[]) throw IOException{ 
+        BufferedReader br = null;  
+        BufferedWriter bw = null; 
+        String path = null;      
+        String line, name;  
+        int len;    
+        if (args.length!=2)  
+    {
+        System.out.println("Usage: Java finallyDemo file1 file2"); 
+        System.exit(1); 
+    } 
+        path = args[0]; 
+        br = new BufferedReader(new FileReader(path)); 
+        path = args[1]; 
+        bw = new BufferedWriter(new FileWriter(path)); 
+        do   
+    {
+        line = br.readLine(); 
+        len = line.length(); 
+        bw.write(len); 
+        bw.newLine(); 
+    } while (line!= null && len!=0);  
+        bw.close();  
+        br.close();
+    } 
+        
+   
+}

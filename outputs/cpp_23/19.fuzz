@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+ 
+ 
+        secretDataPtr = new int;
+        myAddressPtr = (void*)&secretDataPtr;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+        secretDataPtr = nullptr;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+     

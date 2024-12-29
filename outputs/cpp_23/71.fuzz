@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+   int i{10};
+   int* p{&i};
+   *p += 200;
+   cout << i << endl;
+   return 0;
+}
+ 
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int* arr{ new int[5]{ 1, 2, 3, 4, 5 } };
+
+void printArr() {
+   for (int i{ 0 }; i < 5; ++i) {
+      cout << arr[i] << ", ";
+   }
+   cout << endl;   
+}
+
+void printEvenArr() {
+   int count{ 0 };
+   for (int i{ 0 }; i < 5; ++i) {
+      if (i % 2 == 0) {
+         cout << arr[i] << ", ";
+         count++;
+      }
+   }
+   cout << endl << "Number of values found: " << count << endl;
+}
+
+int main()
+{
+   printArr();
+   printEvenArr();
+
+   delete[] arr;
+   return 0;
+}

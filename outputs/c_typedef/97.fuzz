@@ -1,0 +1,66 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int (x)[5];
+    x a1 = {1, 2, 3, 4, 5};
+    return 0;
+}
+
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+int main() {
+    uint32_t x = 2147483647 + 0;
+    printf("%u\n", x);
+    return 0;
+}
+
+ 
+#include <math.h>
+#include <stdio.h>
+#define macro(x) x * x * 16
+
+int main()
+{
+    int volume = 10;
+    #define cubeVolume macro(volume)
+    int cubeVolume1 = macro(volume);  
+    int cubeVolume2 = cubeVolume;  
+
+    printf("Volume of Cube with macro: %d\n", cubeVolume);
+    printf("Volume of Cube without macro: %d\n", cubeVolume1);
+    printf("Volume of Cube without macro: %d\n", cubeVolume2);
+
+    return 0;
+}
+
+
+ 
+#include <stdio.h>
+#include <string.h>
+int main() 
+{
+  int x = 5;   
+  int *p = &x;  
+  int *v = &x + 10;  
+  int y[15];  
+  char *str = "I love c programming";
+
+  *p = 6;  
+  p++;  
+  p--;  
+  p = v + 5;  
+
+  printf("%d %d\n", *p, *v);
+  memcpy(y, p, 15* sizeof(int));  
+
+  printf("%hhd\n", *str);
+  str = str + 9;  
+  printf("%hhd\n", *str);
+  
+  return 0;
+}
+

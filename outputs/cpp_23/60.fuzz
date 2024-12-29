@@ -1,0 +1,15 @@
+#include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+int main() 
+{
+  std::optional<int> oi1 {1};
+  std::optional<int> oi2 {2};
+  decltype(oi1) oi = oi1;
+   std::vector<std::optional<int>> voi{oi1,oi2};
+  std::cout << oi1 << std::endl;
+  std::cout << oi << std::endl;
+  return 0;
+}

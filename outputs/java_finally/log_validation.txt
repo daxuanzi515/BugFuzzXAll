@@ -1,0 +1,1155 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/0.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Final1.java:9: 错误: 找不到符号
+            int i1 = Integer.parseInt(input);
+                                      ^
+  符号:   变量 input
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:10: 错误: 找不到符号
+            int j1 = Integer.parseInt(input);
+                                      ^
+  符号:   变量 input
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:11: 错误: 找不到符号
+            int k1 = i + j;
+                     ^
+  符号:   变量 i
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:11: 错误: 找不到符号
+            int k1 = i + j;
+                         ^
+  符号:   变量 j
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:25: 错误: 找不到符号
+        try(FileWriter writer = new FileWriter("tryResource.txt"); 
+            ^
+  符号:   类 FileWriter
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:25: 错误: 找不到符号
+        try(FileWriter writer = new FileWriter("tryResource.txt"); 
+                                    ^
+  符号:   类 FileWriter
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:26: 错误: 找不到符号
+            PrintWriter  pw1 = new PrintWriter(writer); )
+            ^
+  符号:   类 PrintWriter
+  位置: 类 Final1
+/tmp/temp1735451333.9322395/Final1.java:26: 错误: 找不到符号
+            PrintWriter  pw1 = new PrintWriter(writer); )
+                                   ^
+  符号:   类 PrintWriter
+  位置: 类 Final1
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/1.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FileOps.java:27: 错误: 需要 class、interface、enum 或 record
+import java.io.FileWriter;
+^
+/tmp/temp1735451333.9322395/FileOps.java:28: 错误: 需要 class、interface、enum 或 record
+import java.io.IOException;
+^
+/tmp/temp1735451333.9322395/FileOps.java:43: 错误: 需要 class、interface、enum 或 record
+import java.util.function.BiConsumer;
+^
+/tmp/temp1735451333.9322395/FileOps.java:44: 错误: 需要 class、interface、enum 或 record
+import java.util.function.Consumer;
+^
+/tmp/temp1735451333.9322395/FileOps.java:45: 错误: 需要 class、interface、enum 或 record
+import java.io.BufferedReader;
+^
+/tmp/temp1735451333.9322395/FileOps.java:46: 错误: 需要 class、interface、enum 或 record
+import java.io.FileReader;
+^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/2.fuzz failed validation with error message: /tmp/temp1735451333.9322395.java:3: 错误: 需要';'
+    public static void main(String args[]) throw IOException{ 
+                                          ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/3.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/4.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/5.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava.java:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/FinallyJava.java:33: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/FinallyJava.java:34: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/7.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava.java:48: 错误: 需要 class、interface、enum 或 record
+This would be printed in System.out as 20. The number is 20 because inside method1, when checking "if(flag){}", boolean flag is true, hence the new value of number is assigned as 10. Therefore, inside method1, number is 10 when checking "number = 2;" Hence, the output is 10.
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/8.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/9.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinalJava.java:12: 错误: 非法的表达式开始
+                    if(out!== null){
+                            ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/10.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyWithResources.java:20: 错误: 未结束的注释
+/* At most one finally block can appear in any try statement, after any variable declarations. This limitation on finally clauses is important. Because the finally clause typically includes code such as closing resources, it can easily result in an exception that might not otherwise occur, making debugging difficult. To ensure that exceptions that occur during the execution of finally blocks will result in exceptions immediately in the invoking code, all resources must be available and all their finalizers executed when the try statement is complete. For example, if an IOException occurs during the execution of a finally block that tries to close a resource, the original IOException should be passed to the exception handler for the try statement. If the exception cannot be handled during the final execution of a finally block, the original IOException should be rethrown.
+^
+/tmp/temp1735451333.9322395/FinallyWithResources.java:28: 错误: 进行语法分析时已到达文件结尾
+With the Java SE 7 release, a try-finally statement can contain resource declarations of the for, if, while, and foreach statements. These declarations ensure that the resource has been
+                                                                                                                                                                                         ^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/11.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/12.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/13.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/14.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/15.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:14: 错误: 类 MyWriter 是公共的, 应在名为 MyWriter.java 的文件中声明
+public class MyWriter{
+       ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:7: 错误: 不兼容的类型: Writer无法转换为Reader
+        BufferedReader reader = new BufferedReader(writer.open());
+                                                              ^
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/16.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:13: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+                out.close();
+                         ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:8: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+            out = new FileWriter("write.txt",true);
+                  ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:9: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+            out.write("Let's write to file!");
+                     ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:16: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+        FileWriter out1 = new FileWriter("write1.txt");
+                          ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:17: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+        out1.write("Second");
+                  ^
+/tmp/temp1735451333.9322395/FinallyJava2.java:18: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+        out1.close();
+                  ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/17.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/18.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/19.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/21.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:13: 错误: 需要')'或','
+                    System.out.println(line
+                                           ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/22.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2a.java:10: 错误: 找不到符号
+            while((line = in.readUTF())!= null){
+                            ^
+  符号:   方法 readUTF()
+  位置: 类型为FileReader的变量 in
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/23.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/24.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:26: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/25.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:7: 错误: 已在方法 main(String[])中定义了变量 in
+        try (BufferedReader in = new BufferedReader(new FileReader("newFile.txt"));){
+                            ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/28.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/29.fuzz failed validation with error message: /tmp/temp1735451333.9322395/ThrowsException.java:9: 错误: 找不到符号
+           BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+           ^
+  符号:   类 BufferedReader
+  位置: 类 ThrowsException
+/tmp/temp1735451333.9322395/ThrowsException.java:9: 错误: 找不到符号
+           BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+                                   ^
+  符号:   类 BufferedReader
+  位置: 类 ThrowsException
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/30.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava3.java:20: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/FinallyJava3.java:21: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/FinallyJava3.java:22: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/31.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:20: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:31: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:50: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/32.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/33.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Mutated.java:7: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+        try{
+        ^
+/tmp/temp1735451333.9322395/Mutated.java:20: 错误: 需要 class、interface、enum 或 record
+import java.io.File;
+^
+/tmp/temp1735451333.9322395/Mutated.java:21: 错误: 需要 class、interface、enum 或 record
+import java.io.FileReader;
+^
+/tmp/temp1735451333.9322395/Mutated.java:22: 错误: 需要 class、interface、enum 或 record
+import java.io.LineNumberReader;
+^
+/tmp/temp1735451333.9322395/Mutated.java:40: 错误: 需要 class、interface、enum 或 record
+import java.io.File;
+^
+/tmp/temp1735451333.9322395/Mutated.java:41: 错误: 需要 class、interface、enum 或 record
+import java.io.FileReader;
+^
+/tmp/temp1735451333.9322395/Mutated.java:42: 错误: 需要 class、interface、enum 或 record
+import java.io.LineNumberReader;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/34.fuzz failed validation with error message: /tmp/temp1735451333.9322395/JavaTryWithResources.java:10: 错误: 需要')'或','
+            PrintWriter out = new PrintWriter(new FileWriter("someOther.txt");
+                                                                             ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/35.fuzz failed validation with error message: /tmp/temp1735451333.9322395/BetterFinallyJava.java:30: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:31: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:32: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:52: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:53: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:59: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/BetterFinallyJava.java:60: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/36.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava2.java:36: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/FinallyJava2.java:38: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/37.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/38.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/39.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/40.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJava.java:21: 错误: 找不到符号
+              if(in!= null){
+                 ^
+  符号:   变量 in
+  位置: 类 FinallyJava
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/41.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/42.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/43.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyJAVA1.java:12: 错误: 已在方法 main(String[])中定义了变量 in
+                BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+                               ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/44.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/45.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/46.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/48.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/49.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/50.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Finally.java:23: 错误: 有 'finally', 但是没有 'try'
+        finally {
+        ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/51.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/52.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/53.fuzz failed validation with error message: /tmp/temp1735451333.9322395/FinallyWithException.java:28: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+                    in.close();
+                            ^
+/tmp/temp1735451333.9322395/FinallyWithException.java:23: 错误: 未报告的异常错误IOException; 必须对其进行捕获或声明以便抛出
+                    reader.close();
+                                ^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/54.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Finally.java:9: 错误: 需要')'或','
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt"); BufferedReader reader = new BufferedReader(new FileReader("something.txt")){
+                                                                             ^
+/tmp/temp1735451333.9322395/Finally.java:10: 错误: 非法的类型开始
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt");
+        ^
+/tmp/temp1735451333.9322395/Finally.java:10: 错误: 需要')'或','
+        try(BufferedReader in = new BufferedReader(new FileReader("file.txt");
+                                                                             ^
+/tmp/temp1735451333.9322395/Finally.java:13: 错误: 非法的类型开始
+            while((line = in.readLine())!= null){
+            ^
+/tmp/temp1735451333.9322395/Finally.java:13: 错误: 需要<标识符>
+            while((line = in.readLine())!= null){
+                       ^
+/tmp/temp1735451333.9322395/Finally.java:13: 错误: 需要';'
+            while((line = in.readLine())!= null){
+                                       ^
+/tmp/temp1735451333.9322395/Finally.java:16: 错误: 需要';'
+        }
+         ^
+/tmp/temp1735451333.9322395/Finally.java:17: 错误: 需要';'
+        catch(IOException e){
+                           ^
+/tmp/temp1735451333.9322395/Finally.java:20: 错误: 需要')'
+    }
+     ^
+/tmp/temp1735451333.9322395/Finally.java:21: 错误: 进行语法分析时已到达文件结尾
+}
+ ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/56.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/57.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Finally.java:21: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735451333.9322395/Finally.java:22: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/Finally.java:23: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/Finally.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.*;
+^
+/tmp/temp1735451333.9322395/Finally.java:25: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/Finally.java:46: 错误: 未结束的注释
+/* How would abstract base class concept in Java? As known, class is a template or blueprint. The blueprint of a class defines structure, behavior and characteristics. Abstract base class is a base class and it can't be instantiated. When created
+^
+/tmp/temp1735451333.9322395/Finally.java:46: 错误: 进行语法分析时已到达文件结尾
+/* How would abstract base class concept in Java? As known, class is a template or blueprint. The blueprint of a class defines structure, behavior and characteristics. Abstract base class is a base class and it can't be instantiated. When created
+                                                                                                                                                                                                                                                      ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/58.fuzz failed validation with error message: /tmp/temp1735451333.9322395/MyTest.java:8: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+        try{
+        ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/59.fuzz failed validation with error message: /tmp/temp1735451333.9322395/Finally.java:26: 错误: 找不到符号
+                    if (r!= null) {
+                        ^
+  符号:   变量 r
+  位置: 类 Finally
+/tmp/temp1735451333.9322395/Finally.java:27: 错误: 找不到符号
+                        r.close();
+                        ^
+  符号:   变量 r
+  位置: 类 Finally
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/60.fuzz failed validation with error message: /tmp/temp1735451333.9322395/STryWithResources.java:19: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/STryWithResources.java:44: 错误: 非法的类型开始
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/STryWithResources.java:44: 错误: 需要<标识符>
+import java.lang.Object;
+                       ^
+/tmp/temp1735451333.9322395/STryWithResources.java:49: 错误: 进行语法分析时已到达文件结尾
+}
+ ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/61.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally.java:38: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally.java:39: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/SFinally.java:40: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally.java:69: 错误: 进行语法分析时已到达文件结尾
+}
+ ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/62.fuzz failed validation with error message: /tmp/temp1735451333.9322395/ModifyingFinally.java:11: 错误: 不是语句
+            file.txt
+                ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:11: 错误: 需要';'
+            file.txt
+                    ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:23: 错误: 需要')'或','
+                                reader = new BufferedReader(new FileReader("something.txt");
+                                                                                           ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:32: 错误: 有 'catch', 但是没有 'try'
+                                catch(Exception e){
+                                ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:35: 错误: 有 'finally', 但是没有 'try'
+                                finally {
+                                ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:12: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+            try {
+            ^
+/tmp/temp1735451333.9322395/ModifyingFinally.java:8: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+        try {
+        ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/63.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally.java:7: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+        try {
+        ^
+/tmp/temp1735451333.9322395/SFinally.java:23: 错误: 进行语法分析时已到达文件结尾
+                                    }
+                                     ^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/65.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally3.java:8: 错误: 有 'finally', 但是没有 'try'
+        finally{
+        ^
+/tmp/temp1735451333.9322395/SFinally3.java:25: 错误: 非法的类型开始
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally3.java:25: 错误: 需要<标识符>
+import java.lang.Object;
+                       ^
+/tmp/temp1735451333.9322395/SFinally3.java:26: 错误: 非法的类型开始
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally3.java:26: 错误: 需要<标识符>
+import java.lang.System;
+                       ^
+/tmp/temp1735451333.9322395/SFinally3.java:27: 错误: 非法的类型开始
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/SFinally3.java:27: 错误: 需要<标识符>
+import java.lang.String;
+                       ^
+/tmp/temp1735451333.9322395/SFinally3.java:28: 错误: 非法的类型开始
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally3.java:28: 错误: 需要<标识符>
+import java.io.*;
+               ^
+/tmp/temp1735451333.9322395/SFinally3.java:38: 错误: 进行语法分析时已到达文件结尾
+}
+ ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/66.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally3.java:8: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+            try {
+            ^
+/tmp/temp1735451333.9322395/SFinally3.java:19: 错误: 非法的类型开始
+                finally {
+                ^
+/tmp/temp1735451333.9322395/SFinally3.java:24: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/67.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/68.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally2.java:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:20: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:21: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:22: 错误: 需要 class、interface、enum 或 record
+import java.lang.IllegalArgumentException;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:42: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:43: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:44: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:45: 错误: 需要 class、interface、enum 或 record
+import java.lang.IllegalArgumentException;
+^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/69.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally2.java:34: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:35: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:36: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:37: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally2.java:42: 错误: try-with-resources 资源必须是变量声明, 或者是指示对最终变量或实际上的最终变量的引用的表达式
+        try (FileReader fr = new FileReader("src/data.txt");br = new BufferedReader(fr)){
+                                                               ^
+/tmp/temp1735451333.9322395/SFinally2.java:50: 错误: 进行语法分析时已到达文件结尾
+                    System.out.println("And of course print this too.");
+                                                                        ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/70.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally3Alt.java:15: 错误: 找不到符号
+            printWriter.append("Added some data\n");
+            ^
+  符号:   变量 printWriter
+  位置: 类 SFinally3Alt
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/71.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally4.java:6: 错误: 找不到符号
+    public static void main(String[] args) throws IOException {
+                                                  ^
+  符号:   类 IOException
+  位置: 类 SFinally4
+/tmp/temp1735451333.9322395/SFinally4.java:7: 错误: 找不到符号
+        BufferedReader br = null;
+        ^
+  符号:   类 BufferedReader
+  位置: 类 SFinally4
+/tmp/temp1735451333.9322395/SFinally4.java:9: 错误: 找不到符号
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+                     ^
+  符号:   类 BufferedReader
+  位置: 类 SFinally4
+/tmp/temp1735451333.9322395/SFinally4.java:9: 错误: 找不到符号
+            br = new BufferedReader(new FileReader("src/myData.txt"));
+                                        ^
+  符号:   类 FileReader
+  位置: 类 SFinally4
+/tmp/temp1735451333.9322395/SFinally4.java:16: 错误: 找不到符号
+            PrintWriter printWriter = null;
+            ^
+  符号:   类 PrintWriter
+  位置: 类 SFinally4
+/tmp/temp1735451333.9322395/SFinally4.java:18: 错误: 找不到符号
+                printWriter = new PrintWriter("src/myData.txt");
+                                  ^
+  符号:   类 PrintWriter
+  位置: 类 SFinally4
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/72.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/73.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally4.java:4: 错误: 需要';'
+import java.io.*
+                ^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/74.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/75.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/76.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/77.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/78.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/79.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/80.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>d that this approach may work well with the try-catch-finally approach but is not mandatory.
+^
+/tmp/temp1735451333.9322395/SFinally6.java:3: 错误: 需要 class、interface、enum 或 record
+    A finally block is not required, but it is good practice if you want to ensure that resources are freed up properly, even if the JVM throws an exception. It is also good for catching errors that might affect the final state of your program, or the state of resources (such as connection or files) that are not closed in the try block.
+                                                                                                                                                                                                                              ^
+/tmp/temp1735451333.9322395/SFinally6.java:5: 错误: 需要<标识符>
+    In every Java application, a Throwable object is passed into a catch block if an exception is thrown, and this object holds the details about the exception. Throwable is a superclass of several exception classes, so you can check the type and details of the exception without needing to know the specific class.
+                                                                                                                                                                                                                                                                                                                          ^
+/tmp/temp1735451333.9322395/SFinally6.java:7: 错误: 需要 class、interface、enum 或 record
+    */<fim_middle>import java.lang.System;
+      ^
+/tmp/temp1735451333.9322395/SFinally6.java:8: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/81.fuzz failed validation with error message: /tmp/temp1735451333.9322395.java:2: 错误: 需要 class、interface、enum 或 record
+5 {
+^
+/tmp/temp1735451333.9322395.java:14: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735451333.9322395.java:17: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+注: /tmp/temp1735451333.9322395.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/82.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>        if((num!= (temp % 3))) {
+^
+/tmp/temp1735451333.9322395/SFinally6.java:4: 错误: 需要 class、interface、enum 或 record
+            }
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:7: 错误: 需要 class、interface、enum 或 record
+            }
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:10: 错误: 需要 class、interface、enum 或 record
+        for(int i = 6; i <= 100; i++) {
+                       ^
+/tmp/temp1735451333.9322395/SFinally6.java:10: 错误: 需要 class、interface、enum 或 record
+        for(int i = 6; i <= 100; i++) {
+                                 ^
+/tmp/temp1735451333.9322395/SFinally6.java:12: 错误: 需要 class、interface、enum 或 record
+            if(i == 50) {
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:14: 错误: 需要 class、interface、enum 或 record
+            }      
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:17: 错误: 需要 class、interface、enum 或 record
+        while(j < 10) {
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:19: 错误: 需要 class、interface、enum 或 record
+            if(j == 5) {
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:21: 错误: 需要 class、interface、enum 或 record
+            }
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:30: 错误: 需要 class、interface、enum 或 record
+        for(int i = 0; i < 10; i++) {
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:30: 错误: 需要 class、interface、enum 或 record
+        for(int i = 0; i < 10; i++) {
+                       ^
+/tmp/temp1735451333.9322395/SFinally6.java:30: 错误: 需要 class、interface、enum 或 record
+        for(int i = 0; i < 10; i++) {
+                               ^
+/tmp/temp1735451333.9322395/SFinally6.java:32: 错误: 需要 class、interface、enum 或 record
+            if(i == 5) {
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:34: 错误: 需要 class、interface、enum 或 record
+            }
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:37: 错误: 需要 class、interface、enum 或 record
+        for (int k=1; k<=5; k=k++){
+                      ^
+/tmp/temp1735451333.9322395/SFinally6.java:37: 错误: 需要 class、interface、enum 或 record
+        for (int k=1; k<=5; k=k++){
+                            ^
+/tmp/temp1735451333.9322395/SFinally6.java:39: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:41: 错误: 需要 class、interface、enum 或 record
+        for (int l=5;l>=1;l=l--){
+                     ^
+/tmp/temp1735451333.9322395/SFinally6.java:41: 错误: 需要 class、interface、enum 或 record
+        for (int l=5;l>=1;l=l--){
+                          ^
+/tmp/temp1735451333.9322395/SFinally6.java:43: 错误: 需要 class、interface、enum 或 record
+        }*/  
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:46: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:60: 错误: 未结束的注释
+/* Create a program that illustrates the break statement.
+^
+/tmp/temp1735451333.9322395/SFinally6.java:66: 错误: 进行语法分析时已到达文件结尾
+loop is executed normally
+                         ^
+24 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/83.fuzz failed validation with error message: /tmp/temp1735451333.9322395.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ngs = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+^
+/tmp/temp1735451333.9322395.java:3: 错误: 需要 class、interface、enum 或 record
+            System.out.println(daysOfTheWeek[dayofWeek]);
+            ^
+/tmp/temp1735451333.9322395.java:4: 错误: 需要 class、interface、enum 或 record
+        } catch (ArrayIndexOutOfBoundsException e) {
+        ^
+/tmp/temp1735451333.9322395.java:6: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395.java:8: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/84.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix> finally {
+^
+/tmp/temp1735451333.9322395/SFinally6.java:4: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:18: 错误: 进行语法分析时已到达文件结尾
+        }
+         ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/85.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>(FileWriter fileWriter = new FileWriter("src/myData.txt")) {
+^
+/tmp/temp1735451333.9322395/SFinally5.java:4: 错误: 需要 class、interface、enum 或 record
+            System.out.println("This line will not be printed");
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:5: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:7: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:8: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:10: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:13: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/86.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>tStream fileInputStream = new FileInputStream("src/myData.txt")) {
+^
+/tmp/temp1735451333.9322395/SFinally5.java:4: 错误: 需要 class、interface、enum 或 record
+        } catch(IOException e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:6: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Failed to read/write the file.");
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:7: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:9: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:11: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:14: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/87.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+ if (System.nanoTime() % 5000000 < 200) {
+ ^
+/tmp/temp1735451333.9322395/SFinally5.java:5: 错误: 需要 class、interface、enum 或 record
+                } finally {
+                ^
+/tmp/temp1735451333.9322395/SFinally5.java:7: 错误: 需要 class、interface、enum 或 record
+                }
+                ^
+/tmp/temp1735451333.9322395/SFinally5.java:10: 错误: 需要 class、interface、enum 或 record
+            }
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:14: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735451333.9322395/SFinally5.java:18: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:34: 错误: 未结束的注释
+/* What’s the difference between the following implementations?
+^
+/tmp/temp1735451333.9322395/SFinally5.java:93: 错误: 进行语法分析时已到达文件结尾
+        int z = 0, x, y
+                       ^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/88.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>rintln("Finally block executed");
+^
+/tmp/temp1735451333.9322395/SFinally6.java:3: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:6: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395/SFinally6.java:7: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:9: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:13: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735451333.9322395/SFinally6.java:15: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/89.fuzz failed validation with error message: /tmp/temp1735451333.9322395.java:2: 错误: 非法的类型开始
+<fim_suffix>w PrintWriter("src/myData.txt")) {
+                          ^
+/tmp/temp1735451333.9322395.java:5: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+          ^
+/tmp/temp1735451333.9322395.java:7: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395.java:8: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395.java:10: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395.java:2: 错误: 文件名错误：temp1735451333.9322395
+<fim_suffix>w PrintWriter("src/myData.txt")) {
+^
+注: /tmp/temp1735451333.9322395.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/90.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+"This line will not be printed");
+^
+/tmp/temp1735451333.9322395/SFinally5.java:3: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:5: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:6: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:8: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:13: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:18: 错误: 进行语法分析时已到达文件结尾
+            System.out.println(
+                               ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/91.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally4.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>tatic void main(String[] args) {
+^
+/tmp/temp1735451333.9322395/SFinally4.java:6: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Opening a file for reading.");
+            ^
+/tmp/temp1735451333.9322395/SFinally4.java:8: 错误: 需要 class、interface、enum 或 record
+        } catch (Exception e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally4.java:10: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395/SFinally4.java:11: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally4.java:16: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally4.java:23: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+注: /tmp/temp1735451333.9322395/SFinally4.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/92.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ed with a better message.");
+^
+/tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 未结束的字符串文字
+<fim_suffix>ed with a better message.");
+                                     ^
+/tmp/temp1735451333.9322395/SFinally5.java:5: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:10: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735451333.9322395/SFinally5.java:16: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735451333.9322395/SFinally5.java:18: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:59: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735451333.9322395/SFinally5.java:63: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:64: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:103: 错误: 进行语法分析时已到达文件结尾
+        final
+             ^
+注: /tmp/temp1735451333.9322395/SFinally5.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/93.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+18a.append ("Java 8, Chapter 11, Code Example 1 of 2\n");
+^
+/tmp/temp1735451333.9322395/SFinally6.java:3: 错误: 需要 class、interface、enum 或 record
+	System.out.println(s18a.toString());
+	^
+/tmp/temp1735451333.9322395/SFinally6.java:5: 错误: 需要 class、interface、enum 或 record
+	s18b.append ("Java 8, Chapter 11, Code Example 2 of 2\n");
+	^
+/tmp/temp1735451333.9322395/SFinally6.java:6: 错误: 需要 class、interface、enum 或 record
+	System.out.println(s18b.toString());
+	^
+/tmp/temp1735451333.9322395/SFinally6.java:8: 错误: 需要 class、interface、enum 或 record
+	System.out.println(s18c);
+	^
+/tmp/temp1735451333.9322395/SFinally6.java:10: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735451333.9322395/SFinally6.java:13: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:18: 错误: 进行语法分析时已到达文件结尾
+	String s
+	        ^
+注: /tmp/temp1735451333.9322395/SFinally6.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/94.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally7.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>    System.out.println("Closing output streams");
+^
+/tmp/temp1735451333.9322395/SFinally7.java:3: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally7.java:7: 错误: 需要 class、interface、enum 或 record
+import java.io.FileInputStream;
+^
+/tmp/temp1735451333.9322395/SFinally7.java:8: 错误: 需要 class、interface、enum 或 record
+import java.io.FileNotFoundException;
+^
+/tmp/temp1735451333.9322395/SFinally7.java:9: 错误: 需要 class、interface、enum 或 record
+import java.io.IOException;
+^
+/tmp/temp1735451333.9322395/SFinally7.java:26: 错误: 需要 class、interface、enum 或 record
+ <fim_middle>import java.lang.System;
+ ^
+/tmp/temp1735451333.9322395/SFinally7.java:27: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally7.java:36: 错误: 进行语法分析时已到达文件结尾
+            System.out.println("End");
+                                      ^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/95.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>s will be executed. The only exception to this is when the JVM exits while the try block is executing, in which case the finally block will not be executed, leaving the file open. */<fim_middle>import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:3: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/96.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally6.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>xception e) {
+^
+/tmp/temp1735451333.9322395/SFinally6.java:4: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally6.java:7: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:43: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:44: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:45: 错误: 需要 class、interface、enum 或 record
+import java.io.FileOutputStream;
+^
+/tmp/temp1735451333.9322395/SFinally6.java:46: 错误: 需要 class、interface、enum 或 record
+import java.io.IOException;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/97.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ion e) {
+^
+/tmp/temp1735451333.9322395/SFinally5.java:4: 错误: 需要 class、interface、enum 或 record
+            System.out.println("Re-thrown with a better message.");
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:5: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:7: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:13: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally5.java:24: 错误: 进行语法分析时已到达文件结尾
+        } catch (Except
+                       ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/98.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally5.java:2: 错误: 需要 class、interface、enum 或 record
+ {
+ ^
+/tmp/temp1735451333.9322395/SFinally5.java:4: 错误: 需要 class、interface、enum 或 record
+        try{
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:6: 错误: 需要 class、interface、enum 或 record
+       System.out.println("This line will not be printed");
+       ^
+/tmp/temp1735451333.9322395/SFinally5.java:7: 错误: 需要 class、interface、enum 或 record
+        } finally {
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:9: 错误: 需要 class、interface、enum 或 record
+            printWriter.close();
+            ^
+/tmp/temp1735451333.9322395/SFinally5.java:10: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally5.java:16: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_finally/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_finally/99.fuzz failed validation with error message: /tmp/temp1735451333.9322395/SFinally8.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>    try (InputStreamReader reader = new InputStreamReader(System.in)) {
+^
+/tmp/temp1735451333.9322395/SFinally8.java:5: 错误: 需要 class、interface、enum 或 record
+        } catch (IOException e) {
+        ^
+/tmp/temp1735451333.9322395/SFinally8.java:7: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735451333.9322395/SFinally8.java:10: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735451333.9322395/SFinally8.java:13: 错误: 进行语法分析时已到达文件结尾
+            System.out.print("Please enter some text.");
+                                                        ^
+5 个错误
+

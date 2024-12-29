@@ -1,0 +1,54 @@
+#include <variant>
+		return false;
+	}
+
+	const char* what() const
+	{
+		std::string result = name + std::string(": ") + std::string(m_description);
+		return result.c_str();
+	}
+private:
+	std::string m_description;
+	const char* const name;
+};
+
+template <class...BaseTypes>
+class Visitor : public BaseTypes...
+{
+public:
+	Visitor() = default;
+	Visitor(const Visitor&) = default;
+	Visitor(Visitor&&) = default;
+
+	template <class R, class...FBaseTypes>
+	Visitor(const Visitor<R, FBaseTypes...>& other)
+		: m_description(other.m_description)
+	{
+		(static_cast<BaseTypes&>(*this) = other,...);
+	}
+
+	template <class...FBaseTypes>
+	Visitor& operator=(const Visitor<FBaseTypes...>& other)
+	{
+		(static_cast<BaseTypes&>(*this) = other,...);
+		m_description = other.m_description;
+		return *this;
+	}
+
+	template <class...RBaseTypes>
+	bool operator==(const Visitor<RBaseTypes...>& other)
+	{
+		return ((static_cast<const BaseTypes&>(*this) == other) &&...);
+	}
+
+	template <class...RBaseTypes>
+	bool operator!=(const Visitor<RBaseTypes...>& other)
+	{
+		return!(*this == other);
+	}
+
+	void operator()()
+	{
+		for (auto& memberFunction : m_members)
+		{
+			memberFunction(static_

@@ -1,0 +1,69 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto t = std::make_tuple(42, 100);
+  std::apply<[] (int& l, int& r)
+  {
+    l = r - l;
+    r = l - r;
+    }
+    >(*t);
+    std::cout << t.get<0>() << '\n';
+    std::cout << t.get<1>() << '\n';    
+    return EXIT_SUCCESS;
+}
+```
+[Reference](https: 
+
+```c++
+#include <tuple>
+#include <algorithm>  
+#include <vector>  
+#include <iostream>  
+#include <functional>  
+#include <iterator>  
+int main()
+{
+  std::tuple<int, char> t{42, 1};
+  std::vector<int> v{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+   
+  std::cout << std::for_each(
+                  std::next(std::begin(v)),
+                  std::end(v),
+                  std::begin(v),
+                  std::plus<int>{}
+                )
+          << '\n';     
+   
+  std::cout << std::for_each(
+                  std::begin(v),
+                  std::prev(std::end(v)),
+                  std::ostream_iterator<int>{std::cout, ", "},
+                  [] (int val, std::size_t index)
+                  {
+                    return val * index;
+                  }
+                )
+          << '\n';     
+   
+  std::cout << std::for_each(
+                  std::begin(v),
+                  std::end(v),
+                  std::ostream_iterator<int>{std::cout, ", "},
+                  [] (int val, std::size_t index)
+                  {
+                    return std::multiplies<int>{val, val}(index, index);
+                  }
+                )
+          << '\n';   
+   
+  auto iter = std::find_if(
+                  std::begin(v),
+                  std::end(v),
+                  [](int n) { return n % 2; }
+                );
+  std::cout << "Odd number at position " << std::distance(std::begin(v), iter) << '\n'; 
+   
+  auto mostFrequent = std::max_element(
+                          std::begin(

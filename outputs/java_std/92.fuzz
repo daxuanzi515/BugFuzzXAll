@@ -1,0 +1,32 @@
+import java.lang.Object;
+1 = s.split("\n");
+		for(String s3 : arr1)
+		{
+			String[] arr2 = s3.split("\\s");
+			
+		}
+	}
+}
+/* 2. The Java SE Platform.
+2.1. Java SE Runtime Environment(JRE)
+2.2. Java Platform, Standard Edition (Java SE)
+2.3. What is Java? Why do we need it?
+Let’s find out.
+A Java program is compiled into a class file(.class). Each class file is then stored within a Java package. 
+The package name may be represented by any hierarchial structure that follows the name convention 'com.samsung.edu.pune.java.javaX', i.e. each package name is seperated by a '.'. 
+The Java package names have no pre-defined set of rules, just a convention for separating individual components of the package.
+The package name of the class must be unique under the same hierarchy. Multiple packages could exist under the same hierarchy if they have a common ancestor package like java.lang, java.util, or java.net.
+The Java compiler accepts files with any of the following suffices: *.java, *.class, and *.javafx. But the recommended suffix is.java.  
+
+The class file is the actual code in a Java program, it contains the entire application code and the bytecode is interpreted by the virtual machine. 
+The bytecode is just the binary equivalent of a machine language written in machine code (i.e. 1s and 0s). It is the responsibility of the virtual machine to interpret and run the bytecode. 
+
+These are the three major parts that constitute the Java SE Platform,
+
+JDK - To compile the application into bytecode, the Java compiler (Java compiler) is used by the JDK, based upon the java source code. The JDK compiles the java files into class files using a predefined set of rules.
+JRE - After the class files are compiled into bytecode, the JRE (Java runtime environment) compiles, loads, and executes the bytecode using a predefined set of rules.
+JVM - The JVM (Java Virtual Machine) is created by the JDK. It is the component responsible for interpreting and executing the bytecode.
+2.4. Differences Between the JRE and the JDK
+The JDK contains both the Java compiler and the JRE. Whereas the JRE contains the JVM, the JDK does not. Both the JDK and the JRE are installed on the computer to make the use of Java programming easier for developers.
+
+The difference between the JRE and JDK has been clear for both programmers and software designers. For example, some

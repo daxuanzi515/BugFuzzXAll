@@ -1,0 +1,7 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello1234");
+  printf("Parameter 2: %s\n", "world1234");
+}

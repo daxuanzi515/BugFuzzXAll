@@ -1,0 +1,45 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Object();
+		Integer a = new Integer(10);
+        System.out.println(a instanceof Integer);
+        String obj1 = new String("Abhishek");
+        System.out.println(obj1 instanceof Object);
+        System.out.println(obj1); 
+        System.out.println(obj1 instanceof Integer);
+		String obj2 = new String("Abhishek");  
+        System.out.println(obj2 instanceof String);
+        Boolean obj3 = new Boolean(false);
+        System.out.println(obj3 instanceof Boolean);
+	}
+}
+class Obj_Mutated {
+    public static String mutated_string;
+    Obj_Mutated(String string) {
+        mutated_string = string;
+    }
+}
+ 
+import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+        Integer a = 20, a1 = 10;
+        System.out.println(a instanceof Integer);
+        Integer a2 = null;
+        Boolean b = false;
+        Boolean b1 = true;
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+        Integer a = new Integer(5), a1 = 10, a2 = null;
+        System.out.println(a instanceof Integer);
+        System.out.println(a2 instanceof Integer);
+	}
+}
+ 

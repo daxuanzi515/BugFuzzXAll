@@ -1,0 +1,37 @@
+#include <variant>
+<fim_suffix>e); 
+    int k = std::get<1>(some_tuple); 
+    std::cout << "First: " << i << " Second: " << k << "\n";
+    auto v2 = std::tie(i, k); 
+    std::cout << std::get<0>(v2) << " " << std::get<1>(v2) << "\n"; 
+    return 0; 
+}
+ 
+
+std::tie is the standard way of extracting multiple elements from several variables at once. It returns a tuple with the given values. The compiler may choose to generate the tuple as the return value in case only a single value is given.
+std::make_tuple does the same but is more efficient and produces a single variable of tuple type. 
+std::tuple_cat allows for combining tuples of any length into fewer tuples of more values
+
+*/
+
+ 
+ 
+
+ 
+
+ 
+
+template <typename T>
+struct Node {
+  T value;
+  int left, right;
+};
+auto root = Node{-2, 1, 3};
+bool isBST(Node* root, int min = INT32_MIN, int max = INT32_MAX) {
+  if (root == nullptr) return true;
+  if (root->value < min || root->value >= max) return false;
+  return isBST(root->left, min, root->value) && isBST(root->right, root->value, max);
+}
+
+/* Can you write down a definition of a binary search tree?
+A binary tree is either empty or a node with a key and two child nodes.

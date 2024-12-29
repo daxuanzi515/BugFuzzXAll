@@ -1,0 +1,21 @@
+#include <tuple>
+#include <utility>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(1, 6.75f);
+
+  std::apply(std::forward_as_tuple(2, 3.25f), [&t](int& _x, float& _y) {
+    std::tie(std::ignore, t[0]) = std::make_tuple(t[1], std::move(t[0]));
+    std::tie(t[1], std:: ignore) = std::make_tuple(t[0], std::move(t[1]));
+    
+    std::tie(std::ignore, std::ignore) = std::make_tuple(std::move(_x), std::move(_y));
+
+    std::cout << "Current tuple value = (" << std::get<0>(t) << ", " << std::get<1>(t) << ")\n";
+  });
+  
+  return EXIT_SUCCESS;
+}
+ 
+
+/* 

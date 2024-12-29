@@ -1,0 +1,74 @@
+import java.lang.Object;
+<fim_suffix>);
+		 
+		 
+		System.out.println("After");
+		p.drive("Right");
+		System.out.println("Before");
+		String str = "\u2306";
+		System.out.println(str);
+		String x = str.toString();
+		boolean a = str.equals(x);
+		System.out.println(a);
+		 
+	}
+}
+ 
+abstract class Book
+{
+	String id;
+	String Author;
+	String Publisher;
+	String Category;
+	int Price;
+	int TotalAmount;
+
+	public Book(String BookName, int Cost, String Publisher)
+	{
+		id = getNewID();
+		Author = "Unknown";
+		this.Publisher = Publisher;
+		Category = "General";
+		Price = Cost;
+		this.TotalAmount = 0;
+	}
+
+	protected int getNewID()
+	{
+		return 5000000;
+	}
+
+	abstract void create(String type, int copies, int totalCopies);
+
+	
+
+	public void sell(int quantity)
+	{
+		if(quantity > 0)
+		{
+			if(quantity < TotalAmount)
+			{
+				System.out.println(quantity + " of Book No "+ id + " sold");
+				TotalAmount -= quantity;
+			}
+			else
+			{
+				int b = quantity - TotalAmount;
+				System.out.println("Only " + TotalAmount + " left of Book No "+id + " sold");
+				TotalAmount = 0;
+				System.out.println(b + " of Book No "+id + " sold");
+			}
+		}
+		else
+		{
+			System.out.print("No book sold");
+		}
+	}
+
+	public void viewAll()
+	{
+		System.out.println("Book Name: " + this.Category);
+		System.out.println("Author of the Book: " + this.Author);
+		System.out.println("Publisher of the Book: " + this.Publisher);
+		System.out.println("Category of the Book: "+ Category);
+		System.

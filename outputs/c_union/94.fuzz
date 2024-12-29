@@ -1,0 +1,85 @@
+#include <stdlib.h>
+<fim_suffix>ruct is allocated on the heap
+	 
+	printf("\n\nThe following structure will be allocated on the heap");
+
+	struct Student
+	{
+		int rollno;
+		char name[100];
+		float percentage;
+	};
+
+	struct Student ptr;
+
+	 
+	ptr = (struct Student *)malloc(sizeof(struct Student));
+
+	 
+	printf("\n\nthe address of student value inside ptr is %p", (ptr));
+
+	 
+	printf("\nthe address of ptr is %p", &ptr);
+
+	 
+	ptr->rollno = 100;
+	strcpy(ptr->name, "Jake");
+	ptr->percentage = 9.05;
+
+	 
+	printf("\n\nvalues of structure variable are %i %s %f", ptr->rollno, ptr->name, ptr->percentage);
+
+
+	return 0;
+
+}
+ 
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+struct Student{
+	int rollno;
+	char name[100];
+	float percentage;
+};
+
+main(){
+	struct Student ptr1;
+	
+	 
+	printf("\npointer address of ptr1 is %p", &ptr1);	
+	
+	 
+	printf("\n\naddress of rollno member is %p and it contains value",ptr1.rollno);
+	
+	 
+	ptr1.rollno = 33;
+	strcpy(ptr1.name, "Jake");
+	
+	 
+	printf("\the following values of the structure object are %i %s", ptr1.rollno, ptr1.name);
+}
+ 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+union Student{
+	struct{
+		int rollno;
+		char name[100];
+		float percentage;
+		};
+};
+
+main()
+{
+union Student union1;
+
+
+ 
+printf("\n\nnadress of rollno member is %p and rollno value is",(&union1.rollno));
+union1.rollno = 100;
+
+ 
+printf("\n\naddress of name member is %p and

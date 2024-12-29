@@ -1,0 +1,17 @@
+import java.lang.Object;
+5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintStream printStream = new PrintStream("src/myData.txt")) {
+            printStream.println("Added some data");
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+ 
+<fim_middle>import java.lang.System;
+import java.io.*;

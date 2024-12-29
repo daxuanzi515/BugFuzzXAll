@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{45};
+   unsigned int y{78};
+   cout << i << endl << y << endl;
+   i <<= 8;
+   y &= ~2;
+   cout << i << endl << y << endl;
+   string f{"This is the first iteration."}; 
+   cout << f << endl;
+    
+   cout << f << endl;
+   return 0;
+}

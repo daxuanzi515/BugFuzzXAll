@@ -1,0 +1,40 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply([](int& x, float& y) {x *= 2;}, t);
+  std::apply([](const int& x, const float& y) {std::cout << x << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <map>
+#include <set>
+#include <array>
+#include <iomanip>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+int main()
+{
+  std::pair<std::array<int, 3>, double> pr = {{ {0, 1, 2}, 10.25 }};
+  std::tuple<int, std::string, char> t = {100, "100", 'q'};
+  std::map<char, std::string> m = { { 'a', "foo" }, {'b', "bar" }, {'c', "hello" } };
+  std::set<std::string> s = { "foo", "bar", "baz" };
+  std::cout << std::get<0>(pr) << '\n';   
+  std::cout << std::get<1>(pr) << '\n';  
+  std::get<0>(pr) = 100;
+  std::get<1>(pr) = 40;
+  std::cout << std::get<0>(pr) << '\n';
+  std::cout << std::get<1>(pr) << '\n';
+  std::cout << std::get<0>(t) << '\n';
+  std::cout << std::get<1>(t) << '\n';
+  std::cout << std::get<2>(t) << '\n';
+  std::cout << std::setw(10) << m.size() << '\n';
+  std::cout << m['c'] << '\n';
+  std::cout << std::setw(10) << s.size() << '\n';
+  std::cout << std::setw(10) << s.bucket_count() << '\n';
+  std::cout << s.bucket_size(3) << '\n';
+  std::cout << std::setw(10) << s.bucket_count() << '\n';
+  std::cout << std::setw(10) << m.bucket_count() << '\n';

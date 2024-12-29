@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+ 
+void reverseBits(char *s)
+{
+         
+        for (int i = 0; (i + 1) < strlen(s) / 2; i++) {
+                int end = *(s + strlen(s) - i - 1);
+                end |= (*(s + i) << (strlen(s) - i - 2) * 8);
+                end = reverse(end);
+                
+                *(s + i) = *(s + strlen(s) - i - 1);
+                printf("%c", reverse(end));   
+        }
+}
+ 
+int main(void)
+{
+        int i;
+        unsigned short array[ARRAY_SIZE], *ptr;
+        for (i = 0; i < ARRAY_SIZE; ++i)
+                array[i] = 4 * i;
+        reverseBits(array, ARRAY_SIZE);
+        return EXIT_SUCCESS;
+}
+/* Please create a program using bitwise operations for conversion from character to ASCII code and vice

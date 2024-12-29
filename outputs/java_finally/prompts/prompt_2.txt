@@ -1,0 +1,33 @@
+/* The finally block in Java is used for cleaning up code and always executes when the try block exits, whether an exception occurs or not. This ensures cleanup code isn't bypassed by return, continue, or break statements. However, its execution might not occur if the JVM exits while executing try or catch code.
+
+The finally block proves useful, for example, when you need to close a PrintWriter or a FileWriter opened in the writeList method's try block. Regardless of the manner the try block exits (due to an IOException, an IndexOutOfBoundsException, or normal exit), the finally block carries out the necessary cleanup.
+
+```
+finally {
+        if (out != null) { 
+            System.out.println("Closing PrintWriter");
+            out.close(); 
+        } else { 
+            System.out.println("PrintWriter not open");
+        } 
+        if (f != null) {
+            System.out.println("Closing FileWriter");
+            f.close();
+        }   
+} 
+```
+
+However, it is recommended to use the try-with-resources statement when cleaning up and closing files or other resources, as it automatically releases system resources when they are no longer needed. 
+
+```
+public void writeList() throws IOException {
+    try (FileWriter f = new FileWriter("OutFile.txt");
+         PrintWriter out = new PrintWriter(f)) {
+        for (int i = 0; i < SIZE; i++) {
+            out.println("Value at: " + i + " = " + list.get(i));
+        }
+    }
+}
+``` */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;

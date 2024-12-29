@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct a
+{
+	int x;
+	int y;
+};
+typedef struct a a_type1;
+
+typedef struct
+{
+	int x;
+	int y;
+} a_type2;
+
+typedef struct
+{
+	int x;
+} a_type3;
+
+int main()
+{
+	a_type1 a1 = {1, 2};
+	a_type2 a2 = {3, 4};
+	a_type3 a3 = {.x = 3,};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+
+	return 0;
+}

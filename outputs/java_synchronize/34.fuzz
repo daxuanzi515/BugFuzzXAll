@@ -1,0 +1,29 @@
+import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) { synchronized (data) { data.read(); } return this.data; }
+    public SampleData write_synchronize() { synchronized (data) { data.write(); } return this.data; }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}

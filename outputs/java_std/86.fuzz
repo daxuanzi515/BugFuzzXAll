@@ -1,0 +1,9 @@
+import java.lang.Object;
+722.<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello Geeks for Geeks");
+	}
+}
+
+ 

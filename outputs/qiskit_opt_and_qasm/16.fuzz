@@ -1,0 +1,50 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+import numpy as np
+
+backend_sim = Aer.get_backend("statevector_simulator")
+
+num_qubits = 4
+circ = QuantumCircuit(num_qubits, num_qubits)
+
+array = np.array([9, 5, 4, 2, 3, 7, 1, 2, 4, 8, -1, 6, 6, 3, 5, 8, 4, 5])
+
+circ.initialize(array)
+
+for i in range(num_qubits):
+    circ.h(i)
+circ.draw()
+
+
+result = backend_sim.run(circ, shots=1024).result()
+counts_dict = result.get_counts(circ)
+print(counts_dict)
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct b;
+typedef int *x_type;
+struct b
+{
+    x_type x;
+};
+int main()
+{
+    x_type x = (x_type)calloc(1, sizeof(int));
+    struct b b = {.x = x};
+    free(x);
+    printf("ok!\n");
+    return 0;
+}
+ 

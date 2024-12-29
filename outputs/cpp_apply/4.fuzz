@@ -1,0 +1,106 @@
+#include <tuple>
+
+#include <iostream>
+#include <array>
+#include <chrono>
+#include <future>
+
+#include <thread>
+#include <future>
+#include <cstdlib>
+#include <mutex>
+#include <utility>
+
+class ThreadPool
+{
+public:
+    ThreadPool()  = default;
+    ~ThreadPool() = default;
+
+     
+     
+    class Worker
+    {
+    public:
+        Worker()                                     = default;
+        Worker(const Worker&)                        = delete;
+        Worker& operator=(const Worker& rhs)         = delete;
+        Worker(Worker&& rhs) : m_fn(std::move(rhs.m_fn))
+        {}
+        Worker& operator=(Worker&& rhs)
+        {
+            m_fn = std::move(rhs.m_fn);
+            return *this;
+        }
+
+        void operator()() { (*m_fn)(); }
+    private:
+        std::function<void()> m_fn;
+
+        friend class ThreadPool;
+    };
+
+     
+     
+    class Task
+    {
+    public:
+        Task()                                     = default;
+        Task(const Task&)                          = delete;
+        Task(Task&&)                                = delete;
+        Task& operator=(const Task&)               = delete;
+        Task& operator=(Task&&)                    = delete;
+
+        explicit Task(Worker&& t) noexcept         : m_worker(std::move(t)), m_done(false)
+        {}
+
+         
+         
+         
+        bool done() noexcept {
+            return m_done;
+        }
+        void wait() noexcept {
+            if (m_thread.joinable())
+                m_thread.join();
+        }
+
+    private:
+         
+         
+         
+         
+        Worker m_worker;
+         
+         
+         
+        mutable std::thread m_thread;
+
+         
+         
+         
+        std::atomic_bool m_done;
+    };
+
+    std::future<std::result_of_t<Fn()>> enqueue(Fn&& f)
+    {
+         
+         
+         
+         
+         
+         
+        auto task = std::make_shared<Task>([f = std::move(f)]() mutable { f(); });
+
+         
+         
+        task->m_thread = std::thread(Task(*task.get()));
+        return task->m_worker.get_future();
+    }
+};
+
+ 
+#include <tuple>
+#include <vector>
+
+template <typename... Types

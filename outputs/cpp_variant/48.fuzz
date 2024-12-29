@@ -1,0 +1,59 @@
+#include <variant>
+<fim_suffix>   std::string second;
+};
+void greet(const Friend& friend_) {
+    std::cout << "Hello, " << friend_.first << " and " << friend_.second << "!\n";
+}
+int main() 
+{
+    Friend f = {"John","Mark"};
+    greet(f); 
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V createV() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+void printV(V v) {
+     v.print();
+}
+int main() 
+{
+    V v = createV(); 
+    printV(v);
+}
+ 
+#include <variant>
+#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V createV() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+template<typename T>
+void printV(T variant_value) {
+     std::visit([](T value){value.print();}, variant_value);
+}
+int main() 
+{
+    V v = createV(); 
+    printV(v);
+}
+/* We can

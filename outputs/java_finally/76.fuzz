@@ -1,0 +1,18 @@
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Added some data\n");
+             
+             
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}

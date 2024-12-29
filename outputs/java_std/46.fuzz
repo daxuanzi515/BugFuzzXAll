@@ -1,0 +1,75 @@
+import java.lang.Object;
+		String str;
+
+		obj = new Object();
+		obj = s;
+		
+		int size = s.size() - pos;
+
+		for(int i = 0; i < size; i++)
+		{
+
+			str = s.get(pos);
+			s.remove(pos);
+			s.add(s.elementAt(s.size() -1), str);
+		}
+	}
+
+	public static void main(String[] args) {
+		Vector <String> str = new Vector <String>();
+		str.add("A");
+		str.add("B");
+		str.add("C");
+		str.add("D");
+		str.remove(1);
+		System.out.println(str);
+	}
+}*/<fim_middle>import java.util.*;
+public class VectorEx{
+	public static void reverse(Vector<String> s) {
+
+		if (s.size() < 2) 
+		System.out.println("Less items in the vector\n");
+		else if (s.size() > 6)
+		System.out.println("More than 6 items in the vector\n");
+
+		Vector<String> str = new Vector<String>();
+		str.add("A");
+		str.add("B");
+		str.add("C");
+		str.add("D");
+
+		for(int i =2; i < s.size() - 1; i++)
+		{
+			String str2 = s.get(i);
+			s.remove(i);
+			s.add(i, str2);
+			}
+		}
+
+	 
+
+	public static void reverse2(Vector<String> s) {
+
+		if (s.size() < 2) 
+		System.out.println("Less items in the vector\n");
+		else if (s.size() > 6)
+		System.out.println("More than 6 items in the vector\n");
+
+		String str;
+
+		Vector<String> str1 = new Vector <String>(s.size() - 2);
+
+		for(int i = s.size() - 2; i > -1; i--)
+		{
+
+			str = s.get(i);
+			str1.add(str);
+			s.remove(i);
+		}
+		
+		for(int i = 0; i < str1.size(); i++)
+		{
+
+			str = str1.get(i);
+			s.add

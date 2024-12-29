@@ -1,0 +1,51 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d.%d.%d", &date.month, &date.day, &date.year);
+	printf("Date is %d.%d.%d\n", date.month, date.day, date.year);
+	return 0;
+}
+ 
+ 
+#define PI 3.14
+#define RADIUS 2
+double diameter, square_root, area;
+int main( void )
+{
+diameter = 2 * RADIUS;
+area = PI * (pow(RADIUS, 2.0));
+printf("The diameter of circle is %f\n", diameter);
+printf("The area of circle is %f", area);
+return ( 0 );
+}
+ 
+#include <stdio.h>
+#include <math.h>
+#define PI 3.1416
+#define RADIUS 2
+#define Get_Diameter(RADIUS) (2 * RADIUS)
+double Circle_Area(double RADIUS);
+inline double Circle_Area(double RADIUS)
+{
+    double area;
+    area = PI * (pow(RADIUS, 2.0));
+    return area;
+}
+int main(void)
+{
+    double diameter;
+    diameter = Get_Diameter(RADIUS);
+    printf("The diameter of circle is %f\n ", diameter);
+    printf("The area of circle is %f", Circle_Area(RADIUS));
+    return 0;
+}
+/* The union keyword in C language defines a

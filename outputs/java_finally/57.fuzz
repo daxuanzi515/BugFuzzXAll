@@ -1,0 +1,46 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+            BufferedReader reader = new BufferedReader(new FileReader("something.txt"));
+            if (reader!= null) {
+                reader.close();
+            }
+            in.close();
+            System.out.println(1);
+            System.out.println(2);
+    }
+}
+ 
+import java.util.*;
+import java.lang.Object;
+import java.lang.String;
+import java.lang.reflect.*;
+import java.io.*;
+public class FinalKeyword {
+    static void finalFunction(){
+        System.out.println("I am a final function!");
+    }
+    public static void main(String[] args) throws NoSuchMethodException{
+        finalFunction();
+         
+        final int a = 5;
+        final char b = 'A';
+        int c = 15;
+        finalVariable(c);
+        finalVariable(a);
+         
+        Method method = FinalKeyword.class.getMethod("finalFunction", new Class[]{});
+         
+    }
+    static void finalVariable(final int a){
+        
+    }
+}
+/* How would abstract base class concept in Java? As known, class is a template or blueprint. The blueprint of a class defines structure, behavior and characteristics. Abstract base class is a base class and it can't be instantiated. When created

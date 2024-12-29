@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <err.h>
+#include <fcntl.h>
+#include <unistd.h>
+int main(int argc, char *argv[])
+{
+    int fd = open( "src/file.txt", O_RDONLY);
+    if (fd < 0)
+        err(1, "open");
+    char *text = NULL;
+    ssize_t len = 0;
+    len = read(fd, NULL, 0);
+    if (len < 0)
+        err(1, "read");
+    text = (char *)malloc(len * sizeof(char));
+    if (lseek(fd, 0, SEEK_SET) < 0)
+        err(1, "lseek");
+    ssize_t bytes_read = read(fd, text, len);
+    if (bytes_read < 0)
+        err(1, "read");
+    text[bytes_read] = '\0';
+    close(fd);
+    printf("%s\n", text

@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+ 
+ 
+int main() 
+{
+   int i{1};
+   cout << i << endl;
+
+    
+   if (42) {
+       cout << "The number " << 42 << endl;
+   }
+
+   string word{"Hello"};
+
+    
+   float f{13.0};
+
+   return 0;
+}
+ 
+ 
+/* #include <iostream>
+#include <utility>
+#include <vector>
+
+using namespace std;
+
+int main() {
+   vector<int> v{1, 2, 3, 4, 5};
+   auto x = std::next(v.begin(), 3);
+   for (auto i = x; i!= x + 4; i++)
+      cout << *i << endl;

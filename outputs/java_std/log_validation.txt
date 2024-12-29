@@ -1,0 +1,2336 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/0.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/1.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/2.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/3.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloWorld.java:7: 错误: 找不到符号
+    HelloWorld2 hwi = new HelloWorld2();
+    ^
+  符号:   类 HelloWorld2
+  位置: 类 HelloWorld
+/tmp/temp1735378224.430497/HelloWorld.java:7: 错误: 找不到符号
+    HelloWorld2 hwi = new HelloWorld2();
+                          ^
+  符号:   类 HelloWorld2
+  位置: 类 HelloWorld
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/4.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/5.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/7.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/8.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloWorld.java:2: 错误: 需要';'
+import java.util.* java.io.File;
+                  ^
+/tmp/temp1735378224.430497/HelloWorld.java:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;       import java.io.FileWriter;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;       import java.io.FileWriter;
+                          ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 非法字符: '\u00a0'
+                
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 非法字符: '\u00a0'
+            
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:19: 错误: 非法字符: '\u00a0'
+    public class HelloWorld{
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:19: 错误: 非法字符: '\u00a0'
+    public class HelloWorld{
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 非法字符: '\u00a0'
+             try {
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:26: 错误: 非法字符: '\u00a0'
+         
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:26: 错误: 非法字符: '\u00a0'
+         
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:26: 错误: 非法字符: '\u00a0'
+         
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:26: 错误: 非法字符: '\u00a0'
+         
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+               ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:30: 错误: 非法字符: '\u00a0'
+             }
+           ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:22: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+             try {
+             ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+   ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+     ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+       ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+         ^
+/tmp/temp1735378224.430497/HelloWorld.java:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+           ^
+100 个错误
+仅显示前 100 个错误（共 181 个）；若要查看更多错误，请使用 -Xmaxerrs
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/9.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:14: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:15: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:17: 错误: 非法的类型开始
+if(true)
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 非法的类型开始
+	} while(true);
+	  ^
+/tmp/temp1735378224.430497/HelloIndian.java:23: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:24: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:26: 错误: 非法的类型开始
+		do {
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:28: 错误: 非法的类型开始
+	} while(true);
+	  ^
+/tmp/temp1735378224.430497/HelloIndian.java:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:33: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:60: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:61: 错误: 需要 class、interface、enum 或 record
+import
+^
+12 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/10.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/11.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/12.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/13.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/14.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/15.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/16.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:18: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 需要 class、interface、enum 或 record
+import java.util.TreeMap;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:38: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:39: 错误: 需要 class、interface、enum 或 record
+import java.util.TreeMap;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:46: 错误: 不是语句
+		b
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:46: 错误: 进行语法分析时已到达文件结尾
+		b
+		 ^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/17.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/18.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/19.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/21.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:13: 错误: 需要<标识符>
+System.out.println("Hello world!"); 
+                  ^
+/tmp/temp1735378224.430497/HelloIndian.java:13: 错误: 非法的类型开始
+System.out.println("Hello world!"); 
+                   ^
+/tmp/temp1735378224.430497/HelloIndian.java:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/22.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/23.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 找不到符号
+		int num = s1.length();
+		          ^
+  符号:   变量 s1
+  位置: 类 HelloIndian
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/25.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/28.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/29.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/30.fuzz failed validation with error message: /tmp/temp1735378224.430497/SquareAbove.java:2: 错误: 需要 class、interface、enum 或 record
+> 10)
+^
+/tmp/temp1735378224.430497/SquareAbove.java:4: 错误: 需要 class、interface、enum 或 record
+	else {
+	^
+/tmp/temp1735378224.430497/SquareAbove.java:6: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/SquareAbove.java:9: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/SquareAbove.java:12: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/SquareAbove.java:34: 错误: 需要 class、interface、enum 或 record
+import java.lang.StringBuffer;
+^
+/tmp/temp1735378224.430497/SquareAbove.java:48: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/SquareAbove.java:57: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/SquareAbove.java:60: 错误: 进行语法分析时已到达文件结尾
+		Scanner s2 = new Scanner(System.in);
+		                                    ^
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/31.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ng a simple program with an infinite loop. */
+^
+/tmp/temp1735378224.430497/HelloIndian.java:12: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 未结束的注释
+/* The following was the beginning of the program before. It was an interactive printi
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 进行语法分析时已到达文件结尾
+/* The following was the beginning of the program before. It was an interactive printi
+                                                                                      ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/32.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>
+^
+/tmp/temp1735378224.430497/HelloIndian.java:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:29: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:34: 错误: 进行语法分析时已到达文件结尾
+	}
+	 ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/33.fuzz failed validation with error message: /tmp/temp1735378224.430497/Main.java:2: 错误: 需要 class、interface、enum 或 record
+-1) {
+^
+/tmp/temp1735378224.430497/Main.java:5: 错误: 需要 class、interface、enum 或 record
+						arr[k-1] = arr[m];
+						^
+/tmp/temp1735378224.430497/Main.java:6: 错误: 需要 class、interface、enum 或 record
+						arr[m] = temp;
+						^
+/tmp/temp1735378224.430497/Main.java:7: 错误: 需要 class、interface、enum 或 record
+					}
+					^
+/tmp/temp1735378224.430497/Main.java:12: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/Main.java:16: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/Main.java:26: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/Main.java:53: 错误: 进行语法分析时已到达文件结尾
+		int[] arr = {8, 2, 3, 1, 4, 6, 19,
+		                                  ^
+注: /tmp/temp1735378224.430497/Main.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/34.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+ < nameList.size(); i++) {
+ ^
+/tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+ < nameList.size(); i++) {
+                    ^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 需要 class、interface、enum 或 record
+package com.example.java; 	  
+^
+/tmp/temp1735378224.430497/HelloIndian.java:25: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:51: 错误: 进行语法分析时已到达文件结尾
+		AcademicRecord ar2 = (AcademicRecord) name
+		                                          ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/35.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:4: 错误: 需要 class、interface、enum 或 record
+		    for(j=0;j < arr.length - 1; ++j)
+		    ^
+/tmp/temp1735378224.430497.java:4: 错误: 需要 class、interface、enum 或 record
+		    for(j=0;j < arr.length - 1; ++j)
+		            ^
+/tmp/temp1735378224.430497.java:4: 错误: 需要 class、interface、enum 或 record
+		    for(j=0;j < arr.length - 1; ++j)
+		                                ^
+/tmp/temp1735378224.430497.java:7: 错误: 需要 class、interface、enum 或 record
+		        if(diff == 1)        
+		        ^
+/tmp/temp1735378224.430497.java:10: 错误: 需要 class、interface、enum 或 record
+		            count = 1;
+		            ^
+/tmp/temp1735378224.430497.java:11: 错误: 需要 class、interface、enum 或 record
+		        }
+		        ^
+/tmp/temp1735378224.430497.java:15: 错误: 需要 class、interface、enum 或 record
+		            ++count;
+		            ^
+/tmp/temp1735378224.430497.java:16: 错误: 需要 class、interface、enum 或 record
+		        }
+		        ^
+/tmp/temp1735378224.430497.java:20: 错误: 需要 class、interface、enum 或 record
+		            count = 1;     
+		            ^
+/tmp/temp1735378224.430497.java:21: 错误: 需要 class、interface、enum 或 record
+		        }
+		        ^
+/tmp/temp1735378224.430497.java:24: 错误: 需要 class、interface、enum 或 record
+		    System.out.print(max);
+		    ^
+/tmp/temp1735378224.430497.java:25: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497.java:29: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497.java:52: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497.java:53: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497.java:71: 错误: 不是语句
+						res
+						^
+/tmp/temp1735378224.430497.java:71: 错误: 进行语法分析时已到达文件结尾
+						res
+						   ^
+/tmp/temp1735378224.430497.java:2: 错误: 文件名错误：temp1735378224.430497
+  int max = 0;
+  ^
+注: /tmp/temp1735378224.430497.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+18 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/36.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndianMutated.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>.next()));
+^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:3: 错误: 需要 class、interface、enum 或 record
+			String a[]={};
+			^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:4: 错误: 需要 class、interface、enum 或 record
+			s.add(a);
+			^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:5: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:9: 错误: 需要 class、interface、enum 或 record
+			if(x > 0) {
+			^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:10: 错误: 需要 class、interface、enum 或 record
+				for(int i=0;i<x;i++) a.add(" ");
+				            ^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:10: 错误: 需要 class、interface、enum 或 record
+				for(int i=0;i<x;i++) a.add(" ");
+				                ^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:11: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:13: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:16: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndianMutated.java:24: 错误: 进行语法分析时已到达文件结尾
+			a.add(String.valueOf(line
+			                         ^
+注: /tmp/temp1735378224.430497/HelloIndianMutated.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/37.fuzz failed validation with error message: /tmp/temp1735378224.430497/RMIClient.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>emote Method Call (RMI) Java Bean. If you try to create a client that calls the Bean in the remote JVM from outside of a Remote Environment, you'll fail with a security exception.
+^
+/tmp/temp1735378224.430497/RMIClient.java:2: 错误: 未结束的字符文字
+<fim_suffix>emote Method Call (RMI) Java Bean. If you try to create a client that calls the Bean in the remote JVM from outside of a Remote Environment, you'll fail with a security exception.
+                                                                                                                                                            ^
+/tmp/temp1735378224.430497/RMIClient.java:6: 错误: 需要 class、interface、enum 或 record
+import java.rmi.*;
+^
+/tmp/temp1735378224.430497/RMIClient.java:10: 错误: 需要';'
+	public void execute2(String text, String[] options)
+	                                                   ^
+/tmp/temp1735378224.430497/RMIClient.java:13: 错误: 需要 class、interface、enum 或 record
+import javax.ejb.*;
+^
+/tmp/temp1735378224.430497/RMIClient.java:14: 错误: 需要 class、interface、enum 或 record
+import javax.rmi.PortableRemoteObject;
+^
+/tmp/temp1735378224.430497/RMIClient.java:15: 错误: 需要 class、interface、enum 或 record
+import java.rmi.*;
+^
+/tmp/temp1735378224.430497/RMIClient.java:16: 错误: 需要 class、interface、enum 或 record
+import java.rmi.server.*;
+^
+/tmp/temp1735378224.430497/RMIClient.java:17: 错误: 需要 class、interface、enum 或 record
+import javax.ejb.*;
+^
+/tmp/temp1735378224.430497/RMIClient.java:37: 错误: 非法逃逸 符
+			mOutput += "\n\Error:";
+			               ^
+/tmp/temp1735378224.430497/RMIClient.java:38: 错误: 非法逃逸 符
+			cHandle.mOutput += "\n\Error:";
+			                       ^
+/tmp/temp1735378224.430497/RMIClient.java:58: 错误: 未结束的字符串文字
+		String host = "
+		              ^
+/tmp/temp1735378224.430497/RMIClient.java:58: 错误: 进行语法分析时已到达文件结尾
+		String host = "
+		               ^
+13 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/38.fuzz failed validation with error message: /tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	{
+^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		if(n.equals("Y"))
+		^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		else 
+		^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:18: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:44: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:62: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:66: 错误: 不是语句
+		Scanner
+		^
+/tmp/temp1735378224.430497/SayHaiIndianHelloIndian.java:66: 错误: 进行语法分析时已到达文件结尾
+		Scanner
+		       ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/39.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:57: 错误: 未结束的注释
+/*
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/40.fuzz failed validation with error message: /tmp/temp1735378224.430497/Test.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	 
+^
+/tmp/temp1735378224.430497/Test.java:4: 错误: 需要 class、interface、enum 或 record
+		while (j <= 4)
+		^
+/tmp/temp1735378224.430497/Test.java:7: 错误: 需要 class、interface、enum 或 record
+		System.out.println(x++ + x-- + x);
+		^
+/tmp/temp1735378224.430497/Test.java:9: 错误: 需要 class、interface、enum 或 record
+		System.out.println(x + " " + x++ + ++y);
+		^
+/tmp/temp1735378224.430497/Test.java:11: 错误: 需要 class、interface、enum 或 record
+		System.out.println(y + " " + y-- + --j);
+		^
+/tmp/temp1735378224.430497/Test.java:13: 错误: 需要 class、interface、enum 或 record
+		while (j < 200)
+		^
+/tmp/temp1735378224.430497/Test.java:15: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/Test.java:26: 错误: 未结束的注释
+/* For the purpose of the following exercise, assume that you will be using the JDK and compile the following program using the javac (java compiler) command:
+^
+/tmp/temp1735378224.430497/Test.java:46: 错误: 进行语法分析时已到达文件结尾
+		System.out.println
+		                  ^
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/41.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>s.add("java.util.Scanner.hasNextBoolean()");
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+    c.setAccessible(true);
+    ^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Method;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Constructor;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:21: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Field;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:31: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Constructor;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:33: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Field;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:45: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:46: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.InvocationTargetException;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:47: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.Method;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:48: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:57: 错误: 未结束的注释
+/* Let's now print the content of
+^
+/tmp/temp1735378224.430497/HelloIndian.java:57: 错误: 进行语法分析时已到达文件结尾
+/* Let's now print the content of
+                                 ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+16 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/42.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>t("Enter the number: "));
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		System.out.print("The Square is: ");
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		System.out.println((num * num));
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:18: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:21: 错误: 进行语法分析时已到达文件结尾
+public class Prime {
+                    ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/43.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:16: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497.java:61: 错误: 进行语法分析时已到达文件结尾
+					ta.append(
+					          ^
+/tmp/temp1735378224.430497.java:44: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+				try{
+				^
+/tmp/temp1735378224.430497.java:3: 错误: 文件名错误：temp1735378224.430497
+	public void add(int val) {
+	^
+注: /tmp/temp1735378224.430497.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/44.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	try {
+^
+/tmp/temp1735378224.430497.java:4: 错误: 需要 class、interface、enum 或 record
+		if (file.exists())
+		^
+/tmp/temp1735378224.430497.java:6: 错误: 需要 class、interface、enum 或 record
+    } catch (IOException e) {
+    ^
+/tmp/temp1735378224.430497.java:8: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/45.fuzz failed validation with error message: /tmp/temp1735378224.430497/TestDate.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>n(s.nextLine());
+^
+/tmp/temp1735378224.430497/TestDate.java:3: 错误: 需要 class、interface、enum 或 record
+		 return 0;		
+		 ^
+/tmp/temp1735378224.430497/TestDate.java:4: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/TestDate.java:9: 错误: 需要 class、interface、enum 或 record
+import java.text.SimpleDateFormat;
+^
+/tmp/temp1735378224.430497/TestDate.java:30: 错误: 未结束的注释
+/* 
+^
+/tmp/temp1735378224.430497/TestDate.java:40: 错误: 进行语法分析时已到达文件结尾
+To sum up, a machine should simply be passed the Fruit class, and from that F
+                                                                             ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/46.fuzz failed validation with error message: /tmp/temp1735378224.430497/VectorEx.java:4: 错误: 需要 class、interface、enum 或 record
+		obj = new Object();
+		^
+/tmp/temp1735378224.430497/VectorEx.java:5: 错误: 需要 class、interface、enum 或 record
+		obj = s;
+		^
+/tmp/temp1735378224.430497/VectorEx.java:9: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < size; i++)
+		^
+/tmp/temp1735378224.430497/VectorEx.java:9: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < size; i++)
+		               ^
+/tmp/temp1735378224.430497/VectorEx.java:9: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < size; i++)
+		                         ^
+/tmp/temp1735378224.430497/VectorEx.java:13: 错误: 需要 class、interface、enum 或 record
+			s.remove(pos);
+			^
+/tmp/temp1735378224.430497/VectorEx.java:14: 错误: 需要 class、interface、enum 或 record
+			s.add(s.elementAt(s.size() -1), str);
+			^
+/tmp/temp1735378224.430497/VectorEx.java:15: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/VectorEx.java:27: 错误: 需要 class、interface、enum 或 record
+}*/<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/VectorEx.java:75: 错误: 不是语句
+			s.add
+			 ^
+/tmp/temp1735378224.430497/VectorEx.java:75: 错误: 进行语法分析时已到达文件结尾
+			s.add
+			     ^
+注: /tmp/temp1735378224.430497/VectorEx.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/47.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:7: 错误: 非法字符: '`'
+```
+^
+/tmp/temp1735378224.430497.java:7: 错误: 非法字符: '`'
+```
+ ^
+/tmp/temp1735378224.430497.java:7: 错误: 非法字符: '`'
+```
+  ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/48.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>(String[] args) {
+^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		while(s1.hasNext())
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		s1.close();
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:11: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:36: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:38: 错误: 进行语法分析时已到达文件结尾
+	public static void main
+	                       ^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/49.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloWorld.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>a.util.*;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:3: 错误: 需要 class、interface、enum 或 record
+import java.util.Locale;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:10: 错误: 需要 class、interface、enum 或 record
+}<fim_middle>import java.util.*;
+ ^
+/tmp/temp1735378224.430497/HelloWorld.java:18: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:19: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:35: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:36: 错误: 需要 class、interface、enum 或 record
+import jav
+^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/50.fuzz failed validation with error message: /tmp/temp1735378224.430497/random.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>lgorithm which uses linear congruential generator*/
+^
+/tmp/temp1735378224.430497/random.java:4: 错误: 需要 class、interface、enum 或 record
+        return (j>=97)?j:j+33;
+        ^
+/tmp/temp1735378224.430497/random.java:5: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735378224.430497/random.java:23: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/random.java:39: 错误: 需要 class、interface、enum 或 record
+<fim_middle>public class HelloIndian{
+^
+/tmp/temp1735378224.430497/random.java:49: 错误: 未结束的注释
+/* Please generate a PRNG which:
+^
+/tmp/temp1735378224.430497/random.java:52: 错误: 进行语法分析时已到达文件结尾
+Generates a random number after generating
+                                          ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/51.fuzz failed validation with error message: /tmp/temp1735378224.430497/ArrayList1.java:2: 错误: 需要 class、interface、enum 或 record
+ * @param 	args
+ ^
+/tmp/temp1735378224.430497/ArrayList1.java:2: 错误: 需要 class、interface、enum 或 record
+ * @param 	args
+          	^
+/tmp/temp1735378224.430497/ArrayList1.java:14: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/ArrayList1.java:29: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/ArrayList1.java:39: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/ArrayList1.java:53: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/ArrayList1.java:62: 错误: 不是语句
+		charArr[1]
+		       ^
+/tmp/temp1735378224.430497/ArrayList1.java:62: 错误: 进行语法分析时已到达文件结尾
+		charArr[1]
+		          ^
+注: /tmp/temp1735378224.430497/ArrayList1.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/52.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>}
+^
+/tmp/temp1735378224.430497/HelloIndian.java:15: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:31: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:32: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:40: 错误: 进行语法分析时已到达文件结尾
+	}
+	 ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/53.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>e.addEdge(vertex1, vertex2, 3, null);
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		System.out.println("\nVertices of graph after addEdge for "+vertex1+"\n"+graph.getVertices());
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		graph.removeVertex(vertex1);
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Vertices of graph after removeVertex("+vertex1.getElement()+"): "+graph.getVertices());
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+		graph.addEdge(vertex1,vertex3);
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Vertices of graph after addEdge for "+vertex1+vertex3+"\n"+graph.getVertices());
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:9: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.*;	 
+^
+/tmp/temp1735378224.430497/HelloIndian.java:27: 错误: 需要 class、interface、enum 或 record
+import java.util.List;	 
+^
+/tmp/temp1735378224.430497/HelloIndian.java:46: 错误: 未结束的注释
+/*
+^
+/tmp/temp1735378224.430497/HelloIndian.java:55: 错误: 进行语法分析时已到达文件结尾
+functions do just that, although a number of other functions exist. In fact,
+                                                                            ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/54.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>va
+^
+/tmp/temp1735378224.430497/HelloIndian.java:22: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:35: 错误: 需要 class、interface、enum 或 record
+import java.lang.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:36: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:38: 错误: 进行语法分析时已到达文件结尾
+	public static void main(String[] args) {
+	                                        ^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/55.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>{
+^
+/tmp/temp1735378224.430497/HelloIndian.java:14: 错误: 需要 class、interface、enum 或 record
+}<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:22: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:23: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:24: 错误: 进行语法分析时已到达文件结尾
+public class HelloIndian
+                        ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/56.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloAgain.java:2: 错误: 需要 class、interface、enum 或 record
+ 'M', 'A', 'D'};
+ ^
+/tmp/temp1735378224.430497/HelloAgain.java:4: 错误: 需要 class、interface、enum 或 record
+		System.out.println(String.join(":", a));
+		^
+/tmp/temp1735378224.430497/HelloAgain.java:5: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloAgain.java:9: 错误: 进行语法分析时已到达文件结尾
+		String[] a = {'R', 'A', 'W', 'O', 'L',
+		                                      ^
+注: /tmp/temp1735378224.430497/HelloAgain.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/57.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>(args[0])+"\r\n";
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+		s = s+"b. "+args[1];
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		System.out.print(s);
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:9: 错误: 需要 class、interface、enum 或 record
+import java.text.SimpleDateFormat;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:25: 错误: 进行语法分析时已到达文件结尾
+			s=s+" "+new String
+			                  ^
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/58.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ntln(array[i]);
+^
+/tmp/temp1735378224.430497.java:3: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+2 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/59.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ng[] args) {
+^
+/tmp/temp1735378224.430497/HelloIndian.java:21: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < charArray.length; i++) {
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:21: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < charArray.length; i++) {
+		               ^
+/tmp/temp1735378224.430497/HelloIndian.java:21: 错误: 需要 class、interface、enum 或 record
+		for(int i = 0; i < charArray.length; i++) {
+		                                     ^
+/tmp/temp1735378224.430497/HelloIndian.java:24: 错误: 需要 class、interface、enum 或 record
+			System.out.println(charArray[i]);
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:25: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:29: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:33: 错误: 需要 class、interface、enum 或 record
+import java.util.regex.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:37: 错误: 进行语法分析时已到达文件结尾
+	public static void main(Stri
+	                            ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/60.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>tln(l2.pop());
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		System.out.println(l2.pop());
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+import java.util.Arrays;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:9: 错误: 需要 class、interface、enum 或 record
+import java.util.stream.Collectors;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 需要 class、interface、enum 或 record
+import java.util.Collections;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:55: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:62: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:63: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:69: 错误: 不是语句
+			System
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:69: 错误: 进行语法分析时已到达文件结尾
+			System
+			      ^
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/61.fuzz failed validation with error message: /tmp/temp1735378224.430497/Test.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>er(s1.nextLine()));
+^
+/tmp/temp1735378224.430497/Test.java:3: 错误: 需要 class、interface、enum 或 record
+		s1.readFully(bytes);
+		^
+/tmp/temp1735378224.430497/Test.java:4: 错误: 需要 class、interface、enum 或 record
+		for(int a : bytes){
+		^
+/tmp/temp1735378224.430497/Test.java:6: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/Test.java:8: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/Test.java:12: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/Test.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/Test.java:33: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/Test.java:43: 错误: 需要 class、interface、enum 或 record
+<fim_middle>public class Hello{
+^
+/tmp/temp1735378224.430497/Test.java:47: 错误: 进行语法分析时已到达文件结尾
+		s1=new Scanner(new CharArrayRead
+		                                ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/62.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>(String texta, String textb){
+^
+/tmp/temp1735378224.430497.java:16: 错误: 需要 class、interface、enum 或 record
+		while(s1.hasNext() || s2.hasNext()){
+		^
+/tmp/temp1735378224.430497.java:18: 错误: 需要 class、interface、enum 或 record
+			word_count++;
+			^
+/tmp/temp1735378224.430497.java:19: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497.java:21: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497.java:32: 错误: 未结束的注释
+		/* [0 : 3, 1 : 2, 3: 1, 4
+		^
+/tmp/temp1735378224.430497.java:32: 错误: 进行语法分析时已到达文件结尾
+		/* [0 : 3, 1 : 2, 3: 1, 4
+		                         ^
+注: /tmp/temp1735378224.430497.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+7 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/63.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	int[] list = new int[] {6, 1, 4, 5, 3, 2};   
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:3: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Original list: ");  
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:4: 错误: 需要 class、interface、enum 或 record
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:5: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Sorted list: ");  
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:6: 错误: 需要 class、interface、enum 或 record
+		Arrays.sort(list);
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:7: 错误: 需要 class、interface、enum 或 record
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:8: 错误: 需要 class、interface、enum 或 record
+		System.out.println("List reversed: ");  
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:9: 错误: 需要 class、interface、enum 或 record
+		for (int i = list.length-1; i >= 0; i--) {
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:9: 错误: 需要 class、interface、enum 或 record
+		for (int i = list.length-1; i >= 0; i--) {
+		                            ^
+/tmp/temp1735378224.430497/HelloIndian1.java:9: 错误: 需要 class、interface、enum 或 record
+		for (int i = list.length-1; i >= 0; i--) {
+		                                    ^
+/tmp/temp1735378224.430497/HelloIndian1.java:11: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:22: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:31: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:32: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:46: 错误: 未结束的注释
+/* For your new version, replace the nextLine() method with the following code:
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:66: 错误: 进行语法分析时已到达文件结尾
+}
+ ^
+16 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/64.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian_new.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>r(String[] args) {
+^
+/tmp/temp1735378224.430497/HelloIndian_new.java:4: 错误: 需要 class、interface、enum 或 record
+		while(s1.hasNextLine())
+		^
+/tmp/temp1735378224.430497/HelloIndian_new.java:6: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian_new.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian_new.java:35: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian_new.java:44: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian_new.java:53: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian_new.java:54: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/65.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+    ^
+/tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+             ^
+/tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+                                           ^
+/tmp/temp1735378224.430497/HelloIndian1.java:3: 错误: 需要 class、interface、enum 或 record
+		   { int x=10;int y =3; x=x+y+4; System.out.println(x+" " +y);}
+		                        ^
+/tmp/temp1735378224.430497/HelloIndian1.java:3: 错误: 需要 class、interface、enum 或 record
+		   { int x=10;int y =3; x=x+y+4; System.out.println(x+" " +y);}
+		                                 ^
+/tmp/temp1735378224.430497/HelloIndian1.java:3: 错误: 需要 class、interface、enum 或 record
+		   { int x=10;int y =3; x=x+y+4; System.out.println(x+" " +y);}
+		                                                              ^
+/tmp/temp1735378224.430497/HelloIndian1.java:23: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:40: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:54: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:58: 错误: 进行语法分析时已到达文件结尾
+		int count =
+		           ^
+注: /tmp/temp1735378224.430497/HelloIndian1.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/66.fuzz failed validation with error message: /tmp/temp1735378224.430497/ModifiedHelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>		i=i+2) {
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:38: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:47: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:48: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:57: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:58: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:66: 错误: 未结束的注释
+	/**
+	^
+/tmp/temp1735378224.430497/ModifiedHelloIndian.java:67: 错误: 进行语法分析时已到达文件结尾
+	 * Method that
+	              ^
+13 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/67.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/68.fuzz failed validation with error message: /tmp/temp1735378224.430497/hello.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>t, java.awt.event.*
+^
+/tmp/temp1735378224.430497/hello.java:37: 错误: 需要 class、interface、enum 或 record
+import javafx.application.Application;
+^
+/tmp/temp1735378224.430497/hello.java:38: 错误: 需要 class、interface、enum 或 record
+import javafx.beans.property.SimpleStringProperty;
+^
+/tmp/temp1735378224.430497/hello.java:39: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.Cursor;
+^
+/tmp/temp1735378224.430497/hello.java:40: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.canvas.*;
+^
+/tmp/temp1735378224.430497/hello.java:41: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.control.*;
+^
+/tmp/temp1735378224.430497/hello.java:42: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.effect.*;
+^
+/tmp/temp1735378224.430497/hello.java:43: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.image.ImageView;
+^
+/tmp/temp1735378224.430497/hello.java:44: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.input.MouseEvent;
+^
+/tmp/temp1735378224.430497/hello.java:45: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.layout.*;
+^
+/tmp/temp1735378224.430497/hello.java:46: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.paint.Color;
+^
+/tmp/temp1735378224.430497/hello.java:47: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.shape.*;
+^
+/tmp/temp1735378224.430497/hello.java:48: 错误: 需要 class、interface、enum 或 record
+import javafx.stage.Screen;
+^
+/tmp/temp1735378224.430497/hello.java:49: 错误: 需要 class、interface、enum 或 record
+import javafx.application.Platform;
+^
+/tmp/temp1735378224.430497/hello.java:50: 错误: 需要 class、interface、enum 或 record
+import javafx.event.*;
+^
+/tmp/temp1735378224.430497/hello.java:51: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.layout.GridPane;
+^
+/tmp/temp1735378224.430497/hello.java:52: 错误: 需要 class、interface、enum 或 record
+import java.util.concurrent.TimeUnit;
+^
+/tmp/temp1735378224.430497/hello.java:64: 错误: 进行语法分析时已到达文件结尾
+		GraphicsContext g = c.getGraphicsContext2D();
+		                                             ^
+18 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/69.fuzz failed validation with error message: /tmp/temp1735378224.430497/Mutata.java:2: 错误: 需要 class、interface、enum 或 record
+2+c);
+^
+/tmp/temp1735378224.430497/Mutata.java:3: 错误: 需要 class、interface、enum 或 record
+		System.out.println(a-b);
+		^
+/tmp/temp1735378224.430497/Mutata.java:4: 错误: 需要 class、interface、enum 或 record
+		System.out.println(a*b);
+		^
+/tmp/temp1735378224.430497/Mutata.java:5: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/Mutata.java:16: 错误: 进行语法分析时已到达文件结尾
+		System.out.println(a/3.
+		                       ^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/70.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ut.println(s1.next());
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 不是语句
+			System.o
+			      ^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 进行语法分析时已到达文件结尾
+			System.o
+			        ^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/71.fuzz failed validation with error message: /tmp/temp1735378224.430497/HellowWorld.java:2: 错误: 需要 class、interface、enum 或 record
+0];
+^
+/tmp/temp1735378224.430497/HellowWorld.java:3: 错误: 需要 class、interface、enum 或 record
+		while(i<num)
+		^
+/tmp/temp1735378224.430497/HellowWorld.java:10: 错误: 需要 class、interface、enum 或 record
+					break;
+					^
+/tmp/temp1735378224.430497/HellowWorld.java:11: 错误: 需要 class、interface、enum 或 record
+				}
+				^
+/tmp/temp1735378224.430497/HellowWorld.java:13: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/HellowWorld.java:15: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HellowWorld.java:17: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HellowWorld.java:69: 错误: 进行语法分析时已到达文件结尾
+	int a
+	     ^
+8 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/72.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian1.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>{
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:5: 错误: 需要 class、interface、enum 或 record
+		while(true){
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:7: 错误: 需要 class、interface、enum 或 record
+			str2+=(Character.isUpperCase(str.charAt(str.length()-1))?" ":"\n")+str; 
+			^
+/tmp/temp1735378224.430497/HelloIndian1.java:8: 错误: 需要 class、interface、enum 或 record
+			str="";
+			^
+/tmp/temp1735378224.430497/HelloIndian1.java:9: 错误: 需要 class、interface、enum 或 record
+			if (str2.matches("^.*[a-z]$"))
+			^
+/tmp/temp1735378224.430497/HelloIndian1.java:11: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian1.java:14: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian1.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:38: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:51: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:52: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:64: 错误: 未结束的注释
+/*
+^
+/tmp/temp1735378224.430497/HelloIndian1.java:64: 错误: 进行语法分析时已到达文件结尾
+/*
+  ^
+注: /tmp/temp1735378224.430497/HelloIndian1.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+15 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/73.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	public static void main(String[][] args) {
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/HelloIndian.java:36: 错误: 需要 class、interface、enum 或 record
+}<fim_middle>import java.util.*;
+ ^
+/tmp/temp1735378224.430497/HelloIndian.java:37: 错误: 进行语法分析时已到达文件结尾
+public class HelloIndian{
+                         ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/74.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+800802112233445566778899L;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:49: 错误: 进行语法分析时已到达文件结尾
+	private static final long serialVersionUID = 8888
+	                                                 ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/75.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>= 0) {
+^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+			x = ((double)(x*y*z))/(double)(newY*y);
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+			y = newY;
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:17: 错误: 进行语法分析时已到达文件结尾
+		while(x > 0 && y >
+		                  ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/76.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian2.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>tln(s1));
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:3: 错误: 需要 class、interface、enum 或 record
+		return false;
+		^
+/tmp/temp1735378224.430497/HelloIndian2.java:4: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian2.java:25: 错误: 需要 class、interface、enum 或 record
+import javafx.application.Application;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:26: 错误: 需要 class、interface、enum 或 record
+import javafx.geometry.Insets;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:27: 错误: 需要 class、interface、enum 或 record
+import javafx.geometry.Pos;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:28: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.Scene;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:29: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.control.Alert;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:30: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.control.Button;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:31: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.layout.HBox;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:32: 错误: 需要 class、interface、enum 或 record
+import javafx.scene.layout.VBox;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:33: 错误: 需要 class、interface、enum 或 record
+import javafx.stage.Stage;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:58: 错误: 未结束的字符串文字
+						"-fx-background-color: yellow
+						^
+/tmp/temp1735378224.430497/HelloIndian2.java:58: 错误: 进行语法分析时已到达文件结尾
+						"-fx-background-color: yellow
+						                             ^
+14 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/77.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+5769L;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/HelloIndian.java:17: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:18: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:36: 错误: 需要 class、interface、enum 或 record
+import java.lang.Exception;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:51: 错误: 需要 class、interface、enum 或 record
+import java.lang.Exception;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:62: 错误: 需要 class、interface、enum 或 record
+import java.lang.Exception;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:73: 错误: 需要 class、interface、enum 或 record
+import java.lang.Exception;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:79: 错误: 进行语法分析时已到达文件结尾
+		} catch (Exception e)
+		                     ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/78.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloWorld.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>s Java program*/
+^
+/tmp/temp1735378224.430497/HelloWorld.java:4: 错误: 需要 class、interface、enum 或 record
+import java.lang.System;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:5: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloWorld.java:9: 错误: 需要 class、interface、enum 或 record
+	}}<fim_middle>import java.util.*;
+	  ^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 未结束的注释
+/* Creating Thi
+^
+/tmp/temp1735378224.430497/HelloWorld.java:17: 错误: 进行语法分析时已到达文件结尾
+/* Creating Thi
+               ^
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/79.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>);
+^
+/tmp/temp1735378224.430497.java:5: 错误: 需要 class、interface、enum 或 record
+		System.out.println("After");
+		^
+/tmp/temp1735378224.430497.java:6: 错误: 需要 class、interface、enum 或 record
+		p.drive("Right");
+		^
+/tmp/temp1735378224.430497.java:7: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Before");
+		^
+/tmp/temp1735378224.430497.java:9: 错误: 需要 class、interface、enum 或 record
+		System.out.println(str);
+		^
+/tmp/temp1735378224.430497.java:12: 错误: 需要 class、interface、enum 或 record
+		System.out.println(a);
+		^
+/tmp/temp1735378224.430497.java:14: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497.java:74: 错误: 进行语法分析时已到达文件结尾
+		System.
+		       ^
+/tmp/temp1735378224.430497.java:74: 错误: 不是语句
+		System.
+		      ^
+注: /tmp/temp1735378224.430497.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/80.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndianMutant.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>	System.out.println(s1.next());
+^
+/tmp/temp1735378224.430497/HelloIndianMutant.java:3: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndianMutant.java:12: 错误: 进行语法分析时已到达文件结尾
+		System.out.println((s1.hasNext()).toString());
+		                                              ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/81.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloBaby.java:13: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497/HelloBaby.java:25: 错误: 未结束的注释
+/* Finally, here is a question for you to answer on your own:
+^
+/tmp/temp1735378224.430497/HelloBaby.java:31: 错误: 进行语法分析时已到达文件结尾
+注: /tmp/temp1735378224.430497/HelloBaby.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/82.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>s java.lang
+^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:12: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;  
+^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/83.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloWorld.java:2: 错误: 需要 class、interface、enum 或 record
+70621 11:34:06 AM
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/84.fuzz failed validation with error message: /tmp/temp1735378224.430497/MainFlower.java:2: 错误: 需要 class、interface、enum 或 record
+2;
+^
+/tmp/temp1735378224.430497/MainFlower.java:4: 错误: 需要 class、interface、enum 或 record
+		for(int i  = 0; i<arr.length; i++) {
+		^
+/tmp/temp1735378224.430497/MainFlower.java:4: 错误: 需要 class、interface、enum 或 record
+		for(int i  = 0; i<arr.length; i++) {
+		                ^
+/tmp/temp1735378224.430497/MainFlower.java:4: 错误: 需要 class、interface、enum 或 record
+		for(int i  = 0; i<arr.length; i++) {
+		                              ^
+/tmp/temp1735378224.430497/MainFlower.java:7: 错误: 需要 class、interface、enum 或 record
+			else
+			^
+/tmp/temp1735378224.430497/MainFlower.java:9: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/MainFlower.java:11: 错误: 需要 class、interface、enum 或 record
+		return;
+		^
+/tmp/temp1735378224.430497/MainFlower.java:12: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/MainFlower.java:67: 错误: 需要 class、interface、enum 或 record
+import java.lang.reflect.*;
+^
+/tmp/temp1735378224.430497/MainFlower.java:71: 错误: 进行语法分析时已到达文件结尾
+		System.out.println(InterfaceTest.class.getInterfaces()[0].getName()); 
+		                                                                     ^
+注: /tmp/temp1735378224.430497/MainFlower.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/85.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>		int y = 10;
+^
+/tmp/temp1735378224.430497.java:4: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497.java:26: 错误: 需要 class、interface、enum 或 record
+}
+^
+/tmp/temp1735378224.430497.java:63: 错误: 进行语法分析时已到达文件结尾
+	void tAnd(int x, int y) {
+	                         ^
+注: /tmp/temp1735378224.430497.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/86.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+722.<fim_middle>import java.util.*;
+^
+1 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/87.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloModified.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>nceof Object[] && arr[0] instanceof Byte) {
+^
+/tmp/temp1735378224.430497/HelloModified.java:4: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/HelloModified.java:17: 错误: 需要 class、interface、enum 或 record
+		return null;
+		^
+/tmp/temp1735378224.430497/HelloModified.java:19: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloModified.java:30: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloModified.java:31: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloModified.java:42: 错误: 需要 class、interface、enum 或 record
+import java.lang.String;
+^
+/tmp/temp1735378224.430497/HelloModified.java:43: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/HelloModified.java:52: 错误: 进行语法分析时已到达文件结尾
+		System.out.println("Insert line after line 3 (1, \"code that was on line 3\")");
+		                                                                                ^
+注: /tmp/temp1735378224.430497/HelloModified.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/88.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ng.parseInt(args[3]);
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+			System.out.println(name+", are you between "+lower+" and "+higher);
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+			break;
+			^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+		case "l":
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+		default:
+		       ^
+/tmp/temp1735378224.430497/HelloIndian.java:9: 错误: 需要 class、interface、enum 或 record
+		}		
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:14: 错误: 需要';'
+	public static void main(String[] args)
+	                                      ^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+}<fim_middle>import java.util.*;
+ ^
+/tmp/temp1735378224.430497/HelloIndian.java:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:33: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:74: 错误: 进行语法分析时已到达文件结尾
+			lower =
+			       ^
+11 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/89.fuzz failed validation with error message: /tmp/temp1735378224.430497/LowercaseAndCapitalize.java:2: 错误: 需要 class、interface、enum 或 record
+ (char c : s1.toCharArray())
+ ^
+/tmp/temp1735378224.430497/LowercaseAndCapitalize.java:5: 错误: 需要 class、interface、enum 或 record
+		while(s3.hasNext()) {
+		^
+/tmp/temp1735378224.430497/LowercaseAndCapitalize.java:7: 错误: 需要 class、interface、enum 或 record
+			if (s2[word.charAt(0)]==true)
+			^
+/tmp/temp1735378224.430497/LowercaseAndCapitalize.java:9: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/LowercaseAndCapitalize.java:58: 错误: 未结束的注释
+/* Please create a java program that
+^
+/tmp/temp1735378224.430497/LowercaseAndCapitalize.java:58: 错误: 进行语法分析时已到达文件结尾
+/* Please create a java program that
+                                    ^
+注: /tmp/temp1735378224.430497/LowercaseAndCapitalize.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+6 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/90.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+5678)
+^
+/tmp/temp1735378224.430497/HelloIndian.java:5: 错误: 需要 class、interface、enum 或 record
+		System.out.println("Enter the size of array");
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+		int a[] = new int[len];
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++) 
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++) 
+		            ^
+/tmp/temp1735378224.430497/HelloIndian.java:8: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++) 
+		                  ^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++)
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++)
+		            ^
+/tmp/temp1735378224.430497/HelloIndian.java:10: 错误: 需要 class、interface、enum 或 record
+		for(int i=0;i<len;i++)
+		                  ^
+/tmp/temp1735378224.430497/HelloIndian.java:12: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:27: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:28: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:42: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:43: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:54: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:55: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:60: 错误: 未结束的字符串文字
+		System.out.println("First character of String:
+		                   ^
+/tmp/temp1735378224.430497/HelloIndian.java:60: 错误: 进行语法分析时已到达文件结尾
+		System.out.println("First character of String:
+		                                              ^
+注: /tmp/temp1735378224.430497/HelloIndian.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+18 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/91.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>er.append("Java ");
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		buffer.append(25 - i + 1);
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:4: 错误: 需要 class、interface、enum 或 record
+		buffer.append("");
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:6: 错误: 需要 class、interface、enum 或 record
+		System.out.println(buffer);
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:7: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/HelloIndian.java:22: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:34: 错误: 需要 class、interface、enum 或 record
+import java.lang.Math;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:35: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:56: 错误: 进行语法分析时已到达文件结尾
+						System.
+						       ^
+/tmp/temp1735378224.430497/HelloIndian.java:56: 错误: 不是语句
+						System.
+						      ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/92.fuzz failed validation with error message: /tmp/temp1735378224.430497.java:2: 错误: 需要 class、interface、enum 或 record
+1 = s.split("\n");
+^
+/tmp/temp1735378224.430497.java:3: 错误: 需要 class、interface、enum 或 record
+		for(String s3 : arr1)
+		^
+/tmp/temp1735378224.430497.java:7: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497.java:10: 错误: 未结束的注释
+/* 2. The Java SE Platform.
+^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/93.fuzz failed validation with error message: /tmp/temp1735378224.430497/LeastCommonMultiple.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>t.println(s1.next());
+^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:3: 错误: 需要 class、interface、enum 或 record
+					System.out.println("Your number is : " + s1.nextInt("Enter number "));
+					^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:4: 错误: 需要 class、interface、enum 或 record
+					System.out.println(s1.nextLine());
+					^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:5: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:8: 错误: 需要 class、interface、enum 或 record
+			}
+			^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:30: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:51: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:52: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/LeastCommonMultiple.java:62: 错误: 进行语法分析时已到达文件结尾
+		catch(Scanner
+		             ^
+9 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/94.fuzz failed validation with error message: /tmp/temp1735378224.430497/Indian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>			System.out.print((char) (s.charAt(i)));
+^
+/tmp/temp1735378224.430497/Indian.java:3: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/Indian.java:12: 错误: 进行语法分析时已到达文件结尾
+		for (int i = 0; i < s1.length(); i++) {
+		                                       ^
+3 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/95.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:17: 错误: 需要 class、interface、enum 或 record
+}<fim_middle>import java.util.*;
+ ^
+/tmp/temp1735378224.430497/HelloIndian.java:18: 错误: 需要 class、interface、enum 或 record
+import java.io.*;
+^
+4 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/96.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>t(Arrays.toString(c));		
+^
+/tmp/temp1735378224.430497/HelloIndian.java:3: 错误: 需要 class、interface、enum 或 record
+		}
+		^
+/tmp/temp1735378224.430497/HelloIndian.java:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:20: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:31: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:32: 错误: 需要 class、interface、enum 或 record
+import java.util.regex.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:45: 错误: 需要 class、interface、enum 或 record
+import java.lang.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:46: 错误: 需要 class、interface、enum 或 record
+import java.util.regex.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:56: 错误: 未结束的注释
+/* The second type of splitting in the above program uses the substring() method to cut
+^
+/tmp/temp1735378224.430497/HelloIndian.java:56: 错误: 进行语法分析时已到达文件结尾
+/* The second type of splitting in the above program uses the substring() method to cut
+                                                                                       ^
+10 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/97.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian.java:2: 错误: 需要 class、interface、enum 或 record
+, or even using a new syntax/structure.
+^
+/tmp/temp1735378224.430497/HelloIndian.java:9: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:28: 错误: 需要 class、interface、enum 或 record
+<fim_middle>import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian.java:36: 错误: 未结束的注释
+/* Using Java SE 5 features
+^
+/tmp/temp1735378224.430497/HelloIndian.java:38: 错误: 进行语法分析时已到达文件结尾
+The previous sections introduce readers to the basics of Java language. The next section provides readers information on the new features in Java 5
+                                                                                                                                                   ^
+5 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/98.fuzz failed validation with error message: /tmp/temp1735378224.430497/A1.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>, (Integer)args[1]);  
+^
+/tmp/temp1735378224.430497/A1.java:3: 错误: 需要 class、interface、enum 或 record
+		obj.add((Integer)args[0]);  
+		^
+/tmp/temp1735378224.430497/A1.java:5: 错误: 需要 class、interface、enum 或 record
+		System.out.println(d);
+		^
+/tmp/temp1735378224.430497/A1.java:6: 错误: 需要 class、interface、enum 或 record
+		System.out.println(obj);
+		^
+/tmp/temp1735378224.430497/A1.java:7: 错误: 需要 class、interface、enum 或 record
+	}
+	^
+/tmp/temp1735378224.430497/A1.java:11: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735378224.430497/A1.java:29: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735378224.430497/A1.java:30: 错误: 需要 class、interface、enum 或 record
+import java.util.List;
+^
+/tmp/temp1735378224.430497/A1.java:31: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/A1.java:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735378224.430497/A1.java:49: 错误: 需要 class、interface、enum 或 record
+import java.util.ArrayList;
+^
+/tmp/temp1735378224.430497/A1.java:50: 错误: 需要 class、interface、enum 或 record
+import java.util.List;
+^
+/tmp/temp1735378224.430497/A1.java:51: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/tmp/temp1735378224.430497/A1.java:52: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/tmp/temp1735378224.430497/A1.java:58: 错误: 未结束的字符串文字
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 
+		                         ^
+/tmp/temp1735378224.430497/A1.java:58: 错误: 进行语法分析时已到达文件结尾
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 
+		                                         ^
+注: /tmp/temp1735378224.430497/A1.java 使用 Java SE 22 的预览功能。
+注: 有关详细信息，请使用 -Xlint:preview 重新编译。
+16 个错误
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/java_std/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/java_std/99.fuzz failed validation with error message: /tmp/temp1735378224.430497/HelloIndian2.java:2: 错误: 需要 class、interface、enum 或 record
+<fim_suffix>ouble total_hours = 0, avg = 0;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:3: 错误: 需要 class、interface、enum 或 record
+        while(n.hasNextFloat()){
+        ^
+/tmp/temp1735378224.430497/HelloIndian2.java:5: 错误: 需要 class、interface、enum 或 record
+            total_hours = total_hours + n.nextFloat();
+            ^
+/tmp/temp1735378224.430497/HelloIndian2.java:6: 错误: 需要 class、interface、enum 或 record
+        }
+        ^
+/tmp/temp1735378224.430497/HelloIndian2.java:8: 错误: 需要 class、interface、enum 或 record
+        System.out.println(avg);
+        ^
+/tmp/temp1735378224.430497/HelloIndian2.java:10: 错误: 需要 class、interface、enum 或 record
+    }
+    ^
+/tmp/temp1735378224.430497/HelloIndian2.java:24: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:25: 错误: 需要 class、interface、enum 或 record
+import java.lang.Math;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:26: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+/tmp/temp1735378224.430497/HelloIndian2.java:32: 错误: 不是语句
+      d
+      ^
+/tmp/temp1735378224.430497/HelloIndian2.java:32: 错误: 进行语法分析时已到达文件结尾
+      d
+       ^
+11 个错误
+

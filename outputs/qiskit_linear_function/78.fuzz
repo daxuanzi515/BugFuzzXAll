@@ -1,0 +1,84 @@
+from qiskit import QuantumCircuit
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+
+def example_circuit(qr, cr, circuit):
+	
+
+    circuit.cx(qr[1],qr[2])
+    circuit.cx(qr[0],qr[2])
+    circuit.swap(qr[0],qr[1])
+    return 
+
+qr = QuantumRegister(3, "q") 
+
+cr = ClassicalRegister(3, "c") 
+circuit = QuantumCircuit(qr, cr) 
+example_circuit(qr, cr, circuit) 
+result = execute(circuit, backend=BasicAer.get_backend("qasm_simulator"), shots=1).result()  
+
+for sample in result.get_counts(circuit):
+    print(sample) 
+
+ 
+
+from qiskit.circuit import Gate
+class mySwapGate(Gate):
+  pass
+
+
+def new_swap_gate(qr, circuit):
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    circuit.swap(qr[0], qr[1])
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    return circuit
+
+qr = QuantumRegister(1, "q") 
+circuit = QuantumCircuit(qr) 
+circuit = new_swap_gate(qr, circuit) 
+
+circuit.draw(output="mpl", filename="swap_qc.png")
+
+circuit.qasm()
+
+circuit.decompose() 
+
+circuit.decompose().unitary()
+
+circuit = QuantumCircuit(2)
+circuit.h(0) 
+circuit.ch(0,1)
+circuit.ccx(0,1,2)
+circuit.h(0)
+circuit.h(1)
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

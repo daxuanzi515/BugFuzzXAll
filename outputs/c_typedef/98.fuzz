@@ -1,0 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int x[5];
+    x a2 = {20, 30, 40, 50, 60};
+    return 0;
+}

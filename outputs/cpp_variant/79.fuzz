@@ -1,0 +1,21 @@
+#include <variant>
+6;
+    int x = 14 / 2;
+    std::cout << square(3) << "\n";
+    std::cout << square(std::forward<decltype(x)>(x)) << "\n";
+}
+ 
+constexpr bool is_true(const std::any& a) {
+    if(const auto v = std::any_cast<bool>(&a)) {
+        return *v;
+    }
+}
+
+constexpr bool is_true_2(const std::any& a) {
+    return std::any_cast<bool>(&a);
+}
+
+constexpr bool is_true_3(const std::any& a) {
+    return std::any_cast<bool>(&a)? true : false;
+}
+/* 10. The `optional` is a container object holding a value or nothing. The user of the optional can set the value of an optional, but can also read from it. The optional will return a default value when the underlying

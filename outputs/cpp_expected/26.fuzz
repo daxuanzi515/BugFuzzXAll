@@ -1,0 +1,73 @@
+#include <expected>
+<fim_suffix>< "Unexpected: " << ex.what() << endl;
+			}
+			if (ex.has_value() == true) {
+				cout << "Found value: " << e.value() << endl;
+			}
+		}
+
+<fim_middle>      
+#include <string>
+
+int main()
+{
+	int vInt = 38;
+	std::string str("foo");
+
+	try {
+
+		std::expected<int, std::bad_function_call> eo = vInt;
+		std::expected<std::string, std::bad_function_call> es = str;
+
+		std::optional<int> o = eo->size();   
+		if (eo.index() == 1) {
+			std::unexpected<int> u = eo.error();        
+
+			cout << "eInt: " << eo.value() << endl;
+		}
+
+		try {
+			std::string s = es.value();                 
+		} catch (const std::exception& e) {
+			cout << "Exception: " << e.what() << endl;
+		}
+
+	} catch (std::bad_function_call& ex) {
+		cout << "bad_function_call: " << ex.what();
+	}
+
+
+
+	 
+	std::expected<float, std::string> e;
+	static_assert(std::is_copy_constructible_v<decltype(e)>);
+	static_assert(std::is_copy_assignable_v<decltype(e)>, "");
+
+
+	 
+	 
+	 
+	try {
+
+		std::unexpected<int> e{};   
+		e = 3;
+
+		 
+		 
+		e = std::expected<int, int>{ 42 };
+
+		for (auto ex : e) {  
+			cout << ex.val << endl;
+		}
+
+		 
+		std::expected<int, int> er = e;
+	} catch (const std::exception& ex) {
+		cout << "Exception: " << ex.what() << endl;
+	}
+
+	 
+	{
+		std::unexpected<int> e{};
+		std::expected<int, int> e2 = e;   
+		std::optional<int> e3 = e;        

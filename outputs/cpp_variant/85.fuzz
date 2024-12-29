@@ -1,0 +1,5 @@
+#include <variant>
+-1.0f, vec.y + 2.0f, vec.z - 1.0f };
+
+        vec2 v2 { vec.x, vec.y };
+}

@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+typedef double double_t;
+int main(){
+  int_t x=2;
+  printf("x is now equal to %d\n", x);
+
+  double_t y=2.0;
+  printf("y is now equal to %f\n", y);
+
+  double_t z;
+  z=x+y;
+  printf("x+y is equal to %f\n", z);
+  return 0;
+}
+

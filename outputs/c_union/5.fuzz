@@ -1,0 +1,43 @@
+#include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+    int ival;
+};
+int main()
+{
+    union Data u;
+    printf("u = %lld\n", sizeof(u));
+    u.fval = 1e-320f;
+    printf("u = %lld\n", sizeof(u));
+    u.dval = 1e-320;
+    printf("u = %lld\n", sizeof(u));
+    u.ival = 1e-320;
+    printf("u = %lld\n", sizeof(u));
+    return (EXIT_SUCCESS);
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+union Data
+{
+    float fval;
+    double dval;
+};
+int main()
+{
+    union Data u1 = {.fval = 1.234e-38f,.dval = -1e-320}, u2 = {.fval = 1.25e-38f,.dval = 5.8741e-320};
+    if (u1.fval == u2.fval && u1.dval == u2.dval)
+    {
+        printf("Contents of u1 and u2 are same\n");
+    }
+    else
+    {
+        printf("Contents of u1 and u2 are not same\n");
+    }
+    printf("%f", u1.fval);
+    return (EXIT_SUCCESS);
+}
+ 

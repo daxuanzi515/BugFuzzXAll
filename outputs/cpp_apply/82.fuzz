@@ -1,0 +1,30 @@
+#include <tuple>
+#include <array>
+#include <iostream>
+int main()
+{
+  std::array<int, 4> x{ 1,2,3,4 };
+  std::tuple<int&, int&, int&, int&> t{ std::get<0>(x), std::get<1>(x), std::get<2>(x), std::get<3>(x) };
+  std::apply([](int& u, int& v, int& w, int& x) {u=x-w;v=u-x;w=v-u;x=w-v;}, t);
+  std::cout << std::get<0>(x) << '\n';
+  std::cout << std::get<1>(x) << '\n';  
+  return EXIT_SUCCESS;   
+}
+ 
+#include <tuple>
+#include <utility>
+#include <iostream>
+#include <cassert>
+#include <type_traits>
+int main()
+{
+  std::tuple<double,double, double> t1 {0, 1, 2};
+  std::tuple<double,double, double> t2 {21, 31, 41};  
+  std::tuple<double,double, double> t = std::make_tuple(10,100,(100 *2 +1)/2);
+  
+  auto lambda = [&t](const double&x1, const double&x2)-> std::pair<double,double> {
+    return { x1*10, x2*100};
+  };
+  
+  auto l1 = [=, &t1] (const double&x2)->std::pair<double, double> {
+    return {x2*x2*10, t1.get

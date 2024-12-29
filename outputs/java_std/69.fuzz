@@ -1,0 +1,16 @@
+import java.lang.Object;
+2+c);
+		System.out.println(a-b);
+		System.out.println(a*b);
+	}
+}
+<fim_middle>import java.util.*;
+public class Mutata{
+	public static void main(String[] args) {
+		int a=10, b=5;
+		short c=12;
+		System.out.println(a/b);
+		System.out.println(a%b);
+		System.out.println(a/c);
+		System.out.println(a/3);
+		System.out.println(a/3.

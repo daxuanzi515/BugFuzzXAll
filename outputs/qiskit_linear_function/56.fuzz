@@ -1,0 +1,29 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self):
+    self.label = ""
+    self.n_qubits = 0
+    self.params = 0
+    self.decompositions = 0
+    self.unitary_matrix = 0
+    def add_decomposition(self, function):
+    pass
+    def create_qasm(self, name):
+    pass
+    def set_condition(self, param, condition):
+    pass
+    def create_controlled_version(self, a, b):
+    pass
+    def invert_instruction(self):
+    pass
+    def set_unitary(self):
+    pass
+    def default_string(self):
+    pass
+    def repeat_gate(self, n):
+    pass
+    def reverse_subinstructions(self):
+    pass
+    def soft_equivalence(self, g):
+    pass

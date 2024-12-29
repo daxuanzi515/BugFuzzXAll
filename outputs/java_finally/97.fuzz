@@ -1,0 +1,24 @@
+import java.lang.Object;
+<fim_suffix>ion e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+
+
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        try(
+            PrintWriter printWriter = new PrintWriter("src/myData.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("src/myData.txt")))
+        {
+            String str;
+            while ((str = bufferedReader.readLine())!= null) {
+                printWriter.println(str);
+            }
+        } catch (Except

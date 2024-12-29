@@ -1,0 +1,8 @@
+#include <variant>
+#include <iostream>
+int main()
+{   
+    std::variant<int, float, double> v {10};
+    v.emplace<float>(32.24f);
+    printf("The variant has the value %.*f.\n", std::get<float>(v));
+}

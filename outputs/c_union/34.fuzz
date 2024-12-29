@@ -1,0 +1,29 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef int type;
+typedef void* type2;
+
+struct _data
+{
+    size_t stype;
+    type t;
+    type2 t2;
+};
+
+void* fun()
+{
+    return (0);
+}
+
+int main()
+{
+    struct _data data;
+    void* p = fun();
+    data.stype = sizeof(type);
+    data.t = 0x1234;
+    data.stype = sizeof(type2);
+    data.t2 = 0x1234;
+    printf("data.t: %d\n",data.t);
+    data.stype = sizeof(void*);
+    return (EXIT_SUCCESS);
+}

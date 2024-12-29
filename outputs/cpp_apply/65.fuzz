@@ -1,0 +1,17 @@
+#include <tuple>
+#include <iostream>
+
+int main()
+{
+  std::tuple<int, int> t = std::make_tuple(99, 50);
+  std::apply([](int &, int &) {}, t);  
+  return EXIT_SUCCESS;
+}
+
+ 
+```
+
+[Previous](./ex_12.md#excercise) | [Next](./ex_14.md#excercise)
+
+|[Table of Contents](./toc.md)|[In Exercise](./ex.md)|[Next Exercise](./ex_14.md#excercise)
+|---|---|---|

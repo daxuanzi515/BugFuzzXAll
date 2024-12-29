@@ -1,0 +1,47 @@
+#include <tuple>
+#include <iostream>
+ 
+std::pair<int, int> toPair(const std::tuple<int, int>& t)
+{
+  return std::make_pair(std::get<0>(t), 
+  std::get<1>(t));
+}
+ 
+struct Add
+{
+  int operator()(int a, int b) const { return a + b; }
+};
+ 
+struct Multiply
+{
+  int operator()(int a, int b) const { return a * b; }
+};
+ 
+void do_multiply(int& a, int& b)
+{
+  b = Multiply{}(a, b);
+}
+
+int main()
+{
+  int x = 42, y = 100;
+  std::tuple<int, int> t{ x, y };
+  auto p = toPair(t);
+ 
+  const auto l = std::get<0>(p);
+  const auto r = std::get<1>(p);
+  const auto res = Add{}(l, r);
+  p = std::apply(
+      [&](int l, int r) {
+ do_multiply(l, r);
+
+ l = r - l;
+ r = l - r;
+
+ std::cout << l <<'' << r <<'' << res << '\n';
+ return std::make_tuple(l, r);
+ }, 
+      t);
+ 
+  return EXIT_SUCCESS;
+}

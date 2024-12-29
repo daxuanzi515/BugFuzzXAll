@@ -1,0 +1,9 @@
+/* The `instanceof` operator in Java is a type comparison operator used to check whether an object is an instance of a specified type (class or subclass or interface). If the ReferenceType after the operator is not a reference type or is not reifiable, it will produce a compile-time error.
+
+The `instanceof` operator will also produce a compile-time error if casting the operand to the ReferenceType would in itself produce a compile-time error. In such cases, the operator's result could never be true.
+
+At runtime, the `instanceof` operator returns true if the operand value is not null and can be successfully cast to the ReferenceType, otherwise, it returns false.
+
+The example given demonstrates that it's a compile-time error to check or cast an object of a class as an instance of another class if they do not share a parent-child relationship. However, if one class is a subclass of another, the check and casting would be applicable and valid. This application would need a runtime check for validation. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;

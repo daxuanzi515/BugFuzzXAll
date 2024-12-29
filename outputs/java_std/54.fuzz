@@ -1,0 +1,46 @@
+import java.lang.Object;
+<fim_suffix>va
+	 
+	 
+
+}
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.print("Hello, Indian");  
+		String name = System.console().readLine();  
+		Scanner intName = new Scanner(name);  
+    	while(intName.hasNextInt()) {  
+    		int n = intName.nextInt();  
+    		char[] toChar = name.toCharArray();
+    		System.out.println("Hello "+ String.valueOf(toChar) +"! You have entered number: " +n);  
+    		
+    	}
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1 {
+	public static void main(String[] args) {
+		Scanner intName = new Scanner(System.console().readLine());
+		while(intName.hasNext()) {
+			String name = intName.next();
+			System.out.println("Hello "+ name+"! You have entered name: "+ name);
+		}
+		System.out.println("Hello"+ "Anirudh"+ "! You have entered name: "+ name);
+	}
+}
+
+ 
+import java.lang.*;
+import java.util.*;
+public class HelloIndian2 {  
+	public static void main(String[] args) {
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 

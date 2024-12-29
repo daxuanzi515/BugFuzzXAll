@@ -1,0 +1,72 @@
+import java.lang.Object;
+class Sample extends Object {
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+        doSomething2();
+        doSomething3();
+    }
+    synchronized void doSomething2() {
+         
+    }
+    synchronized void doSomething3() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+        s.doSomething();
+    }
+}
+ 
+import java.lang.Object;
+class Sample extends Object {
+    synchronized static void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+        doSomething2();
+        doSomething3();
+    }
+    synchronized void doSomething2() {
+         
+    }
+    synchronized void doSomething3() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+        s.doSomething();
+    }
+}
+ 
+ 
+ 
+import java.lang.Object;
+class Sample extends Object {
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+         
+    }
+    synchronized static void doSomething2() {
+        System.out.println(Thread.currentThread() + ": doSomething2()");
+        doSomething3();
+        doSomething4();
+    }
+    synchronized static void doSomething3() {
+         
+    }
+    synchronized static void doSomething4() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+         
+        doSomething2();
+        long endTime2 = System.currentTimeMillis();
+    }
+}
+ 
+import java.lang.

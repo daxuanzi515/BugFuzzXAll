@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point = *p;
+	min_point.x = 3;
+	min_point.y = 3;
+	*p = min_point;
+	free(p);
+	return 0;
+}

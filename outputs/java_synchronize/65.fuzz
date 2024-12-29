@@ -1,0 +1,54 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this.hashCode() + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        Object o = new Object();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                o.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  innerDoSomething2() {
+                    System.out.println(this.getClass().hashCode() + ": doSomething2()");
+                }
+            };
+            s.doSomething1();
+            o.notify();
+        }
+    }
+}
+ 
+public class Synchronized {
+    String title;
+    private void setTitle(String t) {
+        synchronized (this) {
+            title = t;
+        }
+    }
+    public Runnable r = new Runnable() {
+        public void run() {
+            setTitle("Mr.";
+            System.out.println(title);
+        }
+    }
+    public static void main(String[] args) {
+        Synchronized s = new Synchronized();
+        Thread t = new Thread(s.r);
+        title = "Mrs.";
+        t.start();
+    }
+}
+ 
+/* ThreadLocal (as of 2006) is essentially a collection in which each thread has its own copy of the
+values stored, which makes it extremely easy to create thread-safe services that store and retrieve multiple values based on the thread on which the call is made. 
+It provides a context switch friendly solution compared to traditional synchronization techniques which require some handful

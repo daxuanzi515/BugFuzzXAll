@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+   int i1 {1};
+   {
+      int i2 {2};
+      cout << "i1 == " << i1 << endl;
+      cout << "i2 == " << i2 << endl;
+   }   
+   cout << "i1 == " << i1 << endl;
+   return 0; 
+}

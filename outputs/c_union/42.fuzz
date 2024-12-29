@@ -1,0 +1,81 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;
+    int i;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("U1.i -- %p\n", &u1.i);
+    printf("U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "char";
+    u1.p = 0x1234;
+    printf("U1 -- %d\n", u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}
+int __cdecl main(void)
+{
+     
+     
+     
+    union U1
+    {
+
+        long l;
+        char c;
+        long long ll;
+    };
+
+     
+     
+    union U2
+    {
+        int i;
+        wchar_t h;
+    };
+
+    union U1 a = { 10l }, b = { 20l };  
+
+    printf("a = %ld b = %ld\n", a.ll, b.c);
+
+     
+    union Number
+    {
+        short sh_num;
+        int i_num;
+        long l_num;
+        int x;
+
+    } num1, num2;
+
+    num1.x = 10;
+    printf("num1.x: %d\n", num1.x);
+
+     
+    union P1 {
+        int i;
+        char c;
+    };
+
+    union P1 var1;
+
+    var1.i = 100;
+    var1.char = 'a';
+    printf("var1.i: %d var1.c: %c\n", var1.i, var1.c);
+
+     
+     
+
+    union Expanded
+    {
+        char c[10];
+        short s;
+    } ex;
+
+   

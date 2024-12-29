@@ -1,0 +1,23 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, label=None, params=None):
+        self.params = params
+        self.label = label
+    def adjoint(self):
+        pass
+    def controlled(self):
+        pass
+    def unitary(self):
+        pass
+    def instructions(self):
+        pass
+
+class RotationGate(Gate):
+    def __init__(self, params,label=''):
+    
+    def unitary(self):
+
+    
+class LinearFunction(Gate):
+    pass

@@ -1,0 +1,54 @@
+#include <tuple>
+
+#include <type_traits>
+#include <iostream>
+#include <string>
+
+ 
+void applyFunc(int i, int j, int k, std::string str){
+	std::cout << i <<'' << j <<'' << k <<'' << str << '\n';
+}
+
+template<typename T>
+struct FuncWrapper{
+	T f;
+};
+
+template<typename T>
+void process(T& t, auto&... f){
+	std::apply(t.f, f);
+}
+
+int main(){
+	std::array<FuncWrapper<decltype(&applyFunc)>, 4> funcSet = {{
+		{&applyFunc}, 
+		{[](auto... args){ std::cout << args[0] << '\n'; }}, 
+		{[](const auto& t){ std::cout << t << '\n'; }}, 
+		{[](auto t, auto u, auto v){ std::cout << t <<'' << u <<'' << v << '\n'; }} 
+	}};
+	std::array funcArgSet = {{1, 2, "Hello world"}};
+	
+	for(auto&& i: funcSet){
+		for(auto&& j: funcArgSet){
+			process(i, j);
+			process(i, j, 1);
+			process(i, 1, j);
+			process(i, j, 1, j);
+		}
+		std::cout << '\n';
+	}
+	std::cin >> funcArgSet[2];
+	
+	for(auto&& i: funcSet){
+		for(auto&& j: funcArgSet){
+			process(i, j);
+			process(i, j, 1);
+			process(i, 1, j);
+			process(i, j, 1, j);
+		}
+		std::cout << '\n';
+	}
+	
+	return 0;
+}
+

@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <string.h>
+uchar a = 1;
+unsigned long long b[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = 1;
+uchar d1 = 1;
+void *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  while (*ptr == d) {
+  }
+  ptr1 = &d;
+  return 0;
+}

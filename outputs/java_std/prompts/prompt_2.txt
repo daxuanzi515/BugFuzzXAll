@@ -1,0 +1,21 @@
+/* This documentation talks about the Java SE (Standard Edition) and JDK (Java Development Kit) Version 20 API Specification 
+
+- Java SE: This API forms the basis for the Java platform, used for general computing. The APIs for Java SE are contained in modules beginning with the word "java."
+
+- JDK: This API is specific to the JDK and are contained in modules that start with the term "jdk." They might not be available across all implementations of the Java SE platform.
+
+The document lists a series of modules, each with a description of what APIs it contains. 
+
+For example,
+- `java.base` that defines the foundational APIs of the Java SE platform. 
+- `java.compiler` that holds APIs for the Language Model, Annotation Processing, and Java Compiler.
+- `java.desktop` that hosts APIs for AWT and Swing user interface toolkits, plus APIs for accessibility, audio, imaging, printing, and JavaBeans.
+  
+Similarly, there are other JDK APIs like 
+- `jdk.crypto.cryptoki`, which is the implementation of the SunPKCS11 security provider. 
+- `jdk.jcmd`, which holds the tools needed for diagnosing and troubleshooting a JVM such as jcmd, jps, and jstat tools and 
+- `jdk.localedata`, which provides location data for locales other than the US.
+
+The document therefore offers a detailed overview of the various APIs and what they offer to the users within the JAVA SE and JDK realms. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;

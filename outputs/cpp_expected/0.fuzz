@@ -1,0 +1,93 @@
+#include <expected>
+ 'A' }
+enum Boo { Yep, Nope };
+
+bool is_even(int x) { return x%2 == 0; }
+bool is_ok(int x) { return x%11!= 0 ||!is_even(x); }
+void inc(int &x)
+{
+	x++;
+
+	if (x == 100)
+		throw 3;
+	
+	std::cout << "Increasing " << x << '\n';
+}
+
+template<typename T>
+std::enable_if_t<std::is_integral_v<T>, void>
+inc(std::expected<T, int> x)
+{
+	if (auto value = std::get_if<T>(&x)) {
+		*value += 1;
+		std::cout << "Incrementing *value " << x.value() << '\n';
+	}
+	if (auto error = std::get_if<int>(&x)) {
+		std::cout << "Error: " << error << '\n';
+	}
+}
+
+void run_example()
+{
+	try {
+		int x = 3;
+		inc(x);
+		inc(x);
+		inc(x);
+	}
+	catch (const std::runtime_error &err) {
+		std::cout << err.what() << '\n';
+	}
+
+	std::cout << "-------------------------------\n";
+
+	try {
+		int x = 3;
+		inc(std::expected(x));
+		inc(std::expected(x));
+		inc(std::expected(x));
+	}
+	catch (const std::runtime_error &err) {
+		std::cout << err.what() << '\n';
+	}
+
+	std::cout << "-------------------------------\n";
+
+	try {
+		int x = 3;
+		inc(std::make_expected(x));
+		inc(std::make_expected(x));
+		inc(std::make_expected(x));
+	}
+	catch (const std::runtime_error &err) {
+		std::cout << err.what() << '\n';
+	}
+	
+	std::cout << "-------------------------------\n";
+	
+	try {
+		std::optional<int> x = 3;
+		inc(x);
+		inc(x);
+		inc(x);
+	}
+	catch (const std::runtime_error &err) {
+		std::cout << err.what();
+	}
+
+	std::cout << "-------------------------------\n";
+
+	try {
+		std::optional<int> x = 3;
+		inc(std::expected(x));
+		inc(std::expected(x));
+		inc(std::expected(x));
+	}
+	catch (const std::runtime_error &err) {
+		std::cout << err.what();
+	}
+
+	std::cout << "-------------------------------\n";
+	
+	auto is_char = std::bind(has_value, std::placeholders::_1, 'A');
+	std

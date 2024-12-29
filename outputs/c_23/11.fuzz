@@ -1,0 +1,32 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#define __builtin_prefetch(x)
+#define restrict restrict
+typedef unsigned char uchar;
+uchar a = (uchar)1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char *__restrict buffer = "\0";
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+char *__restrict foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  };
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+  return ptr;
+};
+int main() {
+  for (
+    buffer[2] = '\0';
+    buffer[0];
+    ptr++
+  );
+  ptr1 = &d;
+  return 0;
+}
+

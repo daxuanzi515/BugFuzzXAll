@@ -1,0 +1,25 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class JavaTryWithResources{
+    public static void main(String[] args){
+        int x;
+        String s;
+        try(
+            BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            PrintWriter out = new PrintWriter(new FileWriter("someOther.txt");
+        ){
+            String line;
+            while((line = in.readLine())!= null){
+                out.print(line);
+                s = line;
+                out = null;
+                x = 5;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Got exception: " + e.getMessage());
+        }
+    }
+}
+

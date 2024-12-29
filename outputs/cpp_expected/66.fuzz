@@ -1,0 +1,27 @@
+#include <expected>
+<fim_suffix>
+	std::cout << "Success";
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+
+
+	return 0;
+}
+<fim_middle>
+
+struct Foo
+{
+
+};
+
+int main()
+{
+	Foo obj;
+	std::expected<Foo&, std::string> a(std::in_place, obj);

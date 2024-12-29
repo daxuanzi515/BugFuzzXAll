@@ -1,0 +1,48 @@
+#include <expected>
+<fim_suffix>o::error_code ec;
+		return system_clock::now();
+	}
+}
+ 
+template <typename T>
+auto read_file(const path& p, error_code& ec) {
+	 
+	return ec? std::nullopt : std::optional(T{});
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+std::optional<std::string> read_file(const char* path, error_code& ec = {});
+
+int main() {
+	using namespace std;
+
+    const path p = "file.txt";
+	error_code ec;
+	auto t = read_file(p.string(), ec);
+	if (t) {
+		puts(t.value().c_str());
+	} 
+	else {
+		puts(ec.message().c_str());
+	}
+}
+
+ 
+ 
+ 
+ 
+std::tuple<std::optional<std::string>, bool> read_file(const char*, error_code&);
+
+/*
+In this example we see the improvement mentioned above: we

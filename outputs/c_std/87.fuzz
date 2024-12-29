@@ -1,0 +1,26 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    printf("%d\n", (val += 2 * val));
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int a = 1;
+    for (;;)
+    {
+        printf("%d\n", log(a));
+        if (a == 0)
+            break;
+        ++a;
+    }
+    return 0;
+}
+ 

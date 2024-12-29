@@ -1,0 +1,15 @@
+#include <tuple>
+#include <iostream>
+struct f
+{
+  void operator()(int x) const
+  {
+    std::cout << x << '\n';
+  }
+};
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  f{}.operator()(std::get<0>(tuple));
+  return EXIT_SUCCESS;
+}

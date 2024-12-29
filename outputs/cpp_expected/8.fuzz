@@ -1,0 +1,107 @@
+#include <expected>
+1, "An error occurred");
+        }
+
+        catch(const std::invalid_argument &error) 
+        {
+            std::cout << error.what() << std::endl;  
+        }
+
+        catch(...) 
+        {
+            std::cout << "Some exception" << std::endl;
+        }
+    }
+
+
+    return 0;
+}<fim_middle>
+#include <stdexcept>
+#include <iostream>
+#include <string>
+#include <array>
+#include <vector>
+
+namespace error
+{
+    std::exception getError()
+    {
+        return std::invalid_argument("An argument error occurred");
+    }
+}  
+
+using Integer = std::int32_t ;
+using Result = std::expected<Integer, std::exception_ptr> ;
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+int divide(const Integer& i,  const Integer& j)  
+{
+	 
+    if (j == 0) throw error::getError();
+    else return i/j;
+}
+
+
+auto divide(const Integer& i, const Integer& j) -> Result
+{
+	 
+    if (j == 0) return error::getError();
+    else return i/j;
+}
+
+
+template <template<class...> class ResultTemplate, typename... Values>
+ 
+ResultTemplate<Values...> areEqual(const Result& l, const ResultTemplate<Values...>& r) 
+{
+     
+    
+     if (!l)
+        return false;
+     if (!r)
+        return false;
+    return *l == *r;
+}
+
+
+int main()
+{
+    Integer a{12};  
+    Integer b{10};
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+    {
+        try 
+        {
+            Integer result = divide(a,

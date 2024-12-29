@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    short val = 2;
+    if (val % 2 == 0)
+    {
+        printf("even");
+    }
+    else
+    {
+        printf("odd");
+    }
+    return 0;
+}
+ 
+int division_is_zero(int x, int y)
+{
+    int k = (x/y);
+    return k;
+}
+int main()
+{
+    int val = division_is_zero(15,1);
+    printf("%d",val);
+    return 0;
+}
+ 
+int func()
+{
+    return 5;
+}
+void main()
+{
+    func();
+    return 0;
+}
+ 
+int *add(int *a, int *b)
+{
+    *a = *(a) + *(b);
+    return *a;
+}
+int

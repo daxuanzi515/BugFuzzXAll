@@ -1,0 +1,21 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+
+void print_int(int* x,int* y) {
+	printf("x = %d, y = %d\n",*x,*y++);
+}
+
+int main() {
+	int x = 1, y = 200;
+	printf("Calling %p\n",print_int);
+	printf("Passing %p as x\n",&x);
+	printf("And %p as y\n",&y);
+	printf("Before calling %p\n",&x);
+	printf("Before calling %p\n",&y);
+	print_int(&x,&y);
+	printf("After returning from %p\n",&x);
+	printf("After returing from %p\n",&y);
+    puts("");  
+}
+

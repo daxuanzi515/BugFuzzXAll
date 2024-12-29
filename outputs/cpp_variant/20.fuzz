@@ -1,0 +1,51 @@
+#include <variant>
+#include <iostream>
+#include <string>
+int main()
+{   
+    std::variant<int, float, double> v {10.99};     
+    try
+    {     
+      std::visit([](auto const& val)      
+      { std::cout << "The value is " << val << '\n';      
+      }, v);   
+    }
+}
+ 
+#include <variant>
+#include <iostream>
+int main()
+{   
+    std::variant<int, double, std::string> v;     
+    std::cout << "Size=" << std::variant_size_v<decltype(v)> << '\n';     
+    int n { 3 };     
+    double d { 1.99 };     
+    std::string s { "hello" };     
+    v = n;     
+    v = d;     
+    v = s;
+    if (std::holds_alternative<double>(v))     
+    {     
+        std::cout << std::get<double>(v) << '\n';     
+    }     
+    if (std::holds_alternative<std::string>(v))     
+    {     
+        std::cout << std::get<std::string>(v) << '\n';     
+    }     
+    if (std::holds_alternative<int>(v))     
+    {     
+        std::cout << std::get<int>(v) << '\n';     
+    }     
+}
+#include <variant>
+#include <iostream>
+#include <string>
+int main()
+{   
+    std::variant<int, std::string> v = "hello";
+    try
+    { 
+        std::visit([](auto const& val)      
+        { std::cout << "The value is " << val << '\n';      
+        }, v);     
+   

@@ -1,0 +1,7 @@
+'''The `LinearFunction` is a class representing a linear reversible circuit on n qubits using a matrix of 0s and 1s. This linear functionality can be transformed into CX and SWAP gates. To ensure the function's efficiency, the internal n x n matrix is stored in the big-endian bit-ordering convention. A LinearFunction can be instantiated with a matrix or a Quantum Circuit of linear gates.
+
+It has methods like `is_permutation` to check if the function is a permutation, that is whether every row and column of the n x n matrix has exactly one 1, `permutation_pattern` to verify if the function is a permutation, `synthesize` to turn the linear function into a quantum circuit and `validate_parameter` for input validation.
+
+The `Gate` class represents a unitary gate and can be created by specifying the Qobj name of the gate, the number of qubits it acts on, and a list of parameters, along with an optional label. The class provides a variety of methods and attributes, including inverse, soft_compare, assemble, add_decomposition, and others to manipulate and use the gate. Additionally, it can get the decomposition, definition, duration, and instruction label using its attributes.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit

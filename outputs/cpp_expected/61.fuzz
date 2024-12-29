@@ -1,0 +1,69 @@
+#include <expected>
+<fim_suffix>n expected of " << exp.error();
+
+    return 0;
+}
+
+<fim_middle>
+#include <string>
+#include <optional>
+#include <iostream>
+
+template <typename T>
+void print(std::optional<T> opt) {
+    if (opt.has_value()) {
+        std::cout << "Value is: " << *opt << std::endl;
+    } else {
+        std::cout << "Error is: " << opt.error() << std::endl;
+    }
+}
+
+int main() {
+    std::string s{"42"};
+    std::uint32_t u = 42;
+    constexpr std::uint32_t u0 = std::numeric_limits<std::uint32_t>::max();
+
+    // OK: use operator* and operator-> overloading for non-void type
+    std::expected<std::string, std::exception> name = std::expected<std::string, std::exception>("Jack");
+    std::expected<std::uint32_t, std::exception> age;
+//  std::expected<std::string, std::string> name = std::expected<std::string, std::string>("Jack");
+//  std::expected<std::uint32_t, std::uint32_t> age;
+
+    try {
+        if (static_cast<std::string_view>(s).find_first_not_of("0123456789") == std::string_view::npos)
+            age = std::expected<std::uint32_t, std::exception>(static_cast<std::uint32_t>(s));
+        else
+            age = std::expected<std::uint32_t, std::exception>(static_cast<std::uint32_t>(u0));
+    }
+    catch (std::exception &ex) {
+        age = std::expected<std::uint32_t, std::exception>(u0);
+    }
+
+    // OK: use conversion constructor
+    std::expected<std::uint32_t, std::string> num(name);
+    
+    print(age);
+    print(num);
+
+    if (age.has_value())
+        std::cout << "Yikes: " << age.value() << std::endl;
+
+    if (age.has_error())
+        std::cout << "Yikes: " << age.error() << std::endl;
+
+//  for (char &ch : s) {
+//      ++s;
+//  }
+//
+//  for (char c : s) {
+//      ++s;
+//  }
+
+    // Not OK: non-default-constructible type
+    //std::expected<std::unique_ptr<Foo>, std::exception> foo(std::in_place_t{});
+
+    // Not OK: special class that has implicit conversion to unexpected
+    //std::expected<std::string, std::string> oops(std::in_place_t{}, "bad");
+
+     
+     

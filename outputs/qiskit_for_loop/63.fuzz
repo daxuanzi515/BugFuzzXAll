@@ -1,0 +1,17 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import for_loop
+
+q = QuantumRegister(2, 'q')
+c = ClassicalRegister(2, 'c')
+qc = QuantumCircuit(q, c)
+
+
+
+
+
+with for_loop(range(2, 4), indexset=q, loop_parameter='i', body=qc.h[q[{'i', 'i+1'}]]).loop_ctrl() as ctrl:
+    
+
+qc.measure(q, c)
+print(qc)

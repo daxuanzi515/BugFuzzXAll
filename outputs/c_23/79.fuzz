@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  printf("Parameter 1: %s\n", "hello5678");
+  printf("Parameter 2: %s\n", "world5678");
+}
+ 
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "hicpp-deprecated-headers"
+void myfunc(void) {
+    fprintf(stderr, "Hello from C98 %zu-byte integer: %zu\n", sizeof(size_t), SIZE_MAX);
+}
+#pragma clang diagnostic pop
+int main(int argc, char* argv[]) {
+  myfunc();
+  return 0;
+}

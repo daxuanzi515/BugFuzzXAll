@@ -1,0 +1,94 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, n):
+    self.qasm_string = ''
+    pass
+  def equals(self, other):
+    return (self.parameters == other.parameters and self.label == other.label)
+  pass
+  def add_instr(self, qasm_string):
+    self.qasm_string = self.qasm_string + qasm_string
+  pass
+  def get_instr(self):
+    return self.qasm_string
+  pass
+  def set_params(self, parameters, n):
+    self.parameters = parameters
+    if (len(parameters)!= n):
+      raise ValueError("The parameters list must have %d values, not %d" % (n, len(parameters)))
+  pass
+  def set_label(self, label):
+    self.label = label[1:-1]
+  pass
+  def controlled(self, n, control):
+    if (not control in n):
+      raise ValueError("Cannot control qubit %d of a %d-qubit gate" % (control, n))
+    else:
+      outstring = '.x %d' % control
+      outstring += self.qasm_string
+      return Gate(n)
+  pass
+  def invert_instr(self):
+    return self.invert(self.qasm_string)
+  pass
+  def invert_unitary_instr(self):
+    return self.invert_unitary(self.qasm_string)
+  pass
+  def repeat_instr(self, n):
+    return self.repeat(self.qasm_string, n)
+  pass
+  def repeat_unitary_instr(self, n):
+    return self.repeat_unitary(self.qasm_string, n)
+  pass
+  def reverse_instr(self):
+    return self.reverse(self.qasm_string)
+  pass
+  def soft_compare(self, other, diff=1e-8):
+    equal = True
+    if (abs(self.n - other.n) < 1e-8):
+      if (len(self.parameters)!= len(other.parameters) < 1e-8):
+        for i in range(len(self.parameters)):
+          if (abs(self.parameters[i] - other.parameters[i]) > diff):
+            equal = False
+            break
+    else:
+      equal = False
+    return equal
+  pass
+  def get_openqasm_string(self):
+    return self.qasm_string
+  pass
+  def __str__(self):
+    mystr = ''
+    mystr = mystr+'[Gate: label='+self.label+', unitary gate='+self.qasm_string+']'
+    return mystr
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

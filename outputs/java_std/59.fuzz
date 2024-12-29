@@ -1,0 +1,37 @@
+import java.lang.Object;
+<fim_suffix>ng[] args) {
+		String url = "https://www.google.com/ncr";
+		String regex = "^https?://([^/?#]+\\.[^/?#]+)";
+
+		String pattern = "Hello";
+		String str = "Hello world";
+
+		 
+		String[] splitStringArray = str.split(pattern);
+		String regexString = "[^\\s\\d]";
+		Matcher m = Pattern.compile(regexString).matcher("Teststring");
+
+		String newString1 = "Hello";
+		String newString2 = "world";
+		String anotherString = newString1 + " " + newString2;
+
+		String myString = anotherString.concat(anotherString);
+
+		char[] charArray = "Hello world".toCharArray();
+		for(int i = 0; i < charArray.length; i++) {
+			if(charArray[i] % 2 == 1)
+				break;
+			System.out.println(charArray[i]);
+		}
+
+		int myVar = anotherString.length();
+		boolean check = anotherString.equals(newString1);
+	}
+}
+
+<fim_middle>import java.util.*;
+import java.util.regex.*;
+ 
+
+public class HelloIndian{
+	public static void main(Stri

@@ -1,0 +1,55 @@
+from qiskit import QuantumCircuit
+
+from openqasm import tosource
+from qiskit.circuit import Gate
+from openqasm import gate_statement, qasm_source, astnodes, node, node_name
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit import QasmQobjInstruction
+from qiskit.quantum_info import ProcessMatrix, Operator, SuperOp
+import numpy as np
+from qiskit.tools.visualization import array_to_latex, circuit_drawer
+
+class LinearFunction:
+    
+    def __init__(self, gate_matrix, num_qubits=1, name="A", reverse_bits=False):
+        
+        self.gate_matrix=gate_matrix
+        self.num_qubits=num_qubits
+        self.name=name
+        self.reverse_bits=reverse_bits
+    
+    def set_reverse(self, reverse_bits):
+        
+        self.reverse_bits=reverse_bits
+    
+    def set_gate_matrix(self, gate_matrix):
+        
+        self.gate_matrix=gate_matrix
+    
+    def set_num_qubits(self, num_qubits):
+        
+        self.num_qubits=num_qubits
+
+    def isPermutation(self):
+        
+        
+        gatematrix_as_list=[np.array(element) for element in self.gate_matrix]
+        
+        ID=np.eye(len(gatematrix_as_list))
+        
+        return np.round(ID-sum(gatematrix_as_list), 5).all()
+
+    def synthesize(self, synthesizer): 
+        
+        synthesized_gate_matrix=synthesizer.synthesize(self.gate_matrix, self.num_qubits)
+        
+        Q=QuantumCircuit(self.num_qubits)
+        
+        Q.add_register(QuantumRegister(self.num_qubits, name=self.name))
+        Q.add_register(ClassicalRegister(self.num_qubits, name=self.name))
+        
+        self.gate_matrix_to_quantum_circuit(synthesized_gate_matrix, Q)
+        return Q
+    
+    def gate_matrix_to_quantum_circuit(self, gate_matrix, c):

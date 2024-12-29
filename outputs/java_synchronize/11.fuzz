@@ -1,0 +1,54 @@
+import java.lang.Object;
+class SampleData {
+    void write() {System.out.println("Write operation to SampleData is invoked!");}
+    void count() {System.out.println("Count operation to SampleData is invoked!");}
+}
+class MultiThreadedData1 {
+    int count;
+    SampleData data;
+
+    public synchronized void read() {
+        try {
+            while (count == 0) {
+                wait();
+            }
+  data.count();
+            count--;
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+
+    public synchronized void write() {
+        try {
+            data.write();
+  count++;
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}
+ 
+import java.lang.Object;
+class Lock {
+    private boolean isLocked = false;
+    void lock () { isLocked = true; }
+    void unlock () { isLocked = false; }
+}
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+}
+class MultiThreadedData2 {
+    SampleData data;
+    Lock lock;
+    public void read() {
+        lock.lock();
+        if (!data.read)
+            try {
+                wait();
+            } catch (InterruptedException e) { e.printStackTrace(); }
+        lock.unlock();
+    }
+    public void write() {
+        try {
+            data.write();
+            lock.unlock();
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}

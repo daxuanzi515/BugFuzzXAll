@@ -1,0 +1,112 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import (
+    Parameter,
+    ParameterVector,
+    ClassicalRegister,
+    QuantumRegister,
+)
+import numpy as np
+
+
+
+p = Parameter("p")
+
+
+qc = QuantumCircuit(1)
+qc.h(0)
+qc.measure_all()
+
+
+
+case0 = (p, qc)  
+switch = QuantumCircuit(1)
+switch.x(0).c_if(p, 0)
+case1 = (2, switch)  
+
+
+
+circ = QuantumCircuit(1)
+circ.append(case0, [0])
+circ.append(case1, [0])
+circ.x(0)
+circ.switch(0, 1, p)
+
+
+val = 2
+
+
+qc.bind_parameters({p: val})
+circ.bind_parameters({p: val})
+
+print("Without building the switch:\n", qc)
+print("After building the switch:\n", circ)
+
+qc_json = circ.to_dict()
+print(qc_json)
+
+import qiskit.tools.jupyter
+
+
+
+circ.draw()
+
+
+
+
+q = QuantumRegister(5, 'q')
+c = ClassicalRegister(5, 'c')
+qc = QuantumCircuit(q, c)
+
+qc.h(q[3])
+qc.cx(q[3], q[4])
+qc.swap(q[2], q[1])
+qc.cx(q[2], q[3])
+qc.swap(q[2], q[1])
+qc.cx(q[0], q[1])
+qc.swap(q[3], q[1])
+qc.cx(q[0], q[2])
+qc.x(q[4])
+qc.cx(q[3], q[4])
+qc.x(q[4])
+qc.barrier(q)
+qc.ccx(q[4], q[1], q[4])
+qc.ccx(q[4], q[2], q[4])
+qc.ccx(q[4], q[3], q[4])
+qc.barrier(q)
+qc.measure(q, c)
+
+
+
+
+qc.draw()
+
+
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit import (
+    Parameter,
+    QuantumCircuit,
+    QuantumRegister,
+    ClassicalRegister
+)
+
+
+p = Parameter(value="X")
+
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.p(0.3, 0)
+qc.h(0)
+qc.r(p, 3.14, 0)
+qc.h(0)
+qc.z(0)
+qc.h(1)
+qc.measure_all()
+
+qc.draw()
+
+
+'''Create a quantum circuit in Qiskit in Python with parameters. In the example above, we'll define two parameters $a$ and $b$ (defined using the qiskit.circuit.Parameter() call), instantiate these parameters, bind them, and run the circuit using Python's eval() function. 

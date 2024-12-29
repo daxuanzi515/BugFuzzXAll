@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h> 
+  
+struct point  
+{
+  int x;
+  int y;
+};
+
+union type1{
+    int i;
+    struct point point;
+    void* p;
+};
+
+int main()
+{
+  int i; 
+  struct point point; 
+  union type1 t1;
+  point.x = 0x1234;
+  point.y = 0x4321;
+  t1.i = 0x1234; 
+  t1.p=&point;
+}

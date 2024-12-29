@@ -1,0 +1,36 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+enum { red, green, blue };
+
+void set_color(int color)
+{
+	switch (color) {
+	case red: printf("Color is Red\n");
+		break;
+	case green: printf("Color is Green\n");
+		break;
+	case blue: printf("Color is Blue\n");
+		break;
+	default: printf("Unknown Color\n");
+		break;
+	}
+}
+
+int main()
+{
+	set_color(red);
+	set_color(green);
+	set_color(blue);
+	set_color(4);
+	return 0;
+}
+ 
+CC = gcc
+CFLAGS = -std=c99 
+
+target1 : source1.c source2.c source3.c
+      	   $(CC) $(CFLAGS) -o target1 source1.c source2.c source3.c
+
+target2 : source1.c source2.c source3.c
+      	   $(CC) $(CFLAGS) -o target

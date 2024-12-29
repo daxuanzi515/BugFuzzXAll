@@ -1,0 +1,12 @@
+#include <tuple>
+
+#include <utility>
+#include <algorithm>
+int main()
+{
+     
+    std::tuple<char, char, char> my_tuple('a', 'b', 'c');
+
+    std::apply(std::make_pair, my_tuple);
+ 
+}

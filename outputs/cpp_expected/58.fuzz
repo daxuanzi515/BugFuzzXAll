@@ -1,0 +1,93 @@
+#include <expected>
+<fim_suffix>rn result;
+	}
+
+	double getValue() const {
+		std::scoped_lock<std::mutex> guard{lock};
+		if (has_value) {
+			return actual();
+		}
+
+		throw *exception_ptr;
+	}
+
+	double operator*() const {
+		return getValue();
+	}
+
+private:
+	std::mutex lock;
+	std::expected<double, std::exception_ptr> value_safe;
+	double value_unsafe;
+	bool has_value;
+	std::exception_ptr exception_ptr;
+};
+
+std::expected<double, std::exception_ptr> calculate(int a, int b) {
+	try {
+		if (a < 0 || b < 0) {
+			return std::make_unexpected(std::runtime_error("Cannot divide by negative number"));
+		} else {
+			return a / b;
+		}
+	} catch (...) {
+		return std::current_exception();
+	}
+}
+
+MutexExpected<double> divide_with_exceptions(int a, int b) {
+	auto future = calculate(a, b);
+	return future;
+}
+
+MutexExpected<double> sumWithMutex(int a, int b) {
+	std::scoped_lock<std::mutex> autoLock{mutex};
+	return a + b;
+}<fim_middle>
+#include <mutex>
+
+template <typename T>
+using MutexExpected = std::expected<T, std::exception_ptr>;
+
+
+MutexExpected<int> safeDivide(int a, int b) {
+	if (b == 0) {
+		return std::make_unexpected(std::runtime_error("b can't be 0"));
+	}
+
+	return a/b;
+}
+
+template <typename T>
+class MutexExpected {
+public:
+	MutexExpected()
+			: value_safe(),
+			  has_value{false} {}
+
+	MutexExpected(const T &value)
+			: value_safe{value},
+			  has_value{true} {}
+
+	MutexExpected(T &&value)
+			: value_unsafe{value},
+			  has_value{true} {}
+
+	template <typename U = T,
+			  typename = std::enable_if_t<!std::is_same<std::decay_t<U>, std::decay_t<decltype(std::unexpect<T>())>>::value, T>>
+	MutexExpected(std::in_place_t, U &&value)
+			: value_unsafe{value},
+			  has_value{true} {}
+
+	MutexExpected(std::exception_ptr exception)
+			: exception_ptr{exception},
+			  has_value{false} {
+		assert(exception!= nullptr);
+	}
+
+ 
+	template<typename... Args>
+	void emplace(Args&&... args) {
+		std::scoped_lock<std::mutex> guard{lock};
+		value_safe.emplace(std::forward<Args>(args)...);
+		has

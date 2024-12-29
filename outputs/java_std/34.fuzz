@@ -1,0 +1,51 @@
+import java.lang.Object;
+ < nameList.size(); i++) {
+			System.out.println(nameList.get(i));
+		}
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+
+
+ 
+ 
+package com.example.java; 	  
+ 
+ 
+ 
+ 
+import java.util.*;
+ 
+public class AcademicRecord implements Comparable {   
+												    
+												    
+												    
+    private String course;
+    private String instructor;
+    private double avgGrade; 
+    private double score;
+   
+     
+    public AcademicRecord(String course, String instructor, double avgGrade) {
+        this.course = course;
+        this.instructor = instructor;
+        this.avgGrade = avgGrade;
+    }
+    
+     
+    public double addScore() {
+        score = avgGrade * 1.15;		 
+        return score;
+    }
+ 
+    @Override
+    public int compareTo(Object name2) {	 
+		AcademicRecord ar2 = (AcademicRecord) name

@@ -1,0 +1,66 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister,ClassicalRegister
+from qiskit import IBMQ
+from qiskit import A, B, C, D
+from qiskit.compiler import transpile, assemble
+from qiskit.quantum_info import Statevector
+
+qr = QuantumRegister(1,'qr')
+cr = ClassicalRegister(1,'cr')
+qc = QuantumCircuit(qr, cr)
+
+
+
+qc.h(qr)
+qc.h(qr)
+
+qc.x(A)
+qc.x(B)
+qc.ccx(A, B, C)
+qc.x(C)
+qc.cx(B, D) 
+switch_case = qc.switch(D, {0: A, 1: B})
+add_cnd1 = qc.ccx(C,A,D)
+add_cnd2 = qc.cx(D,A)
+qc.x(D)
+qc.barrier(D,A)
+qc.measure(D,cr)
+qc.x(D)
+
+print('\nSwitchStatement Circuit')
+print(qc.draw())
+
+job=transpile(qc, basis_gates=['cx'])
+state = Statevector(job.execute().result().get_statevector(qc))
+print('\nFinal State Vector of SwitchStatement Example')
+print(state)
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

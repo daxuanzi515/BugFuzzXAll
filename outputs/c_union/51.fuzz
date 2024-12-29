@@ -1,0 +1,54 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef union 
+    {
+        struct 
+        {
+            int A;
+            int B;
+        } t1;
+        struct  				 
+        {
+            int C;
+            int D;
+        } t2; 
+    } u1;
+    u1 t1, t2;
+    printf("sizeof(u1): %ld\n", sizeof(u1));
+    printf("sizeof(t1): %ld\n", sizeof(t1));
+    printf("sizeof(t2): %ld\n", sizeof(t2));
+    printf("sizeof(t1.t1): %ld\n", sizeof(t1.t1));
+    printf("sizeof(t1.t2): %ld\n", sizeof(t1.t2));
+    printf("sizeof(t2.t1): %ld\n", sizeof(t2.t1));
+    printf("sizeof(t2.t2): %ld\n", sizeof(t2.t2));
+
+    struct u2
+    {
+        struct 
+        {
+            int A;
+            int B;
+        } t1;
+        struct  				 
+        {
+            int C;
+            int D;
+        } t2;
+    } u2, u3;
+     
+    if (0)
+    {
+        u2 = t1;
+        printf("u2: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u2.t1.A, u2.t1.B, u2.t1.C, u2.t1.D, u2.t2.A, u2.t2.B, u2.t2.C, u2.t2.D);
+    }
+    
+    else
+    {
+        u2.t1.C = 0x1234;
+        u2.t1.D = 0x1234;
+
+
+        u3 = t1;
+        printf("u3: {\n\tt1.A = %d\n\tt1.B = %d\n\tt1.C = %d\n\tt1.D = %d\n\tt2.A = %d\n\tt2.B = %d\n\tt2.C = %d\n\tt2.D = %d\n}", u3.t1.A, u3.t1.B,

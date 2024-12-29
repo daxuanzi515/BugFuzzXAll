@@ -1,0 +1,16 @@
+import java.lang.Object;
+
+public class Synchronization {
+
+	public void syncMethod() {
+		
+		
+		Object objectLock = new Object();
+		synchronized (objectLock); 
+		{
+			System.out.println(Thread.currentThread().getName() + " acquired lock");
+		}
+
+	}
+
+}

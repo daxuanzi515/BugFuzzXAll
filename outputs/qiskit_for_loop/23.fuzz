@@ -1,0 +1,61 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import QFT
+
+
+qft = QFT(4, input_registers=None, input_clbits=None)
+qft.draw(output='mpl')
+
+
+with QuantumCircuit() as circuit:
+    circuit.h(0)
+    for index_val in range(2,7):
+        qubit_val = 5
+        qubit_str_val = '1'
+        with circuit.for_loop(range(index_val, qubit_val, qubit_str_val), 7, op, 2, 2, 2) as loop_label:
+            circuit.h(index_val)
+            circuit.x(index_val)
+            circuit.h(index_val)
+            
+            qub1 = _build_reference_map(index_val+1)
+            qubits_qft = circuit.qubits[:-2], circuit.qubits[-2:]
+            clbits_qft = circuit.clbits[:], tuple()
+            qft_qubits = list(qub1[qubits_qft[0]]) + list(qub1[qubits_qft[1]])
+            op = qft(qft_qubits,
+                     qubits_ancilla=None,
+                     input_quanta=0,
+                     mode='default')
+            op.c_if(clbits_qft[0], _build_reference_map(index_val+1)[index_val+1])
+            op.c_if(clbits_qft[1], _build_reference_map(index_val+2)[index_val+2])
+            op.c_if(clbits_qft[2], _build_reference_map(index_val+3)[index_val+3])
+            op.c_if(clbits_qft[3], _build_reference_map(index_val+4)[index_val+4])
+            
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

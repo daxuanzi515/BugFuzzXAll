@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int x = rand() % 8 + 1;  
+    int y = rand() % 9 - 1;  
+    int *ptr = &y;
+    printf("Pointer is %x\n", (int)ptr);
+    int z = x + y;
+    printf("The answer is %d\n", z);
+    return 0;
+}

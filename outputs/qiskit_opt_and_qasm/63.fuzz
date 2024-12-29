@@ -1,0 +1,43 @@
+from qiskit import QuantumCircuit
+
+from qiskit.visualization import plot_histogram
+
+circuit = QuantumCircuit(3, 3)
+circuit.reset(range(3))      
+circuit.h(0)                  
+circuit.cx(0,1)               
+circuit.measure(range(3), range(3))    
+circuit.draw()
+counts_dict = run_circuit()
+plot_histogram(counts_dict)
+
+from qiskit import BasicAer, Aer
+
+backend = BasicAer.get_backend('statevector_simulator')
+job = backend.run(circuit)
+result = job.result()
+statevector = result.get_statevector(circuit)
+print(statevector)
+
+from qiskit.providers.aer.backends import QasmSimulatorPy
+
+backend = QasmSimulatorPy()
+job = backend.run(circuit, shots = 1024)
+result = job.result()
+counts_dict = result.get_counts(circuit)
+plot_histogram(counts_dict)<jupyter_output><empty_output><jupyter_text>![image.png](attachment:image.png)  Bots<jupyter_code>Qiskit has a module called qiskit.tools.monitor which you can use to monitor the status of jobs
+from qiskit import *
+import time
+from qiskit.tools.monitor import job_monitor
+circuit = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circuit.h(0)
+circuit.cx(0,1)
+circuit.barrier(range(2))
+circuit.measure(range(2), range(2))
+
+backend = BasicAer.get_backend('qasm_simulator')
+job = execute([circuit]*10, backend)
+job_monitor(job)
+import qiskit.tools.jupyter
+%qiskit_version_table

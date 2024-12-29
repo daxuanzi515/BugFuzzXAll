@@ -1,0 +1,21 @@
+#include <tuple>
+#include <iostream>
+void switcharoo(int & l, int & r)
+{
+  l = r - l; r = l - r;
+}
+int main()
+{
+  int x = 42, y = 100;
+  std::tuple<int, int> t{ x, y };
+  auto [a, b] = t;
+  switcharoo(x, y);
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}
+
+
+ 
+ 
+ 

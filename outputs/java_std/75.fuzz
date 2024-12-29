@@ -1,0 +1,17 @@
+import java.lang.Object;
+<fim_suffix>= 0) {
+			int newY = (int)Math.abs(x) + y;
+			x = ((double)(x*y*z))/(double)(newY*y);
+			y = newY;
+		}
+		System.out.println(x);
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Random r = new Random();
+		int x = r.nextInt()/(r.nextInt());
+		int y = x*x;
+		int z = y*x;
+		while(x > 0 && y >

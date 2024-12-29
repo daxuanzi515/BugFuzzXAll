@@ -1,0 +1,18 @@
+from qiskit import QuantumCircuit
+
+circuit = aer.get_backend('qasm_simulator')
+circuit.draw()
+counts_dict_bell = {'00': 537, '11': 543}
+circ = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circ.h(0)
+circ.draw(output='mpl')
+result = circuit.run(circ, shots=1024).result() 
+counts_dict_bell = result.get_counts(circ)
+print(counts_dict_bell)
+counts_dict_bell = {'00': 537, '11': 543}
+'''Create quantum circuits with Qiskit API and combine them in complex ways.
+from qiskit import QuantumCircuit
+
+circuit = aer.get_backend('qasm_simulator')
+circuit.draw()

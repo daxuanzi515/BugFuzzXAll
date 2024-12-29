@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+ 
+

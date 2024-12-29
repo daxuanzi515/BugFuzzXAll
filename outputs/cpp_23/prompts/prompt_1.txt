@@ -1,0 +1,29 @@
+/* C++23, the upcoming new version of the C++ standard, introduces a number of significant features and updates to the programming language:
+
+1. New Literal Suffixes: It adds literal suffixes for std::size_t and the corresponding signed type.
+
+2. String Handling and Checking: It includes a member function "contains" for strings and string view, for checking if a string contains a specified substring or character.
+
+3. Stacktrace Library: A new library added for stacktrace, based on Boost.Stacktrace.
+
+4. Type Traits: Addition of the type trait, std::is_scoped_enum, and functions like std::to_underlying for handling enums.
+
+5. Concurrency: Introduction of the <stdatomic.h> header, for interoperability with C atomics.
+
+6. Range Library Changes: Extensive changes and additions to the range library which include new adaptors like views::join_with, and functions like ranges::to.
+
+7. Constexpr Libraries: Many functions are now constexpr, allowing them to be evaluated at compile time, speeding up code execution.
+
+8. String Streaming: Addition of a new std::span-based string-stream.
+
+9. Unique and Optional Pointers: Making std::unique_ptr constexpr, and Monadic operations for std::optional.
+
+10. Unicode Concepts: Directives for handling unicode characters.
+
+11. Improved Output: Introducing std::print and std::println functions for better text output.
+
+12. Removal and Deprecation: Some features like garbage collection support and features like std::aligned_storage and std::aligned_union have been deprecated as per the new update.
+
+Many of these features were added during virtual WG21 meetings throughout 2020, 2021, and early 2022. The new features are intended to improve the performance and ease-of-use of C++. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>

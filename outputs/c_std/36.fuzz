@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int a = 10;
+    const double b = 22;
+    const int *p = &a;
+    char *q = (char *)malloc(100);
+    printf("%d\n", *p - 5);
+    printf("%f\n", *q);
+    return 0;
+}

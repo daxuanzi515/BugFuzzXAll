@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const num num_t;
+typedef const char cstr_t;
+typedef const char* cstr_p;
+typedef struct
+{
+	num_t i;
+	num_t j;
+} complex_t;
+
+typedef complex_t complex_num_t;
+
+typedef struct rgb_type_t
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type_t;

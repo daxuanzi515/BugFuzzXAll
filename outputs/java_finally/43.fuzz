@@ -1,0 +1,25 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJAVA1{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        String line = null;
+        while((line = in.readLine())!= null){
+            System.out.println(line);
+            in.close();
+            try{
+                BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        if(in!= null){
+            try{
+                in.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+}

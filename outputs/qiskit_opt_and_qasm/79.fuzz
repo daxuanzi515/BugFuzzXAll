@@ -1,0 +1,21 @@
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+def run_circuit():
+    result = circuit.run(backend='qasm_simulator', shots=1024).result()
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+create_circuit()
+run_circuit()
+{'00': 511}
+{'01': 511, '10': 502}
+result.get_statevector()
+{'00': 0.9941419538864549,
+ '01': 0.005844868471441904,
+ '10': 0j,

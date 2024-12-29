@@ -1,0 +1,30 @@
+#include <stdlib.h>
+int main()
+{
+	typedef struct Tag *TagPtr;
+	TagPtr tag_ptr;
+	tag_ptr = (TagPtr)(malloc(sizeof(struct Tag)));
+	 
+	 
+	 
+	free(tag_ptr);
+	return 0;
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+#include <stdio.h>
+int sum(float* arf, char* ac, int n);  
+float mult(int a1, long a2);  
+void sort(int* ar, int n);  

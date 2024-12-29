@@ -1,0 +1,71 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0]).loopvar
+qc.measure(index, total)
+qc.draw()
+
+from qiskit import QuantumRegister
+index = QuantumRegister(1, 'index')
+total = QuantumRegister(1, 'total')
+qc = QuantumCircuit(index, total)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0, 1]).loopvar
+qc.measure(index, total)
+
+
+qc.draw()
+
+
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(3)
+[index, total] = qc.for_loop(indexset=[i for i in range(3)], loop_parameter='j', body=qc.h(i), qubits=[0]).loopvar
+qc.measure(index, total)
+
+
+qc.draw()
+
+
+
+from qiskit import QuantumRegister, QuantumCircuit
+
+index = QuantumRegister(1, 'index')
+total = QuantumRegister(1, 'total')
+qc = QuantumCircuit(index, total)
+[index, total] = qc.while_loop(indexset=[i for i in range(3)], 
+    loop_parameter='j', 
+    body=qc.h(index[0]),
+    qubits=[0]).loopvar
+qc.measure(index, total)
+
+qc.draw()
+
+
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

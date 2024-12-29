@@ -1,0 +1,12 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  int x = 42, y = 100;
+  std::tuple<int, int> t { x, y};
+  std::get<0>(t) = std::get<1>(t) - std::get<0>(t);
+  std::get<1>(t) = std::get<0>(t) - std::get<1>(t);
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}

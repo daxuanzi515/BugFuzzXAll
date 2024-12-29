@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x) : (y))
+#define min(x,y)  (((x) < (y))? (x) : (y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	 
+	Point_t* point = (Point_t*)malloc(sizeof(Point_t));
+	point->x = 4;
+	point->y = 4;
+	Point_t min_point;
+	min_point.x = min(point->x, 3);
+	min_point.y = min(point->y, 3);
+	Point_t point_temp = min_point;
+	*(Point_t*)point = point_temp;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	 
+	if (greater(point->x, point->y))
+	{
+		max_point.x = point->x;
+		max_point.y = point->y;
+	}
+	else
+	{
+		max(point->x, point->y);
+		max_point.x = point->x;
+		max_point.y = point->y;
+	}
+	free(point);
+	return 0;
+}
+ 
+/* Please list down some examples of the usage of the new C features such as typedefs

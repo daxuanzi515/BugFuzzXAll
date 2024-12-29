@@ -1,0 +1,975 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/0.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/0.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/0.fuzz:26:5: 错误： expected declaration or statement at end of input
+   26 |     printf("%s %d\n", str1, strlen(str1));
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/0.fuzz:15:5: 警告： ‘strncat’ specified bound 5 equals source length [-Wstringop-overflow=]
+   15 |     strncat(str, "World", 5);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/1.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/1.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/1.fuzz:22:5: 错误： 未知的类型名‘int64_t’
+   22 |     int64_t sum = 0;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/1.fuzz:8:1: 附注： ‘int64_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+    7 | #include <time.h>
+  +++ |+#include <stdint.h>
+    8 | 
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/2.fuzz has potential error!
+error message:
+timed out
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/3.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/3.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/3.fuzz:27:20: 错误： expected expression before ‘int’
+   27 |     printf("%d\n", int(x * x + sin(10)));
+      |                    ^~~
+/home/cxx/fuzz4all/outputs/c_std/3.fuzz:28:20: 错误： expected expression before ‘int’
+   28 |     printf("%d\n", int(pow(x, 2)));
+      |                    ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/4.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/4.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz:13:26: 错误： 整数常量的“_00_00”后缀无效
+   13 |                 bool c = 0xFF_00_00 and true;
+      |                          ^~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz:25:5: 错误： ‘main’重定义
+   25 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz:7:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    7 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/4.fuzz:34:9: 错误： expected declaration or statement at end of input
+   34 |         *pointer = *pointer + memory[0] * 2;
+      |         ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/5.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/5.fuzz:6:10: 致命错误： random：没有那个文件或目录
+    6 | #include <random>
+      |          ^~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/6.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/6.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/6.fuzz:26:22: 错误： ‘SQRT_EPSILON’未声明(在此函数内第一次使用)
+   26 |   if (0.0<val && val<SQRT_EPSILON) {
+      |                      ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/6.fuzz:26:22: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/7.fuzz has potential error!
+error message:
+timed out
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/8.fuzz has potential error!
+error message:
+timed out
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/9.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/9.fuzz:5:10: 致命错误： thread：没有那个文件或目录
+    5 | #include <thread>
+      |          ^~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/10.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/11.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/12.fuzz has potential error!
+error message:
+timed out
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/13.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/13.fuzz:12:1: 错误： 未结束的注释
+   12 | /* The C++ Standard Library is a collection of headers that define functionality in the C++ programming language. Here is a summary of each:
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/14.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/15.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/15.fuzz:26:1: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ at end of input
+   26 | typedef long double __u__
+      | ^~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/16.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/16.fuzz:25:1: 错误： 未结束的注释
+   25 | /* Write a program which makes use of the new C standard library. Be
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/17.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/17.fuzz:21:1: 错误： 未结束的注释
+   21 | /* A program in which we are reading the contents in the RAM once is a bit more efficient.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/18.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/18.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/18.fuzz:13:18: 警告： 隐式声明函数‘filelength’ [-Wimplicit-function-declaration]
+   13 |     if ( ( len = filelength( fd ) ) == EOF ) {
+      |                  ^~~~~~~~~~
+/usr/bin/ld: /tmp/cc0jAamS.o: in function `main':
+18.fuzz:(.text+0x4b): undefined reference to `filelength'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/19.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/19.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/19.fuzz:24:24: 错误： expected ‘)’ at end of input
+   24 |     printf("%s\n", text
+      |           ~            ^
+      |                        )
+/home/cxx/fuzz4all/outputs/c_std/19.fuzz:24:5: 错误： expected declaration or statement at end of input
+   24 |     printf("%s\n", text
+      |     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/20.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/20.fuzz:25:1: 错误： 未结束的注释
+   25 | /* Please create a semantically equivalent program to
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/21.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/22.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/23.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/23.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/23.fuzz:38:5: 错误： expected expression at end of input
+   38 |     if ( read_chars ==
+      |     ^~
+/home/cxx/fuzz4all/outputs/c_std/23.fuzz:38:5: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/24.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/24.fuzz:23:1: 错误： 未结束的注释
+   23 | /*./
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/25.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/28.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/29.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/29.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:4:5: 错误： 未知的类型名‘FILE’
+    4 |     FILE *file = NULL;
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:3:1: 附注： ‘FILE’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+    2 | #include <assert.h>
+  +++ |+#include <stdio.h>
+    3 | int main() {
+In file included from /home/cxx/fuzz4all/outputs/c_std/29.fuzz:2:
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:5:20: 警告： 隐式声明函数‘fopen’ [-Wimplicit-function-declaration]
+    5 |     assert((file = fopen("test files/hello.txt", "r")) || "Error opening file.\n");
+      |                    ^~~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:5:20: 附注： ‘fopen’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:5:18: 警告： assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+    5 |     assert((file = fopen("test files/hello.txt", "r")) || "Error opening file.\n");
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:6:27: 警告： implicit declaration of function ‘maloc’; did you mean ‘malloc’? [-Wimplicit-function-declaration]
+    6 |     char *text = (char *) maloc(sizeof(1));
+      |                           ^~~~~
+      |                           malloc
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:6:18: 警告： 将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+    6 |     char *text = (char *) maloc(sizeof(1));
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:8:9: 警告： 隐式声明函数‘fread’ [-Wimplicit-function-declaration]
+    8 |         fread(text,1,1,file);
+      |         ^~~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:9:9: 警告： 隐式声明函数‘fflush’ [-Wimplicit-function-declaration]
+    9 |         fflush(file);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:10:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   10 |         printf("%c", text[0]);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:10:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:10:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:10:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:11:31: 错误： ‘error’未声明(在此函数内第一次使用)
+   11 |     } while(text[0]!= '\0' &&!error);
+      |                               ^~~~~
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:11:31: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_std/29.fuzz:12:5: 警告： 隐式声明函数‘fclose’ [-Wimplicit-function-declaration]
+   12 |     fclose(file);
+      |     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/31.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/32.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/32.fuzz:26:5: 错误： ‘main’重定义
+   26 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/32.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/33.fuzz failed validation with error message: /usr/bin/ld: /tmp/ccDC4gcj.o: in function `main':
+33.fuzz:(.text+0x26): undefined reference to `beginFile'
+/usr/bin/ld: 33.fuzz:(.text+0x7d): undefined reference to `getChar'
+/usr/bin/ld: 33.fuzz:(.text+0xa3): undefined reference to `getChar'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/34.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/35.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/36.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/37.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/37.fuzz:36:5: 错误： ‘main’重定义
+   36 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/37.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/37.fuzz:44:14: 错误： 缺少结尾的 > 字符
+   44 | #include <sys
+      |              ^
+/home/cxx/fuzz4all/outputs/c_std/37.fuzz:44:10: 致命错误： sys：没有那个文件或目录
+   44 | #include <sys
+      |          ^
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/38.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/38.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/38.fuzz:8:52: 警告： implicit declaration of function ‘strerror’; did you mean ‘perror’? [-Wimplicit-function-declaration]
+    8 |         fprintf(stderr, "Error opening file : %s", strerror(errno));
+      |                                                    ^~~~~~~~
+      |                                                    perror
+In file included from /home/cxx/fuzz4all/outputs/c_std/38.fuzz:14:
+/usr/include/string.h: 在文件作用域：
+/usr/include/string.h:397:14: 错误： conflicting types for ‘strerror’; have ‘char *(int)’
+  397 | extern char *strerror (int __errnum) __THROW;
+      |              ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/38.fuzz:8:52: 附注： previous implicit declaration of ‘strerror’ with type ‘int()’
+    8 |         fprintf(stderr, "Error opening file : %s", strerror(errno));
+      |                                                    ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/38.fuzz: 在函数‘addBook’中:
+/home/cxx/fuzz4all/outputs/c_std/38.fuzz:29:5: 错误： expected declaration or statement at end of input
+   29 |     FILE *file = fopen("new-books.txt", "a+");
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/39.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/39.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/39.fuzz:9:13: 警告： implicit declaration of function ‘fwide’; did you mean ‘fwrite’? [-Wimplicit-function-declaration]
+    9 |     value = fwide(file, 1);
+      |             ^~~~~
+      |             fwrite
+/home/cxx/fuzz4all/outputs/c_std/39.fuzz:12:13: 警告： implicit declaration of function ‘fgetwc’; did you mean ‘fgetc’? [-Wimplicit-function-declaration]
+   12 |     value = fgetwc(file);
+      |             ^~~~~~
+      |             fgetc
+/home/cxx/fuzz4all/outputs/c_std/39.fuzz:16:5: 错误： ‘c’未声明(在此函数内第一次使用)
+   16 |     c = getc(file);
+      |     ^
+/home/cxx/fuzz4all/outputs/c_std/39.fuzz:16:5: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/41.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/41.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz:9:8: 错误： 向只读位置‘*p’赋值
+    9 |     *p = *p - 5;
+      |        ^
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz:17:5: 错误： ‘main’重定义
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/41.fuzz:23:8: 错误： 向只读位置‘*p’赋值
+   23 |     *p = *p - 5;
+      |        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/42.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/43.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/43.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/43.fuzz:8:23: 错误： 一元 ‘*’参数类型无效(有‘int’)
+    8 |     printf("%f\n", b ** -24);
+      |                       ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/44.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/45.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/45.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:8:13: 错误： 令只读形参‘str’自增
+    8 |         *str++ = *s++;
+      |             ^~
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:22:6: 错误： conflicting types for ‘changeValue’; have ‘int *(int * const)’
+   22 | int* changeValue(int *const num)
+      |      ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:3:6: 附注： previous definition of ‘changeValue’ with type ‘int *(char * const)’
+    3 | int* changeValue(char *const str)
+      |      ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:39:5: 错误： ‘main’重定义
+   39 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:12:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   12 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:46:23: 错误： expected ‘]’ at end of input
+   46 |     changeValue(&val[5
+      |                       ^
+      |                       ]
+/home/cxx/fuzz4all/outputs/c_std/45.fuzz:46:5: 错误： expected declaration or statement at end of input
+   46 |     changeValue(&val[5
+      |     ^~~~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/46.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/48.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/49.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/49.fuzz: 在函数‘addString’中:
+/home/cxx/fuzz4all/outputs/c_std/49.fuzz:5:50: 错误： 令只读形参‘buf’自增
+    5 |     for (const char* b = s ; *b!= '\0' ; b++, buf++)
+      |                                                  ^~
+/home/cxx/fuzz4all/outputs/c_std/49.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/49.fuzz:28:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+   28 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/49.fuzz:11:7: 附注： previous definition of ‘main’ with type ‘char *(void)’
+   11 | char* main()
+      |       ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/50.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/51.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/52.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/53.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/53.fuzz:29:1: 警告： 数据定义时没有类型或存储类
+   29 | CC = gcc
+      | ^~
+/home/cxx/fuzz4all/outputs/c_std/53.fuzz:29:1: 警告： 在‘CC’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_std/53.fuzz:29:6: 错误： ‘gcc’未声明(不在函数内)
+   29 | CC = gcc
+      |      ^~~
+/home/cxx/fuzz4all/outputs/c_std/53.fuzz:30:1: 错误： expected ‘,’ or ‘;’ before ‘CFLAGS’
+   30 | CFLAGS = -std=c99
+      | ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/54.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/55.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/55.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:5:24: 警告： initialization of ‘int * const’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+    5 |     int * const temp = newNum;
+      |                        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:7:18: 错误： 双目运算符 / 操作数(‘long int *’和‘int’)无效
+    7 |     *newNum = num/2;
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:8:9: 错误： 向只读形参‘num’赋值
+    8 |     num = *temp;
+      |         ^
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:9:12: 警告： returning ‘long int *’ from a function with incompatible return type ‘int *’ [-Wincompatible-pointer-types]
+    9 |     return newNum;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:10:10: 警告： assignment to ‘long int’ from ‘int *’ makes integer from pointer without a cast [-Wint-conversion]
+   10 |     *num = temp;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz: 在函数‘longChangeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:15:26: 警告： 传递‘changeValue’的第 2 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   15 |     changeValue(&newNum, &num);
+      |                          ^~~~
+      |                          |
+      |                          int *
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:3:47: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |                                   ~~~~~~~~~~~~^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:17:12: 警告： 函数返回局部变量的地址 [-Wreturn-local-addr]
+   17 |     return &newNum;
+      |            ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/55.fuzz:22:17: 警告： initialization of ‘long int’ from ‘long int *’ makes integer from pointer without a cast [-Wint-conversion]
+   22 |     long val2 = longChangeValue(val);
+      |                 ^~~~~~~~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/56.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/56.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:8:12: 警告： returning ‘long int *’ from a function with incompatible return type ‘int *’ [-Wincompatible-pointer-types]
+    8 |     return newNum;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:9:12: 错误： ‘temp’未声明(在此函数内第一次使用)
+    9 |     *num = temp;
+      |            ^~~~
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:9:12: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz: 在函数‘longChangeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:13:33: 警告： 传递‘changeValue’的第 1 个参数时将整数赋给指针，未作类型转换 [-Wint-conversion]
+   13 |     long * newNum = changeValue(num);
+      |                                 ^~~
+      |                                 |
+      |                                 int
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:3:30: 附注： 需要类型‘long int * const’，但实参的类型为‘int’
+    3 | int* changeValue(long *const num)
+      |                  ~~~~~~~~~~~~^~~
+/home/cxx/fuzz4all/outputs/c_std/56.fuzz:13:21: 警告： initialization of ‘long int *’ from incompatible pointer type ‘int *’ [-Wincompatible-pointer-types]
+   13 |     long * newNum = changeValue(num);
+      |                     ^~~~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/57.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/57.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:6:24: 警告： initialization of ‘int * const’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+    6 |     int * const temp = newNum;
+      |                        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:9:12: 警告： returning ‘long int *’ from a function with incompatible return type ‘int *’ [-Wincompatible-pointer-types]
+    9 |     return newNum;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:10:10: 警告： assignment to ‘long int’ from ‘int *’ makes integer from pointer without a cast [-Wint-conversion]
+   10 |     *num = temp;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz: 在函数‘longChangeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:15:17: 警告： 传递‘changeValue’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   15 |     changeValue(&num, &newNum);
+      |                 ^~~~
+      |                 |
+      |                 int *
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:4:30: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    4 | int* changeValue(long *const num, long *const newNum)
+      |                  ~~~~~~~~~~~~^~~
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:17:12: 警告： 函数返回局部变量的地址 [-Wreturn-local-addr]
+   17 |     return &newNum;
+      |            ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:23:17: 警告： initialization of ‘long int’ from ‘long int *’ makes integer from pointer without a cast [-Wint-conversion]
+   23 |     long val2 = longChangeValue(val);
+      |                 ^~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/57.fuzz:34:1: 错误： 未结束的注释
+   34 | /* You can get the time from your hardware in the program
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/58.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/58.fuzz:19:5: 错误： ‘main’重定义
+   19 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/58.fuzz:7:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    7 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/58.fuzz:32:1: 错误： 未结束的注释
+   32 | /* This program prints a
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/59.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/59.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:5:24: 警告： initialization of ‘int * const’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+    5 |     int * const temp = newNum;
+      |                        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:8:12: 警告： returning ‘long int *’ from a function with incompatible return type ‘int *’ [-Wincompatible-pointer-types]
+    8 |     return newNum;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:9:10: 警告： assignment to ‘long int’ from ‘int *’ makes integer from pointer without a cast [-Wint-conversion]
+    9 |     *num = temp;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:15:17: 警告： 传递‘changeValue’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   15 |     changeValue(&val, &newNum);
+      |                 ^~~~
+      |                 |
+      |                 int *
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:3:30: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |                  ~~~~~~~~~~~~^~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:15:23: 警告： 传递‘changeValue’的第 2 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   15 |     changeValue(&val, &newNum);
+      |                       ^~~~~~~
+      |                       |
+      |                       int *
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:3:47: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |                                   ~~~~~~~~~~~~^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz: 在函数‘stringToColour’中:
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:29:10: 警告： 隐式声明函数‘strcmp’ [-Wimplicit-function-declaration]
+   29 |     if (!strcmp(colour, "black\0")) {
+      |          ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:3:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcmp’
+    2 | #include <stdio.h>
+  +++ |+#include <string.h>
+    3 | int* changeValue(long *const num, long *const newNum)
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:33:9: 错误： expected declaration or statement at end of input
+   33 |         return red;
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/59.fuzz:33:9: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/60.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/61.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/61.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:5:24: 警告： initialization of ‘int * const’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+    5 |     int * const temp = newNum;
+      |                        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:8:12: 警告： returning ‘long int *’ from a function with incompatible return type ‘int *’ [-Wincompatible-pointer-types]
+    8 |     return newNum;
+      |            ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:9:10: 警告： assignment to ‘long int’ from ‘int *’ makes integer from pointer without a cast [-Wint-conversion]
+    9 |     *num = temp;
+      |          ^
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz: 在函数‘longChangeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:14:26: 警告： 传递‘changeValue’的第 2 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   14 |     changeValue(&newNum, &num);
+      |                          ^~~~
+      |                          |
+      |                          int *
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:3:47: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |                                   ~~~~~~~~~~~~^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:16:12: 警告： 函数返回局部变量的地址 [-Wreturn-local-addr]
+   16 |     return &newNum;
+      |            ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:21:17: 警告： initialization of ‘long int’ from ‘long int *’ makes integer from pointer without a cast [-Wint-conversion]
+   21 |     long val2 = longChangeValue(val);
+      |                 ^~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:28:6: 错误： conflicting types for ‘changeValue’; have ‘int *(long int * const,  int *)’
+   28 | int* changeValue(long * const num,int* a)
+      |      ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:3:6: 附注： previous definition of ‘changeValue’ with type ‘int *(long int * const,  long int * const)’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |      ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:31:12: 错误： 双目运算符 * 操作数(‘long int *’和‘int’)无效
+   31 |     a = num*b + num;
+      |            ^
+/home/cxx/fuzz4all/outputs/c_std/61.fuzz:32:5: 错误： expected declaration or statement at end of input
+   32 |     return a;
+      |     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/62.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/62.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/62.fuzz:6:9: 警告： implicit declaration of function ‘random’; did you mean ‘rand’? [-Wimplicit-function-declaration]
+    6 |     m = random()%10;
+      |         ^~~~~~
+      |         rand
+/home/cxx/fuzz4all/outputs/c_std/62.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/62.fuzz:21:1: 错误： 未结束的注释
+   21 | /*
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/63.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/63.fuzz: 在函数‘changeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:5:18: 警告： initialization of ‘int *’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+    5 |     int * temp = newNum;
+      |                  ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:11:14: 警告： assignment to ‘int *’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+   11 |         temp = num;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:17:14: 警告： assignment to ‘int *’ from incompatible pointer type ‘long int *’ [-Wincompatible-pointer-types]
+   17 |         temp = num;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz: 在函数‘longChangeValue’中:
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:26:12: 错误： 双目运算符 % 操作数(‘double’和‘int’)无效
+   26 |     if(temp%2!=0)
+      |            ^
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:36:26: 警告： 传递‘changeValue’的第 2 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   36 |     changeValue(&newNum, &num);
+      |                          ^~~~
+      |                          |
+      |                          int *
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:3:47: 附注： 需要类型‘long int * const’，但实参的类型为‘int *’
+    3 | int* changeValue(long *const num, long *const newNum)
+      |                                   ~~~~~~~~~~~~^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:38:12: 警告： 函数返回局部变量的地址 [-Wreturn-local-addr]
+   38 |     return &newNum;
+      |            ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:43:17: 警告： initialization of ‘long int’ from ‘long int *’ makes integer from pointer without a cast [-Wint-conversion]
+   43 |     long val2 = longChangeValue(val);
+      |                 ^~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:44:12: 警告： 缺少结尾的 " 字符
+   44 |     printf("%
+      |            ^
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:44:12: 错误： 缺少结尾的 " 字符
+   44 |     printf("%
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:44:5: 错误： expected expression at end of input
+   44 |     printf("%
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/63.fuzz:44:5: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/65.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/65.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:8:21: 警告： 隐式声明函数‘fmod’ [-Wimplicit-function-declaration]
+    8 |     long val3 = x + fmod(val2,temp);
+      |                     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:2:1: 附注： include ‘<math.h>’ or provide a declaration of ‘fmod’
+    1 | #include <stdlib.h>
+  +++ |+#include <math.h>
+    2 | int main()
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:8:21: 警告： 隐式声明与内建函数‘fmod’不兼容 [-Wbuiltin-declaration-mismatch]
+    8 |     long val3 = x + fmod(val2,temp);
+      |                     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:8:21: 附注： include ‘<math.h>’ or provide a declaration of ‘fmod’
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:9:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    9 |     printf("%ld",val3);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | int main()
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:9:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    9 |     printf("%ld",val3);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/65.fuzz:9:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/usr/bin/ld: /tmp/ccJuCeXX.o: in function `main':
+65.fuzz:(.text+0xb3): undefined reference to `fmod'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/66.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/67.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/67.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:8:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    8 |     printf("%ld",val2);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | int main()
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:8:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    8 |     printf("%ld",val2);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:8:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:41:5: 错误： ‘main’重定义
+   41 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:48:5: 错误： expected expression at end of input
+   48 |     int sum =
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_std/67.fuzz:48:5: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/68.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/68.fuzz:18:11: 错误： ‘getSum’重定义
+   18 | long long getSum(int n)
+      |           ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/68.fuzz:2:11: 附注： previous definition of ‘getSum’ with type ‘long long int(int)’
+    2 | long long getSum(int n)
+      |           ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/69.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/70.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/71.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/71.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:7:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    7 |     printf("%d",val3);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | int main()
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:7:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    7 |     printf("%d",val3);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:7:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:12:5: 错误： ‘main’重定义
+   12 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/71.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/72.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/73.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/74.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/75.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/75.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:9:21: 错误： expected ‘;’ before ‘}’ token
+    9 |         putchar('a')
+      |                     ^
+      |                     ;
+   10 |     }
+      |     ~                
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:28:5: 错误： conflicting types for ‘main’; have ‘int(int,  char **)’
+   28 | int main(int argc, char *argv[])
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:5:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    5 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:33:22: 警告： 隐式声明函数‘fileno’ [-Wimplicit-function-declaration]
+   33 |         int fd = dup(fileno(file_ptr));
+      |                      ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:34:18: 警告： 隐式声明函数‘get_file_size’ [-Wimplicit-function-declaration]
+   34 |         retval = get_file_size(file_ptr);
+      |                  ^~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:43:20: 错误： expected ‘]’ at end of input
+   43 |         char buff[3
+      |                    ^
+      |                    ]
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:43:9: 错误： expected declaration or statement at end of input
+   43 |         char buff[3
+      |         ^~~~
+/home/cxx/fuzz4all/outputs/c_std/75.fuzz:43:9: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/76.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/76.fuzz:21:5: 错误： ‘main’重定义
+   21 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:29:5: 错误： ‘add’重定义
+   29 | int add(int val1, int val2)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:17:5: 附注： previous definition of ‘add’ with type ‘int(int,  int)’
+   17 | int add(int val1, int val2)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:39:5: 错误： ‘main’重定义
+   39 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz: 在函数‘swap’中:
+/home/cxx/fuzz4all/outputs/c_std/76.fuzz:48: 错误： expected ‘{’ at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/77.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/78.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/78.fuzz:22:5: 错误： ‘main’重定义
+   22 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:33:6: 错误： conflicting types for ‘main’; have ‘void(void)’
+   33 | void main()
+      |      ^~~~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:36:12: 警告： 在无返回值的函数中，‘return’带返回值
+   36 |     return 0;
+      |            ^
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:33:6: 附注： 在此声明
+   33 | void main()
+      |      ^~~~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz: 在函数‘add’中:
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:42:12: 警告： returning ‘int’ from a function with return type ‘int *’ makes pointer from integer without a cast [-Wint-conversion]
+   42 |     return *a;
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_std/78.fuzz:44:1: 错误： expected identifier or ‘(’ at end of input
+   44 | int
+      | ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/79.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/80.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/81.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/82.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/83.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/84.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/84.fuzz:16:5: 错误： ‘main’重定义
+   16 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:28:5: 错误： ‘main’重定义
+   28 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:40:5: 错误： ‘main’重定义
+   40 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/84.fuzz:44:5: 错误： expected declaration or statement at end of input
+   44 |     int val3 = val/val2;
+      |     ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/85.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/85.fuzz:15:1: 错误： 程序中有游离的‘`’
+   15 | ```
+      | ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:15:2: 错误： 程序中有游离的‘`’
+   15 | ```
+      |  ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:15:3: 错误： 程序中有游离的‘`’
+   15 | ```
+      |   ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:1: 错误： 未知的类型名‘To’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      | ^~
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:12: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘and’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |            ^~~
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:12: 错误： 未知的类型名‘and’
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:102: 错误： 浮点常量的“c”后缀无效
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                      ^~~~
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:137: 错误： 程序中有游离的‘`’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                         ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:148: 错误： 浮点常量的“c”后缀无效
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                                    ^~~~
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:152: 错误： 程序中有游离的‘`’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                                        ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:161: 错误： 程序中有游离的‘`’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                                                 ^
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:178: 错误： 浮点常量的“c”后缀无效
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                                                                  ^~~~
+/home/cxx/fuzz4all/outputs/c_std/85.fuzz:17:182: 错误： 程序中有游离的‘`’
+   17 | To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+      |                                                                                                                                                                                      ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/86.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/87.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/87.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/87.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/88.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/89.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/89.fuzz:18:1: 错误： expected identifier or ‘(’ before ‘while’
+   18 | while(scanf("%c", &a[i]) == 1 && a[i]!='')
+      | ^~~~~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:18:40: 错误： 空的字符常量
+   18 | while(scanf("%c", &a[i]) == 1 && a[i]!='')
+      |                                        ^~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:22:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   22 | printf("%d\n", convert(a));
+      |        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:22:16: 错误： expected declaration specifiers or ‘...’ before ‘convert’
+   22 | printf("%d\n", convert(a));
+      |                ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:25:5: 错误： ‘main’重定义
+   25 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/89.fuzz:33:1: 错误： 未结束的注释
+   33 | /* and assign the values of the following variables (y
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/90.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/90.fuzz:20:5: 错误： ‘main’重定义
+   20 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/90.fuzz:5:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    5 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/90.fuzz:28:1: 错误： 未结束的注释
+   28 | /* Please
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/91.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/92.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/92.fuzz:15:5: 错误： ‘main’重定义
+   15 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/92.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/92.fuzz:20:1: 错误： 未结束的注释
+   20 | /* If we want to use the same macro to print "You had one too many" we would need to change it:
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/93.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/93.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/93.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/93.fuzz:22:5: 错误： ‘main’重定义
+   22 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/93.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/93.fuzz:27:1: 错误： 未结束的注释
+   27 | /* C 11 includes new keywords. Add the necessary keyword which may be required to compile the C program in each of the following cases. Hint: Google ‘c11 keyword’.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/94.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/95.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/95.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/95.fuzz:10:12: 错误： subscripted value is neither array nor pointer nor vector
+   10 | is_negative[1] = (val) % 2;
+      |            ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/96.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_std/96.fuzz:25:5: 错误： ‘main’重定义
+   25 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz:37:5: 错误： ‘main’重定义
+   37 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz:41:19: 错误： expected ‘;’ at end of input
+   41 | size = sizeof(arr)
+      |                   ^
+      |                   ;
+/home/cxx/fuzz4all/outputs/c_std/96.fuzz:41:1: 错误： expected declaration or statement at end of input
+   41 | size = sizeof(arr)
+      | ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/97.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/98.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_std/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_std/99.fuzz is safe

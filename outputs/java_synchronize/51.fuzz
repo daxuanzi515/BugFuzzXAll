@@ -1,0 +1,23 @@
+import java.lang.Object;
+class Test {
+    public String toString() { return getClass().getName(); }
+    void doSomething1() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething1()");
+        }
+    }
+    void doSomething2() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Test t = new Test();
+        synchronized (t) {
+            t.doSomething1();
+            t.doSomething2();
+        }
+    }
+}

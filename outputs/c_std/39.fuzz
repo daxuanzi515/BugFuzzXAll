@@ -1,0 +1,19 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    int value = fseek(file, 1, SEEK_SET);
+    printf("value=%d\n", value);
+
+    value = fwide(file, 1);
+    printf("value=%d\n", value);
+
+    value = fgetwc(file);
+    printf("value=%lc\n", value);
+
+    value = ungetc(value, file);
+    c = getc(file);
+    printf("value=%lc, c=%c\n", value, c);
+    fclose(file);
+}

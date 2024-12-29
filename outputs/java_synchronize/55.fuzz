@@ -1,0 +1,64 @@
+import java.lang.Object;
+public class SynchTest6 {
+    public static void main(String [] args) {
+        new Thread(Sample::doSomething3).run();
+    }
+    static synchronized void doSomething3() {
+        System.out.println(Thread.currentThread() + ": doSomething3()");
+    }
+}
+ 
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Hashtable;
+
+public class Test {
+	private Map<Integer, String> map;
+	public Test(Map<Integer, String> map) {
+	   this.map = map;
+	}
+	public Set<Entry<Integer, String>> entrySet() {
+		 
+		return Collections.unmodifiableSet(this.map.entrySet());
+	}
+}
+
+public class Test2 {
+	public static void main(String[] args) {
+		Map<Integer, String> hashMap = new HashMap<>();
+		Map<Integer, String> Hashtable = new Hashtable<>();
+		Map<Integer, String> ConcurrentHashMap = new ConcurrentHashMap<>();
+	 	Map<Integer, String> Test = new Test(hashMap);
+	 	for(int i=0; i<10;i++) {
+	 	  hashMap.put(i, Integer.toString(i));
+	 	  Hashtable.put(i, Integer.toString(i));
+	 	  ConcurrentHashMap.put(i, Integer.toString(i));
+	 	  Test.entrySet();
+	 	}
+	 	System.out.println(hashMap);
+	 	System.out.println(Hashtable);
+	 	System.out.println(ConcurrentHashMap);
+	}
+}
+ 
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+public class SynchCollectionTest implements  ISynchCollection<String> {
+    private Collection<String>   coll;
+    private Lock                  lock;
+    
+    public SynchCollectionTest(Collection<String> coll) {
+        lock = new ReentrantLock();
+        this.coll = coll;
+    }
+    
+    public SynchCollectionTest() {
+        lock = new ReentrantLock();
+        this.

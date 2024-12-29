@@ -1,0 +1,27 @@
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, float, double> v {5};     
+    std::variant<int, float, double> w {10};     
+    if (std::holds_alternative<int>(v))     
+    {     
+        std::cout << v << "\n";     
+        std::visit([](const int &i) { std::cout << "int " << i << "\n"; },v);     
+        printf("The variant holds an int.\n");     
+    }     
+    else if (std::holds_alternative<float>(v))     
+    {     
+      std::cout << v << "\n";     
+      std::visit([](const float &f) { std::cout << "float " << f << "\n"; },v);
+      printf("The variant holds a float.\n");     
+    }     
+    if (v > w)     
+    {     
+      double old_f = std::get<float>(v);     
+      std::get<float>(v) = std::get<double>(w);     
+      std::get<double>(w) = old_f;
+    }     
+    std::visit([](auto &&arg) { std::cout << arg << "\n"; }, v); 
+}

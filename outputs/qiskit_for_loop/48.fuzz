@@ -1,0 +1,43 @@
+from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2)
+
+body = QuantumCircuit(2) 
+for i in range(15):
+    body.h(i)
+    body.cx(i, (1 - i) % 2) 
+body.measure_all()
+
+
+for_loop = qc.for_loop(range(15), "index", body)
+
+
+
+from grover_noisy_simulation import noisy_grover
+
+
+noisy_result = noisy_grover.simulate(num_iterations=15, do_plot=False) 
+
+noisy_for = noisy_result.for_variable_dict
+
+print("Noisy simulation")
+print(noisy_for)
+print("Circuit for loop output:")
+print(for_loop)
+
+
+import qiskit.tools.jupyter
+%qiskit_version_table
+%qiskit_copyright
+try:
+    from qiskit.tools.jupyter import *
+except:
+    %pip install -qq qiskit-terra
+    %pip install -qq qiskit-aer
+    %pip install -qq qiskit-ignis
+    %pip install -qq qiskit-ibmq-provider
+    %pip install -qq qiskit-aqua
+    %pip install -qq qiskit
+    %pip install -qq jupyter-book
+    %pip update

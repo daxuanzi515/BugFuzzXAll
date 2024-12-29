@@ -1,0 +1,19 @@
+import java.lang.Object;
+class Sample {
+    synchronized static void doSomething1() {
+        System.out.println(Sample.class + ": doSomething1()");
+    }
+}
+public class SynchTest4 {
+    public static void main(String [] args) {
+        synchronized (Sample.class) {
+            Sample.doSomething1();
+            new Object() {
+                static void  doSomething2() {
+                    System.out.println(Sample.class + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}

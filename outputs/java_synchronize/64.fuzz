@@ -1,0 +1,28 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            s.doSomething1();
+            Sample.class.notify();
+        }
+    }
+}

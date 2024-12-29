@@ -1,0 +1,14 @@
+#include <tuple>
+
+
+  
+ 
+int getThird(std::tuple<int,int,int> t) {
+    return std::apply( [=](int,int,int i){return i;}, t);
+}
+
+int main() {
+    std::tuple<int,int,int> t = std::make_tuple(0,1,2);
+    std::cout << getThird(t) << std::endl;
+    return 0;
+}

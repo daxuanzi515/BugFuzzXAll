@@ -1,0 +1,67 @@
+import java.lang.Object;
+<fim_suffix>		i=i+2) {
+			x[i] = Math.log((double)i);
+		}
+		for (int i: x){
+			System.out.println(i);
+		}
+		
+	}
+}
+<fim_middle>import java.util.*;
+public class ModifiedHelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		Scanner s2 = new Scanner(System.in);
+		while(s1.hasNext()){
+			System.out.print(s2.next());
+		}
+		while(s2.hasNext()){
+			System.out.println(s1.next());
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		double h = s1.nextDouble();
+		double b = s1.nextDouble();
+		double area = (0.5 * h * b);
+		System.out.println(area);
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class AnotherHelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		double n = s1.nextDouble();
+		System.out.println(Math.cbrt(n));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		System.out.println(Math.sqrt(n));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	 
+	public static double getAreaFromRectangle(double b, double h) {
+
+		return (b * h);
+	}
+
+	/**
+	 * Method that

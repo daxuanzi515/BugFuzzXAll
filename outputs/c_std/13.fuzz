@@ -1,0 +1,29 @@
+#include <stdlib.h>
+
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main(){
+puts("Enter a string:");
+char input[64];
+fgets(input,64,stdin);
+puts(input);   }
+/* The C++ Standard Library is a collection of headers that define functionality in the C++ programming language. Here is a summary of each:
+1. `<algorithm>`: Algorithms: sort, search, etc.
+2. `<atomic>`: Atomic types: std::atomic, std::atomic_flag etc.
+3. `<bitset>`: Bitsets: std::bitset.
+4. `<cassert>`: Assertions.
+5. `<cctype>`: Character tests, etc.
+6. `<cerrno>`: Extraction of errno from exceptions.
+7. `<cfenv>`: Floating-point environment: std::fenv_t etc.
+8. `<cfloat>`: Floating-point class: std::float_t.
+9. `<chrono>`: High resolution time: std::chrono.
+10. `<cinttypes>`: Integer-like number conversions, output.
+11. `<ciso646>`: Alternative forms of logical operators: and, bitand, bitor, compl, not, and not.
+12. `<climits>`: Size and range limits for fundamental types.
+13. `<clocale>`: Locale class: std::locale.
+14. `<cmath>`: Mathematical: sqrt, hypot, etc.
+15. `<complex>`: Complex numbers: std::complex.
+16. `<csetjmp>`: Setjmp/longjmp facility.
+17. `<csignal>`: Signal handling:

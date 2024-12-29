@@ -1,0 +1,7 @@
+/* The typedef declaration in C language is used to create an alias for an existing type. It simplifies complex type names and makes the code more readable. The keyword typedef is used in a declaration, where it does not affect storage or linkage. It can be used with any data type, including arrays, pointers, and structures. 
+
+For example, 'typedef int int_t;' declares int_t as an alias for the type int. Typedef does not introduce a new type, but only establishes a synonym for an existing one. It's important to note that typedef names are compatible with the types they alias and share the name space with ordinary identifiers.
+
+Typedef declarations can also be used to inject names from the tag name space into the ordinary name space, or to simplify the syntax of complex declarations. Libraries often use typedef names to expose system-dependent or configuration-dependent types, providing a consistent interface to users or other library components. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>

@@ -1,0 +1,11 @@
+#include <variant>
+#include <stdio.h>
+#include <iostream>
+int main()
+{   
+    std::variant<int, float, char> v;
+    std::cout << "v holds " << std::get<int>(v) << std::endl;
+    v = 6;
+    std::cout << "v holds " << std::get<int>(v) << std::endl;
+    return 0;
+}

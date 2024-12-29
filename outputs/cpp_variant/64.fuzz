@@ -1,0 +1,23 @@
+#include <variant>
+ = V{{10.0f, 3.14f}};
+}
+ 
+ 
+#include <variant>
+#include <functional>
+#include <iostream>
+
+ 
+template <>
+struct std::hash<V> {
+    std::size_t operator()(const V & v) const {
+        std::size_t seed = 0;
+        std::hash<double> hasher;  
+         
+         
+         
+        
+         
+        std::size_t result = std::hash<double>::operator()(v.d);
+        
+        std

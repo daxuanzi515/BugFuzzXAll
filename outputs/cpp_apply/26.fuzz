@@ -1,0 +1,39 @@
+#include <tuple>
+#include <iostream>
+#include <string>
+int main()
+{
+  std::cout << std::boolalpha;
+  auto args = std::make_tuple(std::string{"123", 3}, std::string{"456"}, std::string{"789"});
+  std::apply(
+    [](const std::string& s1, const std::string& s2, const std::string& s3)
+    {
+      auto sum1 = std::stold(s1) + std::stold(s2) + std::stold(s3);
+      auto sum2 = std::stold(s1) + std::stold(s2) + std::stold(s3);
+      auto sum3 = std::stold(s1) + std::stold(s2) + std::stold(s3);
+      auto sum4 = std::stold(s1) + std::stold(s2) + std::stold(s3);
+      return std::make_tuple(sum1, sum2, sum3, sum4);
+    }, args
+  );
+  return EXIT_SUCCESS;
+}
+
+ 
+ 
+#include <iostream>
+#include <utility>
+int main()
+{
+  using idx_seq_t = std::index_sequence<13>;
+  idx_seq_t iidxseq{};
+  std::cout << iidxseq.size() << std::endl;
+  return EXIT_SUCCESS;
+}
+ 
+ 
+#include <array>
+#include <type_traits>
+#include <iostream>
+int main()
+{
+  std::array<long, 7> a = {1L, 2

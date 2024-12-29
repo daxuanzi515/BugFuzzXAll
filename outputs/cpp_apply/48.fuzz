@@ -1,0 +1,44 @@
+#include <tuple>
+#include <string>
+#include <iostream>
+
+using StringPair = std::pair<std::string, std::string>;
+
+bool is_palindrome(const std::string& word)
+{
+    auto it = word.rbegin();
+    auto it_next = std::next(it);
+    int count = word.size();
+    while (it_next!= word.rend()) {
+        if (*it!= *it_next) {
+            return false;
+        }
+        ++count;
+        ++it;
+        ++it_next;
+    }
+    return true;
+}
+ 
+
+auto longest_ palindrome_substr(const StringPair& source)
+{
+     
+}
+
+int main()
+{
+    const StringPair strings[] = {{ "anicca", "civic" },
+                                   { "abccba", "abcba" },
+                                   { "rotor", "trotr" },
+                                   { "madam", "dada" },
+                                   { "racecar", "car" }};
+    for (const auto& str : strings) {
+        auto result = longest_palindrome(str);
+        std::cout << "source: " << str.first << ", "
+                  << "result: " << result << '\n';
+    }
+    return EXIT_SUCCESS;
+}
+ 
+ 

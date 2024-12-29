@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a;  
+long int b[2];
+long int e1[a + b[1]];  
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12];
+uchar d = (uchar)1;
+uchar d1 = (uchar)1;
+void foo() {
+  for (b[1] = 0; b[1] && ptr == ptr1; b[1]--) {
+  }
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  }
+}
+int main() {
+  for (; b[1] && ptr!= &d; b[1]++);
+  if (!d1) {  
+  }
+  return 0;
+}
+ 
+int *x(int *y);  
+int **x(int *y) {  
+  int **z;
+  z = &y;  
+  return z;
+}
+ 
+/* the type of ‘y’ changes from int ** to int in the first line of the function, which is not compatible with the actual return types of the function in line 11 and 12.  This error shows up only in the C Standard, where these kinds of type inconsistencies are not allowed, e.g. in C++ these would be errors.
+
+In the original program the function ‘func’ was declared to return an int*, but instead it returns an int** through a local variable, which is a different type than the one specified by the function’s return type declaration. Therefore, both the error in the first line and

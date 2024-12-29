@@ -1,0 +1,8 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = new Integer("10");
+        System.out.println("a instanceof Integer: " + (a instanceof Integer));
+	}
+}

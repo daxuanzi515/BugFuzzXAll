@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define LEN (6)
+char *text = NULL;
+size_t len;
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "rb");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    len = LEN;
+    text = (char *)malloc(len * sizeof(char));
+    fread(text, len * sizeof(char),1, file);
+    printf("%s\n", text);
+    fclose(file);
+    free(text);
+    return 0;
+}
+ 
+
+/*./

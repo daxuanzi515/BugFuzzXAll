@@ -1,0 +1,30 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        MyWriter writer = new MyWriter("write.txt");
+        BufferedReader reader = new BufferedReader(writer.open());
+        String line = reader.readLine();
+        System.out.println(line);
+        reader.close();
+        writer.append("This comes after the end of line");
+    }
+}
+public class MyWriter{
+    public PrintWriter delegate;
+    public MyWriter(String fileName) throws IOException{
+        this.delegate = new PrintWriter(fileName);
+        this.delegate.println("write to file\nI'm a second line!");
+        this.delegate.close();
+    }
+    public Writer open() throws IOException{
+        this.delegate = new PrintWriter("write2.txt");
+        this.delegate.println("Open stream!");
+        return this.delegate;
+    }
+    public void append(String content) throws IOException{
+        this.delegate = new PrintWriter("write2.txt", "UTF-8");
+        delegate.println(content);
+    }
+}

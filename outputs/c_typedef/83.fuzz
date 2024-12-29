@@ -1,0 +1,55 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef num another_num;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 

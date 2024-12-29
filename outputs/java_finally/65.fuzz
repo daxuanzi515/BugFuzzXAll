@@ -1,0 +1,38 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally3 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = null;
+        finally{
+            try {
+                br = new BufferedReader(new FileReader("src/data.txt"));
+                System.out.println("Let's print that out.");
+                String line;
+                while((line = br.readLine())!= null){
+                    System.out.println(line);
+                    }
+                    }
+                    finally{
+                        System.out.println("And of course print this too.");
+                        System.out.println("We should see first and last");
+                            }
+                        }
+                    }
+
+ 
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+public class SFinally4 {
+    public static void main(String[] args) throws IOException{
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/data.out"));
+        
+        bw.write("I wrote this\n");
+        bw.flush();
+
+        System.out.println("I printed this\n");
+    }
+}

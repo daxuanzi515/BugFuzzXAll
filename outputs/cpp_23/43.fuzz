@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    int* secretDataPtr{nullptr};
+    Employee() 
+        :secretDataPtr{new int{}}
+    {}
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+    ~Employee() {
+        delete secretDataPtr;
+        secretDataPtr = nullptr;
+    }
+    void printSecretDataPtr() {
+        cout << "*secretDataPtr: " << *secretDataPtr << '\n';
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << this << '\n';
+    }
+};
+Employee operator>>(const Employee& emp,

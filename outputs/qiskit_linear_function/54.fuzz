@@ -1,0 +1,66 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction():
+    def __init__(self):
+        
+        self.circuit = QuantumCircuit()
+    def set(self, x:int, y:int, z:float):
+        
+        self.circuit.rx(z, y)
+        self.circuit.rz(y + z, x)
+        self.circuit.rx(x, y)
+    def swap(self, x:int, y:int):
+        
+        self.circuit.cx(x, y)
+        self.circuit.cx(y, x)
+        self.circuit.cx(x, y)
+
+
+
+from math import cos, sin, pi
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+class Gate():
+    def __init__(self, params:list, label=False):
+        
+        self.params = params
+        self.label = label
+        self.circuit = QuantumCircuit()
+
+    def set(self, index:list, angle:float):
+        
+        if index[0] < index[1]:
+            self.circuit.rx(self.params[angle], index[0])
+            self.circuit.rz(index[0] + self.params[angle], index[1])
+            self.circuit.rx(self.params[angle], index[1])
+        else:
+            pass
+    def swap(self, index[0:2]:list):
+        
+        self.circuit.crx(index[0], index[1], index[0]).crz(index[1] + 1, index[0], index[1]).crx(self.params[angle], index[0], index[1])
+    def c(self, index[0]:int, index[1]:int):
+        self.circuit.cx(index[0], index[1])
+    def h(self, index[0]:int):
+        self.circuit.h(index[0])
+    def barrier(self, *args):
+        
+        self.circuit.barrier()
+    def measure(self, index[0]:int, classical[0]:string):
+        self.circuit.measure(index[0], classical[0])
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+class Gate():
+    def __init__(self):
+        pass
+    def set(self):
+        pass
+    def swap():
+        pass
+    def c():
+        pass
+    def h():
+        pass
+    def barrier():
+        pass
+    def measure():
+        pass

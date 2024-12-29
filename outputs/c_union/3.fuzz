@@ -1,0 +1,36 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+
+ 
+union example
+{
+    int type;
+    struct
+    {
+        int n;
+        short a[10];
+    } numeral;
+    char name[10];
+} user, user2;
+
+ 
+void initialize()
+{
+    user.numeral.n = 100;
+    user.numeral.a[5] = 50;
+    user.name[8] = 'u';
+    strcpy(user2.name, "new name");
+}
+
+ 
+int main()
+{
+     
+    initialize();
+    printf("Number: %d\n", user.numeral.n);
+    printf("Character: %c\n", user.name[9]);
+    printf("New name: %s\n", user2.name);
+}
+
+ 

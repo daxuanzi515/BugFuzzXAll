@@ -1,0 +1,23 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		Integer b = 1;
+		if (a instanceof Integer) System.out.println("a is Integer: " + (a instanceof Integer));
+		else if (b instanceof Integer) System.out.println("b is Integer: " + (b instanceof Integer));
+		else System.out.println("a is not Integer nor b"); 
+		System.out.println(a + "::" + b + "::" + a.getClass() + "::" + b.getClass() + "::" + a.getClass().getSuperclass() + "::" + b.getClass().getSuperclass());
+	}
+}
+ 
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if ((a = (Integer)a)!= null) System.out.println("a is Integer: " + (a instanceof Integer));
+		else System.out.println("a is not Integer");
+		String tmp = (String)a;  
+		String tmpStr = tmp;  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass() + "::" + tmp + "::" + tmpStr);
+	}
+}

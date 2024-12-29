@@ -1,0 +1,7 @@
+'''The QuantumCircuit.for_loop() method in Qiskit's quantum circuit interface is used to create a for loop within the quantum circuit. The method can be overloaded. If the body parameter is not provided, the method returns a context manager that pushes a scope into the circuit. This context manager captures all gate calls and other scopes, tracking the resources used in the process, and builds the corresponding operation at the end. 
+
+The method accepts several parameters like indexset (a collection of integers to loop over), loop_parameter (used within the body to which the values from indexset are assigned), body (loop body to be executed repeatedly), qubits, clbits (circuit qubits/clbits over which the loop body is run), and labels. 
+
+The outcome of the method depends on the call signature. It could be a context manager for creating the for loop or an InstructionSet handle to the appended loop operation. If incorrect calling conventions are used, the method raises a CircuitError.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit

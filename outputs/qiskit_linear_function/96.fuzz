@@ -1,0 +1,45 @@
+from qiskit import QuantumCircuit
+
+
+
+if __name__ == '__main__':
+	import random
+	n = 5
+
+	
+	mat = []
+	for i in range(n):
+		m = [None] * n
+		for j in range(n):
+			m[j] = complex(round(random.uniform(-1, 1), 10), 0.0)
+		mat.append(m)
+	print('Random unitary matrix')
+	print(mat)
+
+	
+	q = Gate(lambda theta: mat, lambda theta: None, n)
+	exponent = GateExponent(q, lambda t: None, 1)
+	print('Gate exponent')
+	print(exponent)
+
+	
+	qc = exponent.to_circuit()
+	
+	qc.draw(output='mpl')
+
+	
+	num = len(qc.data)
+	
+	
+	
+	t = []
+	for i in range(num):
+		theta = qc.data[i]['params'][0]
+		t.append(theta)
+		qc.data[i]['function'](theta)
+	mat_2 = qc.data[num - 1]['function'](t[num - 1])
+	
+	print('Compare unitary matrix calculated from GateExponent with circuit unitary matrix')
+	if mat_2 == mat:
+		print('Unitary matrices match!')
+	else:

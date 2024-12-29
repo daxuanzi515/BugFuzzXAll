@@ -1,0 +1,42 @@
+#include <tuple>
+
+#include <iostream>
+#include <functional>
+#include <string>
+#include <array>
+#include <utility>
+using namespace std;
+
+ 
+using type_ptr_t = tuple<int, int, double, string>;
+
+class A
+{
+public:
+	A() {}
+
+	string func(int x, int y, double z, string str)
+	{
+		 
+		std::tuple<> t;	
+		
+		cout << std::apply(&A::func_apply, std::tuple_cat(t, make_tuple(x, y, z, str)));
+		
+		return string();
+	}
+private:
+	int func_apply(int x, int y, double z, string str)
+	{
+		cout << "func_apply called";
+		return 0;
+	}
+};
+
+
+int main(void)
+{
+	A obj;
+	obj.func(1,2, 3.7, "Hello");
+
+	return 0;
+}

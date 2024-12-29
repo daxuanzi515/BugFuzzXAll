@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <optional>
+#include <variant>
+#include <cassert>
+using namespace std;
+class Person {
+public:
+	~Person();
+	Person(const Person& person);
+	Person& operator=(const Person& rhs);
+	Person(Person&& person);
+	Person& operator=(Person&& rhs);
+	class Name {
+	public:
+		Name(const string& firstName, const string& lastName);
+		Name(const string& compositeName);
+		string getFirstName() const;
+		string getLastName() const;
+	private:
+		string firstName_;
+		string lastName_;
+	};
+protected:
+	[[nodiscard]] virtual void printName() const;
+private:
+	string firstName_;
+	string lastName_;
+};
+Person::~

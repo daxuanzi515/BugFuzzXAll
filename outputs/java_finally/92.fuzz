@@ -1,0 +1,103 @@
+import java.lang.Object;
+<fim_suffix>ed with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        Writer writer = null;
+        try {
+            writer = new FileWriter("src/myData2.txt");
+            writer.write("Hello World");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            if (writer!= null) {
+                System.out.println("Resource managed by try-with-resources statement is closed");
+            } else {
+                System.out.println("Resource not managed by try-with-resources statement");
+            }
+        }
+        writer.write("This line will not be printed");
+    }
+}
+/* Below is a demo for finalizing resource deallocation using a try() with a finally block*/
+
+    void call() throws Exception {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+/* Below is a demo for finalizing resource deallocation using try-with-resources */
+
+import java.lang.Object;
+import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+    void call() throws Exception {
+        try(Writer writer = new FileWriter("src/myData4.txt")) {
+            writer.write("Hello World");
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final Demo f = new Demo();
+        f.call();
+    }
+}
+    void call() throws Exception {
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            close();
+        }
+    }
+
+    void close() {
+        System.out.println("Finally block executed, resource is closed");
+    }
+
+    public static void main(String[] args) throws Exception {
+        final

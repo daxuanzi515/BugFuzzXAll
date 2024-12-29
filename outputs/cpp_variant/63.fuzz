@@ -1,0 +1,66 @@
+#include <variant>
+<fim_suffix>d(v);
+    std::visit([](auto a) { std::cout << "The 0th alternative of the variant has the value " << a << '\n'; }, v);
+	return 0;
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i = 0;
+    V(int _i)
+        : i{_i}
+    {  }
+    void print() const {
+        std::cout << "The variant has the value " << i << "\n";
+    }
+};
+V create()
+{
+    V v = 10;
+    v.i = 32;
+    return v;
+}
+int main()
+{
+    V v = create();
+    v.print();
+}
+ 
+#include <iostream>
+struct A
+{
+    float f{0}; 
+};
+struct A2
+{
+    float f{ 1 };
+};
+struct V
+{
+    int i{ 0 };
+    V()
+    { }
+};
+struct V1
+{
+    float f{ 1 };
+    V1()
+    { }
+};
+std::variant<V1, A1, V, A2> create()
+{
+    return V1();
+}
+int main()
+{
+    V1 v1;
+    std::variant<V1, A, V>v;
+    v = v1;
+    v = create();
+    auto &v2 = v;
+    v2.emplace<A2>();
+}
+ 
+int main() 
+{ 
+    std::variant<> v1;
+   

@@ -1,0 +1,52 @@
+import java.lang.Object;
+public class SynchTest3a {
+    public static void main(String [] args) {
+        Sample2 s = new Sample2();
+        s.doSomething3();
+    }
+}
+class Sample2 {
+    void doSomething3() {
+        Object o = new Object();
+        synchronized(o) {
+            System.out.println("doSomething3()" + this);
+        }
+    }
+}
+ 
+import java.lang.Object;
+public class SynchTest4 {
+    public static void main(String [] args) {
+        Sample3 s = new Sample3();
+        s.doSomething4();
+    }
+}
+class Sample3 {
+    void doSomething4() {
+        Object o = this;
+        synchronized(o) {
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+ 
+import java.lang.Object;
+public class SynchTest4a {
+    public static void main(String [] args) {
+        Sample3 s = new Sample3();
+        new Thread(new Runnable() {
+            public void run() {
+                s.doSomething4();
+            }
+        }).start();
+        s.doSomething4();
+    }
+}
+class Sample3 {
+    void doSomething4() {
+        Object o = this;
+        synchronized(o) {
+            System.out.println("First one: "+Thread.currentThread().getName());
+        }
+    }
+}

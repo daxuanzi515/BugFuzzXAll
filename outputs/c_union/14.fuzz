@@ -1,0 +1,70 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <errno.h>
+typedef enum { false = 0, true = 1 } bool;
+#define BUFFER_LENGTH 255
+typedef char Buffer[BUFFER_LENGTH + 1];
+union Data
+{
+    float fval;
+    double dval;
+    struct
+    {
+        Buffer name;
+        int id;
+    };
+};
+bool fgets_u(Buffer str, union Data * data)
+{
+    unsigned error =!fgets(str, BUFFER_LENGTH, stdin);
+    if (!error)
+        error = 2;
+    if (!error) {
+        switch(str[0]) {
+            case 'f': {
+                data->fval = atof(str + 1);
+                return true;
+            }
+            case 'd': {
+                data->dval = atof(str + 1);
+                return true;
+            }
+            case 'p': {
+                data->id = atoi(str + 1);
+                return true;
+            }
+            case 'n': {
+                strcpy(data->name, str + 1);
+                return true;
+            }
+            default : {
+                error = 19;
+                break;
+            }
+        }
+    }
+    if (error == 2 || ferror(stdin)) {
+        fputs(str, stderr);
+    }
+    errno = error;
+    set_errno(error);
+    return false;
+}
+bool fputs_u(union Data data, FILE * stream)
+{
+    bool success = false;
+    switch (data.name[0]) {
+        case 'f': {
+            success = fprintf(stream, "%f", data.fval) >= 0;
+            break;
+        }
+        case 'd': {
+            success = fprintf(stream, "%f", data.dval) >= 0;
+            break;
+        }
+        case 'p': {
+            success = fprintf(stream, "%d", data.id) >= 0;
+            break;
+        }
+        case 'n': {
+            success = fprintf(stream, "%s", data.name) >= 0

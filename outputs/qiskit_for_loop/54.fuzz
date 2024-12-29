@@ -1,0 +1,75 @@
+from qiskit import QuantumCircuit
+
+from qiskit_addon_execute import ForLoopOp, IfElseOp, WhileLoopOp
+import numpy as np
+
+circuit = QuantumCircuit(2)
+
+with circuit.for_loop(range(10), index_variable = '%1'):
+    circuit.h('%1')
+    circuit.measure('%1', '%1')
+
+
+
+
+
+
+
+
+
+
+print(circuit)
+
+
+
+from qiskit import execute, ClassicalRegister, QuantumRegister
+from qiskit.tools.visualization import circuit_drawer
+from qiskit.backends import available_backends, least_busy
+from qiskit.providers.ibmq import least_busy, least_busy as old_less_busy
+
+backend = 'ibmq_qasm_simulator'
+backend = available_backends(filter(lambda b: b.configuration().n_qubits >= circuit.num_qubits,
+                                     available_backends()))[0]
+q_reg = QuantumRegister(circuit.num_qubits, 'qreg')
+c_reg = ClassicalRegister(circuit.num_qubits, 'creg')
+circuit.add_register(q_reg)
+circuit.add_register(c_reg)
+print(circuit.num_qubits)
+result = execute(circuit, backend).result()
+print(result.get_counts(circuit))
+print(result.get_statevector(circuit))
+print(result.get_unitary(circuit))
+circuit.draw('mpl')
+
+
+
+
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

@@ -1,0 +1,58 @@
+#include <variant>
+_get<int>(v));
+}
+ 
+#include <variant>
+#include <cassert>
+#include <string>
+#include <iostream>
+struct Value
+{   
+    std::string name_;
+    int data_;   
+    Value(std::string name, int data)
+        : name_{name}
+       , data_{data}
+    {}
+
+    friend std::ostream& operator<<(std::ostream& os, const Value& rhs)
+    {
+        return os << rhs.name_ << " " << rhs.data_;
+    }
+};
+struct AnotherValue
+{
+    int data_;
+    AnotherValue(int data): data_{data} {}
+
+    friend std::ostream& operator<<(std::ostream& os, const AnotherValue& rhs)
+    {
+        return os << rhs.data_;
+    }
+};
+#include <variant>
+int main()
+{
+     
+    std::variant<Value, AnotherValue> x;
+     
+    x.emplace<Value>("abc", 10);  
+    
+     
+    x.emplace<AnotherValue>(100);  
+    
+    assert(std::holds_alternative<Value>(x));
+    assert(!std::holds_alternative<AnotherValue>(x));
+     
+    assert(std::get<Value>(x).name_ == "abc");
+
+     
+    std::visit([](auto&& arg) {
+      std::cout << arg;
+    }, x);
+    
+     
+    std::visit(print, x);
+
+     
+   

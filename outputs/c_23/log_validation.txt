@@ -1,0 +1,1077 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/0.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/1.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/1.fuzz:11:59: 错误： expected ‘,’ or ‘;’ before ‘)’ token
+   11 | const char *letters_symbols = "...!@#$%^&*()_+~`|}{[]\\-=");
+      |                                                           ^
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz: 在函数‘string_to_lowercase’中:
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz:21:5: 警告： 隐式声明函数‘str’ [-Wimplicit-function-declaration]
+   21 |     str(tolower)(string);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz:21:9: 错误： ‘tolower’未声明(在此函数内第一次使用)
+   21 |     str(tolower)(string);
+      |         ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz:21:9: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz: 在函数‘string_to_uppercase’中:
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz:25:9: 错误： ‘toupper’未声明(在此函数内第一次使用)
+   25 |     str(toupper)(string);
+      |         ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz: 在函数‘check_password_strength’中:
+/home/cxx/fuzz4all/outputs/c_23/1.fuzz:79:5: 错误： expected declaration or statement at end of input
+   79 |     }
+      |     ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/2.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/2.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:7:5: 错误： 未知的类型名‘int8_t’
+    7 |     int8_t int8 = -1;
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:4:1: 附注： ‘int8_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+    3 | #include <string.h>
+  +++ |+#include <stdint.h>
+    4 | 
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:8:5: 错误： 未知的类型名‘uint8_t’
+    8 |     uint8_t uint8 = 0xFFFFFF;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:8:5: 附注： ‘uint8_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:9:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    9 |     printf("%u\n", uint8);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:4:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    3 | #include <string.h>
+  +++ |+#include <stdio.h>
+    4 | 
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:9:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    9 |     printf("%u\n", uint8);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:9:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:13:5: 错误： 未知的类型名‘int16_t’
+   13 |     int16_t int16 = -1;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:13:5: 附注： ‘int16_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:14:5: 错误： 未知的类型名‘uint16_t’
+   14 |     uint16_t uint16 = 0xFFFFFF;
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:14:5: 附注： ‘uint16_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:19:5: 错误： 未知的类型名‘int32_t’
+   19 |     int32_t int32 = -1;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:19:5: 附注： ‘int32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:20:5: 错误： 未知的类型名‘uint32_t’
+   20 |     uint32_t uint32 = 0xFFFFFF;
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:20:5: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:25:5: 错误： 未知的类型名‘int64_t’
+   25 |     int64_t int64 = -1;
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:25:5: 附注： ‘int64_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:26:5: 错误： 未知的类型名‘uint32_t’
+   26 |     uint32_t uint64 = 0xFFFFFF;
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:26:5: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:31:5: 错误： unknown type name ‘char8_t’; did you mean ‘wchar_t’?
+   31 |     char8_t char8 = u8'a';
+      |     ^~~~~~~
+      |     wchar_t
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:32:5: 错误： 未知的类型名‘char16_t’
+   32 |     char16_t char16 = u'A';
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/2.fuzz:33:5: 错误： 未知的类型名‘char32_t’
+   33 |     char32_t char32 = U'B';
+      |     ^~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/3.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/3.fuzz:16:10: 错误： expected identifier or ‘(’ before numeric constant
+   16 |     char(4)   _attribute__((aligned)) aligned4  __attribute__((aligned(4)));
+      |          ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:17:10: 错误： expected identifier or ‘(’ before numeric constant
+   17 |     char(8)   _attribute__((aligned)) aligned8  __attribute__((aligned(8)));
+      |          ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:18:10: 错误： expected identifier or ‘(’ before numeric constant
+   18 |     char(3) * _attribute__((aligned)) aligned3p __attribute__((aligned(4)));
+      |          ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:30:28: 错误： ‘aligned8’未声明(不在函数内)
+   30 |     static_assert( alignof(aligned8) >= alignof(aligned3p), "Alignof 3p is larger than alignof aligned8");
+      |                            ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:30:49: 错误： ‘aligned3p’未声明(不在函数内)
+   30 |     static_assert( alignof(aligned8) >= alignof(aligned3p), "Alignof 3p is larger than alignof aligned8");
+      |                                                 ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:32:28: 错误： expected declaration specifiers or ‘...’ before numeric constant
+   32 |     extern char (C23_ALIGN(4) * aligned4) __attribute__ ((aligned(4)));
+      |                            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:32:30: 错误： expected ‘)’ before ‘*’ token
+   32 |     extern char (C23_ALIGN(4) * aligned4) __attribute__ ((aligned(4)));
+      |                              ^~
+      |                              )
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:33:27: 错误： ‘aligned4’未声明(不在函数内)
+   33 |     static_assert(alignof(aligned4) >= alignof(aligned3p), "Alignof 3p is larger than alignof 4");
+      |                           ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:37:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   37 |     PRINTF(("sizeof(aligned4): %zu\n", sizeof(aligned4)));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:38:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   38 |     PRINTF(("sizeof(aligned8): %zu\n", sizeof(aligned8)));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:39:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   39 |     PRINTF(("sizeof(aligned3p): %zu\n\n", sizeof(aligned3p)));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:40:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   40 |     PRINTF(("%p\n", aligned4));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:41:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   41 |     PRINTF(("%p\n", aligned8));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:42:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   42 |     PRINTF(("%p\n", aligned3p));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:43:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   43 |     PRINTF(("%p\n", sizeof(char(4) )));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:44:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   44 |     PRINTF(("%p\n", sizeof(char(8) )));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:45:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   45 |     PRINTF(("%p\n", sizeof(char(*) )));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:48:27: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   48 |     struct S _attribute__((aligned)) ms __attribute__((aligned(4)));
+      |                           ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:52:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   52 |     PRINTF(("%p\n", aligned4));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:53:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   53 |     PRINTF(("%p\n", aligned8));
+      |            ^
+/home/cxx/fuzz4all/outputs/c_23/3.fuzz:54:12: 错误： expected declaration specifiers or ‘...’ before ‘(’ token
+   54 |     PRINTF(("%p\n", aligned3p));
+      |            ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/4.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/4.fuzz:12:10: 致命错误： ../include/lib/inttypes.h：没有那个文件或目录
+   12 | #include "../include/lib/inttypes.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/5.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/6.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/6.fuzz: 在函数‘copy_string’中:
+/home/cxx/fuzz4all/outputs/c_23/6.fuzz:24:32: 错误： ‘argc’未声明(在此函数内第一次使用)
+   24 |   *string2 = strndup(string1, *argc);
+      |                                ^~~~
+/home/cxx/fuzz4all/outputs/c_23/6.fuzz:24:32: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/6.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/6.fuzz:30:3: 错误： expected declaration or statement at end of input
+   30 |   char *ret = NULL;
+      |   ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/7.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/7.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:27:19: 警告： 传递‘foo’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   27 |   char *ret = foo(&b);
+      |                   ^~
+      |                   |
+      |                   int *
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:14:16: 附注： 需要类型‘int **’，但实参的类型为‘int *’
+   14 | char *foo(int *frg[]) {
+      |           ~~~~~^~~~~
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:28:7: 警告： 隐式声明函数‘strlen’ [-Wimplicit-function-declaration]
+   28 |   if (strlen(ret) > 4) {
+      |       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:2:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+    1 | #include <stdlib.h>
+  +++ |+#include <string.h>
+    2 | #define AAAA 1
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:28:7: 警告： 隐式声明与内建函数‘strlen’不兼容 [-Wbuiltin-declaration-mismatch]
+   28 |   if (strlen(ret) > 4) {
+      |       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:28:7: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:29:11: 警告： 隐式声明函数‘strcat’ [-Wimplicit-function-declaration]
+   29 |     ret = strcat(ret, "_");
+      |           ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:29:11: 附注： include ‘<string.h>’ or provide a declaration of ‘strcat’
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:29:11: 警告： 隐式声明与内建函数‘strcat’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:29:11: 附注： include ‘<string.h>’ or provide a declaration of ‘strcat’
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:31:7: 警告： 隐式声明与内建函数‘strlen’不兼容 [-Wbuiltin-declaration-mismatch]
+   31 |   if (strlen(ret) > 6
+      |       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:31:7: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:31:22: 错误： expected ‘)’ at end of input
+   31 |   if (strlen(ret) > 6
+      |      ~               ^
+      |                      )
+/home/cxx/fuzz4all/outputs/c_23/7.fuzz:31:3: 错误： expected declaration or statement at end of input
+   31 |   if (strlen(ret) > 6
+      |   ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/8.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/9.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/9.fuzz: 在函数‘foo’中:
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:16:9: 错误： 双目运算符 & 操作数(‘char *’和‘int’)无效
+   16 |     ptr &= argc;
+      |         ^~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:24:10: 错误： ‘c’未声明(在此函数内第一次使用)
+   24 |   while (c) {
+      |          ^
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:24:10: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:29:3: 警告： 隐式声明函数‘strcpy’ [-Wimplicit-function-declaration]
+   29 |   strcpy(buffer, foo(&argc));
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:2:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+    1 | #include <stdlib.h>
+  +++ |+#include <string.h>
+    2 | typedef unsigned char uchar;
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:29:3: 警告： 隐式声明与内建函数‘strcpy’不兼容 [-Wbuiltin-declaration-mismatch]
+   29 |   strcpy(buffer, foo(&argc));
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:29:3: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:29:23: 错误： ‘argc’未声明(在此函数内第一次使用)
+   29 |   strcpy(buffer, foo(&argc));
+      |                       ^~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:30:7: 警告： 隐式声明函数‘strlen’ [-Wimplicit-function-declaration]
+   30 |   if (strlen(buffer) > 4) {
+      |       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:30:7: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:30:7: 警告： 隐式声明与内建函数‘strlen’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:30:7: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:31:5: 警告： 隐式声明函数‘strcat’ [-Wimplicit-function-declaration]
+   31 |     strcat(buffer, "_");
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:31:5: 附注： include ‘<string.h>’ or provide a declaration of ‘strcat’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:31:5: 警告： 隐式声明与内建函数‘strcat’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:31:5: 附注： include ‘<string.h>’ or provide a declaration of ‘strcat’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:33:7: 警告： 隐式声明与内建函数‘strlen’不兼容 [-Wbuiltin-declaration-mismatch]
+   33 |   if (strlen(buffer) > 6) {
+      |       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:33:7: 附注： include ‘<string.h>’ or provide a declaration of ‘strlen’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:34:5: 警告： 隐式声明函数‘strncat’ [-Wimplicit-function-declaration]
+   34 |     strncat(buffer, "abc", 2);
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:34:5: 附注： include ‘<string.h>’ or provide a declaration of ‘strncat’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:34:5: 警告： 隐式声明与内建函数‘strncat’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:34:5: 附注： include ‘<string.h>’ or provide a declaration of ‘strncat’
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:36:30: 错误： expected ‘)’ at end of input
+   36 |   if ((unsigned long int)argc
+      |      ~                       ^
+      |                              )
+/home/cxx/fuzz4all/outputs/c_23/9.fuzz:36:3: 错误： expected declaration or statement at end of input
+   36 |   if ((unsigned long int)argc
+      |   ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/10.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/11.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/12.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/12.fuzz:5:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+    5 | uchar a1 = (uchar)1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:5:13: 错误： ‘uchar’ undeclared here (not in a function); did you mean ‘char’?
+    5 | uchar a1 = (uchar)1;
+      |             ^~~~~
+      |             char
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:5:19: 错误： expected ‘,’ or ‘;’ before numeric constant
+    5 | uchar a1 = (uchar)1;
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:9:14: 错误： 单目‘&’的操作数必须是左值
+    9 | void *ptr1 = &a;
+      |              ^
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:11:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+   11 | uchar d = (uchar)1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:11:18: 错误： expected ‘,’ or ‘;’ before numeric constant
+   11 | uchar d = (uchar)1;
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:12:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+   12 | uchar d1 = (uchar)1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/12.fuzz:12:19: 错误： expected ‘,’ or ‘;’ before numeric constant
+   12 | uchar d1 = (uchar)1;
+      |                   ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/13.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/14.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/15.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/16.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/16.fuzz:3:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+    3 | uchar a = 1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/16.fuzz:8:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+    8 | uchar d = 1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/16.fuzz:9:1: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+    9 | uchar d1 = 1;
+      | ^~~~~
+      | char
+/home/cxx/fuzz4all/outputs/c_23/16.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/16.fuzz:20:10: 警告： 提领‘void *’指针
+   20 |   while (*ptr == d) {
+      |          ^~~~
+/home/cxx/fuzz4all/outputs/c_23/16.fuzz:20:10: 错误： void 值未如预期地被忽略
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/17.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/18.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/19.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/19.fuzz: 在函数‘func_name_function’中:
+/home/cxx/fuzz4all/outputs/c_23/19.fuzz:42:9: 错误： expected ‘=’ at end of input
+   42 |         {.x = 2.0f + num2,.y
+      |         ^
+/home/cxx/fuzz4all/outputs/c_23/19.fuzz:42:9: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/21.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/21.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/21.fuzz:4:3: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+    4 |   uchar a = 1;
+      |   ^~~~~
+      |   char
+/home/cxx/fuzz4all/outputs/c_23/21.fuzz:10:3: 错误： unknown type name ‘uchar’; did you mean ‘char’?
+   10 |   uchar d = (uchar)1;
+      |   ^~~~~
+      |   char
+/home/cxx/fuzz4all/outputs/c_23/21.fuzz:10:14: 错误： ‘uchar’ undeclared (first use in this function); did you mean ‘char’?
+   10 |   uchar d = (uchar)1;
+      |              ^~~~~
+      |              char
+/home/cxx/fuzz4all/outputs/c_23/21.fuzz:10:14: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/21.fuzz:10:20: 错误： expected ‘,’ or ‘;’ before numeric constant
+   10 |   uchar d = (uchar)1;
+      |                    ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/22.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/22.fuzz:13:5: 错误： ‘main’重定义
+   13 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:15:31: 错误： ‘ptr’未声明(在此函数内第一次使用)
+   15 |   for (; strlen(buffer) < 10; ptr++) {
+      |                               ^~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:15:31: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:26:5: 错误： ‘main’重定义
+   26 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:28:31: 错误： ‘ptr’未声明(在此函数内第一次使用)
+   28 |   for (; strlen(buffer) < 10; ptr++) {}
+      |                               ^~~
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/22.fuzz:49:1: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ at end of input
+   49 | int main
+      | ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/23.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/23.fuzz:6:10: 错误： 文件域中的动态可变的‘e1’
+    6 | long int e1[a + b[1]];
+      |          ^~
+/home/cxx/fuzz4all/outputs/c_23/23.fuzz:27:7: 错误： conflicting types for ‘x’; have ‘int **(int *)’
+   27 | int **x(int *y) {
+      |       ^
+/home/cxx/fuzz4all/outputs/c_23/23.fuzz:26:6: 附注： previous declaration of ‘x’ with type ‘int *(int *)’
+   26 | int *x(int *y);
+      |      ^
+/home/cxx/fuzz4all/outputs/c_23/23.fuzz:33:1: 错误： 未结束的注释
+   33 | /* the type of ‘y’ changes from int ** to int in the first line of the function, which is not compatible with the actual return types of the function in line 11 and 12.  This error shows up only in the C Standard, where these kinds of type inconsistencies are not allowed, e.g. in C++ these would be errors.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/25.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/27.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/28.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/29.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/31.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/32.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/33.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/34.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/35.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/36.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/37.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/37.fuzz:13:1: 错误： 未知的类型名‘uint32_t’
+   13 | uint32_t func_v_void(void);
+      | ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:3:1: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+    2 | #include <string.h>
+  +++ |+#include <stdint.h>
+    3 | 
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:14:18: 错误： 未知的类型名‘uint32_t’
+   14 | void func_void_v(uint32_t *a, uint32_t *b);
+      |                  ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:14:18: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:14:31: 错误： 未知的类型名‘uint32_t’
+   14 | void func_void_v(uint32_t *a, uint32_t *b);
+      |                               ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:14:31: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:17:5: 错误： 未知的类型名‘uint32_t’
+   17 |     uint32_t num;
+      |     ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:20:30: 错误： 未知的类型名‘uint32_t’
+   20 | func_struct_type func_struct(uint32_t *a, void *b);
+      |                              ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:20:30: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:26:10: 错误： 未知的类型名‘uint32_t’
+   26 | int func(uint32_t num_of_ones,...)
+      |          ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:26:10: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz: 在函数‘func_v_void’中:
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:35:13: 警告： 隐式声明函数‘func’ [-Wimplicit-function-declaration]
+   35 |     int n = func(0);
+      |             ^~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:38:18: 错误： 未知的类型名‘uint32_t’
+   38 | void func_void_v(uint32_t *a, uint32_t *b)
+      |                  ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:38:18: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:38:31: 错误： 未知的类型名‘uint32_t’
+   38 | void func_void_v(uint32_t *a, uint32_t *b)
+      |                               ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:38:31: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:44:30: 错误： 未知的类型名‘uint32_t’
+   44 | func_struct_type func_struct(uint32_t *a, void *b)
+      |                              ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:44:30: 附注： ‘uint32_t’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:53:5: 警告： 隐式声明函数‘func_void_v’ [-Wimplicit-function-declaration]
+   53 |     func_void_v(&a, &b);
+      |     ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:53:18: 错误： ‘a’未声明(在此函数内第一次使用)
+   53 |     func_void_v(&a, &b);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:53:18: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/37.fuzz:53:22: 错误： ‘b’未声明(在此函数内第一次使用)
+   53 |     func_void_v(&a, &b);
+      |                      ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/38.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/39.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/41.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/42.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/42.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/42.fuzz:18:16: 错误： ‘array’未声明(在此函数内第一次使用)
+   18 |         strcpy(array, "Hello, World\n");
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/42.fuzz:18:16: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/43.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/44.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/44.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:6:13: 警告： 隐式声明函数‘fgets’ [-Wimplicit-function-declaration]
+    6 |     while ((fgets(arr, ARRAY_SIZE, stdin)!= NULL) && strlen(arr))
+      |             ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:6:36: 错误： ‘stdin’未声明(在此函数内第一次使用)
+    6 |     while ((fgets(arr, ARRAY_SIZE, stdin)!= NULL) && strlen(arr))
+      |                                    ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:3:1: 附注： ‘stdin’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | #define ARRAY_SIZE 1024
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:6:36: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+    6 |     while ((fgets(arr, ARRAY_SIZE, stdin)!= NULL) && strlen(arr))
+      |                                    ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:7:9: 警告： 隐式声明函数‘reverseBits’ [-Wimplicit-function-declaration]
+    7 |         reverseBits(arr, strlen(arr) -1);
+      |         ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:13:5: 错误： ‘main’重定义
+   13 | int main(void){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main(void){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:16:31: 错误： ‘stdin’未声明(在此函数内第一次使用)
+   16 |     while ((fgets(buffer, 10, stdin)!= NULL) && strlen(arr)){
+      |                               ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:16:31: 附注： ‘stdin’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:19:9: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   19 |         printf("%c", *arr);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:19:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:19:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:19:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:20:21: 错误： ‘counter’ undeclared (first use in this function); did you mean ‘count’?
+   20 |         arr = arr + counter + 1;
+      |                     ^~~~~~~
+      |                     count
+/home/cxx/fuzz4all/outputs/c_23/44.fuzz:21:31: 错误： ‘cunt’ undeclared (first use in this function); did you mean ‘count’?
+   21 |         arr_size = arr_size - cunt + 1;
+      |                               ^~~~
+      |                               count
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/45.fuzz failed validation with error message: /tmp/temp1735361320.3176808.c: 在函数‘reverseBits’中:
+/tmp/temp1735361320.3176808.c:12:33: 警告： 隐式声明函数‘swap’ [-Wimplicit-function-declaration]
+   12 |                                 swap(ptr, ptr + (size - i - 1));
+      |                                 ^~~~
+/usr/bin/ld: /tmp/ccSoxBtu.o: in function `reverseBits':
+temp1735361320.3176808.c:(.text+0x61): undefined reference to `swap'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/46.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/46.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:31:29: 错误： ‘array’未声明(在此函数内第一次使用)
+   31 |         int length = sizeof(array), result, i;
+      |                             ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:31:29: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:33:24: 错误： expected expression before ‘int’
+   33 |         for(i = 0; i < int length; i++)
+      |                        ^~~
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:34:17: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   34 |                 printf("%d, ", i);
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:3:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | #define ARRAY_SIZE 1024
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:34:17: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   34 |                 printf("%d, ", i);
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:34:17: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:35:9: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   35 |         printf("\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:35:9: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:38:1: 错误： 程序中有游离的‘`’
+   38 | ```
+      | ^
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:38:2: 错误： 程序中有游离的‘`’
+   38 | ```
+      |  ^
+/home/cxx/fuzz4all/outputs/c_23/46.fuzz:38:3: 错误： 程序中有游离的‘`’
+   38 | ```
+      |   ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/47.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/48.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/48.fuzz:6:10: 致命错误： String_impl.h：没有那个文件或目录
+    6 | #include "String_impl.h"
+      |          ^~~~~~~~~~~~~~~
+编译中断。
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/49.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/49.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:9:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    9 |     printf("%s\n", "The string to reverse:");
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:3:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | #define ARRAY_SIZE 1024
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:9:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    9 |     printf("%s\n", "The string to reverse:");
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:9:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:10:5: 警告： 隐式声明函数‘scanf’ [-Wimplicit-function-declaration]
+   10 |     scanf("%s", buffer);
+      |     ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:10:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘scanf’
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:10:5: 警告： 隐式声明与内建函数‘scanf’不兼容 [-Wbuiltin-declaration-mismatch]
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:10:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘scanf’
+/home/cxx/fuzz4all/outputs/c_23/49.fuzz:11:10: 警告： 隐式声明函数‘reverseBits’ [-Wimplicit-function-declaration]
+   11 |     rv = reverseBits(buffer, ARRAY_SIZE);
+      |          ^~~~~~~~~~~
+/usr/bin/ld: /tmp/ccCRspRl.o: in function `main':
+49.fuzz:(.text+0x5a): undefined reference to `reverseBits'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/50.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/50.fuzz: 在函数‘reverseBits’中:
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:11:23: 警告： implicit declaration of function ‘reverse’; did you mean ‘reverseBits’? [-Wimplicit-function-declaration]
+   11 |                 end = reverse(end);
+      |                       ^~~~~~~
+      |                       reverseBits
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:14:17: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+   14 |                 printf("%c", reverse(end));
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:3:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | #define ARRAY_SIZE 1024
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:14:17: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   14 |                 printf("%c", reverse(end));
+      |                 ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:14:17: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:24:21: 警告： 传递‘reverseBits’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   24 |         reverseBits(array, ARRAY_SIZE);
+      |                     ^~~~~
+      |                     |
+      |                     short unsigned int *
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:5:24: 附注： 需要类型‘char *’，但实参的类型为‘short unsigned int *’
+    5 | void reverseBits(char *s)
+      |                  ~~~~~~^
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:24:9: 错误： 提供给函数‘reverseBits’的实参太多
+   24 |         reverseBits(array, ARRAY_SIZE);
+      |         ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:5:6: 附注： 在此声明
+    5 | void reverseBits(char *s)
+      |      ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/50.fuzz:27:1: 错误： 未结束的注释
+   27 | /* Please create a program using bitwise operations for conversion from character to ASCII code and vice
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/51.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/51.fuzz:21:1: 错误： 未结束的注释
+   21 | /* In C23, the C Standard Library is expanded with many new functions, such as the addition of the function memset_explicit to copy an array of objects where the order of allocation is reversed and the data copied to the last element of an object before the next object in the allocation is copied to it.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/52.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/53.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/53.fuzz:11:7: 错误： ‘reverse_array’声明为返回一个数组的函数
+   11 | array reverse_array(array arr)
+      |       ^~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz: 在函数‘reverse_array’中:
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:14:32: 警告： ‘sizeof’ on array function parameter ‘arr’ will return size of ‘short unsigned int *’ [-Wsizeof-array-argument]
+   14 |         int array_size = sizeof(arr) / sizeof(arr[0]);
+      |                                ^
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:11:27: 附注： 在此声明
+   11 | array reverse_array(array arr)
+      |                     ~~~~~~^~~
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:22:16: 警告： returning ‘short unsigned int *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+   22 |         return arr;
+      |                ^~~
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:40:1: 错误： unknown type name ‘pthread_barrier_t’; did you mean ‘pthread_attr_t’?
+   40 | pthread_barrier_t done_barrier;
+      | ^~~~~~~~~~~~~~~~~
+      | pthread_attr_t
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:51:5: 错误： ‘main’重定义
+   51 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:24:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   24 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/53.fuzz:55:5: 错误： expected declaration or statement at end of input
+   55 |     double pi = 0;
+      |     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/54.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/54.fuzz:4:34: 错误： expected identifier or ‘(’ before ‘char’
+    4 | #define reverseBits(array, size) char *reverseBits2(char *array, \
+      |                                  ^~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:17:7: 附注： in expansion of macro ‘reverseBits’
+   17 | char *reverseBits(char *array, int size);
+      |       ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:4:34: 错误： expected expression before ‘char’
+    4 | #define reverseBits(array, size) char *reverseBits2(char *array, \
+      |                                  ^~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:19:21: 附注： in expansion of macro ‘reverseBits’
+   19 |         char *ptr = reverseBits(array, ARRAY_SIZE);
+      |                     ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:20:9: 错误： expected identifier or ‘(’ before ‘return’
+   20 |         return *(ptr + 5);
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:16:20: 错误： expected identifier or ‘(’ before ‘{’ token
+   16 | #define swap(a, b) { char temp = a; a = b; b = temp; }
+      |                    ^
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:38:6: 附注： in expansion of macro ‘swap’
+   38 | void swap(char *a, char *b);
+      |      ^~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:40:5: 错误： ‘main’重定义
+   40 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:22:13: 附注： previous definition of ‘main’ with type ‘int(void)’
+   22 |         int main()
+      |             ^~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:46:55: 错误： ‘ARRAY_’未声明(在此函数内第一次使用)
+   46 |         for (i = 0, ptr = array + ARRAY_SIZE - 1; i < ARRAY_
+      |                                                       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:46:55: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:46:61: 错误： expected ‘;’ at end of input
+   46 |         for (i = 0, ptr = array + ARRAY_SIZE - 1; i < ARRAY_
+      |                                                             ^
+      |                                                             ;
+/home/cxx/fuzz4all/outputs/c_23/54.fuzz:46:9: 错误： expected declaration or statement at end of input
+   46 |         for (i = 0, ptr = array + ARRAY_SIZE - 1; i < ARRAY_
+      |         ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/56.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/56.fuzz: 在函数‘reverseBits’中:
+/home/cxx/fuzz4all/outputs/c_23/56.fuzz:8:13: 警告： 隐式声明函数‘swap’ [-Wimplicit-function-declaration]
+    8 |             swap(array[i], array[size - i - 1]);
+      |             ^~~~
+/home/cxx/fuzz4all/outputs/c_23/56.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/56.fuzz:30:17: 警告： 传递‘reverse’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   30 |         reverse(array);
+      |                 ^~~~~
+      |                 |
+      |                 short unsigned int *
+/home/cxx/fuzz4all/outputs/c_23/56.fuzz:10:21: 附注： 需要类型‘char *’，但实参的类型为‘short unsigned int *’
+   10 | char *reverse(char *array)
+      |               ~~~~~~^~~~~
+/usr/bin/ld: /tmp/ccy7r6Ff.o: in function `reverseBits':
+56.fuzz:(.text+0x62): undefined reference to `swap'
+/usr/bin/ld: /tmp/ccy7r6Ff.o: in function `reverse':
+56.fuzz:(.text+0xdd): undefined reference to `swap'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/57.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/57.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/57.fuzz:13:13: 警告： 隐式声明函数‘swapl’ [-Wimplicit-function-declaration]
+   13 |             swapl(&array[i], &array[arraySize - i - 1]);
+      |             ^~~~~
+/usr/bin/ld: /tmp/cceFbK3T.o: in function `main':
+57.fuzz:(.text+0x82): undefined reference to `swapl'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/58.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/58.fuzz:31:1: 错误： 未结束的注释
+   31 | /* The C23 standard has been approved by the ISO/IEC JTC 1 as ISO/IEC 23788:2020
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/59.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/59.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/59.fuzz:28:22: 警告： 传递‘reverseBits’的第 1 个参数时在不兼容的指针类型间转换 [-Wincompatible-pointer-types]
+   28 |          reverseBits(array, ARRAY_SIZE);
+      |                      ^~~~~
+      |                      |
+      |                      short unsigned int *
+/home/cxx/fuzz4all/outputs/c_23/59.fuzz:10:25: 附注： 需要类型‘char *’，但实参的类型为‘short unsigned int *’
+   10 | char *reverseBits(char *array, size_t size)
+      |                   ~~~~~~^~~~~
+/home/cxx/fuzz4all/outputs/c_23/59.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/59.fuzz:31:1: 错误： 未结束的注释
+   31 | /* The C23 draft features upgrades to many areas of the Standard Library, Preprocessor, Types, Constants, Keywords, Syntax and other functions. Appended Standard Library functions include memset_explicit(), memccpy(), strdup(), strndup(), memalignment(), and bit utility functions, with changes also made to existing functions. In addition, it brings Printf, Scanf, and Stdlib functions up to date, including the addition of %b binary conversion and other specifiers.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/60.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/61.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/62.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/63.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/65.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/66.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/67.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/68.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/68.fuzz:4:18: 错误： conflicting types for ‘size_t’; have ‘unsigned int’
+    4 | typedef unsigned size_t;
+      |                  ^~~~~~
+In file included from /usr/include/stdlib.h:31,
+                 from /home/cxx/fuzz4all/outputs/c_23/68.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/lib/gcc/x86_64-pc-linux-gnu/13.1.0/include/stddef.h:214:23: 附注： previous declaration of ‘size_t’ with type ‘size_t’ {或称 ‘long unsigned int’}
+  214 | typedef __SIZE_TYPE__ size_t;
+      |                       ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/69.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/70.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/71.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/72.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/72.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:7:5: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    7 |     printf("Parameter 1: %s\n", str1);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:4:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    3 | #include <string.h>
+  +++ |+#include <stdio.h>
+    4 | int main() {
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:7:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    7 |     printf("Parameter 1: %s\n", str1);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:7:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:22:5: 错误： ‘main’重定义
+   22 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:23:21: 错误： ‘static_cast’未声明(在此函数内第一次使用)
+   23 |     uint8_t* pMem = static_cast<uint8_t>("some address");
+      |                     ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:23:21: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:23:33: 错误： expected expression before ‘uint8_t’
+   23 |     uint8_t* pMem = static_cast<uint8_t>("some address");
+      |                                 ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:25:5: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+   25 |     printf("%u\n", val);
+      |     ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/72.fuzz:25:5: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/73.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/74.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/75.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/75.fuzz:9:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+    9 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    4 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:20:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+   20 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    4 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:36:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+   36 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    4 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:54:16: 错误： expected identifier before ‘false’
+   54 | typedef enum { false = false, true = true } bool;
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:54:45: 错误： expected ‘;’, identifier or ‘(’ before ‘bool’
+   54 | typedef enum { false = false, true = true } bool;
+      |                                             ^~~~
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:54:45: 警告： 空声明中类型名无用
+/home/cxx/fuzz4all/outputs/c_23/75.fuzz:58:24: 警告： 反斜杠续行出现在文件末尾
+   58 | #define __ALIGNOF__(T) \
+      |                         
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/76.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/77.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/78.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/79.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/79.fuzz: 在函数‘myfunc’中:
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz:15:79: 错误： ‘SIZE_MAX’未声明(在此函数内第一次使用)
+   15 |     fprintf(stderr, "Hello from C98 %zu-byte integer: %zu\n", sizeof(size_t), SIZE_MAX);
+      |                                                                               ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz:4:1: 附注： ‘SIZE_MAX’ is defined in header ‘<stdint.h>’; did you forget to ‘#include <stdint.h>’?
+    3 | #include <stdio.h>
+  +++ |+#include <stdint.h>
+    4 | int main(int argc, char* argv[]) {
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz:15:79: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+   15 |     fprintf(stderr, "Hello from C98 %zu-byte integer: %zu\n", sizeof(size_t), SIZE_MAX);
+      |                                                                               ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz:18:5: 错误： ‘main’重定义
+   18 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/79.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    4 | int main(int argc, char* argv[]) {
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/80.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/81.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/82.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/83.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/84.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/85.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/86.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/86.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:6:3: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    6 |   printf("String: %s\n", s);
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:3:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    2 | #include <string.h>
+  +++ |+#include <stdio.h>
+    3 | int main(int argc, char* argv[]) {
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:6:3: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    6 |   printf("String: %s\n", s);
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:6:3: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:23:5: 错误： ‘main’重定义
+   23 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:28:8: 错误： ‘b’未声明(在此函数内第一次使用)
+   28 |   if (!b) {
+      |        ^
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:28:8: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_23/86.fuzz:30:3: 错误： expected declaration or statement at end of input
+   30 |   }
+      |   ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/87.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/87.fuzz: 在函数‘bar’中:
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz:8:3: 警告： implicit declaration of function ‘baz’; did you mean ‘bar’? [-Wimplicit-function-declaration]
+    8 |   baz(a);
+      |   ^~~
+      |   bar
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz:10:6: 警告： conflicting types for ‘baz’; have ‘void(int *)’
+   10 | void baz(int* a) {
+      |      ^~~
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz:8:3: 附注： previous implicit declaration of ‘baz’ with type ‘void(int *)’
+    8 |   baz(a);
+      |   ^~~
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz:16:3: 错误： call to ‘foo’ declared with attribute error: This is a bug
+   16 |   foo(p);
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_23/87.fuzz:17:3: 错误： call to ‘bar’ declared with attribute error: This is a bug
+   17 |   bar(p);
+      |   ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/88.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/89.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/89.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:24:5: 错误： ‘main’重定义
+   24 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:59:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+   59 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/89.fuzz:60: 错误： expected ‘{’ at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/90.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/91.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/92.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/92.fuzz:16:5: 错误： ‘main’重定义
+   16 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/92.fuzz:5:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    5 | int main(int argc, char* argv[]) {
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/93.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/94.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/95.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/95.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/95.fuzz:22:3: 警告： implicit declaration of function ‘u8_snprintf’; did you mean ‘vsnprintf’? [-Wimplicit-function-declaration]
+   22 |   u8_snprintf(str, 20, "String: %s\n", str);
+      |   ^~~~~~~~~~~
+      |   vsnprintf
+/home/cxx/fuzz4all/outputs/c_23/95.fuzz:23:3: 警告： implicit declaration of function ‘u8_puts’; did you mean ‘puts’? [-Wimplicit-function-declaration]
+   23 |   u8_puts(str);
+      |   ^~~~~~~
+      |   puts
+/usr/bin/ld: /tmp/cccEH4Kc.o: in function `main':
+95.fuzz:(.text+0x79): undefined reference to `u8_snprintf'
+/usr/bin/ld: 95.fuzz:(.text+0x8a): undefined reference to `u8_puts'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/96.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_23/96.fuzz:12:5: 错误： ‘main’重定义
+   12 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:24:3: 错误： unknown type name ‘ssize_t’; did you mean ‘size_t’?
+   24 |   ssize_t read;
+      |   ^~~~~~~
+      |   size_t
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:26:18: 警告： 隐式声明函数‘getline’ [-Wimplicit-function-declaration]
+   26 |   while ((read = getline(&line, &len, file))!= -1) {
+      |                  ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:49:5: 错误： ‘main’重定义
+   49 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:64:5: 错误： ‘main’重定义
+   64 | int main(int argc, char *argv[]){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:74:5: 错误： conflicting types for ‘main’; have ‘int(void)’
+   74 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(int,  char **)’
+    3 | int main(int argc, char* argv[]) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:75:3: 错误： expected expression at end of input
+   75 |   int fd = open("test", O_CREAT|
+      |   ^~~
+/home/cxx/fuzz4all/outputs/c_23/96.fuzz:75:3: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/97.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/98.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_23/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_23/99.fuzz is safe

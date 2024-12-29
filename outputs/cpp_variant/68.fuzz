@@ -1,0 +1,48 @@
+#include <variant>
+<fim_suffix>e std;
+
+    int main() 
+    {
+         
+        vector<string> colors{"blue", "yellow", "black"};
+        vector<int> sizes{11, 17, 19};
+        vector<double> values{13.42, 7.09, 9.38};
+
+         
+        variant<int, string, double> all_animals;
+
+         
+        all_animals = 2021;
+
+         
+        all_animals.index() -> int;           
+
+         
+        all_animals.get<int>() -> int;         
+        all_animals.valueless_by_exception() -> bool;   
+
+         
+         
+        if (auto* ptr = get_if<int>(&all_animals)) {
+            cout << "The variant is an int, and it\'s value is:" << endl;
+            cout << *ptr << endl;
+        }
+        else {
+            cout << "The variant is not an int." << endl;
+        }
+    }
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V create() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}

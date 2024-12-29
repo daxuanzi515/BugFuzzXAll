@@ -1,0 +1,17 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+int main()
+{
+	vector<float> vec;
+	auto square = [](int x) {
+	    return x * x;
+	};
+}

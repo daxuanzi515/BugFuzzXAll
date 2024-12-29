@@ -1,0 +1,32 @@
+import java.lang.Object;
+<fim_suffix>(String texta, String textb){
+		String word = "";
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		int word_count = 0;
+		Scanner s1 = new Scanner(texta);
+		Scanner s2 = new Scanner(textb);
+		
+		while(s1.hasNext() || s2.hasNext()){
+			word += (s1.hasNext()? (word_count<1? s1.next() : s2.next()) : s2.next());
+			word_count++;
+		}
+		return word;
+	}
+	public static String append(String texta, String textb){
+		String res = texta + textb;
+		 
+
+		 
+		 
+		 
+		 
+		 
+		
+		/* [0 : 3, 1 : 2, 3: 1, 4

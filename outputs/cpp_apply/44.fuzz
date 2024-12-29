@@ -1,0 +1,29 @@
+#include <tuple>
+#include <iostream>
+struct f
+{
+  template <typename T>
+  void operator()(T& x) const
+  {
+    std::cout << x << '\n';
+  }
+};
+int main()
+{
+  f{}(99L);
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <functional>
+#include <iostream>
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  auto f = [&](auto x) {
+    std::cout << x << '\n';
+  };
+  std::apply(f, tuple);
+  return EXIT_SUCCESS;
+}
+

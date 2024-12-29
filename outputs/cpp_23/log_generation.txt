@@ -1,0 +1,3641 @@
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <array>
+
+template <typename... Args>
+void do_something(Args const&... args)
+{
+  (std::cout <<... << args) << "\n";
+}
+
+int main()
+{
+  do_something("Hello", "World", 42);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+struct Myclass
+{
+    Myclass() : text{"Myclass Default Constructed!\n"} {}
+    explicit Myclass(std::string text) : text{std::move(text)} {}
+
+    Myclass(Myclass const &other)  
+    {
+        std::cout << "Myclass COPY CONSTRUCTOR" << std::endl;  
+        text = other.text;
+    }
+
+    Myclass &operator=(Myclass const &other)  
+    {
+
+        std::cout << "Myclass COPY ASSIGNMENT OPERATOR" << std::endl;
+        text = other.text;
+        return *this;
+    }
+
+    Myclass(Myclass &&other) noexcept
+        : text{other.text}  
+    {
+        std::cout << "Myclass MOVE CONSTRUCTOR" << std::endl;
+    }
+
+    Myclass &operator=(Myclass &&other)  
+    {
+        if (this->text.data()!= other.text.data())        
+        {
+            std::cout << "Myclass MOVE ASSIGNMENT OPERATOR" << std::endl;
+            text = other.text;
+            return *this;
+        }
+         
+    }
+
+    ~Myclass() { std::cout << "Myclass destructed\n"; }
+
+    std::string text;
+};
+
+void use_object(Myclass myobject) {}
+void use_object(Myclass &&myobject) noexcept {}  
+
+int main()
+{
+    Myclass object{};  
+    Myclass object2("hello");
+    object = object2;
+
+    Myclass object4(  object);  
+
+
+    Myclass object3;
+    object3 = std::move(object);  
+
+
+    Myclass object5("world");
+    std::swap(object5, object4);
+
+
+    use_object(std::move(object2));  
+
+
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+
+ 
+ 
+ 
+
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main() {
+	std::cout<<[]
+	{
+		constexpr auto x = 8_k;
+		return int(x/3840*114080);
+	}()<<std::endl;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+
+using namespace std;
+
+int main()
+{
+	vector<float> vec;
+
+	 
+
+	auto square = [](int x) {
+	    return x * x;
+	};
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+int main()
+{
+	vector<float> vec;
+	auto square = [](int x) {
+	    return x * x;
+	};
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <limits>
+#include <memory>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+int main()
+{
+	vector<float> vec;
+	auto square = [](int x) {
+	    return x * x;
+	};
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+void PrintVec(vector<float> vec)
+{
+	for (size_t i = 0; i < vec.size(); i++)
+	{
+		vec[i] = vec[i] * vec[i];
+	}
+}
+void main()
+{
+	vector<float> vec;
+	PrintVec(vec);
+}
+ 
+#include <iostream>
+using namespace std;
+template <class T> struct vector
+{
+    vector() = delete;
+    vector(size_t N)
+    {
+        size_t n = N < 0? 0 : N;
+        alloc.allocate(n, sizeof(T));
+        size = n;
+    }
+    ~vector()
+    {
+        alloc.deallocate();
+    }
+    class iterator
+    {
+    public:
+        iterator(T *const ptr)
+            : ptr(ptr) {}
+        T &operator*()  
+        {
+            return *ptr;
+        }
+        const T &operator*() const
+        {
+            return *ptr;
+        }
+        iterator &operator++()  
+        {
+            ptr++;
+            return *this;
+        }
+        iterator operator++(int)  
+        {
+            iterator temp(*this);
+            ptr++;
+            return temp;
+        }
+        bool operator!=(const iterator &x) const
+        {
+            return ptr!= x.ptr;
+        }
+    private:
+        T *ptr;
+    };
+    std::unique_ptr<T[]> alloc;
+    size_t size = 0;
+    iterator begin() { return iterator(alloc.get()); }
+    iterator end() { return iterator(alloc.get() + size
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <optional>
+int main()
+{
+	optional<int> n{ 1 };
+	if (!!n) {
+		cout << "n has a value" << endl;
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+int main()
+{
+	vector<float> vec;
+	auto square = [](int x) {
+	    return x * x;
+	};
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {};
+int main()
+{}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {};
+int main()
+{}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <shared_ptr>
+#include <new>
+#include <optional>
+#include <variant>
+#include <ranges>
+using namespace std;
+struct Employee {
+	 
+	 
+	 
+	 
+	 
+	 
+};
+int main()
+{}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+ 
+int main() {
+  vector<unique_ptr<Employee>> empl;
+  int n(numeric_limits<int>::min());
+  unique_ptr<double[]> mem(new double[n]);
+  for (int a{}; a < n; ++a)
+    empl.push_back(make_unique<Employee>());
+  for (auto i : empl | views::reverse) {
+    cout << i->getName() << endl
+         <<''
+         << *i;
+  }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <limits>
+#include <sstream>
+#include <variant>
+#include <string_view>
+#include <string>
+using namespace std;
+
+struct User
+{
+   string_view name;
+   string_view last_name;
+   string_view country;
+   unsigned age;
+};
+
+struct Post
+{
+   User poster;
+   string_view content;
+   vector<string_view> tags;
+};
+
+void print(const User& user);
+
+bool operator==(const User& lhs, const User& rhs);
+bool operator==(const Post& lhs, const Post& rhs);
+
+template<size_t N>
+struct ConstexprString
+{
+   constexpr std::string_view str() const
+   {
+      return std::string_view(data(), N);
+   }
+
+   constexpr ConstexprString(const char (&data)[N]) : _data(&data[0]) {}
+
+   constexpr const char* data() const { return _data; }
+
+   const char* _data;
+};
+struct ConstexprString<0>
+{
+   constexpr ConstexprString(string_view data) : _view(data), _data(data.data()) {}
+
+   constexpr ConstexprString() = default;
+   constexpr string_view str() const { return _view; }
+   constexpr size_t size() const { return _view.size(); }
+   constexpr const char* data() const { return _data; }
+
+   string_view _view;
+   const char* _data;
+   constexpr operator std::string() const { return string(_view); }
+};
+
+inline ostream& operator<<(ostream& os, const ConstexprString& x)
+{
+
+   return (os << x.str());
+}
+
+inline ostream& operator<<(ostream& os, const User& user)
+{
+
+   return (os << user.name <<'' << user.last_name <<''
+              << user.country);
+}
+void print(const User& user)
+{
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <memory>
+int main()
+{
+    int n{10};
+    vector<int> v(n);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+     
+    Employee emp{};
+    emp.printMyAddressPtr();
+     
+     
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+
+struct Employee
+{
+  void *secretDataPtr = nullptr;
+  void * myAddressPtr = nullptr;
+  Employee()
+  {
+    Employee* p = this;
+    p->secretDataPtr = new int;
+    secretDataPtr = p->secretDataPtr;
+    myAddressPtr = (void*) &p;
+  }
+  ~Employee()
+  {
+    delete reinterpret_cast<int*>(secretDataPtr);
+  }
+  void printMyAddressPtr()
+  {
+    cout << "myAddressPtr: " << myAddressPtr << '\n';
+  }
+  template<typename _Tp>
+  friend Employee operator> > ( const Employee& emp, _Tp& x);
+};
+
+Employee operator>> ( const Employee& emp,
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    void assign(const Employee& other) {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    void copy(const Employee& other) {
+        Employee* p{new Employee};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    void del() {
+       
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        secretDataPtr = new int;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    unsigned int number{0};
+    Employee() {
+        Employee* p{this};
+        number = random();
+        p->secretDataPtr = malloc(number);
+    }
+    ~Employee() {
+        free(secretDataPtr);
+    }
+};
+void printSecretDataPtr(Employee emp)
+{
+    for (size_t i = 0; i < emp.number; i++) {
+        printf("%c ", *(reinterpret_cast<char*>(emp.secretDataPtr) + i));
+    }
+    printf("\n");
+}
+int main()
+{
+    Employee emp{};
+    printSecretDataPtr
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+ 
+ 
+        secretDataPtr = new int;
+        myAddressPtr = (void*)&secretDataPtr;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+        secretDataPtr = nullptr;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+     
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+#include <iterator>
+#include <numeric>  
+#include "Employee_v2.h"
+using namespace std;
+EmployeeV2 operator>>(const EmployeeV2&, EmployeeV2&);
+
+int main() {
+    EmployeeV2 emp{make_unique<int>(42)};
+    emp.printMyAddressPtr();
+    emp>>emp;
+    printEmployeeSecretDataPtr(emp);
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>    
+
+ 
+struct EmplPtr
+{
+    std::unique_ptr<int> empldata{};
+    std::unique_ptr<void> emplmyAddressPtr{};
+    
+     
+    EmplPtr()
+    {
+         
+        empldata = std::make_unique<int>();
+        emplPtr* emplPtr{new emplPtr{*this}};   
+        emplmyAddressPtr = std::move(emplPtr);
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct SecretData {
+    int secretData{};
+    void printSecretData() {
+        cout << "SecretData: " << secretData << '\n';
+    }
+    void destructor() {
+        cout << "destructor\n";
+    }
+};
+void printEmployeeSecretDataPtrNoDelete(Employee emp, SecretData* data)
+{
+    data->secretData = emp.secretDataPtr;
+    cout << "Employee: " << emp.myAddressPtr << '\n';
+    cout << "SecretData: " << emp.secretDataPtr << '\n';
+    cout << "SecretData: "  << data->secret
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+struct E
+{};
+void* operator new(std::size_t size, E*)
+{
+    cout << "E *new is running\n";
+    return malloc(size);
+}
+class C : public E
+{
+    protected:
+    virtual ~C() = default;
+};
+static void f()
+{
+    new E;
+    new (C{}) C{};
+}
+int main()
+{
+    f();
+    return 0;
+}
+ 
+struct MyShared
+{
+    MyShared()
+    {
+        ptr = make_shared<int>(10);
+    }
+    shared_ptr
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = static_cast<void*>(&p);
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+using namespace std;
+struct Employee {
+    unique_ptr<int> secretDataPtr{nullptr};
+    int* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        p->myAddressPtr = &p;
+    }
+    template<typename _Tp> friend Employee swapEmployees(_Tp&& lhs, _Tp&& rhs);
+};
+Employee swapEmployees(Employee lhs, Employee rhs)
+{
+    std::swap(lhs.secretDataPtr, rhs.secretDataPtr);
+    std::swap(lhs.myAddressPtr, rhs.myAddressPtr);
+    return lhs;
+}
+int main()
+{
+    Employee emp{};
+    cout << emp.myAddressPtr << endl;
+    Employee emp2{emp};
+    cout << emp2.myAddressPtr << endl
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee();
+    ~Employee();
+    void printMyAddressPtr() const;
+    template<typename _Tp> friend Employee operator>>(const Employee&, _Tp&);
+};
+Employee::~Employee()
+{
+    delete reinterpret_cast<int*>(secretDataPtr);
+}
+Employee::Employee()
+{
+    Employee* p{this};
+    p->secretDataPtr = new int;
+    secretDataPtr = p->secretDataPtr;
+    myAddressPtr = static_cast<void*>(&p);
+}
+template<typename
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+template<int _Val> struct size_t final
+{
+    constexpr size_t(int i = _Val) noexcept : val{i} {}
+    constexpr size_t(double d) : val{static_cast<int>(_Val * d)} {}
+    constexpr operator double() const noexcept {return val / _Val;}
+    constexpr operator int() const noexcept {return val;}
+    constexpr size_t operator *(int i) noexcept {return size_t{val * i};}
+    constexpr size_t operator +() noexcept {return *this;}
+    constexpr size_t operator -() noexcept {return size_t{-
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <iostream>
+#include<string.h>
+using namespace std;
+struct Employee {
+    int* secretData;
+    explicit Employee() : secretData{new int}{}
+    ~Employee() {
+        delete secretData;
+    }
+    void printMyAddressPtr() {
+        cout << "My address: " << this << '\n';
+    }
+    Employee(const Employee& rhs) : secretData{new int(*rhs.secretData)}
+    {
+        
+    }
+    Employee& operator=(const Employee& rhs)
+    {
+        delete secretData;
+        secretData = new int(*rhs.secretData);
+        return *this;
+    }
+    template<typename T>
+    friend Employee& operator>>(const Employee& emp, T& x);
+};
+Employee& operator>>(const Employee&
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    int* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete secretDataPtr;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    friend Employee operator>>(const Employee& emp, int& x);
+};
+Employee operator>>(const Employee& emp, Employee
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    void printSecretData() {
+        cout << "Emp secret data:" << *reinterpret_cast<int*>(this->secretDataPtr) << '\n';
+    }
+};
+int main()
+{
+    Employee emp{};
+    emp.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <type_traits>
+#include <variant>
+#include <ranges>
+using namespace std;
+struct Employee {
+	  vector<int> secretData;
+    static Employee makeEmp();
+	  void printMyAddressPtr();
+	  template<typename T> friend Employee operator>>(const Employee& emp, T& x);
+    template<typename T>
+    bool operator==(T t) { return false; }
+};
+Employee Employee::makeEmp() {
+    Employee emp{};
+    emp.secretData = vector<int>{3};
+    emp.printMyAddressPtr();
+    return emp;
+}
+Employee operator>>(const Employee& emp, Employee& x) {
+    x.secretData = emp.secretData;
+    return x;
+}
+void print
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+#include <initializer_list>
+using namespace std;
+struct Employee2
+{
+    Employee2& operator=(Employee2 const& other)
+    {
+        return (*this) = other;
+    }
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee2() noexcept(false)
+    {
+        Employee2* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    Employee2& operator=(Employee2&& other) noexcept
+    {
+        if (this == &other)
+        {  
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+using namespace std;
+struct Test_Secret_Ptr {
+    void* secretDataPtr{ nullptr };
+    Test_Secret_Ptr()
+    {
+        Test_Secret_Ptr* p{ this };
+        secretDataPtr = (void*)new int;
+        p->secretDataPtr = secretDataPtr;
+    }
+    ~Test_Secret_Ptr()
+    {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+};
+int main()
+{
+    Test_Secret_Ptr* p1{ new Test_Secret_Ptr };
+    Test_Secret_Ptr* p2{ p1 };
+    delete p2;
+    return 0;
+}
+int x[100];
+vector arrPtr[100];
+int main()
+{
+    std::allocator<int> alloc;
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <functional>
+#include <algorithm>
+#include <cstddef>
+#include <string>
+#include <optional>
+#include <variant>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        secretDataPtr = new int;
+        secretDataPtr = reinterpret_cast<int*>(p->secretDataPtr);
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        if (secretDataPtr)
+            delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <vector>
+#include <optional>
+#include <variant>
+#include <cassert>
+using namespace std;
+class Person {
+public:
+	~Person();
+	Person(const Person& person);
+	Person& operator=(const Person& rhs);
+	Person(Person&& person);
+	Person& operator=(Person&& rhs);
+	class Name {
+	public:
+		Name(const string& firstName, const string& lastName);
+		Name(const string& compositeName);
+		string getFirstName() const;
+		string getLastName() const;
+	private:
+		string firstName_;
+		string lastName_;
+	};
+protected:
+	[[nodiscard]] virtual void printName() const;
+private:
+	string firstName_;
+	string lastName_;
+};
+Person::~
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    int* secretDataPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+    }
+    ~Employee() {
+        delete secretDataPtr;
+    }
+    void printMyAddress() {
+        cout << "myAddress: " << this << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretData
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <cstddef>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
+#include <thread>
+#include <future>
+#include <mutex>
+#include <shared_mutex>
+
+template<typename Tp>
+    concept Number = std::derived_from<Tp, std::integral>;
+template<typename Tp>
+    concept Arithmetic = std::derived_from<Tp, std::arithmetic>;
+template<typename Tp>
+    concept Streamble = requires(Tp x)
+    {
+        ostream& operator<<(ostream& s, const Tp& x);
+    };
+
+class Data {
+public
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <algorithm>
+using namespace std;
+
+struct Employee
+{
+    Employee() {
+        Employee* p = this;
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = &p;
+    }
+
+    ~Employee()
+    {
+        delete static_cast<int*>(this->secretDataPtr);
+    }
+
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+
+private:
+    void* secretDataPtr{ nullptr };
+    void* myAddressPtr{ nullptr };
+};
+
+Employee operator>>(const Employee& emp, Employee& x)
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee& emp, Employee& x)
+{
+    x.secretDataPtr = emp.secretDataPtr;
+    x.myAddressPtr = emp.myAddressPtr;
+    return x;
+}
+void printEmployeeSecretDataPtr(Employee emp)
+{
+    int* secretDataPtr{reinterpret_cast<int*>(emp.secretDataPtr)};
+    cout << *secretDataPtr;
+}
+int main()
+{
+    Employee emp{};
+    emp.printMyAddressPtr();
+    Employee emp2{emp};
+    printEmployeeSecretDataPtr(emp2);
+    return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <type_traits>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        int* p{new int{1}};
+        secretDataPtr = p;
+        myAddressPtr = new int*(p);
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+        delete reinterpret_cast<int**>(myAddressPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << *reinterpret_cast<int**>(myAddressPtr) << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp&
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+class Foo {};
+Foo& getFoo() { static Foo foo; return foo; }
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+         
+         
+        secretDataPtr = ((Employee*) this)->secretDataPtr;
+        myAddressPtr = (void*)&getFoo();
+    }
+    ~Employee() = default;
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    int* secretDataPtr{nullptr};
+    Employee() 
+        :secretDataPtr{new int{}}
+    {}
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+    ~Employee() {
+        delete secretDataPtr;
+        secretDataPtr = nullptr;
+    }
+    void printSecretDataPtr() {
+        cout << "*secretDataPtr: " << *secretDataPtr << '\n';
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << this << '\n';
+    }
+};
+Employee operator>>(const Employee& emp,
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        int* p{new int};
+        secretDataPtr = p;
+        myAddressPtr = (void*)&secretDataPtr;
+    }
+    ~Employee() {
+        int* tmp = reinterpret_cast<int*>(secretDataPtr);
+        delete tmp;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+};
+Employee operator>>(const Employee&
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;    
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <exception>
+using namespace std;
+class myexception
+{
+    virtual const char *errmsg(void) const
+    {
+        return "Base class";
+    };
+};
+class derivedexception : public myexception
+{
+    virtual const char *errmsg(void) const
+    {
+        return "Derived class";
+    };
+};
+int main(int argc, char *argv[])
+{
+    myexception e;
+    try
+    {
+        throw e;
+    }
+    catch (myexception &x)
+    {
+        cout << "Caught " << x.errmsg();
+    }
+    return 0;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+using namespace std;
+struct S  
+{ 
+    void *operator new(const std::nothrow_t& nt, std::size_t sz) noexcept(true) { return operator new(sz); } 
+    int a; 
+};
+int main()
+{
+    S *s = new (nothrow) S; 
+    if (s!= nullptr)
+        cerr << "Success: " << s->a << '\n';
+    else
+        cout << "Failed\n"; 
+    return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+using namespace std;
+    
+ 
+#include <iterator>
+ 
+int main(){ 
+ 
+cout << '\u00bf' <<'' << '\n';
+
+    return 0;
+}
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;    
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  decltype(auto) i = make_unique<int>(i1);
+  using namespace std::string_literals;
+  std::cout << *i;
+  return 0;   
+};
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <sstream>
+#include <string>
+#include <array>
+#include <algorithm>
+ 
+class Rational {
+
+    private:
+        int numerator;
+        int denominator;
+        
+    public:
+        Rational()
+        : denominator(1)
+        {}
+
+        Rational(const int new_numerator, const int new_denominator)
+        : numerator(new_numerator)
+       , denominator(new_denominator)
+        {
+        }
+
+        int Numerator() 
+        {
+            return this->numerator;
+        }
+
+        int Denominator() 
+        {
+            return this->denominator;
+        }
+};
+
+std::ostream & operator<<(std::ostream & stdos, const Rational & rational)
+{    
+    return stdos << rational.Numerator() << '/' << rational.Denominator();
+}
+int main()
+{
+    stdos << "Please enter a number: ";
+    string in_string;
+     
+
+    array<char> c_arr{'7', '9', '9', '\0'};
+    std.getline(std::cin, c_arr.data);
+
+    stringstream ss(c_arr.data);
+    string buffer;
+    ss >> buffer;
+
+    Rational r_out{stoi(buffer)};
+     
+
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;    
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  decltype(auto) i = make_unique<int>(i1);
+  using namespace std::string_literals;
+  std::cout << *i;
+  return 0;   
+};
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <fstream>
+#include <string>
+const std::string code = ""\
+"#include <iostream>\n"\
+"using namespace std;\n\
+int main()\n"\
+"{\n"\
+"   int i1 = 6;\n"\
+"   int i2 = 4;\n"\
+"   int *i = new int(i1);\n"\
+"   cout << \"*i = \" << *i << endl;\n"\
+"   cout << \"sizeof(i) = \" << sizeof(i) << endl;\n\n"\
+"   cout << \"*i + i2 = \" << *i + i2 << endl;\n"\
+"   cout << \"*i = \" << *i << endl;\n"\
+"   cout << \"sizeof(i) = \" << sizeof(i) << endl;\n"\
+"   return 0;\n"\
+"}\
+"";
+int main()
+{
+	std::ofstream file("new_code.cpp");
+	file << code << std::flush;
+	return 0;
+};
+/* How do you feel about the code? Does it add any complexity to the code and do you like it? Does it have a performance benefit for you? */
+/* Please modify the program using new C++ syntax and best practices described in the book 2018 by <NAME>. */
+#include <iostream>
+#include <memory>
+#include <utility>
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i = std::make_unique<int>(i1);
+  *i = i1 + i2;
+  std::cout << "i1 = " << i1 << ",  i2 = " << i2 << ",  value = " << *i << std::
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i =  make_unique<int>(i1);
+  using namespace std::string_literals;
+  std::cout << *i;
+  return 0;
+};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+int main() {
+   std::string s = "hello"s;
+   std::cout << s;
+   return 0;
+
+};
+ 
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+#include <deque>
+int main() {
+std::istreambuf_iterator<char> sit, end;
+std::istreambuf_iterator<char> end;
+for(it;it!= end; it++){
+ cout<< *it;
+}
+return 0;
+
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main() {
+   std::unique_ptr<int> foo(new int(5));
+   std::cout << *foo << "\n";
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <cstddef>
+#include <memory>
+#include <iterator>
+#include <cctype>
+#include <algorithm>
+class string
+{
+public:
+    string(const char* c = "");
+    string(const string&);
+    string& operator=(const string&);
+    string& operator+=(const string&);
+    string& operator+=(const char*);
+private:
+    std::size_t len;
+    char* data;
+};
+string::string(const char* c) : len{ strlen(c) }, data{ strcpy(new char[len + 1], c) }
+{ };
+string::string(const string& s) : len{ s.len }, data { strcpy(new char[len + 1], s.data) }
+{ };
+string& string::operator=(const string& s)
+{
+    delete[] data;
+    len = s.len;
+    data = new char[len + 1];
+    strcpy(data, s.data);
+    return *this;
+};
+string& string::operator+=(const string&)
+{
+   
+}
+string& string::operator+=(const char* s)
+{
+   
+}
+int main() 
+{
+   
+  string s1 {""s};
+  string s2;
+  string s3;
+  string s4;
+  const char * c1 =  "Hello ";
+  const char * c2 = "world!";
+  s2 = s3 += s1;
+  cout << s2;
+  return 0;   
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i =  make_unique<int>(i1);
+  using namespace std::string_literals;
+  std::cout << *i;
+  return 0;
+};
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <limits>
+#include <memory>
+#include <optional>
+#include <tuple>
+#include <type_traits>
+#include <vector>
+#include <variant>
+int main() 
+{
+  int i = 10;
+  int x = i;
+  std::unique_ptr p = std::make_unique<int>(10);
+  std::cout << *p << std::endl;
+  int *pp = new int;
+  delete pp;
+  return 0;
+};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i =  make_unique<int>(i1);
+  using namespace std::string_literals;
+  std::cout << *i;
+  return 0;
+};
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <utility>
+#include <optional>
+#include <variant>
+#include <map>
+
+/* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+class A1 
+{
+  public:
+    A1(long nL, A1& oA1);
+};
+class A2: public virtual A1
+{
+  public:
+    A2(long nL, A1& oA1, A2& oA2);
+};
+class A3 : public virtual A2
+{
+  public:
+    A3(long nL, A1& oA1, A2& oA2, A3& oA3);
+};
+class A4 : public virtual A3
+{
+  public:
+    A4(long nL, A1& oA1, A2& oA2, A3& oA3, A4& oA4);
+};
+class A5 : public virtual A4
+{
+  public:
+    A4(long nL, A1& oA1, A2& oA2, A3& oA3, A4& oA4, A5& oA5);
+};
+class A6 : public A5
+{
+  friend ostream& operator<<(ostream& ostream, const A6& oA6);
+  public:
+    A6(long nL, A6* pA6): n(nL), p(pA6){};
+    A6* to_right() { return p; };
+    A6* to_left() { return p->to_left(); };
+  private:
+    long n;
+    A6* p;
+};
+A6::A6(long nL, A6* pA6): n(nL), p(pA6) 
+{
+  cout << "@@@@" << *this << "\n";
+};
+ostream& operator<<(ostream& ostream, const A6& oA6)
+{
+  ostream << "[<["
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i = std::make_unique<int>(i1);
+  std::cout << *i;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i = std::make_unique<int>(i1);
+  std::cout << *i;
+  return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+int main() 
+{
+  std::optional<int> oi1 {1};
+  std::optional<int> oi2 {2};
+  decltype(oi1) oi = oi1;
+   std::vector<std::optional<int>> voi{oi1,oi2};
+  std::cout << oi1 << std::endl;
+  std::cout << oi << std::endl;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main() 
+{
+   int i {1};
+   int *p = &i;
+   delete p;
+   return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <vector>
+#include <string_view>;
+#include <optional>
+#include <unordered_map>
+void print(std::string_view s)
+{
+  cout << s;
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<int> v{(argv + 1, argv + argc)};
+  std::unordered_map<int, std::string> m{1, "100"}; 
+  std::cout << m.operator[](10);
+  return 0;
+}
+ 
+#include <iostream>
+#include <chrono>
+#include <string>
+#include <vector>
+void f()
+{
+  std::cout << "test";
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<std::string> s{"test1", "test2", "test2"};
+  std::chrono::duration<int, std::milli> d{1000};
+  char *c {new char[1]};
+  {
+    delete[] c;
+  }
+  cout << s[argc] << d.count() << f << endl;
+  return 0;
+}
+ 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <optional>
+#include <variant>
+#include <chrono>
+void f()
+{
+  cout << "test";
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<std::string> s{"test", "test2"};
+  std::optional<std::vector<std::string>> v1 (s);
+  cout << v1.operator->() << v1->operator[](0) << std::chrono::duration(10
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+using namespace std;
+
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  int i3 {3};
+  auto i {std::make_unique<int>(i1)};
+  i=std::make_unique<int>(i2);
+  std::cout << *i << '\n';
+  i = std::move(i3);
+  std::cout << *i << '\n';
+  i = std::move(i2);
+  std::cout << *i << '\n';
+  return 0;
+}
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <new>
+#include <memory>
+#include <optional>
+#include <variant>
+using namespace std;
+int main() {
+  int i1 {1};
+  int i2 {2};
+  auto i {make_unique<int>()};
+  *i = i1;
+  auto ii2 {make_unique<int>(i1)};
+  cout << "i" <<  **i << endl;
+  return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+using namespace std;
+int main() 
+{
+   int i {1};
+   int *p = &i;
+   delete p;
+   return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main()
+{
+  std::cout << "Please choose your option"
+            << std::endl;
+   char option[32];
+   cin >> option;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main() 
+{
+   int i1 {1};
+   {
+      int i2 {2};
+      cout << "i1 == " << i1 << endl;
+      cout << "i2 == " << i2 << endl;
+   }   
+   cout << "i1 == " << i1 << endl;
+   return 0; 
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main() 
+{
+   int i = {1};
+   int j = i;
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << word.size() << endl;
+   return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main() 
+{
+   int sum{0};
+   for (int row{1}; row <= 5; ++row) {
+      for(int col{1}; col <= 5; ++ col) {
+         int multiplier{row};
+         for(int factor{1};factor <= col; ++factor)
+            multiplier = multiplier * factor;
+         sum += multiplier;
+      }
+   }
+   cout << sum;
+   return 0;
+}
+ 
+#include <filesystem>
+#include <iostream>
+using namespace std;
+namespace fs = std::filesystem;
+int main(int argc, char* argv[]) {
+   for(fs::directory_entry file : fs::directory_iterator("."))
+      cout << file << endl;
+   return 0;
+}
+ 
+#include <iostream>
+using namespace std;
+int main()
+{
+   namespace my_math = std;
+   cout << my_math::pow(2, 2);
+}
+ 
+#include <format>
+#include <span>
+#include <iostream>
+using namespace std;
+int main()
+{
+   int nums[] = { 1, 2, 3};
+   std::span<int> span (nums, 3);
+   cout << span << std::endl;
+}
+/* The C++20 standard also added:
+
+1. std::filesystem
+
+2. std::ranges::transform
+
+3. std::ranges::accumulate
+
+4. std::ranges::sort
+
+5.
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << word.size() << endl;
+   return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+   int i{1};
+   cout << i;
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+   int i{10};
+   int* p{&i};
+   *p += 200;
+   cout << i << endl;
+   return 0;
+}
+ 
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int* arr{ new int[5]{ 1, 2, 3, 4, 5 } };
+
+void printArr() {
+   for (int i{ 0 }; i < 5; ++i) {
+      cout << arr[i] << ", ";
+   }
+   cout << endl;   
+}
+
+void printEvenArr() {
+   int count{ 0 };
+   for (int i{ 0 }; i < 5; ++i) {
+      if (i % 2 == 0) {
+         cout << arr[i] << ", ";
+         count++;
+      }
+   }
+   cout << endl << "Number of values found: " << count << endl;
+}
+
+int main()
+{
+   printArr();
+   printEvenArr();
+
+   delete[] arr;
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{45};
+   unsigned int y{78};
+   cout << i << endl << y << endl;
+   i <<= 8;
+   y &= ~2;
+   cout << i << endl << y << endl;
+   string f{"This is the first iteration."}; 
+   cout << f << endl;
+    
+   cout << f << endl;
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << " " << word.size() << endl;
+   return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+
+ 
+ 
+int main() 
+{
+   int i{1};
+   cout << i << endl;
+
+    
+   if (42) {
+       cout << "The number " << 42 << endl;
+   }
+
+   string word{"Hello"};
+
+    
+   float f{13.0};
+
+   return 0;
+}
+ 
+ 
+/* #include <iostream>
+#include <utility>
+#include <vector>
+
+using namespace std;
+
+int main() {
+   vector<int> v{1, 2, 3, 4, 5};
+   auto x = std::next(v.begin(), 3);
+   for (auto i = x; i!= x + 4; i++)
+      cout << *i << endl;
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << " " << word.size() << endl;
+   return 0;
+}
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+int main() 
+{
+   int j[5]{5, 6, 7, 8}; 
+ 
+   for (const auto k : j)
+      std::cout << k << " ";
+   std::cout << std::endl;
+   string str{"Goodbye"};
+ 
+   for (auto const &ch : str)
+      std::cout << ch << " ";
+   std::cout << std::endl;
+   return 0;
+}
+ 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+struct Phone
+{
+  Phone() = default;
+  explicit Phone(int code) : code_{code} {}
+  int code() const 
+  {
+    return code_;
+  }
+private:
+  int code_{};
+};
+ostream &operator<<(ostream &os, const Phone &p)
+{
+   os << p.code();
+   return os;
+}
+int main()
+{
+  string input{};
+  getline(cin, input);
+  vector<int> numbers{};
+  string delimiter{};
+  istringstream is{input};
+  while (getline(is, delimiter, ','))
+  {
+    try
+    {
+      numbers.emplace_back(stoi(delimiter));
+    }
+    catch (...)
+    {
+    }
+  }
+  sort(numbers.begin(), numbers.end());
+  for (auto i = numbers.begin(); i!= numbers.end(); i++)
+    cout << *i << " ";
+  cout << endl;
+  unordered_map<int, vector<string>> phones{};
+  for (auto &pair : phones) {
+      cout << pair.first << " " <<
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << " " << word.size() << endl;
+   return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+
+int main()
+{
+  int i = 1;
+  std::string word{"Hello"};
+  std::cout << i <<'';
+  std::cout << word <<'' << word.substr(2,4) <<'' << word.size() << std::endl;
+}
+ 
+ 
+#include <stdio.h>
+#include <iostream>
+#include <sstream>
+#include <thread>
+#include <mutex>
+#include <chrono>
+#include <atomic>
+#include <memory>
+#include <array>
+#include <forward_list>
+
+void threadfunction(long secs)
+{
+    std::unique_lock<std::mutex> lock {stdcoutmutex};
+    std::cout << "Start thread "
+              << std::this_thread::get_id()
+              << '\n';
+
+    std::this_thread::sleep_for(std::chrono::seconds {secs});
+    lock.unlock();
+    std::cout << "End thread "
+              << std::this_thread::get_id()
+              << '\n';
+
+}
+
+void threadfunction_shared(long secs)
+{
+    for (int i{0}; i < 3; ++i) {
+        std::unique_lock<std::mutex> lock {stdcoutmutex};
+        std::cout << "Start thread "
+                << std::this_thread::get_id() << ": "
+                << "count is: " << count.load() << '\n';
+
+        std::this_thread::sleep_for(std::chrono::seconds {secs});
+        count++;
+        lock.unlock();
+        std::cout << "End thread "
+                << std::this_thread::get_id() << ": "
+                << "count is: " << count.load() << '\n';
+    }
+}
+
+template <typename T>
+void print_address(
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word.substr(2) << " " << word.capacity() << endl;
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string_view s{argv[2]};
+   }
+   return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string_view s{argv[2]};
+   }
+   return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+int main (int argc, char **argv)
+{
+   if (std::string(argv[1]) == std::string("something"))
+   {
+      std::string s{ argv[2] };
+   }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s.data(), s.size()};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#define string_view const char *
+int main(int argc, char const *argv[])
+{
+   if (0 == strcmp("something", argv[1]) || 0 == strcmp("not something", argv[1]))
+   {
+      string_view s{argv[2]};
+   }
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string s{argv[2]};
+   }
+   return 0;
+}
+ 
+ 
+It solves the memory reclaiming issue when using strings of unknown length.
+It makes it easier to work with strings with a certain length.
+It adds a std::string_view class to pass a reference to a string
+*/
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[]) 
+{
+   if (argv[1] == "something")
+   {
+      std::string s = argv[2]
+   }
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s.data(), s.size()};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s.data(), s.size()};
+      if (a.compare(0, 3, "some") == 0)
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+using namespace std;
+int main()
+{
+   ios::sync_with_stdio(0);
+   if (cin.rdbuf() == nullptr)
+   {
+      exit(EXIT_FAILURE);
+   }
+   cout << argv[1] <<'';
+   if (argv[2] == "someting")
+   {
+      string a{" "};
+      cin >> a;
+      cout << a;
+      if (a!= "someting")
+      {
+         abort();
+      }
+   }
+   else
+   {
+      exit(EXIT_SUCCESS);
+   }
+}
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+
+int main(int argc, char const *argv[])
+{
+   for (; argc > 1;)
+   {
+      argc--;
+      if (argv[argc] == "something")
+      {
+         argc--;
+         std::vector<char> a{};
+         for (char const *c = argv[argc]; *c!= '\0';)
+         {
+            a.push_back(*c++);
+         }
+         std::string f{};
+         for (char const &c : a)
+         {
+            f.push_back(c);
+         }
+         for (char const &c : f)
+         {
+            if (c == "s" && f == "some")
+            {
+               std::cout << "first" << '\n';
+               break;
+            }
+         }
+         std::cout << f << '\n';
+         break;
+      }
+   }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string s{argv[2]};
+      if (s == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+ 
+/*
+ * 
+ * 26.3.2.2. C++20 and beyond
+ * The C++ team has added multiple modules to the standard library. The modules (and their names) are listed here:
+ * * `std.algorithms`
+ * * `std.chrono`
+ * * `std.container.adaptor`
+ * * `std.container.associative`
+ * * `std.container.function`
+ * * `std.container.heap`
+ * * `std.container.lists`
+ * * `std.container.meta`
+ * * `std.container.multimap`
+ * * `std.container.multiset`
+ * * `std.container.rbtree`
+ * * `std.container.slist`
+ * * `std.container.small_vector`
+ * * `std.container.stack`
+ * * `std.container.
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      using svv = std::string_view;
+      if (s.substr(0, 8) == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      std::cout << "No someting" << std::endl;
+   }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 1;
+   }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string const a{argv[2]};
+      std::cout << static_cast<unsigned long long>(a.find("someting")!= std::string::npos) << std::endl;
+   }
+}
+ 
+
+ 
+
+ 
+/*
+
+- [[nodiscard]] (N4861)
+- std::atomic_ref (N4862)
+- std::jthread (P0336R4)
+- std::span (P0777R2)
+- Pattern Matching (P0946R0)
+- std::string_view (P1000R2)
+- Lambda improvements (P1011R1)
+- Attributes for namespaces (P0892R1)
+- std::filesystem (P1189R1)
+- std::format (P1656R1)
+- Ranges generalization (P0609R1)
+- std::size (P0457R1)
+- Ranges customization points (P1114R3)
+- std::source_location (P1084R
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+#include <span>
+#include <string>
+#include <string_view>
+template <typename T>
+std::string_view To_string_view(T t)
+{
+   return t;
+}
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      auto strp = To_string_view(argv[2]);
+      auto sp = argv[2] | std::views::all;
+   }
+   else
+   {
+      auto strp = To_string_view(argv[2]);
+      auto sp = std::string_view{argv[2]};
+      std::string_view s{argv[2]};
+      if (s == "someting")
+      {
+         return 1;
+      }
+   }
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The C++23 has added numerous features to the C++ language during various WG21 meetings as of Nov 2020, February 2021, summer and autumn of 2021, and February and July of 2022. Important features include: 
+
+1. Literal suffixes for std::size_t, a member function contains for std::basic_string, a stack trace library, and a type trait std::is_scoped_enum.
+
+2. Introduced improvements like repairing input range adaptors and counted_iterator, the std::visit for classes derived from std::variant, and Locks lock lockables.
+
+3. Addition of Consteval if, narrowing contextual conversions to bool, std::span-based string-stream, and introducing important updates and changes in the ranges library.
+
+4. Various added features such as allowing alias declarations in init-statement, decay copy in language: auto(x) or auto{x}, new pre-processors, and overloading dimensional subscript operator. Numerous changes in text formatting library.
+
+5. Innovations include std::expected, making std::unique_ptr constexpr, pipe support for user-defined range adaptors, and windowing range adaptors: views::chunk and views::slide.
+
+6. Different features and defect reports added, including the #warning preprocessor directive, allowing labels to appear at the end of compound statements, and Allowed operator operator() to be static.
+
+7. Allowed arrays of char and unsigned char to be initialized with UTF-8 string literals, provided the named modules std and std.compat for importing the standard library, made std::string::substr use move semantics, and added std::generator.
+
+8. Added features such as extended the lifetime of temporaries that appear in the for-range-initializer of a range-based for loop, Monadic functions for std::expected and deprecation of (all, not just bitwise) compound assignment to volatile variables.
+
+Garbage collection support from C++11 was removed and std::aligned_storage and std::aligned_union were deprecated. 
+
+These additions provide developers with more flexibility and efficiency in writing code for a variety of applications. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>
+int main()
+{
+   return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <iostream>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+   return 0;
+}
+ 
+#include<iostream>
+int main()
+{
+   std::cout << "Please tell me a little about yourself." <<
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+   std::cout << "Hello World!\n";
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main()
+{
+    
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+
+int main()
+{
+   return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <iostream>
+int main()
+{
+   return 0;
+}
+
+[VERBOSE] ========== sample =========

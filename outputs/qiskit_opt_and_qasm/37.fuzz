@@ -1,0 +1,30 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer
+backend_sim = Aer.get_backend("statevector_simulator")
+circ1 = QuantumCircuit(2)
+circ1.h(0)
+circ1.h(1)
+circ2 = QuantumCircuit(2)
+circ2.h(0)
+
+circuit_bell = create_circuit_bell()
+print(circuit_bell["counts"])
+
+result = circ1.combine(circ2, circ1).combine(circuit_bell["circuit_obj"]).combine(circ2).combine(circ1).run(backend_sim).result()
+counts_dict_multi_circ = result.get_counts()
+print(counts_dict_multi_circ)
+assert counts_dict_multi_circ['000011'] > 0 and counts_dict_multi_circ['011001'] > 0
+def qft_dagger(circ, n):
+    
+    for qubit in range(n//2):
+        circ.swap(qubit, n-qubit-1)
+    for j in range(n):
+        for m in range(j):
+            circ.cp(-math.pi/float(2**(j-m)), m, j)
+        circ.h(j)
+
+def qpe_simple(circ, n, a, N):
+    
+    
+    for q in range(n):

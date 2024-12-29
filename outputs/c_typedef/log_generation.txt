@@ -1,0 +1,3593 @@
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+
+typedef struct Node {
+        char *word;
+        size_t lenght;
+        struct Node *next;
+} node;
+
+typedef struct {
+        node *head;
+        node *tail;
+} list;
+
+
+#endif  
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+;
+#include <stdio.h>
+#define PRINT_INT char *int_to_str(int i) { char *str = (char *)malloc((i+1)*sizeof(char)); itoa(i,str,10); return str;}
+typedef void (*PF)(void);
+
+typedef void *Handle;
+typedef void *Pointer;
+typedef int size_t;
+ 
+ 
+ 
+typedef struct {
+    unsigned len;
+    double *elements;
+} Vector;
+void destroyVector(Vector v){
+    if(v.elements!=NULL)
+        free(v.elements);
+}
+#define TEST_PRINT_INT int i = 1; printf("%s\n", int_to_str(i));
+int main() {
+    PRINT_INT;
+    TEST_PRINT_INT;
+    Vector *v;
+     
+    size_t lenV;
+    size_t lenVV;
+    double *elemV;
+    double *elemVV;
+    v = (Vector *)malloc(sizeof(Vector));
+    lenV = 4;
+     
+    lenVV = lenV + lenV;
+     
+    elemV = (double *)malloc(lenV * sizeof(double));
+     
+    elemVV = (double *)malloc((lenVV + lenVV - 1) * sizeof(double));
+    destroyVector(*v);
+    free(elemVV);
+    free(elemV);
+    free(v);
+    free(v->elements);
+    free(v);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include"stdio.h"
+
+typedef struct node{
+    char word[100];
+    long int line_number;
+    int column_number;
+    struct node* next;
+} Node; 
+
+typedef struct list {
+    struct node* start;
+    struct node* tail;
+} List;
+
+int main(void){
+    printf("--test0\n");    
+    Node* head= malloc(sizeof(Node*));
+    if(head==NULL){
+        exit(EXIT_FAILURE);
+    }
+    printf("--test2\n");
+    head->line_number=100;
+    printf("--test3\n");
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+int main(void)
+{
+    typedef unsigned int ui;
+    typedef ui number;
+    number n = 1;
+    return EXIT_SUCCESS;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+#include <stdio.h>
+
+typedef struct {
+        int age;
+         
+        char *name;                  
+} Student;
+
+
+ 
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+        int age;
+        char *name;                  
+} Student;
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+        int age;
+        char *name;                  
+} Student;
+
+int main()
+{
+        struct Student *student;
+        student = malloc(sizeof(Student));
+        if(student == NULL)
+                return 0;
+        struct Student *student1;
+        student1 = malloc(sizeof(Student));
+        if(student1 == NULL)
+                return 0;
+        struct Student *student2;
+        student2 = malloc(sizeof(Student));
+        if(student2== NULL)
+                return 0;
+        free(student);
+        free(student1);
+        free(student2);
+        if(student!= NULL)
+                return 0;
+        if(student1!= NULL)
+                return 0;
+        if(student2!= NULL)
+                return 0;
+        printf("All memory freed successfully!!!\n");
+        exit(0);
+}
+```
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+  int age;
+  char *name;
+} Student;
+
+ 
+int main() {
+    Student st;
+    st.age = 32;
+    st.name = "Albert";
+    printf("Age: %d\n", st.age);
+    printf("Name: %s\n", st.name);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+        int age;
+        char *name;                  
+} Student;
+
+int main()
+{
+  Student *student;              
+  Student person;                
+  student = &person;             
+  return 0;                     
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+typedef int int_t;
+typedef struct {
+        int age;
+        char *name;                  
+} Student;
+
+int main(void) {
+    int_t i;      
+    Student S;   
+
+    return EXIT_SUCCESS;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+
+typedef int int_t;
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+int_t f(int_t arg1, int_t arg2)
+{
+    return arg1 + arg2;
+}
+int main(void)
+{
+    int_t i;
+    int_t count = 0;
+    char c;
+    i = 20;
+    while( (c = getchar())!= '\n' ) {
+        ++count;
+    }
+   printf("Count = %d \n", count);
+   return EXIT_SUCCESS;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main(){
+    int_t a=5,b=0,c=7;
+    b=a+c;
+     
+    typedef int int_t;
+     
+    int get_int(void)
+}
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+typedef double double_t;
+int main(){
+  int_t x=2;
+  printf("x is now equal to %d\n", x);
+
+  double_t y=2.0;
+  printf("y is now equal to %f\n", y);
+
+  double_t z;
+  z=x+y;
+  printf("x+y is equal to %f\n", z);
+  return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+int main() { 
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+printf("The sum of %d and %d is %d.", n1, n2, sum);
+return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+int_t main() {
+    int x = 10;
+    int_t value = 10;
+    printf("x: %d, value: %d\n", x, value);
+    exit (EXIT_SUCCESS);
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+int main() { 
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+printf("The sum of %d and %d is %d.", n1, n2, sum);
+return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int int_t, sum;
+int main() { 
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+printf("The sum of %d and %d is %d.", n1, n2, sum);
+return 0;
+}
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct {
+int n1, n2; sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+printf("The sum of %d and %d is %d.", n1, n2, sum);
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t, *int_p_t;
+int main() { 
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+printf("The sum of %d and %d is %d.", n1, n2, sum);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+ 
+typedef int int_t;
+
+ 
+ 
+
+int main() {
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+
+ 
+if (sum == 33)
+    printf("A");
+else
+    printf("N");
+return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+const int_t maxsize = 100;
+typedef char* string_t;
+typedef struct {
+char name[maxsize];
+int_t id;
+} Student_t;
+int_t main() { 
+string_t p = (string_t) malloc(50 * sizeof(string_t));
+string_t f = realloc(p, 100 * sizeof(string_t));
+struct Student_t* s1, * s2, s;
+s2 = (struct Student_t*)malloc(sizeof(struct Student_t));
+printf("Enter the information of the Person 1.\n");
+printf("Enter the name : ");
+scanf("%s", s1->name);
+printf("Enter the ID : ");
+scanf("%d", &s1->id);
+printf("Enter the information of the Person 2.\n");
+printf("Enter the name : ");
+scanf("%s", &s1->name);
+printf("Enter the ID : ");
+scanf("%d", &s1->id);
+s1->id = s1->id + s2->id;
+printf("The sum of the ID %d and %d is %d", s1->id, s2->id, s->id);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+int compare(int, int);
+ 
+int num1;
+ 
+int sum(int, int);
+int main() {
+    printf("Enter two number: ");
+    scanf("%d", &num1);
+    int num2;
+     
+    scanf("%d", &num2);
+     
+    struct {
+        int n1;
+        int n2;
+    } num;
+     
+    char str[50];
+    num.n1 = num1;
+    num.n2 = num2;
+    scanf("%s", str);
+    printf("The sum of %d and %d is %d.", num.n1, num.n2, sum(num.n1,num.n2));
+    return 0;
+}
+ 
+int sum(int n1, int n2) {
+    int sum = n1 + n2;
+    return sum;
+}
+ 
+int compare(int, int);
+ 
+double absolute(double num) {
+    return (num >= 0)? num: -num;
+}
+ 
+extern int int_val(void);
+int int_val() {
+    int num;
+    scanf("%d", &num);
+    return num;
+}
+
+ 
+int intsum(int a, int b) {
+    int value = a + b;
+    return value;
+}
+ 
+extern int int_val(void);
+int int_val() {
+    int var;
+    scanf("%d", &var);
+    return var;
+}
+ 
+int num;
+ 
+extern void print_value(void);
+ 
+struct { char c1, c2; } charpair;
+ 
+char* chptr;
+ 
+int var = 100;
+ 
+int sum(int, int);
+ 
+typedef unsigned char byte_t;
+byte_t arr[50]="Hello, World!";
+char* name = arr;
+ 
+struct {
+    int n01;
+    int n02;
+} num;
+ 
+struct {
+    char c1, c2, c3, c4;
+} string;
+/* The structure of a structure is often called a "nested" or "compound" structure. Structures in C also contain tag names, which are used to create a namespace for each structure. Such tag names, together with the typedef qualifier, can act as a form of naming convention to simplify struct naming. Please make
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main() { 
+char *p;
+p = (char *) malloc(20);
+strcpy(p,'H');
+strcpy(p +1,, 'I');
+printf("%s", p);
+free(p);
+return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main() { 
+char p1[]="hello";
+char *p2; 
+char p3[20] = "hello";
+printf("%s World\n", p1);
+printf("%s World\n", p3);
+ 
+return 0; 
+}
+ 
+#include <stdio.h>
+int main() { 
+int i;
+char text[] = {'H','e','l','l','o','W'};
+char texts[] = "Hello World";
+for(i = 0; i < 11; i++) printf("%c", text[i]);
+printf("\n");
+for(i = 0; i < 11; i++) printf("%c", texts[i]);
+printf("\n");
+return 0; 
+}
+ 
+#include <stdio.h>
+int main() { 
+int i; 
+char text1[] = "Hello World"; 
+for(i = 0; i < 11; i++) printf("%c", text1[i]);
+printf("\n");
+return 0; 
+}
+  
+#include <stdio.h>
+#include <string.h>
+int main() { 
+char text[] = "hello, world";
+int counter = 13; 
+while(counter--) printf("%c", text[counter]);
+printf("\0");
+return 0; 
+}
+  
+#include <stdio.h>
+#include <string.h>
+int main() { 
+char text[] = "Hello World";
+char *p, *q; 
+ p = text;
+ q = text;
+printf("%s %s", p, q);
+return 0; 
+}
+ 
+#include <stdio.h>
+typedef unsigned int ui;
+int main() {
+ui i;
+ui array[100]; 
+for(i = 0; i < 100; i++) 
+ array[i] = i * 2;
+printf("%d\
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef int int_t;
+int main() {
+int n1, n2, sum;
+printf("Enter two numbers : ");
+scanf("%d%d", &n1, &n2);
+sum = n1 + n2;
+if (sum == 33)
+    printf("A");
+else
+    printf("N");
+return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int int_t, *ptr_t, arr_t[3]; 
+int main() {
+ptr_t p1, p2, p3;
+arr_t a1, a2, a3;
+p1 = &a1;
+p2 = &a2;
+p3 = &a3;
+*p1 = 12;
+*(p1 + 1) = 10;
+p2[0] = 11;
+p3 = p2 + 1;
+a1[0] = 12;
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define MAX 10
+typedef int int_t;
+int main() {
+int n1, sum[MAX];
+printf("Enter 10 numbers : ");
+for (int_t i = 0; i < MAX; ++i)
+    scanf("%d", &sum[i]);
+sum[MAX - 1] = (sum[0] + sum[1] + sum[2] + sum[3] + sum[4] + sum[5] + sum[6] + sum[7] + sum[8] + sum[9]) / 10;
+int n, temp;
+n = MIN(MAX, 10);
+printf("Smallest 10 integers : \n");
+for (int i = 0; i < n; ++i)
+    printf("%d ", sum[i]);
+printf("\n");
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+int roll;
+int marks;
+}Marks;
+ 
+marks *create(int, int);
+int main() {
+Marks *m;
+m = create(3, 44);
+printf("Roll = %d, Marks = %d\n", m->roll, m->marks);
+return 0;
+}
+
+int marks = 0;
+marks *create(int r, int k) {
+marks *p;
+p = (marks *)malloc(sizeof(marks));
+if (p!= NULL) {
+    p->roll = r;
+    p->marks = k;
+}
+return p;
+}
+
+ 
+typedef int Integer;
+typedef struct {
+char first[10];
+char last[10];
+int age;
+}Student;
+
+int main() {
+Student* p=0;
+p= (Student*) malloc(sizeof(*p));
+p->age = 18;
+puts("Enter your information");
+fgets(p->first, 10, stdin);
+fgets(p->last, 10, stdin);
+printf("Hello %s %s! You are %d years old.",
+p->first, p->last, p->age);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdint.h>
+int main() {
+uint32_t n1, n2, sum;
+n1 = 5;
+n2 = 5;
+sum = n1 + n2;
+printf("%d + %d = %u\n", n1, n2, sum);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef Date_t Date_t;
+struct 
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+ 
+
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+int int_input(const char *msg);
+int str_input(const char *msg);
+int main()
+{
+int option;
+printf("Enter your name: ");
+char name[20];
+str_input(name);
+printf("Welcome %s\n", name);
+while (1)
+{
+printf("Chose an option:\n1) Date of birth\n2) Fullname\n");
+option = int_input("Choose a option[1 or 2]");
+switch (option)
+{
+case 1:
+return 0;
+case 2:
+return 0;
+default:
+printf("Invalid selection.\n");
+}
+}
+}
+int int_input(const char *msg)
+{
+int input = -1;
+printf("%s", msg);
+while (input < 1 || input > 2)
+{
+scanf(" %d", &input);
+while (getchar()!= '\n')
+;
+if (input < 1 || input > 2)
+printf("Invalid selection. Enter 1 or 2.\n");
+}
+return input;
+}
+int str_input(const char *msg)
+{
+char input[100];
+printf("%s", msg);
+scanf("%s", input);
+while (getchar()!= '\n')
+;
+return 0;
+}
+ 
+ 
+#include <stdbool.h>
+void clear_screen()
+{
+system("clear");
+printf("Function called: CLEAR_SCREEN\n");
+}
+void menu()
+{
+printf("1) Clear screen\n2) Main menu\n");
+}
+void print_message()
+{
+ 
+}
+int main()
+{
+while (true)
+{
+printf("Press the first key to call the menu\n");
+if (getchar() == '1')
+{
+clear_screen();
+}
+else
+{
+printf("Press the second key to call the print message\n");
+while (getchar()!= '\n')
+;
+if (getchar() == '1')
+clear_screen();
+}
+menu();
+}
+return 0;
+}
+ 
+ 
+/* The main objective
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+ 
+#include <time.h>
+#include <stdio.h>
+int main ()
+{
+ 
+time_t ltime;
+struct tm *today;
+ 
+time (&ltime);
+ 
+today = localtime (&ltime);
+printf("Current time : %d:%02d:%02d\tDate : %02d/%02d/%d",
+today->tm_hour, today->tm_min, today->tm_sec, today->tm_mday, today->tm_mon + 1, 1900 + today->tm_year);
+ 
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+int month;
+printf("Enter Month : ");
+scanf("%d", &month);
+switch(month)
+{
+case 1:
+case 3:
+case 5:
+case 7:
+case 8:
+case 10:
+case 12:
+printf("Jan Feb Mar Apr May Jun Jul Aug Sep Oct & Dec :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 2:
+printf("Feb :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 4:
+printf("Apr :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 6:
+printf("Jun :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 9:
+printf("Sep :\n\tDay No : Abbreviation\n01 Mon\n02 Tue\n03 Wed\n04  Thu\n05 Fri\n06 Sat\n07 Sun\n");
+break;
+case 11:
+printf
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Date
+{
+int day;
+int month;
+int year;
+};
+int main()
+{
+struct Date date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day,date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+	printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+date.day = 10;
+date.month = 1;
+date.year = 1985;
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Location_t
+{
+float x_coord;
+float y_coord;
+float z_coord;
+} Location_t;
+int main()
+{
+Location_t location;
+location.x_coord = 1.0f, location.y_coord = 2.0, location.z_coord = 3.0f;
+printf("location is %f %f %f\n", location.x_coord, location.y_coord, location.z_coord);
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Location_t
+{
+float x_coord;
+float y_coord;
+float z_coord;
+} Location_t;
+int main()
+{
+Location_t location = {1.0f, 2.0f, 3.0f};
+printf("location is %f %f %f\n", location.x_coord, location.y_coord, location.z_coord);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+ 
+struct Date_t
+{
+ 
+int day;
+int month;
+int year;
+};
+ 
+int main()
+{
+ 
+struct Date_t;
+ 
+struct Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Date_t
+{
+int day;
+int month;
+int year;
+};
+typedef struct Date_t
+{
+int day;
+int month;
+int year;
+};
+int main()
+{
+struct Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>   
+struct Date_t {
+int day;
+int month;
+int year;
+};
+int main()
+{
+struct Date_t date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+	printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+	return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+ 
+Date_t* getCurrentDate()
+{
+	Date_t* date = (Date_t*)malloc(sizeof(Date_t));
+	date->day = 0;
+	date->month = 1;
+	date->year = 2018;
+	return date;
+}
+int main()
+{
+	Date_t* date = getCurrentDate();
+	printf("Date is %d/%d/%d\n", date->month, date->day, date->year);
+	free(date);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d.%d.%d", &date.month, &date.day, &date.year);
+	printf("Date is %d.%d.%d\n", date.month, date.day, date.year);
+	return 0;
+}
+ 
+ 
+#define PI 3.14
+#define RADIUS 2
+double diameter, square_root, area;
+int main( void )
+{
+diameter = 2 * RADIUS;
+area = PI * (pow(RADIUS, 2.0));
+printf("The diameter of circle is %f\n", diameter);
+printf("The area of circle is %f", area);
+return ( 0 );
+}
+ 
+#include <stdio.h>
+#include <math.h>
+#define PI 3.1416
+#define RADIUS 2
+#define Get_Diameter(RADIUS) (2 * RADIUS)
+double Circle_Area(double RADIUS);
+inline double Circle_Area(double RADIUS)
+{
+    double area;
+    area = PI * (pow(RADIUS, 2.0));
+    return area;
+}
+int main(void)
+{
+    double diameter;
+    diameter = Get_Diameter(RADIUS);
+    printf("The diameter of circle is %f\n ", diameter);
+    printf("The area of circle is %f", Circle_Area(RADIUS));
+    return 0;
+}
+/* The union keyword in C language defines a
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Date_t
+{
+	int day;
+	int month;
+	int year;
+};
+int main(void)
+{
+	struct Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+	printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.day, &date.month, &date.year);
+	printf("Date is %d/%d/%d\n", date.day, date.month, date.year);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date
+{
+	int day;
+	int month;
+	int year;
+}Date;
+void getDate(Date *date)
+{
+	printf("Date {day(%d), month(%d), year(%d)}\n", date->day, date->month, date->year);
+}
+int main()
+{
+	Date date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+	printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+	return 0;
+}
+ 
+#include <stdlib.h>
+typedef int integer;
+extern integer global;
+int main()
+{
+	printf("Variable global is %d\n", global);
+	return 0;
+}
+
+#include <stdlib.h>
+typedef int integer;
+integer global;
+int main()
+{
+	printf("Variable global is %d\n", global);
+	return 0;
+}
+	 
+
+	 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.day, &date.month, &date.year);
+	printf("Date is %d/%d/%d\n", date.day, date.month, date.year);
+	return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct Date
+{
+	int day;
+	int month;
+	int year;
+};
+int main()
+{
+	struct Date date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.day, &date.month, &date.year);
+	printf("date.day:%d,date.month:%d,date.year:%d\n", date.day, date.month, date.year);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define A_SIZE 12
+#define B_SIZE A_SIZE * 3
+typedef unsigned char ARRAY_t[B_SIZE];
+int main() {
+	ARRAY_t a;
+	
+	a[0] = 'A';
+	return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main()
+{
+	enum { ZERO, ONE, TWO };
+	
+	printf("%d", ZERO);
+	return 0;
+}
+ 
+ 
+ 
+#include <stdio.h>
+#include <errno.h>
+struct Bitfield
+{
+	short :1;
+	short int :7;
+}bf;
+int main(void)
+{
+	printf("Bitfield is at %p\n",(void*)&bf);
+	printf("Bitfield size is %ld bytes\n",sizeof(struct Bitfield));
+	return 0;
+}
+/* There are a few limitations associated with bit fields. In particular, multiple bit fields can't be used in a single storage object, which is a rule of the C language. In fact, a storage object can contain only one bit
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.day, &date.month, &date.year);
+	printf("Date is %d/%d/%d\n", date.day, date.month, date.year);
+	return 0;
+}	
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int sum(int a, int b)
+{
+	int c, d;
+	c = a + b;
+	d = a - b;
+	return c, d;
+}
+int main()
+{
+	int r1, r2;
+	r1 = sum(5, 6);
+	r2 = sum(8, 9);
+	printf("r1=%d r2=%d\n", r1, r2);
+	getchar();getchar();
+	return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int sum(int a, int b)
+{
+	int c, d;
+	c = a + b;
+	d = a - b;
+	return c, d;
+}
+int main()
+{
+	int r1, r2;
+	r1 = sum(5, 6);
+	r2 = sum(8, 9);
+	printf("r1=%d r2=%d\n", r1, r2);
+	getchar();getchar();
+	return 0;
+}	
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Date
+{
+	int day;
+	int month;
+	int year;
+}Date_t;
+int main()
+{
+	Date_t date;
+	printf("Enter Date : ");
+	scanf("%d/%d/%d", &date.day, &date.month, &date.year);
+	printf("Date is %d/%d/%d\n", date.day, date.month, date.year);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+	Point_t max_point;
+	max_point.x = max(p->x, 5);
+	max_point.y = max(p->y, 5);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+	free(p);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+	Point_t max_point;
+	max_point.x = max(p->x, 5);
+	max_point.y = max(p->y, 5);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+	free(p);
+	return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point;
+typedef struct Point2
+{
+	int x;
+	int y;
+}Point;
+int main()
+{
+	Point* p = (Point*)malloc(sizeof(Point));
+	p->x = 4;
+	p->y = 4;
+	Point2 min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+	Point2 max_point;
+	max_point.x = max(p->x, 5);
+	max_point.y = max(p->y, 5);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point Point;
+struct Point
+{
+	int x;
+	int y;
+}Point;
+Point* p = (Point*)malloc(sizeof(Point));
+p->x = 4;
+p->y = 4;
+POINT min_point;
+min_point.x = min(p->x, 3);
+min_point.y = min(p->y, 3);
+printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+Point max_point;
+max_point.x = max(p->x, 5);
+max_point.y = max(p->y, 5);
+printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+free(p);
+return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+
+#define Point Point_t
+
+int main()
+{
+	Point* p = (Point*)malloc(sizeof Point);
+	p->x = 4;
+	p->y = 4;
+	Point min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+	Point max_point;
+	max_point.x = max(p->x, 5);
+	max_point.y = max(p->y, 5);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	else
+	{
+		max(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	free(p);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int max(int p1, int p2)
+{
+	return (p1 > p2)? p1 : p2;
+}
+Point_t min_point(Point_t p1)
+{
+	Point_t t;
+	t.x = min(p1.x, 3);
+	t.y = min(p1.y, 3);
+	return t;
+}
+Point_t max_point(Point_t p1)
+{
+	Point_t t;
+	t.x = max(p1.x, 5);
+	t.y = max(p1.y, 5);
+	return t;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point_in_struct = min_point(*p);
+	Point_t max_point_in_struct = max_point(*p);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point_in_struct.x, min_point_in_struct.y);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point_in_struct.x, max_point_in_struct.y);
+	free(p);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	else
+	{
+		max(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	free(p);
+	return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	FreePoint(p);
+	FreePoint(min_point);
+	FreePoint(max_point);
+	return 0;
+}
+
+ 
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		*(Point_t*)p = max_point;
+	}
+	else
+	{
+		max(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x) : (y))
+#define min(x,y)  (((x) < (y))? (x) : (y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	 
+	Point_t* point = (Point_t*)malloc(sizeof(Point_t));
+	point->x = 4;
+	point->y = 4;
+	Point_t min_point;
+	min_point.x = min(point->x, 3);
+	min_point.y = min(point->y, 3);
+	Point_t point_temp = min_point;
+	*(Point_t*)point = point_temp;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	 
+	if (greater(point->x, point->y))
+	{
+		max_point.x = point->x;
+		max_point.y = point->y;
+	}
+	else
+	{
+		max(point->x, point->y);
+		max_point.x = point->x;
+		max_point.y = point->y;
+	}
+	free(point);
+	return 0;
+}
+ 
+/* Please list down some examples of the usage of the new C features such as typedefs
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y)), (((x) < (y))? (x):(y))
+#define min(x,y)  (((x) > (y))? (x):(y)), (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	double x;	 
+	double y;	 
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));	 
+	p->x = 4.0;
+	p->y = 4.0;	 
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;	 
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		max_point.x = p->x;
+		max_point.y = p->y;	 
+	}
+	else
+	{
+		max(p->x, p->y);	 
+		max_point.x = p->x;	 
+		max_point.y = p->y;	 
+	}
+	free(p);	 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef long long int large_int_t;
+typedef void* (*FunctionPtr)(large_int_t);
+large_int_t greater_than(large_int_t a, large_int_t b)
+{
+	return a > b? a : b;
+}
+large_int_t main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y) > p->x)
+	{
+		max_point.x = p->x;
+		max_point.x = p->y;
+	}
+	free(p);
+
+
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		*(Point_t*)p = max_point;
+	}
+	else
+	{
+		max(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	free(p);
+	return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point = *p;
+	min_point.x = 3;
+	min_point.y = 3;
+	*p = min_point;
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define max(x,y)  (((x) > (y))? (x):(y))
+#define min(x,y)  (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	Point_t max_point;
+	if(greater(p->x, p->y))
+	{
+		*(Point_t*)p = max_point;
+	}
+	else
+	{
+		max(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+	}
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include<stdio.h>
+typedef int* Num;
+enum {
+	FALSE = 0,
+	TRUE = 1,
+};
+int main()
+{
+	Num n = (Num)NULL;
+	n = (Num)10;
+	Num num = (Num)TRUE;
+	int t = TRUE;
+	t = FALSE;
+	if(num)
+	{
+		n = (Num)_FALSE;
+	}
+	n = 3 %2 == 0;
+	return (int)*n;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_t;
+int main()
+{
+	Tag_t tag;
+	tag.x = 1;
+	tag.y = 2;
+	tag.str = (char*)malloc(sizeof(char)*5);
+	tag.str[0] = 'a';
+	tag.str[1] = 'b';
+	tag.str[2] = 'c';
+	tag.str[3] = '\0';
+	printf("str is %s\n", tag.str);
+	free(tag.str);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+typedef int (*FunctionPtr)(int, int);
+void print_point(Point_t* p)
+{
+	printf("(%d, %d)\n", p->x, p->y);
+}
+int greater_than(int a, int b)
+{
+	return a > b;
+}
+int less_than(int a, int b)
+{
+	return a < b;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point;
+	min_point.x = min(p->x, 3);
+	min_point.y = min(p->y, 3);
+	*(Point_t*)p = min_point;
+	FunctionPtr greater = greater_than;
+	FunctionPtr less = less_than_than;
+	if(greater(p->x, p->y))
+	{
+		print_point(p);
+	}
+	else
+	{
+		less(p->x, p->y);
+		max_point.x = p->x;
+		max_point.y = p->y;
+		print_point(&max_point);
+	}
+	free(p);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_t;
+int main()
+{
+	Tag_t tag;
+	tag.x = 1;
+	tag.y = 2;
+	tag.str = (char*)malloc(sizeof(char)*5);
+	tag.str[0] = 'a';
+	tag.str[1] = 'b';
+	tag.str[2] = 'c';
+	tag.str[3] = '\0';
+	printf("str is %s\n", tag.str);
+	free(tag.str);
+	return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+} Tag_t;
+int main()
+{
+	Tag_t* tag;
+	tag = (Tag_t*)malloc(sizeof(Tag_t));
+	tag->x = 1;
+	tag->y = 2;
+	tag->str = (char*)malloc(sizeof(char)*5);
+	tag->str[0] = 'a';
+	tag->str[1] = 'b';
+	tag->str[2] = 'c';
+	tag->str[3] = '\0';
+	printf("str is %s\n", tag->str);
+	free(tag->str);
+	free(tag);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int member1;
+	int member2;
+}Tag_t;
+int main()
+{
+	Tag_t tag;
+	tag.member1 = 1;
+	tag.member2 = 2;
+	printf("member1 is %d\n", tag.member1);
+	printf("member2 is %d\n", tag.member2);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+int main()
+{
+	typedef struct Tag *TagPtr;
+	TagPtr tag_ptr;
+	tag_ptr = (TagPtr)(malloc(sizeof(struct Tag)));
+	 
+	 
+	 
+	free(tag_ptr);
+	return 0;
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+#include <stdio.h>
+int sum(float* arf, char* ac, int n);  
+float mult(int a1, long a2);  
+void sort(int* ar, int n);  
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+
+typedef int Int_t;
+typedef Int_t my_int_t;
+Int_t get_int_t();
+my_int_t another_int_t_variable = get_int_t();
+
+Int_t get_int_t()
+{
+	return 5;
+}
+int main()
+{
+	printf("another_int_t_variable  is %d\n", another_int_t_variable);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_t;
+int main()
+{
+	 
+	Tag_t *list = (Tag_t *)malloc(sizeof(Tag_t));
+	list[0].x = 1;
+	list[0].y = 2;
+	list[0].str = (char *)malloc(sizeof(list[0].str));
+	list[0].str[0] = 'a';
+	list[0].str[1] = 'b';
+	list[0].str[2] = 'c';
+	list[0].str[3] = '\0';
+	printf("str is %s\n", list[0].str);
+	free(list[0].str);
+	free(list);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_t;
+int main()
+{
+	Tag_t *list = (Tag_t *)malloc(sizeof(Tag_t));
+	list[0].x = 1;
+	list[0].y = 2;
+	list[0].str = (char *)malloc(sizeof(list[0].str));
+	list[0].str[0] = 'a';
+	list[0].str[1] = 'b';
+	list[0].str[2] = 'c';
+	list[0].str[3] = '\0';
+	printf("str is %s\n", list[0].str);
+	free(list[0].str);
+	free(list);
+	return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag_1_Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_1_Tag_t;
+int main()
+{
+	Tag_1_Tag_t *list = (Tag_1_Tag_t *)malloc(sizeof(Tag_1_Tag_t));
+	list[0].x = 1;
+	list[0].y = 2;
+	list[0].str = (char *)malloc(sizeof(list[0].str));
+	list[0].str[0] = 'a';
+	list[0].str[1] = 'b';
+	list[0].str[2] = 'c';
+	list[0].str[3] = '\0';
+	printf("str is %s\n", list[0].str);
+	free(list[0].str);
+	free(list);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef double (*Func_t)(const char*, double);
+Func_t Calc(Func_t func, const char* str)
+{
+	return func(str, 3.1415926);
+}
+double Double_mul(const char* str1, double num1)
+{
+	double value;
+	printf("Enter double value : ");
+	scanf("%lf", &value);
+	printf("%lf %s %lf \n", value, str1, num1);
+	return value * num1;
+}
+double Multiply(const char* str2, double num2)
+{
+	return num2 * str2[0];
+}
+int main()
+{
+	Func_t mul = Double_mul;
+	printf("%f\n", Calc(mul, "multiply"));
+	Func_t mul2 = Multiply;
+	printf("%f\n", Mul(mul2, "multiply"));
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int x;
+	int y;
+	char* str;
+} Tag_t;
+int main()
+{
+	Tag_t* list = (Tag_t*)malloc(sizeof(*list));
+	list->x = 1;
+	list->y = 2;
+	list->str = (char*)malloc(sizeof(*list->str));
+	list->str[0] = 'a';
+	list->str[1] = 'b';
+	list->str[2] = 'c';
+	list->str[3] = '\0';
+	printf("str is %s\n", list->str);
+	free(list->str);
+	free(list);
+	return 0;
+}
+ 
+ 
+#include <stdio.h>
+#define SIZE 100
+int main()
+{
+	char * str = (char *)malloc(SIZE * sizeof(char));
+	scanf("%s", str);
+	int counter = 0; 
+	while (str[counter]!= 0) counter++;
+	printf("the string lenght is:%d\n", counter);
+	free(str);
+	return 0;
+}
+/* In this project, we will see how to include C header files.
+
+First, create a header file that includes <stdio.h>
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef char charr[3];
+typedef char* str2;
+int main()
+{
+	charr a = {'b','c','d'};
+	str2 b = "abc";
+	return 0;
+}
+#include <stdio.h>
+typedef unsigned int WORD;
+typedef unsigned short unsigned SHORT;
+typedef unsigned long DWORD;
+typedef struct _test
+{
+	WORD i;
+	SHORT s;
+	DWORD d;
+}Test_t;
+#define SELF_TEST
+#ifdef SELF_TEST
+#include <stdio.h>
+int main()
+{
+	Test_t t1;
+	t1.i = 0x4523;
+	t1.s = 0x23;
+	t1.d = 0x012398;
+	printf("t1.s=%d\nt1.i=%u\nt1.d=%lu\n",t1.s,t1.i,t1.d);
+	return 0;
+}
+#endif
+
+ 
+#include <stdio.h>
+#define MAX 20
+void sum(int a[], int n);
+int main(){
+	int n, i, sumarry[MAX];
+	int sum = 0;
+	printf("Enter number of elements in aray :");
+	scanf("%d", &n);
+	printf("Enter %d elements in aray :", n);
+	for (i=0;i<n;i++){
+		scanf("%d", &n);
+		sumarry[i] = n;
+		sum += sumarry[i];
+	}
+	sum(sumarry,n);
+	return 0;
+}
+
+void sum(int a[],  int n){
+	int i;
+	int sum = 0;
+	for(i=0;i<n;i++){
+		printf("sumarry[%d]=%d\n", i, a[i]);
+		sum += a[i];
+	}
+
+	printf("The sum is %d\n", sum);
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef double x;
+typedef double long y;
+typedef double long double z;
+int main(){
+	printf("%lu-%lu-%lu\n", sizeof(x),sizeof(y),sizeof(z));
+	 
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef const unsigned int num;
+typedef const char* cstr;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i, j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red, green, blue;
+} rgb;
+typedef struct color *rgb_ref;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i, j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red, green, blue;
+} rgb;
+typedef struct color *rgb_ref;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i, j;
+} complex;
+typedef struct
+{
+	complex num;
+} complex_num;
+typedef struct color
+{
+	float red, green, blue;
+} rgb;
+typedef struct color *rgb_ref;
+int main()
+{
+	num a = 1;
+	cstr b = "abc";
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+enum num 
+{
+	i,
+	j
+};
+enum color;
+enum color { red,green,blue };
+int main()
+{
+	enum num a;
+	return 0;
+}
+ 
+typedef complex num;
+typedef enum num2
+{
+	a, b
+} enum2;
+complex test(enum2 c)
+{
+	switch (c)
+	{
+	case (a):
+		return a;
+	default:
+		return b;
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+const int i = 1;
+const char* j = "abc";
+struct complex{
+	const int i, j;
+};
+struct complex_num{
+	int i, j;
+};
+struct color{
+	float red, green, blue;
+};
+struct color* c = NULL;
+ 
+#include <stdio.h>
+int main(){
+	printf("const int = %d", i);
+	printf("\n const char* = %s",j);
+	return 0;
+}
+ 
+#include <stdio.h>
+typedef struct complex{
+	int i, j;
+} complex1;
+typedef struct complex_num{
+	int i, j;
+} complex2;
+int main(){
+	printf("struct complex i=%d, j=%d",(complex1.i), (complex1.j));
+	printf("\nstruct complex_num i=%d, j=%d", (complex2.i), (complex1.j));
+	return 0;
+}
+ 
+complex3 getComplexNumberFromUser(){
+	complex3 c;
+	printf("Enter a complex number i: ");
+	scanf("%d",&c.i);
+	printf("Enter a complex number j: ");
+	scanf("%d",&c.j);
+	return c;
+}
+int main(){
+	complex1 c1 = getComplexNumberFromUser();
+ 
+	if(c1.i > c1.j)
+		printf("\n%d + %di\n", c1.i, c1.j);
+	else
+		printf("\n(%d) + %di\n", c1.i, c1.j);
+	return 0;
+}
+ 
+#define SUCCESS 0
+#define FAILURE 1
+#define MAX_STRING_SIZE 10
+ 
+int main(void) {
+	int x = 5;
+	char msg[MAX_STRING_SIZE];
+	strcpy(msg,"Hello,world!\n");
+	printf("message %s\n",msg);
+	return SUCCESS;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct complex
+{
+	int i, j;
+};
+struct color
+{
+	float red, green, blue;
+};
+typedef struct color rgb_T;
+typedef struct color *rgb_ref_T;
+typedef const int num_T;
+typedef const char *cstr_T;
+typedef struct complex complex;
+typedef struct complex complex_T;
+int main()
+{
+	num_T a = 1;
+	cstr_T b = "abc";
+	return 0;
+}
+ 
+int fun(void);
+int fun(double d)
+{
+	return d;
+}
+int fun(int i)
+{
+	return i;
+}
+int fun(float f);
+main()
+{
+	printf("%d", fun(5));
+}
+ 
+int fun(void);
+int fun(double d);
+int fun(int i);
+int fun(float f);
+main()
+{
+	int (*pf) (int d) = fun;
+	printf("%d", pf(1));
+}
+ 
+#include <stdio.h>
+int main(void)
+{
+	int N, K;
+	int i, j;
+	int arr[100][100];
+	FILE *myfile = fopen(FILE_NAME, "r");
+	i = fscanf(myfile, "%d %d \n", &N, &K);
+	if (N == 0)
+	{
+		fclose(myfile);
+	}
+	if (K == 0)
+	{
+		for (int i = 0; i < N; ++i)
+		{
+			for (int j = 0; j <
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const num num_t;
+typedef const char cstr_t;
+typedef const char* cstr_p;
+typedef struct
+{
+	num_t i;
+	num_t j;
+} complex_t;
+
+typedef complex_t complex_num_t;
+
+typedef struct rgb_type_t
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type_t;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_COLS 255
+#define MAX_ROWS 256
+typedef struct {
+  int cols; 	int rows;
+  char array[MAX_ROWS][MAX_COLS];
+} mymatrix;
+
+int main()
+{
+	mymatrix a, b;
+	a.cols = 5;
+	a.rows = 10;
+	b.cols = 8;
+	b.rows = 10;
+	for(int i = 0; i < a.rows; i++)
+		for(int j = 0; j < a.cols; j++)
+			a.array[i][j] = i + j + 1;
+	for(int i = 5; i < b.rows; i++)
+		for(int j = 8; j < b.cols; j++)
+			b.array[i][j] = i + j - 54;
+
+	printf("%d %d\n", a.cols, a.rows);
+	printf("%d %d\n", b.cols, b.rows);
+
+	for(int i = 0; i < 10; i++)
+	{
+		for(int j = 0; j < 5; j++)
+			printf("%d ", a.array[i][j]);
+		printf("\n");
+	}
+
+	for(int i = 5; i < 15; i++)
+	{
+		for(int j = 8; j < 11; j++)
+			printf("%d ", b.array[i][j]);
+		printf("\n");
+	}
+
+	for(int i = 0; i < a.rows; i++)
+		for(int j = 0; j < a.cols; j++)
+			printf("%d ", a.array[i][j]);
+
+	for(int i = 0; i < b.rows; i++)
+		for(int j = 0; j < b.cols; j++)
+			printf("%d ", b.array[i][j]);
+	printf("\n");
+	return 0;
+}
+int main1()
+{
+	mymatrix a;
+	a.cols = 5;
+	a.rows = 8;
+
+	char c[5][10];
+	int i,j,k;
+	for( i = 0 ; i < a.rows ; i++ )
+	{
+		for(j = 0 ; j < a.cols ; j++ )
+		{
+			scanf("%c",&a.array[i][j]);
+		}
+	}
+	for( i = 0 ; i < a.rows ; i++ )
+	{
+		for(j = 0 ; j < a.cols ; j++ )
+		{
+			printf("%c ",a.array[i][j]);
+		}
+		printf("\n");
+	}
+
+	for(i = 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct a
+{
+	int x;
+	int y;
+};
+typedef struct a a_type1;
+
+typedef struct
+{
+	int x;
+	int y;
+} a_type2;
+
+typedef struct
+{
+	int x;
+} a_type3;
+
+int main()
+{
+	a_type1 a1 = {1, 2};
+	a_type2 a2 = {3, 4};
+	a_type3 a3 = {.x = 3,};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef num another_num;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef const int num;
+typedef const char* cstr;
+typedef struct
+{
+	num i;
+	num j;
+} complex;
+typedef complex complex_num;
+typedef struct color
+{
+	float red;
+	float green;
+	float blue;
+} rgb_type;
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+ 
+int main()
+{
+	short s = 0;  
+	int i = 0;  
+	long long c = 0;  
+	float f = 0.0;  
+	double d = 0.0;  
+	 
+
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct a
+{
+	int x;
+	int y;
+};
+typedef struct a a_type1;
+typedef struct
+{
+	int x;
+	int y;
+} a_type2;
+typedef struct
+{
+	int x;
+} a_type3;
+int main()
+{
+	a_type1 a1 = {1, 2};
+	a_type2 a2 = {3, 4};
+	a_type3 a3 = {.x = 3,};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}
+/* Please create a semantically equivalent program to the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+	struct a
+	{
+		int x;
+		int y;
+	};
+	a a1 = {.x = 1,.y = 2};
+	struct
+	{
+		int x;
+		int y;
+	} a2 = {.x = 3,.y = 4};
+	struct
+	{
+		int x;
+	} a3 = {.x = 3};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct b
+{
+	int x;
+	int y;
+};
+struct b a1 = {1, 2};
+struct b a2 = {3, 4};
+struct
+{
+	int x;
+} a3 = {.x = 3,};
+int main()
+{
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct a
+{
+	int x;
+	int y;
+};
+struct a
+{
+	int x;
+	int y;
+};
+struct a
+{
+	int x;
+};
+int main()
+{
+	struct a a1 = {.x = 1,.y = 2};
+	struct a a2 = {.x = 3,.y = 4};
+	struct a a3 = {.x = 3,};
+	printf("a1: %d, %d\n", a1.x, a1.y);
+	printf("a2: %d, %d\n", a2.x, a2.y);
+	printf("a3: %d\n", a3.x);
+	return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct
+{
+	int x;
+	int y;
+} a1;
+struct
+{
+	int x;
+	int y;
+} a2;
+struct
+{
+	int x;
+} a3;
+
+int main()
+{
+	a1.x = 1;
+	a1.y = 2;
+
+	a2.x = 3;
+	a2.y = 4;
+
+	a3.x = 3;
+	a3.y = 0;
+
+	printf("a1: %d, %d\n", a1.x, a1.y);
+    printf("a2: %d, %d\n", a2.x, a2.y);
+    printf("a3: %d\n", a3.x);
+    return 0;
+}
+
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#pragma pack(push, 1)
+struct
+{
+	int x;
+	int y;
+} a1;
+struct
+{
+	int x;
+	int y;
+} a2;
+struct
+{
+	int x;
+} a3;
+#pragma pack(pop)
+
+int main()
+{
+	a1.x = 1;
+	a1.y = 2;
+
+	a2.x = 3;
+	a2.y = 4;
+
+	a3.x = 3;
+	a3.y = 0;
+
+	printf("a1: %d, %d\n", a1.x, a1.y);
+    printf("a2: %d, %d\n", a2.x, a2.y);
+    printf("a3: %d\n", a3.x);
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct a;
+typedef struct {int x, y;} a_type1;
+typedef struct {int x; int y;} a_type2;
+typedef struct {int x;} a_type3;
+struct a
+{
+    int x;
+    int y;
+};
+int main()
+{
+    a_type1 a1 = {1, 2};
+    a_type2 a2 = {3, 4};
+    a_type3 a3 = {.x = 3,};
+    struct a a4 = {.x = 1,.y = 2};
+    printf("a1: %d, %d\n", a1.x, a1.y);
+    printf("a2: %d, %d\n", a2.x, a2.y);
+    printf("a3: %d\n", a3.x);
+    printf("a4: %d, %d\n", a4.x, a4.y);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+struct a;
+typedef struct {int x, y;} a_type1;
+typedef struct {int x; int y;} a_type2;
+typedef struct {int x;} a_type3;
+struct a
+{
+    int x;
+    int y;
+};
+int main()
+{
+    a_type1 a1 = {1, 2};
+    a_type2 a2 = {3, 4};
+    a_type3 a3 = {.x = 3,};
+    struct a a4 = {.x = 1,.y = 2};
+    printf("a1: %d, %d\n", a1.x, a1.y);
+    printf("a2: %d, %d\n", a2.x, a2.y);
+    printf("a3: %d\n", a3.x);
+    printf("a4: %d, %d\n", a4.x, a4.y);
+    return 0;
+}
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef char* string;
+int main()
+{
+    string* name;
+    name = malloc(26*sizeof(char));
+    printf("Please enter your name\n");
+    scanf("%25s", *(name));
+    name = realloc(name, strlen(*(name))+26*sizeof(char));
+    printf("Hi %s, your ID is %ld\n", *(name), (size_t)(*(name)));
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct a;
+typedef struct {int x, y;} a_type1;
+typedef struct {int x; int y;} a_type2;
+typedef struct {int x;} a_type3;
+struct a
+{
+    int x;
+    int y;
+};
+int main()
+{
+    a_type1 a1 = {1, 2};
+    a_type2 a2 = {3, 4};
+    a_type3 a3 = {.x = 3,};
+    struct a a4 = {.x = 1,.y = 2};
+    printf("a1: %d, %d\n", a1.x, a1.y);
+    printf("a2: %d, %d\n", a2.x, a2.y);
+    printf("a3: %d\n", a3.x);
+    printf("a4: %d, %d\n", a4.x, a4.y);
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+struct b;
+typedef int *x_type;
+struct b
+{
+    x_type x;
+};
+int main()
+{
+    x_type x = (x_type)calloc(1, sizeof(int));
+    struct b b = {.x = x};
+    free(x);
+    printf("ok!\n");
+    return 0;
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int x[5];
+    x a1 = {1, 2, 3, 4, 5};
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+#define TRUE true
+#define FALSE false
+typedef enum {TRUE, FALSE} boolean;
+int main()
+{
+    boolean a = TRUE;
+    if (a) printf("a is true\n");
+    else printf("a is false\n");
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int x[5];
+    x a1 = {1, 2, 3, 4, 5};
+    return 0;
+}
+/* Please create a mutated program that modifies the previous generation */
+#include <stdlib.h>
+
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+typedef int x[5];
+x a1 = {1, 2, 3, 4, 5};
+int main()
+{
+
+    return 0;
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int x[5];
+    int y[5];
+    x a1 = {1, 2, 3, 4, 5};
+    y[0] = a1[4];
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int (x)[5];
+    x a1 = {1, 2, 3, 4, 5};
+    return 0;
+}
+
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+int main() {
+    uint32_t x = 2147483647 + 0;
+    printf("%u\n", x);
+    return 0;
+}
+
+ 
+#include <math.h>
+#include <stdio.h>
+#define macro(x) x * x * 16
+
+int main()
+{
+    int volume = 10;
+    #define cubeVolume macro(volume)
+    int cubeVolume1 = macro(volume);  
+    int cubeVolume2 = cubeVolume;  
+
+    printf("Volume of Cube with macro: %d\n", cubeVolume);
+    printf("Volume of Cube without macro: %d\n", cubeVolume1);
+    printf("Volume of Cube without macro: %d\n", cubeVolume2);
+
+    return 0;
+}
+
+
+ 
+#include <stdio.h>
+#include <string.h>
+int main() 
+{
+  int x = 5;   
+  int *p = &x;  
+  int *v = &x + 10;  
+  int y[15];  
+  char *str = "I love c programming";
+
+  *p = 6;  
+  p++;  
+  p--;  
+  p = v + 5;  
+
+  printf("%d %d\n", *p, *v);
+  memcpy(y, p, 15* sizeof(int));  
+
+  printf("%hhd\n", *str);
+  str = str + 9;  
+  printf("%hhd\n", *str);
+  
+  return 0;
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    typedef int x[5];
+    x a2 = {20, 30, 40, 50, 60};
+    return 0;
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] #include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int x[5];
+    for (int i = 0; i < 5; i++)
+    {
+        scanf("%d", &x[i]);
+    }
+}
+ 
+void display (int *array, int n)
+{
+    for (int i = 0; i < n; i++){
+        printf ("%d ", array[i]);
+    }
+    printf ("\n");
+}
+int main ()
+{
+    int n, array [100];
+
+    printf ("Enter amount of elements\n");
+    scanf ("%d", &n);
+
+    for (int i = 0; i < n; i++){
+        printf ("Enter element \n");
+        scanf ("%d", &array[i]);
+    }
+
+    int element = 0;
+    printf ("Enter element which you want to find\n");
+    scanf ("%d", &element);
+
+    int result = LinearSearch (array, 0, n - 1, element);
+
+    if (result == -1)
+        printf ("Element is not found");
+    else
+        printf ("Element is found at index %d", result);
+}
+ 
+int LinearSearch (int array [], int start, int end, int element)
+{
+    int i;
+
+    for (i = start; i <= end; i++)
+    {
+        if (array [i] == element)
+            return i;
+    }
+    return -1;
+}
+
+
+[VERBOSE] ========== sample =========

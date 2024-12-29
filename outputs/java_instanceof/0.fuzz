@@ -1,0 +1,15 @@
+import java.lang.Object;
+
+import java.lang.reflect.*;
+class P {}
+class C extends P {}
+class D extends C {int field;}
+
+class R{
+    public static void main(String[] args){
+        System.out.println((new C()) instanceof P);
+         
+        System.out.println((new C()) instanceof R);
+        System.out.println((new C()) instanceof D);
+    }
+}

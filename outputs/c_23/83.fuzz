@@ -1,0 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = (char*) calloc(10, sizeof(char));
+  s[14] = '\\';
+  printf("String: %s\n", s);
+  free(s);
+}

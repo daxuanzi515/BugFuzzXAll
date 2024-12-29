@@ -1,0 +1,60 @@
+#include <expected>
+<fim_suffix>e);
+  ~Employee() = default;
+};
+
+std::expected<Employee, EmployeeError> createEmployee(int id) {
+  auto result = readEmployeeFromFile(id);
+
+   
+  if (result) {
+    return make_expected(result.value(), employeeErrorFactory.unknown());
+  } else {
+    return make_expected(employeeErrorFactory.fromValue(), result.error());
+  }
+   
+   
+   
+}
+
+ 
+void printEmployeeError(const EmployeeError& error) {
+  if(error.errorCode == EmpytFileError) {
+    std::cout << "Couldn't find employee in file!" << std::endl;
+  } else if (error.errorCode == CorruptedFileError) {
+    std::cout << "File is corrupted!" << std::endl;
+  } else if (error.errorCode == NoDataFound) {
+    std::cout << "No employee found!" << std::endl;
+  }
+}
+
+int main() {
+  auto result = createEmployee(3);
+  if(!result) {
+    printEmployeeError(result.error());
+  } else {
+    const Employee& employee = result.value();
+    std::cout << "Employee name is: " << employee.name   << std::endl
+	          << "Employee age is:" << employee.age << std::endl;
+  }
+  return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <fstream>
+#include <exception>
+#include <filesystem>
+
+std::optional<std::filesystem::path> readEmployeeFromFile(int employeeId) {
+   
+  std::error_code error;
+  std::filesystem::path file{std::to_string(employeeId)};
+   
+  std::filesystem::file_status status = std::filesystem::status(file, error);
+  if (error) {
+    std::cout << "Error code: " << error.value() << ", " << error.message() << std::endl;
+    std::cerr << "Couldn't find file '" << file << "'!" << std::endl;
+    return std::nullopt;
+  }
+  if(!std::filesystem::is_regular_file(file, error)) {
+    std::cout << "Error code: " << error.value() << ", "

@@ -1,0 +1,57 @@
+from qiskit import QuantumCircuit
+
+
+def incrementing_oracle():
+	
+	return QuantumCircuit(1).x(0)
+
+def oracle():
+	
+	return QuantumCircuit(3).x(1)
+
+def incrementer():
+	
+	raise NotImplementedError()
+
+circuit = QuantumCircuit(4)
+with circuit.for_loop(0, 1, 5) as for_loop:
+	for_loop.h(0)
+	for_loop.barrier()
+	with for_loop.for_loop(0, 1, 5) as nested_for_loop:
+		nested_for_loop.cx(0, 1)
+		if (True):
+			with nested_for_loop.for_loop(0, 1, 5) as second_nested_for_loop:
+				second_nested_for_loop.cx(1, 2)
+			second_nested_for_loop.cx(1, 3)
+		nested_for_loop.cx(0, 3)
+
+circuit.draw('mpl')
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

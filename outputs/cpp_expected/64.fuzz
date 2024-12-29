@@ -1,0 +1,34 @@
+#include <expected>
+<fim_suffix>) << std::endl;
+
+  return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <string>
+#include <type_traits>
+
+int main() {
+  auto r1 = std::make_unexpected(10.5f);
+  auto r5 = std::make_unexpected(20);
+  auto e1 = std::make_unexpected(std::out_of_range{"12"});
+  auto e2 = r1;
+  if (e1 == r1) {
+    std::cout << "equal" << std::endl;
+  }
+  if (e1!= r5) {
+    std::cout << "different" << std::endl;
+  }
+  if (e2 == e1) {
+    std::cout << "equal" << std::endl;
+  }
+
+  auto r_4_4 = std::make_expected(2.0);
+  auto e_2_5 = std::make_expected<float>(2.0);
+  if (e_2_5 == r_4_4) {
+    std::cout << "equal" << std::endl;
+  }
+
+  std::cout << *e_2_5.value()  << std::endl;
+  e_2_5.value() = 4.0;
+  std::cout << *e_2_5.value(

@@ -1,0 +1,13 @@
+/* The document describes the updates and new features added to the C++23 draft during multiple virtual meetings held in 2020, 2021, and 2022 due to the pandemic. New features include literal suffixes for std::size_t, a contains function for strings and string views, a stacktrace library, and a type trait for checking scoped enums, among others. 
+
+Furthermore, the standard library saw multiple updates including the addition of conditionally borrowed ranges and the to_underlying function, as well as repairing input range adaptors and making improvements on count iterator and time_point::clock. 
+
+2021 seemed to focus more on the ranges library and text formatting, along with some revisions to integer-class types and clarifications on the use of C headers. The following year, 2022, introduced new features like std::expected, function to mark unreachable code, and making std::unique_ptr constexpr while expanding on ranges library.
+
+Notable changes in July 2022 include making rewrites in equality expressions less of a change and allowing constexpr functions to never be constant. New features added included std::mdspan, flat_map, flat_set, std::print, and std::println functions.
+
+As per November 2022, new features include allowing operator operator[] to be static, allowing static and thread_local variables in constexpr functions and extending the lifetime of temporaries. Some features were deprecated and removed such as garbage collection support and std::aligned_storage, std::aligned_union.
+
+Overall, C++23 draft saw consistent updates geared towards increasing the language's efficiency, ease of use, and functionality during these virtual meetings. */
+/* Please create a very short program which uses new C++ features in a complex way */
+#include <iostream>

@@ -1,0 +1,10 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+  public static void main(String... args) {
+    Integer[][][][] b = new Integer[1][2][3][4];
+    char c = 'b';
+    System.out.println(b[0] instanceof Integer[][2]);
+    System.out.println(c == 'a' || c == 'b' || c == 'c' || c == 'd');
+  }
+}

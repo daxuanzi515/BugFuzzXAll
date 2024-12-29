@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.util.ArrayList;
+public class ListExample {
+	public static void main(String[] args) {
+
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Hello");
+		list.add("Indian");
+		list.add("!");
+		System.out.println(list);
+	}
+}

@@ -1,0 +1,31 @@
+#include <tuple>
+#include <algorithm>
+int main()
+{
+  std::array<int, 7> d = {1, 8, 3, 6, 2, 5, 8};
+  std::apply([](int& x, int& y, int& z) {x = y * z;}, std::tie(d[0], d[1], d[2]));
+  for(auto& element: d)
+  {
+    std::cout << element << '\t';
+  }
+  std::cout << '\n';
+  return EXIT_SUCCESS;
+}
+
+ 
+#include <iostream>
+#include <tuple>
+using namespace std;
+int main()
+{
+  tuple <int, double, float> t1 {3, 2.7183, 1.4141};
+  tuple <double, float, double> t2 {0.4, 1.25, 5.6};
+  tuple <int, double, float, double, float, double> t3;
+  
+   
+  copy(begin(t1), end(t1), begin(t3));
+  copy(begin(t2), end(t2), begin(t3) + 3);
+  copy_n(cbegin(t3), 3, begin(t3) + 6);
+   
+  return 0;
+}

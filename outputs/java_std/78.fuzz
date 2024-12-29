@@ -1,0 +1,17 @@
+import java.lang.Object;
+<fim_suffix>s Java program*/
+import java.lang.String;
+import java.lang.System;
+import java.util.Scanner;
+public class HelloWorld{
+	public static void main(String[] args) {
+		System.out.println("Hello, World!");
+	}}<fim_middle>import java.util.*;
+public class SayHelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next() + "\n");
+	}
+}
+/* Creating Thi

@@ -1,0 +1,37 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  struct {
+  union {
+         int x;
+         int y;
+     }t;
+     struct {
+       int z;
+       int q; 
+     }r;
+}u, v; 
+ union 
+ {
+    struct {
+         int e;
+         int r;
+     }c;
+    struct {
+         int w;
+          int p;
+     }a;
+}m; 
+ m.c.e = 0x01;
+ m.c.r = 0x02;
+ m.a.w= 0x03;
+ m.a.p = 0x04;
+ u.r.q= 0x05;
+ u.t.x = u.r.z = m.c.e + m.c.r;
+ v.t = u.t;
+ v.r = u.r;
+ v.r = m.a;
+ v.t.y= m.a.w + m.a.p;
+  return (EXIT_SUCCESS);
+}

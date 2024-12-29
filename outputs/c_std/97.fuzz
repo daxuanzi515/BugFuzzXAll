@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <complex.h>
+int main()
+{
+    const char* msg = "Hello World!";
+    complex num = {12, 34};
+    printf("The Complex number is %f + %fi\n", creal(num), cimag(num));
+    printf("%s\n", num);
+    putchar(msg[1]);
+    return 0;
+}

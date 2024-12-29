@@ -1,0 +1,40 @@
+#include <tuple>
+#include <cstdlib>
+int main() 
+{
+  std::pair<int, float> p{ 88, 0.7 };
+  int arr[2] = { 1,2};
+  int numa = 34;
+  int numb = 21;
+  std::tuple<int&> tp = { numa };
+  std::tuple<int&> tp1 = { numb };
+  int* pa = nullptr;
+  int* pa1 = nullptr;
+  try
+  {
+    pa = std::apply([](int& x, int& y){x *= x; y*= y; pa1= &y;}, std::tuple_cat(std::tuple_cat(std::tuple<float&>{ std::get<1>(p) }, std::tuple<int&>{arr[0]}),tp));
+    *pa1 = 24;
+    pa = std::apply([](int& x, int& y, int& z){x*= y;z *= z;pa1 = &z;}, std::tuple<int&, int&, int&>{ arr[0],arr[1], arr[1] });
+    *pa1 = 75;
+  }
+  catch (...)
+  {
+    std::cout << "The program failed...\n";
+  }
+  std::cout << "Value of pa: " << *pa
+    << "\nValue of pa1: " << *pa1 << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <array>
+#include <tuple>
+int do_with_tuple(const std::tuple<std::array<float, 4>, std::array<std::array<std::string, 3>, 4>> x)
+{
+   
+  std::cout << std::get<0>(x)[1] << '\n';
+  std::cout << std::get<1>(x)[0][1] << '\n';
+  return EXIT_SUCCESS;
+}
+/* Use the new C++ function `std::make_from_tuple` and invoke `do_with_tuple()`, passing this tuple: std::array<float, 4>{ 1.1, 2.2, 3.3, 4.4 }, std::array<std::array<std::string, 3>, 4>{{{ "hello", "goodbye", "bonjour" },{ "goodnight", "good morning", "au revoir" },{ "aasdadsa", "sadasd", "sadasdasdd" },{ "asd", "dsa", "dsa" }} 
+
+This

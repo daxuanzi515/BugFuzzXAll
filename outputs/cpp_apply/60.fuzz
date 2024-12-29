@@ -1,0 +1,27 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  const int sum_of_all = 2 * [](auto&&...args) -> std::common_type_t<int, Args...> {return (args +...)};
+  std::cout << "The sum of all the integers in integers is " << sum_of_all(2, 3, 4, 6, 9) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+ 
+#include <array>
+#include <functional>
+#include <iostream>
+int main()
+{
+  std::array<int, 3> arr = {10, 20, 30};
+  for (const auto e : arr)
+    std::cout << e <<'';
+
+  typedef std::function<int(int, int, int)> FType;
+  FType f = [](int x, int y, int z) {return (x + y + z);};
+
+  using namespace std::placeholders;
+  const auto a = std::invoke(f, _1, _2, _3);
+  std::cout << "\nThe sum of the elements in arr is " << a << '\n';
+  return EXIT_SUCCESS;
+}

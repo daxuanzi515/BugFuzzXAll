@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define LEN 150
+char* str2upper(char *string) {
+   
+  int i;
+   
+   
+   
+   
+  for (i = 0; i < strlen(string); ++i) {
+     
+     
+     
+    string[i] = toupper(string[i]);
+  }
+  return string;
+}
+int main(int argc, char* argv[]) {
+   
+  char string[LEN] = "1";
+  str2upper(string);
+  printf("Uppercase string: %s\n", string);
+  return 0;
+}
+
+#undef LEN  

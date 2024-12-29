@@ -1,0 +1,16 @@
+#include <variant>
+#include <string>
+#include <iostream>
+int main()
+{
+      std::string s = "Test";
+      std::variant<std::monostate, std::string> v {s};
+
+      if (std::holds_alternative<std::string>(v)) {
+           auto ss = std::get_if<std::string>(&v);
+        auto& str = *ss;
+        std::cout << "String: " << str << std::endl;
+      }
+}
+return 0;
+}

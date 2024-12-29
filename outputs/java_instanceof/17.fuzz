@@ -1,0 +1,60 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Integer(105);
+	}
+}
+ 
+import java.lang.Integer;
+class Main{
+	public static void main(String... args){
+		Integer a = new Integer(4);
+		Integer b = new Integer(3);
+		Integer c = a.intValue();
+		System.out.println(a.equals(b));
+		System.out.println(b.equals(c));
+	}
+}
+ 
+class Test{
+	public static void main(String... args){
+		int a = 30;
+		int b = 3;
+		System.out.println(a >= b);
+		System.out.println(a < b);
+		System.out.println(b <= a);
+	}
+}
+ 
+import java.lang.Object;
+class Main{
+	public static void main(String... args){
+		Object a = new Double(30.30);
+		Double b = (Double)a;
+	}
+}
+ 
+import static java.lang.System.*;
+
+class Main{
+	public static void main(String... args){
+		err.println("Hello");
+	}
+}
+ 	
+ 
+class Main {
+	private static class Inner {
+		public void print() {
+			Main.print();
+		}
+	}
+	public static <P> void print() {
+		System.out.println("Hello, world.");
+	}
+	public static void main(String... args) {
+		Inner inner = new Inner();
+		inner.print();
+	}
+}

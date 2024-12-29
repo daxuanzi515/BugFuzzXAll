@@ -1,0 +1,49 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class STryWithResources {
+    public static void main(String[] args) throws IOException{
+        try (BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("something.txt"))){
+                String line;
+                while((line = in.readLine())!= null){
+                    System.out.println(line);
+                }
+            try(BufferedReader reader1= new BufferedReader(new FileReader("soethingElse.txt"))){
+                return;
+            }
+            }
+        }
+    }
+ 
+import java.io.*;
+public class STryCatchAndThrows {
+    public static void main(String[] args) throws FileNotFoundException {
+        FileReader in = null;
+        try {
+            in = new FileReader("file.txt");
+        }
+        catch(FileNotFoundException e){
+            System.out.println("An error occured while reading from the file");
+            System.out.println("Please, check that the path is correct.");
+            throw e;
+
+        }
+        try {
+            String data = "";
+            if ((data = in.readUTF())!= null){
+               System.out.println(data);
+            }
+            in.close();
+        }
+        catch (IOException e) {
+            System.out.println("Something went wrong with the code.");
+        }
+    }
+ 
+import java.lang.Object;
+public class SLambda {
+    public static void main(String[] args){
+        System.out.println( (a,b) -> a+b );
+    }
+}

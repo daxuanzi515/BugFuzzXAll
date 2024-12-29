@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{  
+  struct point { 
+      int x; 
+      int y; 
+  }; 
+  void *p; 
+  struct { 
+      union { 
+          struct point t1; 
+          int i; 
+          struct { 
+              int x; 
+              int y; 
+          } t2; 
+          void *p; 
+      }t;  
+  }t3; 
+  t3.t.t1.x = 0x1234; 
+  p=(void *)&(t3.t.t1.y); 
+  t3.t.i= 0x1234; 
+  t3.t.p= (struct s *)p;
+  printf("t3: %d\n", t3.t.i); 
+  return (EXIT_SUCCESS);
+}
+

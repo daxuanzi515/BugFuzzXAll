@@ -1,0 +1,43 @@
+from qiskit import QuantumCircuit
+
+q = QuantumCircuit(1, 1)
+for_qubits = [qubit for qubit in range(2)]
+body = q.h
+for_loop = q.for_loop([0,1], loop_parameter="i", body=body)
+type(for_loop)
+
+with QuantumCircuit(name='for_test') as circuit:
+    circuit.h(0)
+    for_loop_instr = circuit.for_loop([0,1], loop_parameter="i", body=q.h)
+    circuit.mct(range(2, 4), [0], [])
+    circuit.rz(0.2, 0)
+    circuit.measure(0, 0)
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

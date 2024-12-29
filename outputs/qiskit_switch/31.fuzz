@@ -1,0 +1,57 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import SwitchCase
+from qiskit.test.mock import FakeParis
+qc=QuantumCircuit(2)
+qr0=qc.add_register(range(2))
+qr1=qc.add_register(range(2,5))
+qc.switch(qr0[0],
+          [qr0], [qr1])
+qc.draw()
+
+classical=QuantumCircuit(2)
+classical.cx(0,1)
+classical.cz(qr0[1],qr1[0])
+qc.switch(classical,1,qr1)
+qc.draw()
+
+provider=FakeParis()
+backend=provider.get_backend('ibmq_paris')
+job=provider.run(qc,backend)
+result=job.result()
+provider.get_backend()
+
+job.status()
+result.get_counts()
+
+
+
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

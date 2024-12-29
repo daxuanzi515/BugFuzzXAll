@@ -1,0 +1,51 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t{99, 50.0};
+  std::cout << std::apply([t](int x, float y){return x + y;}, t) << '\n';
+  std::cout << std::apply([=](const int x, const float y){return x + y;}, t) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+template <typename T, typename U>
+struct Point :std::tuple<T, U>{
+  using std::tuple<T, U>::tuple;
+  T& x(){return std::get<0>(*this);}
+  const T& x() const {return std::get<0>(*this);}
+  U& y(){return std::get<1>(*this);}
+  const U& y() const {return std::get<1>(*this);}
+};
+int main()
+{
+  Point<int, float> p1{100, 400.0};
+  std::cout << std::apply([](const int x, const float y){return x + y;}, p1) << '\n';
+  Point<int, float> p2 = Point<int, float>{99, 399.0};
+  std::cout << std::apply([](const int x, const float y){return x + y;}, p2) << '\n';
+  return EXIT_SUCCESS;
+}
+ 
+#include <tuple>
+#include <array>
+#include <iostream>
+template <typename T, typename U>
+auto makePoint(T x, U y)
+{
+  return std::apply([x, y](auto&&... args){return Point<decltype(args)...>{std::forward<decltype(args)>(args)...};}, std::make_tuple(x,y));
+}
+int main()
+{
+  std::array<int, 2> arr{100, 400};
+  Point<int, float> p1 = makePoint(arr[0], arr[1]);
+  for(int i = 0; i < 100; ++i)
+    std::cout << p1 << '\n';
+  std::cout << '\n';
+  return EXIT_SUCCESS;
+}
+
+ 
+#include <tuple>
+#include <iostream>
+
+template <typename T>class Point :std::

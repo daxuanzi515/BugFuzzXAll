@@ -1,0 +1,54 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+  union u {
+    int i;
+    double d;
+  }u1;
+  u1.i=123;
+  printf("u1.i=%d\n", u1.i);
+  printf("u1.d=%.1f\n", u1.d);  
+  u1.d = u1.d + 8.88;
+  u1.i = u1.i + (int)u1.d;
+  printf("i=%d, d=%.1f", u1.i, u1.d);
+  return (EXIT_SUCCESS);
+
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+struct {
+  int character;
+}un;
+int temp;
+char ch;
+int main()
+{
+  struct {
+    char integer;
+  }un1;
+  float f;
+  int i;
+
+
+  printf("Enter integer followed by a character\n");
+  scanf("%d %c", &i, &ch);
+  un.character = i;
+  printf("un.character=%d\n", un.character);
+  printf("Enter decimal number and press enter\n");
+  scanf("%f", &f);
+  un1.integer  =(char)(f-un1.integer);
+  un1.integer -= 48;
+  printf("un1.integer=%d\n", un1.integer);
+  temp = un.character;
+  printf("Enter integer followed by character\n");
+  scanf("%d %c", &i, &ch);
+  un.character = i;
+  printf("Enter decimal number\n");
+  scanf("%f", &f);
+  un1.integer  =(char)(f-un1.integer);
+  un1.integer -= 48; 
+  printf("un1.integer=%d\n", un1.integer);
+ 

@@ -1,0 +1,9 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, int> t = std::make_tuple(1, 2);
+  std::apply([](int& x, int& y) {std::swap(x, y);}, t);
+  std::apply([](const int& x, const int& y) {std::cout << x <<'' << y << '\n';}, t);
+  return EXIT_SUCCESS;
+}

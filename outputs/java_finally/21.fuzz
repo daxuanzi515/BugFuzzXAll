@@ -1,0 +1,32 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        boolean successful = false;
+        try{
+            try{
+                in = new BufferedReader(new FileReader("file.txt"));
+                String line;
+                while((line = in.readline())!= null){
+                    System.out.println(line
+                }
+            }
+            finally{
+                if(in!= null){
+                    in.close();
+                }
+            }
+        }
+        catch(Exception e){
+
+        }
+        finally{
+            if(successful){
+                
+               System.out.println("Done");
+            }    
+        }
+    }
+}

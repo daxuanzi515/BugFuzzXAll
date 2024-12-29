@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+int main() {
+   std::string s = "hello"s;
+   std::cout << s;
+   return 0;
+
+};
+ 
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+#include <deque>
+int main() {
+std::istreambuf_iterator<char> sit, end;
+std::istreambuf_iterator<char> end;
+for(it;it!= end; it++){
+ cout<< *it;
+}
+return 0;
+
+}

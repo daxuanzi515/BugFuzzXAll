@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        int i; 
+        struct 
+        {
+            int x;
+            int y;
+        }point;
+        void (*fn)();  
+    }t1;
+    t1.fn = main;
+    t1.fn();
+    return (EXIT_SUCCESS);
+}

@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag
+{
+	int member1;
+	int member2;
+}Tag_t;
+int main()
+{
+	Tag_t tag;
+	tag.member1 = 1;
+	tag.member2 = 2;
+	printf("member1 is %d\n", tag.member1);
+	printf("member2 is %d\n", tag.member2);
+	return 0;
+}

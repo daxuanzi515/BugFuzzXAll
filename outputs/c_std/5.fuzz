@@ -1,0 +1,23 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+
+ 
+#include <random>
+#include <iostream>
+
+ 
+#include <ctime>
+#include <string>
+
+int main(int argc, char** argv) {
+     
+    std::mt19937 generator(std::time(nullptr));
+
+     
+    std::uniform_int_distribution<int> distribution(0, 10);
+    std::cout << distribution(generator) << std::endl;
+    int x = distribution(generator);
+
+    return EXIT_SUCCESS;
+}

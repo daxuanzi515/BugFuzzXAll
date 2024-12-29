@@ -1,0 +1,25 @@
+#include <tuple>
+#include <iostream>
+template <class F, class... Args>
+decltype(auto) apply_args(F&& func, std::tuple<Args...>& args)
+{
+  if constexpr(std::is_void_v<std::invoke_result_t<F, Args...>>)
+  {
+    std::apply(func, args);
+  }
+  else
+    return std::apply(func, args);
+}
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  apply_args(
+    [](auto& x)
+    {
+      std::cout << x << '\n';
+    },
+    tuple);
+  return EXIT_SUCCESS;
+}
+
+ 

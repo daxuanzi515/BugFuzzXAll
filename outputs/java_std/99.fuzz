@@ -1,0 +1,32 @@
+import java.lang.Object;
+<fim_suffix>ouble total_hours = 0, avg = 0;
+        while(n.hasNextFloat()){
+            count++;
+            total_hours = total_hours + n.nextFloat();
+        }
+        avg = total_hours/count;
+        System.out.println(avg);
+
+    }
+}
+<fim_middle>import java.util.*;
+public class HelloIndian2{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		System.out.println(s1.nextInt());
+		System.out.println(s1.nextLine());
+		System.out.println(s1.nextLine());
+		System.out.println(s1.nextLine());
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.lang.Math;
+import java.util.*;
+public class HelloIndian3{
+  static Scanner infile = new Scanner(System.in);
+  public static void main(String[] args) {
+      Scanner n = new Scanner("10\n8.5"); 
+      int count = 0;
+      d

@@ -1,0 +1,69 @@
+#include <expected>
+<fim_suffix>" << std::get<1>(ep);
+	}
+}
+
+void use_expected_void() {
+	try {
+		std::optional<void> e{};										// Constructing an std::optional from an invalid iterator.
+		e.value();
+	}
+	catch (const std::bad_optional_access& e) {
+		std::cerr << "Unexpected value contained in an optional: " << e.what() << '\n';
+	}
+
+	std::exception e{};															// Constructing an std::optional from an invalid iterator.
+	std::optional<void> ep{ e };
+	if (ep.has_value()) {
+		std::cerr << "Unexpected value contained in an optional, expected void.\n";
+	}
+
+	[[maybe_unused]] std::optional<void> vp{};								// Constructing a std::optional from valid iterator.
+	vp = ep;
+
+	[[maybe_unused]] std::optional<int> ip{};
+
+	std::optional<int> ep2{};													// Constructing from std::unexpected_optional, which contains an unexpected value.
+	std::optional<int> ep3{ std::make_unexpected(42) };
+
+	std::optional<int> ep4{ ep3 };
+
+	std::optional<int> ep5 = ep4;
+
+	std::optional<int> ep6{};
+}
+
+int main() {
+	use_expected();
+	use_expected_void();
+	std::cin.get();
+}<fim_middle>
+#include <optional>
+#include <iostream>
+
+void use_expected() {
+	std::expected<int, int> ep{};												// Constructing a valid std::optional (which also is the default value for std::expected<T, E>).
+
+	[[maybe_unused]] std::expected<int, int> ep1{ 42, 1380 };					// Constructing from a contained value and an expected value.
+
+	if (ep.has_value()) {
+		std::cout << "Value is: " << ep.value(); 								// Retrieving the value of a valid optional.
+	}
+
+	std::expected<int, int> ep2{};
+	std::expected<int, char> ep3{ 42 };
+
+	if (ep3.has_error()) {
+		char c = ep3.error(); 													// Accessing the error information of ep3.
+		
+		std::cout << "Error code is: " << c << '\n';
+	}
+
+	 
+	template<typename T, typename E>
+	struct ExError : T, E {
+		using T::T;
+		using E::E;
+	};
+	std::expected<ExError<int, char>, ExError<int, float>> ep4{ { 1, 2.0f } };
+	if (ep4.has_

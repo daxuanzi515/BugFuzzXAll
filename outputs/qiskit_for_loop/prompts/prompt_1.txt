@@ -1,0 +1,17 @@
+'''The QuantumCircuit module includes a builder interface for new control-flow operations like ForLoopOp, IfElseOp, and WhileLoopOp. The QuantumCircuit.for_loop() method is overloaded to return a context manager if no body parameter is provided. Upon entering this context manager, a scope is pushed into the circuit and gate calls and resources are captured, eventually building up the required operation.
+
+The ForLoopOp can be created in two ways with the QuantumCircuit.for_loop() method. If all arguments (except possibly label) are provided, it creates the ForLoopOp with the given body. If the body, qubits, and clbits parameters are not passed, it functions as a context manager and automatically builds a ForLoopOp when the scope completes, handling the loop variable allocation and resource capturing.
+
+An example of its use is:
+```python
+qc = QuantumCircuit(2, 1)
+with qc.for_loop(range(5)) as i:
+    qc.h(0)
+    qc.cx(0, 1)
+    qc.measure(0, 0)
+    qc.break_loop().c_if(0, True)
+```
+
+The method's parameters include indexset, loop_parameter, body, qubits, clbits, and label. Depending on the specified parameters, the method returns either a context manager for creating the for loop or an InstructionSet handle to the appended loop operation. Incorrect usage will raise a CircuitError.'''
+'''Create quantum circuit in Qiskit in Python that uses the for_loop API.'''
+from qiskit import QuantumCircuit

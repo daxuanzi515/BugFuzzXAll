@@ -1,0 +1,26 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <locale.h>
+#include <math.h>
+#include <limits.h>
+#include <complex.h>
+#include <ctype.h>
+#include <assert.h>
+#include <string.h>
+#include <stdalign.h>
+#include <signal.h>
+#include <fenv.h>
+#include <time.h>
+#include <tgmath.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <setjmp.h>
+typedef uint32_t __u__uint32_t;
+typedef uint64_t __u__uint64_t;
+typedef uintptr_t __u__uintptr_t;
+typedef float __u__float;
+typedef double __u__double;
+typedef long double __u__

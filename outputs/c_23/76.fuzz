@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+int main(int argc, char* argv[]) {
+  char* name = malloc(50);
+  memset(name, 0, 50);
+  printf("Parameter 1: %s\n", "hello");
+  printf("Parameter 2: %s\n", "world");
+  printf("Parameter 2: %s\n", argv[0]);
+  printf("Argument #1: %s\n", *(argv + 1));
+  printf("Argument #2: %s\n", *argv);
+  fgets(name, 50, stdin);
+}

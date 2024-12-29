@@ -1,0 +1,84 @@
+#include <expected>
+<fim_suffix>_type(const Foo &foo) : val(foo.x) {}
+explicit Foo(int x) : val(x) {}          
+
+template <typename U> Foo(U&& f) : Foo(*f.get_shared()) {}  
+inline friend std::ostream &operator<<(std::ostream &os, const Foo &f) {
+  os << "Foo " << f.val;
+  return os;
+}
+
+std::shared_ptr<Foo> get_shared() const {
+  return std::make_shared<Foo>(*this);
+}
+void use() { x = 101010; }
+};
+
+void hello(const Foo &f) { std::cout << "hello Foo\n"; }
+void foobar(Foo &f) { std::cout << "Hello foobar\n"; }
+
+void test_simple(expected<double, std::exception_ptr> maybe_bar,
+                 const Foo &foo) {
+
+  try {
+    foo.use();
+  } catch (std::exception &ex) {
+     
+  }
+
+  try {
+    if (maybe_bar.has_value()) {
+      std::cout << "maybe_bar is " << maybe_bar.value() << std::endl;
+    } else {
+      std::cout << "maybe_bar is unexpectedly " << *maybe_bar.error() << std::endl;
+    }
+  } catch (const std::exception &e) {
+    std::cout << "ERROR: " << e.what() << std::endl;
+  }
+
+  maybe_bar.value_or(0);
+
+  try {
+    auto p = maybe_bar.get();
+    std::cout << "got value " << *p << std::endl;
+    maybe_bar = Foo{456};
+    foo.use();
+  } catch (const std::exception &e) {
+    std::cout << "ERROR: " << e.what() << std::endl;
+  }
+
+  foobar(foo);
+
+  do_with_foo([](Foo f) {
+    f.use();
+  });
+}
+
+expected<Foo, std::exception_ptr> good_foo() { return Foo{300}; }
+expected<Foo, std::exception_ptr> bad_foo() {
+  throw std::invalid_argument{"bad_foo"};
+  return Foo{300};                                          
+}
+
+void test_unexpected(const expected<Foo, std::exception_ptr> &e) {
+  if (e) {
+    std::cout << "Got value " << *e << '\n';
+  } else {
+    std::cout << "ERROR: " << *e.error() << '\n';
+  }
+}
+
+expected<double, std::exception_ptr> get_bar() {
+  return 4.3;
+}
+
+template <typename F> void do_with_bar(F f) {
+  auto v = get_bar();
+  if (v) {
+    f(v.value());
+  } else {
+    std::cout << "ERROR: " << *v.error() << '\n';
+  }
+}
+
+/* TODO: use monadic operations

@@ -1,0 +1,23 @@
+import java.lang.Object;
+class Sample {
+    void doSomething() {
+        System.out.println(this + ": doSomething()");
+    }
+    void lock() {
+        synchronized (this) {
+            System.out.println(this + ": lock()");
+        }  
+    }  
+    void sync() {
+        synchronized (this) {
+            System.out.println(this + ": sync()");  
+        }
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();  
+        s.lock();  
+        s.sync();
+    }
+}

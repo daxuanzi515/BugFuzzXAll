@@ -1,0 +1,103 @@
+#include <expected>
+<fim_suffix>= 1,  
+};
+
+const auto doSomething = [](Person person) -> Result<Person, String>
+{
+     if (person.age < 0)
+          return makeError("My name is " + person.name.get() + ", and age must be positive!");
+
+     return makeOk(person);
+};
+
+const auto doSomethingElse = [](Person person) -> Result<Person, String>
+{
+     return makeOk(person);
+};
+
+TEST_CASE("ExpectedTest, basicTest")
+{
+     Person noName{
+         "<NAME>",
+         -1,
+        
+         Gender::Unknown,
+     };
+     auto res1 = doSomething(noName);
+     REQUIRE(res1.has_error());
+     REQUIRE(res1.error().get() == EXPECTED_FAILURE_MESSAGE_1);
+
+     Person elena{
+         "<NAME>",
+         elenaAge,
+        
+         Gender::Female,
+     };
+     auto res2 = doSomething(elena);
+     REQUIRE(res2.has_value());
+     REQUIRE(res2.value().name.get() == "<NAME>");
+     REQUIRE(res2.value().age == elenaAge);
+
+     Person mukhitin{
+         "",
+         2,
+      
+         Gender::Male,
+     };
+     auto res3 = doSomething(mukhitin);
+     REQUIRE(res3.has_error());
+     REQUIRE(res3.error().get() == EXPECTED_FAILURE_MESSAGE_2);
+
+     Person maria{
+         "",
+         21,
+  
+         Gender::Female,
+     };
+     auto res4 = doSomethingElse(maria);
+     REQUIRE(res4.has_value());
+     REQUIRE(res4.value().name.get() == maria.name.get());
+     REQUIRE(res4.value().age == maria.age);
+ };
+
+
+<fim_middle>
+#include <string_view>
+#include <doctest.h>
+
+using Expected_t = std::expected<std::string, std::string>;
+#include <string_view>
+
+TEST_CASE("expectedTest")
+{
+     Expected_t res = Expected_t("bla");
+
+     REQUIRE(res.value() == "bla");
+
+     bool isError(std::string_view("hello world")!= res.value());
+}
+
+int elenaAge = 30;
+std::string EXPECTED_FAILURE_MESSAGE_1 = "My name is <NAME>, and age must be positive!";
+const std::string EXPECTED_FAILURE_MESSAGE_2 = "Name must not be empty!";
+struct Person
+{
+     std::string name;
+     int age;
+  
+     Gender gender;
+};
+
+enum class Gender
+{
+     Unknown,
+     Male,
+     Female,
+};
+
+enum class PersonNameValue
+{
+     Empty,
+     
+     Mukhitin,
+     

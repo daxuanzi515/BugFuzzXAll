@@ -1,0 +1,72 @@
+#include <expected>
+<fim_suffix>
+}
+
+
+
+int main()
+{
+	try
+	{
+		auto name = getFileName("non_existing_file");
+	}
+	catch (const std::exception &e)
+	{
+		cout << e.what() << endl;
+		 
+	}
+	getchar();
+	return 0;
+}<fim_middle>
+#include <filesystem>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+#include <tuple>
+#include <vector>
+
+using namespace std;
+using namespace std::literals;
+namespace fs = std::filesystem;
+
+ 
+
+class Error : std::runtime_error
+{
+public:
+	Error(const string &s)
+		: std::runtime_error(s)
+	{
+	}
+};
+
+expected<int, Error> divide(int x, int y)
+{
+	if (y == 0)
+		return err(Error("Divide by zero"));
+
+	return ok(x / y);
+}
+
+expected<double, Error> divide_by_zero()
+{
+	throw Error("Divide by zero");
+}
+
+void run_demo(int x, int y)
+{
+	cout << "x = " << x << " y = " << y << endl;
+
+	 
+
+	if (auto r = divide(x, y); r)
+		cout << "x/y = " << *r.value() << endl;
+
+	/* When we divide by zero we would get an exception. But, instead, lets try for a different
+	reason of error (error handling)
+
+	We have two different approaches here. The first is using a if-let like statement and using
+	an else-clause. This also requires we catch std::exception, so this is good when you want to
+	have generic code that works on both expected- and unexpected-types.
+
+	But then we don't have to

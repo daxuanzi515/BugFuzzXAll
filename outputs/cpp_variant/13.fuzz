@@ -1,0 +1,19 @@
+#include <variant>
+#include <string>
+#include <iostream>
+int main() {
+    std::variant<float, double, std::string> v;
+    v = 4.219;
+    std::visit([](auto v) {
+        std::cout << v << "\n";
+    }, v);
+    v = "hello, world";
+    std::visit([](auto v) {
+        std::cout << v << "\n";
+    }, v);
+    std::visit([](auto v) { 
+        int i = std::stof(v);
+        std::cout << i << std::endl;
+        }, v);
+    return 0;
+}

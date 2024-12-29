@@ -1,0 +1,35 @@
+#include <variant>
+<fim_suffix>< variant_size_v<std::unique_ptr<T>>;  
+    static constexpr size_t size() {  
+        return std::variant_size_v<Impl>;
+    }
+};
+int main()
+{
+    std::vector<Derived> v;
+}
+
+ 
+#include <variant>
+#include <type_traits>
+template<typename... Ts>
+struct get_variants_size;
+
+template<typename T>
+struct get_variants_size<T> 
+{
+    static constexpr size_t size() {
+        return std::variant_size_v<T>;
+    }
+};
+template<typename T, typename... Ts>
+struct get_variants_size<T, Ts...> : public get_variants_size<Ts...>
+{
+    static constexpr size_t size() {
+       return get_variants_size<Ts...>::size() + (std::variant_size_v<T> == 0);
+    }
+};
+int main()
+{
+    std::vector<std::unique_ptr<int>> unique_ints;
+    std::cout << get_variants_size<std::unique_ptr<int>, std::unique_ptr<double>, std::shared_ptr

@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num) 
+{
+    long *newNum = (long *) malloc(sizeof(long));
+    *newNum = *num/2;
+    *num = *newNum;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long * newNum = changeValue(num);
+    return newNum;
+}
+int main(int argc, char* argv[])
+{
+    int val = rand() % 100; 
+    long *val2 = longChangeValue(val);
+    printf("%ld",*val2);
+    return 0; 
+}

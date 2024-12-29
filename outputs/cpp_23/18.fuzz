@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    unsigned int number{0};
+    Employee() {
+        Employee* p{this};
+        number = random();
+        p->secretDataPtr = malloc(number);
+    }
+    ~Employee() {
+        free(secretDataPtr);
+    }
+};
+void printSecretDataPtr(Employee emp)
+{
+    for (size_t i = 0; i < emp.number; i++) {
+        printf("%c ", *(reinterpret_cast<char*>(emp.secretDataPtr) + i));
+    }
+    printf("\n");
+}
+int main()
+{
+    Employee emp{};
+    printSecretDataPtr

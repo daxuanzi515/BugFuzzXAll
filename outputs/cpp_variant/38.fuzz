@@ -1,0 +1,39 @@
+#include <variant>
+<fim_suffix>nclude <array>
+#include <chrono>
+#include <random>
+#include <string>
+#include <algorithm>
+#include <iostream>
+class TimingLogger {
+public:
+    explicit TimingLogger(const std::string& message = "") 
+        : m_message{message}
+       , m_start_time{std::chrono::high_resolution_clock::now()}
+       , m_end_time{std::chrono::high_resolution_clock::now()}
+    {}
+    
+    void log() const {
+        m_end_time = std::chrono::high_resolution_clock::now();
+        using namespace std::chrono;
+        const auto microseconds{duration_cast<microseconds>(m_end_time - m_start_time).count()};
+        std::cout << m_message <<'' << microseconds <<'';
+        if(microseconds > 10000) {
+            std::cout << microseconds / 1000.0 << " ms\n";
+        } else {
+            std::cout << microseconds << " µs\n";
+        }
+    }
+    
+private:
+    const std::string m_message;
+    const std::chrono::time_point<std::chrono::high_resolution_clock> m_start_time;
+    mutable std::chrono::time_point<std::chrono::high_resolution_clock> m_end_time;
+};
+static constexpr std::size_t kNumRuns{1E6};
+int main() {
+    std::default_random_engine generator;
+    std::normal_distribution<double> distribution{-1.0, 1.0};
+    TimingLogger("Testing std::vector").log();
+    std::vector<double> vector;
+    T

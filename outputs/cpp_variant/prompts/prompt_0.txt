@@ -1,0 +1,21 @@
+/* The std::variant, a feature in C++17, is a type-safe union, which means it can hold a value of one of its specified types, or no value at all in case of an error. It is defined in the <variant> header.
+
+Unlike typical unions, this variant doesn't hold references, arrays or void. If a variant holds an object of type T, the object's representation is directly allocated within the variant's representation, without allocating additional memory.
+
+The variant class template has template parameters which are all the types it may store. These types must meet Destructibility requirements; array types and non-object types aren't allowed.
+
+Upon default-construction, a variant holds the value of its first alternative. The std::monostate helper class can make it default-constructible.
+
+Members of variant class template include constructors, destructors, the assignment operator as well as observer, modifier, and non-member functions.
+
+Observe functions include 'index' to return the zero-based index of the alternative held by the variant, and 'valueless_by_exception' to check if the variant is in an invalid state.
+
+Modifiers include 'emplace' to construct a value in variant in place, and 'swap' to swap one variant with another.
+
+Non-member functions include 'visit', 'holds_alternative', 'std::get(std::variant)', 'get_if', and comparison operators, involved in a variety of tasks ranging from reading values or constructing values in place to comparing variant objects.
+
+Helper classes include 'monostate' for use when the first alternative in a variant is non-default-constructible and 'bad_variant_access' for exceptions on invalid accesses to a variant. 'variant_size, variant_size_v, variant_alternative, variant_alternative_t' are utilized to manipulate the variant's list of alternatives at compile time.
+
+The 'std::hash<std::variant>' specializes the std::hash algorithm, and 'variant_npos' represents the index of the variant in an invalid state. */
+/* Please create a very short program which combines std::variant with new C++ features in a complex way */
+#include <variant>

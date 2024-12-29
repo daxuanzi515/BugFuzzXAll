@@ -1,0 +1,38 @@
+#include <stdlib.h>
+#include <string.h>
+#define ARRAY_SIZE 1024
+
+int reverseBits(char *array, int size)
+{
+        char *ptr = array, swap;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+                if (*ptr)
+                {
+                        swap = ptr[size - i - 1];
+                        ptr[size - i - 1] = *ptr;
+                        *ptr = swap;
+                }
+                ptr++;
+        }
+        return 0;
+}
+
+int swap(char *a, char *b)
+{
+        char temp = *a;
+        *a = *b;
+        *b = temp;
+        return 0;
+}
+int main()
+{
+        int length = sizeof(array), result, i;
+        result = reverseBits(array, length);
+        for(i = 0; i < int length; i++)
+                printf("%d, ", i);
+        printf("\n");
+        return (0);
+}
+```

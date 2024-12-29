@@ -1,0 +1,18 @@
+#include <variant>
+<fim_suffix>e class.
+
+## `std::basic_istream` and `std::basic_ostream`
+
+The stream types and stream manipulators in the standard library (in `<istream>`, for example) have a default implementation which will parse or print values based on an input or output formatter: `std::basic_istringstream`, `std::basic_ostringstream`, `std::basic_fstream`. These are both derived from `std::basic_istream` and `std::basic_ostream` so all of these classes share a common base class.
+
+## `std::optional`
+
+We've learned about the `std::optional` type in the prior chapters, but it requires a few caveats when dealing with the standard library:
+
+1. It's not really a type, but some syntactic sugar to wrap non-default constructible types in a way that allows to query the validity of a value through the `has_value()` method.
+2. It has to implement an equality operator in at least one of its classes, since in some uses, the type of values held by these types is not known.
+3. Since we require this operator on all types used in optional values (in most cases other than `std::nullopt_t`), `std::optional<T>` only supports default construction.
+
+For these reasons we can't use `std::optional` as a key type in our key_value container because it will require us to define an equality operator even for other types we don't care about. 
+
+Fortunately, `std::optional` provides an alternative solution via a specialized class, `std::experimental::optional`. This class is the same as `std::optional` but has relaxed requirements on the object's type, and also provides constructor and assignment from `std::nullopt_

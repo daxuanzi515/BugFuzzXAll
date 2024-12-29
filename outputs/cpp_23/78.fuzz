@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word.substr(2) << " " << word.capacity() << endl;
+   return 0;
+}

@@ -1,0 +1,38 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+
+    char *text = NULL;
+
+    size_t len = 0;
+
+    fseek(file, 0, SEEK_END);
+
+    len = ftell(file)+1;  
+
+    rewind(file);
+
+     
+    text = (char *)malloc(len * sizeof(char));
+    fread(text,len-1,1,file);
+
+     
+    fflush(file);
+    fclose(file);
+
+     
+    printf("%s\n", text);
+
+    free(text);
+
+    return 0;
+}

@@ -1,0 +1,55 @@
+#include <expected>
+
+std::cout << "std::unexpected_type T type is " <<
+typeid(std::unexpected_type_t<E>).name() << std::endl;
+	return 0;
+	}
+
+ <fim_middle>
+#include <iostream>
+#include <string>
+
+int main()
+{
+	 
+	const std::string ERROR_MSG = "error from library: ";
+	const std::string NO_VALUE = "no value";
+
+	 
+	typedef std::expected<std::string, int> E;
+
+	 
+	E get_result = ERROR_MSG;	 
+
+	 
+	if (get_result.has_value()) {	 
+	std::cout << "value from get() = " << get_result.value() << std::endl;
+	}
+	else {	 
+	std::cout << "error from get() = " << get_result.error().message() << std::endl;	 
+	}
+
+	 
+	std::cout << "value from map() = " << get_result.map([](auto&& msg) {
+	 
+	 
+	return msg + " mapped into something else";	 
+	}).value_or(NO_VALUE);	 
+
+	 
+	get_result = std::make_unexpected(38);	 
+	std::cout << "value from get_or() = " << get_result.get_or("error from get_or()") <<
+std::endl;
+
+	 
+	get_result = std::unexpect();	 
+	std::cout << "value from value_or() = " <<
+get_result.value_or("error from value_or()") << std::endl;
+
+	 
+	std::string default_str = "default value";	 
+	get_result = std::unexpect();	 
+	std::cout << "value from value_or_eval() = " <<
+get_result.value_or_eval([]{return default_str;}) << std::endl;
+
+	 

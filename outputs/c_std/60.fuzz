@@ -1,0 +1,32 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = (*num)/2;
+    *num = *temp;
+    return newNum;
+}
+
+long* longChangeValue(int num, char* buf)
+{
+    long newNum = num;
+    changeValue(&newNum, (long *)buf);
+    newNum = num;
+    return &newNum;
+}
+
+int main()
+{
+    char *buffer = "abcdefghijklmnopqrstuvwxyz";
+    int val = rand() % 26;
+    char val2 = buffer[val]+0;
+    int val3 = val2%7;
+    val3 = val2/7;
+    long *val4 = longChangeValue(val3, buffer);
+    buffer = (char *)val4;
+    long val5 = val4;
+    printf("%ld",val5); 
+    return 0;
+}

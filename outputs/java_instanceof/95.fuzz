@@ -1,0 +1,35 @@
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (!(a instanceof Double)) 
+			throw new IllegalArgumentException("a is not Integer");
+		System.out.println("a is Integer: " + (a instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("1 instanceof Number: " + (1 instanceof Number));
+		System.out.println("7 instanceof Number: " + (7 instanceof Number));
+		System.out.println("1.45f instanceof Number: " +
+		 (1.45 instanceof Number));
+		System.out.println("1.45 instanceof Number: " +
+		 (1.45f instanceof Number));
+		System.out.println("1.5f instanceof Object: " + (1.5f instanceof Object));
+		System.out.println("1.5 instanceof Object: " + (1.5 instanceof Object));
+		String s = "xyz";
+		System.out.println("'x' instanceof String: "
+			+ ('x' instanceof String));
+		System.out.println("'x' instanceof Character: "
+			+ ('x' instanceof Character));
+		System.out.println("'x' instanceof Object: "
+			+ ('x' instanceof Object));
+	}
+}

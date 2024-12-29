@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct Point{
+    int x;
+    int y;
+};
+
+union Number{
+		int z;
+};
+
+main()
+{
+	struct Point point1;
+	struct Point *q1;
+	union Number t;
+	union Number *p;
+	q1 = & point1;
+	p = & t;
+	t.z = 0x1234;
+t. z = 0x1234;
+p = &(t. z);
+}

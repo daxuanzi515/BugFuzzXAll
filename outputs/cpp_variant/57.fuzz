@@ -1,0 +1,25 @@
+#include <variant>
+ to the `variant_match` function:
+
++ Create a `variant_match` function template that accepts a variant over the `std::variant` types and a `std::variant` over the 21 `std::function` types. That function should use the integer indices of the types in the `std::variant` parameters passed as function arguments (using the built-in `std::get`) and the functions (using `std::get_if`) passed in the `std::variant` parameters and call the function at the given index passing in the argument as argument.
+
+Create an instance of that generic function taking a `std::variant` holding `int`, `double`, and `std::string` to `std::cout` the three different parameters.
+
+Once that works, you can try to implement similar functions to test what happens for `float`, `long double`, `char`, `unsigned int`, `bool`, and what happens for `int`, `double`, and `double`. Then call them with an instance of `std::variant` with an integer, a double, and a string. */
+#include <variant>
+#include <functional>
+#include <iostream>
+
+using function_t = std::function<void()>;
+
+using int_f = std::function<void(int)>;
+using double_f = std::function<void(double)>;
+using string_f = std::function<void(std::string)>;
+using variant_f = std::variant<int_f, double_f, string_f>;
+
+template <typename... Args>
+using variant_match = int;
+
+template <typename T>
+variant_match<T> get_variant_index(const T& var) {
+    return var.index

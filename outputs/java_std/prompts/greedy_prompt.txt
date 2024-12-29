@@ -1,0 +1,16 @@
+/* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;

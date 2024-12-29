@@ -1,0 +1,82 @@
+#include <expected>
+<fim_suffix>nt_result = true);
+
+static constexpr bool is_same_type_v = IsSameType<T, U>::value;
+
+static_assert(is_same_type_v == true);<fim_middle>
+#include <iostream>
+#include <type_traits>
+
+using std::expected;
+using std::unexpected;
+
+struct error_handler
+{
+	template<class T>
+	void operator(T&& t) {
+		std::cout << "Error handler: got value: " << t << '\n';
+	}
+	template<class E>
+	void operator(E&& e) {
+		std::cout << "Error handler: got exception: " << e.what() << '\n';
+	}
+};
+
+void print(expected<int, int> res1)
+{
+	std::cout << res1.value() << '\n';
+}
+
+void print(expected<int, int> res1, expected<int, int> res2) {
+	res1.match(res2,
+		error_handler{},
+		[](auto x) {
+			std::cout << "Got value: " << x << '\n';
+		});
+}
+
+void print(expected<int, int> res1, int x) {
+	expect(res1, error_handler{}, std::cout << x << '\n');
+}
+
+expected<std::string, char> get_a_string() {
+	 
+	 
+	return unexpected<char>('e');
+}
+
+static constexpr int return_int() { return 7; }
+
+template<class T, class U>
+struct IsSameType : public std::false_type { };
+
+template<class T>
+struct IsSameType<T, T> : public std::true_type { };
+
+static constexpr bool check_return_type_v = is_same_v<decltype(return_int()), int>;
+
+static_assert(check_return_type_v == true);
+
+static constexpr bool check_return_type_v1 = is_same_v<decltype(return_int()), int>;
+
+static_assert(check_return_type_v1 == true);
+
+int return_int() { return 8; }
+
+static_assert(is_same_v<decltype(return_int()), int> == false);
+
+template<class T, class U>
+static constexpr bool is_same_type_v = is_same<T, U>::value;
+
+static_assert(is_same_type_v<int, int> == true);
+
+static_assert(is_same_type_v<int, constexpr int> == false);
+
+template<class T, class U>
+using IsSameT = std::bool_constant<std::is_same_v<T, U>>;
+
+static_assert(IsSameT<int, int>::value == true);
+
+static_assert(IsSameT<int, constexpr int>::value == false);
+
+static constexpr bool is_same_type_v1 =

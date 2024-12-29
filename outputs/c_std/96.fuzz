@@ -1,0 +1,41 @@
+#include <stdlib.h>
+#include <math.h>
+#include<stdio.h>
+int main()
+{
+    float *valptr = malloc(sizeof(float));
+*valptr = (127 + 2) / 2;
+printf("%f\n", *valptr);
+return 0;
+}
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int maxval(int arr[], int size)
+{
+    int i, max;
+    max = arr[0];
+    for (i = 1; i < size; i++)
+        if (arr[i] > max)
+        {
+            max = arr[i];
+}
+return max;
+}
+int main()
+{
+    int arr[] = { 2, 3, 2, 5, 7, 15 };
+    int i, size, max;
+    size = sizeof(arr) / sizeof(arr[0]);
+    max = maxval(arr, size);
+    printf("Max value is %d", max);
+    return 0;
+}
+ 
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int i, size, temp;
+int arr[] = { 7, 6, 5, 4, 3, 2, 1 };
+size = sizeof(arr)

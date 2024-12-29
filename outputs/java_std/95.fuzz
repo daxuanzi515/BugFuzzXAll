@@ -1,0 +1,32 @@
+import java.lang.Object;
+<fim_suffix>;
+import java.io.*;
+public class HelloIndian{
+	public static void main(String[] args) throws IOException {
+		Scanner s1 = new Scanner("Hello\nworld");
+		StringBuilder s2 = new StringBuilder();
+		while(s1.hasNext())
+			s2.append(s1.next());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String str = reader.readLine();
+		FileOutputStream outfile = new FileOutputStream("Textin.txt");
+		outfile.write(str.getBytes());
+		scanner s3 = new scanner(new BufferedInputStream(in));
+		System.out.println(s3.next());
+	}
+}<fim_middle>import java.util.*;
+import java.io.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		StringBuilder s2 = new StringBuilder();
+		while(s1.hasNext())
+			s2.append(s1.next());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String str = reader.readLine();
+		FileOutputStream outfile = new FileOutputStream("Textout.txt");
+		outfile.write(str.getBytes());
+		PrintWriter file = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outfile)));
+		file.println(s2.toString());
+	}
+}

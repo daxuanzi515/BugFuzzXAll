@@ -1,0 +1,9 @@
+#include <stdlib.h>
+
+int main(void)
+{
+    typedef unsigned int ui;
+    typedef ui number;
+    number n = 1;
+    return EXIT_SUCCESS;
+}

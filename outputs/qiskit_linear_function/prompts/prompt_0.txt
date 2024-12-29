@@ -1,0 +1,38 @@
+'''The LinearFunction is a class that represents a linear reversible circuit on n qubits. It is represented as a n x n matrix of 0s and 1s in a numpy array format. It can be synthesized into CX and SWAP gates. This linear function can be created by providing either an n x n matrix or a quantum circuit composed of linear gates only. A validation parameter is optional which, when enabled, validates the input matrix for being square and invertible.
+
+The class defines several methods and attributes:
+
+- `is_permutation`: Checks whether the linear function is a permutation.
+- `permutation_pattern`: Checks if a linear function is a permutation and raises a CircuitError if not.
+- `synthesize`: Synthesizes the linear function into a quantum circuit.
+- `validate_parameter`: Validates the parameter input.
+
+Attributes include:
+- `condition_bits`: Returns Clbits in condition.
+- `decompositions`: Returns the decompositions of the instruction.
+- `definition`: Returns the definition of basic gates. 
+- `duration`: Returns the duration.
+- `label`: Returns the label for the gate.
+- `linear`: Returns the n x n matrix representing the linear function
+- `name`: Returns the name.
+- `num_clbits`: Returns the number of clbits.
+- `num_qubits`: Returns the number of qubits.
+- `original_circuit`: Returns the original circuit used to construct the linear function 
+- `params`: Returns instruction params.
+- `unit`: Returns the time unit of duration.
+
+The Gate is another class outlined here that represents a unitary gate with a name, the number of qubits it acts on, and parameters for the gate. An optional label for the gate can also be added. This class contains several methods for assembling, broadcasting arguments, reversing operations, soft comparison between gates and more.
+
+Gate attributes include:
+- `condition_bits`: Returns Clbits in condition.
+- `decompositions`: Returns the decompositions of the instruction.
+- `definition`: Returns the definition of basic gates.
+- `duration`: Returns the duration.
+- `label`: Returns the label for the gate.
+- `name`: Returns the name.
+- `num_clbits`: Returns the number of clbits.
+- `num_qubits`: Returns the number of qubits.
+- `params`: Returns instruction params.
+- `unit`: Returns the time unit of duration.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit

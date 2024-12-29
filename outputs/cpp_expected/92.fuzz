@@ -1,0 +1,89 @@
+#include <expected>
+  EXPECT_EQ(1U, counter);
+        }
+    }
+
+     
+    {
+         
+        auto x = make<int>(15);
+        EXPECT_TRUE(x.has_value());
+        EXPECT_EQ(15, x.value());
+
+         
+        auto y = make<int, const char*>(27, "const char*");
+        EXPECT_TRUE(y.has_value());
+        EXPECT_EQ(27, y.value());
+        EXPECT_EQ("const char*", y.error().args().message);
+    }
+}
+
+TEST_F(ExpectedTest, Operators) {
+    using namespace std::string_view_literals;
+    enum error_code {
+        ec1 = 1,
+        ec2 = 2,
+        ec3 = 3,
+    };
+
+    struct Data {
+        int value = 0;
+
+        explicit operator bool() const noexcept {
+            return value > 0;
+        }
+    };
+
+    struct DataExpected {
+        int value = 0;
+
+        operator bool() const noexcept {
+            return value > 0;
+        }
+    };
+
+    struct StringExpected {
+        std::string_view str;
+
+        operator bool() {
+            return!str.empty();
+        }
+    };
+
+    DataExpected const data_expected(Data{15});
+    auto expected_data_value = DataExpected(Data{15});
+
+    Data const null_data{};
+    Data const valid_data{15};
+    DataExpected const null_data_expected{};
+    Data const data(15);
+    std::string const empty_str{};
+    std::ostringstream empty_str_oss;
+    std::string str("my string");
+
+    ::testing::internal::CaptureStdout();
+    EXPECT_TRUE(empty_str);
+    EXPECT_FALSE(valid_data);
+
+     
+    EXPECT_TRUE((data = null_data).has_value() == data.has_value());
+    EXPECT_TRUE((expected_data_value = null_data_expected).has_value() == expected_data_value.has_value());
+    EXPECT_TRUE((data_expected = null_data_expected).has_value() == data_expected.has_value());
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((empty_str = std::string{""}));
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((empty_str = empty_str_oss.str()).empty());
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((*empty_str = '1'));
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((*empty_str = '\0'));
+    EXPECT_TRUE((*empty_str = std::string{}));
+    EXPECT_TRUE(empty_str);
+    EXPECT_TRUE((empty_str = "abc"s).empty());
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((empty_str = "abc"));
+    EXPECT_TRUE(empty_str);
+    EXPECT_TRUE((empty_str = "abc"sv).empty());
+    EXPECT_FALSE(empty_str);
+    EXPECT_TRUE((empty_str = make_unexpected<error_code>(ec1));)
+    EXPECT_EQ(1, empty_str.value().code

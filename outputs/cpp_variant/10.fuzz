@@ -1,0 +1,27 @@
+#include <variant>
+#include <iostream>
+int main()
+{
+    std::variant<int, float, double> v{10.99};
+     
+     
+    printf("%d\n", std::get<int>(v));
+    return 0;
+}
+ 
+ 
+#include <variant>
+#include <iostream>
+int main()
+{
+    std::variant<int, float, double> v{};
+    std::cout << sizeof(v);
+    return 0;
+}
+ 
+#include <iostream>
+#include <type_traits>
+#include <variant>
+#include <string>
+#include <map>
+#include <

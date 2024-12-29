@@ -1,0 +1,61 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow.switch import SwitchCase
+from qiskit.circuit.library import XGate
+qc = QuantumCircuit(4, 2)
+with qc.switch(qc.classical_register):
+    with SwitchCase(
+        0, (qc.cry(0.5, 0, 1), qc.cry(0.1, 2, 3),),
+    ):
+        qc.barrier(0, 1, 2, 3)
+        qc.x(0)
+        qc.x(1).c_if(qc.classical_register, 1)
+        qc.x(2)
+        qc.ccx(qc.classical_register, 2, 3)
+    with SwitchCase(
+        1, (qc.cx(0, 2), qc.cx(1, 3)),
+    ):
+        qc.barrier(0, 1, 2, 3)
+        qc.x(0)
+        qc.x(1).c_if(qc.classical_register, 0)
+        qc.x(1)
+        qc.ccx(0, 1, 1)
+    qc.barrier(0, 1, 2, 3)
+    with SwitchCase(qc.classical_register, (qc.cx(0, 1), qc.u(0, 0, 0, 1), XGate().control(1, ctrl_state=qc.classical_register)),
+    ):
+        qc.ccx(0, 1, 2).c_if(qc.classical_register, 1)
+        qc.ccx(qc.classical_register, 2, 3)
+qc.x(2).c_if(qc.classical_register, 1)
+qc.x(3).c_if(qc.classical_register, 1)
+qc.draw(fold=-1)
+
+qc.decompose().draw()
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

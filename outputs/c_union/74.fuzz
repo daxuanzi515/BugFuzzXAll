@@ -1,0 +1,49 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main(void)
+{
+  double r;
+  struct {
+      double px, py;
+}point, *p1, *p2;
+union {
+        double x;
+        struct {
+               double px, py;
+           }point;
+   }t0, t1;
+  p1 = (void *)&point;
+  t0.point = *((struct s *)p1);
+  t1.x = t0.point.px*t0.point.py;
+  t0.x = 1234.0;
+  t0.point.px = 1234.0;
+  t0.point.py = t1.x;
+  p2 = (void *)&g_point;
+  t1.point = *((struct s *)p2);
+  t1.x = t1.point.px*t1.point.py;
+  t1.point.px = 0.0;
+  t1.point.py = t1.x;
+  t0.p = (struct s *)&g_point;
+  t1.p = (struct s *)&g_t1;
+  i=4;
+  t0.p=&i;
+  t1.p=&i;
+  t0.i=0x1234;
+  t1.i=0x4321;
+  printf("t0.p=%p,t0.i=0x%x\n",t0.p,t0.i);
+  printf("t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.p->point.px,t0.p->point.py);
+  printf("t0.i=0x%x,t0.p->point.px=%lf,t0.p->point.py=%lf\n",t0.i,t0.p[0].point.px,t0.p[0].point.py);
+  t0.i=0;
+  return (EXIT_SUCCESS);        
+  
+ 
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>  
+struct s
+{
+    double px, py;
+   
+}; 
+double t1[2][2][

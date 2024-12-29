@@ -1,0 +1,39 @@
+#include <tuple>
+
+#include <utility>
+#include <iostream>
+#include <array>
+
+ 
+ 
+ 
+ 
+template <class XPoint, class YPoint>
+Point make_point(XPoint x, YPoint y) {
+  return Point(std::forward<XPoint>(x), std::forward<YPoint>(y));
+}
+
+Point main()
+{
+	 
+	 
+	 
+	 
+	Point p = make_point(10.0, 20.0);
+
+	 
+	 
+	 
+	 
+	auto add_values = [&](auto&& x, auto&& y) {
+		return x + y;
+	};
+
+	auto unpack = [](const auto&... t) {
+		return std::apply(add_values, t);
+	};
+
+	 
+	 
+	std::cout << unpack(p) << '\n';
+}

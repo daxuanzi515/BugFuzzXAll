@@ -1,0 +1,47 @@
+import java.lang.Object;
+<fim_suffix>er(s1.nextLine()));
+		s1.readFully(bytes);
+		for(int a : bytes){
+			System.out.println(a);
+		}
+		s1.close();
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class Test{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.useDelimiter("<->");
+		int a[]=new int[5];
+		for(int i : a)
+			System.out.println(i);
+		s1.close();
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Hello{
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Hello{
+	public static void main(String[] args) {
+		String s1= "";
+		for(int i = 0; i < 20; i++){
+			s1+=i;
+		}
+		System.out.println(s1);
+	}
+}
+<fim_middle>public class Hello{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		int bytes[]=new int[s1.nextLine().length()];
+		s1=new Scanner(new CharArrayRead

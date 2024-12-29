@@ -1,0 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+int main()
+{
+    setlocale(LC_NUMERIC, "");
+    printf("%g\n", -2.3e-21);
+    printf("%.10f\n", 32897654321.56789L);
+    return EXIT_SUCCESS;
+}

@@ -1,0 +1,33 @@
+/* The documentation presents the integrated changes in the latest draft of C23. Some main points include:
+
+Standard Library:
+- New functions have been added to the <string.h> and <stdlib.h> sections. These functions are for erasing sensitive data, efficiently concatenating strings, allocating copies of strings, and determining the byte alignment of a pointer. 
+- Functions providing bit utility have been added under a new header, <stdbit.h>.
+- A function to convert time structure into calendar time value has been added in <time.h>.
+- Existing functions are enhanced such as the printf() and scanf() function families, the strtol() and wcstol() function families, and functions like bsearch() and bsearch_s() etc.
+
+Preprocessor:
+- New directives like #elifdef, #elifndef, #embed, #warning have been added for various purposes such as checking availability of header, attribute, etc. 
+
+Types:
+- Addition of a null pointer type, nullptr_t. 
+- Bit-precise integers types _BitInt(N) have been added 
+- Improved support for using const with arrays.
+
+Constants:
+- Certain constants have been added, such as 'wb and uwb integer literal suffixes for _BitInt(N) types, and binary literal constant prefixes, 0b, and 0B.
+
+Keywords:
+- New Keywords like true, false, alignas, alignof, bool, static_assert, thread_local, _BitInt, typeof, typeof_unqual, nullptr, constexpr, _Decimal32, _Decimal64, _Decimal128 have been added.
+
+Syntax:
+- Syntax has been changed allowing labels to appear before declarations, and unnamed parameters in function definitions.
+
+Other features:
+- Support for the ISO/IEC 60559:2020 for floating-point arithmetic.
+- The constexpr specifier was added for objects, but not functions unlike C++.
+- Additionally, it adds and clarifies encodings for char16_t strings and char32_t strings. 
+
+In summary, the changes involve function addition, directive addition, type modification, keyword addition, syntax changes, and other feature enhancements. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

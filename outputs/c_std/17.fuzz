@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *file = fopen( "src/file.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *text = NULL;
+    size_t i = 0;
+    while ( (text[i++] = (char)getchar())!= '\n') {}  
+    rewind(file);
+    printf("%s\n", text);
+    return 0;
+}
+ 
+ 
+ 
+/* A program in which we are reading the contents in the RAM once is a bit more efficient.

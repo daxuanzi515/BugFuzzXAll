@@ -1,0 +1,11 @@
+/* The 'finally' block in Java is used to ensure that certain code is executed regardless of whether an exception is thrown or not within the 'try' block. It is primarily used for code cleanup, such as the closing of opened files or streams. 
+
+However, there are scenarios when the 'finally' block may not execute, such as when the JVM exits while executing the 'try' or 'catch' code. 
+
+To better handle these situations, Java provides a feature known as 'try-with-resources' which automatically closes the resources once they are no longer needed. This reduces the need for explicit resource cleanup and the chance for errors. 
+
+In the context of the 'writeList' method, the 'finally' block become useful for closing the 'FileWriter' and 'PrintWriter'. However, by using 'try-with-resources', these two can be closed automatically without needing a 'finally' block. 
+
+Remember, always use 'try-with-resources' when dealing with resources that need to be closed to ensure they are handled properly. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;

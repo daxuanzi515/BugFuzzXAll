@@ -1,0 +1,15 @@
+#include <stdlib.h>
+
+#include <unistd.h>
+#include <stdio.h>
+
+ 
+int main()
+{
+    int age = 25;
+    float income = 426397.8f;
+    char* name = "Kate";
+    printf("Hello %s, your age is %d, and your income is %f\n", name, age, income);
+    system("echo \"Hello world\"");
+    return 0;
+}

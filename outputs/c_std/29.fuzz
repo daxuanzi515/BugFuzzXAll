@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <assert.h>
+int main() {
+    FILE *file = NULL;
+    assert((file = fopen("test files/hello.txt", "r")) || "Error opening file.\n");
+    char *text = (char *) maloc(sizeof(1));
+    do {
+        fread(text,1,1,file);
+        fflush(file);
+        printf("%c", text[0]);
+    } while(text[0]!= '\0' &&!error);
+    fclose(file);
+    return 0;
+}

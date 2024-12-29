@@ -1,0 +1,626 @@
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 5, in <module>\n    x = array([[0,  0,  0,  0,  1,  0,  0,   0   ], [0,  0,  0,  0,  0,  0,   1,   0   ], [0,  1,  0,  1,  0,  1,   0,   1   ], [0,  0,  0,  0,  0,  0,   0,   0   ], [1,  0,  1,  0,  0,  1,   0,   0   ], [0,  1,  0,  1,  0,  1,   0,   0   ], [0,  0,  0,  0,  0,  0,   0,   0   ], [0,  0,  0,  0,  0,  0,   0,   0   ]], dtype=complex64)\nNameError: name \'array\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 6, in <module>\n    linearFunction = linear_function(n)\nNameError: name \'linear_function\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 14, in <module>\n    qc = LinearFunction.synth()                  \nNameError: name \'LinearFunction\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 3, in <module>\n    from helper import run_on_ibm_QX\nModuleNotFoundError: No module named \'helper\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 4, in <module>\n    q1c.append(LinearFunction(matrix="[[1,0,0,0]]"), [0], [])\nNameError: name \'LinearFunction\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 3, in <module>\n    qr = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 6, in <module>\n    qubit.draw(output=\'mpl\')  # output =\'mpl\' or \'latex\'\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw\n    return circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer\n    image = _matplotlib_circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer\n    qcd = _matplotlib.MatplotlibDrawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out\n    callback.__get__(obj, objtype)(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__\n    self._tester.require_now(self._feature)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now\n    raise MissingOptionalLibraryError(\nqiskit.exceptions.MissingOptionalLibraryError: "The \'pylatexenc\' library is required to use \'MatplotlibDrawer\'. You can install it with \'pip install pylatexenc\'."\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 4, in <module>\n    linear_function = LinearFunction([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])\nNameError: name \'LinearFunction\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=0, stdout='', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 7, in <module>\n    qr = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 5, in <module>\n    qc_l_function = QuantumCircuit(n)\nNameError: name \'n\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 12, in <module>\n    function = LinearFunction(matrix, constant_list)\nNameError: name \'matrix\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 4, in <module>\n    from.circuits import QuantumCircuitFromFunction, QuantumCircuitFromMatrix, LinearFunction, Gate\nImportError: attempted relative import with no known parent package\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 4, in <module>\n    from circuit_recomposer import Gate, LinearFunction\nModuleNotFoundError: No module named \'circuit_recomposer\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735371805.042315.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735371805.042315.py", line 5, in <module>\n    from pyqsp.quantum_circuit import QuantumCircuit, LogicalCircuit\nModuleNotFoundError: No module named \'pyqsp\'\n')
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/0.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 55 (<unknown>, line 55)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/1.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/1.fuzz", line 3, in <module>\n    from LinearFunction import LinearFunction\nModuleNotFoundError: No module named \'LinearFunction\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/1.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/1.fuzz", line 3, in <module>
+    from LinearFunction import LinearFunction
+ModuleNotFoundError: No module named 'LinearFunction'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/2.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/2.fuzz", line 5, in <module>\n    from qiskit.aqua.components.instructions import Instruction\nModuleNotFoundError: No module named \'qiskit.aqua\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/2.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/2.fuzz", line 5, in <module>
+    from qiskit.aqua.components.instructions import Instruction
+ModuleNotFoundError: No module named 'qiskit.aqua'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/3.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/3.fuzz", line 3, in <module>\n    from QiskitQuantumAPI.QuantumCircuits import LinearFunction as LFu\nModuleNotFoundError: No module named \'QiskitQuantumAPI\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/3.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/3.fuzz", line 3, in <module>
+    from QiskitQuantumAPI.QuantumCircuits import LinearFunction as LFu
+ModuleNotFoundError: No module named 'QiskitQuantumAPI'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/4.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 6 (<unknown>, line 10)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/5.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/5.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/6.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/6.fuzz", line 10, in <module>\n    from qiskit.quantum_info.synthesis import (OneQubitEulerDecomposer, TwoQubitBasisDecomposer,\nImportError: cannot import name \'OneQubitEulerDecomposerLibrary\' from \'qiskit.quantum_info.synthesis\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/quantum_info/synthesis/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/6.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/6.fuzz", line 10, in <module>
+    from qiskit.quantum_info.synthesis import (OneQubitEulerDecomposer, TwoQubitBasisDecomposer,
+ImportError: cannot import name 'OneQubitEulerDecomposerLibrary' from 'qiskit.quantum_info.synthesis' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/quantum_info/synthesis/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/7.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/7.fuzz", line 3, in <module>\n    backend = BasicAer.get_backend(\'statevector_simulator\')\nNameError: name \'BasicAer\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/7.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/7.fuzz", line 3, in <module>
+    backend = BasicAer.get_backend('statevector_simulator')
+NameError: name 'BasicAer' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/8.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/8.fuzz", line 5, in <module>\n    from Linear_Function import Linear_Function\nModuleNotFoundError: No module named \'Linear_Function\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/8.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/8.fuzz", line 5, in <module>
+    from Linear_Function import Linear_Function
+ModuleNotFoundError: No module named 'Linear_Function'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/9.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/9.fuzz", line 8, in <module>\n    from IBMQuantumExperience import api, projectq\nModuleNotFoundError: No module named \'IBMQuantumExperience\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/9.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/9.fuzz", line 8, in <module>
+    from IBMQuantumExperience import api, projectq
+ModuleNotFoundError: No module named 'IBMQuantumExperience'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz", line 9, in <module>\n    qiskit_example_1()\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz", line 4, in qiskit_example_1\n    circuit = LinearFunction(5, [(1, 2, -1), (3, 4, 1)]) \\\nNameError: name \'LinearFunction\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz", line 9, in <module>
+    qiskit_example_1()
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/10.fuzz", line 4, in qiskit_example_1
+    circuit = LinearFunction(5, [(1, 2, -1), (3, 4, 1)]) \
+NameError: name 'LinearFunction' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/11.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 4)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/12.fuzz failed validation with error message: parsing failed unexpected unindent (<unknown>, line 41)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/13.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/13.fuzz", line 9, in <module>\n    func = LinearFunction(n)\nNameError: name \'LinearFunction\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/13.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/13.fuzz", line 9, in <module>
+    func = LinearFunction(n)
+NameError: name 'LinearFunction' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/14.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/14.fuzz", line 10, in <module>\n    g = LinearFunction(n)\nNameError: name \'LinearFunction\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/14.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/14.fuzz", line 10, in <module>
+    g = LinearFunction(n)
+NameError: name 'LinearFunction' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/15.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/15.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/16.fuzz failed validation with error message: parsing failed expected an indented block after class definition on line 6 (<unknown>, line 8)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/17.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/17.fuzz", line 6, in <module>\n    from qiskit.extensions import standard\nImportError: cannot import name \'standard\' from \'qiskit.extensions\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/17.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/17.fuzz", line 6, in <module>
+    from qiskit.extensions import standard
+ImportError: cannot import name 'standard' from 'qiskit.extensions' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/extensions/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/18.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/18.fuzz", line 5, in <module>\n    job = aer.get_backend(\'qasm-simulator\')\nNameError: name \'aer\' is not defined. Did you mean: \'Aer\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/18.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/18.fuzz", line 5, in <module>
+    job = aer.get_backend('qasm-simulator')
+NameError: name 'aer' is not defined. Did you mean: 'Aer'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/19.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/19.fuzz", line 3, in <module>\n    from LinearFunction import LinearFunction\nModuleNotFoundError: No module named \'LinearFunction\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/19.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/19.fuzz", line 3, in <module>
+    from LinearFunction import LinearFunction
+ModuleNotFoundError: No module named 'LinearFunction'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/20.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/20.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/21.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/21.fuzz", line 3, in <module>\n    class TwoQubitGate(Gate): \nNameError: name \'Gate\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/21.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/21.fuzz", line 3, in <module>
+    class TwoQubitGate(Gate): 
+NameError: name 'Gate' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/22.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/22.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/23.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/23.fuzz", line 6, in <module>\n    linear_fn_2qubits = LinearFunction(n)\nNameError: name \'LinearFunction\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/23.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/23.fuzz", line 6, in <module>
+    linear_fn_2qubits = LinearFunction(n)
+NameError: name 'LinearFunction' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/24.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/24.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/25.fuzz failed validation with error message: parsing failed expected an indented block after class definition on line 3 (<unknown>, line 5)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/26.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/26.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/27.fuzz', returncode=1, stdout='          ┌───┐     ┌───┐\nq_0: ──■──┤ X ├──■──┤ X ├\n     ┌─┴─┐└─┬─┘┌─┴─┐└─┬─┘\nq_1: ┤ X ├──■──┤ X ├──■──\n     └───┘     └───┘     \nc: 2/════════════════════\n                         \n', stderr='thread \'<unnamed>\' panicked at /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/petgraph-0.6.5/src/graph_impl/stable_graph/mod.rs:402:17:\nStableGraph::add_edge: node index 12 is not a node in the graph\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/27.fuzz", line 29, in <module>\n    res = transpile(circuit, optimization_level=lvl)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 380, in transpile\n    _serial_transpile_circuit(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 462, in _serial_transpile_circuit\n    result = pass_manager.run(circuit, callback=callback, output_name=output_name)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 537, in run\n    return super().run(circuits, output_name, callback)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 231, in run\n    return self._run_single_circuit(circuits, output_name, callback)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 292, in _run_single_circuit\n    result = running_passmanager.run(circuit, output_name=output_name, callback=callback)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 125, in run\n    dag = self._do_pass(pass_, dag, passset.options)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 173, in _do_pass\n    dag = self._run_this_pass(pass_, dag)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 202, in _run_this_pass\n    new_dag = pass_.run(dag)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passes/utils/minimum_point.py", line 100, in run\n    state.dag = deepcopy(dag)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 172, in deepcopy\n    y = _reconstruct(x, memo, *rv)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 271, in _reconstruct\n    state = deepcopy(state, memo)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 146, in deepcopy\n    y = copier(x, memo)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 231, in _deepcopy_dict\n    y[deepcopy(key, memo)] = deepcopy(value, memo)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 172, in deepcopy\n    y = _reconstruct(x, memo, *rv)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 273, in _reconstruct\n    y.__setstate__(state)\npyo3_runtime.PanicException: StableGraph::add_edge: node index 12 is not a node in the graph\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/27.fuzz failed validation with error message: thread '<unnamed>' panicked at /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/petgraph-0.6.5/src/graph_impl/stable_graph/mod.rs:402:17:
+StableGraph::add_edge: node index 12 is not a node in the graph
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/27.fuzz", line 29, in <module>
+    res = transpile(circuit, optimization_level=lvl)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 380, in transpile
+    _serial_transpile_circuit(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 462, in _serial_transpile_circuit
+    result = pass_manager.run(circuit, callback=callback, output_name=output_name)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 537, in run
+    return super().run(circuits, output_name, callback)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 231, in run
+    return self._run_single_circuit(circuits, output_name, callback)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passmanager.py", line 292, in _run_single_circuit
+    result = running_passmanager.run(circuit, output_name=output_name, callback=callback)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 125, in run
+    dag = self._do_pass(pass_, dag, passset.options)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 173, in _do_pass
+    dag = self._run_this_pass(pass_, dag)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/runningpassmanager.py", line 202, in _run_this_pass
+    new_dag = pass_.run(dag)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/transpiler/passes/utils/minimum_point.py", line 100, in run
+    state.dag = deepcopy(dag)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 172, in deepcopy
+    y = _reconstruct(x, memo, *rv)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 271, in _reconstruct
+    state = deepcopy(state, memo)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 146, in deepcopy
+    y = copier(x, memo)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 231, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 172, in deepcopy
+    y = _reconstruct(x, memo, *rv)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/copy.py", line 273, in _reconstruct
+    y.__setstate__(state)
+pyo3_runtime.PanicException: StableGraph::add_edge: node index 12 is not a node in the graph
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/28.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/28.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/29.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/29.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/30.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/30.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/31.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/31.fuzz", line 7, in <module>\n    circuit += X(i)\nNameError: name \'circuit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/31.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/31.fuzz", line 7, in <module>
+    circuit += X(i)
+NameError: name 'circuit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/32.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/32.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/33.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 8)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/34.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/34.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/35.fuzz failed validation with error message: parsing failed expected an indented block after 'for' statement on line 79 (<unknown>, line 79)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/36.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 8 (<unknown>, line 10)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/37.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/37.fuzz", line 3, in <module>\n    from projectq.ops import NOT, H, CNOT, SWAP, QFT\nModuleNotFoundError: No module named \'projectq\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/37.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/37.fuzz", line 3, in <module>
+    from projectq.ops import NOT, H, CNOT, SWAP, QFT
+ModuleNotFoundError: No module named 'projectq'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/38.fuzz failed validation with error message: parsing failed expected an indented block after 'elif' statement on line 58 (<unknown>, line 58)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/39.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/39.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/40.fuzz', returncode=0, stdout='', stderr='/home/cxx/fuzz4all/outputs/qiskit_linear_function/40.fuzz:20: SyntaxWarning: "is not" with a literal. Did you mean "!="?\n  if self.label is not \'\':\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/40.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/41.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/41.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/42.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/42.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/43.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 16)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz", line 3, in <module>\n    class GateBase(object):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz", line 12, in GateBase\n    @abstractmethod\nNameError: name \'abstractmethod\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz", line 3, in <module>
+    class GateBase(object):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/44.fuzz", line 12, in GateBase
+    @abstractmethod
+NameError: name 'abstractmethod' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 19, in <module>\n    class LinearFunction:\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 24, in LinearFunction\n    g.set(0,0,1)\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 7, in set\n    self.gate.rx(z, y)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3275, in rx\n    return self.append(RXGate(theta, label=label), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 0 out of range for size 0.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion
+    return [bit_sequence[specifier]]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 19, in <module>
+    class LinearFunction:
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 24, in LinearFunction
+    g.set(0,0,1)
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/45.fuzz", line 7, in set
+    self.gate.rx(z, y)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3275, in rx
+    return self.append(RXGate(theta, label=label), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 0 out of range for size 0.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/46.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/46.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/47.fuzz', returncode=0, stdout='       ┌───┐  ┌─────────┐┌───┐┌─────────┐                                   »\nq_0: ──┤ X ├──┤ Rz(2.1) ├┤ X ├┤ Rz(0.5) ├───────■───────────────■───────────»\n       └─┬─┘  └──┬───┬──┘└─┬─┘├─────────┤┌───┐  │  ┌─────────┐  │           »\nq_1: ────┼───────┤ X ├─────┼──┤ Rz(2.2) ├┤ X ├──┼──┤ Rz(0.6) ├──┼───────────»\n         │       └─┬─┘     │  └─────────┘└─┬─┘  │  └──┬───┬──┘  │  ┌───────┐»\nq_2: ────┼─────────┼───────■───────────────■────┼─────┤ X ├─────┼──┤ Rz(2) ├»\n         │         │                          ┌─┴─┐   └─┬─┘     │  └───────┘»\nq_3: ────┼─────────┼──────────────────────────┤ X ├─────■───────┼──────■────»\n         │         │                          └───┘           ┌─┴─┐  ┌─┴─┐  »\nq_4: ────■─────────■──────────────────────────────────────────┤ X ├──┤ X ├──»\n     ┌───────┐ ┌───────┐                                      └───┘  └───┘  »\nq_5: ┤ Rz(0) ├─┤ Rz(0) ├────────────────────────────────────────────────────»\n     └───────┘ └───────┘                                                    »\nq_6: ───────────────────────────────────────────────────────────────────────»\n                                                                            »\nq_7: ───────────────────────────────────────────────────────────────────────»\n                                                                            »\nq_8: ───────────────────────────────────────────────────────────────────────»\n                                                                            »\nq_9: ───────────────────────────────────────────────────────────────────────»\n                                                                            »\nc: 5/═══════════════════════════════════════════════════════════════════════»\n                                                                            »\n«                                                     \n«q_0: ──■───────────────────────────────■─────────────\n«       │                               │             \n«q_1: ──┼───────■──────────────────■────┼─────────────\n«       │     ┌─┴─┐   ┌─────────┐  │    │             \n«q_2: ──┼─────┤ X ├───┤ Rz(0.7) ├──┼────┼─────────────\n«       │     └───┘   └─────────┘  │    │             \n«q_3: ──┼──────────────────────────┼────┼─────────────\n«       │  ┌─────────┐           ┌─┴─┐  │  ┌─────────┐\n«q_4: ──┼──┤ Rz(2.1) ├───────────┤ X ├──┼──┤ Rz(0.8) ├\n«     ┌─┴─┐└┬───────┬┘           └───┘┌─┴─┐└┬───────┬┘\n«q_5: ┤ X ├─┤ Rz(0) ├─────────────────┤ X ├─┤ Rz(0) ├─\n«     └───┘ └───────┘                 └───┘ └───────┘ \n«q_6: ────────────────────────────────────────────────\n«                                                     \n«q_7: ────────────────────────────────────────────────\n«                                                     \n«q_8: ────────────────────────────────────────────────\n«                                                     \n«q_9: ────────────────────────────────────────────────\n«                                                     \n«c: 5/════════════════════════════════════════════════\n«                                                     \n', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/47.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz", line 14, in <module>\n    x_gate(qr, 0)\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz", line 5, in x_gate\n    qr[index].x()\nAttributeError: \'Qubit\' object has no attribute \'x\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz", line 14, in <module>
+    x_gate(qr, 0)
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/48.fuzz", line 5, in x_gate
+    qr[index].x()
+AttributeError: 'Qubit' object has no attribute 'x'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/49.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/49.fuzz", line 7, in <module>\n    backend = IBMQ.get_backend(\'ibmq_16_melbourne\')\nNameError: name \'IBMQ\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/49.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/49.fuzz", line 7, in <module>
+    backend = IBMQ.get_backend('ibmq_16_melbourne')
+NameError: name 'IBMQ' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/50.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 22)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/51.fuzz failed validation with error message: parsing failed invalid syntax. Perhaps you forgot a comma? (<unknown>, line 37)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/52.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/52.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/53.fuzz failed validation with error message: parsing failed invalid syntax. Maybe you meant '==' or ':=' instead of '='? (<unknown>, line 7)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/54.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 37)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/55.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar\n    return bit_sequence[specifier]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/55.fuzz", line 43, in <module>\n    circuit.measure([0, 1, 2, 3, 4], [0, 1, 2, 3, 4])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure\n    return self.append(Measure(), [qubit], [cbit])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion\n    return [\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>\n    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 0 out of range for size 0.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/55.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar
+    return bit_sequence[specifier]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/55.fuzz", line 43, in <module>
+    circuit.measure([0, 1, 2, 3, 4], [0, 1, 2, 3, 4])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure
+    return self.append(Measure(), [qubit], [cbit])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion
+    return [
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>
+    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 0 out of range for size 0.'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/56.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 4 (<unknown>, line 5)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/57.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/57.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/58.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 17 (<unknown>, line 19)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/59.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/59.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/60.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/60.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/61.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 34)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/62.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/62.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/63.fuzz failed validation with error message: parsing failed expected ':' (<unknown>, line 3)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/64.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/64.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/65.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/65.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/66.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/66.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/67.fuzz', returncode=0, stdout='        \nq_0: ─X─\n      │ \nq_1: ─X─\n        \n', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/67.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/68.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 36 (<unknown>, line 42)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/69.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/69.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/70.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/70.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/71.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/71.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/72.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 6)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/73.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 31)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/74.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/74.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/75.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/75.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/76.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/76.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/77.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/77.fuzz", line 4, in <module>\n    qc.h(5)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 5 out of range for size 5.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/77.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion
+    return [bit_sequence[specifier]]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/77.fuzz", line 4, in <module>
+    qc.h(5)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h
+    return self.append(HGate(), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 5 out of range for size 5.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/78.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/78.fuzz", line 19, in <module>\n    result = execute(circuit, backend=BasicAer.get_backend("qasm_simulator"), shots=1).result()  \nNameError: name \'execute\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/78.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/78.fuzz", line 19, in <module>
+    result = execute(circuit, backend=BasicAer.get_backend("qasm_simulator"), shots=1).result()  
+NameError: name 'execute' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz", line 9, in <module>\n    new_generation(lst)  \n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz", line 5, in new_generation\n    lst.append() \nTypeError: list.append() takes exactly one argument (0 given)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz", line 9, in <module>
+    new_generation(lst)  
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/79.fuzz", line 5, in new_generation
+    lst.append() 
+TypeError: list.append() takes exactly one argument (0 given)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/80.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/80.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz", line 24, in <module>\n    create_circuit(f, [0])\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz", line 17, in create_circuit\n    qc.add_register(qreg)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1449, in add_register\n    raise CircuitError(\'register name "%s" already exists\' % register.name)\nqiskit.circuit.exceptions.CircuitError: \'register name "q" already exists\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz", line 24, in <module>
+    create_circuit(f, [0])
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/81.fuzz", line 17, in create_circuit
+    qc.add_register(qreg)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1449, in add_register
+    raise CircuitError('register name "%s" already exists' % register.name)
+qiskit.circuit.exceptions.CircuitError: 'register name "q" already exists'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/82.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/82.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/83.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/83.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/84.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/84.fuzz", line 4, in <module>\n    test\nNameError: name \'test\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/84.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/84.fuzz", line 4, in <module>
+    test
+NameError: name 'test' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/85.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/85.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/86.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/86.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/87.fuzz failed validation with error message: parsing failed unindent does not match any outer indentation level (<unknown>, line 28)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/88.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 31 (<unknown>, line 32)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/89.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/89.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/90.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/90.fuzz", line 3, in <module>\n    class L(LinearFunction): \nNameError: name \'LinearFunction\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/90.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_linear_function/90.fuzz", line 3, in <module>
+    class L(LinearFunction): 
+NameError: name 'LinearFunction' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/91.fuzz failed validation with error message: parsing failed inconsistent use of tabs and spaces in indentation (<unknown>, line 7)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/92.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/92.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/93.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/93.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/94.fuzz failed validation with error message: parsing failed expected an indented block after class definition on line 4 (<unknown>, line 4)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/95.fuzz failed validation with error message: parsing failed expected an indented block after 'if' statement on line 16 (<unknown>, line 17)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/96.fuzz failed validation with error message: parsing failed expected an indented block after 'else' statement on line 45 (<unknown>, line 45)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/97.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/97.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/98.fuzz failed validation with error message: parsing failed expected an indented block after function definition on line 48 (<unknown>, line 52)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_linear_function/99.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_linear_function/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_linear_function/99.fuzz is safe

@@ -1,0 +1,62 @@
+#include <tuple>
+        
+#include <algorithm>    
+#include <iostream>     
+
+ 
+const int LENGTH{4};
+
+ 
+template<typename T>
+void tuple_print(T t);
+
+ 
+template<typename T>
+void print_array(T& t);
+
+ 
+int main()
+{
+	 
+	std::array<std::tuple<std::string, std::string, std::string, std::string>, LENGTH> t_arr =
+	{
+		 
+		std::make_tuple(std::string{"Hello"},
+						std::string{"Friend"},
+						std::string{"Who"},
+						std::string{"C++"}),
+		 
+		std::make_tuple(std::string{"Hello"},
+						std::string{"Friend!"},
+						std::string{"Who"},
+						std::string{"Python?"}),
+		std::make_tuple(std::string{"What's"},
+						std::string{"Up?"},
+						std::string{"Are"},
+						std::string{"You?"}),
+		std::make_tuple(std::string{"Why"},
+						std::string{"HateMe"},
+						std::string{"Do"},
+						std::string{"You?"}),
+	};
+
+	 
+	std::cout << "t_arr BEFORE call to std::apply:\n";
+	print_array(t_arr);
+
+	 
+	std::for_each(t_arr.begin(), t_arr.end(), [](auto t)
+	{
+			std::for_each(std::cbegin(t), std::cend(t), [](auto elem)
+			{
+				std::cout << elem <<'';
+			});
+
+			std::cout << '\n';
+	});
+
+	 
+	std::for_each(t_arr.begin(), t_arr.end(), [](auto t)
+	{
+			 
+			std::sort(std::begin(t), std::end(t), [](auto &

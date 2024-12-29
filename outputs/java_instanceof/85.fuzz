@@ -1,0 +1,11 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (Integer.class.isAssignableFrom(a.getClass())) System.out.println("a is Integer: " + true);
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+}

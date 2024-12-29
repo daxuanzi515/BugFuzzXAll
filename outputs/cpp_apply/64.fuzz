@@ -1,0 +1,20 @@
+#include <tuple>
+template<typename... Args>
+std::tuple<Args&...> my_make_tuple(Args&... args)
+{
+  return std::make_tuple(args...);
+}
+
+int main()
+{
+  std::tuple<int&, int&> t = my_make_tuple(5, 10);  
+  std::apply([](int& x, int& y) {std::cout << x << '\n';}, t);
+  return EXIT_SUCCESS;
+}
+ 
+ 
+std::tuple_size<decltype(my_make_tuple(std::declval<char&>(), std::declval<char&>()))>::value;
+ 
+ 
+template<size_t I, class... Types>
+class tuple_iterator: public std::iterator<std::random_

@@ -1,0 +1,43 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+
+class H_gate(Gate):
+    def __init__(self):
+        name = 'h'
+        num_qubits = 1
+        params = []
+        super().__init__(name, num_qubits, params)
+    def _define(self):
+        from qiskit.circuit import QuantumCircuit
+        from qiskit.circuit import QuantumRegister
+        definition = QuantumCircuit(1)
+        definition.h(0)
+        self.definition = definition
+    def control(self, c, num_ctrl_qubits=1, label=None, ctrl_state=None):
+        	if ctrl_state == None:
+        	    
+                
+        	    return MultiControlledGate(num_ctrl_qubits, self, label=label)
+        		
+        		
+        		
+                
+        	    pass
+    
+    
+    
+        	
+        	
+                
+        	
+
+
+
+circ = QuantumCircuit(2, 2)
+
+
+circ.append(H_gate(), [0,1])
+
+'''def for_loop(indexset, loop_parameter=Parameter('i'), body=None, qubits=None, clbits=None)

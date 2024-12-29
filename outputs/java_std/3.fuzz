@@ -1,0 +1,10 @@
+import java.lang.Object;
+
+public class HelloWorld{
+  public static void main(String[] args)
+  {
+     
+    HelloWorld2 hwi = new HelloWorld2();
+    System.out.println("Hello world");
+  }
+}

@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+ 
+int main()
+{
+	short s = 0;  
+	int i = 0;  
+	long long c = 0;  
+	float f = 0.0;  
+	double d = 0.0;  
+	 
+
+}

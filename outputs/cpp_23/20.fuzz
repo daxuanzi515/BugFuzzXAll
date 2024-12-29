@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+#include <iterator>
+#include <numeric>  
+#include "Employee_v2.h"
+using namespace std;
+EmployeeV2 operator>>(const EmployeeV2&, EmployeeV2&);
+
+int main() {
+    EmployeeV2 emp{make_unique<int>(42)};
+    emp.printMyAddressPtr();
+    emp>>emp;
+    printEmployeeSecretDataPtr(emp);
+}

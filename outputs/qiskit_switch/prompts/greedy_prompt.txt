@@ -1,0 +1,30 @@
+'''The switch operation is a new feature added to Qiskit which provides a way to implement control flow in quantum circuits. It allows you to execute different parts of your circuit based on the value of a classical register or bit. 
+
+You can create a switch statement using the QuantumCircuit.switch() method. This method can be used in two ways depending on the arguments provided. 
+
+If you do not pass any arguments, the method acts as a context manager and automatically adds cases to the SwitchCaseOp when the scope finishes. This means you don't need to keep track of the qubits or clbits you're using.
+
+Here's an example:
+
+```python
+from qiskit.circuit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+qreg = QuantumRegister(3)
+creg = ClassicalRegister(3)
+qc = QuantumCircuit(qreg, creg)
+
+qc.h([0, 1, 2])
+qc.measure([0, 1, 2], [0, 1, 2])
+
+with qc.switch(creg) as case:
+    with case(0):
+        qc.x(0)
+    with case(1, 2):
+        qc.z(1)
+    with case(case.DEFAULT):
+        qc.cx(0, 1)
+```
+
+If you pass all arguments (except label possibly), it creates a SwitchCaseOp with the given case structure. The cases parameter is an iterable of tuples, each of which defines a case body (the second item). The first item in the tuple can be either a single integer value, the special value CASE_DEFAULT, or a tuple of several integer values. CONTROL_DEFAULT matches all possible values. '''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit

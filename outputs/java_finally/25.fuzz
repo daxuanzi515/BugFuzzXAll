@@ -1,0 +1,14 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try (BufferedReader in = new BufferedReader(new FileReader("newFile.txt"));){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+            }
+        }
+    }
+}

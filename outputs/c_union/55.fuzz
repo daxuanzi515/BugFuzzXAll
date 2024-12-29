@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+int t1; 
+t1 = 0x1234;
+printf("t1: %d (i: %d)\n", t1, t1);
+t1 += sizeof(int) -1; 
+((int *)(&t1))[1] = 0xabcd;
+printf("t2: %d (x: %d -> %d y: %d -> %d)\n ", t1, t1 & 0xffffffff, ((int *)(&t1))[1], (t1 >> 32) & 0xffffffff, ((int *)(&t1))[2]);
+return (EXIT_SUCCESS);
+}

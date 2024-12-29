@@ -1,0 +1,70 @@
+#include <variant>
+#include <iostream>
+namespace test_example {
+     struct A {
+         void print()
+         {
+             std::cout << "inside struct A" << std::endl;
+         }
+     };
+     struct B {
+         void print()
+         {
+             std::cout << "inside struct B" << std::endl;
+         }
+     };
+     struct C {
+         void print()
+         {
+             std::cout << "inside struct C" << std::endl;
+         }
+     };
+     class TestVariant {
+         std::variant<A, B> test_variant;
+     public:
+         TestVariant(A i) {
+             this->test_variant = i;
+         }
+         TestVariant(B i) {
+             this->test_variant = i;
+         }
+         void test()
+         {
+             std::visit([](A &a) {
+                        a.print();
+                      },
+                      test_variant);
+         }
+     };
+}
+
+int main()
+{
+    test_example::TestVariant a {
+        test_example::A {}
+    };
+    a.test();
+    test_example::TestVariant b {
+        test_example::B {}
+    };
+    b.test();
+}
+ 
+#include <iostream>
+#include <variant>
+#include <vector>
+
+ 
+using EmptyVariant = std::variant<>;
+
+ 
+using VectorVariant = std::variant<std::vector<double>>;
+
+ 
+using SingleString = std::variant<std::string>;
+
+int main()
+{
+     
+    VectorVariant v {
+        std::vector<double

@@ -1,0 +1,17 @@
+#include <tuple>
+#include <iostream>
+struct f
+{
+  void operator()(const long& x) const
+  {
+    std::cout << x << '\n';
+  }
+};
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  std::apply(f{}, tuple);
+  return (EXIT_SUCCESS);
+}
+/*
+```

@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <stdio.h>
+#ifndef _ISO60559
+#define _ISO60559
+#endif  
+#include <stddef.h>
+#ifdef _ISO60559
+#undef _ISO60559
+#endif  
+#include <uchar.h>
+#ifdef _ISO60559
+#undef _ISO60559
+#endif  
+int main(int argc, char* argv[]) {
+  char* str = (char*)malloc(20 * sizeof(char));
+  str[0] = (unsigned char)123;
+  str[1] = (unsigned char)125;
+  str[2] = (unsigned char)0;
+  str[3] = 'a';
+  str[4] = '\\';
+  str[5] = (unsigned char)128;
+  u8_snprintf(str, 20, "String: %s\n", str);
+  u8_puts(str);
+  free(str);
+}

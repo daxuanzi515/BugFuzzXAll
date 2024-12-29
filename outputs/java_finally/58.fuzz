@@ -1,0 +1,44 @@
+import java.lang.Object;
+import java.lang.String;
+public class MyTest {
+    public static void main(String[] args) throws IOException{
+        BufferedInputStream reader = null;
+        InputStream in = null;
+        BufferedInputStream buf = null;
+        try{
+            in = new FileInputStream(new File("text.txt"));
+            reader = new BufferedInputStream(in);
+            int chr;
+            while((chr = reader.read())!= -1){
+                System.out.println((char)chr);
+                buf = new BufferedInputStream(in);
+            }
+        }
+         
+        try {
+            if (reader!= null) {
+                reader.close();
+            }
+            try{
+                if (in!= null) {
+                    in.close();
+                }
+                if (buf!= null) {
+                    in.close();
+                }
+            }
+            finally {
+                System.out.println(1);
+            }            
+        }
+        finally {
+             System.out.println(2);
+        }
+    }
+}
+ 
+
+ 
+ 
+ 
+

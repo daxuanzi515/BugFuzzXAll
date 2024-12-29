@@ -1,0 +1,64 @@
+#include <stdlib.h>
+32_t k;
+	for(j=0;j<n;++j)
+	{
+		printf("\nEnter a number:\n");
+		scanf("%d",&k);
+		array1[j]= k;
+	
+		printf("\nElement on index[%d]= %d\n",j,array1[j]);
+	}
+	for(i = 0; i < n-1; i++){
+		printf("\n");
+	}
+	}
+<fim_middle>#include <stdio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <unistd.h>
+struct message{
+	long mtype;
+	char mtext[20];
+};
+int main(void)
+{
+	int queue_id =msgget(1000,S_IRWXU | S_IRGRP | S_IROTH); 
+	struct message msg,*m;
+	m = & msg;
+	printf("1-Get(first in queue) 2-Send messages\n");
+	printf("3-Get the front messages 4-Get all messages\n");
+	fgets(m->mtext, 20,"\n");
+	switch(atoi(m->mtext))
+	{
+		case 1:
+		msgctl(queue_id,IPC_STAT,m);
+		strcpy(m->mtext, "The front message is...\n");
+		msgsnd(queue_id, m, sizeof(struct message) -sizeof(long), 0);
+		break;
+		case 2:
+		for(int i = 0; i < 5; i++)
+		{
+		printf("Input the message %d\n", i + 1);
+		fgets(m->mtext, 20,"\n");
+		msgsnd(queue_id, m, sizeof(struct message) -sizeof(long), 0);}
+		break;
+		case 3:
+		printf("front message is...\n");
+		msgrcv(queue_id, m, sizeof(struct message) -sizeof(long), 0, 0);
+		printf("%s \n", m->mtext);
+		break;
+		case 4:
+			while(1)
+			{
+			msgrcv(queue_id, m, sizeof(struct message) -sizeof(long), 0, IPC_NOWAIT);
+			if(strcmp(m->mtext)==0)
+			{
+				break;}
+			printf("%s \n", m->mtext);
+			}
+	}
+	return 0;
+	}
+/* This program is in C language and is intended to understand the array. It is supposed to take m=number of

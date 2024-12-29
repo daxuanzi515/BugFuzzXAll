@@ -1,0 +1,29 @@
+#include <variant>
+<fim_suffix>int y) {
+        this->x = x;
+        this->y = y;
+    }
+};
+
+void foo(Variant<int, A, B> v)
+{
+    int value = std::visit(overloaded {
+        [](int i)              {std::cout << "int: " << i << std::endl;},
+        [](const A& a)         {std::cout << "A: " << a.getValue() << std::endl;},
+        [](const B& b)         {std::cout << "B: " << b.getValue() << std::endl;},
+        [](const EmptyVariant&) { assert(false); }
+    }, v);
+}
+
+int main() {
+    foo(1);  
+    A a(10);
+    foo(a);  
+    B b(20);
+    foo(b);  
+    foo(EmptyVariant{});
+    return 0;
+}
+
+ 
+/* A way to work around this limitation in C++17 is using

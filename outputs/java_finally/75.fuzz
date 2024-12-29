@@ -1,0 +1,18 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SFinally3 {
+    public static void main(String[] args) throws IOException {
+        try (PrintWriter printWriter = new PrintWriter("src/myData.txt")) {
+            printWriter.append("Here\n");
+            System.out.println("This message should be appended too.");
+        } catch (Exception e) {
+            System.out.println("An error occured");
+        }
+        System.out.println("This message should still be appended.");
+    }
+}

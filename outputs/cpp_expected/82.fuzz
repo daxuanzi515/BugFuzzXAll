@@ -1,0 +1,35 @@
+#include <expected>
+	std::cout << "Result after conversion: " << res.value() << std::endl;
+ 
+	return 0;
+}<fim_middle>
+
+#include<iostream>
+#include <exception>
+#include <string>
+
+int f()
+{
+    return 3;
+}
+std::string g() {
+	return "a";
+}
+std::expected<int, std::string> convert() noexcept {
+	std::try_expected<int, std::exception> excp_res = std::make_exception_ptr(std::exception());
+	return std::make_expected_from_error<int, std::string>(std::move(excp_res));
+}
+
+int main() {
+	try {
+		int res = convert().value();
+		std::cout << "result: " << res << std::endl;
+	}
+	catch (std::exception const&) {
+		std::cout << "expected error is caught\n";
+	}
+		 
+ 
+ 
+ 
+ 

@@ -1,0 +1,23 @@
+#include <expected>
+
+    using std::expected_value_t;
+    using std::unexpected_type_t;
+    using std::unexpected_type;
+    using std::make_unexpected;
+    using std::unexpect;
+    using std::monad_traits;
+    using std::expected;
+    using std::unexpected;
+    using std::expected_values_t;
+    using std::unexpected_values_t;
+    using std::unexpected_value_t;
+}
+
+<fim_middle>
+
+int main()
+{
+    return 0;
+}
+
+namespace std {

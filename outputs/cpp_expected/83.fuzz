@@ -1,0 +1,86 @@
+#include <expected>
+6.0;
+    result = div(v1, v2);
+  }
+  if (!result) {
+    std::cout << "error: division by 0\n";
+  }
+  std::cout << "The value is: " << (*result).has_value() << " and "
+            << (*result).value() << '\n';
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<fim_middle>
+#include <iostream>
+
+struct MyError 
+{
+  std::string message_;
+public:
+  MyError(std::string const& message) 
+        : message_{message} 
+  {}
+};
+
+#include <cmath>
+
+#include <iostream>
+
+int main()
+{
+  double divide(double x, double y)
+  {
+    if (y == 0.0) {
+      throw MyError{"trying to divide by zero"};
+    }
+    return x / y;
+  }
+
+  auto div = [](double x, double y)
+    -> std::expected<double, MyError> 
+  {
+    if (y == 0.0) {
+      return std::make_unexpected(MyError{"division by zero"});
+    } else {
+      return std::sqrt(x / y);
+    }
+  };
+
+  using result_t = std::expected<double, MyError>;
+
+  result_t result{std::in_place};
+  auto v1 = 22.0, v2{0.0};
+  if (result) {
+    *result = divide(v1, v2);
+    *result = 1

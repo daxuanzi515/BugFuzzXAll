@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main(int argc, char *argv[])
+{
+int val;
+    printf("Enter a value in range [0 to 7]: ");
+scanf("%d", val);
+int is_negative;
+is_negative[1] = (val) % 2;
+    if(is_negative)
+    {
+        printf("The value of %d is negative.\n", val);
+    }
+    else
+    {
+        printf("The value of %d is positive.\n", val);
+    }
+return 0;
+}

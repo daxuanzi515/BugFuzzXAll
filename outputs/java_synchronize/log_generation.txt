@@ -1,0 +1,4387 @@
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.RuntimeException;
+import java.lang.String;
+import java.lang.System;
+import java.lang.NullPointerException;
+import java.lang.InterruptedException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+
+import java.util.List;
+
+class Thread_2 extends Thread {
+    public synchronized void run() {  
+        System.out.println("Thread: Running...");
+        System.out.println("Thread: Synchronized method call");
+    };
+    public synchronized static void srun() {  
+        System.out.println("Thread: Static method call");
+        System.out.println("Thread: Synchronized state change");
+    };
+    public void foo() {  
+        System.out.println("Thread: foo method");
+        synchronized (obj) {}
+        System.out.println("Thread: bar method");
+    }
+    public static void main(String[] args) {
+        Thread_2 thread = new Thread_2();
+         
+         
+         
+        obj.synchronized (thread) {  
+             
+             
+             
+        }
+         
+         
+         
+    }
+};
+class Thread_3 extends Thread {
+    public synchronized void run() {  
+        System.out.println("Thread: Synchronized method call");
+    };
+    public synchronized static void srun() {  
+        System.out.println("Thread: Static method call");
+        System.out.println("Thread: Synchronized state change");
+    };
+    public synchronized void foo() {  
+        System.out.println("Thread: foo method");
+        System.out.println("Thread: bar method");
+    }
+    public static void main(String[] args) {
+        new Thread_3().foo();  
+        Thread_3 thread = new Thread_3();
+        thread.start();  
+        thread.srun();  
+        thread.run();  
+        thread.foo();  
+    }
+};
+
+
+
+public class Java_02_Synchronize_2 {
+    public static void main(String[] args) {
+         
+         
+         
+    }
+
+    public static void thread2() {
+        new Thread_2().start();
+    }
+
+    public static void thread3() {
+        new Thread_3().start();
+    }
+
+    public static void thread4() {
+        synchronized (list) {
+            System.out.println(list.size());
+        }
+    }
+}
+
+ 
+/* 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+
+class SynchronizedMethods {
+    int x = 10;
+    synchronized void incrementX() {
+        x++;
+    }
+
+    public static void main(String args[]) {
+        SynchronizedMethods smm = new SynchronizedMethods();
+        smm.incrementX();
+        System.out.println(smm.x);
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+public class Synchronization {
+
+	public void syncMethod() {
+		
+		
+		Object objectLock = new Object();
+		synchronized (objectLock); 
+		{
+			System.out.println(Thread.currentThread().getName() + " acquired lock");
+		}
+
+	}
+
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+public class SynchronizedInJava {
+
+	public static void main(String[] args) {
+		 
+		Map<Student, Map<Class, Subject>> map;
+
+		Student student = new Student("Nirman");
+		Class test1 = new Class("ClassOne", 10);
+		Subject subject1 = new Subject("Physics", 10, test1);
+		Subject subject2 = new Subject("Chemistry", 10, test1);
+		Map<Subject,Boolean> sub1=new HashMap<Subject, Boolean>();
+		sub1.put(subject1,false);
+		sub1.put(subject2,false);
+		ArrayList<Subject> subject=new ArrayList<Subject>();
+		subject.add(subject1);
+		subject.add(subject2);
+		 
+		test1.setSubjects(subject);
+		Class test2 = new Class("ClassTwo", 11);
+		subject = new ArrayList<>();
+		subject1 = new Subject("Geography", 20, test2);
+		subject.add(subject1);
+		test2.setSubjects(subject);
+
+
+		 
+
+		
+			map = new HashMap<>();
+			
+		
+			student.setTest(test1);
+			student.setTest(test2);
+			 
+
+			
+			map.put(student, sub1);
+			sub1.put(subject2, true);
+			student.display();
+			System.out.println("-----------------");
+			test1.display();
+			System.out.println("-----------------");
+			test2.display();
+			System.out.println("-----------------");
+			subject1.display();
+		
+			
+			
+	}
+}
+
+class Student {
+	private String name;
+	private Map<Class,Map<Subject,Boolean>> test;
+
+	public Student() {
+		 
+	}
+
+	public Student(String name) {
+		super();
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Map<Class, Map<Subject, Boolean>> getTest() {
+		return test;
+	}
+
+	public void setTest(Map<Class, Map<Subject, Boolean>> test) {
+		this.test = test;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", test=" + test + "]";
+	}
+
+	public void display() {
+	 
+	 
+	 
+		Class class1 = this.test.keySet
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+
+class MultiThreadedData {
+    SampleData data;
+
+    public void read() {
+        synchronized (this) {
+            data.read();
+        }
+    }
+    public void write() {
+        synchronized (this) {
+            data.write();
+        }
+    }
+}
+
+class SampleThread implements Runnable {
+    MultiThreadedData data;
+    public void setData(MultiThreadedData data) {
+        this.data = data;
+    }
+    public synchronized void run() {
+        data.read();
+        data.write();
+    }
+}
+
+public class SynchronizationExample
+{
+    public static void main (String[] args) {
+        SampleThread st = new SampleThread();
+        MultiThreadedData data = new MultiThreadedData();
+
+        st.setData(data);
+        Thread.currentThread().setName("Thread 1");
+        Thread t1 = new Thread(st, "Thread 1"); 
+        Thread.currentThread().setName("Thread 2");
+        Thread t2 = new Thread(st, "Thread 2");
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        }
+        catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read() {
+        synchronized (this) {
+            data.read();
+        }
+    }
+    public void write() {
+        synchronized (this) {
+            data.write();
+        }
+    }
+}
+class SampleThread implements Runnable {
+    MultiThreadedData data;
+    public void setData(MultiThreadedData data) {
+        this.data = data;
+    }
+    public synchronized void run() {
+        data.read();
+        data.write();
+    }
+}
+public class SynchronizationExample
+{
+    public static void main (String[] args) {
+        SampleThread st = new SampleThread();
+        MultiThreadedData data = new MultiThreadedData();
+        st.setData(data);
+        Thread.currentThread().setName("Thread 1");
+        Thread t1 = new Thread(st, "Thread 1"); 
+        Thread.currentThread().setName("Thread 2");
+        Thread t2 = new Thread(st, "Thread 2");
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        }
+        catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write(String str) { System.out.println("Write operation " + str); }
+    void read(String str) { System.out.println("Read operation " + str); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read(String str) {
+        synchronized (this) {
+            System.out.println("Thread # " + str + ": synchronized read is invoked!");
+            data.read();
+        }
+    }
+    public void write(String str) {
+        synchronized (this) {
+            System.out.println("Thread # " + str + ": synchronized write is invoked!");
+            data.write(str);
+        }
+    }
+}
+class SynchronizedThread implements Runnable {
+    MultiThreadedData data;
+    String str;
+    public SynchronizedThread(MultiThreadedData data, String str) {
+        this.data = data;
+        this.str = str;
+    }
+    public synchronized void run() {
+         
+        data.read(str);
+        data.write(str);
+    }
+}
+class MultiThreadedTask {
+    MultiThreadedData data;
+    String msg;
+    public MultiThreadedTask(MultiThreadedData data, String msg) {
+        this.data = data;
+        this.msg = msg;
+    }
+    public void execute() {
+        Thread t1 = new Thread(new SynchronizedThread(data, msg + "0"), "Thread1");
+        Thread t2 = new Thread(new SynchronizedThread(data, msg + "1"), "Thread2");
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch (
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Father {
+    void work1() { System.out.println("I am working in father's work1 method!"); }
+    void work2() { System.out.println("I am working in father's work2 method!"); }
+}
+class Son extends Father {
+    void play() { System.out.println("I am playing in son's play method!"); }
+    void marry() { System.out.println("I am marrying in son's marry method!"); }
+}
+public class InheritanceExample {
+    public static void main (String[] args) {
+        Father f = new Father();
+        f.work1();
+        f.work2();
+        Son s = new Son();
+        s.work1();
+        s.work2();
+        s.play();
+        s.marry();
+    }
+}
+ 
+ 
+ 
+ 
+import java.lang.Object;
+interface Interface1 {
+    void m1();
+    void m2();
+    void m3();
+    void m4();
+}
+abstract class AbstractClass1 {
+    abstract void m1();
+    abstract void m2();
+    abstract void m3();
+    abstract void m4();
+}
+ 
+ 
+ 
+/* Also, please create
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    MultiThreadedData(SampleData data) {
+        this.data = data;
+    }
+    public void read() { data.read(); }
+    public void write() { data.write(); }
+}
+class SampleThread implements Runnable {
+    MultiThreadedData data;
+    public void setData(MultiThreadedData data) {
+        this.data = data;
+    }
+   public void read() {
+        data.read();
+    }
+    public void write() {
+        data.write();
+    }
+    public synchronized void run() {
+        data.read();
+        data.write();
+    }
+}
+public class SynchronizationExample
+{
+    public static void main (String[] args) {
+        SampleThread st = new SampleThread();
+        MultiThreadedData data = new MultiThreadedData(new SampleData());
+        st.setData(data);
+        Thread.currentThread().setName("Thread 1");
+        Thread t1 = new Thread(st, "Thread 1"); 
+        Thread.currentThread().setName("Thread 2");
+        Thread t2 = new Thread(st, "Thread 2");
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        }
+        catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class SynchronizedBlock {
+    synchronized void message() {
+        System.out.println("This is printed by thread " + Thread.currentThread().getName() );
+        try {
+            Thread.sleep( 50 );
+            System.out.println("Printing done by thread " + Thread.currentThread().getName() );
+        }
+        catch (InterruptedException ex) {
+            System.out.println("Exception message : " + ex.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        Runnable runnable = new Runnable () {
+            SynchronizedBlock obj = new SynchronizedBlock();
+            public void run() {
+                obj.message();
+            }
+        };
+        Thread thread = new Thread( runnable );
+        thread.setName("Thread 1");
+        thread.start();
+        System.out.println("Enter a character");
+        try
+        {
+            String s = System.console().readLine();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read() { data.read(); }
+    public synchronized void write() { data.write(); }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read() { data.read(); }
+    public synchronized void write() { data.write(); }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read() {   data.read(); }
+    public synchronized void write() {   data.write(); }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() {System.out.println("Write operation to SampleData is invoked!");}
+    void count() {System.out.println("Count operation to SampleData is invoked!");}
+}
+class MultiThreadedData1 {
+    int count;
+    SampleData data;
+
+    public synchronized void read() {
+        try {
+            while (count == 0) {
+                wait();
+            }
+  data.count();
+            count--;
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+
+    public synchronized void write() {
+        try {
+            data.write();
+  count++;
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}
+ 
+import java.lang.Object;
+class Lock {
+    private boolean isLocked = false;
+    void lock () { isLocked = true; }
+    void unlock () { isLocked = false; }
+}
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+}
+class MultiThreadedData2 {
+    SampleData data;
+    Lock lock;
+    public void read() {
+        lock.lock();
+        if (!data.read)
+            try {
+                wait();
+            } catch (InterruptedException e) { e.printStackTrace(); }
+        lock.unlock();
+    }
+    public void write() {
+        try {
+            data.write();
+            lock.unlock();
+        } catch (InterruptedException e) { e.printStackTrace(); }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read() { data.read(); }
+    public synchronized void write() { data.write(); }
+    public synchronized void testWriteAndRead() {
+        write(); read();
+    }
+}
+ 
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read() { data.read(); }
+    public synchronized void write() { data.write(); }
+    public void testWriteAndRead() {
+        synchronized(data) { write(); read(); }
+    }
+}
+ 
+import java.lang.Object;
+class SampleData {
+    void write() {
+        synchronized(this) {
+            System.out.println("Write operation to SampleData is invoked!");
+        }
+    }
+    public void invoke() { write(); }
+    public void invokeException() throws RuntimeException {
+        try {
+            write();
+        } catch (RuntimeException f) {
+            System.out.println("RuntimeException caught from: " + f);
+        }
+    }
+}
+class MultiThreadedData extends SampleData {
+    public synchronized void testMultiThreadWriteAndRead() {
+        Thread a = new Thread(() -> { invoke(); invokeException(); });
+        Thread b = new Thread(() -> { invoke(); invokeException(); });
+        a.start(); b.start();
+    }
+}
+ 
+import java.lang.Object;
+class SampleData {
+    void write() {
+        synchronized(this) {
+            System.out.println("Write operation to SampleData is invoked!");
+        }
+    }
+    public void invoke() { write(); }
+    public void invokeException() throws RuntimeException {
+        try {
+            write();
+        } catch (RuntimeException f) {
+            System.out.println("RuntimeException caught from: " + f);
+        }
+    }
+}
+class MultiThreadedData extends SampleData {
+    public synchronized void testMultiThreadWriteAndRead() throws IOException {
+        Thread a = new Thread(() -> { invoke(); invokeException(); });
+        Thread b = new Thread(() -> { invoke(); invokeException(); });
+        a.start(); b.start();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class Sample1115 {
+    private static Scanner scanner = new Scanner(System.in);
+    public static void main(String args[]) {
+        Sample1115 first = new Sample1115();
+        Sample1115 second = new Sample1115();
+        first.setData();
+        second.setData();
+        System.out.println("Input a number:");
+        if(scanner.nextBoolean())
+            first = second;
+        System.out.println("Result: "+first.sum);
+    }
+    private void setData() {
+        System.out.println("Input a new number:");
+        sum += scanner.nextInt();
+    }
+
+    public int sum = 0;
+}
+ 
+import java.lang.Object;
+public class SynchSample {
+    public synchronized static void synch() {
+        System.out.println("Thread "+Thread.currentThread().getName()+" entered sync method");
+        try{Thread.sleep(5000);}catch (InterruptedException e){ }
+        System.out.println("Thread "+Thread.currentThread().getName()+" left.");
+    }
+    public static void main(String[] args) {
+        Thread t = new Thread(new Runnable() { public void run() {
+            Sample1115.synch();
+        }});
+        Thread t2 = new Thread(new Runnable() { public void run() {
+            Sample1115.synch();
+        }});
+        t.start();
+        t2.start();
+    }
+}
+ 
+
+ 
+public class PrimitiveSynchronised {
+    
+    public static void main(String[] args) {
+        int n = randomNumber();
+        int i = 0, j, k;
+        j = (int)(Math.random()*998);
+        k = (int)(Math.random()*998);
+
+
+        i++;
+        int x = 10;
+
+
+
+
+
+    }
+
+    public static int randomNumber() {
+        return (int)(Math.random()*998);
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read(String s) { data.read(); }
+    public synchronized void write() { data.write(); }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read(String s) { data.read(); }
+    public synchronized void write() { data.write(); }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!");}
+    void read() { System.out.println("Read operation to SampleData is invoked!");}
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read(String s) {try { data.read();System.out.println(s);
+            Thread.sleep(150);
+        } catch(InterruptedException ie) {
+            ie.printStackTrace();
+        }}
+    public synchronized void write() { System.out.println("write operation");
+        data.write();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+
+public class MultiThreaded{
+    MultiThreadedData mut = new MultiThreadedData();
+    SampleData obj = mut.data;
+    public synchronized void read(String s) {
+        obj.read();
+    }
+
+    public synchronized void write() {
+        obj.write();
+    }
+
+    public synchronized void read1(String s) {
+        synchronized (this) {
+            obj.read();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+    
+}
+
+public class SampleTest {
+    public static void main(String [] args) {
+        System.out.println("Please create a very short program which combines synchronized with new Java features in a complex way");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ 
+class SampleData {
+    String value;
+    synchronized void write(String s) {
+        value = s;
+    }
+    synchronized String read() {
+        return value;
+    }
+}
+ 
+public class MyThread extends Thread{
+    Task task;
+    MyThread(Task t) { task = t; }
+    public void run() { task.doTask(); }
+}
+ 
+class Task {
+     
+    public void doTask() {
+        System.out.print("Hello ");
+        System.out.println("World");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Task task = new Task();
+        MyThread t = new MyThread(task);
+         
+        t.start();
+    }
+}
+ 
+ 
+public class Main {
+    public static void main(String[] args) {
+        Object obj = new Object();
+        obj.synchronized(obj) {
+            System.out.println("Synchronized block!");
+        }
+    }
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ 
+class MultiProcessThreadRunner {
+    public static void main(String[] args) {
+        MultiThreadedData mt = new MultiThreadedData();
+        new MultiProcessThread(mt, "Read-A").start();
+        new MultiProcessThread(mt, "Read-B").start();
+        new MultiProcessThread(mt, "Read-C").start();
+        new MultiProcessThread(mt, "Write-A").start();
+    }
+}
+class MultiProcessThread extends Thread {
+    public MultiThreadData m;
+    public String sName;
+    public MultiProcessThread(MultiThreadedData mt, String name) {
+        m = mt;
+        sName = name;
+    }
+    public void run() {
+        try {  
+            sleep(10000);
+        } catch(Exception e) {}
+         
+        System.out.println("Thread " + sName);
+        synchronized (m) {
+            m.write();
+            m.read(sName);
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        System.out.println("Please create a very short program which combines synchronized with new Java features in a complex way");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    SampleData() { System.out.println("SampleData is instantiated!"); }
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        String s = "S";
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { for(int i = 1; i <= 10; i++) { data.read_synchronize(s + i); System.out.println("Read operation with " + s + i + " is ended!"); } }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { for(int i = 1; i <= 3; i++) { data.write_synchronize(); System.out.println("Write operation is ended!"); } } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {} 
+    }
+}
+/* Explain the output
+
+This is the output of the original program:
+
+Please create a very short program which combines synchronized with new Java features in a complex way
+Write operation to SampleData is invoked!
+Read operation to SampleData is invoked!
+Read operation to SampleData is invoked!
+Read operation with S1 is ended!
+Read operation with S2 is ended!
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    void write() {
+        System.out.println("Write call is invoked!");
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException ie) {}
+    }
+    void read() {
+        System.out.println("Read call is invoked!");
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException ie) {}
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize() {
+        synchronized (this) { 
+            data.read(); 
+        }
+    }
+    public void write_synchronize() {
+        synchronized (this) { 
+            data.write(); 
+        }
+    }
+}
+public class SampleTest2 {
+    public static void main(String [] args) {
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() {
+                    for (int k = 0; k < 5; k ++)
+                        data.read_synchronize();
+                }
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() {
+                    for (int k = 0; k < 5; k ++)
+                        data.write_synchronize();
+                }
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ 
+ 
+ 
+ 
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class StringBuffer {
+    String str = "";
+    StringBuffer(String str) { this.str = str; }
+    synchronized void getLength() {   System.out.println("MyString.get(): " + str); }
+    synchronized void add(String s) {  str += s;        }
+}
+class MyThread10_2 extends Thread{
+    StringBuffer sb;
+    MyThread10_2(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("a");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+class MyThread10_3 extends Thread{
+    StringBuffer sb;
+    MyThread10_3(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("b");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+class MyThread10_1 extends Thread{
+    StringBuffer sb;
+    MyThread10_1(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("cd");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+public class SampleTest10 {
+    public static void main(String [] args) {
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        StringBuffer sb = new StringBuffer("0");
+        MyThread10_1 t1 = new MyThread10_1(sb);
+        MyThread10_2 t2 = new MyThread
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    synchronized void read_synchronize(String s) { data.read(); }    
+    synchronized void write_synchronize() { data.write(); }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (SampleData.class) { data.read(); } }
+    public void write_synchronize() { synchronized (SampleData.class) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class DataContainer {
+    Object data;
+    DataContainer() { data = null; }   
+    Object read() { return (Object)data; }
+    void write(Object c) { data = c; }
+}
+
+class SafeInfoStorage {
+    DataContainer container;
+    SafeInfoStorage container() { return this; }
+
+    synchronized String read () {
+        return (String)container.read();
+    }
+
+    synchronized void write (String s) {
+        container.write(s);
+    }
+
+     
+    public void setInfo (String string) {
+        synchronized (container.container()) { 
+            container.write(string); 
+            System.out.println("Set info : " + read());
+        } 
+    }
+}
+
+public class StorageData {
+    SafeInfoStorage storage;
+    public StorageData() {
+        this.storage = new SafeInfoStorage();
+    }
+
+    public void write_string() {
+        storage.setInfo("Hello World");
+    }
+
+    public static void main(String args[]) {
+        StorageData storageData = new StorageData();
+        storageData.storage = new SafeInfoStorage();
+
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { storageData.write_string(); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { storageData.write_string(); } 
+            });
+
+        t1.start();
+        t2.start();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(String s) { synchronized (s) { data.read(); } }
+    public void write_synchronize() { synchronized (data.write()); }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    class Inner {
+        synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+        synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+    }
+    Inner inner = new Inner();
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { data.inner.read(); }
+    public void write_synchronize() { data.inner.write(); }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+public class TestClass {
+    class Inner {
+        String a = "1";
+        synchronized void first() { 
+            System.out.println(a);
+            try { Thread.sleep(1000); } catch (InterruptedException ie){}
+            System.out.println(a);
+            a = "2";
+        }
+    }
+    static synchronized void second() { }
+    public static void main(String[] args) throws InterruptedException {
+        TestClass outer = new TestClass();
+        Inner inner = new Inner();
+        System.out.println("Started...");
+        Thread t1 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    inner.first();
+                }
+            });
+        Thread t2 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                     
+                    TestClass.second();
+                }
+            });
+        t
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+class SampleData {
+    ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    void write() {  
+        lock.writeLock().lock();
+        try { System.out.println("Write operation to SampleData is invoked!"); } finally {
+            lock.writeLock().unlock();
+        }
+    }
+    void read() {  
+        lock.readLock().lock();
+        try { System.out.println("Read operation to SampleData is invoked!"); } finally {
+            lock.readLock().unlock();
+        }
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) {
+        data.lock.readLock().lock();
+        try { data.read(); } finally { data.lock.readLock().unlock(); }
+    }
+    public void write_synchronize() {
+        data.lock.writeLock().lock();
+        try { data.write(); } finally { data.lock.writeLock().unlock(); }
+    }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+/* import java.lang.Object;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+class SampleData {
+    Re
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    public static synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    public static synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { synchronized (data) { data.read(); } }
+    public void write_synchronize() { synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) { this.synchronized (data) { data.read(); } } 
+    public void write_synchronize() { this.synchronized (data) { data.write(); } }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+import java.lang.Object;
+class SampleData {
+    synchronized void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    synchronized void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+class MultiThreadedData {
+    SampleData data;
+    public synchronized void read_synchronize(final String s) { data.read(); }
+    public synchronized void write_synchronize() { data.write(); }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) { synchronized (data) { data.read(); } return this.data; }
+    public SampleData write_synchronize() { synchronized (data) { data.write(); } return this.data; }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) { synchronized (data) { data.read(); } return this.data; }
+    public SampleData write_synchronize() { synchronized (data) { data.write(); } return this.data; }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+    public enum State {WRITER, READER}
+    private State state = State.WRITER;
+    State getState() { synchronized (this) { return state; } }
+    SampleData setState(State s) {
+        synchronized (this) {  
+            state = s;
+        }
+        return this;
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) {
+        data.setState(SampleData.State.READER);
+        data.read();
+        data.write().setState(SampleData.State.WRITER);
+        return this.data;
+    }
+    public SampleData write_synchronize() {
+        data.setState(SampleData.State.WRITER);
+        data.write();
+        data.read().setState(SampleData.State.READER);
+        return this.data;
+    }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+class SampleDataSync {
+    private final Object lock = new Object();
+    SampleDataSync write() { synchronized (lock) { System.out.println("Write operation to SampleDataSync is invoked!"); } return this; }
+    SampleDataSync read() { synchronized (lock) { System.out.println("Read operation to SampleDataSync is invoked!"); } return this; }
+}
+class MultiThreadedDataSync {
+    SampleDataSync data;
+    private final Object this_lock = new Object();
+    public SampleDataSync read_synchronize(final String s) { 
+        synchronized (data) { data.read(); } return this.data; 
+    }
+    public SampleDataSync write_synchronize() { 
+        synchronized (data) { data.write(); } return this.data; 
+    }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedDataSync data = new MultiThreadedDataSync();
+         
+        data.data = new SampleDataSync();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { synchronized (data.this_lock) { data.read_synchronize("S"); } }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { synchronized (data.this_lock) { data.write_synchronize(); } } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() {
+        synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() {
+        synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) {
+        synchronized (data) { data.read(); } return this.data;
+    }
+    public SampleData write_synchronize() {
+        synchronized (data) { data.write(); } return this.data;
+    }
+}
+class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { 
+                    data.read_synchronize("S"); 
+                    data.write_synchronize(); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { 
+                    data.read_synchronize("S"); 
+                    data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+         
+        return this;
+    }
+
+    synchronized Sample doSomethingElse() {
+         
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+
+        synchronized (s.doSomething()) {
+            synchronized (s.doSomethingElse()) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SampleData {
+    final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+}
+class MultiThreadData {
+    final SampleData data;
+    public SampleData synchronize_read(final String s) { synchronized (data) { data.read(); } return this.data; }
+    public SampleData synchronize_write() { synchronized (data) { data.write(); } return this.data; }
+}
+public class SampleTest2 {
+    public static void main(String [] args) {
+        MultiThreadData data = new MultiThreadData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() {
+                    System.out.println("Thread 1 invoked!");
+                    data.synchronize_read("S");
+                }
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() {
+                    System.out.println("Thread 2 invoked!");
+                    data.synchronize_write();
+                }
+            });
+        t1.start();
+        t2.start();
+        System.out.println("Hello World");
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s.doSomething()) {
+            synchronized (s.doSomethingElse()) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s.doSomething()) {
+            synchronized (s.doSomethingElse()) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        synchronized (Sample.class) {
+            return this;
+        }
+    }
+    synchronized Sample doSomethingElse() {
+        synchronized (Sample.class) {
+            return this;
+        }
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s.doSomething()) {
+            synchronized (s.doSomethingElse()) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Sample {
+    int x = 2;
+    synchronized int getX() {
+        return x;
+    }
+    synchronized void setX(int x1) {
+        x = x1;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+         
+        System.out.println(s.getX()); 
+        System.out.println(s.setX(4)); 
+        System.out.println(s.getX()); 
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.doSomething().doSomethingElse()) {
+            System.out.println("Synchronization works");
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s) {
+            synchronized (s) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+ 
+ 
+class TestMutaionWithSync{  
+    int count =0;  
+    synchronized int countPlusPlus() {
+        count++;   
+        return count;
+    }
+} 
+public class Main{  
+    public static void main(String[] args) {
+        TestMutaionWithSync ts = new TestMutaionWithSync();
+        ts = ts.countPlusPlus();
+        ts = ts.countPlusPlus();
+        ts = ts.countPlusPlus();
+        System.out.println("Final " + ts);
+    }
+}
+ 
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        Sample x = new Sample();
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s.doSomething()) {
+            synchronized (s.doSomethingElse()) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Sample {
+    synchronized Sample dosomething() {
+          return this;
+    }
+    synchronized Sample somethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized(s.dosomething()){
+             synchronized(s.somethingElse()){
+                System.out.print("Synchronization Works");
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+public class SynchTest{
+    synchronized void testSynch(){
+        System.out.println("synch");
+    }
+    public void testNoSynch(){
+        System.out.println("no synch");
+    }
+    public static void main(String [] args) {
+        new SynchTest().testSynch();
+    }
+}
+ 
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.doSomething().doSomethingElse()) {
+            System.out.println("Synchronization works");
+        }
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample2 {
+    synchronized Sample2 doSomething() {
+        return this;
+    }
+    synchronized Sample2 doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample2();
+        s.doSomething().doSomethingElse();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest1 {
+    public static void main(String[]args){
+    Sample s=new Sample();
+    synchronized(SynchTest.class){
+        System.out.println("Synchronization works");
+    }
+    synchronized(s.doSomething().doSomethingElse()){
+        System.out.println("Synchronization works");
+    }
+    }
+}
+ 
+import java.lang.Object;
+class Sample {
+  synchronized Sample doSomething() {
+    return this;
+  }
+  synchronized Sample doSomethingElse() {
+    return this;
+  }
+}
+public class SynchTest2 {
+  public static void main(String[]args){
+    Sample s=new Sample();
+    synchronized(SynchTest2.class){
+      synchronized(s.doSomething().doSomethingElse()){
+        System.out.println("Synchronization works");
+      }
+    }
+  }
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class StaticSynchronized {
+    synchronized static int getInteger() {
+        return 1;
+    }
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+Object syncObject = new Object() {
+    synchronized void printMe() {
+        System.out.println("Synchronized code");
+    }
+};
+ 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+public class FileReaders {
+    public void fileReadingTask(RandomAccessFile file, int numberOfKeys, int key) throws IOException {
+        file.seek(key * 4);
+        byte[] data = new byte[4];
+        file.read(data);
+        synchronized (fileLocks[key]) {
+            file.seek(key * 4);
+            file.write(data);
+        }
+    }
+}
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            s.doSomething2();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        System.out.println("doSomething");
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        System.out.println("doSomethingElse");
+        return this;
+    }
+    synchronized void mutatorSomethingElse() {
+        System.out.println("mutatorSomethingElse");
+        return;
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.doSomething()) {
+            s = new Sample();
+            synchronized(s.doSomethingElse()) {
+                new Sample().mutatorSomethingElse();
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Sample implements Runnable {
+    private Object lock = new Object();
+    int x = 0;
+    Sample() {
+        Thread t = new Thread(this);
+        t.start();
+    }
+    public void run() {
+        synchronized (lock) {
+            System.out.println("Hello from the other thread!");
+            sleep(1000);
+            x = 1;
+            lock.notify();
+        }
+    }
+    synchronized void mutatorSomethingElse() {
+        System.out.println("mutatorSomethingElse " + x);
+    }
+}
+public class SynchTest1 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s.lock) {
+            while (x == 0) {
+                try {
+                    s.lock.wait();
+                }
+                catch (Exception e) {
+                    System.err.println("Exception");
+                }
+            }
+        }
+        s.mutatorSomethingElse();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            s.doSomething2();
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+             
+        }
+    }
+}
+ 
+class ThreadSafe {
+    private volatile int myField;
+    public synchronized void setMyField(int value) {
+        myField = value;
+    }
+    public synchronized int getMyField() {
+        return myField;
+    }
+}
+ 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class Example {
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService pool = Executors.createCachedThreadPool();
+        
+        final AtomicInteger value = new AtomicInteger();
+        pool.submit(() -> value.set(10));      
+        System.out.println(value.get());     
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Test {
+    public String toString() { return getClass().getName(); }
+    void doSomething1() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething1()");
+        }
+    }
+    void doSomething2() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Test t = new Test();
+        synchronized (t) {
+            t.doSomething1();
+            t.doSomething2();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+    public void test() {
+        synchronized (this) {
+            doSomething1();
+            doSomething2();
+        }
+    }
+    public synchronized void another() {
+        doSomething1();
+        doSomething2();
+    }
+}
+public class Test1 {
+    public static void main(String [] args) {
+        Sample sync = new Sample();
+        sync.test();
+        sync.another();
+    }
+}
+ 
+class Account {
+    int ibalance;
+    void deposit(int b)
+    {
+        ibalance=ibalance+b;
+    }
+    void withdraw(int b)
+    {
+        if(ibalance>=b)
+        {
+            ibalance=ibalance-b;
+        }
+        else
+        {
+            System.out.println("Withdrawal Failed: Insufficient Funds");
+        }
+    }
+    void getDetails()
+    {
+        System.out.println("Your Balance is"+ibalance);
+    }
+}
+ 
+public class test {
+    volatile boolean bool = true;
+    public static void main(String[] args)
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(bool) {
+                    System.out.println("thread 1 is running.");
+                }
+                System.out.println("thread 1 is exiting.");
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(bool) {
+                    System.out.println("thread 2 is running.");
+                }
+                System.out.println("thread 2 is exiting.");
+            }
+        }).start();
+    }
+}
+ 
+/* What is static? What is the difference between a static field and instance field?
+
+A field declared as static in a class is known as static field. The field belongs to the class and can be accessed without creating object instance.
+
+A field declared inside the class but outside of the methods is known as instance fields. The field belongs to an instance and can be accessed by creating and object instance.
+
+The static keyword can be used with other modifiers except private and final. It means that the variable is shared by all the instances of the class.
+
+The static modifier with methods does two things. It means that
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+         
+        s.doSomething2();
+         
+    }
+}
+
+ 
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+        throw new Error();
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+
+ 
+
+1.	Space for statics is reserved when the app loads, and never unloaded.  There is a one time initialization of them.
+2.	Space for instances isn’t reserved.  They grow and are collected when the app needs them.
+
+ 
+
+A program's execution context contains:
+•	The program’s stack;
+•	The values of any local variables and parameters in the program;
+•	The program’s heap;
+•	A reference to the method area; and
+•	An instance of java.lang.Thread.
+
+/* In a multi-threading program, which one of the following statements would most likely be correct?
+
+	a) Once the start() called, the thread would always continue to run.
+	b) Once the suspend() called, the thread can never continue to run.
+	c) Once the stop() called, the thread can never reach any code.
+	d) Once the resume() called, the thread would continue to run.
+
+
+//b
+suspend() and resume() can be called any time a thread object knows that the thread has been suspended or it's going to be resumed from suspend(pause or stop).
+
+ 
+
+Because internally, the API is using the Unix system call nanosleep and therefore is also affected by the OS scheduling of the CPU
+
+
+ 
+
+•	
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class SynchTest6 {
+    public static void main(String [] args) {
+        new Thread(Sample::doSomething3).run();
+    }
+    static synchronized void doSomething3() {
+        System.out.println(Thread.currentThread() + ": doSomething3()");
+    }
+}
+ 
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Hashtable;
+
+public class Test {
+	private Map<Integer, String> map;
+	public Test(Map<Integer, String> map) {
+	   this.map = map;
+	}
+	public Set<Entry<Integer, String>> entrySet() {
+		 
+		return Collections.unmodifiableSet(this.map.entrySet());
+	}
+}
+
+public class Test2 {
+	public static void main(String[] args) {
+		Map<Integer, String> hashMap = new HashMap<>();
+		Map<Integer, String> Hashtable = new Hashtable<>();
+		Map<Integer, String> ConcurrentHashMap = new ConcurrentHashMap<>();
+	 	Map<Integer, String> Test = new Test(hashMap);
+	 	for(int i=0; i<10;i++) {
+	 	  hashMap.put(i, Integer.toString(i));
+	 	  Hashtable.put(i, Integer.toString(i));
+	 	  ConcurrentHashMap.put(i, Integer.toString(i));
+	 	  Test.entrySet();
+	 	}
+	 	System.out.println(hashMap);
+	 	System.out.println(Hashtable);
+	 	System.out.println(ConcurrentHashMap);
+	}
+}
+ 
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+public class SynchCollectionTest implements  ISynchCollection<String> {
+    private Collection<String>   coll;
+    private Lock                  lock;
+    
+    public SynchCollectionTest(Collection<String> coll) {
+        lock = new ReentrantLock();
+        this.coll = coll;
+    }
+    
+    public SynchCollectionTest() {
+        lock = new ReentrantLock();
+        this.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            new Object() {
+                synchronized void doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+ 
+class Sample {
+    static int i;  
+    static float f[] = new float[10];  
+}
+ 
+class Sample2 {
+    static String s1 = "hello", s2 = "world";  
+    static Object o = new Object();  
+}
+/* 11.5. The static modifier
+Recall from the previous chapters that each Java program gets its own class loader, with its own separate namespace. A static member of a class is visible to all objects of the class. Therefore, static variables are visible to all objects of the class, but not visible to any particular object. A static array is not shared by all objects, because the elements are each the objects themselves.
+
+When the new variable is constructed, the space for all of the elements (or, for an
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized static void doSomething1() {
+        System.out.println(Sample.class + ": doSomething1()");
+    }
+}
+public class SynchTest4 {
+    public static void main(String [] args) {
+        synchronized (Sample.class) {
+            Sample.doSomething1();
+            new Object() {
+                static void  doSomething2() {
+                    System.out.println(Sample.class + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample2 {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    static class Sample2Class {
+        static synchronized void staticDoSomething1() {
+            System.out.println(this + ": staticDoSomething1()");
+        }
+        synchronized void doSomething2() {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+    Sample2Class c = new Sample2Class();
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample2.Sample2Class.staticDoSomething1();
+        Sample2.Sample2Class c = new Sample2.Sample2Class();
+        synchronized (c) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + c.hashCode() + "...");
+            try {
+                Sample2.Sample2Class.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + c.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            c.doSomething2();
+            new Object() {
+                void  doSomething3() {
+                    System.out.println(this + ": doSomething3()");
+                }
+            };
+            Sample2.Sample2Class.class.notify();
+        }
+    }
+}
+/* 1. The output is:
+Sample$Sample2Class: staticDoSomething1()
+Thread-0: Waiting for 1397763327...
+Awoken!!!
+Sample$Sample2Class$1: doSomething3()
+Sample$Sample2Class$1@102e54c
+ Sample2$Sample2Class$1@102e54c: doSomething3()
+2. What went wrong?
+The program is not synchronized because one method is synchronized and other is not synchronized.
+Synchronizing a static method does not synchronize on a class.
+Synchronizing a non-static method does synchronize on a class.
+Synchronizing a non-static method also synchronizes on an instance of a class.
+4. What is wrong in the following code?
+SynchronizedTest synchTest = new SynchronizedTest();
+synchronized (syn
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+    void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+            s.doSomething2();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            s.doSomething1();
+            new Object() {
+                void  doSomething2() {
+                    System.out.println("DoSomething2() from inside inner class called by synchronized!");
+                }
+            };
+            Sample.class.notify();
+        }
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            s.doSomething1();
+            Sample.class.notify();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Sample.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            s.doSomething1();
+            Sample.class.notify();
+        }
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this.hashCode() + ": doSomething1()");
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        Object o = new Object();
+        synchronized (s) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                o.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  innerDoSomething2() {
+                    System.out.println(this.getClass().hashCode() + ": doSomething2()");
+                }
+            };
+            s.doSomething1();
+            o.notify();
+        }
+    }
+}
+ 
+public class Synchronized {
+    String title;
+    private void setTitle(String t) {
+        synchronized (this) {
+            title = t;
+        }
+    }
+    public Runnable r = new Runnable() {
+        public void run() {
+            setTitle("Mr.";
+            System.out.println(title);
+        }
+    }
+    public static void main(String[] args) {
+        Synchronized s = new Synchronized();
+        Thread t = new Thread(s.r);
+        title = "Mrs.";
+        t.start();
+    }
+}
+ 
+/* ThreadLocal (as of 2006) is essentially a collection in which each thread has its own copy of the
+values stored, which makes it extremely easy to create thread-safe services that store and retrieve multiple values based on the thread on which the call is made. 
+It provides a context switch friendly solution compared to traditional synchronization techniques which require some handful
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1(boolean x) {
+        System.out.print(this + ": doSomething1(" + x);
+        if (x) {
+            System.out.println(")");
+        }
+        else {
+            System.out.println("!!)");
+        }
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (SynchedTest3.class) {
+            System.out.println(Thread.currentThread().getName() + ": Waiting for " + s.hashCode() + "...");
+            try {
+                Object.class.wait();
+            }
+            catch (InterruptedException e) {
+                System.err.println("Interrupted while waiting for " + s.hashCode());
+            }
+            System.out.println("Awoken!!!");
+            new Object() {
+                void  doSomething2() {
+                    System.out.println(this + ": doSomething2()");
+                }
+            };
+            s.doSomething1(true);
+            Object.class.notify();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(Thread.currentThread().getName() + ": Waiting for " + this.hashCode() + "...");
+        try {
+            wait();
+        }
+        catch (InterruptedException e) {
+            System.err.println("Interrupted while waiting for " + this.hashCode());
+        }
+        System.out.println("Awoken!!!");
+        new Object() {
+            void  doSomething2() {
+                System.out.println(Thread.currentThread().getName() + ": doSomething2()");
+            }
+        };
+        this.doSomething1();
+        this.notify();
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething1();
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.concurrent.locks.ReentrantLock;
+class Synch2 {
+    ReentrantLock r = new ReentrantLock();
+    synchronized void doSomething1() {
+        System.out.println(Thread.currentThread().getName() + ": Waiting for doSomething1()...");
+        try {
+            r.acquire();
+        }
+        catch (InterruptedException exception) {
+            System.out.println("Interrupted!");
+            return;
+        }
+        System.out.println("gotcha!");
+        System.out.println(Thread.currentThread().getName() + ": Releasing doSomething1()...");
+        r.release();
+    }
+}
+public class SynchTest3 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Sample.class.wait();
+                    System.out.println("Awakened!");
+                    s.doSomething1();
+                    Sample.class.notify();
+                }
+                catch (InterruptedException e) {
+                    System.err.println("Interrupted!");
+                }
+            }
+        }).start();
+        Sample.class.notify();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        System.out.println(this + ": doSomething1()");
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SynchTest1 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized(s) {
+            s.doSomething1();
+        }
+        synchronized(Sample.class) {
+            s.doSomething1();
+        }
+    }
+}
+ 
+import java.lang.Object;
+class Synch2 {
+    public void doSomething() {
+        synchronized(this) {
+             
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Synch2 s1 = new Synch2();
+        Synch2 s2 = new Synch2();
+
+         
+        Thread thread1 = new Thread(s1);
+        Thread thread2 = new Thread(s2);
+
+         
+        thread1.start();
+        thread2.start();
+
+         
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.reflect.Method;
+class Sample {
+    void doSomething1() {
+        Method m;
+        try {
+            m = this.getClass().getMethod("doSomething1", new Class[]{});
+        } catch (NoSuchMethodException e) {
+            throw new NullPointerException(e.getMessage());
+        } catch (SecurityException e) {
+            throw new IllegalStateException(e.getMessage());
+        }
+        synchronized(this) {
+            try {
+                m.invoke(this, new Object[]{});
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample1 {
+    void doSomething1() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething1()");
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample1 s = new Sample1();
+        s.doSomething1();
+    }
+}
+ 
+ 
+class Sample2 {
+    synchronized void doSomething1() {
+        System.out.println("doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println("doSomething2()");
+    }
+}
+class SyncTest3 {
+    public static void main(String [] args) {
+        Sample2 s = new Sample2();
+        new Thread() {
+            public void run() {
+                System.out.println("New thread: doSomething1()");
+                s.doSomething1();
+            }
+        }.start();
+        s.doSomething2();
+    }
+}
+ 
+ 
+ 
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        synchronized(this) {
+            System.out.println(System.identityHashCode(this) + ": doSomething1()");
+        }
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething2() {
+        synchronized(this) {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+}
+
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething2();
+    }
+}
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    void doSomething2() {
+        synchronized(this) {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething2();
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class SynchTest3a {
+    public static void main(String [] args) {
+        Sample2 s = new Sample2();
+        s.doSomething3();
+    }
+}
+class Sample2 {
+    void doSomething3() {
+        Object o = new Object();
+        synchronized(o) {
+            System.out.println("doSomething3()" + this);
+        }
+    }
+}
+ 
+import java.lang.Object;
+public class SynchTest4 {
+    public static void main(String [] args) {
+        Sample3 s = new Sample3();
+        s.doSomething4();
+    }
+}
+class Sample3 {
+    void doSomething4() {
+        Object o = this;
+        synchronized(o) {
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+ 
+import java.lang.Object;
+public class SynchTest4a {
+    public static void main(String [] args) {
+        Sample3 s = new Sample3();
+        new Thread(new Runnable() {
+            public void run() {
+                s.doSomething4();
+            }
+        }).start();
+        s.doSomething4();
+    }
+}
+class Sample3 {
+    void doSomething4() {
+        Object o = this;
+        synchronized(o) {
+            System.out.println("First one: "+Thread.currentThread().getName());
+        }
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class SyncExample {
+    synchronized void doSomething() {}
+    void doSoemthingUnsync() {}
+}
+class Sample2 {
+    void doSomething2() {
+        SyncExample s = new SyncExample();
+        s.doSomething();
+        this.doSoemthingUnsync ();
+    }
+}
+
+public class SynchTest3 {
+public static voi main(String[] args) {
+    Sample2 s = new Sample2();
+    s.doSomething2();
+}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample1 {
+    public synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+class SynchTester1 extends Sample1 {
+    public static void main(String [] args) {
+        Sample s = new SynchTester1();
+        s.doSomething2();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething2() {
+        synchronized(this) {
+            System.out.println(this + ": doSomething2()");
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething2();
+    }
+}
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething2();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething2();
+    }
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample extends Object {
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+        doSomething2();
+        doSomething3();
+    }
+    synchronized void doSomething2() {
+         
+    }
+    synchronized void doSomething3() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+        s.doSomething();
+    }
+}
+ 
+import java.lang.Object;
+class Sample extends Object {
+    synchronized static void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+        doSomething2();
+        doSomething3();
+    }
+    synchronized void doSomething2() {
+         
+    }
+    synchronized void doSomething3() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+        s.doSomething();
+    }
+}
+ 
+ 
+ 
+import java.lang.Object;
+class Sample extends Object {
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread() + ": doSomething()");
+         
+    }
+    synchronized static void doSomething2() {
+        System.out.println(Thread.currentThread() + ": doSomething2()");
+        doSomething3();
+        doSomething4();
+    }
+    synchronized static void doSomething3() {
+         
+    }
+    synchronized static void doSomething4() {
+         
+    }
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        long startTime = System.currentTimeMillis();
+         
+         
+        doSomething2();
+        long endTime2 = System.currentTimeMillis();
+    }
+}
+ 
+import java.lang.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething2() {
+        System.out.println(this + ": doSomething2()");
+    }
+}
+class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+    }
+}
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class Mutated_3 extends Sample {
+    synchronized void doSomething3() {
+        System.out.println(this + ": doSomething3()");
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+    synchronized void doSomething4() {
+        System.out.println(this + ": doSomething4()");
+    }
+}
+public class SynchTest4 {
+    public static void main(String [] args) {
+        Mutated_3 a  = new Mutated_3();
+        a.doSomething2();
+        a.doSomething3();
+        a.doSomething4();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample1 {
+    static synchronized void doSomething() {
+        try {
+            System.out.println(this + ": doSomething()");
+            Thread.sleep(1000);  
+        } catch(InterruptedException e) {
+            System.out.println(
+                Thread.currentThread().getName() + 
+                " was interrupted."
+            );
+        }
+    }
+    void doSomethingElse() {
+        Sample1.doSomething();
+    }
+}
+class Foo {
+    public static void main(String [] args) {
+        new Foo().run();
+    }
+    void run() {
+        Sample1 sample1 = new Sample1();
+        sample1.doSomethingElse();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething();
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething() {
+        System.out.println(this + ": doSomething()");
+    }
+    void lock() {
+        synchronized (this) {
+            System.out.println(this + ": lock()");
+        }  
+    }  
+    void sync() {
+        synchronized (this) {
+            System.out.println(this + ": sync()");  
+        }
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();  
+        s.lock();  
+        s.sync();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Counter {
+    int count = 1;
+}
+class Sample {
+    void doSomething() {
+        Counter c = new Counter();
+        synchronized (c) {
+            c.setCount(c.getCount() + 1);
+        }
+        synchronized (this) {
+            System.out.println(this + ": doSomething() " + c.getCount());
+        }  
+    }  
+    
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+        Sample s2 = new Sample();
+        s2.doSomething();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+class Sample {
+
+    synchronized void doSomething() {
+        synchronized (Sample.class) {        
+            System.out.println(this + ": doSomething()");         
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    public void doSomething() {
+        synchronized (Object.class) {
+            System.out.println(Object.class + ": doSomething()");
+        }
+    }
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (Sample.class) {
+            s.doSomething();
+        }
+    }
+}
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Main {
+    synchronized void doSomething() {
+        Object lock = new Object();
+        synchronized (lock) {
+            System.out.println(lock.toString() + ": doSomething()");
+        }  
+    }  
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        synchronized (new java.lang.Object()) {
+            System.out.println(new java.lang.Object() + ": doSomething()");
+        }  
+    }  
+}  
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+
+ 
+
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+ 
+class Deadlock {
+    public synchronized void run() {
+        System.out.println(Thread.currentThread().getName() + " calling stop");
+        stop();
+    }
+    public synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start");
+        start();
+    }
+    public void start() {
+        System.out.println(Thread.currentThread().getName() + " calling run()");
+        run();
+    }}
+class Deadlocking {
+    public static void main(String[] args) {
+        Deadlock x = new Deadlock();
+
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* Synchronized methods are a feature in Java programming language that prevent thread interference and memory consistency errors. It is achieved by adding the synchronized keyword to the method declaration. When a method is synchronized, it is not possible for two invocations of synchronized methods on the same object to interleave, and there is a happens-before relationship which guarantees state visibility to all threads. Note that constructors can't be synchronized.
+
+Every object in Java possesses an intrinsic lock (or monitor lock) for synchronization. A thread needs to acquire this lock before accessing the object's fields and release it afterward. If a thread owns an intrinsic lock, no other thread can acquire the same lock.
+
+When a synchronized method is invoked, the thread automatically acquires the intrinsic lock for that method's object and releases it when the method returns. In the case of static synchronized methods, the thread acquires the intrinsic lock for the class object associated with the class.
+
+Synchronized statements are an alternative way to create synchronized code, they specify the object that provides intrinsic lock. They increase concurrency by allowing interleaved access to distinct locks within the class.
+
+Reentrant synchronization allows a thread to acquire a lock that it already owns. This is useful when synchronized code invokes a method that also contains synchronized code using the same lock. It helps to avoid having a thread cause itself to block. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+class Deadlock {
+    public synchronized void run() {
+        System.out.println(Thread.currentThread().getName() + " calling stop");
+        stop();
+    }
+    public synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start");
+        start();
+    }
+    public void start() {
+        System.out.println(Thread.currentThread().getName() + " calling run()");
+        run();
+    }}
+class Deadlocking {
+    public static void main(String[] args) {
+        Deadlock x = new Deadlock();
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    public synchronized void doSomething() {
+        System.out.println(Sample.class + ": doSomething()");
+    }
+}
+
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+
+class Sample2 {
+    public synchronized void doSomethingElse() {
+        System.out.println(Sample2.class + ": doSomethingElse()");
+    }
+}
+
+class Deadlock2 {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " calling stop");
+        stop();
+    }
+    public synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start");
+        start();
+    }
+    public synchronized void start() {
+        System.out.println(Thread.currentThread().getName() + " calling run()");
+        run();
+    }}
+class Deadlocking2 {
+    public static void main(String[] args) {
+        Deadlock2 x = new Deadlock2();
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }}
+ 
+ 
+/* The second algorithm involves synchronizing an integer variable, which is a shared field that is accessed by multiple threads. For this, ThreadA is going to take an integer value from the counter and ThreadB will add one to it. 
+At the same time, ThreadC will start reading the counter and will not read a value higher than 2.
+
+There are 2 options here: 1) locking the
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+public class Deadlock {
+
+    private synchronized void start() {
+        System.out.println(Thread.currentThread().getName() + " calling stop()");
+        stop();
+    }
+    private synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start()");
+        start();
+    }
+    private void run() { System.out.println(Thread.currentThread().getName() + " calling run()"); run(); }
+
+    public static void main(String[] args) {
+        Deadlock x = new Deadlock();
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }
+}}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Sample2 {
+    synchronized void callDoSomething() {
+        doSomething();
+    }
+    synchronized void doSomething() {
+        System.out.println(Thread.currentThread().getName() + ", doing something " + Math.random());
+    }}
+class NewMain {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+        Sample2 s2 = new Sample2();
+        s2.doSomething();
+        s2.callDoSomething();
+    }}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    synchronized void doSomething() {
+        System.out.println(Sample.class + ": doSomething()");
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();  
+    }
+}
+ 
+import java.lang.Object;
+class Main {
+    public static void main(String [] args) {
+        Sample s1 = new Sample();
+        Sample s2 = new Sample();
+        s1.lock();  
+        s2.lock();  
+         
+        s1.unlock();  
+         
+        s2.unlock();  
+    }
+}
+    class Sample extends Object {
+        public static synchronized void lock(Sample s) {
+            System.out.println("Lock acquired");
+            System.out.println("lock: " + "Lock acquired");
+        }
+        public static synchronized void unlock(Sample s) {
+            System.out.println("Lock released");
+        }
+    }
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething();
+        }
+    }
+}
+ 
+ 
+ 
+ 
+class Student {
+    String name;
+    int age;
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+    public void info() {
+        System.out.printf("Name: %s, Age: %d\n", name, age);
+    }
+}
+class Sample {
+    static boolean initialized;
+    static Student[] students = new Student[3];  
+    Sample() {
+        try {
+            initialize();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    static synchronized void initialize() {
+        if(initialized) return;
+        students[0] = new Student("John", 31);
+        students[1] = new Student("Peter", 31);
+        students[2] = new Student("Johnny", 31);
+        initialized = true;
+    }
+    static void info() {
+        for(int i = 0; i < students.length; i++) {
+            students[i].info();
+        }
+    }
+    static void info0() {
+        System.out.printf("Initialized? %b\n", initialized);
+    }
+}
+class Test {
+    public static void main(String[] args) {
+        System.out.printf("Static variables\n
+[VERBOSE] ========== sample =========

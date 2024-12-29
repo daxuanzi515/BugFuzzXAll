@@ -1,0 +1,990 @@
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 7, in <module>\n    initialize = Initialize(qr, circuit=circuit)\nTypeError: Initialize.__init__() got an unexpected keyword argument \'circuit\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 10, in <module>\n    with circuit.case([0], label=\'0->1\'):\nAttributeError: \'QuantumCircuit\' object has no attribute \'case\'. Did you mean: \'cast\'?\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 3, in <module>\n    from qiskit.circuit import Case, CaseManagementError, SwitchCaseOp\nImportError: cannot import name \'Case\' from \'qiskit.circuit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/__init__.py)\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 3, in <module>\n    qr=QuantumRegister(7)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 3, in <module>\n    simulator = Aer.get_backend(\'aer_simulator\')\nNameError: name \'Aer\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 6, in <module>\n    qc.h(0)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1316, in append\n    appender(instruction)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/builder.py", line 281, in append\n    raise CircuitError(self._forbidden_message)\nqiskit.circuit.exceptions.CircuitError: \'Cannot have instructions outside a case\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 5, in <module>\n    qr = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 5, in <module>\n    switch_case = qc.switch(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'{(\'a\', 0): <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>, (\'a\', 1): <bound method QuantumCircuit.x of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>>, (\'a\', 2): <bound method QuantumCircuit.z of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>>, (\'b\', 0): <bound method QuantumCircuit.y of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>>, (\'b\', 1): <bound method QuantumCircuit.z of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>>, (\'a\', \'(default)\'): <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7f4f2f87f280>}\'."\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 11, in <module>\n    qc.switch(5, 2).case(6, if_false).case(7, if_true)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 5 is out-of-range.\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 3, in <module>\n    from qiskit.circuit import case\nImportError: cannot import name \'case\' from \'qiskit.circuit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/__init__.py)\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 4, in <module>\n    q = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 3, in <module>\n    qreg = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=0, stdout='', stderr='')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 4, in <module>\n    if1.append(XXX,qargs=[q[0],q[1]],carg=c)\nNameError: name \'XXX\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 5, in <module>\n    qr = QuantumRegister(n)\nNameError: name \'QuantumRegister\' is not defined\n')
+[VERBOSE] --------------------------
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /tmp/temp1735373992.843051.py', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/tmp/temp1735373992.843051.py", line 6, in <module>\n    qc.h(i)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 3 out of range for size 3.\'\n')
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/0.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/0.fuzz", line 6, in <module>\n    circuit.h(circuit.clbits[0])\nIndexError: list index out of range\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/0.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/0.fuzz", line 6, in <module>
+    circuit.h(circuit.clbits[0])
+IndexError: list index out of range
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/1.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/1.fuzz", line 19, in <module>\n    qc.append(case2_qc.to_instruction(),[0])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1313, in append\n    for qarg, carg in operation.broadcast_arguments(expanded_qargs, expanded_cargs):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instruction.py", line 480, in broadcast_arguments\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'The amount of qubit arguments 1 does not match the instruction expectation (4).\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/1.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/1.fuzz", line 19, in <module>
+    qc.append(case2_qc.to_instruction(),[0])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1313, in append
+    for qarg, carg in operation.broadcast_arguments(expanded_qargs, expanded_cargs):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instruction.py", line 480, in broadcast_arguments
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'The amount of qubit arguments 1 does not match the instruction expectation (4).'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/2.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/2.fuzz", line 7, in <module>\n    qc.sw(1, 2)\nAttributeError: \'QuantumCircuit\' object has no attribute \'sw\'. Did you mean: \'s\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/2.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/2.fuzz", line 7, in <module>
+    qc.sw(1, 2)
+AttributeError: 'QuantumCircuit' object has no attribute 'sw'. Did you mean: 's'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/3.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/3.fuzz", line 4, in <module>\n    from qiskit.circuit.library.standard_gates.mct import MCTGate\nModuleNotFoundError: No module named \'qiskit.circuit.library.standard_gates.mct\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/3.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/3.fuzz", line 4, in <module>
+    from qiskit.circuit.library.standard_gates.mct import MCTGate
+ModuleNotFoundError: No module named 'qiskit.circuit.library.standard_gates.mct'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/4.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/4.fuzz", line 5, in <module>\n    backend = Aer.get_backend(\'qasm_simulator\')\nNameError: name \'Aer\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/4.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/4.fuzz", line 5, in <module>
+    backend = Aer.get_backend('qasm_simulator')
+NameError: name 'Aer' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/5.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/5.fuzz", line 4, in <module>\n    qr = QuantumRegister(4)\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/5.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/5.fuzz", line 4, in <module>
+    qr = QuantumRegister(4)
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/6.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/6.fuzz", line 5, in <module>\n    c.switch(c[0], case1=c[0], case2=c[0])\nTypeError: QuantumCircuit.switch() got an unexpected keyword argument \'case1\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/6.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/6.fuzz", line 5, in <module>
+    c.switch(c[0], case1=c[0], case2=c[0])
+TypeError: QuantumCircuit.switch() got an unexpected keyword argument 'case1'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/7.fuzz failed validation with error message: parsing failed unterminated triple-quoted string literal (detected at line 47) (<unknown>, line 47)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/8.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/8.fuzz", line 7, in <module>\n    qram0 = qc.add_register(name=\'ram\',size=2)\nTypeError: QuantumCircuit.add_register() got an unexpected keyword argument \'name\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/8.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/8.fuzz", line 7, in <module>
+    qram0 = qc.add_register(name='ram',size=2)
+TypeError: QuantumCircuit.add_register() got an unexpected keyword argument 'name'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/9.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/9.fuzz is safe
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/10.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 39)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/11.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/11.fuzz", line 17, in <module>\n    qc.switch(1, 0, [0,1], 0)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 1 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/11.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/11.fuzz", line 17, in <module>
+    qc.switch(1, 0, [0,1], 0)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 1 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/12.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/12.fuzz", line 15, in <module>\n    switch_case = SwitchCaseOp(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 79, in __init__\n    raise CircuitError("the switch target must be a classical bit or register")\nqiskit.circuit.exceptions.CircuitError: \'the switch target must be a classical bit or register\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/12.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/12.fuzz", line 15, in <module>
+    switch_case = SwitchCaseOp(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 79, in __init__
+    raise CircuitError("the switch target must be a classical bit or register")
+qiskit.circuit.exceptions.CircuitError: 'the switch target must be a classical bit or register'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/13.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/13.fuzz", line 7, in <module>\n    qc.switch(0,[1,2,3])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 0 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/13.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/13.fuzz", line 7, in <module>
+    qc.switch(0,[1,2,3])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 0 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/14.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/14.fuzz", line 7, in <module>\n    switch_op = qc.switch([0],3,1)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'[0]\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/14.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/14.fuzz", line 7, in <module>
+    switch_op = qc.switch([0],3,1)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource
+    raise CircuitError(f"Unknown classical resource specifier: '{specifier}'.")
+qiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: '[0]'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/15.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/15.fuzz", line 4, in <module>\n    qc.append(SwitchCaseOp(\nNameError: name \'SwitchCaseOp\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/15.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/15.fuzz", line 4, in <module>
+    qc.append(SwitchCaseOp(
+NameError: name 'SwitchCaseOp' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/16.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/16.fuzz", line 6, in <module>\n    qc.x(0).c_if(2, 0)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if\n    classical = self._requester(classical)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 2 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/16.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/16.fuzz", line 6, in <module>
+    qc.x(0).c_if(2, 0)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if
+    classical = self._requester(classical)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 2 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/17.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/17.fuzz", line 12, in <module>\n    circuit.x(qr[0]).c_if(cr, 2) \n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x\n    return self.append(XGate(label=label), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5134, in _bit_argument_conversion\n    raise CircuitError(f"Bit \'{specifier}\' is not in the circuit.")\nqiskit.circuit.exceptions.CircuitError: "Bit \'Qubit(QuantumRegister(2, \'qr\'), 0)\' is not in the circuit."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/17.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/17.fuzz", line 12, in <module>
+    circuit.x(qr[0]).c_if(cr, 2) 
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x
+    return self.append(XGate(label=label), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5134, in _bit_argument_conversion
+    raise CircuitError(f"Bit '{specifier}' is not in the circuit.")
+qiskit.circuit.exceptions.CircuitError: "Bit 'Qubit(QuantumRegister(2, 'qr'), 0)' is not in the circuit."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/18.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/18.fuzz", line 10, in <module>\n    qc.switch(0, 10, 2)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 0 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/18.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/18.fuzz", line 10, in <module>
+    qc.switch(0, 10, 2)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 0 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 32, in <module>\n    main()\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 27, in main\n    quantum_switch = QuantumSwitch(3)\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 9, in __init__\n    super().__init__(f\'{num_inputs}q-q\', f\'{num_inputs + 1}q\', [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 249, in __init__\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: "Circuit args must be Registers or integers. ([\'str\', \'str\', \'list\'] \'(\'3q-q\', \'4q\', [])\' was provided)"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 32, in <module>
+    main()
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 27, in main
+    quantum_switch = QuantumSwitch(3)
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/19.fuzz", line 9, in __init__
+    super().__init__(f'{num_inputs}q-q', f'{num_inputs + 1}q', [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 249, in __init__
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: "Circuit args must be Registers or integers. (['str', 'str', 'list'] '('3q-q', '4q', [])' was provided)"
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/20.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 10)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/21.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/21.fuzz", line 13, in <module>\n    q.switch(2, 0, [q.copy() for q in [q] * 2])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 2 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/21.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/21.fuzz", line 13, in <module>
+    q.switch(2, 0, [q.copy() for q in [q] * 2])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 2 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/22.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/22.fuzz", line 9, in <module>\n    op.cswap(1, 0, 1)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3639, in cswap\n    return self.append(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1314, in append\n    self._check_dups(qarg)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1545, in _check_dups\n    raise CircuitError("duplicate qubit arguments")\nqiskit.circuit.exceptions.CircuitError: \'duplicate qubit arguments\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/22.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/22.fuzz", line 9, in <module>
+    op.cswap(1, 0, 1)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3639, in cswap
+    return self.append(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1314, in append
+    self._check_dups(qarg)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1545, in _check_dups
+    raise CircuitError("duplicate qubit arguments")
+qiskit.circuit.exceptions.CircuitError: 'duplicate qubit arguments'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/23.fuzz failed validation with error message: parsing failed expected an indented block after 'with' statement on line 16 (<unknown>, line 19)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/24.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/24.fuzz", line 5, in <module>\n    a = c_i.ClassicalRegister(4, name=\'a\')\nNameError: name \'c_i\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/24.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/24.fuzz", line 5, in <module>
+    a = c_i.ClassicalRegister(4, name='a')
+NameError: name 'c_i' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/25.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 56)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/26.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/26.fuzz", line 5, in <module>\n    q = QuantumRegister(2, \'q\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/26.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/26.fuzz", line 5, in <module>
+    q = QuantumRegister(2, 'q')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/27.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/27.fuzz", line 4, in <module>\n    q = QuantumRegister(3,\'q\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/27.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/27.fuzz", line 4, in <module>
+    q = QuantumRegister(3,'q')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/28.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/28.fuzz", line 6, in <module>\n    qc.switch(0,1,[0],[0])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 0 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/28.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/28.fuzz", line 6, in <module>
+    qc.switch(0,1,[0],[0])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 0 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/29.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/29.fuzz", line 3, in <module>\n    from qiskit import CompositeGate, QuantumRegister, ClassicalRegister\nImportError: cannot import name \'CompositeGate\' from \'qiskit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/29.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/29.fuzz", line 3, in <module>
+    from qiskit import CompositeGate, QuantumRegister, ClassicalRegister
+ImportError: cannot import name 'CompositeGate' from 'qiskit' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/30.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/30.fuzz", line 8, in <module>\n    q.h(2)    \n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1316, in append\n    appender(instruction)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/builder.py", line 281, in append\n    raise CircuitError(self._forbidden_message)\nqiskit.circuit.exceptions.CircuitError: \'Cannot have instructions outside a case\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/30.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/30.fuzz", line 8, in <module>
+    q.h(2)    
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h
+    return self.append(HGate(), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1316, in append
+    appender(instruction)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/builder.py", line 281, in append
+    raise CircuitError(self._forbidden_message)
+qiskit.circuit.exceptions.CircuitError: 'Cannot have instructions outside a case'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/31.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/31.fuzz", line 3, in <module>\n    from qiskit.circuit.controlflow import SwitchCase\nImportError: cannot import name \'SwitchCase\' from \'qiskit.circuit.controlflow\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/31.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/31.fuzz", line 3, in <module>
+    from qiskit.circuit.controlflow import SwitchCase
+ImportError: cannot import name 'SwitchCase' from 'qiskit.circuit.controlflow' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/32.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/32.fuzz", line 6, in <module>\n    qr = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/32.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/32.fuzz", line 6, in <module>
+    qr = QuantumRegister(2)
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/33.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/33.fuzz", line 14, in <module>\n    circuit_switch_in_python.x(qr[0])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x\n    return self.append(XGate(label=label), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1316, in append\n    appender(instruction)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/builder.py", line 281, in append\n    raise CircuitError(self._forbidden_message)\nqiskit.circuit.exceptions.CircuitError: \'Cannot have instructions outside a case\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/33.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/33.fuzz", line 14, in <module>
+    circuit_switch_in_python.x(qr[0])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x
+    return self.append(XGate(label=label), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1316, in append
+    appender(instruction)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/builder.py", line 281, in append
+    raise CircuitError(self._forbidden_message)
+qiskit.circuit.exceptions.CircuitError: 'Cannot have instructions outside a case'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/34.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/34.fuzz", line 3, in <module>\n    qr = QuantumRegister(4, \'qr\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/34.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/34.fuzz", line 3, in <module>
+    qr = QuantumRegister(4, 'qr')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/35.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/35.fuzz", line 14, in <module>\n    switch = circuit.switch(\nTypeError: QuantumCircuit.switch() got an unexpected keyword argument \'case\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/35.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/35.fuzz", line 14, in <module>
+    switch = circuit.switch(
+TypeError: QuantumCircuit.switch() got an unexpected keyword argument 'case'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/36.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/36.fuzz", line 10, in <module>\n    qc.switch(q, [0], lambda x: [1, 0][x])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'QuantumRegister(1, \'q0\')\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/36.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/36.fuzz", line 10, in <module>
+    qc.switch(q, [0], lambda x: [1, 0][x])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource
+    raise CircuitError(f"Unknown classical resource specifier: '{specifier}'.")
+qiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: 'QuantumRegister(1, 'q0')'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/37.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/37.fuzz", line 9, in <module>\n    with qc.switch(5, 5) as case0:\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 5 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/37.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/37.fuzz", line 9, in <module>
+    with qc.switch(5, 5) as case0:
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 5 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/38.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/38.fuzz", line 3, in <module>\n    simulator = Aer.get_backend(\'qasm_simulator\')\nNameError: name \'Aer\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/38.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/38.fuzz", line 3, in <module>
+    simulator = Aer.get_backend('qasm_simulator')
+NameError: name 'Aer' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/39.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/39.fuzz", line 6, in <module>\n    qc.cu1(0.3, 1, 2)\nAttributeError: \'QuantumCircuit\' object has no attribute \'cu1\'. Did you mean: \'cu\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/39.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/39.fuzz", line 6, in <module>
+    qc.cu1(0.3, 1, 2)
+AttributeError: 'QuantumCircuit' object has no attribute 'cu1'. Did you mean: 'cu'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/40.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/40.fuzz", line 3, in <module>\n    from qiskit.circuit.controlflow.switch import SwitchCase\nModuleNotFoundError: No module named \'qiskit.circuit.controlflow.switch\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/40.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/40.fuzz", line 3, in <module>
+    from qiskit.circuit.controlflow.switch import SwitchCase
+ModuleNotFoundError: No module named 'qiskit.circuit.controlflow.switch'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/41.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/41.fuzz", line 7, in <module>\n    from qiskit.extensions.standard.cx import CNOTGate\nModuleNotFoundError: No module named \'qiskit.extensions.standard\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/41.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/41.fuzz", line 7, in <module>
+    from qiskit.extensions.standard.cx import CNOTGate
+ModuleNotFoundError: No module named 'qiskit.extensions.standard'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/42.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion\n    return [\nTypeError: \'Parameter\' object is not iterable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/42.fuzz", line 9, in <module>\n    qc.x(c)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x\n    return self.append(XGate(label=label), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5156, in _bit_argument_conversion\n    raise CircuitError(message) from ex\nqiskit.circuit.exceptions.CircuitError: "Invalid bit index: \'c0\' of type \'<class \'qiskit.circuit.parameter.Parameter\'>\'"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/42.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion
+    return [
+TypeError: 'Parameter' object is not iterable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/42.fuzz", line 9, in <module>
+    qc.x(c)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3834, in x
+    return self.append(XGate(label=label), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5156, in _bit_argument_conversion
+    raise CircuitError(message) from ex
+qiskit.circuit.exceptions.CircuitError: "Invalid bit index: 'c0' of type '<class 'qiskit.circuit.parameter.Parameter'>'"
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/43.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/43.fuzz", line 13, in <module>\n    case0 = circuit.case(inputregister=0, casecircuit=circuit)\nAttributeError: \'QuantumCircuit\' object has no attribute \'case\'. Did you mean: \'cast\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/43.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/43.fuzz", line 13, in <module>
+    case0 = circuit.case(inputregister=0, casecircuit=circuit)
+AttributeError: 'QuantumCircuit' object has no attribute 'case'. Did you mean: 'cast'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/44.fuzz', returncode=0, stdout='Create quantum circuit in Qiskit in Python that uses the switch API.\nCreate a quantum circuit that uses a bit value as an input to control operations on a quantum wire.\nCreate a quantum circuit that uses an Integer as an input to control operations on a quantum wire.\nCreate a quantum circuit that uses a quantum wire value as an input to control operations.\nThe QISKIT SwitchCase statement provides a convenient solution for defining the case based on input.\nWhen compiled, this circuit is equivalent to the following circuit. The SwitchCase statement is compiled into a series of conditional gates, that provide the condition for the controlled gates to be used. The SwitchCase statement is executed when the circuit is executed.\nIn the next example that will not be executed in this section, a quantum circuit that uses the SwitchCase statement is demonstrated.\n', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/44.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/45.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/45.fuzz", line 12, in <module>\n    QuantumCircuit(2, input_mask=[1], name=\'q1\'), \nTypeError: QuantumCircuit.__init__() got an unexpected keyword argument \'input_mask\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/45.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/45.fuzz", line 12, in <module>
+    QuantumCircuit(2, input_mask=[1], name='q1'), 
+TypeError: QuantumCircuit.__init__() got an unexpected keyword argument 'input_mask'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz', returncode=1, stdout='     ┌───┐┌───┐┌───┐┌───┐\nq_0: ┤ X ├┤ H ├┤ Y ├┤ Y ├\n     ├───┤├───┤├───┤└───┘\nq_1: ┤ Z ├┤ Y ├┤ Z ├─────\n     ├───┤├───┤└┬─┬┘     \nq_2: ┤ H ├┤ Z ├─┤M├──────\n     └───┘└───┘ └╥┘      \nc: 1/════════════╩═══════\n                 0       \n', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz", line 36, in <module>\n    if __name__ == "__main__": main()\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz", line 34, in main\n    print(c.draw(output=\'mpl\'))\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw\n    return circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer\n    image = _matplotlib_circuit_drawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer\n    qcd = _matplotlib.MatplotlibDrawer(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out\n    callback.__get__(obj, objtype)(*args, **kwargs)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__\n    self._tester.require_now(self._feature)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now\n    raise MissingOptionalLibraryError(\nqiskit.exceptions.MissingOptionalLibraryError: "The \'pylatexenc\' library is required to use \'MatplotlibDrawer\'. You can install it with \'pip install pylatexenc\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz", line 36, in <module>
+    if __name__ == "__main__": main()
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/46.fuzz", line 34, in main
+    print(c.draw(output='mpl'))
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1922, in draw
+    return circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 274, in circuit_drawer
+    image = _matplotlib_circuit_drawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/visualization/circuit/circuit_visualization.py", line 644, in _matplotlib_circuit_drawer
+    qcd = _matplotlib.MatplotlibDrawer(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/classtools.py", line 111, in out
+    callback.__get__(obj, objtype)(*args, **kwargs)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 39, in __call__
+    self._tester.require_now(self._feature)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/utils/lazy_tester.py", line 223, in require_now
+    raise MissingOptionalLibraryError(
+qiskit.exceptions.MissingOptionalLibraryError: "The 'pylatexenc' library is required to use 'MatplotlibDrawer'. You can install it with 'pip install pylatexenc'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/47.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/47.fuzz", line 6, in <module>\n    qc.switch([qc.x,qc.y,qc.z],\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'[<bound method QuantumCircuit.x of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>, <bound method QuantumCircuit.y of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>, <bound method QuantumCircuit.z of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>]\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/47.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/47.fuzz", line 6, in <module>
+    qc.switch([qc.x,qc.y,qc.z],
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource
+    raise CircuitError(f"Unknown classical resource specifier: '{specifier}'.")
+qiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: '[<bound method QuantumCircuit.x of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>, <bound method QuantumCircuit.y of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>, <bound method QuantumCircuit.z of <qiskit.circuit.quantumcircuit.QuantumCircuit object at 0x7fd9a0bbb0a0>>]'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/48.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/48.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/49.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar\n    return bit_sequence[specifier]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/49.fuzz", line 8, in <module>\n    qc.measure([0,1], [0,1])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure\n    return self.append(Measure(), [qubit], [cbit])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>\n    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion\n    return [\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>\n    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 0 out of range for size 0.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/49.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5166, in _bit_argument_conversion_scalar
+    return bit_sequence[specifier]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/49.fuzz", line 8, in <module>
+    qc.measure([0,1], [0,1])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 2368, in measure
+    return self.append(Measure(), [qubit], [cbit])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in append
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1303, in <listcomp>
+    expanded_cargs = [self.cbit_argument_conversion(carg) for carg in cargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1198, in cbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5146, in _bit_argument_conversion
+    return [
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5147, in <listcomp>
+    _bit_argument_conversion_scalar(index, bit_sequence, bit_set, type_)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5168, in _bit_argument_conversion_scalar
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 0 out of range for size 0.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/50.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/50.fuzz", line 14, in <module>\n    qc.h(j)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h\n    return self.append(HGate(), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 8 out of range for size 8.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/50.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion
+    return [bit_sequence[specifier]]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/50.fuzz", line 14, in <module>
+    qc.h(j)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3015, in h
+    return self.append(HGate(), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 8 out of range for size 8.'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/51.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 3)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/52.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/52.fuzz", line 7, in <module>\n    classical_register= circuit.creg.create_cups(\'c\')\nAttributeError: \'QuantumCircuit\' object has no attribute \'creg\'. Did you mean: \'cregs\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/52.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/52.fuzz", line 7, in <module>
+    classical_register= circuit.creg.create_cups('c')
+AttributeError: 'QuantumCircuit' object has no attribute 'creg'. Did you mean: 'cregs'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/53.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/53.fuzz", line 10, in <module>\n    circuit.add_register([cr, q])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1481, in add_register\n    self.add_bits(register)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1501, in add_bits\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: "Expected an instance of Qubit, Clbit, or AncillaQubit, but was passed ClassicalRegister(2, \'control\')"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/53.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/53.fuzz", line 10, in <module>
+    circuit.add_register([cr, q])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1481, in add_register
+    self.add_bits(register)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1501, in add_bits
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: "Expected an instance of Qubit, Clbit, or AncillaQubit, but was passed ClassicalRegister(2, 'control')"
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/54.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/54.fuzz", line 6, in <module>\n    circ.append(circ.switch(qr.c_if(qr, 1)), [qr[1], qr[2]])\nAttributeError: \'QuantumRegister\' object has no attribute \'c_if\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/54.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/54.fuzz", line 6, in <module>
+    circ.append(circ.switch(qr.c_if(qr, 1)), [qr[1], qr[2]])
+AttributeError: 'QuantumRegister' object has no attribute 'c_if'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/55.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/55.fuzz", line 3, in <module>\n    from qiskit.circuit.library import ClassicalRegister, QuantumRegister\nImportError: cannot import name \'ClassicalRegister\' from \'qiskit.circuit.library\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/55.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/55.fuzz", line 3, in <module>
+    from qiskit.circuit.library import ClassicalRegister, QuantumRegister
+ImportError: cannot import name 'ClassicalRegister' from 'qiskit.circuit.library' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/library/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/56.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/56.fuzz", line 5, in <module>\n    with qc.switch(1):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 1 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/56.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/56.fuzz", line 5, in <module>
+    with qc.switch(1):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 1 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/57.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/57.fuzz", line 5, in <module>\n    qc.switch(1,\nTypeError: QuantumCircuit.switch() got an unexpected keyword argument \'if_false\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/57.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/57.fuzz", line 5, in <module>
+    qc.switch(1,
+TypeError: QuantumCircuit.switch() got an unexpected keyword argument 'if_false'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/58.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/58.fuzz", line 11, in <module>\n    qc.switch(2, [qc.case([0, 1], 0), qc.case([0], 1)])\nAttributeError: \'QuantumCircuit\' object has no attribute \'case\'. Did you mean: \'cast\'?\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/58.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/58.fuzz", line 11, in <module>
+    qc.switch(2, [qc.case([0, 1], 0), qc.case([0], 1)])
+AttributeError: 'QuantumCircuit' object has no attribute 'case'. Did you mean: 'cast'?
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/59.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/59.fuzz", line 7, in <module>\n    cr = ClassicalRegister(1, name=\'c\')\nNameError: name \'ClassicalRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/59.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/59.fuzz", line 7, in <module>
+    cr = ClassicalRegister(1, name='c')
+NameError: name 'ClassicalRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/60.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/60.fuzz", line 6, in <module>\n    qc.switch(1, case1, case2)\nNameError: name \'case1\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/60.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/60.fuzz", line 6, in <module>
+    qc.switch(1, case1, case2)
+NameError: name 'case1' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/61.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 26)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/62.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/62.fuzz", line 9, in <module>\n    qc_00.rx(0.3, qubit_0)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3275, in rx\n    return self.append(RXGate(theta, label=label), [qubit], [])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5134, in _bit_argument_conversion\n    raise CircuitError(f"Bit \'{specifier}\' is not in the circuit.")\nqiskit.circuit.exceptions.CircuitError: "Bit \'<qiskit.circuit.quantumregister.Qubit object at 0x7f350ecf3d00>\' is not in the circuit."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/62.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/62.fuzz", line 9, in <module>
+    qc_00.rx(0.3, qubit_0)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3275, in rx
+    return self.append(RXGate(theta, label=label), [qubit], [])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5134, in _bit_argument_conversion
+    raise CircuitError(f"Bit '{specifier}' is not in the circuit.")
+qiskit.circuit.exceptions.CircuitError: "Bit '<qiskit.circuit.quantumregister.Qubit object at 0x7f350ecf3d00>' is not in the circuit."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz", line 16, in <module>\n    qc = generate_circuit(4)\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz", line 11, in generate_circuit\n    qc.switch(q, default_value, value, n_cases - i - 1)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4747, in switch\n    return self.append(SwitchCaseOp(target, cases, label=label), qubits, clbits)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 100, in __init__\n    for i, (value_spec, case_) in enumerate(cases):\nTypeError: \'int\' object is not iterable\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz", line 16, in <module>
+    qc = generate_circuit(4)
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/63.fuzz", line 11, in generate_circuit
+    qc.switch(q, default_value, value, n_cases - i - 1)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4747, in switch
+    return self.append(SwitchCaseOp(target, cases, label=label), qubits, clbits)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 100, in __init__
+    for i, (value_spec, case_) in enumerate(cases):
+TypeError: 'int' object is not iterable
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/64.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/64.fuzz", line 4, in <module>\n    qc.switch(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'[0, 1, 2]\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/64.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/64.fuzz", line 4, in <module>
+    qc.switch(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource
+    raise CircuitError(f"Unknown classical resource specifier: '{specifier}'.")
+qiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: '[0, 1, 2]'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/65.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/65.fuzz", line 6, in <module>\n    q = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/65.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/65.fuzz", line 6, in <module>
+    q = QuantumRegister(2)
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/66.fuzz failed validation with error message: parsing failed unterminated triple-quoted string literal (detected at line 112) (<unknown>, line 112)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/67.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/67.fuzz", line 4, in <module>\n    qr = QuantumRegister(2, \'input\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/67.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/67.fuzz", line 4, in <module>
+    qr = QuantumRegister(2, 'input')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz', returncode=1, stdout='', stderr='/home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz:3: DeprecationWarning: The ``qiskit.opflow`` module is deprecated as of qiskit-terra 0.24.0. It will be removed no earlier than 3 months after the release date. For code migration guidelines, visit https://qisk.it/opflow_migration.\n  from qiskit.opflow import CX\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz", line 12, in <module>\n    switch = qc.switch(index_wire=1, cases=[(0, conditional_gate_builder(QuantumCircuit(2), 0, 1)), (1, conditional_gate_builder(QuantumCircuit(2), 1, 0))])\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz", line 6, in conditional_gate_builder\n    circuit.cx(x, y).cz(x, y)\nAttributeError: \'InstructionSet\' object has no attribute \'cz\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz:3: DeprecationWarning: The ``qiskit.opflow`` module is deprecated as of qiskit-terra 0.24.0. It will be removed no earlier than 3 months after the release date. For code migration guidelines, visit https://qisk.it/opflow_migration.
+  from qiskit.opflow import CX
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz", line 12, in <module>
+    switch = qc.switch(index_wire=1, cases=[(0, conditional_gate_builder(QuantumCircuit(2), 0, 1)), (1, conditional_gate_builder(QuantumCircuit(2), 1, 0))])
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/68.fuzz", line 6, in conditional_gate_builder
+    circuit.cx(x, y).cz(x, y)
+AttributeError: 'InstructionSet' object has no attribute 'cz'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/69.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/69.fuzz", line 9, in <module>\n    with q.switch():\nTypeError: QuantumCircuit.switch() missing 1 required positional argument: \'target\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/69.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/69.fuzz", line 9, in <module>
+    with q.switch():
+TypeError: QuantumCircuit.switch() missing 1 required positional argument: 'target'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/70.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/70.fuzz", line 5, in <module>\n    from qiskit import A, B, C, D\nImportError: cannot import name \'A\' from \'qiskit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/70.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/70.fuzz", line 5, in <module>
+    from qiskit import A, B, C, D
+ImportError: cannot import name 'A' from 'qiskit' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/71.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/71.fuzz", line 7, in <module>\n    qc.if_then_else(qc.clbits[0], circuit1, circuit2)\nAttributeError: \'QuantumCircuit\' object has no attribute \'if_then_else\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/71.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/71.fuzz", line 7, in <module>
+    qc.if_then_else(qc.clbits[0], circuit1, circuit2)
+AttributeError: 'QuantumCircuit' object has no attribute 'if_then_else'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/72.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/72.fuzz", line 6, in <module>\n    from qiskit import QuantumState, ClassicalRegister\nImportError: cannot import name \'QuantumState\' from \'qiskit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/72.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/72.fuzz", line 6, in <module>
+    from qiskit import QuantumState, ClassicalRegister
+ImportError: cannot import name 'QuantumState' from 'qiskit' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/__init__.py)
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/73.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/73.fuzz", line 3, in <module>\n    qr = QuantumRegister(2)\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/73.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/73.fuzz", line 3, in <module>
+    qr = QuantumRegister(2)
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/74.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/74.fuzz", line 6, in <module>\n    qc.switch(2, 1, 1).c_if(0, 3) \n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 2 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/74.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/74.fuzz", line 6, in <module>
+    qc.switch(2, 1, 1).c_if(0, 3) 
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 2 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/75.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/75.fuzz", line 10, in <module>\n    switch = SwitchCaseOp(circ, 0)  \n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 79, in __init__\n    raise CircuitError("the switch target must be a classical bit or register")\nqiskit.circuit.exceptions.CircuitError: \'the switch target must be a classical bit or register\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/75.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/75.fuzz", line 10, in <module>
+    switch = SwitchCaseOp(circ, 0)  
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/controlflow/switch_case.py", line 79, in __init__
+    raise CircuitError("the switch target must be a classical bit or register")
+qiskit.circuit.exceptions.CircuitError: 'the switch target must be a classical bit or register'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/76.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/76.fuzz", line 15, in <module>\n    qc.switch(param, range(qc.num_qubits), [\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource\n    raise CircuitError(f"Unknown classical resource specifier: \'{specifier}\'.")\nqiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: \'a\'."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/76.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/76.fuzz", line 15, in <module>
+    qc.switch(param, range(qc.num_qubits), [
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1240, in _resolve_classical_resource
+    raise CircuitError(f"Unknown classical resource specifier: '{specifier}'.")
+qiskit.circuit.exceptions.CircuitError: "Unknown classical resource specifier: 'a'."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/77.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/77.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/78.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/78.fuzz", line 6, in <module>\n    qc.switch(1, 3, cbit[i])\nNameError: name \'cbit\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/78.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/78.fuzz", line 6, in <module>
+    qc.switch(1, 3, cbit[i])
+NameError: name 'cbit' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/79.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/79.fuzz", line 5, in <module>\n    q.switch(1,0,2)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4746, in switch\n    raise CircuitError("When using \'switch\' with cases, you must pass qubits and clbits.")\nqiskit.circuit.exceptions.CircuitError: "When using \'switch\' with cases, you must pass qubits and clbits."\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/79.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/79.fuzz", line 5, in <module>
+    q.switch(1,0,2)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4746, in switch
+    raise CircuitError("When using 'switch' with cases, you must pass qubits and clbits.")
+qiskit.circuit.exceptions.CircuitError: "When using 'switch' with cases, you must pass qubits and clbits."
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/80.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/80.fuzz", line 5, in <module>\n    qc.x(0).c_if(1, 0)     \n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if\n    classical = self._requester(classical)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 1 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/80.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/80.fuzz", line 5, in <module>
+    qc.x(0).c_if(1, 0)     
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if
+    classical = self._requester(classical)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 1 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/81.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/81.fuzz", line 23, in <module>\n    trans_qc = transpile(qc, backend=device, optimization_level=3, seed_transpiler=42)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 325, in transpile\n    unique_transpile_args, shared_args = _parse_transpile_args(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 575, in _parse_transpile_args\n    backend_num_qubits = _parse_backend_num_qubits(backend, num_circuits)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 745, in _parse_backend_num_qubits\n    return [backend.configuration().n_qubits] * num_circuits\nAttributeError: \'str\' object has no attribute \'configuration\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/81.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/81.fuzz", line 23, in <module>
+    trans_qc = transpile(qc, backend=device, optimization_level=3, seed_transpiler=42)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 325, in transpile
+    unique_transpile_args, shared_args = _parse_transpile_args(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 575, in _parse_transpile_args
+    backend_num_qubits = _parse_backend_num_qubits(backend, num_circuits)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/compiler/transpiler.py", line 745, in _parse_backend_num_qubits
+    return [backend.configuration().n_qubits] * num_circuits
+AttributeError: 'str' object has no attribute 'configuration'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/82.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 21)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/83.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/83.fuzz", line 18, in <module>\n    sw.switch(4, *qcs)\nTypeError: QuantumCircuit.switch() takes from 2 to 5 positional arguments but 6 were given\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/83.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/83.fuzz", line 18, in <module>
+    sw.switch(4, *qcs)
+TypeError: QuantumCircuit.switch() takes from 2 to 5 positional arguments but 6 were given
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/84.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/84.fuzz", line 6, in <module>\n    my_circuit.switch(1, 3)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 1 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/84.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/84.fuzz", line 6, in <module>
+    my_circuit.switch(1, 3)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 1 is out-of-range.'
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/85.fuzz failed validation with error message: parsing failed invalid syntax (<unknown>, line 3)
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/86.fuzz failed validation with error message: parsing failed unterminated triple-quoted string literal (detected at line 45) (<unknown>, line 31)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/87.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/87.fuzz", line 7, in <module>\n    number = q.classical_register(10, \'number\')\nAttributeError: \'QuantumCircuit\' object has no attribute \'classical_register\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/87.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/87.fuzz", line 7, in <module>
+    number = q.classical_register(10, 'number')
+AttributeError: 'QuantumCircuit' object has no attribute 'classical_register'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/88.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/88.fuzz", line 3, in <module>\n    from qiskit.circuit import SwitchCase\nImportError: cannot import name \'SwitchCase\' from \'qiskit.circuit\' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/__init__.py)\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/88.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/88.fuzz", line 3, in <module>
+    from qiskit.circuit import SwitchCase
+ImportError: cannot import name 'SwitchCase' from 'qiskit.circuit' (/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/__init__.py)
+
+[VERBOSE] --------------------------
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/89.fuzz failed validation with error message: parsing failed expected an indented block after 'with' statement on line 19 (<unknown>, line 19)
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/90.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/90.fuzz", line 7, in <module>\n    q.switch.on(1,2,0)\nAttributeError: \'function\' object has no attribute \'on\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/90.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/90.fuzz", line 7, in <module>
+    q.switch.on(1,2,0)
+AttributeError: 'function' object has no attribute 'on'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/91.fuzz', returncode=1, stdout='     ┌───┐     \nq_0: ┤ X ├──■──\n     └───┘  │  \nq_1: ───────■──\n     ┌───┐┌─┴─┐\nq_2: ┤ H ├┤ X ├\n     └───┘└───┘\nq_3: ──────────\n               \n', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/91.fuzz", line 8, in <module>\n    qc.switch(0, 2)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch\n    target = self._resolve_classical_resource(target)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 0 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/91.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/91.fuzz", line 8, in <module>
+    qc.switch(0, 2)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 4736, in switch
+    target = self._resolve_classical_resource(target)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 0 is out-of-range.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz", line 22, in <module>\n    my_cases = {0: qiskit_switch_case(0), 1: qiskit_switch_case(1), 2: qiskit_switch_case(2)}\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz", line 7, in qiskit_switch_case\n    circ = QuantumCircuit(6,6,\'switchCase\')\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 249, in __init__\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: "Circuit args must be Registers or integers. ([\'int\', \'int\', \'str\'] \'(6, 6, \'switchCase\')\' was provided)"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz", line 22, in <module>
+    my_cases = {0: qiskit_switch_case(0), 1: qiskit_switch_case(1), 2: qiskit_switch_case(2)}
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/92.fuzz", line 7, in qiskit_switch_case
+    circ = QuantumCircuit(6,6,'switchCase')
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 249, in __init__
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: "Circuit args must be Registers or integers. (['int', 'int', 'str'] '(6, 6, 'switchCase')' was provided)"
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/93.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion\n    return [bit_sequence[specifier]]\nIndexError: list index out of range\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/93.fuzz", line 4, in <module>\n    qc.cx(0, 2)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3861, in cx\n    return self.append(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>\n    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion\n    return _bit_argument_conversion(\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: \'Index 2 out of range for size 2.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/93.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5137, in _bit_argument_conversion
+    return [bit_sequence[specifier]]
+IndexError: list index out of range
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/93.fuzz", line 4, in <module>
+    qc.cx(0, 2)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 3861, in cx
+    return self.append(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in append
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1302, in <listcomp>
+    expanded_qargs = [self.qbit_argument_conversion(qarg) for qarg in qargs or []]
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1183, in qbit_argument_conversion
+    return _bit_argument_conversion(
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 5139, in _bit_argument_conversion
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: 'Index 2 out of range for size 2.'
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/94.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/94.fuzz", line 3, in <module>\n    qr = QuantumRegister(2, \'q\')\nNameError: name \'QuantumRegister\' is not defined\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/94.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/94.fuzz", line 3, in <module>
+    qr = QuantumRegister(2, 'q')
+NameError: name 'QuantumRegister' is not defined
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/95.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/95.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/96.fuzz', returncode=0, stdout='     ┌───┐                    \nq_0: ┤ H ├──■─────────────────\n     ├───┤  │                 \nq_1: ┤ H ├──┼────■────────────\n     ├───┤  │    │            \nq_2: ┤ H ├──┼────┼────■───────\n     ├───┤  │    │    │       \nq_3: ┤ H ├──┼────┼────┼────■──\n     └───┘┌─┴─┐  │    │    │  \nq_4: ─────┤ X ├──┼────┼────┼──\n          └───┘┌─┴─┐  │    │  \nq_5: ──────────┤ X ├──┼────┼──\n               └───┘┌─┴─┐  │  \nq_6: ───────────────┤ X ├──┼──\n                    └───┘┌─┴─┐\nq_7: ────────────────────┤ X ├\n                         └───┘\n', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/96.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz", line 24, in <module>\n    qc = add_bit_register()\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz", line 10, in add_bit_register\n    qc.add_register([qubit_reg, class_bit_reg])\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1481, in add_register\n    self.add_bits(register)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1501, in add_bits\n    raise CircuitError(\nqiskit.circuit.exceptions.CircuitError: "Expected an instance of Qubit, Clbit, or AncillaQubit, but was passed QuantumRegister(3, \'q\')"\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz", line 24, in <module>
+    qc = add_bit_register()
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/97.fuzz", line 10, in add_bit_register
+    qc.add_register([qubit_reg, class_bit_reg])
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1481, in add_register
+    self.add_bits(register)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1501, in add_bits
+    raise CircuitError(
+qiskit.circuit.exceptions.CircuitError: "Expected an instance of Qubit, Clbit, or AncillaQubit, but was passed QuantumRegister(3, 'q')"
+
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/98.fuzz', returncode=0, stdout='', stderr='')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/98.fuzz is safe
+[VERBOSE] --------------------------
+[VERBOSE] Execution result: CompletedProcess(args='python /home/cxx/fuzz4all/outputs/qiskit_switch/99.fuzz', returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/cxx/fuzz4all/outputs/qiskit_switch/99.fuzz", line 6, in <module>\n    c.x(0).c_if(n, 1)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if\n    classical = self._requester(classical)\n  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource\n    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None\nqiskit.circuit.exceptions.CircuitError: \'Classical bit index 6 is out-of-range.\'\n')
+[TRACE] Validating /home/cxx/fuzz4all/outputs/qiskit_switch/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/qiskit_switch/99.fuzz failed validation with error message: Traceback (most recent call last):
+  File "/home/cxx/fuzz4all/outputs/qiskit_switch/99.fuzz", line 6, in <module>
+    c.x(0).c_if(n, 1)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/instructionset.py", line 223, in c_if
+    classical = self._requester(classical)
+  File "/home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit/circuit/quantumcircuit.py", line 1239, in _resolve_classical_resource
+    raise CircuitError(f"Classical bit index {specifier} is out-of-range.") from None
+qiskit.circuit.exceptions.CircuitError: 'Classical bit index 6 is out-of-range.'
+

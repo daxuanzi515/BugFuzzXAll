@@ -1,0 +1,31 @@
+#include <variant>
+<fim_suffix>e that's not the case. Instead, it's preferred to keep their number low to avoid unwanted overhead. 
+
+Now this example has been modified to create objects in place, which is safer but makes copy/move constructors a bit less convenient. 
+
+You may have noticed that an optional is constructed in-place when it's constructed with a default value for the type. This is to allow for optional to be a default constructible type. This behaviour will be kept for the current version but in the future it is being changed so optional won't be a default constructible type by default. */
+
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+V create() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+int main() 
+{
+    std::variant<int,V> v1{8};
+    std::variant<int,V> v2 = V{10, 0.0f, 0.0};  
+    std::cout << std::get<1>(v2).f << "\n";
+    v1 = v2;
+    v1.emplace<1>(11);  
+    std::cout << std::get<1>(v1).f << "\n";
+}
+ 
+

@@ -1,0 +1,11 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<Integer> alist = new ArrayList<Integer>();
+		Integer integer = 2;
+		alist.add(integer);
+		System.out.println(alist + " " + integer);
+	}
+}

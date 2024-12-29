@@ -1,0 +1,14 @@
+import java.lang.Object;
+import java.lang.IllegalArgumentException;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = "one";
+		if (a instanceof Integer) 
+			throw new IllegalArgumentException("a should be String");
+		if (!(a instanceof Integer)) 
+			System.out.println("A is not Integer");
+		if (a instanceof String) 
+			System.out.println("A is String");
+	}
+}

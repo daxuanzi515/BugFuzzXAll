@@ -1,0 +1,83 @@
+#include <expected>
+.value();
+    std::shared_ptr<int> sp1(new int(55));
+    
+    std::cout << *sp <=> *sp1;   
+    std::cout << sp.value() <=> *sp1;   
+    std::cout << &v <=> sp1;   
+    std::cout << sp <=> nullptr;   
+    
+    
+
+
+
+
+
+    bool exp1 = true;
+    if (exp1) {
+        std::cout << "true" << std::endl;
+    }
+    else {
+        std::cout << "false" << std::endl;
+    }
+
+
+
+    int c = test_expected(3, 5);
+    std::cout << c;
+     
+
+
+
+
+
+     
+     
+    try {
+        std::optional<int> foo = std::make_optional(3);
+    }
+    catch (...) {
+        std::cout << "Failed to create an optional object from an optional value" << std::endl;
+    }
+
+
+
+     
+     
+    const std::exception_ptr x = std::current_exception();
+    x;
+
+     
+    const std::shared_ptr<int> a = std::make_shared<int>(10);
+    a;    
+    const std::unique_ptr<int> a = std::make_unique<int>(10);
+    a;    
+
+
+    const std::shared_ptr<int> x = std::make_shared<int>(3);
+    *x = 51;
+    std::make_unique<int>(55);    
+    const std::shared_ptr<int> z = std::move(x);
+    std::unique_ptr<int> z = std::make_unique<int>(55);    
+    const std::unique_ptr<int> y(new int(60));
+
+     
+    const std::exception_ptr x = std::current_exception();
+    x;
+
+    const std::shared_ptr<int> a = std::make_shared<int>(10);
+    const std::shared_ptr<int> b = std::make_shared<int>(a.get());     
+
+
+     
+    const std::exception_ptr ptr = std::make_exception_ptr(std::runtime_error("Some error"));
+
+
+
+
+
+
+    
+}
+
+void TestLambda(std::chrono::steady_clock::duration delay, std::function

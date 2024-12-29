@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <math.h>
+int main()
+{
+    int val = 0;
+    if (val > 128 || val < -128) {
+        printf("%d\n", (val %= UCHAR_MAX + 1));
+    } else {
+        printf("%d\n", (val %= 129));
+    }
+    return 0;
+}
+```
+
+To compile and execute this program on your local machine, copy paste the above code in a file named 32.c and compile using the command `gcc -o 32 32.c` or run `gcc -o 32 -ansi 32.c`.
+

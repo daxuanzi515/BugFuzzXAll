@@ -1,0 +1,20 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+with qc.for_loop((0, 1), "i", "ancilla") as for_q:
+    for_q.rz(1.0, 0)
+    with for_q.for_loop((0, 1), "j", "ancillb") as for_b:
+        for_b.cz(for_q["i"], 1)
+        with for_b.for_loop((0, 1), "k", "ancillc") as for_c:
+            for_c.h(0)
+    for_q.ry(5.0, 1)
+qc.draw()<jupyter_output><empty_output><jupyter_text>The QuantumCircuit.if_test() method can be used in any of two ways. If the first two parameters are provided (except possibly the label), it creates a IfElseOp with the given body (if_true) and else body (if_false). If the body, qubits, and clbits are not passed, it acts as a context manager that provides the test conditions within a test context and automatically builds a IfElseOp based on the scope when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it. An error is raised if an incorrect calling convention is used.Create a quantum circuit in Qiskit that uses the for loop API with nested loop.'''
+from  qiskit import QuantumCircuit
+qc = QuantumCircuit(2, 2)
+with qc.for_loop((0, 1), "i", "ancilla") as for_q:
+    for_q.rz(1.0, 0)
+    with for_q.if_test(for_q["i"], 0) as if_b:
+        if_b.h(0)
+        with if_b.for_loop((0, 1), "j", "ancillb") as for_b:
+            for_b.cz(if_b["a"], 1)
+    for_q.ry(5.0, 1)

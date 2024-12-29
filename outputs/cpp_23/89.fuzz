@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string s{argv[2]};
+      if (s == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 0;
+   }
+}
+ 
+/*
+ * 
+ * 26.3.2.2. C++20 and beyond
+ * The C++ team has added multiple modules to the standard library. The modules (and their names) are listed here:
+ * * `std.algorithms`
+ * * `std.chrono`
+ * * `std.container.adaptor`
+ * * `std.container.associative`
+ * * `std.container.function`
+ * * `std.container.heap`
+ * * `std.container.lists`
+ * * `std.container.meta`
+ * * `std.container.multimap`
+ * * `std.container.multiset`
+ * * `std.container.rbtree`
+ * * `std.container.slist`
+ * * `std.container.small_vector`
+ * * `std.container.stack`
+ * * `std.container.

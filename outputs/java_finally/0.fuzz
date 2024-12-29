@@ -1,0 +1,41 @@
+import java.lang.Object;
+
+public class Final1 {
+    public static void main() {
+        System.out.println("Starting");
+    try{
+            System.out.println("Entering 1st try block");
+            System.out.println(Integer.parseInt("1st try block"));
+            int i1 = Integer.parseInt(input);
+            int j1 = Integer.parseInt(input);
+            int k1 = i + j;
+            System.out.println("Out of 1st try block");
+        }
+    catch(Exception e){
+        System.out.println(e.getMessage());
+    }
+    finally{
+        System.out.println("Clean up");
+        System.out.println("Out of 1st finally block");
+    }
+        
+    
+     
+        System.out.println("2nd try-with-resource block");
+        try(FileWriter writer = new FileWriter("tryResource.txt"); 
+            PrintWriter  pw1 = new PrintWriter(writer); )
+        {
+            pw1.println("Try-with-resource-block");
+        }
+        System.out.println("Out of 2nd try-with-resource block");
+        
+         
+        
+    
+         
+         
+        
+        System.out.println("Done");
+    }
+
+}

@@ -1,0 +1,12 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() 
+{
+   int i{1};
+   cout << i;
+   string word{"Hello"};
+   cout << word << " " << word.substr(2) << " " << word.size() << endl;
+   return 0;
+}
+

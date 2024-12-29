@@ -1,0 +1,15 @@
+from qiskit import QuantumCircuit
+
+class Circuit(QuantumCircuit): 
+
+    @register_circuit_extension('linearfunction')
+    def set_linearfunction(function): 
+	self.qft(num_qubits) 
+	pass 
+
+    def set_function(self, function): 
+	pass 
+
+
+
+

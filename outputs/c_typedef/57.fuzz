@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include<stdio.h>
+typedef int* Num;
+enum {
+	FALSE = 0,
+	TRUE = 1,
+};
+int main()
+{
+	Num n = (Num)NULL;
+	n = (Num)10;
+	Num num = (Num)TRUE;
+	int t = TRUE;
+	t = FALSE;
+	if(num)
+	{
+		n = (Num)_FALSE;
+	}
+	n = 3 %2 == 0;
+	return (int)*n;
+}

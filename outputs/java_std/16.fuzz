@@ -1,0 +1,46 @@
+import java.lang.Object;
+import java.lang.String;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - MUTATED ");
+		TreeMap<String, TreeMap<String, String>> x = new TreeMap<String, TreeMap<String, String>>();
+		TreeMap<String, String> y = new TreeMap<String, String>();
+		TreeMap<String, String> z = new TreeMap<String, String>();
+		y.put("abc", "x");
+		z.put("abc", "y");
+		x.put("x", y);
+		x.put("", z);
+		x.values().toArray()[0].get("abc");
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - MORPHED ");
+		TreeMap<Integer, TreeMap<Integer, Integer>> a = new TreeMap<Integer, TreeMap<Integer, Integer>>();
+		TreeMap<Integer, Integer> b = new TreeMap<Integer, Integer>();
+		TreeMap<Integer, Integer> c = new TreeMap<Integer, Integer>();
+		b.put(4,5);
+		c.put(4,6);
+		a.put(1,b);
+		a.put(2,c);
+		a.values().toArray()[0].get(4);
+		a = new TreeMap<Integer,TreeMap<Integer,Integer>>(a);
+		a.values().toArray()[0].get(1);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - LINED ");
+		TreeMap<Integer, TreeMap<Integer, Integer>> a = new TreeMap<Integer, TreeMap<Integer, Integer>>();
+		TreeMap<Integer, Integer> b = new TreeMap<Integer, Integer>();
+		TreeMap<Integer, Integer> c = new TreeMap<Integer, Integer>();
+		b

@@ -1,0 +1,32 @@
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * const temp = newNum;
+    *newNum = *num/2;
+    *num = *temp;
+    return newNum;
+    *num = temp; 
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 100;
+    long val2 = longChangeValue(val);
+    printf("%ld",val2);
+    return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long * const num,int* a) 
+{
+    int b = rand() % 100;
+    a = num*b + num;
+    return a;

@@ -1,0 +1,61 @@
+#include <expected>
+<fim_suffix>ntent.value() << '\n';
+	std::cout << "Hello " << content.value_or("world") << '\n';
+
+	std::optional<std::string> name{"Nico"};
+	std::optional<std::string> middlename{"Stephan"};
+	std::optional<std::string> lastname{"Jagiello"};
+	 
+	 
+	std::optional<Name> name2{std::in_place, name, middlename, lastname};
+	std::cout << "Hello " << name2->get_fullname() << '\n';
+	std::cout << "Hello " << name2->get_fullname2() << '\n';
+
+	Name name3{"David", "Mack", "Jagiello"};
+
+	std::cout << "Hello " << name3.get_fullname() << '\n';
+	std::cout << "Hello " << name3.get_fullname2() << '\n';
+
+	if(name2)
+		std::cout << "Hello " << name2->get_fullname() << '\n';
+	
+	std::cout << "Hello " << name3.get_prefix(1, "Mr.") << '\n';
+}
+
+<fim_middle>
+#include <iostream>
+#include <string>
+#include <optional>
+#include "name.h"
+
+int main()
+{
+	 
+	auto content = std::optional<std::string>("Hello World");
+	std::cout << "Hello World\n";
+	std::cout << content.has_value() << '\n';  
+
+	if(content) 
+		std::cout << "Hello " << content.value() << '\n';
+
+	std::cout << "Hello " << content.value_or("world") << '\n';
+
+	content.reset();
+
+	std::cout << "Hello World\n";
+	std::cout << content.has_value() << '\n';
+	std::cout << "Hello World\n";
+	std::cout << content.value_or("world") << '\n';
+
+
+
+	int a;
+	std::cin >> a;
+	std::optional<int> a2{a};
+	std::cout << a2.value() << '\n';
+
+	std::expected<std::string, std::string> content2{std::in_place, "Hello World"};
+	std::cout << content2.value() << '\n';
+	std::cout << "Hello " << content2.value_or("world") << '\n';
+
+	auto a3 = std::make_optional<int>(

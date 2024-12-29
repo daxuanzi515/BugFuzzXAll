@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char* argv[]) {
+  char* s = malloc(5 * sizeof(char));
+  s[0] = 123;
+  s[1] = 125;
+  s[2] = 0;
+  s[3] = 'a';
+  s[4] = '\\';
+  printf("String: %s\n", s);
+}
+
+ 

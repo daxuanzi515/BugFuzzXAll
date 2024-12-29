@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee() {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    ~Employee() {
+        delete reinterpret_cast<int*>(secretDataPtr);
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    void printSecretData() {
+        cout << "Emp secret data:" << *reinterpret_cast<int*>(this->secretDataPtr) << '\n';
+    }
+};
+int main()
+{
+    Employee emp{};
+    emp.

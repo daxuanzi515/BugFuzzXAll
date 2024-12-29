@@ -1,0 +1,61 @@
+import java.lang.Object;
+
+	public void add(int val) {
+		if(size == list.length) resize(size << 1);		
+		list[size++]=val;
+	}
+	public int remove() {
+		int val = list[--size];				
+		if(size == list.length>>1 && size > 1)
+			resize(size>>>1);			
+		return val;
+	}
+	private void resize(int sz) {
+		list = Arrays.copyOf(list, sz);		
+	}
+}
+*/
+
+ 
+class Socket_Demo extends JFrame {
+	JTextArea ta;
+	JTextField tx;
+	JButton bt;
+	JScrollPane sc;
+
+	Socket_Demo() {
+		setLayout(new BorderLayout());
+		ta=new JTextArea("Write anything here");
+		tx=new JTextField();
+		sc=new JScrollPane();
+		sc.setViewportView(ta);
+		bt=new JButton("Submit");
+		bt.setForeground(Color.blue);
+		bt.setBackground(Color.yellow);
+
+		add(BorderLayout.NORTH,tx);
+		add(BorderLayout.CENTER,sc);
+		add(BorderLayout.SOUTH,bt);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		setSize(300,300);
+		setVisible(true);
+		bt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					 
+					Socket client = new Socket("127.0.0.1",5050);
+					OutputStream o = client.getOutputStream();
+					byte[] buffer = null;
+					String input = tx.getText();			
+					buffer = input.getBytes();
+					o.write(buffer);
+					 
+					InputStream i = client.getInputStream();
+					int ch;
+					buffer=new byte[128];
+					ByteArrayOutputStream bos = new ByteArrayOutputStream();
+					while((ch=i.read())!= -1)
+						bos.write(ch);
+					buffer = bos.toByteArray();
+					String output = new String(buffer);
+					ta.append(

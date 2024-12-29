@@ -1,0 +1,14 @@
+/* Java provides synchronized methods and statements for managing concurrency and ensuring thread safety. Synchronization revolves around the concept of intrinsic locks or monitor locks which are associated with each object. 
+
+Synchronized methods are declared using the 'synchronized' keyword and ensure that only one thread can access the method at a time, preventing interleaving of threads and creating a happens-before relationship for visibility of object's state changes among threads. This, however, does not apply for constructors and final fields.
+
+Synchronized statements specify the object providing the intrinsic lock, enabling fine-grained synchronization and improving concurrency. They're useful when changes to multiple fields must be synchronized without the need for method invocations to also be synchronized.
+
+Static synchronized methods acquire the intrinsic lock for the class, not the instance. 
+
+Reentrant synchronization allows a thread to acquire a lock it already owns, supporting situations where synchronized code invokes another synchronized method using the same lock.
+
+While synchronization ensures thread safety, careful implementation is required to avoid issues such as reduced concurrency, liveness problems, or deadlocks. Also, it's important to ensure that an object reference doesn't "leak" prematurely in multi-threaded environments.
+ */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;

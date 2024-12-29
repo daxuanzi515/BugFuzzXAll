@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object c = 1;
+		if (c.getClass().isInstance(1)) System.out.println("c is Integer");
+		else System.out.println("c is not Integer");
+		System.out.println(c + "::" + c.getClass() + "::" + c.getClass().getSuperclass());
+	}
+}
+ 
+

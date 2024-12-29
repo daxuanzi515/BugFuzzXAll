@@ -1,0 +1,13 @@
+/* A union in C language is a type consisting of a sequence of overlapping members, where only one member can be stored at a time. It is similar to a struct, but while a struct allocates storage for each member in an ordered sequence, a union uses the same memory location for all its members.
+
+The syntax for defining a union can include optional attributes and a name, and must include a list of variable, bit-field, and static assert declarations.
+
+Key points:
+- The size of a union is determined by its largest member.
+- A pointer to a union can be cast to a pointer to each of its members, and vice versa.
+- Using a different member to access the contents of a union than the one last used to store a value results in reinterpretation of the stored value's object representation, a procedure known as type punning.
+- Unnamed members of unions, known as anonymous unions, can be used; their members are treated as members of the enclosing struct or union.
+
+A few usage rules apply to unions: a union must include at least one named member, and initializing unions follows similar rules to initializing structs. */
+/* Please create a short program which combines union with new C features in a complex way */
+#include <stdlib.h>

@@ -1,0 +1,51 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister, ClassicalRegister
+from qiskit import Aer
+job = aer.get_backend('qasm-simulator')
+
+
+def x32(num_qubits, func_matrix):
+    qr = QuantumRegister(num_qubits)
+    qc = QuantumCircuit(qr)
+    for i in range(num_qubits):
+        if func_matrix[i][i] == 1:  
+            continue
+        else:  
+            qc.x(qr[i])
+    return qc
+print(qc.qasm())
+
+cr = ClassicalRegister(num_qubits)
+qc = QuantumCircuit(qr, cr)
+for i in range(num_qubits):
+    qc.measure(qr[i], cr[i])
+print(qc.qasm())
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

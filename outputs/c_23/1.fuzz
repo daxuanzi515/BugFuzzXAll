@@ -1,0 +1,81 @@
+#include <stdlib.h>
+
+#include <string.h>
+#include <stdbool.h>
+#include <stdio.h>
+
+ 
+const char *letters_upper_case = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const char *letters_lower_case = "abcdefghijklmnopqrstuvwxyz";
+const char *letters_numbers = "...0123456789...";
+const char *letters_symbols = "...!@#$%^&*()_+~`|}{[]\\-=");
+
+typedef struct user {
+    char *user_name;
+    char *user_surname;
+    char *user_email;
+    char *user_password;
+} user;
+
+void string_to_lowercase(char* string) {
+    str(tolower)(string);
+}
+
+void string_to_uppercase(char* string) {
+    str(toupper)(string);
+}
+
+bool check_symbols(user user) {
+    for (int i = 0; i < strlen(letters_symbols); i++) {
+        if (memchr(user.user_password, letters_symbols[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_numbers(user user) {
+    for (int i = 0; i < strlen(letters_numbers); i++) {
+        if (memchr(user.user_password, letters_numbers[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_all_upper_case(user user) {
+    for (int i = 0; i < strlen(letters_upper_case); i++) {
+        if (memchr(user.user_password, letters_upper_case[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_all_lower_case(user user) {
+    for (int i = 0; i < strlen(letters_lower_case); i++) {
+        if (memchr(user.user_password, letters_lower_case[i], strlen(user.user_password)) == NULL) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool check_password_strength(user user) {
+
+    if (!check_all_lower_case(user)) {
+        printf("At least one lower case letter must be present!\n");
+        return false;
+    }
+
+    if (!check_all_upper_case(user)) {
+        printf("At least one upper case letter must be present!\n");
+        return false;
+    }
+
+    if (!check_numbers(user)) {
+        printf("At least one number must be present!\n");
+        return false;
+    }
+
+   

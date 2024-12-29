@@ -1,0 +1,10 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object a = 1;
+		if (a!= null && a.getClass().getName().equals("java.lang.Integer")) System.out.println("a is Integer");
+		else System.out.println("a is not Integer");  
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}

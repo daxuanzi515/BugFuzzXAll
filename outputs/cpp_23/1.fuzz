@@ -1,0 +1,69 @@
+#include <iostream>
+
+
+struct Myclass
+{
+    Myclass() : text{"Myclass Default Constructed!\n"} {}
+    explicit Myclass(std::string text) : text{std::move(text)} {}
+
+    Myclass(Myclass const &other)  
+    {
+        std::cout << "Myclass COPY CONSTRUCTOR" << std::endl;  
+        text = other.text;
+    }
+
+    Myclass &operator=(Myclass const &other)  
+    {
+
+        std::cout << "Myclass COPY ASSIGNMENT OPERATOR" << std::endl;
+        text = other.text;
+        return *this;
+    }
+
+    Myclass(Myclass &&other) noexcept
+        : text{other.text}  
+    {
+        std::cout << "Myclass MOVE CONSTRUCTOR" << std::endl;
+    }
+
+    Myclass &operator=(Myclass &&other)  
+    {
+        if (this->text.data()!= other.text.data())        
+        {
+            std::cout << "Myclass MOVE ASSIGNMENT OPERATOR" << std::endl;
+            text = other.text;
+            return *this;
+        }
+         
+    }
+
+    ~Myclass() { std::cout << "Myclass destructed\n"; }
+
+    std::string text;
+};
+
+void use_object(Myclass myobject) {}
+void use_object(Myclass &&myobject) noexcept {}  
+
+int main()
+{
+    Myclass object{};  
+    Myclass object2("hello");
+    object = object2;
+
+    Myclass object4(  object);  
+
+
+    Myclass object3;
+    object3 = std::move(object);  
+
+
+    Myclass object5("world");
+    std::swap(object5, object4);
+
+
+    use_object(std::move(object2));  
+
+
+    return 0;
+}

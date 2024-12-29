@@ -1,0 +1,52 @@
+import java.lang.Object;
+<fim_suffix>lgorithm which uses linear congruential generator*/
+        int j = (int)(Math.random()*256);
+        return (j>=97)?j:j+33;
+    }
+}
+ 
+public class random{
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		int i = (int)(Math.random()*3);
+		if(i==0)
+			System.out.println("I am Bob the builder, a poor soul!");
+		else if(i==1)
+			System.out.println("I love cats, but I hate dogs!");
+		else
+			System.out.println("I am a computer program with the name \"Java\"");
+		in.close();
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String fname = sc.nextLine();
+		try{
+			Scanner input = new Scanner(new java.io.File(fname));
+			while(input.hasNextLine()){
+				System.out.println(input.nextLine());
+			}
+		} catch(java.io.FileNotFoundException e){
+			System.out.println("File does not exist!");
+		}
+		sc.close();
+	}
+}
+<fim_middle>public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(in);
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		Scanner s2 = new Scanner("Goodbye\nearth");
+		while(s2.hasNext())
+			System.out.println(s2.next());
+	}
+}
+/* Please generate a PRNG which:
+Generates a random number after generating a random number
+Generates a random number after generating a random number
+Generates a random number after generating

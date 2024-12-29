@@ -1,0 +1,16 @@
+import java.lang.Object;
+import java.lang.Integer;
+interface I {
+    default void foo() {
+        System.out.println("I.foo");
+    }
+}
+class C implements I {
+    public static void main(String... args) {
+        C c = new C();
+        I i = new C();
+         
+        i.foo();  
+         
+    }
+}

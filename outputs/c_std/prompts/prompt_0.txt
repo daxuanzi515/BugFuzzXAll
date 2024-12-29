@@ -1,0 +1,35 @@
+/* The C Standard Library is a set of functions, macros, and types implemented via headers that help perform common programming tasks. These headers include:
+
+<assert.h>: For testing assumptions (assertions) at runtime.
+<complex.h>: To perform complex number arithmetic.
+<ctype.h>: To classify characters into several types.
+<errno.h>: To report error conditions.
+<fenv.h>: To manage the floating-point environment.
+<float.h>: To provide limits of floating-point types.
+<inttypes.h>: To convert integer types formats.
+<iso646.h>: For alternative operator spellings.
+<limits.h>: To determine the ranges of integer types.
+<locale.h>: For localization utilities.
+<math.h>: To perform common mathematical functions.
+<setjmp.h>: For non-local jumps.
+<signal.h>: For signal handling.
+<stdalign.h>: For alignas and alignof convenience macros.
+<stdarg.h>: For handling variable arguments.
+<stdatomic.h>: For atomic operations.
+<stdbit.h>: To work with byte and bit representations of types.
+<stdbool.h>: For boolean types.
+<stdckdint.h>: For checked integer arithmetic.
+<stddef.h>: For common macro definitions.
+<stdint.h>: For fixed-width integer types.
+<stdio.h>: For input/output functionality.
+<stdlib.h>: For general utilities like memory management, program utilities, string conversions, etc.
+<stdnoreturn.h>: For noreturn convenience macro.
+<string.h>: For string handling functions.
+<tgmath.h>: For type-generic math.
+<threads.h>: For thread library.
+<time.h>: For time/date utilities.
+<uchar.h>: For UTF-16 and UTF-32 character utilities.
+<wchar.h>: For wide character utilities.
+<wctype.h>: To classify wide characters into several types. */
+/* Please create a short program which uses new C features in a complex way */
+#include <stdlib.h>

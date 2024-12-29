@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main() {
+    int ret1;
+    char* str;
+    char* ptr;
+    printf("Parameter 1: %s\n", "hello1234");
+    str = "world1234";
+    ptr = str;
+    ret1 = putchar(*ptr);
+    ret1 = putchar(*str);
+    free(str);
+    return 0;
+}

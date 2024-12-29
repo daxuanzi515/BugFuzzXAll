@@ -1,0 +1,16 @@
+import java.lang.Object;
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("HelloIndian");
+	}
+}
+ 
+ 
+ 
+public class HelloIndian{
+	private static void main() {
+		System.out.println("HelloIndian");
+	}
+}

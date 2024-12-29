@@ -1,0 +1,12 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = temp + val2;
+    printf("%ld",val3); 
+    return 0;
+}
+
+

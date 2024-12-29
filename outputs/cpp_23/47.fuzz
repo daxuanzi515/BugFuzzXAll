@@ -1,0 +1,16 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+    
+ 
+#include <iterator>
+ 
+int main(){ 
+ 
+cout << '\u00bf' <<'' << '\n';
+
+    return 0;
+}
+
+
+

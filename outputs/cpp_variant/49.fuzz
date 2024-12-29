@@ -1,0 +1,52 @@
+#include <variant>
+<fim_suffix>nst size_t size = sizeof...(TArgs);
+    std::variant<std::monostate, TArgs...> var;
+
+public:
+    void operator()() {
+        if (index == kEmptyVariant) {
+            std::cout << "Index in an invalid range. \n";
+        } else {
+            TFn fn = std::get<TFn>(var);
+            if constexpr (size > 0)
+            {
+                fn();
+            }
+        }
+    }
+
+    explicit Handler(TFn fn) {
+        if constexpr (size > 0)
+        {
+            emplace<TFn>(fn);
+        } else {
+            emplace<std::monostate>();
+        }
+    }
+
+private:
+    template <typename Fn, typename... Args>
+    std::enable_if_t<std::is_invocable_v<Fn, Args...>> emplace(Fn&& fn, Args&&... args) {
+        var.template emplace<Fn, Args...>(std::forward<Fn>(fn), std::forward<Args>(args)...);
+    }
+};
+
+std::variant<int, std::string> add(int a, int b) {
+    return a + b;
+}
+std::variant<int, std::string> add(std::string a, std::string b) {
+    return std::stoi(a) + std::stoi(b);
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout << "The variant has the value " << d << "\n";
+    }
+};
+std::variant<int, float, double> create() {
+    int a = 10;
+    return a;
+}

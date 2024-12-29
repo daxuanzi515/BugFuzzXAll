@@ -1,0 +1,9 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply([](int& x, float& y) {x + y;}, t);
+  std::apply([](const int& x, const float& y) {std::cout << x << '\n';}, t);
+  return EXIT_SUCCESS;
+}

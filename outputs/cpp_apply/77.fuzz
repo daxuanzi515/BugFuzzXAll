@@ -1,0 +1,22 @@
+#include <tuple>
+#include <functional>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply(std::plus{42}, t);
+  std::apply(std::plus<int>{42}, t);
+  return EXIT_SUCCESS;
+}
+ 
+#include <algorithm>
+#include <cstdlib>
+int main()
+{
+  std::cout << std::clamp(19, 21, 25) << '\n';
+  std::cout << std::clamp(-1, 21, 25) << '\n';
+  std::cout << std::clamp(-1.0, 21, 25) << '\n';
+  std::cout << std::clamp(1, 1.01f, 1.001f) << '\n';
+  std::cout << std::clamp(1, -1, -1.0) << '\n';
+  return EXIT_SUCCESS;
+}
+/* C++20 provides the `[[nodiscard]]` attribute (or

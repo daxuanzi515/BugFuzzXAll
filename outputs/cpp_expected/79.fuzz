@@ -1,0 +1,90 @@
+#include <expected>
+<fim_suffix>expected" << '\n';
+    } else {
+        // error handling
+        LOG << e.what() << '\n';
+        LOG << e.payload() << '\n';
+    }
+    return EXIT_SUCCESS;
+}<fim_middle>
+#include <iostream>
+#define LOG std::cout <<
+
+
+int main(int argc, char** argv)
+{
+    int x { 100 };
+
+    auto res = std::expected<int, std::string> { x }.and_then([](auto x) {
+        return std::expected<float, std::string> { 200.0f / x };
+    });
+
+    if (res.has_value()) {
+        LOG << "expected value: " << res.value() << '\n';
+    } else {
+        auto e{ res.error() };
+        LOG << "expected error" << '\n';
+    }
+
+    struct MyError
+    {
+        static std::string expected_what_error()
+        {
+            return "this is a message from the error object";
+        }
+        static std::string expected_error_category();
+        static std::string unexpect_error_category();
+    };
+
+    auto res2 = std::expected<int, MyError>{x};
+    if (res2.has_value()) {
+        LOG << "expected value: " << res2.value() << '\n';
+    } else {
+        auto e {res2.error()};
+        //LOG << "expected error: " << e.what() << '\n';
+        LOG << "expected error: " << e.payload() << '\n';
+    }
+
+    auto res3 = std::expected<int, MyError>{}.transform(1, [](int x) {return x = x + 1;});
+    if (res3.has_value()) {
+        LOG << "expected value: " << res3.value() << '\n';
+    } else {
+        auto e { res3.error() };
+        //LOG << "expected error: " << e.what() << '\n';
+        LOG << "expected error: " << e.payload() << '\n';
+    }
+
+    try {
+        auto res4 = std::expected<int, MyError>{}.unwrap();
+        LOG << "expected value: " << res4 << '\n';
+    } catch (const std::exception& e) {
+        LOG << "unexepected error: " << e.what() << '\n';
+    }
+
+    auto res5 = std::expected<int, MyError>{};
+    try {
+        auto res6 = res5.unwrap();
+        LOG << "expected value: " << res6 << '\n';
+    } catch (const std::exception& e) {
+        LOG << "unexepected error: " << e.what() << '\n';
+    }
+
+    return EXIT_SUCCESS;
+
+}
+
+/* 
+ * Expected can be used instead of std::optional which only handles expected values and not also unexpected
+ * values.
+ */
+#include <iostream>
+#include <memory>
+#include <utility>
+#include <exception>
+/* Simple code to illustrate simple error handling */
+void print_info()
+{
+    std::cout << "hello" << std::endl;
+}
+
+void handle_

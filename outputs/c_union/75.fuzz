@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct { 
+     int x;
+     int y;
+}point, *q1, *q2;
+union {
+      int z; 
+} t;
+void *p;
+main()
+{
+   int z;
+   q1 = &point;
+   p = &t;
+t.z = 0x1234;
+*(int *)(t.z) = 0x4321;
+t.z = 0x4321;
+p = &t.z;
+t.z = *(int *)(q1);
+}

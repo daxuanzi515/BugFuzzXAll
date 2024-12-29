@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <algorithm>
+using namespace std;
+
+struct Employee
+{
+    Employee() {
+        Employee* p = this;
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = &p;
+    }
+
+    ~Employee()
+    {
+        delete static_cast<int*>(this->secretDataPtr);
+    }
+
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+
+    template<typename _Tp> friend Employee operator>>(const Employee& emp, _Tp& x);
+
+private:
+    void* secretDataPtr{ nullptr };
+    void* myAddressPtr{ nullptr };
+};
+
+Employee operator>>(const Employee& emp, Employee& x)

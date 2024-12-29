@@ -1,0 +1,48 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Date_t
+{
+int day;
+int month;
+int year;
+} Date_t;
+int main()
+{
+Date_t date;
+date.day = 10;
+date.month = 1;
+date.year = 1985;
+printf("Date is %d/%d/%d\n", date.month, date.day, date.year);
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Location_t
+{
+float x_coord;
+float y_coord;
+float z_coord;
+} Location_t;
+int main()
+{
+Location_t location;
+location.x_coord = 1.0f, location.y_coord = 2.0, location.z_coord = 3.0f;
+printf("location is %f %f %f\n", location.x_coord, location.y_coord, location.z_coord);
+return 0;
+}
+ 
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Location_t
+{
+float x_coord;
+float y_coord;
+float z_coord;
+} Location_t;
+int main()
+{
+Location_t location = {1.0f, 2.0f, 3.0f};
+printf("location is %f %f %f\n", location.x_coord, location.y_coord, location.z_coord);
+return 0;
+}

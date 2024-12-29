@@ -1,0 +1,79 @@
+#include <expected>
+_value_or(5.0));
+
+    cout << "value: " << result2.value_or(5.0) << endl;
+
+    result = divide(a, -5);
+    cout << "value: " << result.value_or(9999.0) << endl;
+
+     
+     
+     
+     
+     
+
+    try {
+        double *raw_val = &result.value();
+        cout << "value: " << *raw_val << endl;
+    } catch (const Unexpected_value_exception& e) {
+        cerr << "Caught unexpected_value_exception with code: " << int(e.code()) << endl;
+    }
+
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <optional>
+#include <type_traits>
+
+using namespace std;
+
+int foo(int x) {
+    if (x == 2) {
+        cout << endl << "throw exception in foo" << endl;
+        throw std::runtime_error("foo");
+    }
+
+    return 22 / x;
+}
+
+int main() {
+    int a = 8;
+
+     
+    const in_place_t in_place = in_place;
+
+     
+     
+     
+
+    optional<int> result = nullopt;
+
+    try {
+        result = foo(2);
+    } catch (const exception&) {
+        result = nullopt;
+    }
+
+    try {
+        auto val = result.value();
+        cout << "val: " << val << endl;
+    } catch (const bad_optional_access& e) {
+        cerr << "Exception: " << e.what() << endl;
+    } catch (const runtime_error& e) {
+        cerr << "Runtime error: " << e.what() << endl;
+    }
+
+    cout << "value_or: " << result.value_or(0) << endl;
+
+    expected<double, Unexpected_value_code> divide(
+        int num, int denom) {
+        if (denom == 0) {
+            Unexpected_value_code code{5};
+            Unexpected_value_exception e(code);
+
+            return e;
+        }
+
+        return num / double(denom);
+   

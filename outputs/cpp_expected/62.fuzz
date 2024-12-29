@@ -1,0 +1,84 @@
+#include <expected>
+<fim_suffix>(expected, int);
+  static void set_b(expected, real);
+  static void set_c(expected, bool);
+  static void set_d(expected, const char*);
+  static void set_e(expected, object);
+};
+}   
+
+template<typename T>
+T some_func(T v) {
+  std::cout << "calling ";
+  return v + 2;
+}
+
+using my_namespace::some_func;
+using my_namespace::func;
+ 
+ 
+
+ 
+ 
+ 
+
+int main() {
+  std::optional<int> a;
+  std::expected<int> b = 42;
+  std::cout << a.has_value() << "\n";
+  std::cout << b.has_value() << "\n";
+  my_namespace::my_complex c;
+  c.set_a(b);
+  try {
+    c.set_b(b);
+  } catch (std::system_error const& err) {
+    std::cout << err.what() << "\n";
+  }
+  c.set_c(std::move(b));
+  try {
+    c.set_d(std::move(b));
+  } catch (std::system_error const& err) {
+    std::cout << err.what() << "\n";
+  }
+  func(b);
+  func(std::move(b));
+  return 0;
+}<fim_middle>
+#include <iostream>
+#include <optional>
+#include <string>
+namespace my_namespace {
+class object {
+  double d_{};
+
+public:
+  object(double d) noexcept : d_{d} {}
+
+  object() = delete;
+  object(object const& obj) = default;
+
+  void
+  get() {
+    if (d_ <= 0) {
+      throw std::system_error{std::make_error_code(std::errc::io_error)};
+    }
+    std::cout << "success!\n";
+  }
+
+  double get_value() const noexcept
+  {
+    return d_;
+  }
+};
+
+class my_complex {
+  int i = 0;
+  real j = 0;
+  bool k = false;
+  char const* l = nullptr;
+  object m{};
+
+public:
+  my_complex() = default;
+  ~my_complex();
+  void set_a

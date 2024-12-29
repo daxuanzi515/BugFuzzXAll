@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+  int i; 
+struct {
+      int x;
+      int y;
+}point, *p1, *p2;
+ void *q; 
+ union {
+   int i; 
+   struct {
+       int x;
+       int y;
+   }point;
+   void *p;  
+ }t0, t1;  
+  point.x = 0x1234;
+  point.y = 0x4321;
+  p1=(void *)&point;
+  q=(void *)&t1;
+ p2 = (struct s *)(q);
+  t0.i = 0x1234;
+  t0.p = (struct s *)p1;
+  t1.i = 0x4321;
+  t1.point.y = 0x4321;
+  t1.point.x = 0x1234;
+  t1.p = (struct s *)p2;
+  t0.i = 0x4321;
+  p2 = t0.p;
+  t0.p = t1.p;
+  printf("%d", t0.point.x);
+  return (EXIT_SUCCESS);
+}

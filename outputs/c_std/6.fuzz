@@ -1,0 +1,30 @@
+#include <stdlib.h>
+ 
+#include <stdio.h>
+#include <ctype.h>
+#include <limits.h>
+#include <stdbool.h>
+#include <stdint.h> 
+#include <stddef.h> 
+int main(int argc, char **argv) 
+{ 
+enum { 
+  SUCCESS=0, 
+  WRONG_PARAMETERS=1, 
+  DIVISOR_IS_ZERO=2, 
+  WRONG_INPUT=3, 
+  INCORRECT_RESULT=4 
+}; 
+long double val; 
+if (argc!= 2) { 
+  return WRONG_PARAMETERS; 
+} 
+if (sscanf(argv[1], "%Lf", &val)!= 1) { 
+    return WRONG_INPUT; 
+} 
+  val*=1.0/val-1; 
+  if (0.0<val && val<SQRT_EPSILON) { 
+    return SUCCESS; 
+} 
+return INCORRECT_RESULT; 
+}

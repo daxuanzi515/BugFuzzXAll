@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#ifndef STRING_H_
+#define STRING_H_
+char *strcpy (char *, const char *);
+char *reverseBits (char *, int);
+#include "String_impl.h"
+#endif
+ 
+#ifndef STRING_H_
+#define STRING_H_
+char *strcpy (char *, const char *);
+#include "String_impl.h"
+#endif

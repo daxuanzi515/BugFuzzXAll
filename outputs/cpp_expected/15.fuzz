@@ -1,0 +1,59 @@
+#include <expected>
+<fim_suffix>or handling exceptions (i.e. no value will be returned upon errors and therefore no exception will be thrown; this could be helpful if it is desired to avoid exceptions in your code as it is not desirable to throw from a library function). */
+void print_to_output(std::string filename) {
+	try {
+		std::ofstream os(filename);
+		if (!os.is_open()) { throw std::runtime_error("can't open file for write"); }
+		os << "Hello from std::expected" << std::endl;
+	}
+	catch (std::runtime_error const& error) {
+		std::cerr << error.what() << std::endl;
+	}
+	catch (...) {
+#ifdef _MSC_VER
+		OutputDebugStringW(L"Unhandled exception in print_to_output\n");
+#endif
+		assert(false && "unknown error");
+	}
+}
+
+void test1() {}
+void test2() {}
+void test3() {}
+
+int main() {
+	if (std::filesystem::exists("test.txt")) {
+		print_to_output("test.txt");
+	} else {
+		test1();
+		std::unexpected<bool> unex{ false };
+		test2();
+		test3();
+		print_to_output("test.txt");
+	}
+	return 0;
+}
+<fim_middle>
+#include <sstream>
+#include <fstream>
+#include <iostream>
+#include <cassert>
+#include <filesystem>
+
+ 
+void print_to_output(std::string_view filename);
+void print_to_output(std::string_view filename) {
+	std::error_code error;
+	std::ofstream os(filename, std::ios_base::out);
+	if (os.is_open()) {
+		os << "Hello from std::expected" << std::endl;
+	} else {
+		error.assign(errno, std::generic_category());
+	}
+	if (error) { throw std::runtime_error{ error.message() }; }
+}
+
+ 
+void print_to_output(std::string_view filename);
+std::expected<void, std::string> print_in_file(std::string_view filename, std::string const& text) {
+	std::

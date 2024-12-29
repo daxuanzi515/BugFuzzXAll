@@ -1,0 +1,31 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+        System.out.println("b instanceof Integer: " + (b instanceof Integer));
+        Integer c = new Integer(10);
+        Object d = new Integer(10);
+        System.out.println("c instanceof Integer: " + (c instanceof Integer));
+        System.out.println("d instanceof Integer: " + (d instanceof Integer));
+        Object e = "Hello";
+        System.out.println("e instanceof Integer: " + (e instanceof Integer));
+	}
+}
+ 
+public class Main {
+   static void p1(){
+       String str = "test";
+       int i = 2;
+       char c = 'B';
+       boolean b = true;
+       p2(10);
+       p2(c);
+       p2(str);
+       p2(i);
+       p2(b);
+   }
+   static void p2(Object obj){}
+}

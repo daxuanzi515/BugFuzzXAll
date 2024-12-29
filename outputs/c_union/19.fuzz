@@ -1,0 +1,36 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#define PI 3.14159
+extern int ipi;
+extern int getint(void);
+extern double getfloat(void);
+extern char *getstring(void);
+int main()
+{
+    struct __union__complex_15_9
+    {
+        float real;
+        struct
+        {
+            int ipi[2];
+            union
+            {
+                char str[10];
+                int integer;
+            };
+        };
+    };
+    union __union__complex_15_9 u;
+    char *c;
+    ipi = 26;
+    u.integer = 0x78;
+    c = u.str;
+    printf("%c%c%c%c%c%c%c%c%c%c\n", c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
+    fflush(stdout);
+    return (EXIT_SUCCESS);
+}
+extern int ipi;
+extern int getint(void);
+extern double getfloat(void);
+extern char *getstring(void);

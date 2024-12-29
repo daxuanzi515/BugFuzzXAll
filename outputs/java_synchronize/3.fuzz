@@ -1,0 +1,95 @@
+import java.lang.Object;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+public class SynchronizedInJava {
+
+	public static void main(String[] args) {
+		 
+		Map<Student, Map<Class, Subject>> map;
+
+		Student student = new Student("Nirman");
+		Class test1 = new Class("ClassOne", 10);
+		Subject subject1 = new Subject("Physics", 10, test1);
+		Subject subject2 = new Subject("Chemistry", 10, test1);
+		Map<Subject,Boolean> sub1=new HashMap<Subject, Boolean>();
+		sub1.put(subject1,false);
+		sub1.put(subject2,false);
+		ArrayList<Subject> subject=new ArrayList<Subject>();
+		subject.add(subject1);
+		subject.add(subject2);
+		 
+		test1.setSubjects(subject);
+		Class test2 = new Class("ClassTwo", 11);
+		subject = new ArrayList<>();
+		subject1 = new Subject("Geography", 20, test2);
+		subject.add(subject1);
+		test2.setSubjects(subject);
+
+
+		 
+
+		
+			map = new HashMap<>();
+			
+		
+			student.setTest(test1);
+			student.setTest(test2);
+			 
+
+			
+			map.put(student, sub1);
+			sub1.put(subject2, true);
+			student.display();
+			System.out.println("-----------------");
+			test1.display();
+			System.out.println("-----------------");
+			test2.display();
+			System.out.println("-----------------");
+			subject1.display();
+		
+			
+			
+	}
+}
+
+class Student {
+	private String name;
+	private Map<Class,Map<Subject,Boolean>> test;
+
+	public Student() {
+		 
+	}
+
+	public Student(String name) {
+		super();
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Map<Class, Map<Subject, Boolean>> getTest() {
+		return test;
+	}
+
+	public void setTest(Map<Class, Map<Subject, Boolean>> test) {
+		this.test = test;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", test=" + test + "]";
+	}
+
+	public void display() {
+	 
+	 
+	 
+		Class class1 = this.test.keySet

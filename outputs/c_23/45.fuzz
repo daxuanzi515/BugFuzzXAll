@@ -1,0 +1,18 @@
+#include <stdlib.h>
+#include <string.h>
+#define LEN 1024
+int reverseBits(char *array, int size)
+{
+        char *ptr = array;
+        int i, half = size / 2;
+        for (i = 0; i < half; ++i)
+        {
+                switch (*ptr) {
+                        case 1:
+                                swap(ptr, ptr + (size - i - 1));
+                                break;
+                }
+                ++ptr;
+        }
+        return 0;
+}

@@ -1,0 +1,37 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+#include<math.h>
+
+float cube(float y)
+{
+    float x = 3 * y - sin(y);
+    x = cos(y);
+    x = sqrt(y);
+    return x;
+}
+
+float f(float a, float x)
+{
+   float b = cos(a);
+   float c = sqrt(a);
+   return x * x + sin(a);
+}
+
+int main()
+{
+    float b = 1, h = 1e-3;
+    float x = 1e-6;
+    float n = 1.1;
+
+    printf("%d\n", int(x * x + sin(10)));
+    printf("%d\n", int(pow(x, 2)));
+
+     
+
+    for(float i = 0; i <= 1; i += h)
+    {
+        float d = f(cube(n) * cube(cube(i)), i);
+        printf("f(cube(%.1f), %.1f) = %.10f\n", n, i, d);
+    }
+}

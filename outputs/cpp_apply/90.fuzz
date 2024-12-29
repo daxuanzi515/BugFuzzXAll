@@ -1,0 +1,43 @@
+#include <tuple>
+#include <iostream>
+#include <typeinfo>
+int main()
+{
+  int x = 42, y = 100;
+  int a, b;
+  std::tie(a, b) = std::make_tuple(x, y);
+  x = a;
+  y = b;
+   
+  std::cout << x << '\n';
+  std::cout << y << '\n';  
+  return EXIT_SUCCESS;
+}
+
+
+
+ 
+
+ 
+/* The `std::array` implements the concepts like the C++ Array that is defined as part of [concept.array](http: 
+
+This is a summary of some of the functionality of `std::array`:
+
+- default constructor that constructs one element of the given type
+- construct an array of given size, optionally passing initial value(s) or an initializer list
+- subscripting operator (`operator[]`)
+- iterators
+- contiguous storage
+- `swap`
+- `fill`, `assign`
+- comparison operators
+- at() and operator()
+- get() and `data`
+- at(), front(), and back()
+- begin/end
+- empty
+- size()
+- max_size()
+- `resize`
+
+There are methods in the `std::array` class for `swap`, `fill`, `assign`, `emplace`, `emplace_back`, `swap_pop`, and so forth. This makes `std::array` just like `std::vector` with

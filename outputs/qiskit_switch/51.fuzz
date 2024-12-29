@@ -1,0 +1,13 @@
+from qiskit import QuantumCircuit
+
+q = QuantumCircuit(5,5)<jupyter_output><empty_output><jupyter_text>Create a quantum circuit that maps an input of 1 to |+> and 0 to |0><jupyter_code>q1=q.qubit(0)
+print(q.qasm())<jupyter_output>OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[5];
+creg c[4];
+// map 0 to |0>
+cx q[4],q[3];
+// map 1 to |+>
+x q[2];
+cx q[2],q[1];
+x q[2];

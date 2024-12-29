@@ -1,0 +1,15 @@
+from qiskit import QuantumCircuit
+
+class OneBitPermutation:
+
+def valid(self, row):
+    for i in range(len(self.A)):
+        if row == 0 and self.A[0][i] and i!= 0:
+            return False
+        elif row!= 0 and self.A[row][i] and i!= row:
+            return False
+    return True       
+
+def copy(self, f):
+
+for i in range(1, self.n):

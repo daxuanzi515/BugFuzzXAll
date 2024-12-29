@@ -1,0 +1,46 @@
+#include <expected>
+<fim_suffix>o_throw()
+    {
+        throw std::logic_error("something went wrong");
+    }
+};
+
+int main()
+{
+    std::expected<int, std::string> result(42);
+     
+    std::cout << result.value().imag() << std::endl;
+    return 0;
+}<fim_middle>
+#include <string>
+#include <complex>
+#include <iostream>
+#include <limits>
+#include <tuple>
+#include <utility>
+#include <vector>
+#include <stdexcept>
+
+struct thrower {
+    static void throw_error()
+    {
+        throw std::runtime_error("something is too broken");
+    }
+    static void throw_runtime()
+    {
+        throw std::runtime_error("runtime error ocurred");
+    }
+    static void throw_logic_error()
+    {
+        throw std::logic_error("logic error ocurred");
+    }
+    static void throw_exception()
+    {
+        throw std::exception();
+    }
+    static void throw_c_string()
+    {
+        throw "C string error";
+    }
+    static void do_something_else() { return; }
+    static void d

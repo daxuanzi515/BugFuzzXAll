@@ -1,0 +1,57 @@
+#include <expected>
+, '219.5', "This is not a valid double"},
+    expected<double, std::string>(std::in_place, std::string("This is not a valid double")},
+
+     
+     
+    { expected<void, char> v1, '2' },
+     
+    { expected<void, char> v2, 2.8f },
+
+     
+     
+    { v1, std::in_place, in_place_tag{} },
+
+     
+     
+     
+    { expected<int, std::string>{ std::move(v1) }, std::in_place, 3 },
+
+     
+     
+    { expected<void, char>{ std::move(v1) }, std::in_place, '3' },
+
+     
+    { expected<float, std::string>{ std::move(v1) }, std::in_place, 8923.7f },
+    { expected<double, std::string> {}, 219.5f, std::in_place, 't' }
+      
+    };  
+
+   for (auto v : vec) {
+     std::cout << v.val << v.unx << '\n';
+   }
+}
+
+ 
+<fim_middle>
+#include <iostream>
+#include <string>
+#include <type_traits>
+#include <cassert>
+
+using namespace std;
+
+using expected = std::expected<int, char>;
+struct void_ { typedef void type; };  
+using in_place_tag = void_;
+
+ 
+struct Person {
+    Person() = default;
+    Person(const Person& iOther) noexcept = default;
+    Person(Person&& iOther) noexcept = default;
+    ~Person() {}
+    Person& operator=(const Person& iOther) noexcept = default;
+    Person& operator=(Person&&) noexcept = default;
+};
+

@@ -1,0 +1,51 @@
+#include <tuple>
+  
+#include <array>  
+#include <cassert>  
+#include <iostream>  
+#include <utility>  
+#include <functional>  
+
+ 
+ 
+template <typename Tuple, std::size_t... Indexes >
+void printTupleElementWithIndex(const Tuple& aTuple, std::index_sequence<Indexes...> idxSeq);
+
+template <typename Tuple>
+void printTupleElements(const Tuple& aTuple)
+{
+	printTupleElementWithIndex(aTuple, std::make_index_sequence<std::tuple_size_v<Tuple>>{});
+}
+
+int add(const int a, const int b, const int c)
+{
+	return (a + b) + c;
+}
+int add(const int a, const int b, const int c, const int d)
+{
+	return (a + b) + c + d;
+}
+
+int main() 
+{
+	std::tuple<int, int, int> aTuple{ 5, 4, 3 };
+	assert(add(std::get<0>(aTuple), std::get<1>(aTuple), std::get<2>(aTuple)) == std::apply(add, aTuple));
+		
+	std::array<int, 4> anArray{ 1, 2, 3, 4 };
+	assert(add(std::get<0>(anArray), std::get<1>(anArray), std::get<2>(anArray), std::get<3>(anArray)) == std::apply(add, anArray));
+			
+	std::pair<int, int> aPair{ 1, 2 };
+	assert(add(aPair.first, aPair.second) == std::apply(add, aPair));
+		
+	return 0;
+}
+
+
+void printTupleElementWithIndex(const std::tuple<>& aTuple, std::index_sequence<>) {}
+
+template <std::size_t Idx, typename... Args>
+void printTupleElementWithIndex(const std::tuple<Args...>& aTuple, const std::index_sequence<Idx>& idxSeq)
+{
+	std::cout << Idx << " element of the tuple is: " << std::get<Idx>(aTuple) << std::endl;
+	printTupleElementWithIndex(aTuple, idxSeq);
+}

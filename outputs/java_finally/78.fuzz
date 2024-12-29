@@ -1,0 +1,21 @@
+import java.lang.Object;
+import java.lang.System;
+import java.lang.String;
+import java.io.*;
+
+ 
+public class SFinally5 {
+    public static void main(String[] args) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/myData.txt"));
+            PrintWriter printWriter = new PrintWriter("src/myData.txt") ){
+            System.out.println("Let's print that out and then append to it.");
+            String line;
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+            printWriter.append("Added some data\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

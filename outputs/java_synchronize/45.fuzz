@@ -1,0 +1,15 @@
+import java.lang.Object;
+class Sample2 {
+    synchronized Sample2 doSomething() {
+        return this;
+    }
+    synchronized Sample2 doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample2();
+        s.doSomething().doSomethingElse();
+    }
+}

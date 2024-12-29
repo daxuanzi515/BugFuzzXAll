@@ -1,0 +1,45 @@
+import java.lang.Object;
+class Sample {
+    public synchronized void doSomething() {
+        System.out.println(Sample.class + ": doSomething()");
+    }
+}
+
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+
+class Sample2 {
+    public synchronized void doSomethingElse() {
+        System.out.println(Sample2.class + ": doSomethingElse()");
+    }
+}
+
+class Deadlock2 {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " calling stop");
+        stop();
+    }
+    public synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start");
+        start();
+    }
+    public synchronized void start() {
+        System.out.println(Thread.currentThread().getName() + " calling run()");
+        run();
+    }}
+class Deadlocking2 {
+    public static void main(String[] args) {
+        Deadlock2 x = new Deadlock2();
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }}
+ 
+ 
+/* The second algorithm involves synchronizing an integer variable, which is a shared field that is accessed by multiple threads. For this, ThreadA is going to take an integer value from the counter and ThreadB will add one to it. 
+At the same time, ThreadC will start reading the counter and will not read a value higher than 2.
+
+There are 2 options here: 1) locking the

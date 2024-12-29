@@ -1,0 +1,35 @@
+import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething();
+    }
+}
+ 
+class Deadlock {
+    public synchronized void run() {
+        System.out.println(Thread.currentThread().getName() + " calling stop");
+        stop();
+    }
+    public synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start");
+        start();
+    }
+    public void start() {
+        System.out.println(Thread.currentThread().getName() + " calling run()");
+        run();
+    }}
+class Deadlocking {
+    public static void main(String[] args) {
+        Deadlock x = new Deadlock();
+
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }}

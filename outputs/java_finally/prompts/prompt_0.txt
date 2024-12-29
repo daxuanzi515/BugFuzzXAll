@@ -1,0 +1,7 @@
+/* The finally block in Java is a block of code that gets executed always, whether an exception occurs or not, when the try block exits. It's designed to be the area where you can add cleanup code, like closing files, connections, etc. It's an effective tool to prevent resource leaks in case of abrupt program termination due to an event like an exception. However, it might not be executed if JVM exits during the execution of try or catch blocks.
+
+The writeList method is an example where the PrintWriter and FileWriter are closed inside the finally block. If the PrintWriter or FileWriter instantiation fails, the finally block takes care of closing the remaining open instances, avoiding resource leaks.
+
+It's worthy to note that it is recommended to use a try-with-resources statement over a finally block when dealing with resources that need to be recovered (e.g., closing a file); as it automatically releases system resources when they're not needed. This can simplify code and improve readability. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;

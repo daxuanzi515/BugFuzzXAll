@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>  
+int main()
+{
+struct s {
+    int a;
+    int b;
+  };
+struct s *t1 = (struct s *)malloc(sizeof(struct s));
+t1->a = 0x4321;
+t1->b = 0xabcd;
+printf("t1: %p type: %s\n", t1, "unknown");
+return (EXIT_SUCCESS);
+}
+

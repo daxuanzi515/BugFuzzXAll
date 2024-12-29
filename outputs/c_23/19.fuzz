@@ -1,0 +1,42 @@
+#include <stdlib.h>
+#include <string.h>
+typedef unsigned char uchar;
+uchar a = (uchar) 1;
+long int b[2];
+long int e[2];
+void *ptr = &a;
+void *ptr1 = &a;
+char buffer[12] = "";
+uchar d = (uchar) 1;
+uchar d1 = (uchar) 1;
+char *foo() {
+  for (; b[1] && ptr == ptr1; b[1]--) {
+  };
+  if (strlen(buffer) > 10) {
+    ptr = realloc(ptr, strlen(buffer) + 8);
+  };
+  return ptr;
+}
+int main() {
+  buffer[0] = '\0';
+  for (; ptr!= &d; ptr++) {
+  };
+  ptr1 = &d;
+  return 0;
+}
+
+ 
+typedef struct {
+  float x;
+  float y;
+  float z;
+} point;
+typedef struct {
+  point p1;
+  point p2;
+  point p3;
+} mystruct;
+int func_name_function(int num1, int num2){
+  mystruct c1 = {
+        {.x = 1.0f + num1,.y = 4.0f + num1,.z = 4.0f + num1},
+        {.x = 2.0f + num2,.y

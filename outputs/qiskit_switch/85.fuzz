@@ -1,0 +1,19 @@
+from qiskit import QuantumCircuit
+
+my_circuit=
+qc = QuantumCircuit.from_qasm_str(my_circuit)
+
+
+
+
+qc=QuantumCircuit.from_qasm_str(my_circuit)
+qc.draw('mpl')
+qc.switch(0,1)
+qc.draw('mpl')
+qc.ccx(1,2,3)
+qc.draw('mpl')
+
+
+
+
+

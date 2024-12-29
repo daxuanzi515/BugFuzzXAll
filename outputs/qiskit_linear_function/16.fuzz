@@ -1,0 +1,8 @@
+from qiskit import QuantumCircuit
+
+import numpy as np
+import math
+
+class LinearFunction:
+    
+    

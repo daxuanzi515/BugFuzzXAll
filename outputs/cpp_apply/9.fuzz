@@ -1,0 +1,19 @@
+#include <tuple>
+
+#include <iostream>
+#include <functional>
+#include <utility>
+
+
+int main() {
+	 
+	const std::string names[]{ "Alice", "Bob", "Charlie" };
+
+	std::apply([](const auto& name){
+		std::cout << "Hello " << name << "!" << std::endl;
+	}, std::make_tuple(names[0], names[1], names[2]));
+
+	puts("Done!");
+
+	return 0;
+}

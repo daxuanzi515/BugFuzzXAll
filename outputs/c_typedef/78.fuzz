@@ -1,0 +1,65 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct complex
+{
+	int i, j;
+};
+struct color
+{
+	float red, green, blue;
+};
+typedef struct color rgb_T;
+typedef struct color *rgb_ref_T;
+typedef const int num_T;
+typedef const char *cstr_T;
+typedef struct complex complex;
+typedef struct complex complex_T;
+int main()
+{
+	num_T a = 1;
+	cstr_T b = "abc";
+	return 0;
+}
+ 
+int fun(void);
+int fun(double d)
+{
+	return d;
+}
+int fun(int i)
+{
+	return i;
+}
+int fun(float f);
+main()
+{
+	printf("%d", fun(5));
+}
+ 
+int fun(void);
+int fun(double d);
+int fun(int i);
+int fun(float f);
+main()
+{
+	int (*pf) (int d) = fun;
+	printf("%d", pf(1));
+}
+ 
+#include <stdio.h>
+int main(void)
+{
+	int N, K;
+	int i, j;
+	int arr[100][100];
+	FILE *myfile = fopen(FILE_NAME, "r");
+	i = fscanf(myfile, "%d %d \n", &N, &K);
+	if (N == 0)
+	{
+		fclose(myfile);
+	}
+	if (K == 0)
+	{
+		for (int i = 0; i < N; ++i)
+		{
+			for (int j = 0; j <

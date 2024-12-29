@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+#define max(x,y) (((x) > (y))? (x):(y))
+#define min(x,y) (((x) < (y))? (x):(y))
+typedef struct Point
+{
+	int x;
+	int y;
+}Point_t;
+int max(int p1, int p2)
+{
+	return (p1 > p2)? p1 : p2;
+}
+Point_t min_point(Point_t p1)
+{
+	Point_t t;
+	t.x = min(p1.x, 3);
+	t.y = min(p1.y, 3);
+	return t;
+}
+Point_t max_point(Point_t p1)
+{
+	Point_t t;
+	t.x = max(p1.x, 5);
+	t.y = max(p1.y, 5);
+	return t;
+}
+int main()
+{
+	Point_t* p = (Point_t*)malloc(sizeof(Point_t));
+	p->x = 4;
+	p->y = 4;
+	Point_t min_point_in_struct = min_point(*p);
+	Point_t max_point_in_struct = max_point(*p);
+	printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point_in_struct.x, min_point_in_struct.y);
+	printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point_in_struct.x, max_point_in_struct.y);
+	free(p);
+	return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+#include <new>
+using namespace std;
+struct S  
+{ 
+    void *operator new(const std::nothrow_t& nt, std::size_t sz) noexcept(true) { return operator new(sz); } 
+    int a; 
+};
+int main()
+{
+    S *s = new (nothrow) S; 
+    if (s!= nullptr)
+        cerr << "Success: " << s->a << '\n';
+    else
+        cout << "Failed\n"; 
+    return 0;
+}
+

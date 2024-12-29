@@ -1,0 +1,14 @@
+/* The "typedef" declaration in C language is used to create an alias for an existing data type. This means it designates a new name for an existing type which can be used in place of the complex type name. It doesn't introduce new types, instead, it introduces synonyms for existing types. 
+
+It's often leveraged to simplify the syntax of complex declarations like arrays, functions, structures etc. For example, "typedef int int_t;" declares "int_t" as an alias for the type "int". Multiple aliases can be declared in a single line, for example, "typedef char char_t, *char_p, (*fp)(void);".
+
+This strategy of introducing new names into the ordinary namespace can help in making the code cleaner, easier to understand and manage. In addition, system-dependent types are often exposed as typedef names in libraries for consistency and compatibility.
+
+One key point to note here is that typedef does not affect the storage or linkage of the types, in other words, it doesn't change the type, it creates a new, alternate name for it. 
+
+Some important considerations on usage include:
+1. The array size in the typedef has to be at block scope for Variable length arrays(VLAs).
+2. Typedef can be used to alias incomplete types which may be completed later.
+3. Libraries often use typedef to create system or configuration-dependent types to present a consistent interface to the users. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>

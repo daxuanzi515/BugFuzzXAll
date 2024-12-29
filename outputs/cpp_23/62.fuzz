@@ -1,0 +1,52 @@
+#include <iostream>
+#include <vector>
+#include <string_view>;
+#include <optional>
+#include <unordered_map>
+void print(std::string_view s)
+{
+  cout << s;
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<int> v{(argv + 1, argv + argc)};
+  std::unordered_map<int, std::string> m{1, "100"}; 
+  std::cout << m.operator[](10);
+  return 0;
+}
+ 
+#include <iostream>
+#include <chrono>
+#include <string>
+#include <vector>
+void f()
+{
+  std::cout << "test";
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<std::string> s{"test1", "test2", "test2"};
+  std::chrono::duration<int, std::milli> d{1000};
+  char *c {new char[1]};
+  {
+    delete[] c;
+  }
+  cout << s[argc] << d.count() << f << endl;
+  return 0;
+}
+ 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <optional>
+#include <variant>
+#include <chrono>
+void f()
+{
+  cout << "test";
+}
+int main(int argc, char *argv[]) 
+{
+  std::vector<std::string> s{"test", "test2"};
+  std::optional<std::vector<std::string>> v1 (s);
+  cout << v1.operator->() << v1->operator[](0) << std::chrono::duration(10

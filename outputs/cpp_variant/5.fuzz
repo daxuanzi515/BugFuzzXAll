@@ -1,0 +1,51 @@
+#include <variant>
+#include <iostream>
+#include <vector>
+class person
+{
+private:
+	std::variant<int, std::string> n;
+	std::variant<int, std::string> s;
+public:
+	person(std::string& number, std::string& state) : n(number), s(state) {};
+	std::vector<int> get_number_vector()
+	{
+		if (std::holds_alternative<int>(n))
+		{
+			return { std::get<int>(n) }; 
+		}
+		else  
+		{
+			return { static_cast<int>(n.index()) };
+		}
+	};
+	std::vector<int> get_state_vector()
+	{
+		if (std::holds_alternative<int>(s))
+		{
+			return { std::get<int>(s) }; 
+		}
+		else  
+		{
+			return { static_cast<int>(s.index()) };
+		}
+	};
+	~person() {};
+};
+int main()
+{   
+	std::vector<person> person_vector;
+	for (int i = 0; i < 3; ++i)
+	{
+		person_vector.push_back(person("1", "1"));
+	}
+	person p("1","1");
+	std::vector<int> result_vector_1{};
+	for (person p : person_vector{ p })
+	{
+		for (int i : p.get_number_vector())
+		{
+			result_vector_1.push_back(i);
+		}
+		for (int i : p.get_state_vector())
+	

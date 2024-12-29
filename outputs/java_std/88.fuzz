@@ -1,0 +1,74 @@
+import java.lang.Object;
+<fim_suffix>ng.parseInt(args[3]);
+			System.out.println(name+", are you between "+lower+" and "+higher);
+			break;
+		case "l":
+			break;
+		default:
+			break;
+		}		
+	}
+}
+ 
+public class HelloIndian{
+	public static void main(String[] args)
+		System.out.println("Hello Indian");
+	void myMethod(){
+		System.out.println("Hi\nIndian");
+		}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String str1 = sc.nextLine();
+		int number = sc.nextInt();
+		int number2 = sc.nextInt();
+		int sum = number + number2;
+		System.out.println(str1);
+		System.out.println(sum);
+		}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String name = args[0];
+		char choice = args[1].toLowerCase();
+		switch(choice){
+		case "d":
+			int day = Integer.parseInt(args[2]);
+			System.out.print(name+", your day of the week is ");
+			switch(day){
+			case 0:
+				System.out.println("sunday");
+				break;
+			case 1:
+				System.out.println("monday");
+				break;
+			case 2:
+				System.out.println("tuesday");
+				break;
+			case 3:
+				System.out.println("wednesday");
+				break;
+			case 4:
+				System.out.println("thursday");
+				break;
+			case 5:
+				System.out.println("friday");
+				break;
+			case 6:
+				System.out.println("saturday");
+				break;
+			default:
+				break;
+			}
+			break;
+		case "v":
+			int lower = Integer.parseInt(args[2]);
+			int higher = Integer.parseInt(args[3]);
+			System.out.println(name+", are you between "+args[2]+" and "+args[3]);
+			break;
+		case "j":
+			lower =

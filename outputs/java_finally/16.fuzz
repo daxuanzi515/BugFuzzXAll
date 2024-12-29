@@ -1,0 +1,20 @@
+import java.lang.Object;
+import java.io.*;
+import java.lang.String;
+public class FinallyJava2{
+    public static void main(String[] args) {
+        FileWriter out = null; 
+        try{
+            out = new FileWriter("write.txt",true);
+            out.write("Let's write to file!");
+        }
+        finally{
+            if(out!= null){
+                out.close();
+            }
+        }
+        FileWriter out1 = new FileWriter("write1.txt");
+        out1.write("Second");
+        out1.close();
+    }
+}

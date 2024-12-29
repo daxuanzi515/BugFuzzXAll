@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee();
+    ~Employee();
+    void printMyAddressPtr() const;
+    template<typename _Tp> friend Employee operator>>(const Employee&, _Tp&);
+};
+Employee::~Employee()
+{
+    delete reinterpret_cast<int*>(secretDataPtr);
+}
+Employee::Employee()
+{
+    Employee* p{this};
+    p->secretDataPtr = new int;
+    secretDataPtr = p->secretDataPtr;
+    myAddressPtr = static_cast<void*>(&p);
+}
+template<typename

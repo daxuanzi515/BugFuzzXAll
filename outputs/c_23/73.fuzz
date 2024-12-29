@@ -1,0 +1,13 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+#define NUMBER "10"
+const char* str1 = "hello";
+const char* str2 = "world";
+void main() {
+    printf("Parameter 1: %s\n", str1);
+    printf("Parameter 2: %s\n", str2);
+    return 0;
+}
+ 
+unsigned int a = 1234;

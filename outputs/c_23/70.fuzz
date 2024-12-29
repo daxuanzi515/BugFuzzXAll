@@ -1,0 +1,8 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int a = 1, b = 2;
+int main() {
+    printf("a+b=%d\n", a+b);
+    return 0;
+}

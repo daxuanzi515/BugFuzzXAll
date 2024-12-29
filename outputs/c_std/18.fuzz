@@ -1,0 +1,29 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+int main()
+{
+    FILE *fd;
+    char *text = NULL;
+    int len;
+    if ( ( fd = fopen( "src/file.txt", "r" ) ) == NULL ) {
+        printf("Error opening file\n");
+        return 1;
+    }
+    if ( ( len = filelength( fd ) ) == EOF ) {
+        printf("Error getting length of file\n");
+        return 1;
+    }
+    if ( ( text = ( char * ) malloc( len ) ) == NULL ) {
+        printf("Error allocating memory\n");
+        return 1;
+    }
+    if ( fread( text, len-1, 1, fd ) < 1 ) {
+        printf("Error reading file\n");
+        return 1;
+    }
+    printf("%s\n", text);
+    free(text);
+    fclose(fd);
+    return 0;
+}

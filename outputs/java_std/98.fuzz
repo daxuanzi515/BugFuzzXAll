@@ -1,0 +1,58 @@
+import java.lang.Object;
+<fim_suffix>, (Integer)args[1]);  
+		obj.add((Integer)args[0]);  
+		int d = obj.pop(); 
+		System.out.println(d);
+		System.out.println(obj);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+public class A1
+{
+	public static void main(String[] args)
+	{
+		int a = 100;
+		int b = new Integer(100);
+		Boolean c;
+		c = new Boolean("true");
+		String d = new String("true");
+		System.out.println(a==b);		 
+		System.out.println(a==c.booleanValue());  
+		System.out.println(b==c);		 
+		System.out.println(c==d);		 
+		System.out.println(b==Boolean.parseBoolean(d));  
+	}
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.lang.Integer;
+public class HelloIndian
+{
+	public static void main(String[] args)
+	{
+		List<Integer> list = new ArrayList<Integer>();
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 3\n4, 5");
+		while(s1.hasNext())
+			list.add(s1.nextInt());
+		s1 = new Scanner("1\n2\n1, 2");
+		while(s1.hasNext())
+			list.remove(s1.nextInt());
+		System.out.println(list);
+		s1.close();
+	}
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.lang.Integer;
+public class Mutated
+{
+	public static void main(String[] args)
+	{
+		List<Integer> list = new ArrayList<Integer>();
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 

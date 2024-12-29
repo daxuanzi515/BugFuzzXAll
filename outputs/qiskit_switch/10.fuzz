@@ -1,0 +1,54 @@
+from qiskit import QuantumCircuit
+
+
+
+circuit1 = QuantumCircuit(4)
+
+circuit2 = QuantumCircuit(4)
+
+
+circuit1.swap(0, 1)
+circuit1.swap(1, 2)
+circuit1.swap(2, 3)
+
+circuit1.ccx(0, 1, 2)
+circuit1.swap(1, 2)
+circuit1.swap(0, 2)
+circuit1.ccx(2, 3, 3)
+circuit1.swap(3, 0)
+circuit1.swap(2, 0)
+
+circuit1.ccx(1, 0, 2)
+circuit1.swap(0, 2)
+circuit1.swap(1, 2)
+circuit1.ccx(2, 3, 3)
+circuit1.swap(3, 1)
+circuit1.swap(2, 1)
+
+
+input = QuantumCircuit(4)
+input.ccx(0, 1, 2)
+
+
+circuit2.switch(input, circuit1, [0, 1])
+circuit2.switch(input, circuit1, [1, 0])
+
+circuit2.draw()
+
+
+print(circuit2.to_qasm())<jupyter_output>module test
+    qreg q[4]
+    creg c[3]
+    breg b[2]
+    cx q[1], q[0]
+    cx q[2], q[1]
+    cx q[2], q[3]
+    cx q[1], q[2]
+    cx q[0], q[1]
+    cx q[2], q[0]
+    cx q[3], q[2]
+    cx q[0], q[2]
+    h b[0]
+    h b[1]
+    cx q[0], b[0]
+    cx q[1], b[1]

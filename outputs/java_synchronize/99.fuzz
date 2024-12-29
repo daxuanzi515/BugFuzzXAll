@@ -1,0 +1,61 @@
+import java.lang.Object;
+class Sample {
+    void doSomething() {
+        synchronized (Sample.class) {
+            System.out.println(Sample.class + ": doSomething()");
+        }  
+    }  
+}
+class Main {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        synchronized (s) {
+            s.doSomething();
+        }
+    }
+}
+ 
+ 
+ 
+ 
+class Student {
+    String name;
+    int age;
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+    public void info() {
+        System.out.printf("Name: %s, Age: %d\n", name, age);
+    }
+}
+class Sample {
+    static boolean initialized;
+    static Student[] students = new Student[3];  
+    Sample() {
+        try {
+            initialize();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    static synchronized void initialize() {
+        if(initialized) return;
+        students[0] = new Student("John", 31);
+        students[1] = new Student("Peter", 31);
+        students[2] = new Student("Johnny", 31);
+        initialized = true;
+    }
+    static void info() {
+        for(int i = 0; i < students.length; i++) {
+            students[i].info();
+        }
+    }
+    static void info0() {
+        System.out.printf("Initialized? %b\n", initialized);
+    }
+}
+class Test {
+    public static void main(String[] args) {
+        System.out.printf("Static variables\n

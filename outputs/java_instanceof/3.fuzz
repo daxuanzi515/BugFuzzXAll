@@ -1,0 +1,8 @@
+import java.lang.Object;
+
+public class InstanceofError extends Object{
+	public static void main(String args[]){
+		
+		System.out.println("I want to check whether the given reference is assignable to the class java.lang.Object and java.lang.String and vice-versa through the use of instanceof and casting");
+	}
+}

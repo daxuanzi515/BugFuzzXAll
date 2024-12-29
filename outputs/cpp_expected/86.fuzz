@@ -1,0 +1,67 @@
+#include <expected>
+<fim_suffix>xpected <int,int>> expected1a = std::make_expected<int>(5);
+std::expected <int, int> expected2 = std::make_unexpected<int>(3); 
+
+int main(int argc, char const *argv[])
+{
+    
+    std::cout << expected1a.value() << std::endl;
+    std::cout << expected2.value() << std::endl;
+
+    std::expected<std::string, int> e1 = std::make_expected<std::string>("Success");
+    std::expected<std::string, int> e2 = std::make_expected<std::string>("Error", 5); 
+
+    auto val = e1.value_or("Error!");  
+     
+    val = e2.value_or("Error!");  
+
+    if (e1)
+    {
+         
+        std::cout << e1.value() << std::endl;
+    }
+
+    e1.value_or_throw();  
+
+
+    std::expected<std::string,int> err_or_res = std::make_expected <std::string,int>("hello");
+    
+     
+     
+    auto res = err_or_res.unwrap_or_throw(std::make_unexpected(3));
+     
+
+
+     
+    res = err_or_res.unwrap_or_else([](auto exp) { return exp.error(); });
+
+     
+    res = err_or_res.unwrap_or(4.2);
+    std::cout << res << std::endl;
+
+
+    return 0;
+}
+
+<fim_middle>
+#include <iostream>
+
+int main(int argc, char const *argv[])
+{
+    std::cout << "Welcome to the std::expected playground!" << std::endl;
+    return 0;
+}
+
+
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,9 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = (long)(val + val);
+
+    return 0;
+}

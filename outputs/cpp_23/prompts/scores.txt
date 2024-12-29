@@ -1,0 +1,4 @@
+greedy score: 3
+0 prompt score: 1
+1 prompt score: 3
+2 prompt score: 2

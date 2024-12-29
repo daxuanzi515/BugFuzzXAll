@@ -1,0 +1,60 @@
+from qiskit import QuantumCircuit
+
+
+
+class QuantumSwitch(QuantumCircuit):
+    def __init__(self, num_inputs):
+        self.input_qubits = range(num_inputs)
+        self.output_qubit = num_inputs + 1
+        super().__init__(f'{num_inputs}q-q', f'{num_inputs + 1}q', [])
+        self.add_register(self.input_qubits)
+        self.h(num_inputs)
+        self.cdg(num_inputs)
+        self.measure(num_inputs, num_inputs)
+
+    def create_input_circuits(self, num_inputs, num_qubits):
+        for i in range(num_inputs):
+            input_circuit = QuantumSwitch(num_qubits)  
+            self.append(input_circuit.to_instruction(), [input_circuit.input_qubits[0]],
+                         range(num_qubits + 1))  
+        
+    def build(self, num_inputs, num_qubits):
+        self.create_input_circuits(num_inputs, num_qubits)
+        self.switch(self.input_qubits, self.output_qubit)
+
+
+def main():
+    quantum_switch = QuantumSwitch(3)
+    quantum_switch.build(3,3)
+
+
+if __name__ == '__main__':
+    main()
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

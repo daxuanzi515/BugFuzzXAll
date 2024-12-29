@@ -1,0 +1,57 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+
+
+
+def loop_body_i(qc, loop_register, i):
+    
+    qc.h(loop_register)
+    qc.cx(loop_register, loop_register+1)
+    if i.integer is not None:
+        return qc
+    
+    
+
+
+def for_loop_explicit():
+    with qc.for_loop(loop_body_i, loop_register=0) as loop:
+        loop.block._quantum_circuit = QuantumCircuit(2)
+        
+        i.set_values(range(2))
+        
+        
+        
+        
+        
+        block.barrier()
+        
+        
+        block.append(loop_body_i, qargs=[loop_register, i], cargs=[i])
+        
+        
+        block.z(loop_register)
+
+
+def for_loop_implicit():
+    qc.for_loop(loop_register=qc.clbits).loop_parameter = i
+    
+    i.integer = 0 
+    i.set_values(range(2)) 
+    
+    
+
+    qc.barrier()
+    
+    
+    
+    
+    qc.if_(i >= 1).then(qc.measure(loop_register, loop_register+1).loop_label='measure_1')
+    
+    
+    
+    
+    i.integer = 1
+
+for_loop_implicit()
+qc.display()

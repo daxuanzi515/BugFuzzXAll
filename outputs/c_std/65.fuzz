@@ -1,0 +1,13 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    int x = rand() % 20;
+    long val2 = val/2;
+    long temp = val;
+    long val3 = x + fmod(val2,temp);
+    printf("%ld",val3); 
+    return 0;
+}
+ 
+

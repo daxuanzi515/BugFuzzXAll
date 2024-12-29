@@ -1,0 +1,8 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t = std::make_tuple(99);
+  std::apply(std::plus<>(), t);
+  return EXIT_SUCCESS;
+}

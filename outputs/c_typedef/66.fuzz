@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef double (*Func_t)(const char*, double);
+Func_t Calc(Func_t func, const char* str)
+{
+	return func(str, 3.1415926);
+}
+double Double_mul(const char* str1, double num1)
+{
+	double value;
+	printf("Enter double value : ");
+	scanf("%lf", &value);
+	printf("%lf %s %lf \n", value, str1, num1);
+	return value * num1;
+}
+double Multiply(const char* str2, double num2)
+{
+	return num2 * str2[0];
+}
+int main()
+{
+	Func_t mul = Double_mul;
+	printf("%f\n", Calc(mul, "multiply"));
+	Func_t mul2 = Multiply;
+	printf("%f\n", Mul(mul2, "multiply"));
+	return 0;
+}

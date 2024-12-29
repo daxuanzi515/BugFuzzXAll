@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "something")
+   {
+      std::string const a{argv[2]};
+      std::cout << static_cast<unsigned long long>(a.find("someting")!= std::string::npos) << std::endl;
+   }
+}
+ 
+
+ 
+
+ 
+/*
+
+- [[nodiscard]] (N4861)
+- std::atomic_ref (N4862)
+- std::jthread (P0336R4)
+- std::span (P0777R2)
+- Pattern Matching (P0946R0)
+- std::string_view (P1000R2)
+- Lambda improvements (P1011R1)
+- Attributes for namespaces (P0892R1)
+- std::filesystem (P1189R1)
+- std::format (P1656R1)
+- Ranges generalization (P0609R1)
+- std::size (P0457R1)
+- Ranges customization points (P1114R3)
+- std::source_location (P1084R

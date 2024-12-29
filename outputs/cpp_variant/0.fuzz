@@ -1,0 +1,35 @@
+#include <variant>
+
+struct vec2 {
+	int x{}, y{};
+	vec2(int _x, int _y) : x{ _x }, y{ _y } {  }
+};
+
+using var_t = std::variant< int, double, vec2 >;
+
+int main()
+{
+	var_t varInt = 100;
+	var_t varFloat = 200.5;
+	var_t varVec2{ vec2{ 10, 20 } };
+
+	 
+	int intValue = std::get<int>(varInt);   
+	float floatValue = std::get<double>(varFloat);   
+
+	 
+	std::cout
+			<< "Int " << std::get<int>(varVec2) << " float "
+			<< std::get<double>(varVec2) << " vec2 " << std::get<vec2>(varVec2)
+			<< std::endl;
+	
+	std::cout << var_t::index<int>::value << " "
+			<< var_t::index<double>::value << " "
+			<< var_t::index<float>::value << " "
+			<< var_t::index<vec2>::value << std::endl;
+	std::cout << typeid(var_t::index<int>).name() << std::endl;
+
+	std::cout << std::get<int>(varFloat) + std::get<int>(varInt) << std::endl;
+
+	return 0;
+}

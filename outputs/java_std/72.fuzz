@@ -1,0 +1,64 @@
+import java.lang.Object;
+<fim_suffix>{
+		Scanner a=new Scanner(100);
+		String str="", str2="";
+		while(true){
+			str+=a.next();
+			str2+=(Character.isUpperCase(str.charAt(str.length()-1))?" ":"\n")+str; 
+			str="";
+			if (str2.matches("^.*[a-z]$"))
+				break;
+		}
+		System.out.println(str2);
+		 
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner("Hello there");;
+		while (s2.hasNext())
+			System.out.print(s2.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloRandomNum{
+	public static void main(String[] args) {
+		Random r = new Random(10);
+		int x = r.nextInt();
+		System.out.print(x);
+		System.out.println(x);
+	}
+}
+ 
+
+import java.lang.Object;
+import java.util.*;
+public class HelloRandomNumLoop{
+	public static void main(String[] args) {
+		Random r2 = new Random(99);
+		do{
+			int x = r2.nextInt(100);
+			System.out.print(x);
+			System.out.println(x);
+		} while (x!=1);
+	}
+}
+ 
+
+import java.lang.Object;
+import java.util.*;
+public class DoubleNum{
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		s.nextInt();
+		int x=s.nextInt();
+		if(x<0||x>100)
+			System.out.println("Not in correct range");
+		else
+			System.out.println((2*x - 2*x)/2);
+	}
+}
+/*

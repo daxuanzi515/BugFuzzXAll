@@ -1,0 +1,67 @@
+#include <expected>
+<fim_suffix>_t &rhs) const;
+    };
+    constexpr MyError kNotFound = "not found";
+
+    std::expected<int> get_int(const std::string &key);
+    std::expected<std::string, MyError> get_string(const std::string &key);
+
+    auto v = get_int("int");
+    auto s = get_string("not_int");
+
+    if (v) {
+        std::cout << "value stored in v: " << *v << std::endl;
+    } else {
+        std::cout << "unexpected error with result: " << v.error() << std::endl;
+    }
+    if (s) {
+        std::cout << "value stored in s: " << *s << std::endl;
+    } else {
+        std::cout << "error string with result: " << *s.error() << std::endl;
+    }
+	return 0;
+}
+
+std::expected<int> get_int(const std::string &key)
+{
+    if (key == "int") {
+         
+        return 100;
+    } else {
+         
+        return std::make_expected_from_error<int>(kNotFound);
+    }
+}
+
+std::expected<std::string, MyError> get_string(const std::string &key)
+{
+    if (key == "not_int") {
+        return MyError("not_int found");
+         
+    } else {
+        return "no_not_int found";
+    }
+}<fim_middle>
+#include <iostream>
+#include <string>
+
+using namespace std::string_literals;
+
+std::expected<int> get_int(const std::string &key);
+std::expected<std::string, std::string> get_string(const std::string &key);
+
+int main()
+{
+    class MyError {
+    private:
+        std::string error;
+
+    public:
+        constexpr MyError(const std::string_view error_) noexcept : error{error_} {};
+        explicit constexpr operator bool() const noexcept {
+            return true;
+        }
+        constexpr const std::string &get_error() const noexcept {
+            return error;
+        }
+        constexpr bool operator==(const MyError

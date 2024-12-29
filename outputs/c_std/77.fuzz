@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = exp(1);
+    long val2 = val;
+    long val3 = val2/2;
+    long val4 = val3 * val;
+    printf("%ld",val4);
+    return 0;
+}

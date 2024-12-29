@@ -1,0 +1,8 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int> t = std::make_tuple(99);
+  std::apply([](int& x) {std::cout << x << '\n';}, t);
+  return EXIT_SUCCESS;
+}

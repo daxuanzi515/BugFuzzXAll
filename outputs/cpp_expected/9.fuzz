@@ -1,0 +1,70 @@
+#include <expected>
+<fim_suffix>   try
+	{	
+		return f();
+	} catch (const std::exception& exp)
+	{
+		std::cout <<"exception: " << exp.what() << '\n';
+		throw;
+	}
+	return { };
+}
+
+template <typename F, typename... Args>
+[[nodiscard]] auto handle_errors(F f, Args&&... args)
+	-> std::expected<decltype(f(std::forward<Args>(args)...)), std::error_code>
+	
+{
+	return catch_and_handle([f = std::forward<F>(f),...args = std::forward<Args>(args)] () {
+		return f(args...);
+	});
+}
+std::error_code divide_by(std::string const& rhs_str)
+{
+	auto rhs=std::atol(rhs_str.c_str());
+	if (rhs == 0)
+	{
+		return make_error_code(std::errc::invalid_argument);
+	}
+	return {};
+}
+bool divide(std::string const& dividend_str, std::string const& divisor_str, std::string & result_str)
+{
+	using namespace std::string_literals;
+	try {
+		auto dividend = handle_errors([](auto value) { return std::atol(value.c_str()); }, dividend_str);
+		auto divisor = handle_errors([](auto value) { return std::atol(value.c_str()); }, divisor_str);
+		auto quotient = handle_errors( std::divides<long>(), dividend, divisor);
+		auto result = handle_errors( [quotient](auto value) { return std::to_string(value); }, quotient.value());
+		result_str = std::move(result).value();
+		return true;
+	}catch(std::error_code const& err)
+	{
+		std::cout << "Error occured:\n" <<"(" << err.value() <<")"<< err.message() << '\n';
+		return false;
+	}
+	
+}
+struct PersonException : std::exception
+{
+	std::string msg { };
+	explicit PersonException(std::string msg) : msg{ std::move(msg) }{}
+};
+struct Person
+{
+	int id { };
+	std::string FirstName{ };
+	std::string LastName{ };
+
+	explicit Person(int id, std::string fname,  std::string lname): id{ id }, FirstName{ std::move(fname) }, LastName{ std::move(lname)} {}
+
+	Person(Person const& rhs) = delete;
+	Person(Person&& rhs) = default;
+	Person& operator=(Person const& rhs) = delete;
+	Person& operator=(Person&& rhs) = default;
+
+	explicit operator bool() const { return (id!= 0 &&!FirstName.empty() &&!LastName.empty()); }
+	
+	friend std::ostream& operator<<(std::ostream& os, Person const& p)
+	{
+		return os

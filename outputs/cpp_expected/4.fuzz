@@ -1,0 +1,70 @@
+#include <expected>
+
+        std::cout << "Expected value: " << e.value();
+        return 1;
+    }
+
+    std::cout << "Expected is empty" << std::endl;  
+    std::cout << *e;  
+    std::cout << e.value_or(9) << std::endl;  
+
+    std::cout << "Expected has value: " << (e.has_value()? "yes" : "no") << std::endl;  
+    std::cout << "Expected has value: " << std::boolalpha << e.has_value() << std::endl;  
+     
+    std::cout << "Expected has value: " << +e.has_value() << std::endl;  
+
+    try
+    {    
+        e = std::move(exp);
+    }
+    catch (std::bad_expected_access & e)
+    {
+        std::cout << e.what() << std::endl;  
+    }
+
+     
+    expected<unsigned int> exp3;  
+}
+
+void run3()
+{
+
+    auto read_user_input() -> expected<std::string, int>
+    {
+        std::cout << "Value: ";
+        char buff[255] = {{}};
+        std::cin.getline(buff, 255);
+        std::string input(buff);
+        std::cout << "Reading " << input << std::endl;
+        return input;  
+    }
+    auto f = []() {  
+        static bool ok = true;  
+        if (ok)
+            ok = false;
+        else
+            throw my_error("This is an error");
+        return 42;
+    };
+    try
+    {    
+        expected<int, my_error> e =
+            f();  
+        std::cout << e.value();  
+    }
+    catch (const my_error & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+    expected<int, my_error> e1 = 3;  
+    auto e2 = my_function();
+    if (e1)
+    {
+        std::cout << e1.value();  
+    }
+    else
+    {
+        std::cout << "This is undefined behavior" << std::endl;  
+    }
+    std::cout << "Value of e2: " << e2.value_

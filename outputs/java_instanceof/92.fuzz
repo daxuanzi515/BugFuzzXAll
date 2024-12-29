@@ -1,0 +1,49 @@
+import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Object a = new Object();
+		System.out.println(a + "::" + a.getClass() + "::" + a.getClass().getSuperclass());
+	}
+}
+ 
+ 
+import java.lang.Object; 
+class DemoInterface {public void demo(Object a){System.out.println(a.toString());}
+	public static void main(String... args) {
+		DemoInterface Demo1 = new DemoInterface();
+		Demo1.demo(new Object());
+		DemoInterface Demo2 = new InterfaceDemoClass();
+		Demo2.demo(new DemoClass2());
+	}
+}
+interface InterfaceDemo {public void demo(Object a);
+	public Object demo(int a);
+}
+class InterfaceDemoClass implements InterfaceDemo {
+	public void demo(Object a){System.out.println(a.toString());}
+	public Object demo(int a){return new Byte((byte)a);}
+	public static void main(String... args) {
+		InterfaceDemo Demo1 = new InterfaceDemoClass();
+		Demo1.demo(new Object());
+		Demo1.demo(1);
+	}
+}
+ 
+package Outer;
+class OuterClass {
+	protected class NestedClass {
+		public void demo() {
+			System.out.println("this is a protected nested class");
+		}
+	}
+	private NestedClass nest = new NestedClass();
+}
+class OuterUser {
+	void user() {
+		System.out.println("protected nested class being called by outer class");
+		this.new NestedClass().demo();
+	}
+	public static void main(String[] args) {
+		new OuterUser().user();
+	}
+}

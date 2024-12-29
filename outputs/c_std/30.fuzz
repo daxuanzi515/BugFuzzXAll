@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file;
+    if ((file = fopen("test files/hello.txt", "r")) == NULL)
+    {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+    int c, count = 0;
+    while ((c = fgetc(file))!= EOF)
+    {
+        count++;
+        printf("%c\n", c);
+    }
+    printf("Total characters read: %d\n", count);
+    fclose(file);
+    return 0;
+}

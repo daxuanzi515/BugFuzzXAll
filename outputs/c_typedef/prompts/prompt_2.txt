@@ -1,0 +1,5 @@
+/* The typedef declaration in C language is used to create an alias for an existing type, simplifying potentially complex type names. It functions in the place of a storage-class specifier but does not affect storage or linkage e.g., `typedef int int_t;` declares `int_t` as an alias for the type `int`. 
+
+Typedef does not introduce a distinct type, instead, it just establishes a synonym for an existing one making typedef names compatible with the types they represent. Additionally, typedef can handle variable length arrays (VLA) at block scope. It can also be used to manoeuvre names between different namespaces and provide consistency in libraries through the exposure of system or configuration-dependent types as typedef names. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>

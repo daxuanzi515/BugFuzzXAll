@@ -1,0 +1,45 @@
+import java.lang.Object;
+class SampleData {
+    private final Object lock = new Object();
+    SampleData write() { synchronized (lock) { System.out.println("Write operation to SampleData is invoked!"); } return this; }
+    SampleData read() { synchronized (lock) { System.out.println("Read operation to SampleData is invoked!"); } return this; }
+    public enum State {WRITER, READER}
+    private State state = State.WRITER;
+    State getState() { synchronized (this) { return state; } }
+    SampleData setState(State s) {
+        synchronized (this) {  
+            state = s;
+        }
+        return this;
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public SampleData read_synchronize(final String s) {
+        data.setState(SampleData.State.READER);
+        data.read();
+        data.write().setState(SampleData.State.WRITER);
+        return this.data;
+    }
+    public SampleData write_synchronize() {
+        data.setState(SampleData.State.WRITER);
+        data.write();
+        data.read().setState(SampleData.State.READER);
+        return this.data;
+    }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();

@@ -1,0 +1,38 @@
+from qiskit import QuantumCircuit
+
+from qiskit import Aer<jupyter_output><empty_output><jupyter_text>***<jupyter_code>class QiskitCircuitFactory():
+    def __init__(self):
+        
+        self.circuit = QuantumCircuit()
+
+    def add_hadamard(self, qubit_index, create_circuit=True):
+        
+        self.circuit.h(qubit_index)
+        if create_circuit:
+            return self.circuit
+    
+    def measure_circuit(self):
+        return self.circuit.measure_all()
+            
+    def append(self, quantum_circuit_to_append):
+        self.circuit.append(quantum_circuit_to_append)
+        return self.circuit
+    
+    def to_gate(self):
+        return self.circuit.to_gate()
+def test_qiskit():
+    qiskit = QiskitCircuitFactory()
+    qiskit.add_hadamard(0)
+    
+    q = qiskit.add_hadamard(1, create_circuit=False)
+    q.draw()
+    
+    qiskit.append(q)
+    qiskit.measure_circuit()
+test_qiskit()
+q
+q2 = qiskit.to_gate()
+q2
+q.draw()
+qiskit.append(q)
+qiskit.measure_circuit()

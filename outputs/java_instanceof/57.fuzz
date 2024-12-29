@@ -1,0 +1,73 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.ArrayList;
+class Test{
+	class Test2{
+		
+	}
+}
+ 
+import java.lang.Object;
+export class Test {
+	export class Test2 {
+	}
+}
+import java.lang.String;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		ArrayList<String> c = new ArrayList<String>();
+		c.add("1"); 
+		c.add("2"); c.add("2");
+}
+ 
+import java.util.ArrayList;
+import static java.lang.System.out;
+
+class Main {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+import java.util.ArrayList;
+import static java.lang.System.out;
+class Main {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+ 
+import java.lang.System;
+class Main {
+	public static void main(String... args) {
+		System.out.println("Hello World");
+	}
+}
+ 
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		int i;
+		for(i = 0; i < 10; i = i + 1)
+			System.out.println("Hello World " + i);
+	}
+}
+ 
+ 
+ 
+class Main { 
+	public static void main(String[] args) {
+		System.out.println("Hello World

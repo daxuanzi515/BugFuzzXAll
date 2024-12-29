@@ -1,0 +1,9 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<long> tuple = std::make_tuple(99L);
+  std::get<0>(tuple).print();
+
+  return EXIT_SUCCESS;
+}

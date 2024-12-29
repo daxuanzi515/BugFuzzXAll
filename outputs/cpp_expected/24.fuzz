@@ -1,0 +1,72 @@
+#include <expected>
+<fim_suffix>) {
+    std::cout << "Unwrapped value is: " << *value << std::endl;
+  } else {
+    std::cout << "Unexpected value is: " << u_value.value() << std::endl;
+  }
+}
+
+std::expected<int, std::exception_ptr> throwOnOdd(const int val) {
+  if (val % 2!= 0)
+    std::throw_with_nested(std::logic_error("Must be even input value."));
+  else
+    return val;
+}
+
+ 
+ 
+ 
+ 
+std::expected<int, std::exception_ptr> wrongThrowOnOdd(const int some_val) {
+  auto val = throwOnOdd(some_val);
+  if (val && *val % 2 == 0)
+    return val;
+  else
+    throw std::logic_error("not even");
+}
+
+ 
+ 
+ 
+ 
+std::expected<int, std::exception_ptr> sumOfTwo(const int a, const int b) {
+  if (a < 0 || b < 0)
+    return std::make_unexpected(std::logic_error("all the values must be positive."));
+  return a + b;
+}
+
+ 
+ 
+ 
+ 
+auto sumOfTwoInLambda = [](const int a, const int b) {
+  return sumOfTwo(a, b);
+};
+
+struct Student {
+  std::string name;
+  Student(const std::string &name) : name(name) {}
+  Student() : name() {}
+  std::string getName() { return name; }
+};
+
+int main() {
+  exampleFunction();
+
+  auto wrapped = std::make_expected<int>(int{});
+  if (wrapped) {
+    std::cout << "Value is: " << std::boolalpha << *wrapped << std::endl;
+  }
+
+  printExpectedOrUnexpected(int{});
+
+  int temp = 4;
+  auto unwrapped = std::make_expected<int>(int{4});
+  if (unwrapped) {   
+    std::cout << "Unwrapped value is : " << *unwrapped << std::endl;
+  }
+
+   
+  std::expected<Student, std::exception_ptr> person{Student{"Oswald"}};
+  try {
+    std::cout << "Name is : " <<

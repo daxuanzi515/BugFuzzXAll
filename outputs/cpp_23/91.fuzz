@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <string_view>
+int main(int argc, char const *argv[])
+{
+   if (argv[1] == "someting")
+   {
+      std::string_view s{argv[2]};
+      std::string a{s};
+      if (a == "someting")
+      {
+         return 1;
+      }
+   }
+   else
+   {
+      return 1;
+   }
+}

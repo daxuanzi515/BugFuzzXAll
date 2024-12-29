@@ -1,0 +1,46 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+
+ 
+import java.lang.Object;
+import java.lang.Double;
+class Main {
+	public static void main(String... args) {
+		Double a = 1.0D;
+		Object b = new int[2];
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("b instanceof Double: " + (b instanceof Double));
+	}
+}
+ 
+import java.lang.Double;
+class Main {
+	public static void main(String... args) {
+		Double a = 1.0D;
+		Object b = new int[2];
+		System.out.println("a instanceof Double: " + (a instanceof Double));
+		System.out.println("b instanceof Double: " + (b instanceof Double));
+	}
+}
+ 
+import java.lang.Object;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new int[2];
+		int k = 10;
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Byte: " + (b instanceof Byte));
+		System.out.println("b instanceof short: " + (b instanceof short));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}

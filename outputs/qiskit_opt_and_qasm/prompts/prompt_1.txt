@@ -1,0 +1,15 @@
+'''API.
+
+The Qiskit Terra API Reference provides a comprehensive suite of tools for quantum computing. It includes the setup, execution, and analysis of quantum circuits. This API includes Quantum Circuits for creating and manipulating quantum circuits, the Circuit Library with pre-made circuits for use, and Compilation Routines for converting high-level quantum circuits into low-level quantum circuits.
+
+There is also support for executing quantum experiments, visualization tools, a ClassicalFunction compiler for classical functions, and various circuit converters. For creating and customizing quantum computing systems, you have access to Backend Objects, an interface for providers (with capability for writing new ones), BasicAer for simulation, and migrating tools between Backend API versions. 
+
+For more advanced manipulation, Qiskit provides access to Acyclic Graph Circuits (DAGs), Quantum Circuit Extensions, Pulse, and a Circuit Scheduler tool. There's also Circuit Synthesis, Primitives, and Quantum Information for quantum computing specifics.
+
+For handling Quantum Assembly Language, tools for OpenQASM 2, OpenQASM 3, Qasm, and Qobj are provided. There's QPY for serializing quantum circuits and Qiskit Tools for experiments results, and other utilities such as Measurement Mitigation, Operators, and Algorithms. 
+
+Also included are Jupyter Tools for integration with Jupyter notebooks, Transpiler for optimizing quantum circuits, Passmanagers for orchestrating the specific passes the transpiler uses, and plugins for extending the functionality of the transpilation process, including built-in synthesis plugins.
+
+This API provides a wide range of functionalities necessary for both beginners and advanced users in the field of quantum computing.'''
+'''Create quantum circuits with Qiskit API and combine them in complex ways.'''
+from qiskit import QuantumCircuit

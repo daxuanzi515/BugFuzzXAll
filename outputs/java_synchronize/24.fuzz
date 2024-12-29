@@ -1,0 +1,46 @@
+import java.lang.Object;
+class StringBuffer {
+    String str = "";
+    StringBuffer(String str) { this.str = str; }
+    synchronized void getLength() {   System.out.println("MyString.get(): " + str); }
+    synchronized void add(String s) {  str += s;        }
+}
+class MyThread10_2 extends Thread{
+    StringBuffer sb;
+    MyThread10_2(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("a");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+class MyThread10_3 extends Thread{
+    StringBuffer sb;
+    MyThread10_3(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("b");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+class MyThread10_1 extends Thread{
+    StringBuffer sb;
+    MyThread10_1(StringBuffer sb) { this.sb = sb; }
+    public void run() {
+        try {
+            sb.add("cd");
+            Thread.sleep(500);
+        } catch(InterruptedException ie) { System.out.println("Interrupted");    }
+        sb.getLength();
+    }
+}
+public class SampleTest10 {
+    public static void main(String [] args) {
+        System.out.println("Please create a mutated program that modifies the previous generation");
+        StringBuffer sb = new StringBuffer("0");
+        MyThread10_1 t1 = new MyThread10_1(sb);
+        MyThread10_2 t2 = new MyThread

@@ -1,0 +1,9 @@
+
+[run]
+branch = True
+concurrency = multiprocessing
+parallel = True
+source =
+    /home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit
+
+# /home/cxx/anaconda3/envs/fuzz4all/lib/python3.10/site-packages/qiskit

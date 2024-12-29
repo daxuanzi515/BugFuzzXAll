@@ -1,0 +1,38 @@
+import java.lang.Object;
+<fim_suffix>(String[] args) {
+		Scanner s1 = new Scanner("Hello, world");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		s1.close();
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+class GetDate {
+	public static void main(String[] args) {
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		System.out.println("Today is: "+cal.getTime());
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello world!");
+	}
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main

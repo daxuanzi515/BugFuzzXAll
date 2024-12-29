@@ -1,0 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int val = rand() % 100;
+    long val2 = val/2;
+    long val3 = val * val2;
+    printf("%ld",val3);
+    return 0;
+}

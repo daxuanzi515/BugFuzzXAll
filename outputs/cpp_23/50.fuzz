@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+const std::string code = ""\
+"#include <iostream>\n"\
+"using namespace std;\n\
+int main()\n"\
+"{\n"\
+"   int i1 = 6;\n"\
+"   int i2 = 4;\n"\
+"   int *i = new int(i1);\n"\
+"   cout << \"*i = \" << *i << endl;\n"\
+"   cout << \"sizeof(i) = \" << sizeof(i) << endl;\n\n"\
+"   cout << \"*i + i2 = \" << *i + i2 << endl;\n"\
+"   cout << \"*i = \" << *i << endl;\n"\
+"   cout << \"sizeof(i) = \" << sizeof(i) << endl;\n"\
+"   return 0;\n"\
+"}\
+"";
+int main()
+{
+	std::ofstream file("new_code.cpp");
+	file << code << std::flush;
+	return 0;
+};
+/* How do you feel about the code? Does it add any complexity to the code and do you like it? Does it have a performance benefit for you? */
+/* Please modify the program using new C++ syntax and best practices described in the book 2018 by <NAME>. */
+#include <iostream>
+#include <memory>
+#include <utility>
+int main() 
+{
+  int i1 {1};
+  int i2 {2};
+  auto i = std::make_unique<int>(i1);
+  *i = i1 + i2;
+  std::cout << "i1 = " << i1 << ",  i2 = " << i2 << ",  value = " << *i << std::

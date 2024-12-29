@@ -1,0 +1,54 @@
+import java.lang.Object;
+class DataContainer {
+    Object data;
+    DataContainer() { data = null; }   
+    Object read() { return (Object)data; }
+    void write(Object c) { data = c; }
+}
+
+class SafeInfoStorage {
+    DataContainer container;
+    SafeInfoStorage container() { return this; }
+
+    synchronized String read () {
+        return (String)container.read();
+    }
+
+    synchronized void write (String s) {
+        container.write(s);
+    }
+
+     
+    public void setInfo (String string) {
+        synchronized (container.container()) { 
+            container.write(string); 
+            System.out.println("Set info : " + read());
+        } 
+    }
+}
+
+public class StorageData {
+    SafeInfoStorage storage;
+    public StorageData() {
+        this.storage = new SafeInfoStorage();
+    }
+
+    public void write_string() {
+        storage.setInfo("Hello World");
+    }
+
+    public static void main(String args[]) {
+        StorageData storageData = new StorageData();
+        storageData.storage = new SafeInfoStorage();
+
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { storageData.write_string(); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { storageData.write_string(); } 
+            });
+
+        t1.start();
+        t2.start();
+    }
+}

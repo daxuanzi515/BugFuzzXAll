@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    char* const text = "129";
+    int value;
+    printf("%d\n", value = strtol(text, NULL, 10));  
+    return 0;
+}
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    printf("No problem\nJust a teensy bit too large\nYou fat fingered it horribly.");
+    return 0;
+}
+/* If we want to use the same macro to print "You had one too many" we would need to change it:
+#include <stdio.

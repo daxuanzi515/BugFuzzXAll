@@ -1,0 +1,99 @@
+#include <expected>
+<fim_suffix>d) => {
+    std::cout << "A runtime exception occurred\n";
+    return 1;
+  });
+
+  return int_exp_throw;
+}
+
+ 
+ 
+
+std::expected<std::string, std::string> concat_strings(
+  std::expected<std::string, std::string> first,
+  std::expected<std::string, std::string> second
+) {
+
+  auto return_function = [](const std::string_view& str) {
+    return std::expected<std::string, std::string>{ str.data() };
+  };
+
+  auto concat = [](const std::string_view& str1, const std::string_view& str2) {
+    return std::expected<std::string, std::string>{ str1 + str2 };
+  };
+
+  const auto str1{ first.template map<std::string_view>(
+    return_function) };
+
+  if (!str1) [[unlikely]] {
+    return second.map(return_function);
+  }
+
+   
+
+  const std::string_view str1_view{ *str1 };
+
+  const auto str2{ second.map(return_function) };
+
+  if (!str2) [[unlikely]] {
+    return first;
+  }
+
+   
+
+  const std::string_view str2_view{ *str2 };
+
+  return concat(str1_view, str2_view);
+}
+
+
+int main() {
+  (void) concat_strings(std::make_expected("Hello"), std::make_expected("World"));
+  std::expected<std::string, std::string> result_2{ concat_strings(
+    std::make_expected("Hello"), std::make_unexpected("World")
+  )};
+
+  if (!result_2) {
+    std::cout << result_2.error() << "\n";
+    std::cout << result_2.unexpected().what() << "\n";
+  } else {
+    std::cout << *result_2 << "\n";
+  }
+
+
+  (void) run_computation_return_string();
+  (void) compute_result_return_string();
+
+  run_computation_return_int();
+
+  const auto computation = []() {
+    return concat_strings(
+      std::make_expected("Hello"), std::make_unexpected("World")
+    );
+  };
+
+  const auto int_exp = compute_result_return_int_v2();
+
+  const auto str_exp = compute_result_return_string_v2();
+
+  if (!int_exp) {
+    std::cout << int_exp.error() << "\n";
+  } else {
+    std::cout << "Result was " << *int_exp << "\n";
+  }
+
+  if (!str_exp) {
+    std::cout << str_exp.error() << "\n";
+  } else {
+    std::cout << *str_exp << "\n";
+  }
+
+
+  const auto computation_v2 = []() {
+    return concat_strings(
+      std::make_expected("Hello"), std::make_expected("World")
+    );
+  };
+
+ 

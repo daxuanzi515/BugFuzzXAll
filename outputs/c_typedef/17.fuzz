@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>
+const int_t maxsize = 100;
+typedef char* string_t;
+typedef struct {
+char name[maxsize];
+int_t id;
+} Student_t;
+int_t main() { 
+string_t p = (string_t) malloc(50 * sizeof(string_t));
+string_t f = realloc(p, 100 * sizeof(string_t));
+struct Student_t* s1, * s2, s;
+s2 = (struct Student_t*)malloc(sizeof(struct Student_t));
+printf("Enter the information of the Person 1.\n");
+printf("Enter the name : ");
+scanf("%s", s1->name);
+printf("Enter the ID : ");
+scanf("%d", &s1->id);
+printf("Enter the information of the Person 2.\n");
+printf("Enter the name : ");
+scanf("%s", &s1->name);
+printf("Enter the ID : ");
+scanf("%d", &s1->id);
+s1->id = s1->id + s2->id;
+printf("The sum of the ID %d and %d is %d", s1->id, s2->id, s->id);
+return 0;
+}

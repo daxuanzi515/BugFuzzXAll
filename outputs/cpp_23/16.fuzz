@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+using namespace std;
+struct Employee {
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    void assign(const Employee& other) {
+        Employee* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    void printMyAddressPtr() {
+        cout << "myAddressPtr: " << myAddressPtr << '\n';
+    }
+    void copy(const Employee& other) {
+        Employee* p{new Employee};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    void del() {
+       

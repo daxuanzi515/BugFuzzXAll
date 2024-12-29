@@ -1,0 +1,21 @@
+#include <variant>
+<fim_suffix>:get<int>(v);
+    std::cout << s << "\n";
+    return 0;
+}
+int main() 
+{
+    using namespace std;
+
+
+     
+    template<typename... T>  
+    using max10_sum = std::conditional_t<sizeof...(T) == 1, T..., typename max10_sum <T..., (T +... +T)>>; 
+     
+     
+
+    std::cout << typeid(max10_sum<1, 2, 3, 5, 6, 8, 13, 21, 34>).name() << std::endl;
+    std::cout << typeid(max10_sum<7>).name() << std::endl;  
+}
+ 
+/* A workaround way to do this is to

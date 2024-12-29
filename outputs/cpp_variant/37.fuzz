@@ -1,0 +1,42 @@
+#include <variant>
+<fim_suffix>d() const { return false; }
+        std::monostate empty;
+    };
+}  
+#include <iostream>  
+#include <variant>   
+#ifndef FOO_TYPE
+#    define FOO_TYPE char
+#endif
+static constexpr const char* foo_types[] = { "Foo One", "Foo Two", "Foo Three" };
+struct Foo
+{
+    int value;
+
+    constexpr Foo(int value) : value(value) {}
+
+    constexpr const char* type_string() const { return foo_types[value];  }
+
+    void dump() const
+    {
+        std::cout << "My value is: " << value << '\n';
+    }
+};
+
+int main()
+{
+    std::variant<Foo> foo_one(Foo(1));
+
+    std::visit([](auto&& arg) { arg.dump(); }, foo_one);
+}
+ 
+template <typename... Ts>
+auto get_argument()
+{
+    return []<size_t... Is>(std::index_sequence<Is...>, auto&&... rest)
+    {
+        return std::variant<Ts...> {rest...};
+    }(std::make_index_sequence<sizeof...(rest)>, rest...);
+}
+/* Write a function that creates an std::any value holding one of the following types, on the fly:
+ * 1) int for every odd argument;

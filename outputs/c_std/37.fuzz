@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen("test files/hello.txt", "r");
+    if (!file)
+    {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char *s;
+    size_t size;
+    fseek(file, 0L, SEEK_END);
+    size = ftell(file);
+    rewind(file);
+    s = (char *)malloc(size + 1);
+    if (!s)
+    {
+        printf("Memory allocation error\n");
+        fclose(file);
+        return 1;
+    }
+    fread(s, sizeof(char), size, file);
+    s[size] = '\0';
+    fclose(file);
+    printf("%s\n", s);
+    free(s);
+    return 0;
+}
+ 
+
+ 
+
+#include <sys/stat.h>
+#include <errno.h>
+int main()
+{
+    mkdir("mydir", 0755);
+    mkdir("/home/aaplab/mydir", 0755);
+    return 0;
+}
+ 
+ 
+#include <sys

@@ -1,0 +1,100 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self, size):
+    self.size = size
+    self.n_cx = size
+    self.n_sw = 0
+    self.mat = [[]]
+    self.params = []
+    self.label = ''
+  def __str__(self):
+    s = ''
+    for row, col, val in self.mat:
+      if type(row) == complex:
+        s = s + 'SWAP(' + str(row.imag) + ','+ str(col) +'' + str(val) + ')\n'
+      else:
+        s = s + 'CX(' + str(row) + ','+ str(col) + ')\n'
+    for p in self.params:
+      s = s + 'gate_param'+ str(p) + '\n'
+    if self.label is not '':
+      s = s + 'label'+ self.label + '\n'
+    return s
+  def __mul__(self, other):
+    return Gate('product', str(self) + '\n' + str(other))
+  def get_size(self):
+    return self.size
+  def is_permutation(self):
+    num = 0
+    for row, _ in self.mat:
+      if type(row) == complex:
+        num += 1
+    return num == 1 and self.n_cx + self.n_sw <= self.size
+  def add_param(self, val):
+    self.params.append(val)
+  def decompose(self, circ):
+    for row, col, val in self.mat:
+      if type(row) == complex:
+        row, col = int(round(row)), int(round(col))
+        circ.swap(row, col)
+    for i in range(self.size):
+      circ.cx(self.size - 1, i)
+
+
+class Gate(LinearFunction):
+  def __init__(self, gatetype, gatestr=None, label=None):
+    self.size = 0
+    self.n_cx = 0
+    self.n_sw = 0
+    self.mat = []
+    self.params = []
+    self.gatetype = gatetype
+    self.gatestr = gatestr
+    if label is None or label == '':
+      self.label = gatetype
+    else:
+      self.label = label
+  def get_size(self):
+    return self.size
+  def __str__(self):
+    return self.get_qasm()[0]
+  def set_size(self, size):
+    if size <= 0:
+      raise Exception('size must be non-negative')
+    if self.size == 0:
+      self.size = size
+      return
+    circ = QuantumCircuit(self.size, size)
+    self.decompose(circ)
+    self.size = size
+  def get_qasm(self):
+    circ = QuantumCircuit(self.size)
+    self.de
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

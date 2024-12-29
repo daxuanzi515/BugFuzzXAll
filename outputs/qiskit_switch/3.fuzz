@@ -1,0 +1,45 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.library.standard_gates.x import XGate
+from qiskit.circuit.library.standard_gates.mct import MCTGate
+from qiskit.circuit.library.standard_gates.h import HGate
+
+q = QuantumRegister(6, "q")
+c = ClassicalRegister(2, "c")
+circ = QuantumCircuit(q, c)
+
+circ.switch(case_0, [
+    [0, 0, 3, [q[1], q[2], q[3], c[0]]],
+    [1, 1, 2, [q[0], q[2], q[3], c[1]]],
+    [2, 2, 1, [q[0], q[1], q[3], c[0]]],
+]).add_cases(2, 1, [
+    [2, [3, 4, 5, [q[3]]]],
+]).add_cases(3, 3, [[3, [3, 4, [q[2], q[3]]]]])
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

@@ -1,0 +1,42 @@
+#include <variant>
+, 30.0, 7};
+    std::get_if<2>(&v[3]);  
+    return 0;
+}
+ 
+#include <iostream>
+#include <string>
+#include <optional>
+#include <variant>
+#include <stdexcept>
+
+int main() 
+{
+    while (true) 
+    {
+        try 
+        {
+            std::cout << "Please enter a number and press enter: ";
+            std::string t;
+            std::getline(std::cin, t);
+            try
+            {
+                int res = std::stoi(t);
+                std::cout << res << '\n';
+                break;
+            }
+            catch(...) { std::cout << "Sorry, " << t << "is not a number\nPlease try again: "; }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
+            break;
+        }
+    }
+    return 0;
+}
+ 
+#include <iostream>
+#include <variant>
+using IntString = std::variant<int, std::string>;
+using IntString

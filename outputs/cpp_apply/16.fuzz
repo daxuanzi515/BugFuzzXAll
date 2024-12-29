@@ -1,0 +1,139 @@
+#include <tuple>
+
+#include <vector>
+#include <string>
+#include <iostream>
+#include <cassert>
+#include <type_traits>
+#include <utility>
+
+template<class...> struct overload : overload<> { };
+    
+template<class T, class... Rest>
+struct overload<T, Rest...> : overload<Rest...>, T
+{
+    using overload<Rest...>::operator();
+    using T::operator();
+};
+
+template<class... Ts>
+overload<Ts...> make_overload(Ts&&... ts)
+{
+    return { std::forward<Ts>(ts)... };
+}
+
+template<class F, class... Ts>
+decltype(auto) apply(F&& f, Ts&&... ts)
+{
+    return std::apply(std::forward<F>(f), std::forward_as_tuple(ts...));
+}
+
+#ifdef _MSC_VER
+#define PACKED(...) __pragma(pack(push, 1)) __VA_ARGS__ __pragma(pack(pop))
+#endif
+
+#define EXPAND(x) x
+
+template<class...> struct variant
+{
+};
+
+template<class... Types>
+variant(Types...) -> variant<Types...>;
+
+#ifdef _MSC_VER
+#undef PACKED
+#endif
+
+namespace
+{
+
+struct Person
+{
+    private:
+    std::string name;
+    int age;
+
+    public:
+    Person(std::string name = "", int age = 0)
+        : name{name}
+       , age{age}
+    {
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getAge()
+    {
+        return age;
+    }
+
+    void setName(std::string name)
+    {
+        this->name = name;
+    }
+
+    void setAge(int age)
+    {
+        this->age = age;
+    }
+};
+
+using ArrayVariant = EXPAND(variant<std::array<Person, 4>,
+    std::array<char, 8>,
+    std::array<float, 16>>);
+
+using SizeTVariant = EXPAND(variant<std::size_t,
+    long, long long, unsigned int>);
+
+struct Visitor;
+
+struct VisitorHandler
+{
+    virtual ~VisitorHandler() = default;
+
+    virtual void doSomething(Person&&, Visitor&) = 0;
+
+    template<class... Ts>
+    void doSomethingElse(Visitor&, Ts&&...)
+    {
+    }
+};
+
+
+template<>
+struct VisitorHandler::doSomething<std::array<Person, 4>>
+{
+    void operator()(Visitor& visitor, std::array<Person, 4>& data)
+    {
+        for (auto& person : data)
+        {
+            visitor(person);
+        }
+    }
+};
+
+
+struct Visitor
+{
+    using HandlerPtr = VisitorHandler*;
+
+    inline HandlerPtr handlerPtr;
+
+     
+    template<class... Ts>
+    void operator()(Ts&&... ts)
+    {
+        using Variants = EXPAND(variant<Ts...>);
+
+        apply(make_overload(
+                [ this ](Person&& person)
+                {
+                    handlerPtr->doSomething(std::move(person), *this);
+                },
+                [ this ](VisitorHandler::doSomethingElse::type, Ts&&... ts)
+                {
+                    handlerPtr->doSomethingElse(*this, std::forward<Ts

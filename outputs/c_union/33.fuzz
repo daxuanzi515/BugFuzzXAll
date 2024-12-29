@@ -1,0 +1,21 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    size_t size_of_data_type;
+    void *p;  
+    int i;     
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    printf("^U1.i -- %p\n", &u1.i);
+    printf("^U1.p -- %p\n", &u1.p);
+    u1.size_of_data_type = "long";
+    u1.p = 0x1234;
+    printf("^U1 -- %p\n", &u1);
+    printf("U1.p: %p\n", u1.p);
+    u2.i = 0x5678;
+    printf("U2.i: %d\n", u2.i);
+    return (EXIT_SUCCESS);
+}

@@ -1,0 +1,1212 @@
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/0.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/0.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/0.fuzz:16:2: 错误： #endif 没有匹配的 #if
+   16 | #endif
+      |  ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/1.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/1.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/1.fuzz:9:13: 错误： conflicting types for ‘size_t’; have ‘int’
+    9 | typedef int size_t;
+      |             ^~~~~~
+In file included from /usr/include/stdlib.h:31,
+                 from /home/cxx/fuzz4all/outputs/c_typedef/1.fuzz:1:
+/home/cxx/fuzz4all/gcc-13/lib/gcc/x86_64-pc-linux-gnu/13.1.0/include/stddef.h:214:23: 附注： previous declaration of ‘size_t’ with type ‘size_t’ {或称 ‘long unsigned int’}
+  214 | typedef __SIZE_TYPE__ size_t;
+      |                       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/1.fuzz: 在函数‘int_to_str’中:
+/home/cxx/fuzz4all/outputs/c_typedef/1.fuzz:4:93: 警告： 隐式声明函数‘itoa’ [-Wimplicit-function-declaration]
+    4 | #define PRINT_INT char *int_to_str(int i) { char *str = (char *)malloc((i+1)*sizeof(char)); itoa(i,str,10); return str;}
+      |                                                                                             ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/1.fuzz:23:5: 附注： in expansion of macro ‘PRINT_INT’
+   23 |     PRINT_INT;
+      |     ^~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/2.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/2.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/3.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/3.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/4.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/4.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/5.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/5.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/5.fuzz:34:1: 错误： 程序中有游离的‘`’
+   34 | ```
+      | ^
+/home/cxx/fuzz4all/outputs/c_typedef/5.fuzz:34:2: 错误： 程序中有游离的‘`’
+   34 | ```
+      |  ^
+/home/cxx/fuzz4all/outputs/c_typedef/5.fuzz:34:3: 错误： 程序中有游离的‘`’
+   34 | ```
+      |   ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/6.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/6.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/7.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/7.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/8.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/8.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/9.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/9.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/10.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/10.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/11.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/11.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/11.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz:4:5: 错误： unknown type name ‘int_t’; did you mean ‘int’?
+    4 |     int_t a=5,b=0,c=7;
+      |     ^~~~~
+      |     int
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz: 在函数‘get_int’中:
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz:10:1: 错误： expected declaration specifiers before ‘}’ token
+   10 | }
+      | ^
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz:13: 错误： expected ‘{’ at end of input
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/11.fuzz:10:1: 错误： expected declaration or statement at end of input
+   10 | }
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/12.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/12.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/13.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/13.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/14.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/14.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/14.fuzz:4:1: 错误： unknown type name ‘int_t’; did you mean ‘int’?
+    4 | int_t main() {
+      | ^~~~~
+      | int
+/home/cxx/fuzz4all/outputs/c_typedef/14.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/14.fuzz:6:5: 错误： unknown type name ‘int_t’; did you mean ‘int’?
+    6 |     int_t value = 10;
+      |     ^~~~~
+      |     int
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/15.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/15.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:17:16: 警告： 没有声明任何东西
+   17 | int n1, n2; sum;
+      |                ^
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:18:1: 错误： expected specifier-qualifier-list before ‘printf’
+   18 | printf("Enter two numbers : ");
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:27:9: 错误： expected ‘;’, identifier or ‘(’ before ‘int’
+   27 | typedef int int_t, *int_p_t;
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:27:13: 错误： ‘int_t’被重新声明为不同意义的符号
+   27 | typedef int int_t, *int_p_t;
+      |             ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:3:13: 附注： previous declaration of ‘int_t’ with type ‘int_t’ {或称 ‘int’}
+    3 | typedef int int_t, sum;
+      |             ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:28:5: 错误： ‘main’重定义
+   28 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/15.fuzz:4:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    4 | int main() {
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/16.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/16.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/17.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/17.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:3:7: 错误： 未知的类型名‘int_t’
+    3 | const int_t maxsize = 100;
+      |       ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:6:6: 错误： 文件域中的动态可变的‘name’
+    6 | char name[maxsize];
+      |      ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:7:1: 错误： 未知的类型名‘int_t’
+    7 | int_t id;
+      | ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:9:1: 错误： unknown type name ‘int_t’; did you mean ‘int’?
+    9 | int_t main() {
+      | ^~~~~
+      | int
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:12:29: 错误： ‘s’的存储大小未知
+   12 | struct Student_t* s1, * s2, s;
+      |                             ^
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:13:39: 错误： invalid application of ‘sizeof’ to incomplete type ‘struct Student_t’
+   13 | s2 = (struct Student_t*)malloc(sizeof(struct Student_t));
+      |                                       ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:16:15: 错误： invalid use of undefined type ‘struct Student_t’
+   16 | scanf("%s", s1->name);
+      |               ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:18:16: 错误： invalid use of undefined type ‘struct Student_t’
+   18 | scanf("%d", &s1->id);
+      |                ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:21:16: 错误： invalid use of undefined type ‘struct Student_t’
+   21 | scanf("%s", &s1->name);
+      |                ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:23:16: 错误： invalid use of undefined type ‘struct Student_t’
+   23 | scanf("%d", &s1->id);
+      |                ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:24:3: 错误： invalid use of undefined type ‘struct Student_t’
+   24 | s1->id = s1->id + s2->id;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:24:12: 错误： invalid use of undefined type ‘struct Student_t’
+   24 | s1->id = s1->id + s2->id;
+      |            ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:24:21: 错误： invalid use of undefined type ‘struct Student_t’
+   24 | s1->id = s1->id + s2->id;
+      |                     ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:25:47: 错误： invalid use of undefined type ‘struct Student_t’
+   25 | printf("The sum of the ID %d and %d is %d", s1->id, s2->id, s->id);
+      |                                               ^~
+/home/cxx/fuzz4all/outputs/c_typedef/17.fuzz:25:55: 错误： invalid use of undefined type ‘struct Student_t’
+   25 | printf("The sum of the ID %d and %d is %d", s1->id, s2->id, s->id);
+      |                                                       ^~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/18.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/18.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/18.fuzz:54:5: 错误： ‘int_val’重定义
+   54 | int int_val() {
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/18.fuzz:41:5: 附注： previous definition of ‘int_val’ with type ‘int(void)’
+   41 | int int_val() {
+      |     ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/18.fuzz:79:3: 错误： conflicting types for ‘num’; have ‘struct <匿名>’
+   79 | } num;
+      |   ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/18.fuzz:60:5: 附注： previous declaration of ‘num’ with type ‘int’
+   60 | int num;
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/18.fuzz:84:1: 错误： 未结束的注释
+   84 | /* The structure of a structure is often called a "nested" or "compound" structure. Structures in C also contain tag names, which are used to create a namespace for each structure. Such tag names, together with the typedef qualifier, can act as a form of naming convention to simplify struct naming. Please make
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/19.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/19.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/19.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:5:1: 警告： 隐式声明函数‘strcpy’ [-Wimplicit-function-declaration]
+    5 | strcpy(p,'H');
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+    1 | #include <stdlib.h>
+  +++ |+#include <string.h>
+    2 | int main() {
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:5:1: 警告： 隐式声明与内建函数‘strcpy’不兼容 [-Wbuiltin-declaration-mismatch]
+    5 | strcpy(p,'H');
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:5:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:5:10: 警告： 传递‘strcpy’的第 2 个参数时将整数赋给指针，未作类型转换 [-Wint-conversion]
+    5 | strcpy(p,'H');
+      |          ^~~
+      |          |
+      |          int
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:5:10: 附注： 需要类型‘const char *’，但实参的类型为‘int’
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:6:13: 错误： expected expression before ‘,’ token
+    6 | strcpy(p +1,, 'I');
+      |             ^
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:6:1: 错误： 提供给函数‘strcpy’的实参太多
+    6 | strcpy(p +1,, 'I');
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:7:1: 警告： 隐式声明函数‘printf’ [-Wimplicit-function-declaration]
+    7 | printf("%s", p);
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+    1 | #include <stdlib.h>
+  +++ |+#include <stdio.h>
+    2 | int main() {
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:7:1: 警告： 隐式声明与内建函数‘printf’不兼容 [-Wbuiltin-declaration-mismatch]
+    7 | printf("%s", p);
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:7:1: 附注： include ‘<stdio.h>’ or provide a declaration of ‘printf’
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:14:5: 错误： ‘main’重定义
+   14 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:25:5: 错误： ‘main’重定义
+   25 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:37:5: 错误： ‘main’重定义
+   37 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:47:5: 错误： ‘main’重定义
+   47 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:57:5: 错误： ‘main’重定义
+   57 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:68:5: 错误： ‘main’重定义
+   68 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:2:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    2 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:73:8: 警告： 缺少结尾的 " 字符
+   73 | printf("%d\
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:73:8: 错误： 缺少结尾的 " 字符
+   73 | printf("%d\
+      |        ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:73:1: 错误： expected expression at end of input
+   73 | printf("%d\
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/19.fuzz:73:1: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/20.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/20.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/21.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/21.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/21.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/21.fuzz:12:5: 警告： 隐式声明函数‘MIN’ [-Wimplicit-function-declaration]
+   12 | n = MIN(MAX, 10);
+      |     ^~~
+/usr/bin/ld: /tmp/ccq1vNjE.o: in function `main':
+21.fuzz:(.text+0xa8): undefined reference to `MIN'
+collect2: 错误： ld 返回 1
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/22.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/22.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/23.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/23.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:8:1: 错误： unknown type name ‘marks’; did you mean ‘Marks’?
+    8 | marks *create(int, int);
+      | ^~~~~
+      | Marks
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:11:3: 警告： assignment to ‘Marks *’ from incompatible pointer type ‘int *’ [-Wincompatible-pointer-types]
+   11 | m = create(3, 44);
+      |   ^
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:17:1: 错误： unknown type name ‘marks’; did you mean ‘Marks’?
+   17 | marks *create(int r, int k) {
+      | ^~~~~
+      | Marks
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz: 在函数‘create’中:
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:18:8: 错误： ‘p’未声明(在此函数内第一次使用)
+   18 | marks *p;
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:18:8: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:19:13: 错误： expected expression before ‘)’ token
+   19 | p = (marks *)malloc(sizeof(marks));
+      |             ^
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:35:5: 错误： ‘main’重定义
+   35 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/23.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main() {
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/24.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/24.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/25.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/25.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:3:9: 错误： 未知的类型名‘Date_t’
+    3 | typedef Date_t Date_t;
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:9:3: 错误： ‘Date_t’被重新声明为不同意义的符号
+    9 | } Date_t;
+      |   ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:3:16: 附注： previous declaration of ‘Date_t’ with type ‘Date_t’ {或称 ‘int’}
+    3 | typedef Date_t Date_t;
+      |                ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:12:7: 错误： expected ‘;’ before ‘date’
+   12 | Date_t date;
+      |       ^~~~~
+      |       ;
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:14:20: 错误： ‘date’ undeclared (first use in this function); did you mean ‘Date_t’?
+   14 | scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+      |                    ^~~~
+      |                    Date_t
+/home/cxx/fuzz4all/outputs/c_typedef/25.fuzz:14:20: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/26.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/26.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/27.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/27.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/27.fuzz:67:5: 错误： ‘main’重定义
+   67 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/27.fuzz:6:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    6 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/27.fuzz:90:1: 错误： 未结束的注释
+   90 | /* The main objective
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/28.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/28.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/28.fuzz:24:5: 错误： ‘main’重定义
+   24 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/28.fuzz:7:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    7 | int main ()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/28.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/28.fuzz:53:7: 错误： expected ‘;’ at end of input
+   53 | printf
+      |       ^
+      |       ;
+/home/cxx/fuzz4all/outputs/c_typedef/28.fuzz:53:1: 错误： expected declaration or statement at end of input
+   53 | printf
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/28.fuzz:53:1: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/29.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/29.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/30.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/30.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/31.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/31.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:27:5: 错误： ‘main’重定义
+   27 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:37:16: 错误： ‘struct Location_t’重定义
+   37 | typedef struct Location_t
+      |                ^~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:21:16: 附注： 原先在这里定义
+   21 | typedef struct Location_t
+      |                ^~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:42:3: 错误： conflicting types for ‘Location_t’; have ‘struct Location_t’
+   42 | } Location_t;
+      |   ^~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:26:3: 附注： previous declaration of ‘Location_t’ with type ‘Location_t’
+   26 | } Location_t;
+      |   ^~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:43:5: 错误： ‘main’重定义
+   43 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/31.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/32.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/32.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/32.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/32.fuzz:17:15: 错误： ‘date’的存储大小未知
+   17 | struct Date_t date;
+      |               ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/33.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/33.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/33.fuzz:9:16: 错误： ‘struct Date_t’重定义
+    9 | typedef struct Date_t
+      |                ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/33.fuzz:3:8: 附注： 原先在这里定义
+    3 | struct Date_t
+      |        ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/33.fuzz:14:1: 警告： 空声明中指定存储类无用
+   14 | };
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/34.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/34.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/35.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/35.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/36.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/36.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:22:5: 错误： ‘main’重定义
+   22 | int main( void )
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:25:14: 警告： 隐式声明函数‘pow’ [-Wimplicit-function-declaration]
+   25 | area = PI * (pow(RADIUS, 2.0));
+      |              ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:3:1: 附注： include ‘<math.h>’ or provide a declaration of ‘pow’
+    2 | #include <stdio.h>
+  +++ |+#include <math.h>
+    3 | typedef struct Date_t
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:25:14: 警告： 隐式声明与内建函数‘pow’不兼容 [-Wbuiltin-declaration-mismatch]
+   25 | area = PI * (pow(RADIUS, 2.0));
+      |              ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:25:14: 附注： include ‘<math.h>’ or provide a declaration of ‘pow’
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:33: 警告： “PI”重定义
+   33 | #define PI 3.1416
+      | 
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:19: 附注： 这是先前定义的位置
+   19 | #define PI 3.14
+      | 
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:34:16: 错误： expected ‘;’, ‘,’ or ‘)’ before numeric constant
+   34 | #define RADIUS 2
+      |                ^
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:36:27: 附注： in expansion of macro ‘RADIUS’
+   36 | double Circle_Area(double RADIUS);
+      |                           ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:34:16: 错误： expected ‘;’, ‘,’ or ‘)’ before numeric constant
+   34 | #define RADIUS 2
+      |                ^
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:37:34: 附注： in expansion of macro ‘RADIUS’
+   37 | inline double Circle_Area(double RADIUS)
+      |                                  ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:43:5: 错误： ‘main’重定义
+   43 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:48:40: 警告： 隐式声明函数‘Circle_Area’ [-Wimplicit-function-declaration]
+   48 |     printf("The area of circle is %f", Circle_Area(RADIUS));
+      |                                        ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/36.fuzz:51:1: 错误： 未结束的注释
+   51 | /* The union keyword in C language defines a
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/37.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/37.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/38.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/38.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/39.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/39.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/39.fuzz:25:5: 错误： ‘main’重定义
+   25 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/39.fuzz:13:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   13 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/39.fuzz:34:5: 错误： ‘main’重定义
+   34 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/39.fuzz:13:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   13 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/40.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/40.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/41.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/41.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/41.fuzz:15:5: 错误： ‘main’重定义
+   15 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/41.fuzz:6:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    6 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/41.fuzz:32:5: 错误： ‘main’重定义
+   32 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/41.fuzz:6:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    6 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/41.fuzz:38:1: 错误： 未结束的注释
+   38 | /* There are a few limitations associated with bit fields. In particular, multiple bit fields can't be used in a single storage object, which is a rule of the C language. In fact, a storage object can contain only one bit
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/42.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/42.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:27:5: 错误： ‘main’重定义
+   27 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:39:5: 错误： ‘sum’重定义
+   39 | int sum(int a, int b)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:20:5: 附注： previous definition of ‘sum’ with type ‘int(int,  int)’
+   20 | int sum(int a, int b)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:46:5: 错误： ‘main’重定义
+   46 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/42.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/43.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/43.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/44.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/44.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/45.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/45.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:14:2: 错误： conflicting types for ‘Point’; have ‘struct Point2’
+   14 | }Point;
+      |  ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:9:2: 附注： previous declaration of ‘Point’ with type ‘Point’
+    9 | }Point;
+      |  ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:20:9: 错误： unknown type name ‘Point2’; use ‘struct’ keyword to refer to the type
+   20 |         Point2 min_point;
+      |         ^~~~~~
+      |         struct 
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:21:18: 错误： 在非结构或联合中请求成员‘x’
+   21 |         min_point.x = min(p->x, 3);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:22:18: 错误： 在非结构或联合中请求成员‘y’
+   22 |         min_point.y = min(p->y, 3);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:23:77: 错误： 在非结构或联合中请求成员‘x’
+   23 |         printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+      |                                                                             ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:23:90: 错误： 在非结构或联合中请求成员‘y’
+   23 |         printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+      |                                                                                          ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:24:9: 错误： unknown type name ‘Point2’; use ‘struct’ keyword to refer to the type
+   24 |         Point2 max_point;
+      |         ^~~~~~
+      |         struct 
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:25:18: 错误： 在非结构或联合中请求成员‘x’
+   25 |         max_point.x = max(p->x, 5);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:26:18: 错误： 在非结构或联合中请求成员‘y’
+   26 |         max_point.y = max(p->y, 5);
+      |                  ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:27:75: 错误： 在非结构或联合中请求成员‘x’
+   27 |         printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+      |                                                                           ^
+/home/cxx/fuzz4all/outputs/c_typedef/45.fuzz:27:88: 错误： 在非结构或联合中请求成员‘y’
+   27 |         printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+      |                                                                                        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/46.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/46.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:10:2: 错误： ‘Point’被重新声明为不同意义的符号
+   10 | }Point;
+      |  ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:5:22: 附注： previous declaration of ‘Point’ with type ‘Point’
+    5 | typedef struct Point Point;
+      |                      ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:11:1: 错误： unknown type name ‘Point’; use ‘struct’ keyword to refer to the type
+   11 | Point* p = (Point*)malloc(sizeof(Point));
+      | ^~~~~
+      | struct 
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:11:19: 错误： expected expression before ‘)’ token
+   11 | Point* p = (Point*)malloc(sizeof(Point));
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:12:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+   12 | p->x = 4;
+      |  ^~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:13:2: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘->’ token
+   13 | p->y = 4;
+      |  ^~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:14:1: 错误： 未知的类型名‘POINT’
+   14 | POINT min_point;
+      | ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:15:10: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   15 | min_point.x = min(p->x, 3);
+      |          ^
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:16:10: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   16 | min_point.y = min(p->y, 3);
+      |          ^
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:17:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   17 | printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:17:60: 错误： expected declaration specifiers or ‘...’ before ‘min_point’
+   17 | printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+      |                                                            ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:17:73: 错误： expected declaration specifiers or ‘...’ before ‘min_point’
+   17 | printf("The minimum point in (0,0) x (4,4) is (%d, %d)\n", min_point.x, min_point.y);
+      |                                                                         ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:18:1: 错误： unknown type name ‘Point’; use ‘struct’ keyword to refer to the type
+   18 | Point max_point;
+      | ^~~~~
+      | struct 
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:19:10: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   19 | max_point.x = max(p->x, 5);
+      |          ^
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:20:10: 错误： expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘.’ token
+   20 | max_point.y = max(p->y, 5);
+      |          ^
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:21:8: 错误： expected declaration specifiers or ‘...’ before string constant
+   21 | printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:21:58: 错误： expected declaration specifiers or ‘...’ before ‘max_point’
+   21 | printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+      |                                                          ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:21:71: 错误： expected declaration specifiers or ‘...’ before ‘max_point’
+   21 | printf("The maximum point in (0,0) x (4,4) is (%d, %d)", max_point.x, max_point.y);
+      |                                                                       ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:22:1: 警告： 数据定义时没有类型或存储类
+   22 | free(p);
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:22:1: 警告： 在‘free’的声明中，类型默认为‘int’ [-Wimplicit-int]
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:22:1: 警告： 函数声明中出现形参名却未指定类型
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:22:1: 错误： conflicting types for ‘free’; have ‘int()’
+In file included from /home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:1:
+/usr/include/stdlib.h:565:13: 附注： previous declaration of ‘free’ with type ‘void(void *)’
+  565 | extern void free (void *__ptr) __THROW;
+      |             ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:23:1: 错误： expected identifier or ‘(’ before ‘return’
+   23 | return 0;
+      | ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/46.fuzz:24:1: 错误： expected identifier or ‘(’ before ‘}’ token
+   24 | }
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/47.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/47.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/47.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/47.fuzz:12:15: 错误： expected expression before ‘Point_t’
+   12 | #define Point Point_t
+      |               ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/47.fuzz:16:42: 附注： in expansion of macro ‘Point’
+   16 |         Point* p = (Point*)malloc(sizeof Point);
+      |                                          ^~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/48.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/48.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/49.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/49.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:10:9: 错误： expected identifier or ‘(’ before ‘int’
+   10 | int max(int p1, int p2)
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:3:21: 附注： in definition of macro ‘max’
+    3 | #define max(x,y) (((x) > (y))? (x):(y))
+      |                     ^
+/home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:3:24: 错误： expected ‘)’ before ‘>’ token
+    3 | #define max(x,y) (((x) > (y))? (x):(y))
+      |                        ^
+/home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:10:5: 附注： in expansion of macro ‘max’
+   10 | int max(int p1, int p2)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:3:30: 错误： expected ‘)’ before ‘?’ token
+    3 | #define max(x,y) (((x) > (y))? (x):(y))
+      |                              ^
+/home/cxx/fuzz4all/outputs/c_typedef/49.fuzz:10:5: 附注： in expansion of macro ‘max’
+   10 | int max(int p1, int p2)
+      |     ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/50.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/50.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/50.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/50.fuzz:17:9: 警告： 隐式声明函数‘FreePoint’ [-Wimplicit-function-declaration]
+   17 |         FreePoint(p);
+      |         ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/50.fuzz:17:19: 错误： ‘p’未声明(在此函数内第一次使用)
+   17 |         FreePoint(p);
+      |                   ^
+/home/cxx/fuzz4all/outputs/c_typedef/50.fuzz:17:19: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_typedef/50.fuzz:18:19: 错误： ‘min_point’未声明(在此函数内第一次使用)
+   18 |         FreePoint(min_point);
+      |                   ^~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/50.fuzz:19:19: 错误： ‘max_point’未声明(在此函数内第一次使用)
+   19 |         FreePoint(max_point);
+      |                   ^~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/51.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/51.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/52.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/52.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/52.fuzz:44:1: 错误： 未结束的注释
+   44 | /* Please list down some examples of the usage of the new C features such as typedefs
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/53.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/53.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/53.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/53.fuzz:37:9: 错误： expected declaration or statement at end of input
+   37 |         free(p);
+      |         ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/54.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/54.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/54.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/54.fuzz:20:23: 警告： implicit declaration of function ‘min’; did you mean ‘main’? [-Wimplicit-function-declaration]
+   20 |         min_point.x = min(p->x, 3);
+      |                       ^~~
+      |                       main
+/home/cxx/fuzz4all/outputs/c_typedef/54.fuzz:23:31: 警告： initialization of ‘FunctionPtr’ {或称 ‘void * (*)(long long int)’} from incompatible pointer type ‘large_int_t (*)(large_int_t,  large_int_t)’ {或称 ‘long long int (*)(long long int,  long long int)’} [-Wincompatible-pointer-types]
+   23 |         FunctionPtr greater = greater_than;
+      |                               ^~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/54.fuzz:25:12: 错误： 提供给函数‘greater’的实参太多
+   25 |         if(greater(p->x, p->y) > p->x)
+      |            ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/54.fuzz:25:32: 警告： 比较指针和整数
+   25 |         if(greater(p->x, p->y) > p->x)
+      |                                ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/55.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/55.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/56.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/56.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/57.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/57.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/57.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/57.fuzz:17:26: 错误： ‘_FALSE’ undeclared (first use in this function); did you mean ‘FALSE’?
+   17 |                 n = (Num)_FALSE;
+      |                          ^~~~~~
+      |                          FALSE
+/home/cxx/fuzz4all/outputs/c_typedef/57.fuzz:17:26: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/58.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/58.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/59.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/59.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/59.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/59.fuzz:27:23: 警告： implicit declaration of function ‘min’; did you mean ‘main’? [-Wimplicit-function-declaration]
+   27 |         min_point.x = min(p->x, 3);
+      |                       ^~~
+      |                       main
+/home/cxx/fuzz4all/outputs/c_typedef/59.fuzz:31:28: 错误： ‘less_than_than’ undeclared (first use in this function); did you mean ‘less_than’?
+   31 |         FunctionPtr less = less_than_than;
+      |                            ^~~~~~~~~~~~~~
+      |                            less_than
+/home/cxx/fuzz4all/outputs/c_typedef/59.fuzz:31:28: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_typedef/59.fuzz:39:17: 错误： ‘max_point’ undeclared (first use in this function); did you mean ‘min_point’?
+   39 |                 max_point.x = p->x;
+      |                 ^~~~~~~~~
+      |                 min_point
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/60.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/60.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/61.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/61.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/62.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/62.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/62.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/62.fuzz:6:42: 错误： invalid application of ‘sizeof’ to incomplete type ‘struct Tag’
+    6 |         tag_ptr = (TagPtr)(malloc(sizeof(struct Tag)));
+      |                                          ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/63.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/63.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/63.fuzz:7:35: 错误： 初始值设定元素不是常量
+    7 | my_int_t another_int_t_variable = get_int_t();
+      |                                   ^~~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/64.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/64.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/65.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/65.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/66.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/66.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/66.fuzz: 在函数‘Calc’中:
+/home/cxx/fuzz4all/outputs/c_typedef/66.fuzz:6:16: 错误： 将‘double’返回为‘Func_t’ {或称 ‘double (*)(const char *, double)’}时类型不兼容
+    6 |         return func(str, 3.1415926);
+      |                ^~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/66.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/66.fuzz:25:24: 警告： implicit declaration of function ‘Mul’; did you mean ‘mul’? [-Wimplicit-function-declaration]
+   25 |         printf("%f\n", Mul(mul2, "multiply"));
+      |                        ^~~
+      |                        mul
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/67.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/67.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/68.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/68.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/69.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/69.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/69.fuzz:28:5: 错误： ‘main’重定义
+   28 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/69.fuzz:9:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    9 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/69.fuzz:38:1: 错误： 未结束的注释
+   38 | /* In this project, we will see how to include C header files.
+      | ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/70.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/70.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:13:24: 错误： 重复的‘unsigned’
+   13 | typedef unsigned short unsigned SHORT;
+      |                        ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:24:5: 错误： ‘main’重定义
+   24 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:5:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    5 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:39:5: 错误： ‘main’重定义
+   39 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:5:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    5 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:50:9: 错误： called object ‘sum’ is not a function or function pointer
+   50 |         sum(sumarry,n);
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/70.fuzz:41:13: 附注： 在此声明
+   41 |         int sum = 0;
+      |             ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/71.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/71.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/71.fuzz:5:21: 错误： 声明指定了两个以上的数据类型
+    5 | typedef double long double z;
+      |                     ^~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/72.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/72.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/73.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/73.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/74.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/74.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/75.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/75.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/76.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/76.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/76.fuzz:16:9: 错误： 未知的类型名‘complex’
+   16 | typedef complex num;
+      |         ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/76.fuzz:21:1: 错误： unknown type name ‘complex’; did you mean ‘complex int’?
+   21 | complex test(enum2 c)
+      | ^~~~~~~
+      | complex int
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/77.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/77.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:24:16: 错误： ‘struct complex’重定义
+   24 | typedef struct complex{
+      |                ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:5:8: 附注： 原先在这里定义
+    5 | struct complex{
+      |        ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:27:16: 错误： ‘struct complex_num’重定义
+   27 | typedef struct complex_num{
+      |                ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:8:8: 附注： 原先在这里定义
+    8 | struct complex_num{
+      |        ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:30:5: 错误： ‘main’重定义
+   30 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:31:53: 错误： expected ‘)’ before ‘.’ token
+   31 |         printf("struct complex i=%d, j=%d",(complex1.i), (complex1.j));
+      |                                            ~        ^
+      |                                                     )
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:31:56: 错误： expected expression before ‘,’ token
+   31 |         printf("struct complex i=%d, j=%d",(complex1.i), (complex1.j));
+      |                                                        ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:31:70: 错误： expected expression before ‘)’ token
+   31 |         printf("struct complex i=%d, j=%d",(complex1.i), (complex1.j));
+      |                                                                      ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:32:60: 错误： expected ‘)’ before ‘.’ token
+   32 |         printf("\nstruct complex_num i=%d, j=%d", (complex2.i), (complex1.j));
+      |                                                   ~        ^
+      |                                                            )
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:32:63: 错误： expected expression before ‘,’ token
+   32 |         printf("\nstruct complex_num i=%d, j=%d", (complex2.i), (complex1.j));
+      |                                                               ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:32:77: 错误： expected expression before ‘)’ token
+   32 |         printf("\nstruct complex_num i=%d, j=%d", (complex2.i), (complex1.j));
+      |                                                                             ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:36:1: 错误： unknown type name ‘complex3’; did you mean ‘complex2’?
+   36 | complex3 getComplexNumberFromUser(){
+      | ^~~~~~~~
+      | complex2
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在函数‘getComplexNumberFromUser’中:
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:37:9: 错误： unknown type name ‘complex3’; did you mean ‘complex2’?
+   37 |         complex3 c;
+      |         ^~~~~~~~
+      |         complex2
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:39:22: 错误： 在非结构或联合中请求成员‘i’
+   39 |         scanf("%d",&c.i);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:41:22: 错误： 在非结构或联合中请求成员‘j’
+   41 |         scanf("%d",&c.j);
+      |                      ^
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:44:5: 错误： ‘main’重定义
+   44 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:45:23: 错误： 无效的初始值设定
+   45 |         complex1 c1 = getComplexNumberFromUser();
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:58:5: 错误： ‘main’重定义
+   58 | int main(void) {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main(){
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:61:9: 警告： 隐式声明函数‘strcpy’ [-Wimplicit-function-declaration]
+   61 |         strcpy(msg,"Hello,world!\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:3:1: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+    2 | #include <stdio.h>
+  +++ |+#include <string.h>
+    3 | const int i = 1;
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:61:9: 警告： 隐式声明与内建函数‘strcpy’不兼容 [-Wbuiltin-declaration-mismatch]
+   61 |         strcpy(msg,"Hello,world!\n");
+      |         ^~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/77.fuzz:61:9: 附注： include ‘<string.h>’ or provide a declaration of ‘strcpy’
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/78.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/78.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:25:5: 错误： conflicting types for ‘fun’; have ‘int(double)’
+   25 | int fun(double d)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:24:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   24 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:29:5: 错误： conflicting types for ‘fun’; have ‘int(int)’
+   29 | int fun(int i)
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:24:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   24 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:33:5: 错误： conflicting types for ‘fun’; have ‘int(float)’
+   33 | int fun(float f);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:24:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   24 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:34:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   34 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:34:1: 错误： ‘main’重定义
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:40:5: 错误： conflicting types for ‘fun’; have ‘int(double)’
+   40 | int fun(double d);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:39:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   39 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:41:5: 错误： conflicting types for ‘fun’; have ‘int(int)’
+   41 | int fun(int i);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:39:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   39 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:42:5: 错误： conflicting types for ‘fun’; have ‘int(float)’
+   42 | int fun(float f);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:39:5: 附注： previous declaration of ‘fun’ with type ‘int(void)’
+   39 | int fun(void);
+      |     ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:43:1: 警告： 返回类型默认为‘int’ [-Wimplicit-int]
+   43 | main()
+      | ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:43:1: 错误： ‘main’重定义
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:45:29: 警告： initialization of ‘int (*)(int)’ from incompatible pointer type ‘int (*)(float)’ [-Wincompatible-pointer-types]
+   45 |         int (*pf) (int d) = fun;
+      |                             ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:50:5: 错误： ‘main’重定义
+   50 | int main(void)
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:17:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   17 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:55:30: 错误： ‘FILE_NAME’ undeclared (first use in this function); did you mean ‘__FILE_NAME__’?
+   55 |         FILE *myfile = fopen(FILE_NAME, "r");
+      |                              ^~~~~~~~~
+      |                              __FILE_NAME__
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:55:30: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:65:25: 错误： expected expression at end of input
+   65 |                         for (int j = 0; j <
+      |                         ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:65:25: 错误： expected declaration or statement at end of input
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:65:25: 错误： expected declaration or statement at end of input
+/home/cxx/fuzz4all/outputs/c_typedef/78.fuzz:65:25: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/79.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/79.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/80.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/80.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/80.fuzz:4:15: 错误： 未知的类型名‘num’
+    4 | typedef const num num_t;
+      |               ^~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/81.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/81.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/81.fuzz: 在函数‘main1’中:
+/home/cxx/fuzz4all/outputs/c_typedef/81.fuzz:77:9: 错误： expected expression at end of input
+   77 |         for(i =
+      |         ^~~
+/home/cxx/fuzz4all/outputs/c_typedef/81.fuzz:77:9: 错误： expected declaration or statement at end of input
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/82.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/82.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/83.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/83.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:29:3: 错误： conflicting types for ‘complex’; have ‘struct <匿名>’
+   29 | } complex;
+      |   ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:10:3: 附注： previous declaration of ‘complex’ with type ‘complex’
+   10 | } complex;
+      |   ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:30:17: 错误： conflicting types for ‘complex_num’; have ‘complex’
+   30 | typedef complex complex_num;
+      |                 ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:11:17: 附注： previous declaration of ‘complex_num’ with type ‘complex_num’ {或称 ‘complex’}
+   11 | typedef complex complex_num;
+      |                 ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:31:16: 错误： ‘struct color’重定义
+   31 | typedef struct color
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:12:16: 附注： 原先在这里定义
+   12 | typedef struct color
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:36:3: 错误： conflicting types for ‘rgb_type’; have ‘struct color’
+   36 | } rgb_type;
+      |   ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:17:3: 附注： previous declaration of ‘rgb_type’ with type ‘rgb_type’ {或称 ‘struct color’}
+   17 | } rgb_type;
+      |   ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:47:3: 错误： conflicting types for ‘complex’; have ‘struct <匿名>’
+   47 | } complex;
+      |   ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:29:3: 附注： previous declaration of ‘complex’ with type ‘complex’
+   29 | } complex;
+      |   ^~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:48:17: 错误： conflicting types for ‘complex_num’; have ‘complex’
+   48 | typedef complex complex_num;
+      |                 ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:30:17: 附注： previous declaration of ‘complex_num’ with type ‘complex_num’ {或称 ‘complex’}
+   30 | typedef complex complex_num;
+      |                 ^~~~~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:49:16: 错误： ‘struct color’重定义
+   49 | typedef struct color
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:31:16: 附注： 原先在这里定义
+   31 | typedef struct color
+      |                ^~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:54:3: 错误： conflicting types for ‘rgb_type’; have ‘struct color’
+   54 | } rgb_type;
+      |   ^~~~~~~~
+/home/cxx/fuzz4all/outputs/c_typedef/83.fuzz:36:3: 附注： previous declaration of ‘rgb_type’ with type ‘rgb_type’ {或称 ‘struct color’}
+   36 | } rgb_type;
+      |   ^~~~~~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/84.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/84.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/85.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/85.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/85.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:9: 错误： unknown type name ‘a’; use ‘struct’ keyword to refer to the type
+   10 |         a a1 = {.x = 1,.y = 2};
+      |         ^
+      |         struct 
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:17: 错误： 字段名不在记录或联合初始值设定中
+   10 |         a a1 = {.x = 1,.y = 2};
+      |                 ^
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:17: 附注： (在‘a1’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:24: 错误： 字段名不在记录或联合初始值设定中
+   10 |         a a1 = {.x = 1,.y = 2};
+      |                        ^
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:24: 附注： (在‘a1’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:29: 警告： 标量初始值设定项中有多余元素
+   10 |         a a1 = {.x = 1,.y = 2};
+      |                             ^
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:10:29: 附注： (在‘a1’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:20:34: 错误： 在非结构或联合中请求成员‘x’
+   20 |         printf("a1: %d, %d\n", a1.x, a1.y);
+      |                                  ^
+/home/cxx/fuzz4all/outputs/c_typedef/85.fuzz:20:40: 错误： 在非结构或联合中请求成员‘y’
+   20 |         printf("a1: %d, %d\n", a1.x, a1.y);
+      |                                        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/86.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/86.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/87.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/87.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:8:8: 错误： ‘struct a’重定义
+    8 | struct a
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:3:8: 附注： 原先在这里定义
+    3 | struct a
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:13:8: 错误： ‘struct a’重定义
+   13 | struct a
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:8:8: 附注： 原先在这里定义
+    8 | struct a
+      |        ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:19:32: 错误： ‘struct a’没有名为‘y’的成员
+   19 |         struct a a1 = {.x = 1,.y = 2};
+      |                                ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:19:36: 警告： 结构初始值设定项中有多余元素
+   19 |         struct a a1 = {.x = 1,.y = 2};
+      |                                    ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:19:36: 附注： (在‘a1’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:20:32: 错误： ‘struct a’没有名为‘y’的成员
+   20 |         struct a a2 = {.x = 3,.y = 4};
+      |                                ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:20:36: 警告： 结构初始值设定项中有多余元素
+   20 |         struct a a2 = {.x = 3,.y = 4};
+      |                                    ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:20:36: 附注： (在‘a2’的初始化附近)
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:22:40: 错误： ‘struct a’没有名为‘y’的成员
+   22 |         printf("a1: %d, %d\n", a1.x, a1.y);
+      |                                        ^
+/home/cxx/fuzz4all/outputs/c_typedef/87.fuzz:23:40: 错误： ‘struct a’没有名为‘y’的成员
+   23 |         printf("a2: %d, %d\n", a2.x, a2.y);
+      |                                        ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/88.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/88.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/88.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:27:11: 错误： ‘struct <匿名>’没有名为‘y’的成员
+   27 |         a3.y = 0;
+      |           ^
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz: 在文件作用域：
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:43:3: 错误： conflicting types for ‘a1’; have ‘struct <匿名>’
+   43 | } a1;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:7:3: 附注： previous declaration of ‘a1’ with type ‘struct <匿名>’
+    7 | } a1;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:48:3: 错误： conflicting types for ‘a2’; have ‘struct <匿名>’
+   48 | } a2;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:12:3: 附注： previous declaration of ‘a2’ with type ‘struct <匿名>’
+   12 | } a2;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:52:3: 错误： conflicting types for ‘a3’; have ‘struct <匿名>’
+   52 | } a3;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:16:3: 附注： previous declaration of ‘a3’ with type ‘struct <匿名>’
+   16 | } a3;
+      |   ^~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:55:5: 错误： ‘main’重定义
+   55 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:18:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+   18 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/88.fuzz:64:11: 错误： ‘struct <匿名>’没有名为‘y’的成员
+   64 |         a3.y = 0;
+      |           ^
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/89.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/89.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/90.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/90.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/91.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/91.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/92.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/92.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/93.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/93.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/94.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/94.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/94.fuzz:3:14: 错误： expected identifier before ‘true’
+    3 | #define TRUE true
+      |              ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/94.fuzz:5:15: 附注： in expansion of macro ‘TRUE’
+    5 | typedef enum {TRUE, FALSE} boolean;
+      |               ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/95.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/95.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/96.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/96.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/97.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/97.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:15:5: 错误： ‘main’重定义
+   15 | int main() {
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:26:5: 错误： ‘main’重定义
+   26 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:44:5: 错误： ‘main’重定义
+   44 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/97.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/98.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/98.fuzz is safe
+[TRACE] Validating /home/cxx/fuzz4all/outputs/c_typedef/99.fuzz ...
+[VERBOSE] /home/cxx/fuzz4all/outputs/c_typedef/99.fuzz failed validation with error message: /home/cxx/fuzz4all/outputs/c_typedef/99.fuzz:19:5: 错误： ‘main’重定义
+   19 | int main ()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/99.fuzz:3:5: 附注： previous definition of ‘main’ with type ‘int(void)’
+    3 | int main()
+      |     ^~~~
+/home/cxx/fuzz4all/outputs/c_typedef/99.fuzz: 在函数‘main’中:
+/home/cxx/fuzz4all/outputs/c_typedef/99.fuzz:35:18: 警告： 隐式声明函数‘LinearSearch’ [-Wimplicit-function-declaration]
+   35 |     int result = LinearSearch (array, 0, n - 1, element);
+      |                  ^~~~~~~~~~~~
+

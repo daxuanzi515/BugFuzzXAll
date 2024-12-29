@@ -1,0 +1,21 @@
+import java.lang.Object;
+<fim_suffix>t("Enter the number: "));
+		System.out.print("The Square is: ");
+		System.out.println((num * num));
+	
+		}
+
+ 
+		 
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello\nworld");
+	}
+}
+
+import java.lang.Object;
+import java.util.*;
+
+public class Prime {

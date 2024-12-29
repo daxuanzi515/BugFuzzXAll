@@ -1,0 +1,23 @@
+import java.lang.Object;
+class SampleData {
+    void write() { System.out.println("Write operation to SampleData is invoked!"); }
+    void read() { System.out.println("Read operation to SampleData is invoked!"); }
+}
+
+public class MultiThreaded{
+    MultiThreadedData mut = new MultiThreadedData();
+    SampleData obj = mut.data;
+    public synchronized void read(String s) {
+        obj.read();
+    }
+
+    public synchronized void write() {
+        obj.write();
+    }
+
+    public synchronized void read1(String s) {
+        synchronized (this) {
+            obj.read();
+        }
+    }
+}

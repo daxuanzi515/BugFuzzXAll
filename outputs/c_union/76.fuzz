@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <stdio.h>
+union complex {
+      long int real;
+      struct {
+           int x, y;
+      } imaginary;
+ };
+char *p;
+complex z, zz;
+int main() {
+     p = (char *)&z.real;
+     z.real = 8015968879;
+    
+     z.imaginary = (struct {
+                 int x, y;
+           }) {
+                45, 50
+           };
+     z.real = 8182506688;
+     z = (union complex) {
+                8076495884
+           };     
+     zz = {
+                102, {33, 45}
+           };    
+     return (EXIT_SUCCESS);
+}

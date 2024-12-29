@@ -1,0 +1,23 @@
+#include <tuple>
+#include <string>
+#include <iostream>
+int main()
+{
+  std::tuple<std::string> t = std::make_tuple("Hello!");
+  std::apply([](std::string& x) {std::cout << x;}, t);
+  std::cout << '\n';
+  std::cout << std::apply([]() {return "Hello there!";}, t) << '\n';
+}
+ 
+#include <iostream>
+#include <tuple>
+#include <string>
+int main()
+{
+  std::tuple<std::string, int> t = std::make_tuple("Hello!", 99);
+  std::cout << "Using tuple!\n";
+  std::cout << "First: " << std::get<0>(t) << '\n';
+  std::cout << "Second: " << std::get<1>(t) << '\n';
+  std::cout << "Total count: " << std::tuple_size_v<decltype(t)> << '\n';
+  return EXIT_SUCCESS;
+}

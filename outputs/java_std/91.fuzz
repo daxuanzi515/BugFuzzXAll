@@ -1,0 +1,56 @@
+import java.lang.Object;
+<fim_suffix>er.append("Java ");
+		buffer.append(25 - i + 1);
+		buffer.append("");
+		
+		System.out.println(buffer);
+	}
+}
+ 
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		System.out.println(Integer.toString(99+10)+ " % 10: "+ (99+10)%10);
+		System.out.println(Integer.toString(99+1)+ " % 10: "+ (99+1)%10);
+		System.out.println(Integer.toString(99+5)+ " % 10: "+ (99+5)%10);
+		System.out.println(Integer.toString(99+3)+ " % 10: "+ (99+3)%10);
+	}
+}
+ 
+ 
+import java.io.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		Random myRandomGenerator = new Random();
+		for(int i = 0; i < 10; i++){
+			int myRandomNumber = myRandomGenerator.nextInt(101);
+			System.out.println(Double.toString(myRandomNumber/100));
+		}
+	}
+}
+ 
+ 
+import java.lang.Math;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		Scanner s1 = new Scanner("Hello\nworld");
+		int max = -1;
+		int first;
+		int second;
+		String secondString;
+		int maxIndex = 0;
+		while(s1.hasNext()){
+			first = s1.nextInt();
+			second = s1.nextInt();
+			secondString = s1.next();
+			int current = getDifference(first, second);
+			if (current<=max){
+				max = current;
+				maxIndex = getIndex(max, first, second);
+				if(max==4){
+					if(maxIndex == 0){
+						System.out.println(" " + second);
+					} else {
+						System.

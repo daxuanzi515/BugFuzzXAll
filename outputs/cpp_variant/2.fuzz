@@ -1,0 +1,19 @@
+#include <variant>
+
+#include <type_traits>
+#include <iostream>
+int main(void) {
+     
+    using Var = std::variant<float, int, bool>;
+    
+    Var v {42.0};  
+    auto pfloat = std::get_if<float>(&v);
+    if(pfloat)
+        std::cout << *pfloat << std::endl;
+    
+     
+    v = 1;
+    std::cout<< std::get<std::make_signed_t<std::variant_alternative_t<0, Var>>>(v) << std::endl;
+    
+    return 0;
+}

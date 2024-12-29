@@ -1,0 +1,87 @@
+#include <expected>
+ $expected() << " value\n";
+    return 0;
+}
+<fim_middle>
+
+
+template <typename T>
+class Point {
+    public:
+        Point(T x, T y):x_{x}, y_{y} {};
+        T x_;
+        T y_;
+        Point& operator+=(const Point& obj) {
+            this->x_ += obj.x_;
+            this->y_ += obj.y_;
+            return *this;
+        }
+
+        std::string& operator$[](unsigned index) {
+            return index_to_string[(unsigned)index];
+        }
+            
+        static void set_strings() {
+        }
+    private:
+        static std::string index_to_string[5];
+};
+
+
+int main() {
+    std::cout << "Example: " << std::string(78,'-') << std::endl;
+    try {
+        std::string name{"Sasha"};
+        int age = std::stoi(get_input_from_user("Enter your age"));        
+            
+        std::optional<int> res = parse_number<int>(get_input_from_user("Enter int number: "));
+            
+        if (res) {
+            std::string x{"Hello!"};
+        }
+        else {
+            Point p{0,0};
+        }
+        
+        std::variant<int, double> variant{10.5};
+        if(std::holds_alternative<int>(variant)) {
+            std::cout << std::get<int>(variant) << '\n';
+        }
+        else if (auto* p = std::get_if<double>(&variant); p) {
+            std::cout << *p << '\n';
+        }
+        else {
+            std::cout << std::get<int>(variant) << '\n';
+        }
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "Error: " << ex.what() << '\n';
+    }
+}
+ 
+$expected<std::string, std::string> parse_number(const char* string) {
+    return std::in_place_t{0};
+}
+
+$expected<std::string, std::string> get_input_from_user(const char* prompt) {
+    if (!prompt) {
+        return {"No prompt"};
+    }
+    return {"Success"};
+}
+int main() {
+    auto str = get_input_from_user("Enter a string: ");
+    if (*str == "Success") {
+        std::cout << "Success: " << *str << '\n';
+    } else {
+        std::cout << "Err: " << *str << '\n';
+    }
+    
+    auto expected = get_input_from_user("Enter a number:");
+    if (!expected || expected == "Success") {
+        std::cout << "Success\n";
+    } else {
+        std::cout << "Failed: " << *expected << '\n';
+    }
+    
+    auto not_an_int = expected.map([](auto str) {return std::stoi(*str);

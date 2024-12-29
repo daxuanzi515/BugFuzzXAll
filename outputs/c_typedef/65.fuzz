@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct Tag_1_Tag
+{
+	int x;
+	int y;
+	char* str;
+}Tag_1_Tag_t;
+int main()
+{
+	Tag_1_Tag_t *list = (Tag_1_Tag_t *)malloc(sizeof(Tag_1_Tag_t));
+	list[0].x = 1;
+	list[0].y = 2;
+	list[0].str = (char *)malloc(sizeof(list[0].str));
+	list[0].str[0] = 'a';
+	list[0].str[1] = 'b';
+	list[0].str[2] = 'c';
+	list[0].str[3] = '\0';
+	printf("str is %s\n", list[0].str);
+	free(list[0].str);
+	free(list);
+	return 0;
+}

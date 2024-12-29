@@ -1,0 +1,40 @@
+import java.lang.Object;
+70621 11:34:06 AM
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello");
+			System.out.println(s1.next());
+	}
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

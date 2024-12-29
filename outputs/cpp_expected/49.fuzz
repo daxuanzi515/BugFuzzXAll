@@ -1,0 +1,80 @@
+#include <expected>
+_OK, my_value);
+    CHECK_EQ(ERROR_INVALID_ARG, other_value);
+    CHECK_EQ(ERR_UNKNOWN, other_value.error());
+
+     
+    handler(my_value.value_or(default_value), other_value.value_or(default_value));
+     
+
+     
+    CHECK_EQ(my_value.value_or(default_value).error(), NO_ERRORS);
+
+     
+    CHECK_EQ(NO_ERRORS, other_value.value_or(std::make_error_code(ERROR_INVALID_ARG).value()));
+}
+
+#endif
+
+<fim_middle>
+#include <tuple>
+#include <cassert>
+#include <iostream>   
+#include <exception>  
+#include <functional>  
+#include <sstream>  
+#ifdef __GNUC__
+#include <cxxabi.h>
+#include <cstdlib>
+#define EXTRA_CHECKS
+#endif
+#ifdef __MINGW32__
+#define EXTRA_CHECKS
+#endif
+
+#ifdef EXTRA_CHECKS
+#define CHECK_EQ(a,b) do { \
+auto a_ = std::forward<decltype(a)>(a); \
+auto b_ = std::forward<decltype(b)>(b); \
+assert(a_ == b_); \
+} while (0)
+#define CHECK_NEQ(a,b) do { \
+auto a_ = std::forward<decltype(a)>(a); \
+auto b_ = std::forward<decltype(b)>(b); \
+assert(a_!= b_); \
+} while (0)
+#else
+#define CHECK_EQ(a,b) do { \
+  } while (0)
+#define CHECK_NEQ(a,b)  
+#endif
+
+int main() {
+     
+     
+     
+     
+
+     
+    struct user_name {
+        char const *data_;
+        int size_;
+        user_name() noexcept : data_(nullptr), size_(-1) {}  
+
+        explicit user_name(char const* data, int size) noexcept
+            : data_(data)
+           , size_(size)
+        {}  
+        
+        explicit user_name(char const* data) noexcept
+            : data_(data)
+           , size_((data? strnlen(data, 100) : -1))
+        {}  
+
+        user_name(std::string_view str) noexcept
+            : data_(str.data())
+           , size_(str.size())
+        {}  
+
+        user_name(user_name&&) noexcept = default;
+        user

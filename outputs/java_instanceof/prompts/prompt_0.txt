@@ -1,0 +1,19 @@
+/* The "instanceof" operator in Java is used to check whether an object is an instance of a specific class or an interface. It is a binary operator used to test if the object on its left side is a particular type, specified by the right side. It returns true if the instance belongs to the specific type, and false otherwise. If the object is null, the operator returns false. It's important to note that using "instanceof" with an incompatible type results in a compile-time error.
+
+An example usage of the "instanceof" operator in Java can be seen in the code snippet below:
+
+class Point { int x, y; }
+class Element { int atomicNumber; }
+class Test {
+public static void main(String[] args) {
+    Point p = new Point();
+    Element e = new Element();
+    if (e instanceof Point) { // This line returns false and causes a compile-time error
+       System.out.println("I get your point!");
+       p = (Point)e; // This line also causes a compile-time error
+   }
+}
+
+This example brings out that any incompatible class instances can't be cast to each other, resulting in an error. However, if classes share a hierarchical relationship (like when Point extends Element), the "instanceof" operator wouldn't cause an error. */
+/* Please create a very short program which combines instanceof with new Java features in a complex way */
+import java.lang.Object;

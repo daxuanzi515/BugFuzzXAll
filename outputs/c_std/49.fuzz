@@ -1,0 +1,36 @@
+#include <stdlib.h>
+#include <stdio.h>
+char* addString(const char *const s, char* const buf)
+{
+    for (const char* b = s ; *b!= '\0' ; b++, buf++) 
+    {
+        *buf = *b;
+    }
+    return buf;
+}
+char* main()
+{
+    char buffer[50] = "";
+    addString("Hello world, this is a test", buffer); 
+    printf("%s\n", buffer);
+    return 0;
+}
+ 
+#include <stdlib.h> 
+#include <stdio.h> 
+int* addValue(const int *const n, const int *const m, int *const out) 
+{
+    int c = *n * -1 * *m;
+    if (c > 10);  
+    *out = c;
+    return out;
+}
+int main()
+{
+    int n = rand() % 100;
+    int m = rand() % 100;
+    int out = 0;
+    addValue(&n, &m, &out); 
+    printf("%d\n", out);
+    return 0;
+}

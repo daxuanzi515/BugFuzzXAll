@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct {
+     int x;
+     int y;
+}point,*q1,*q2;
+int *p;
+int z;
+main()
+{
+      
+      q1=&point;
+p = &z;
+*p = 0x4321;
+printf("\n*p = %p",p);
+}

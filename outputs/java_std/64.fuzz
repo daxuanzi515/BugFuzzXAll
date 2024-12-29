@@ -1,0 +1,65 @@
+import java.lang.Object;
+<fim_suffix>r(String[] args) {
+		Scanner s1=new Scanner(Scanner.INPUT);
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian_new{
+	public static void main(String[] args) { 
+		Scanner s1 = new Scanner("Helo\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+import java.util.*;
+public class HelloWorld_new{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.util.*;
+public class HelloWorld_new1{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorldNew{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		System.out.println(s1);
+	}
+}
+ 
+ 
+ 
+ 
+ 

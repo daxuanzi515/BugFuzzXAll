@@ -1,0 +1,76 @@
+#include <expected>
+<fim_suffix> std::get<std::pair<int, double>>(res);
+        std::ostringstream out;
+        out << "[" << p.first << ", " << p.second << "]";
+        std::cout << out.str() << std::endl;
+
+        auto[x, y] = *res;
+        std::cout << "x:" << x << ", y: " << y << std::endl;
+    }
+    return 0;
+}<fim_middle>
+#include <cassert>   
+#include <iostream>  
+#include <string>    
+#include <vector>    
+#include <utility>   
+
+#include <boost/multiprecision/cpp_bin_float.hpp>
+#include <boost/multiprecision/cpp_dec_float.hpp>
+
+int main()
+{
+    {
+        using namespace boost::multiprecision;
+
+        double val = 123.123;
+        int ival = 10;
+        std::expected<double, std::string> exp1 = 123.456;
+        std::expected<double, std::vector<int>* const> exp2 = 123.456;
+
+        std::cout << *exp2 << std::endl;
+        exp2 = 12;
+        std::cout << *exp2 << std::endl;
+
+        exp2 = "bad cast";
+        if (false == exp2) {
+            assert(false);
+        }
+
+        if (exp2) {
+            assert(false);
+        }
+
+        double out = *exp2;
+        *exp2;
+        if (exp2.has_value()) {
+            std::cout << "yes exp2 has a value " << exp2.value() << std::endl;
+        } else {
+            assert(-1 == -1);
+            std::cout << "no, it is not true " << std::endl;
+        }
+
+#ifdef CONVERT_EXPECTED
+        int res = exp2.value_or(17);
+#elif DRAW_EXPECTED
+        std::cout << exp2.has_value() << std::endl;
+        double ret = 1234.5678;
+        using namespace std;
+        auto[ret, res] = exp2.value_or([](std::expected<double, string>& e) -> double {
+             
+            std::cout << "we will get here" << std::endl;
+             
+            return 0.0;
+        });
+#endif  
+    }
+    std::cout << "---[Test Expected] [Ok]" << std::endl;
+    {
+        const char* str = R"(This string should be a valid input)"
+            R"(if it is, then the conversion "to" "expected" works.)"
+            R"("false" and "foo" are not.)";
+        const std::string str_ = str;
+
+        std::expected<const char*, std::string> strRes1 = str;
+        if (!strRes1) {
+            std::cout << *strRes1 <<

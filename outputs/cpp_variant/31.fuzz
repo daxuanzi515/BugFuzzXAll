@@ -1,0 +1,36 @@
+#include <variant>
+#include <unordered_map>
+#include <unordered_set>
+int main()
+{
+    std::variant<int, float, double> vFruits;
+    vFruits = 10;
+    vFruits.emplace<float>(32.24f);
+
+     
+     
+     
+
+    std::unordered_map<std::variant<int, float, double>, char> umFruits;
+    std::unordered_set<int> fruitSet;
+    fruitSet.insert(5);  
+
+    auto [iter, success] = umFruits.try_emplace(vFruits, 2); 
+}
+ 
+ 
+ 
+ 
+std::tuple<int, std::string, char> t1(10, "Hello World", 'a');
+ 
+std::tuple tuple1;  
+std::tuple tuple2(10, "Hello", 'a');
+std::tuple<std::string, double> tuple3("Hello", 4.5);
+std::tuple<char, bool, int> tuple4(a, b, c);
+std::tuple<short, std::string, std::string> tuple5('S', "Hello", "World"); 
+std::tuple<std::string, double> tuple6("Hello", 4.5);
+ 
+int a = std::get<0>(tuple1);
+ 
+std::string a = std::get<0>(tuple1); 
+ 

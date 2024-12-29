@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = new Object();
+		System.out.println("a instanceof Integer: " + (a instanceof Integer));
+		System.out.println("b instanceof Integer: " + (b instanceof Integer));
+	}
+}
+}

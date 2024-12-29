@@ -1,0 +1,53 @@
+import java.lang.Object;
+<fim_suffix>nceof Object[] && arr[0] instanceof Byte) {
+				return (byte[])arr;
+			}
+
+		}
+
+
+
+
+		int a = 6;
+		Integer b = new Integer(6);
+		Integer c = 6;
+		Integer d = Integer.valueOf(6);
+		int e = 6;
+		Integer f = 1/0;
+		return null;
+
+	}
+
+}<fim_middle>import java.util.*;
+public class HelloModified{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next().toUpperCase());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloOther{
+	public static void main(String[] args) {
+		Integer[] ints = {Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3)};
+		Integer[] sortedInts = Arrays.copyOf(ints, ints.length);
+		System.out.println(Arrays.toString(sortedInts));
+		Arrays.sort(sortedInts);
+		System.out.println(Arrays.toString(sortedInts));
+	}
+}
+ 
+import java.lang.String;
+import java.util.Scanner;
+public class InsertLine{
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		String code1 = "System.out.println(\"Hello, world\");\nint a = 0;\nint b = 10;\nint c = a + b;\nSystem.out.println(c);\n";
+		String code2 = new String(code1);
+		String code3 = new String(code1);
+		System.out.println("Insert line with (1, \"code that was on this line\")");
+		System.out.println("Insert line before line 2 (2, \"code that was on line 2\")");
+		System.out.println("Insert line after line 3 (1, \"code that was on line 3\")");
+	

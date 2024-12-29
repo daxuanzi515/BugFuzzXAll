@@ -1,0 +1,43 @@
+#include <tuple>
+#include "iostream"
+template <typename... Types>
+struct Tuple
+{
+  Tuple(Types... value)
+    : value_{ value... }
+  {
+  }
+
+  auto& get(std::size_t index)
+  {
+    return value_[index];
+  }
+
+private:
+  std::tuple<Types...> value_;
+};
+template <typename... Types>
+void foo(Tuple<Types...>, Types..., Types...)
+{
+  std::cout << "The overloaded functions foo in class Tuple<Types...> with arity n have been called" << std::endl;
+}
+template <typename... Types>
+void foo(Tuple<Types...>, Types...)
+{
+  std::cout << "The overloaded functions foo in class Tuple<Types...> with arity n+1 have been called" << std::endl;
+}
+template <typename... Types>
+void foo(Tuple<Types...> arg)
+{
+  std::cout << "The overloaded functions foo in class Tuple<Types...> with arity 1 have been called" << std::endl;
+}
+int main()
+{
+  Tuple<int, int> args{ 42, 13 };
+  auto f = [](Types...) { std::cout << "The overloaded functions bar in class std::function have been called" << std::endl; };
+  foo(std::move(args));
+  std::get<0>(args) = 69;
+  std::get<1>(args) = 1337;
+  (void)args;
+  return EXIT_SUCCESS;
+}

@@ -1,0 +1,8 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::pair<long int, float> tuple{ 99L, 99.0 };
+  std::cout << tuple.first << '\n';
+  return EXIT_SUCCESS;
+}

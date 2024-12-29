@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#define AAAA 1
+#define BBBB 30
+#define CCCC 16
+typedef unsigned char uchar;
+void boo(size_t len, char *ptr) {
+  if (!ptr) return;
+  volatile size_t idx, len_div_2;
+  len_div_2 = len / 2;
+  for (idx = 0; idx < len; idx++) {
+    if (idx && idx!= len_div_2) ptr[idx] = '\0';
+  }
+}
+char *foo(int *frg[]) {
+  char *ptr = NULL;
+  for (*frg[0]--; *frg[0]; (*frg[0])--, ptr--) {
+    boo(*frg[0], ptr);
+    break;
+  }
+  return ptr;
+}
+int main() {
+  uchar a = (uchar)1;
+  int b = 0, c = 10, d = 5;
+  char e[12];
+  void *ptr = &c;
+  char *ret = foo(&b);
+  if (strlen(ret) > 4) {
+    ret = strcat(ret, "_");
+  }
+  if (strlen(ret) > 6

@@ -1,0 +1,37 @@
+#include <variant>
+ = std::get<1>(v);  
+    
+
+    
+    
+   int* val_ptr = std::get_if<1>(&v)
+   if (std::holds_alternative<int>(*val_ptr))
+        std::cout << *val_ptr << "\n";
+    return 0;
+}
+<fim_middle>#include <iostream>
+struct V {
+    int i = 0.;
+    float f = 0.0f;
+    double d = 0.0;
+    void print() const { 
+        double val = std::get<1>(v);
+        std::cout << "The variant has the value " << val << "\n";
+    }
+};
+V create() {
+    V v;
+    v.f = 32.25;
+    return v;
+}
+int main() 
+{
+    V v = create();
+    std::variant<std::monostate, int, float, double> v1 = v.f;  
+     
+     
+
+     
+     
+     
+    if (std::holds_alternative<float>(v1))  

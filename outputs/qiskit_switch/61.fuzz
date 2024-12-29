@@ -1,0 +1,30 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import XGate
+qr = QuantumRegister(2,'qreg')
+qc = QuantumCircuit(qr)
+qc.h(qr[0])
+for q in qr: 
+    qc.t(q)
+qc.h( qr[0] )
+qc.cx( qr[0], qr[1] ) 
+
+switch = qc.switch(1, 0, 2) 
+from qiskit.circuit.library import XGate
+qr = QuantumRegister(2,'qreg')
+qc = QuantumCircuit(qr)
+qc.h(qr[0])
+for q in qr: 
+    qc.t(q)
+qc.h( qr[0] )
+qc.cx( qr[0], qr[1] ) 
+
+switch = qc.switch(1, 0, 2) 
+print(
+    qc.data[-2].op.condition.circuit,
+    qc.data[-1].op.circuit, sep='\n'
+)<jupyter_output>if qreg_2 == 1:
+    t qreg[0]
+    x qreg[2]
+if qreg_2 == 2:
+    t qreg[1]

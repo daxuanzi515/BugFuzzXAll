@@ -1,0 +1,29 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class Finally {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedReader reader = null;
+        try {
+            in = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                reader = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        catch(IOException e){
+            System.out.println("Sorry, that was a mistake.");
+            if (in!= null) {
+                in.close();
+            }
+        }
+        System.out.println(1);
+        if (reader!= null) {
+            reader.close();
+        }
+        System.out.println(2);
+    }
+}
+

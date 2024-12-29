@@ -1,0 +1,40 @@
+import java.lang.Object;
+<fim_suffix>n(s.nextLine());
+		 return 0;		
+		}
+	}
+}
+ 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+public class TestDate {
+	public static void main(String [] args) {
+		Date d = new Date();
+		Date d1 = new Date(System.currentTimeMillis());
+		SimpleDateFormat df = new SimpleDateFormat("MMM");
+		SimpleDateFormat df1 = new SimpleDateFormat("dd MMM yyyy");
+		if(args[0].equals("time")){
+			System.out.println("Current Time: " + df.format(d));
+			System.out.println("Current Date: " + df1.format(d1));
+		}
+		else if(args[0].equals("month")){
+			SimpleDateFormat df2 = new SimpleDateFormat("MMM d");
+			System.out.println(df2.format(d1));
+		}
+		else if(args[0].equals("date")){
+			System.out.println(df1.format(d1));
+		}
+	}
+}
+ 
+/* 
+The following is the class template:
+
+class Fruit{
+	public String Name;
+	public abstract void getWeight();
+}
+Now there are atleast 3 classes which extends class Fruit, and they are Apple, Orange and Banana. For eg:
+If you say fruit object. The Fruit class provides the getWeight method. Now everytime someone says fruit.getWeight(), it gets executed the one which is implemented in the child classes.
+
+To sum up, a machine should simply be passed the Fruit class, and from that F

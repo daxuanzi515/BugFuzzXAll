@@ -1,0 +1,20 @@
+#include <tuple>
+#include "iostream"
+void foo(int, int)
+{
+  std::cout << "Foo(int, int)" << std::endl;
+}
+void foo(int)
+{
+  std::cout << "Foo(int)" << std::endl;
+}
+int main()
+{
+  std::tuple<int, int> args;
+  auto f = [](int, int) { std::cout << "Bar(int, int)" << std::endl; };
+  std::get<0>(args) = 42;  
+  std::get<1>(args) = 13;  
+  f(std::get<0>(args), std::get<1>(args));   
+  (void)args;
+  return EXIT_SUCCESS;
+}

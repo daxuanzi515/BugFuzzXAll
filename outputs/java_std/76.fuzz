@@ -1,0 +1,58 @@
+import java.lang.Object;
+<fim_suffix>tln(s1));
+		return false;
+	}
+}
+<fim_middle>import java.util.function.Consumer;
+public class HelloIndian2{
+	public static void main(String[] args) {
+ 
+ 
+
+		String str = "Hello world";
+		str = str.toUpperCase();
+		System.out.println(str);
+		
+		List<Character> list = str.chars().mapToObj(character->(char)(character)).collect(Collectors.toList());
+		list.removeIf(a->a=='I');
+		list.add('A');
+		String newstr = String.join(" ", list);
+		System.out.println(newstr + "world");
+		System.out.println(str.toLowerCase()+"WORLD");
+	}
+}
+ 
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class JavaButton extends Application {
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage sc) throws Exception {
+		Alert a= new Alert(Alert.AlertType.NONE);
+		a.setTitle("Alert from Java");
+		a.setHeaderText("This is an example of JavaFX Alert");
+		a.setContentText("This is a simple alert box");
+		a.showAndWait();
+
+		Button b = new Button("Click Me!!");
+		b.setOnAction(e->a.close());
+		Button b2 = new Button("Click Me!!");
+		b2.setOnAction(e->{a.setHeaderText("Header");
+			a.setContentText("This is a simple alert box");
+		});
+		b.setStyle("-fx-border-color: red;"+
+						"-fx-background-color: yellow;"+
+						"-fx-padding: 30;"+
+						"-fx-font: normal bold 30px sans-serif;");
+		b2.setStyle("-fx-border-color: blue;"+
+						"-fx-background-color: yellow

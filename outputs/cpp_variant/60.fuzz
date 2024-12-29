@@ -1,0 +1,59 @@
+#include <variant>
+<fim_suffix>t<int>(variant_value);
+    }
+};
+
+int main() {
+    test(3.15);
+    test(45);
+
+    return 0;
+}
+ 
+#include <variant>
+
+int main()
+{
+    struct V {
+        int i;
+    };
+
+    V v;
+    std::variant<int, V> variant;
+
+    variant = 2;
+    variant = v;
+    variant. emplace<V>(15);
+    assert(std::get<V>(variant).i == 15);
+
+    return 0;
+}
+<fim_middle>#include <iostream>
+void run_my_program(int i, float f, double d)
+{
+    std::cout << "The variant has the value " << d << "\n";
+}
+struct V {
+    int i;
+    float f;
+    double d;
+};
+void run_my_program(V v)
+{
+    std::cout << "The variant has the value " << v.d << "\n";
+}
+
+int main() 
+{
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    run_my_program(v);
+}
+ 
+#include<variant>
+#include <iostream>
+void run_my_program(int i) {
+    std::cout << i << "\n";
+}
+void run_my_program(float f) {
+    std::cout << f << "\n";

@@ -1,0 +1,30 @@
+import java.lang.Object;
+ 
+class MultiProcessThreadRunner {
+    public static void main(String[] args) {
+        MultiThreadedData mt = new MultiThreadedData();
+        new MultiProcessThread(mt, "Read-A").start();
+        new MultiProcessThread(mt, "Read-B").start();
+        new MultiProcessThread(mt, "Read-C").start();
+        new MultiProcessThread(mt, "Write-A").start();
+    }
+}
+class MultiProcessThread extends Thread {
+    public MultiThreadData m;
+    public String sName;
+    public MultiProcessThread(MultiThreadedData mt, String name) {
+        m = mt;
+        sName = name;
+    }
+    public void run() {
+        try {  
+            sleep(10000);
+        } catch(Exception e) {}
+         
+        System.out.println("Thread " + sName);
+        synchronized (m) {
+            m.write();
+            m.read(sName);
+        }
+    }
+}

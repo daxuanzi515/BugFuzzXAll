@@ -1,0 +1,10 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto args = std::make_tuple(42L, 13L);
+  auto f = [](long& l1, long& l2) { l = 42L; };
+  std::apply(f, args);
+  return EXIT_SUCCESS;
+}
+ 

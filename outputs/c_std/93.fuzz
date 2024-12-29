@@ -1,0 +1,30 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    int val;
+    printf("%d\n", (val = 127));
+    return 0;
+}
+ 
+ 
+ 
+ 
+#include <stdio.h>
+int main()
+{
+    printf("\74");
+    return 0;
+}
+ 
+ 
+#include <stdio.h>
+int main()
+{
+    printf("\33");
+    return 0;
+}
+/* C 11 includes new keywords. Add the necessary keyword which may be required to compile the C program in each of the following cases. Hint: Google ‘c11 keyword’. 
+#include <stdio.h>
+double mypi = 3.14;
+int main(){

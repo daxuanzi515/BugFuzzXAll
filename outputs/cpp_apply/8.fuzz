@@ -1,0 +1,82 @@
+#include <tuple>
+                      
+                                       
+                                       
+#include <vector>                     
+#include <iostream>                   
+#include <iomanip>                    
+#include <algorithm>                  
+
+
+ 
+template<class T1, class... T>
+void print(const T1& t1, T&&... t)
+{
+    const std::size_t columnCount = sizeof...(t) + 1;
+
+     
+     
+    auto trefs = std::forward_as_tuple(t1, t...);
+
+     
+    std::cout <<'';
+    std::for_each(
+        std::begin(trefs),
+        std::end(trefs),
+        [columnCount](const auto& t)
+    { std::cout <<''; std::cout << std::setw(columnCount); });
+
+    std::cout << '\n';
+
+     
+    std::cout << t1;
+    std::for_each(
+        std::begin(trefs),
+        std::end(trefs),
+        [columnCount](const auto& t)
+    { std::cout <<''; std::cout << std::setw(columnCount); printTuple(t); });
+
+    std::cout << '\n';
+}
+
+
+ 
+ 
+ 
+ 
+template<class... T>
+void printTuple(const std::tuple<T...>& t)  
+{
+     
+     
+     
+     
+     
+     
+    constexpr std::size_t n = std::tuple_size_v<std::tuple<T...>>;
+
+
+     
+     
+    std::vector<std::tuple<const T&...>> refs;
+    std::transform(
+        std::begin(t),
+        std::end(t),
+        std::back_inserter(refs),
+        [](const auto& e) { return std::tie(e); });
+
+     
+    std::for_each(
+        refs.begin(),
+        refs.end(),
+        [](const auto& t)
+    { printTuple(t); });
+}
+
+
+ 
+ 
+ 
+ 
+template<class... T>
+void printTuple(const std::tuple<T...>& t)  

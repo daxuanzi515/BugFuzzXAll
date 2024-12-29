@@ -1,0 +1,55 @@
+#include <stdlib.h>
+
+#include <string.h>
+
+ 
+
+#if defined(__has_embed) && defined(__has_include)
+    #if __has_embed("header.embed")
+        #include __has_include("header.embed")"header.embed"
+    #endif
+#endif
+
+ 
+
+#if defined(__has_c_attribute)
+    char(4)   _attribute__((aligned)) aligned4  __attribute__((aligned(4)));
+    char(8)   _attribute__((aligned)) aligned8  __attribute__((aligned(8)));
+    char(3) * _attribute__((aligned)) aligned3p __attribute__((aligned(4)));
+#endif
+
+ 
+
+#ifdef HAVE_HEADER
+    #include "header.h"
+#endif
+
+ 
+
+#if defined(__has_c_attribute)
+    static_assert( alignof(aligned8) >= alignof(aligned3p), "Alignof 3p is larger than alignof aligned8");
+
+    extern char (C23_ALIGN(4) * aligned4) __attribute__ ((aligned(4)));
+    static_assert(alignof(aligned4) >= alignof(aligned3p), "Alignof 3p is larger than alignof 4");
+
+     
+
+    PRINTF(("sizeof(aligned4): %zu\n", sizeof(aligned4)));
+    PRINTF(("sizeof(aligned8): %zu\n", sizeof(aligned8)));
+    PRINTF(("sizeof(aligned3p): %zu\n\n", sizeof(aligned3p)));
+    PRINTF(("%p\n", aligned4));
+    PRINTF(("%p\n", aligned8));
+    PRINTF(("%p\n", aligned3p));
+    PRINTF(("%p\n", sizeof(char(4) )));
+    PRINTF(("%p\n", sizeof(char(8) )));
+    PRINTF(("%p\n", sizeof(char(*) )));
+
+    struct S { int x; };
+    struct S _attribute__((aligned)) ms __attribute__((aligned(4)));
+
+     
+
+    PRINTF(("%p\n", aligned4));
+    PRINTF(("%p\n", aligned8));
+    PRINTF(("%p\n", aligned3p));
+#endif

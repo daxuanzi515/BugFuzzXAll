@@ -1,0 +1,66 @@
+import java.lang.Object;
+<fim_suffix>	{
+		String n=s.nextLine();
+		if(n.equals("Y"))
+		return "Welcome";
+		else 
+			return "Bye";
+	}
+}<fim_middle>import java.util.*;
+public class SayHaiIndianHelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+import java.util.Scanner;
+public class Helloin{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(sc.nextLine());
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner s1= new Scanner(System.in);
+		Scanner s2= new Scanner(System.in);
+		Scanner s3= new Scanner(System.in);
+		System.out.println("Give a");
+		a=s1.nextInt();
+		System.out.println("Give b");
+		a=s2.nextInt();
+		System.out.println("Give x");
+		a=s3.nextDouble();
+		System.out.println("Give s");
+		a=s1.nextLine();
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner s1= new Scanner(System.in);
+		Scanner s2= new Scanner(System.in);
+		Scanner s3= new Scanner(System.in);
+		System.out.println("Give a");
+		a=s1.nextInt();
+		System.out.println("Give b");
+		a=s2.nextInt();
+		System.out.println("Give x");
+		a=s3.nextDouble();
+		System.out.println("Give s");
+		a=s1.nextLine();
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner

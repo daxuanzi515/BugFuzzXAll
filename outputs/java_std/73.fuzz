@@ -1,0 +1,37 @@
+import java.lang.Object;
+<fim_suffix>	public static void main(String[][] args) {
+		String a[] = {"A","a","e","E","i","I","o","O","u","U"};
+        String b[] = {"a","e","i","o","u"};
+        String c[] = new String(a);
+
+        if(a.length == b.length){
+
+            for(int i = 0; i < a.length; i++){
+                if(a[i] == b[i]){
+
+                    c[i] = " ";  
+                }
+            }
+        }
+		for(int i = 0; i < c.length; i++){
+        	System.out.print(c[i]);
+        }		
+	}
+}
+
+ 
+import java.lang.String;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String s1 = "135";
+		String s2 = "7";
+		String s3 = "8";
+		String s = s1 + s2 + s3;
+		String s4 = "C";
+        int a = s.indexOf(s4);
+        int b = s.lastIndexOf(s4);
+        System.out.println(b);
+        System.out.println(a);
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndian{

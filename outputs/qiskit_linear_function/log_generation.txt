@@ -1,0 +1,3719 @@
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from openqasm import tosource
+from qiskit.circuit import Gate
+from openqasm import gate_statement, qasm_source, astnodes, node, node_name
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.classicalregister import ClassicalRegister
+from qiskit.circuit import QasmQobjInstruction
+from qiskit.quantum_info import ProcessMatrix, Operator, SuperOp
+import numpy as np
+from qiskit.tools.visualization import array_to_latex, circuit_drawer
+
+class LinearFunction:
+    
+    def __init__(self, gate_matrix, num_qubits=1, name="A", reverse_bits=False):
+        
+        self.gate_matrix=gate_matrix
+        self.num_qubits=num_qubits
+        self.name=name
+        self.reverse_bits=reverse_bits
+    
+    def set_reverse(self, reverse_bits):
+        
+        self.reverse_bits=reverse_bits
+    
+    def set_gate_matrix(self, gate_matrix):
+        
+        self.gate_matrix=gate_matrix
+    
+    def set_num_qubits(self, num_qubits):
+        
+        self.num_qubits=num_qubits
+
+    def isPermutation(self):
+        
+        
+        gatematrix_as_list=[np.array(element) for element in self.gate_matrix]
+        
+        ID=np.eye(len(gatematrix_as_list))
+        
+        return np.round(ID-sum(gatematrix_as_list), 5).all()
+
+    def synthesize(self, synthesizer): 
+        
+        synthesized_gate_matrix=synthesizer.synthesize(self.gate_matrix, self.num_qubits)
+        
+        Q=QuantumCircuit(self.num_qubits)
+        
+        Q.add_register(QuantumRegister(self.num_qubits, name=self.name))
+        Q.add_register(ClassicalRegister(self.num_qubits, name=self.name))
+        
+        self.gate_matrix_to_quantum_circuit(synthesized_gate_matrix, Q)
+        return Q
+    
+    def gate_matrix_to_quantum_circuit(self, gate_matrix, c):
+        '''Iterates through gate_matrix from top-left to bottom-right
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from LinearFunction import LinearFunction
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumRegister
+from qiskit.aqua.components.instructions import Instruction
+
+
+
+class LinearFunction:
+
+    def __init__(self, n):
+        
+        self.gate_dimension = n
+        self.input_dimension = n
+        self.gate_matrix = [ [ 0, 0 ], [ 0, 0 ] ]
+        self.gate_parameters = []
+
+
+    def check_permutation(self):
+
+        if ( sorted( self.gate_matrix[0] )!= [0, 1] )or ( sorted( self.gate_matrix[1] )!= [0, 1] ):
+            return False
+        else:
+            return True
+
+
+    def synthesize(self, circuit):
+
+        if circuit.is_finalized():
+            raise AttributeError("Please run the circuit using QuantumCircuit.decompose() before using Gate.synthesize()")
+        elif len(self.gate_parameters) > 2**self.gate_dimension:
+            raise ValueError("The size of the gate's input is bigger than the given number of parameters")
+        elif len(self.gate_parameters) == 0:
+            raise ValueError("The gate's input has no parameters")
+        else:
+            if self.n == 1:
+                if self.gate_matrix[1][0] == 0:
+                    circuit.x(self.qureg[0])
+                elif self.gate_matrix[1][1] == 0:
+                    circuit.x(self.qureg[0])      
+                else:
+                    circuit.id(self.qureg[0])
+            elif self.n == 2:
+                pass
+            elif self.n == 3:
+                circuit.barrier(self.qureg)
+                circuit.h(self.qureg)
+                circuit.ch(self.qureg[0], self.qureg[1])
+                circuit.ch(self.qureg[1], self.qureg[0])
+                circuit.ch(self.qureg[1], self.qureg[2])
+                circuit.h(self.qureg)
+                circuit.barrier(self.qureg)
+
+
+    def validate(self):
+
+        for i in range(0, len(self.gate_parameters)):
+            if isinstance(self.gate_parameters[i], complex):
+                raise TypeError("Parameters should be real numbers. " + str(self.gate_parameters[i]) + " is complex.")
+
+        if ( ( len(self.gate_parameters) * 2 ) - len(self.gate_matrix[0] ) ) > 0:
+            raise ValueError("The gate's parameter set must be divisible in half by the number of input/output basis vectors.")
+
+
+   
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from QiskitQuantumAPI.QuantumCircuits import LinearFunction as LFu
+LF = LFu.LinearFunction([1.0, 0.0, 0.0, -1.0], 4)
+
+QC = QuantumCircuit(4)
+QC = LF.toQuantumCircuit()
+QC.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+
+def is_permutation(wlist):
+    
+    
+        
+class LinearFunction(Gate):
+    
+    
+
+    def __init__(self, w_list, name=None, label=None):
+        super().__init__("linear", num_qubits=int(len(w_list) / 4.0) + 1, params=[w_list])
+        self.label = label
+        self.w_list = [float(w) for w in w_list]
+        self.num_bits = 0
+        
+        
+        for w in w_list:
+            bit_count = 0
+            while w!= 0.0:
+                bit_count += int(w % 2)
+                w = w//2
+                
+            if bit_count > self.num_bits: 
+                self.num_bits = bit_count
+                
+        self.num_qubits = int(len(w_list) / 4.0) + 1
+        self.circuit = QuantumCircuit(self.num_qubits)
+
+    def __call__(self, circuit, registers, label=None):
+        
+        
+        
+        
+        
+        
+        params = self.get_params(circuit, registers)
+         
+        
+        current_gate = Gate(self.name, self.num_qubits, params = params)
+        return circuit.append(current_gate,[register[0] for register in zip(circuit.qubits, registers)])
+    
+    def get_params(self, circuit, registers):
+        
+        params = []
+
+        
+        for qubit, register in zip(circuit.qubits,registers):
+            if len(register) > 0:
+                params.append(self.w_list[self.get_param_index_for_wire(qubit, register) - 1])
+            elif len(register) == 0 and qubit not in circuit.clbits:
+                params.append(2**(self.num_bits - 1))
+        return params
+
+
+    def synthesize(self):
+        self.synth()
+        
+    def synth(self):
+        
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.quantum_info import Operator
+from qiskit.extensions import XGate, ZGate
+from qiskit.extensions import HGate, SGate, TGate
+from qiskit.extensions import CRXGate, CRZGate
+
+import numpy as np
+from copy import deepcopy
+
+
+class LinearFunction:
+    def __init__(self, n):
+        self.n = n
+        
+        
+        self.A = [None]*n
+        
+        
+        self.control_bits = [None]*n
+
+        
+        self.inv_A = [None] * n
+
+    
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.quantum_info import Operator
+from qiskit.circuit import Gate
+from qiskit.compiler import transpile, assemble
+from qiskit.qobj import QasmQobjInstruction
+from qiskit.extensions.quantum_initializer import Initialize
+from math import exp, sqrt
+import qiskit
+from qiskit.quantum_info.synthesis import (OneQubitEulerDecomposer, TwoQubitBasisDecomposer,
+                                               OneQubitEulerDecomposerLibrary, TwoQubitBasisDecomposerLibrary)
+import warnings
+import numpy as np
+import time
+
+print(qiskit.__qiskit_version__['qiskit'])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+backend = BasicAer.get_backend('statevector_simulator')
+circuit = QuantumCircuit(4)
+linear_function = LinearFunction(lambda p: U3Gate(p,0,0,0), [0.75, 1.5, 2.25])
+linear_function(circuit, params = [0.125, 0.25, 0.375], qubits = [0,2], ctrl = 1)
+circuit.draw('mpl')
+job = execute(circuit, backend, shots = 0)
+state = job.result().get_statevector()
+print("4 qubit circuit constructed using the LinearFunction API:")
+display(Matrix(state.data.reshape(16, 1)[:, 0]))
+display(circuit.draw('mpl', reverse_bits = True))<jupyter_output>4 qubit circuit constructed using the LinearFunction API:
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+from Linear_Function import Linear_Function
+
+
+linear_function = Linear_Function('swap', [2,4,0,1])
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import IBMQ
+import qiskit
+import math
+import random
+import subprocess
+from IBMQuantumExperience import api, projectq
+from matplotlib import pyplot as plt
+from cmath import *
+from scipy import constants as sc
+import scipy.sparse as spc
+n = 2
+q = projectq.MainEngine()
+
+def U(n): 
+    u = projectq.ops.X | projectq.ops.H | projectq.ops.CNOT
+    return (2**(n-1))*u
+U(2) * q.allocate_qubits(n)
+def xxz():
+    x = projectq.ops.X
+    for i in range(1):
+        x | qureg[2+i]
+xxz() * q.allocate_qubits(1)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def qiskit_example_1():
+    circuit = LinearFunction(5, [(1, 2, -1), (3, 4, 1)]) \
+               .asQuantumCircuit()
+    circuit.summary()
+
+if __name__ == '__main__':
+    qiskit_example_1()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.visualization import plot_histogram
+%qiskit_version_table
+from qiskit import *
+import sys
+print("Python %s on %s" % (sys.version, sys.platform))
+n = 4
+f = LinearFunction.from_random_oracle(n, n_trials=5)
+qc = f.to_circuit()
+qc.draw()
+
+
+
+
+
+qc.draw()
+
+n = 3
+f = LinearFunction.from_random_oracle(3, n_trials=5)
+qc = f.synthesize_into_backend(FakeRigetti())
+
+backend = FakeMumbai()
+qc = f.synthesize_into_backend(FakeMumbai())
+counts = backend.run(qc, shots=1000).result().get_counts()
+print(counts)
+
+plot_histogram(counts)
+
+n = 8
+f = LinearFunction.from_random_oracle(n, n_trials=5)
+qc = f.synthesize_into_backend(FakeQuilBackend())
+display(qc.draw())
+
+backend = FakeRigetti()
+qc = f.synthesize_into_backend(FakeRigetti())
+counts = backend.run(qc.bind_parameters({**f.parameters}), shots=1000).result().get_counts()
+plot_histogram(counts)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+class LinearFunctionGate(Gate):
+    def __init__(self, matrix, n, label=None, creg_sizes=None, check_params=None, gate_type=None):
+        
+        Gate.__init__(self, "uf", num_qubits=n, params=[matrix], label=label)
+        self.n = n 
+        self.check_params = check_params 
+        self.params = list(matrix)
+
+        if gate_type:
+            if label == None:
+                self.label = gate_type
+            if creg_sizes == None:
+                raise RuntimeError("In the LinearFunctionGate, the creg_sizes list must be non-None.")
+            
+            if gate_type == "permutation":
+                raise RuntimeError("In the LinearFunctionGate, permutations are not implemented yet.")
+
+        else:
+            print("Creating UF gate...")
+            self.matrix = matrix
+            self.params[0] = list(map(float, list(matrix[0])))
+            self.qasmOutput = self.UFP_QASM()
+            if label == None:
+                self.label = "UF"
+
+            if not creg_sizes:
+                print("CREG sizes list must be non-None, using empty list as default.")
+                self.cregs = [[] for _ in range(n)]
+            else:
+                self.cregs = [ [q for q in range(i)] for i in creg_sizes] 
+
+        if check_params:
+            if self.is_permutation():
+                print("Matrix is a permutation matrix, but a permutation gate does not require check_params=True. Returning unconstrained gate.")
+                self.check_params = False
+
+    @property
+    def
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+n = 4
+qc = QuantumCircuit(n)
+
+
+func = LinearFunction(n)
+func[0,1] += 1
+func[2,3] += -1
+print(func.matrix)  
+
+
+func.params = [1,2,2,3]
+
+
+func.is_permutation()  
+
+
+qc.barrier()
+qc.append(func.synth(), range(n))
+qc.barrier()
+print(qc)  
+
+
+func.val_params([-6,1,-6,2])
+print(func.params)  
+
+
+ctrl_func = ctrl_func(2, func)
+
+
+ctrl_func.add_decomp(Decomp(103, [0, 1, 2, 3]))
+
+
+instr = ctrl_func.synth(as_gate=True)
+
+
+cond = EqualityCondition(8, 20)
+
+
+openqasm = ctrl_func.openqasm()
+
+
+for _ in range(2):
+    ctrl_func.repeat(3)
+
+
+ctrl_func.reverse()
+
+
+unitary_gate = ctrl_func.gate_expo()
+unitary_gate.matrix
+
+
+ctrl_func.openqasm()
+
+
+func.compare(ctrl_func)
+
+
+func.is_trivial()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, IBMQ
+
+n = 2
+
+qr = QuantumRegister(n)
+qc = QuantumCircuit(qr)
+
+g = LinearFunction(n)
+g.create_permutation([0,2,1,3])
+
+g.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class LinearFunction:
+    
+    def __init__(self, n):
+        
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    
+    def set(self, row, column, value): 
+        
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column] = value
+
+    def add(self, left, right, sum):
+        
+        tmp = self.A[sum][left]^self.A[sum][right]
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= sum:
+                self.A[sum][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp
+
+    def mul(self, left, right, product):
+        
+        tmp1 = self.A[product][left]^(self.A[product][right]&self.A[right][left])
+        tmp2 = self.A[product][right]^(self.A[product][left]&self.A[left][right])
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= product:
+                self.A[product][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp1 and not tmp2   
+
+    def eval(self, x): 
+        
+        res = []
+        for i in range(len(x)):
+            if x[i] == 0:
+                res.append(0)
+            else:
+                s = 0
+                for j in range(len(x)):
+                    if j!= i and x[j] == 1:
+                        s = self.add(j, s, i)
+                res.append(s)
+        return res
+    
+    def valid(self):
+        
+        one = False   
+        for i in range(len(self.A)):
+            if OneBitPermutation.valid(self, i):
+                one = True
+        if not one: 
+            return False
+        tmp = LinearFunction(self.n)
+        one = self.mul(0, 1, 0)
+        two = self.mul(0, 1, 1)
+        for i in range(1, len(self.A)):
+            if i == 1: 
+                nine = tmp.mul(0, 1, i)
+            elif i >= 2 and i <= 4:
+                nine = tmp.mul(tmp.eval(tmp.eval(tmp.eval(self.eval(tmp.eval(one)))), 1), 1, i)
+            else: 
+                nine = self.mul(nine, 1, i)
+            tmp.copy(nine)
+            one = self.mul(one, 0, 1)
+            two = self.mul(two, 0, 1)
+       
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+import numpy as np
+import math
+
+class LinearFunction:
+    
+    
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.quantum_info import Operator, process_fidelity
+from qiskit import QuantumRegister
+from qiskit.circuit.library.standard_gates import *
+from qiskit.extensions import standard
+from linearlib.tools import *
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister, ClassicalRegister
+from qiskit import Aer
+job = aer.get_backend('qasm-simulator')
+
+
+def x32(num_qubits, func_matrix):
+    qr = QuantumRegister(num_qubits)
+    qc = QuantumCircuit(qr)
+    for i in range(num_qubits):
+        if func_matrix[i][i] == 1:  
+            continue
+        else:  
+            qc.x(qr[i])
+    return qc
+print(qc.qasm())
+
+cr = ClassicalRegister(num_qubits)
+qc = QuantumCircuit(qr, cr)
+for i in range(num_qubits):
+    qc.measure(qr[i], cr[i])
+print(qc.qasm())
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from LinearFunction import LinearFunction
+
+
+fn = LinearFunction(1, 3)
+
+
+print(fn.is_permutation())
+
+
+gates_in_fn = fn.gate_synthesis(QuantumCircuit())
+print('Function decomposed into:')
+for gate in gates_in_fn:
+    print((gate.gate, gate.ctrls, gate.qargs))
+
+
+input = input('Enter input:')
+gate_parameters = [f.replace('\n', '') for f in input.split(',')]
+print('Function output:'), 
+fn.validate_parameters(gate_parameters)
+
+
+simulator = Aer.get_backend('qasm_simulator')
+circuit = QuantumCircuit()
+gate = Gate(gate_parameters, gates_in_fn)
+circuit.append(gate.as_qasm(), gate.qargs)
+circuit.measure_all()
+results = execute(circuit, simulator).result()
+counts = results.get_counts()
+print('Number of times the function gets "110" as the output: '), 
+print(counts['110'])
+
+
+print('Controlled version of gate:')
+controlled_gate = gate.controlled_gate()
+print(controlled_gate.gate, controlled_gate.ctrls, controlled_gate.qargs)
+controller = QuantumCircuit()
+
+
+circuit = QuantumCircuit()
+circuit.append(controlled_gate.as_qasm(), controlled_gate.qargs)
+circuit.measure_all()
+results = execute(circuit, simulator).result()
+counts = results.get_counts()
+print('Number of times the function gets "110" as the output: '), 
+print(counts['110'])
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, n):
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    def set(self, row, column, value): 
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column] = value
+    def add(self, left, right, sum):
+        tmp = self.A[sum][left]^self.A[sum][right]
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= sum:
+                self.A[sum][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp
+    def mul(self, left, right, product):
+        tmp1 = self.A[product][left]^(self.A[product][right]&self.A[right][left])
+        tmp2 = self.A[product][right]^(self.A[product][left]&self.A[left][right])
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= product:
+                self.A[product][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp1 and not tmp2   
+    def eval(self, x): 
+        res = []
+        for i in range(len(x)):
+            if x[i] == 0:
+                res.append(0)
+            else:
+                s = 0
+                for j in range(len(x)):
+                    if j!= i and x[j] == 1:
+                        s = self.add(j, s, i)
+                res.append(s)
+        return res
+    def valid(self):
+        one = False   
+        for i in range(len(self.A)):
+            if OneBitPermutation.valid(self, i):
+                one = True
+        if not one: 
+            return False
+        tmp = LinearFunction(self.n)
+        one = self.mul(0, 1, 0)
+        two = self.mul(0, 1, 1)
+        for i in range(1, len(self.A)):
+            if i == 1: 
+                nine = tmp.mul(0, 1, i)
+            elif i >= 2 and i <= 4:
+                nine = tmp.mul(tmp.eval(tmp.eval(tmp.eval(self.eval(tmp.eval(one)))), 1), 1, i)
+            else: 
+                nine = self.mul(nine, 1, i)
+            tmp.copy(nine)
+            one = self.mul(one, 0, 1)
+            two = self.mul(two, 0, 1)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class TwoQubitGate(Gate): 
+    def __init__(self, name = None):
+        super().__init__(2, name)
+    def qasm(self, name):
+        return QasmQobjInstruction(["cswap", name[0], name[1], name[2]])
+    def decomposition(self, name): 
+        ccx = QuantumCircuit(3)
+        ccx.cx(ccx.qubits[0], ccx.qubits[1])
+        ccx
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class OneBitPermutation:
+    def valid(self, x):
+        one = False 
+        for i in range(len(self.A)):
+            if self.add(x, 0, i) and self.add(x+1, 0, i):
+                return False
+        return one     
+    def copy(self, new):
+        self.m = new.m
+        self.n
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+n = 2
+linear_fn_2qubits = LinearFunction(n)
+linear_fn_2qubits.set(0, 0, 1) 
+
+
+circuit = QuantumCircuit(linear_fn_2qubits.n)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def swap(qc, i, j):
+    qc.x(i); qc.x(j); qc.ccx(i, j, i); qc.cx(j, i); qc.ccx(i, j, i); qc.cx(i, j); qc.x(j); qc.x(i)
+
+def main():
+    qc = QuantumCircuit(4)  
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, n):
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    def set(self, row, column, value): 
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column] = value
+    def add(self, left, right, sum):
+        tmp = self.A[sum][left]^self.A[sum][right]
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= sum:
+                self.A[sum][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp
+    def mul(self, left, right, product):
+        tmp1 = self.A[product][left]^(self.A[product][right]&self.A[right][left])
+        tmp2 = self.A[product][right]^(self.A[product][left]&self.A[left][right])
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= product:
+                self.A[product][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp1 and not tmp2   
+    def eval(self, x): 
+        res = []
+        for i in range(len(x)):
+            if x[i] == 0:
+                res.append(0)
+            else:
+                s = 0
+                for j in range(len(x)):
+                    if j!= i and x[j] == 1:
+                        s = self.add(j, s, i)
+                res.append(s)
+        return res
+    def valid(self):
+        one = False   
+        for i in range(len(self.A)):
+            if OneBitPermutation.valid(self, i):
+                one = True
+        if not one: 
+            return False
+        tmp = LinearFunction(self.n)
+        one = self.mul(0, 1, 0)
+        two = self.mul(0, 1, 1)
+        for i in range(1, len(self.A)):
+            if i == 1: 
+                nine = tmp.mul(0, 1, i)
+            elif i >= 2 and i <= 4:
+                nine = tmp.mul(tmp.eval(tmp.eval(tmp.eval(self.eval(tmp.eval(one)))), 1), 1, i)
+            else: 
+                nine = self.mul(nine, 1, i)
+            tmp.copy(nine)
+            one = self.mul(one, 0, 1)
+            two = self.mul(two, 0, 1)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class OneBitPermutation:
+
+def valid(self, row):
+    for i in range(len(self.A)):
+        if row == 0 and self.A[0][i] and i!= 0:
+            return False
+        elif row!= 0 and self.A[row][i] and i!= row:
+            return False
+    return True       
+
+def copy(self, f):
+
+for i in range(1, self.n):
+self.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, input_list=''):
+        n = len(input_list)
+        m = 2**n
+        A = [[0]*m for j in range(m)]
+        for row in range(m):
+            temp = row2binary(row, n)
+            for col_ind in range(n):
+                col = binary2dec(temp[:col_ind]+temp[col_ind+1:])
+                A[row][col]
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+qc.cx(0, 1)
+qc.cx(1, 0)
+qc.cx(0, 1)
+qc.cx(1, 0)
+
+qc_compiled = qc.decompose()
+print(qc_compiled.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate:
+    def __init__(self, gateno, nq_used, params):
+        self.params = params
+        self.gateno = gateno
+        self.nq_used = nq_used
+        self.qins_c = []
+        self.qins_u = []
+        self.conds = []
+        self.label = gateno
+        self.reversible = True
+        self.instructions = []
+    def add_conditions(self, p):
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate:
+    def __init__(self, n):
+        self.n = n
+        self.label = ''
+        self.parameters = []
+        self.condition = []
+        self.decomposition = []  
+    def copy(self, g):
+        self.label = g.label
+        self.parameters = g.parameters.copy()
+        self.decomposition = g.decomposition.copy()
+        self.condition = g.condition.copy()
+        return self
+    def eval(self,
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, n):
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    def set(self, row, column, value): 
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column] = value
+    def add(self, left, right, sum):
+        tmp = self.A[sum][left]^self.A[sum][right]
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= sum:
+                self.A[sum][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp
+    def mul(self, left, right, product):
+        tmp1 = self.A[product][left]^(self.A[product][right]&self.A[right][left])
+        tmp2 = self.A[product][right]^(self.A[product][left]&self.A[left][right])
+        for i in range(len(self.A)):
+            if i!= left and i!= right and i!= product:
+                self.A[product][i] ^= self.A[left][i]^self.A[right][i]
+        return not tmp1 and not tmp2   
+    def eval(self, x): 
+        res = []
+        for i in range(len(x)):
+            if x[i] == 0:
+                res.append(0)
+            else:
+                s = 0
+                for j in range(len(x)):
+                    if j!= i and x[j] == 1:
+                        s = self.add(j, s, i)
+                res.append(s)
+        return res
+    def valid(self):
+        one = False   
+        for i in range(len(self.A)):
+            if OneBitPermutation.valid(self, i):
+                one = True
+        if not one: 
+            return False
+        tmp = LinearFunction(self.n)
+        one = self.mul(0, 1, 0)
+        two = self.mul(0, 1, 1)
+        for i in range(1, len(self.A)):
+            if i == 1: 
+                nine = tmp.mul(0, 1, i)
+            elif i >= 2 and i <= 4:
+                nine = tmp.mul(tmp.eval(tmp.eval(tmp.eval(self.eval(tmp.eval(one)))), 1), 1, i)
+            else: 
+                nine = self.mul(nine, 1, i)
+            tmp.copy(nine)
+            one = self.mul(one, 0, 1)
+            two = self.mul(two, 0, 1)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class LinearFunction:
+    def __init__(self, n):
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    def set(self, row, column, value): 
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+for i in range(20):
+    for j in range(20):
+        a = not ((i%4) and (j%4))
+        if a:
+            circuit += X(i)
+        circuit += Y(j)
+        b = not ((i%2) and (j%2))
+        if b:
+            circuit += Z(j)
+        circuit += H(i)
+        if not b:
+            circuit += H(j)
+""" Replace function with code in the
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[]]
+
+    def set(self, row, col, val):
+        self.mat[row].append((col, val))
+
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+
+    def __str
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class OneBitPermutation:
+    def __init__(self, qubit, n):
+        self.qc = QuantumCircuit(n)
+    def mul(self, A, B, sum):
+        self.qc.add_gates([A, B, sum])
+        assert one_bit_permutation(qc.to_gate(), 4): "Wrong."
+    def copy(self, fcn1):
+        self.qc.add_gates(fcn1.qc)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, n):
+        self.m = 2**n
+        self.n = n
+        self.A = [[0]*self.m for j in range(self.m)]
+    def set(self, row, column, value):
+        assert (0 <= row < self.m) and (0 <= column < self.m) and (0 <= value < 2), "Invalid value."
+        self.A[row][column]
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[]]
+    def set(self, row, col, val):
+        self.mat[row].append((col, val))
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, name, n, p):
+        self.name     = name
+        self.n        = n
+        self.p        = p
+        self.params   = []
+        self.decomp   = []
+        self.c_if     = None
+        self.classical = -1
+        self.label     = ""
+        self.qasm      = ""
+
+    def copy(self, other):
+        self.params   = other.params
+        self.decomp   = other.decomp
+        self.c_if     = other.c_if
+        self.classical = other.classical
+        self.label     = other.label
+        self.qasm      = other.qasm
+
+    def assemble(self):
+        qc = QuantumCircuit(1)
+        qc.unitary(self.qasm, range(1), label=self.label)
+        return qc.data
+
+    def getParamList(self):
+        if self.n < len(self.params):
+            self.params = self.params[0:self.n]
+        else:
+            for i in range(self.n - len(self.params)):
+                self.params.append(0)
+        return self.params
+
+    def getControlledUnitary(self):
+        n = self.n
+        for p in self.params:
+            if p == 0:
+                n += 1
+        qc = QuantumCircuit(n)
+        for i in range(len(self.decomp)):
+            for op in self.decomp[i]:
+                if op[0]!= 'ctrl':
+                    qc.unitary(op, range(n), label=op[1])
+                else:
+                    qc.unitary(op, range(n))
+                    qc.ctrl(op[1])
+        return qc.data
+
+    def getInvertedUnitary(self):
+        qc = QuantumCircuit(2*self.n)
+        for i in range(len(self.decomp)):
+            for op in self.decomp[i]:
+                if op[0]!= 'ctrl':
+                    qc.unitary(op, range(2*self.n), label=op[1])
+                else:
+                    qc.unitary(op, range(2*self.n))
+                    qc.ctrl(op[1])
+        return qc.data
+
+    def decompose(self):
+        return self.decomp
+        
+    def __str(self):
+        s = ""
+        s += self.name
+        s += "\n"
+
+        for p in self.params:
+            s += str(p)
+            s += "\t"
+
+        for i in range(self.n):
+            s += str(len(self.decomp[i]))
+            s += "\t"
+        s += '\n'
+        for j in range(self.n):
+            for i in range(0, len(self.decomp[j])):
+                s += self.decomp[j
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class LinearFunction(QuantumCircuit):
+    def __init__(self, size):
+        self.size = size
+        
+    def set(self, row, col, val):
+        
+    def copy(self, other):
+        
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from projectq.ops import NOT, H, CNOT, SWAP, QFT
+import projectq.meta.control as ctrl
+import math
+n = 2
+linear_function = LinearFunction(n)
+linear_function.set(0, 0, 0.5)
+linear_function.set(0, 1, 0.5)
+linear_function.set(1, 0, 0.5)
+linear_function.set(1, 1, -0.5)
+qc = QuantumCircuit(n)
+qc.append(linear_function, [0,1])
+
+linear_function.as_qasm()
+
+ctrl.controlled(linear_function,0,1)
+
+ctrl.multi_control([linear_function, linear_function, linear_function])
+
+ctrl.parallel_blocks([linear_function, linear_function])
+
+
+
+linear_function.to_unitary_gate()
+
+linear_function.default_decomposition()
+
+linear_function.custom_decomposition(3)
+
+
+
+
+
+linear_function.check_identity()
+
+
+
+cnot_gate = Gate(2)
+cnot_gate.add_decomposition(ctrl.multi_control([ctrl.multi_control([ctrl.controlled(NOT, 0, 1), H]), SWAP]))
+cnot_gate.add_decomposition(ctrl.controlled(H, 1))
+cnot_gate.add_decomposition(SWAP)
+cnot_gate.decompose()
+
+c1 = QiskitFunction(2)
+c1.add_decomposition([SWAP, CNOT])
+c1.decompose()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[]]
+    def set(self, row, col, val):
+        self.mat[row].append((col, val))
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str__(self):
+        out = ""
+        for r in self.mat:
+            for c in r:
+                if c == (r, 1):
+                    out += "I"
+                elif c == (r, -1):
+                    out += "-I"
+                elif c == (r, 0):
+                    out += " Z "
+                elif c[1] < 0:
+                    out += " ( Z " + str(c[1] // -1) + ")"
+                else:
+                    out += " ( I " + str(c[1] // 1) + ")"
+            out += "\n"
+        return out
+    
+    def is_perm(self):
+        mat = { (0,0): [1], (0,1): [0], (0,2): [0],
+                (1,0): [0], (1,1): [1], (1,2): [0],
+                (2,0): [0], (2,1): [0], (2,2): [1]
+               }
+        f = 0
+        for row in range(self.size):
+            for col in range(self.size):
+                for (row_mat, col_mat), val_mat in enumerate(mat):
+                    if val_mat[row] == row and val_mat[col] == col and row_mat == row_mat:
+                        f += 1
+        return f == self.size**2 - 1
+    
+    def _qasm_swap_circuit_from_row(self, row1, row2, n):
+        qc = QuantumCircuit(n, name="swap_rows_" + str(row1) + '_' + str(row2))
+        qc.h(list(range(n)))
+        for r in range(n):
+            for x in self.mat[row1]:
+                if x[0] == r:
+                    if x[1] < 0:
+                        qc.u3(-(x[1] / -1), 0, 0, r)
+                    elif x[1] > 0:
+                        qc.phase(x[1] / 2, r)
+        for r in range(n):
+            for x in self.mat[row2]:
+                if x[0] == r:
+                    if x[1] < 0:
+                        qc.u3((x[1] / - 1), 0, 0, r)
+                    elif x[1] > 0:
+                        qc.phase(-(x[1
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class Gate(object):
+    def __init__(self, nqubits, gate_name = None):
+        self.size = nqubits
+        self.params = []
+        self.gname=gate_name
+    def get_params(self):
+        return self.params
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[]]
+    def set(self, row, col, val):
+        self.mat[row].append((col, val))
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self, size):
+    self.size = size
+    self.n_cx = size
+    self.n_sw = 0
+    self.mat = [[]]
+    self.params = []
+    self.label = ''
+  def __str__(self):
+    s = ''
+    for row, col, val in self.mat:
+      if type(row) == complex:
+        s = s + 'SWAP(' + str(row.imag) + ','+ str(col) +'' + str(val) + ')\n'
+      else:
+        s = s + 'CX(' + str(row) + ','+ str(col) + ')\n'
+    for p in self.params:
+      s = s + 'gate_param'+ str(p) + '\n'
+    if self.label is not '':
+      s = s + 'label'+ self.label + '\n'
+    return s
+  def __mul__(self, other):
+    return Gate('product', str(self) + '\n' + str(other))
+  def get_size(self):
+    return self.size
+  def is_permutation(self):
+    num = 0
+    for row, _ in self.mat:
+      if type(row) == complex:
+        num += 1
+    return num == 1 and self.n_cx + self.n_sw <= self.size
+  def add_param(self, val):
+    self.params.append(val)
+  def decompose(self, circ):
+    for row, col, val in self.mat:
+      if type(row) == complex:
+        row, col = int(round(row)), int(round(col))
+        circ.swap(row, col)
+    for i in range(self.size):
+      circ.cx(self.size - 1, i)
+
+
+class Gate(LinearFunction):
+  def __init__(self, gatetype, gatestr=None, label=None):
+    self.size = 0
+    self.n_cx = 0
+    self.n_sw = 0
+    self.mat = []
+    self.params = []
+    self.gatetype = gatetype
+    self.gatestr = gatestr
+    if label is None or label == '':
+      self.label = gatetype
+    else:
+      self.label = label
+  def get_size(self):
+    return self.size
+  def __str__(self):
+    return self.get_qasm()[0]
+  def set_size(self, size):
+    if size <= 0:
+      raise Exception('size must be non-negative')
+    if self.size == 0:
+      self.size = size
+      return
+    circ = QuantumCircuit(self.size, size)
+    self.decompose(circ)
+    self.size = size
+  def get_qasm(self):
+    circ = QuantumCircuit(self.size)
+    self.de
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def check_function1(A, B):
+    
+    for i in range(A.size):
+        for j in range(A.size):
+            if A[i][j]!= B[i][j]:
+                break
+            if j == A.size - 1:
+                return True
+    return False
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, size):
+        self.size = size
+        self.mat = [[[]]]
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(val)
+    def set(self, row, col, val):
+        self.mat[i].append(val)
+    def copy(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                self.mat[i].append(other.mat[i][j])
+    def __str
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class GateBase(object):
+    def __init__(self, size):
+        self.size = size
+    def identity(self):
+        for i in range(self.size):
+            for j in range(self.size):
+                if(i==j):
+                    self.mat[i][j] = 1.0
+        self.synCircuit
+    @abstractmethod
+    def __str__(self):
+        pass
+class Gate(GateBase):
+    def __init__(self, size):
+        super.__init__(size)
+        self.params = []
+        self.label = "U"
+        self.mat = []
+    def set(self, row, col, val):
+        self.mat[row][col]= val
+    def synCircuit(self):
+        pass
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+
+
+from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self):
+        self.gate = QuantumCircuit(1,1)
+    
+    g = LinearFunction()
+    g.set(0,0,1)
+    g.set(2,0,1)
+    g.set(1,1,1)
+
+
+file_name = "quantum_coin_flip_circuit.qasm"
+
+<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self):
+        self.gate = QuantumCircuit(2)
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+n = 5
+xrange = [i for i in range(n)]
+yrange = [i + n for i in xrange]
+g = QuantumCircuit(n+n, n)
+
+g.cx(4,0)
+g.rz(2.1, 0)
+g.cx(2,0)
+g.rz(0.5, 0)
+g.cx(0,3)
+g.rz(0, 5)
+g.cx(4,1)
+g.rz(2.2, 1)
+g.cx(2,1)
+g.rz(0.6, 1)
+g.cx(0,4)
+g.rz(0, 5)
+g.cx(3,2)
+g.rz(2, 2)
+g.cx(1,2)
+g.rz(0.7, 2)
+g.cx(0,5)
+g.rz(0, 5)
+g.cx(3,4)
+g.rz(2.1, 4)
+g.cx(1,4)
+g.rz(0.8, 4)
+g.cx(0,5)
+g.rz(0, 5)
+
+print(g.draw())
+    
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def x_gate(qr, index):
+    qr[index].x()
+
+
+def z_gate(qr, index):
+    qr[index].z()
+
+
+qc = QuantumCircuit(3)
+qr = qc.qubits
+x_gate(qr, 0)
+z_gate(qr, 1)
+qc.draw()
+import numpy as np
+
+
+class Gate(object):
+    def __init__(self, num_qubits):
+        self.num_qubits = num_qubits
+        self.__matrix = np.eye(2 ** num_qubits)
+
+    def run(self):
+        pass
+qgate = Gate(1)
+print(qgate.num_qubits)
+qgate1 = Gate(1)
+print(qgate1.num_qubits)<jupyter_output>8
+8
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def cswap(x, y, z):
+    QuantumCircuit().cswap(x, y, z)
+
+
+backend = IBMQ.get_backend('ibmq_16_melbourne')
+
+
+qasm = circuit.qasm()
+print(qasm)
+
+results = backend.run(qasm).result()
+
+plot_histogram(results.get_counts())
+
+
+from qiskit.compiler import transpile
+transpile(orig_circ, backend=get_backend('ibmq_16_melbourne'))
+
+
+from qiskit.compiler import transpile
+
+from qiskit import IBMQ
+
+backend = IBMQ.get_backend('ibmq_16_melbourne')
+transpile(orig_circ, backend=backend)
+
+
+
+circuit=QuantumCircuit()
+circuit.h(0)
+circuit.h(1)
+circuit.h(2)
+circuit.h(3)
+circuit.measure_all()
+
+transpiled_circuit = transpile(circuit, basis_gates=get_basis_gates('default', 'projectq_simulator'),
+                              coupling_map=get_coupling_map('ibmq_16_melbourne'),
+                              initial_layout=get_initial_layout(circuit, 'ibmq_16_melbourne'),
+                              )
+
+backend = BasicAer.get_backend('projectq_simulator')
+job = qiskit.execute(transpiled_circuit, backend)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+QFT = [[1/2, -0.25j, 0],
+       [1/2, 0, 1/2],
+       [-0.25j, -1/2, 0]]
+
+swap = [[1, 0, 0, 0],
+        [0, 0, 1, 0]
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+        ]
+
+def circuit(qubits, gate):
+    for ii, _ in enumerate(qubits):
+
+        for _ in range(ii % 2, gate.num_gates, 2):
+            gate.swap(ii, ii + 1)
+
+N = 3;
+gate = MatrixFunction();
+gate.num_gates
+gate.gate.
+
+
+N = 3;
+gate_1 = MatrixFunction()
+gate_1.set(0.0, 1/3, 2)
+gate_1.set(0, 2, 1)
+gate_1.set(0, 1, 1/3)
+gate_2 = MatrixFunction()
+gate_2.set(0.0, 3, 3/4)
+gate_2.set(0, 2, 1/2)
+gate_2.set(0, 1, 5/8)
+
+circuit(range(2), gate_1, gate_2)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self):
+        self.gate.rx(1, 0)
+        self.gate.rz(0 + 1, 1)
+        self.gate.rx(1, 0)
+    def swap(self):
+        self.gate.cx(0, 1)
+        self.gate.cx(1, 0)
+        self.gate.cx(0, 1)
+ 
+
+func = LinearFunction()
+func.set(0, 1, 2)
+func.swap(0, 1)
+
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister, ClassicalRegister
+from qiskit import QuantumCircuit, execute, Aer
+
+class Gate(QuantumCircuit):
+    def __init__(self, name, num_qubits):
+        QuantumCircuit.__init__(self, name=name)
+        self.q_reg = QuantumRegister(num_qubits, "q")
+        self.c_reg = ClassicalRegister(num_qubits, "c")
+        self.quantum_circuit = QuantumCircuit(self.q_reg, self.c_reg)
+        self.params = []
+    def add_parameters(self, param_list):
+        self.params += param_list
+    def set_condition(self, classical_condition):
+        self.classical_register.classical_condition = classical_condition
+    def add_instruction(self, instruction, args):
+        instruction(self,...args)
+    def get_qasm_instruction(self):
+        qasm_instruction = QuantumCircuit()
+        qasm_instruction += self.quantum_circuit
+        return qasm_instruction
+    def inverse(self):
+        instructions = []
+        for i in range(len(self.quantum_circuit.data) - 2):
+            print("Reverse i is", i)
+            instructions.append(self.quantum_circuit.data[i])
+            instructions.append(self.quantum_circuit.data[(i % 2) + i])
+            instructions.append(self.quantum_circuit.data[i])
+            instructions.append(self.quantum_circuit.data[3])
+            instructions.append(self.quantum_circuit.data[(i % 2) + 3])
+            instructions.append(self.quantum_circuit.data[3])
+        return instructions
+
+    def gate_exponent(self, exponent):
+        if exponent == 1.0:
+            return self
+        elif exponent == 3.0 / 2.0:
+            return self.c_controlled().inverse().c_controlled().c_controlled()
+        else:
+            return self.gate_exponent((3.0 / 2.0) / exponent) *
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+    def set(self, x, y, z, label=''):
+        self.instructions = []
+        instructions = []
+        instructions += [('rx', x, y, label=label)]
+        instructions += [('rz', y + z, x, label=label)]
+        instructions += [('rx', x, y, label=label)]
+        for function, target, control, label in instructions:
+            instruction = QuantumCircuit()
+            instruction.append(function, [target], label=label)
+            if control:
+                instruction.cx(*control, target)
+            self.instructions += [instruction]
+    def __matmul__(self, gate):
+        return Gate.__mul__(self, gate)
+    def __mul__(self, gate):
+        instructions = []
+        for instruction in gate.instructions:
+            self.instructions += [instruction]
+        return self
+    def swap(self, x, y):
+        for instruction in self.instructions:
+            instruction.swap(x, y)
+
+
+
+
+from qiskit import QuantumCircuit
+q = QuantumCircuit(2)
+
+
+from qiskit.quantum_info import unitary
+from qiskit.providers import aer
+
+
+gate = Gate()
+gate.set(0, 0, 0, label='h')
+
+
+backend = aer.QasmSimulator()
+qobj = backend.run(gate.qasm()).result().get_unitary(gate.qasm())
+control_unitary = unitary(gate.control())
+target_unitary = unitary(gate.unitary())
+
+
+assert round(qobj[1][0], 8) == round(control_unitary[0][0], 8)
+assert round(qobj[1][1], 8) == round(target_unitary[0][0], 8)
+assert round(qobj[1][2], 8) == round(target_unitary[0][1], 8)
+assert round(qobj[1][3], 8) == round(-1j * target_unitary[0][2], 8)
+assert round(qobj[1][4], 8) == round(control_unitary[1][0], 8)
+assert round(qobj[1][5], 8) == round(target_unitary[1][0], 8)
+assert round(qobj[1][6], 8) == round(target_unitary[1][
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction():
+    def __init__(self):
+        
+        self.circuit = QuantumCircuit()
+    def set(self, x:int, y:int, z:float):
+        
+        self.circuit.rx(z, y)
+        self.circuit.rz(y + z, x)
+        self.circuit.rx(x, y)
+    def swap(self, x:int, y:int):
+        
+        self.circuit.cx(x, y)
+        self.circuit.cx(y, x)
+        self.circuit.cx(x, y)
+
+
+
+from math import cos, sin, pi
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+class Gate():
+    def __init__(self, params:list, label=False):
+        
+        self.params = params
+        self.label = label
+        self.circuit = QuantumCircuit()
+
+    def set(self, index:list, angle:float):
+        
+        if index[0] < index[1]:
+            self.circuit.rx(self.params[angle], index[0])
+            self.circuit.rz(index[0] + self.params[angle], index[1])
+            self.circuit.rx(self.params[angle], index[1])
+        else:
+            pass
+    def swap(self, index[0:2]:list):
+        
+        self.circuit.crx(index[0], index[1], index[0]).crz(index[1] + 1, index[0], index[1]).crx(self.params[angle], index[0], index[1])
+    def c(self, index[0]:int, index[1]:int):
+        self.circuit.cx(index[0], index[1])
+    def h(self, index[0]:int):
+        self.circuit.h(index[0])
+    def barrier(self, *args):
+        
+        self.circuit.barrier()
+    def measure(self, index[0]:int, classical[0]:string):
+        self.circuit.measure(index[0], classical[0])
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+class Gate():
+    def __init__(self):
+        pass
+    def set(self):
+        pass
+    def swap():
+        pass
+    def c():
+        pass
+    def h():
+        pass
+    def barrier():
+        pass
+    def measure():
+        pass
+"""Please create a semantically equivalent program to the previous generation of Linear
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self):
+        self.gate = QuantumCircuit()
+    def set(self, x, y, z):
+        self.gate.rx(z, y)
+        self.gate.rz(y + z, x)
+        self.gate.rx(x, y)
+    def swap(self, x, y):
+        self.gate.cx(x, y)
+        self.gate.cx(y, x)
+        self.gate.cx(x, y)
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumCircuit
+import numpy
+
+
+circuit = QuantumCircuit(5)
+for j in range(2, 5):
+    circuit.swap(0, j)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.rz(numpy.pi/4, 0)
+    circuit.h(1)
+    circuit.rz(numpy.pi/4, 2)
+    circuit.rz(numpy.pi/4, 4)
+    circuit.cx(0, 2)
+    circuit.cx(1, 4)
+    circuit.h(1)
+    circuit.h(3)
+    circuit.cz(1, 3)
+    circuit.h(1)
+    circuit.h(3)
+    circuit.cx(2, 3)
+    circuit.cx(4, 3)
+    circuit.h(3)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.rz(numpy.pi/4, 0)
+    circuit.h(1)
+    circuit.rz(numpy.pi/4, 2)
+    circuit.rz(numpy.pi/4, 4)
+    circuit.cx(0, 2)
+    circuit.cx(1, 4)
+    circuit.h(1)
+    circuit.h(j-1)
+    circuit.h(j)
+    circuit.swap(0, j)
+circuit.cx(0, 1)
+circuit.cx(1, 2)
+circuit.cx(2, 3)
+circuit.cx(3, 4)
+circuit.barrier()
+circuit.measure([0, 1, 2, 3, 4], [0, 1, 2, 3, 4])
+circuit.draw(output = 'mpl')
+from qiskit import Aer
+from qiskit import execute
+quantum_simulator = Aer.get_backend('qasm_simulator')
+circuit = QuantumCircuit.from_qasm_str(circuit.qasm())
+result = execute(circuit, quantum_simulator).result()
+counts = result.get_counts(circuit)
+print("\n Total count for 00000: ", counts['00000'], "\n")
+for key in counts: 
+    if ('1' in key and counts[key] == 100): 
+        print(key)
+print("")
+
+
+from qiskit import QuantumCircuit, ClassicalRegister
+import numpy
+
+circuit = QuantumCircuit(5,5)
+for j in range(2, 50):
+    circuit.swap(0, j)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.rz(numpy.pi/4, 0)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self):
+    self.label = ""
+    self.n_qubits = 0
+    self.params = 0
+    self.decompositions = 0
+    self.unitary_matrix = 0
+    def add_decomposition(self, function):
+    pass
+    def create_qasm(self, name):
+    pass
+    def set_condition(self, param, condition):
+    pass
+    def create_controlled_version(self, a, b):
+    pass
+    def invert_instruction(self):
+    pass
+    def set_unitary(self):
+    pass
+    def default_string(self):
+    pass
+    def repeat_gate(self, n):
+    pass
+    def reverse_subinstructions(self):
+    pass
+    def soft_equivalence(self, g):
+    pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self): pass
+
+  def set(x, y, z):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+  pass
+
+  def swap(x, y):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, label=None, params=None):
+        self.params = params
+        self.label = label
+    def adjoint(self):
+        pass
+    def controlled(self):
+        pass
+    def unitary(self):
+        pass
+    def instructions(self):
+        pass
+
+class RotationGate(Gate):
+    def __init__(self, params,label=''):
+    
+    def unitary(self):
+
+    
+class LinearFunction(Gate):
+    pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate:
+
+    def __init__(self, label=None):
+
+        self.params = 'a,b'
+        self.label = label
+
+    def add_instruction(self, instruction):
+        pass
+
+    def create_controlled(self, qubit):
+        pass
+
+    def invert(self):
+        pass
+
+    def repeat(self, iteration):
+        pass
+
+    def reverse(self):
+        pass
+
+    def create_unitary(self):
+        pass
+
+    def __str__(self):
+        pass
+
+    def _str_(self):
+        pass
+
+    def __eq__(self):
+        pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self): pass
+  def set(x, y, z):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+  pass
+  def swap(x, y):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+   pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = qiskit.QuantumRegister(1)
+c = qiskit.ClassicalRegister(1)
+qc = qiskit.QuantumCircuit(q, c)
+qc.h(q)
+qc.cswap(0, 2, 3)
+qc.h(q)
+qc.measure(q, c)
+qc.draw()
+
+
+
+from qiskit import QuantumCircuit; from qiskit import QuantumRegister; from qiskit import ClassicalRegister; from qiskit import QuantumCircuit
+
+
+q = qiskit.QuantumRegister(1)
+c = qiskit.ClassicalRegister(1)
+qc = qiskit.QuantumCircuit(q, c)
+qc.h(q)
+qc.cswap(0, 2, 3)
+qc.h(q)
+qc.measure(q, c)
+qc.draw()
+
+
+gate = qiskit.Gate('swap', 2, [0, 1])
+
+de_swap = ['swap q[0], q[1]', '']
+gate_swapped = gate.definition
+print(gate)
+print(gate_swapped)
+
+swap q[0], q[1]
+swap q[1], q[0]
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(n, name='', p=[]): pass
+  def add_decomposition(d, parameters=[]): pass
+  def set_classical_condition(c): pass 
+  def set_label(l): pass
+  def controlled(ctrl, target): pass
+  def controlled_inv(ctrl, target): pass
+  def gatepower(g, n): pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object)
+
+
+
+  def __init__(self, num_qubits, name, circuit): pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, **kwargs):
+    pass
+  def getQasmQobjInstruction(name):
+    pass
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self): pass
+  def set(x, y, z):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+  pass
+  def swap(x, y):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+
+from qiskit.circuit import Gate
+
+class Gate(Gate): pass
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  pass
+  def add_decomposition(self): pass
+  def set_classical(self): pass
+  def create_controlled_qasm(self): pass
+  def invert(self): pass
+  def unitary_qasm(self): pass
+  def repeat(self): pass
+  def reverse_steps(self): pass
+  def soft_compare(self): pass
+  
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object): pass
+
+q2c = QuantumCircuit(2)
+q2c.swap(0, 1)
+print(q2c)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, label):
+    
+    self.label = label
+    self.params = [1.0]
+    self.ctrl = []
+    self.gate = []
+    
+    
+    
+    
+
+  def set(self, x, y, z, w): pass
+
+  def add_ctrl(self, qn, ctrl):
+    self.ctrl.append(ctrl)
+
+  def assemble(self):
+    
+    pass
+
+  def invert(self): pass
+
+  def controlled(self):
+    
+    pass
+
+  def gate_exponent(self): pass
+
+  def defaultOpenQASM(self):
+    
+    pass
+
+  def repeatGate(self, n):
+    
+
+    
+    
+  
+  def unroll(self): pass
+
+  def __eq__(self, other):
+    if (other == None or not isinstance(other, self.__class__)):
+        return False
+    
+    
+    
+    
+    
+    
+    
+    
+    if (not np.array_equal(self.params, other.params)):
+      return False
+
+  def __neq__(self, other):
+    return not self == other
+
+  def __hash__(self): pass
+
+Gate_L1 = LinearFunction()
+Gate_L1.set(x=0, y=1, z=2)
+Gate_L1.swap(x=0, y=1)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class Gate(object):
+  def __init__(self, decomp):
+    self._qasm = 0
+    self._decomp = decomp
+    pass
+  def add_decomposition(self, decomp):
+    self._decomp = decomp.append(self._decomp)
+    
+    
+    
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+  def __init__(self): pass
+  def set(x, y, z):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+  pass
+  def swap(x, y):
+    if (x == y):
+      print("Warning: cannot swap wires")
+    else:
+      print("Swap two qubits")
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+
+class Gate(LinearFunction): pass
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, name, parameters, label=None, ctrl=False, unitary=False, num_qubits=1):
+    self.__name__ = name; self.__parameters__ = parameters; self.__num_qubits__ = num_qubits; self.__label__ = label;
+    self.__decompositions__ = dict(); self.ctrl = ctrl; self.unitary = unitary; self.__unitary__gate__ = None;
+  def defaultToString(self):
+      return '{ self.__name__ } '
+      if self.__label__!= None:
+        return '{self.__label__} : { self.__name__ } '
+  def qasmToString(self): return 'H {self.params} {self.target};'
+  def setUnitaryGate(self, gate): self.__unitary__gate__ = gate
+  def setAsymmetric(self, asymmetric): pass
+  def getAsymmetric(self): pass
+  def __str__(self): return 'Gate'+ self.defaultToString()
+  def __repr__(self): return 'Gate'+ self.defaultToString()
+  def addDecomposition(self, target, decomposition):
+    if(target + len(decomposition) > self.__num_qubits__): raise ValueError
+    if len(decomposition) == 1: self.__decompositions__[target] = decomposition[0]
+    else: self.__decompositions__[target] = decomposition
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class Gate(object):
+  def __init__():
+    self.gate = qiskit gate object
+    self.qubit = qubit number(integer)
+    self.parameter = list(float)
+    pass
+  def toCircuit():
+  
+  def addParameter(list):
+  
+  def toQiskitGate():
+    return QuantumCircuit([customGate])
+  
+  def setCondition():
+
+  def getCondition():
+
+  def createControlled():
+  
+  def inverse():
+  
+  def compose():
+  
+  def getParameter():
+  
+  def getLabel():
+  
+  def getSubInstructions():
+  
+  def isUnitary():
+  
+  def repeat():
+  
+  def reverse():
+  
+  def equals():
+  
+  def toOpenQasm():
+
+  def softEquals():
+  
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def parameter_function(t):
+  return 0.1
+
+
+t = 0.0
+
+
+gate = Gate(LinearFunction(), 3, 2, parameter_function, "p")
+
+
+gate.add_decompositions([("CX p q", [0, 2]), ("CX r s", [0, 1])])
+
+
+qobj = gate.get_instruction()
+
+
+circuit = QuantumCircuit(3)
+circuit.append(qobj, [0, 2, 1])
+circuit.draw(output="text")
+
+
+
+parameters = {'t': 0.1}
+result = execute(circuit, Aer.get_backend('qasm_simulator'), shots=16000, memory=True, coupling_map=coupling_map, basis_gates=basis_gates, parameters=parameters).result()
+
+
+print(result.get_memory()[0])
+```
+
+The first step is importing the Qiskit SDK from the `qiskit` module and printing the version.
+
+```
+{'t': 0.1}
+```
+
+We can also print the Qobj. We pass in a circuit which has a single instruction, which is a gate G.
+
+```
+{'t': 0.1}
+```
+
+We then define the parameter and execute the simulation.
+
+```
+Gate(LinearFunction(), n, k, parameter_function, string)
+```
+
+The first argument represents the LinearFunction class, which takes up 2 qubits and depends on 1 parameters called string.
+
+```
+.add_decompositions(circuit_name, parameters)
+```
+
+This step adds a decomposition. The first argument represents the instruction or label of the decomposition. The second argument represents a list of parameters.
+
+```
+.add_decompositions([("CX p q", [0, 2]), ("CX r s", [0, 1])])
+```
+
+After we add the decomposition, we can assemble and inspect the Qobj.
+
+```
+.get_instruction()
+```
+
+This step uses the information inside the gate to return a Qiskit Instruction object.
+
+```
+qobj = gate.get_instruction()
+circuit = QuantumCircuit(3)
+circuit.append(qobj, [0, 2, 1])
+circuit.draw(output="
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, n):
+    self.qasm_string = ''
+    pass
+  def equals(self, other):
+    return (self.parameters == other.parameters and self.label == other.label)
+  pass
+  def add_instr(self, qasm_string):
+    self.qasm_string = self.qasm_string + qasm_string
+  pass
+  def get_instr(self):
+    return self.qasm_string
+  pass
+  def set_params(self, parameters, n):
+    self.parameters = parameters
+    if (len(parameters)!= n):
+      raise ValueError("The parameters list must have %d values, not %d" % (n, len(parameters)))
+  pass
+  def set_label(self, label):
+    self.label = label[1:-1]
+  pass
+  def controlled(self, n, control):
+    if (not control in n):
+      raise ValueError("Cannot control qubit %d of a %d-qubit gate" % (control, n))
+    else:
+      outstring = '.x %d' % control
+      outstring += self.qasm_string
+      return Gate(n)
+  pass
+  def invert_instr(self):
+    return self.invert(self.qasm_string)
+  pass
+  def invert_unitary_instr(self):
+    return self.invert_unitary(self.qasm_string)
+  pass
+  def repeat_instr(self, n):
+    return self.repeat(self.qasm_string, n)
+  pass
+  def repeat_unitary_instr(self, n):
+    return self.repeat_unitary(self.qasm_string, n)
+  pass
+  def reverse_instr(self):
+    return self.reverse(self.qasm_string)
+  pass
+  def soft_compare(self, other, diff=1e-8):
+    equal = True
+    if (abs(self.n - other.n) < 1e-8):
+      if (len(self.parameters)!= len(other.parameters) < 1e-8):
+        for i in range(len(self.parameters)):
+          if (abs(self.parameters[i] - other.parameters[i]) > diff):
+            equal = False
+            break
+    else:
+      equal = False
+    return equal
+  pass
+  def get_openqasm_string(self):
+    return self.qasm_string
+  pass
+  def __str__(self):
+    mystr = ''
+    mystr = mystr+'[Gate: label='+self.label+', unitary gate='+self.qasm_string+']'
+    return mystr
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+class Gate(LinearFunction): pass
+""" Please create a mutated program that modifies the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+  
+class Gate(LinearFunction): 
+  pass
+  
+def create_circuit(f, initial_input): 
+  size = len(f)
+  input_labels = qubit_labels(size)
+  qc = QuantumCircuit(size,size)
+  i = initial_input 
+  for j in input_labels: 
+    if i & 1: 
+      qc.x(j)
+    i >>= 1
+    
+  
+  
+def input_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+
+
+def qubit_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+  
+  
+def create_gate(matrix): 
+  g = Gate(None) 
+  return g 
+
+
+def add_gate(circuit, gate, qubits, params): 
+  pass 
+
+
+
+from qiskit import QuantumCircuit
+
+
+class LinearFunction(object): 
+  pass
+  
+class Gate(LinearFunction): 
+  pass
+  
+ 
+class Grover(Gate): 
+  pass
+  
+class QFT(Gate): 
+  pass
+  
+ 
+class RX(Gate): 
+  pass
+class RY(Gate): 
+  pass
+ 
+class CCRX(Gate): 
+  pass
+
+
+def test_create_circuit(self): 
+	
+	
+	pass 
+
+def test_create_gate(self): 
+	
+	
+	 test_create_gate 
+	 pass 
+	
+def test_add_gate(self): 
+	
+	
+	
+	pass 
+	
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(5, 5)
+qc.h(5)
+qc.cx(0, 4)
+qc.cx(1, 4)
+qc.cx(2, 4)
+qc.cx(2, 3)
+qc.cx(3, 4)
+qc.cx(4, 0)
+qc.cx(4, 5)
+qc.x9(0, 0)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+
+def example_circuit(qr, cr, circuit):
+	
+
+    circuit.cx(qr[1],qr[2])
+    circuit.cx(qr[0],qr[2])
+    circuit.swap(qr[0],qr[1])
+    return 
+
+qr = QuantumRegister(3, "q") 
+
+cr = ClassicalRegister(3, "c") 
+circuit = QuantumCircuit(qr, cr) 
+example_circuit(qr, cr, circuit) 
+result = execute(circuit, backend=BasicAer.get_backend("qasm_simulator"), shots=1).result()  
+
+for sample in result.get_counts(circuit):
+    print(sample) 
+
+ 
+
+from qiskit.circuit import Gate
+class mySwapGate(Gate):
+  pass
+
+
+def new_swap_gate(qr, circuit):
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    circuit.swap(qr[0], qr[1])
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    return circuit
+
+qr = QuantumRegister(1, "q") 
+circuit = QuantumCircuit(qr) 
+circuit = new_swap_gate(qr, circuit) 
+
+circuit.draw(output="mpl", filename="swap_qc.png")
+
+circuit.qasm()
+
+circuit.decompose() 
+
+circuit.decompose().unitary()
+
+circuit = QuantumCircuit(2)
+circuit.h(0) 
+circuit.ch(0,1)
+circuit.ccx(0,1,2)
+circuit.h(0)
+circuit.h(1)
+circuit.draw(output="mpl")<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def new_generation(lst):
+    lst.append() 
+    lst[:1] = [] 
+
+lst = [1, 2, 3, 4]
+new_generation(lst)  
+lst                       
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+class Gate(LinearFunction): 
+  pass
+def create_circuit(f, initial_input): 
+  size = len(f)
+  input_labels = qubit_labels(size)
+  qc = QuantumCircuit(size,size)
+  i = initial_input 
+  for j in input_labels: 
+    if i & 1: 
+      qc.x(j)
+    i >>= 1
+def input_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+def qubit_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+def create_gate(matrix): 
+  g = Gate(None) 
+  return g 
+def add_gate(circuit, gate, qubits, params): 
+  pass 
+class LinearFunction(object): 
+  pass
+class Gate(LinearFunction): 
+  pass
+class Grover(Gate): 
+  pass
+class QFT(Gate): 
+  pass
+class RX(Gate): 
+  pass
+class RY(Gate): 
+  pass
+class CCRX(Gate): 
+  pass
+def test_create_circuit(self): 
+	pass 
+def test_create_gate(self): 
+	 test_create_gate 
+	 pass 
+def test_add_gate(self): 
+	pass
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, num_qubits, matrix):
+        self.size = num_qubits
+        self.params = None
+        self.matrix = matrix
+        self.circuit = None
+
+    def __str__(self):
+        if self.matrix:
+            return self.circuit.__repr__()
+        return'reversible gate'
+
+    def draw(self, backend='text', scale=1, filename=None):
+        if self.circuit:
+            circ = self.circuit.decompose()
+            return circ.draw(backend=backend, scale=scale, filename=filename)
+
+    def control(self, num_ctrl_qubits=1):  
+        import qiskit.qasm as qasm
+        from qiskit.circuit import QuantumCircuit, QasmQobjInstruction
+
+        num = self.size + num_ctrl_qubits
+        circ = QuantumCircuit(num)
+        target_qubits = [i for i in range(self.size)]
+        ctrl_qubits = [i for i in range(self.size, self.size + num_ctrl_qubits)]
+        for ctrl in ctrl_qubits:
+            circ.h(ctrl)
+
+        for j in range(num_ctrl_qubits):
+            circ.x(ctrl_qubits[j])
+
+
+        qasm_str = 'ccx' + str(ctrl_qubits[0]) + \
+                   ',' + str(target_qubits[0]) + ',' + \
+                   str(target_qubits[1]) + ';'
+
+        
+        qasm_circuit = qasm._Qasm(qasm_str)
+        params = qasm_circuit._qasm_ast._params
+        circuit_obj = QasmQobjInstruction(qasm_circuit._qasm_ast
+                                       .name(),
+                                        len(params),
+                                        params)
+        for qubit in ctrl_qubits:
+            circuit_obj.ch += f"h q[{qubit}]\n"
+        circuit_obj
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object):
+    def __init__(self, circuit, registers):
+        self._circuit = circuit
+        self._registers = registers
+        self._reversed_order = None
+
+    @property
+    def data(self):
+        
+        return self._circuit[self._registers[0]]
+def create_circuit(f, initial_input):
+    size = len(f)
+    qc = QuantumCircuit()
+    for qreg in range(size):
+        qc.add_register(qreg)
+    if initial_input:
+        for qubit, input_bit in zip(qc[0:size], initial_input[::-1]):
+            if input_bit:
+                qc.x(qubit)
+    return qc
+f = [-1, -1, 0, -1, 0, 1, -1, -1]
+create_circuit(f, [0])
+
+
+
+
+class Gate(LinearFunction):
+    def __init__(self, matrix, label):
+        self._matrix = matrix
+        self._reversed_order = None
+        self._label = label
+
+    @property
+    def label(self):
+        
+        return self._label
+
+def test_create_circuit(self):
+    pass
+
+class SimpleGate(Gate):
+    def __init__(self, c, g, label):
+        super().__init__(c, [c, g], label)
+
+    @property
+    def qsize(self):
+        
+        return self.data[0].length
+
+    @property
+    def a(self):
+        
+        return self.qsize
+
+from qiskit import QuantumCircuit
+
+
+class Gate(LinearFunction):
+    def __init__(self, matrix, label):
+        self._matrix = matrix
+        self._label = label
+
+    @property
+    def data(self):
+        
+        return self._matrix
+
+    @property
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit(f, initial_input): 
+        size = len(f)
+        qc = QuantumCircuit(size)
+        gate_list = []
+        for j in range(size):
+                if (initial_input >> j) & 1 == 1:
+                        gate_list.append(('x', j))
+        size = len(gate_list) if len(gate_list) < size else size
+        input_labels = qubit_labels(size)
+        for g in reversed(gate_list):
+                label, qbit = g
+                i = input_labels.index(label)
+                qc.swap(qbit, size - 1)
+                for k in input_labels[i + 1:]:
+                        qc.swap(k, size - 1)
+                if label == 'x':
+                        qc.x(size - 1)
+                input_labels = input_labels[:i] + input_labels[i + 1:]
+        return qc
+def qubit_labels(n):
+        return [str(i) for i in range(n)]
+def create_gate(mat):
+        pass
+def test_create_gate(self):
+	test_create_gate
+	pass
+def convert_matrix(f, inverse = False):
+        nq = len(f)
+        ret = []
+        x_list = []
+        for j in range(nq - 1, -1, -1):
+                l = [0] * nq
+                val = int(f[j, j])
+                for k in range(nq):
+                        l[k] = int(f[j, k])
+                if val!= 0:
+                        x_list.append(j)
+                if inverse:
+                        ret.append((-1)**(val / abs(val)) * l)
+                else:
+                        ret.append(l)
+        while x_list:
+                j = x_list.pop(0)
+                for m in range(j):
+                        l = ret[j]
+                        val = -1 * l[j
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction:
+    def __init__(self, func):
+        self.n = len(func)
+        self.func = func
+
+        self.input_labels = list(map(str, range(self.n)))
+        self.qubit_labels = list(map(str, range(self.n)))
+
+    def as_qiskit_circuit(self, initial_input: int = 0):
+        qc = QuantumCircuit(self.n, self.n)
+
+        
+        initial_input_string = f"{int(initial_input):0{self.n}b}"
+
+        
+        for i, bit in enumerate(initial_input_string):
+            if bit == "1":
+                gate = "x"
+            else:
+                gate = "id"
+
+            qc.append(gate, [i])
+
+        
+        inputs = self.reverse_bits(initial_input_string)
+        for i, bit in enumerate(inputs):
+            if bit == "1":
+                gate = "x"
+            else:
+                gate = "id"
+
+            
+            qc.append(gate, [i])
+
+        return qc
+
+    def is_permutation(self):
+        
+        bits = []
+
+        for x in self.func:
+            
+            if isinstance(x, int):
+                raise ValueError("Matrix elements should be of type Bit.")
+            bits.append(x)
+
+        
+        
+        unique_bits = []
+        for bit in bits:
+            try:
+                
+                unique_bits.append(bits.index(bit))
+            except ValueError:
+                
+                unique_bits.append(len(unique_bits))
+                bits.append(bit)
+
+        
+       
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+test
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+class Gate(LinearFunction): 
+  pass
+def create_circuit(f, initial_input): 
+  size = len(f)
+  input_labels = qubit_labels(size)
+  qc = QuantumCircuit(size,size)
+  i = initial_input 
+  for j in input_labels: 
+    if i & 1: 
+      qc.x(j)
+    i >>= 1
+def input_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+def qubit_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+def create_gate(matrix): 
+  g = Gate(None) 
+  return g 
+def add_gate(circuit, gate, qubits, params): 
+  pass 
+class LinearFunction(object): 
+  pass
+class Gate(LinearFunction): 
+  pass
+class Grover(Gate): 
+  pass
+class QFT(Gate): 
+  pass
+class RX(Gate): 
+  pass
+class RY(Gate): 
+  pass
+class CCRX(Gate): 
+  pass
+def test_create_circuit(self): 
+	pass 
+def test_create_gate(self): 
+	 test_create_gate 
+	 pass 
+def test_add_gate(self): 
+	pass
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def qiskit_func(a): 
+  n = len(a) 
+  labels = create_quantum_register(n)
+  for i in range(n): 
+    set_amplitude(a, labels[n-i-1], i)
+  circuit = QuantumCircuit(labels)
+  qc2 = create_quantum_circuit(a, labels) 
+  output = run_circuit(circuit) 
+  return output
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_gate(matrix): 
+	
+	pass
+
+class Gate(object): 
+    def __init__(self, matrix=None): 
+        self.matrix = matrix
+        self.params = []
+        self.decompositions = []
+
+    def add_decomposition(self, gate):
+        self.decompositions.append(gate)
+
+    def add_params(self):
+        pass
+
+    def unitary_gate(self):
+        return self.matrix
+
+    def controlled_gate(self):
+        pass
+
+    def set_label(self):
+        pass
+
+
+class LinearFunction(Gate): 
+    pass
+
+
+class CnRy(LinearFunction):
+    def __init__(self, theta, n):
+        super(CnRy, self).__init__(matrix=None)
+        self.matrix = nRy(theta, n)
+        self.set_label("CnRy" + str(theta) + "," + str(n))
+
+class Rx(LinearFunction):
+    def __init__(self, theta, n):
+        self.theta = theta
+        self.n = n
+        super(Rx, self).__init__(matrix=None)
+        self.matrix = Rx(theta, n).unitary()
+        self.set_label("Rx" + str(theta) + "," + str(n))
+
+def test_create_gate(self):
+    self.assertTrue(np.array_equal(np.eye(2), create_gate([[1, 0], [0, 1]])))
+    self.assertTrue(np.array_equal([[1, 0], [0, -1]], create_gate([[0, 1], [1, 0]], None, [1, 1])))
+
+    self.assertRaises(TypeError, create_gate)
+    self.assertRaises(TypeError, create_gate, "Not a list")
+    
+    self.assertRaises(TypeError, create_gate, [[3
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+def create_circuit2(f, initial_input): 
+    def f1(x): 
+        return x & (x >> 1)
+    circuit = QuantumCircuit(10)
+    i = initial_input
+    for _ in range(10):
+        
+        i ^= i & (i >> 1)
+        if i & 1:
+            circuit.x(0)
+        i >>= 1
+        if i & 1:
+            circuit.x(2)
+        i >>= 1
+    return circuit
+def input_labels2(n): 
+    labels = []
+    for j in range(n):
+        labels.append(str(j))
+    return labels
+def create_linear_function(): 
+  pass
+def _set_classical_equality(labels, equal): 
+  	if len(labels)!= len(equal): 
+  		raise ValueError("Labels and equality check vectors are not equal in length") 
+  self._classical_equality = (labels, equal) 
+  return self 
+
+def _controlled_gate(self): 
+	params = []
+	
+	return
+def invert_gate(self): 
+	params = deepcopy(gate)
+	params[0:2] = [params[1], params[0]]
+	return
+def repeat(self, times, params): 
+	_assert_same_shape(params)
+	params = deepcopy(params)
+	for _ in range(times):
+		self._params.append(params)
+	return
+def reverse(self,params): 
+	_assert_linear_function_shape(params)
+	params = deepcopy(params)
+	params.reverse()
+	return
+def soft_compare(self,other): 
+	if isinstance(other, Gate): 
+		return self._params == other._params 
+	else: 
+		return False 
+def gate_exponent(self, exponent): 
+	gate = deepcopy(self)
+	gate.repeat(exponent)
+	return gate 
+def openqasm_text
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  def __init__(self, n, bits): 
+    self.n = n
+    self.bits = bits 
+    self.a = 16; 
+    self.matrix = np.zeros((n,n)) 
+    self.reverse = np.zeros((n,n), dtype=np.int8)
+    self.reversed = False
+    def swap(self): 
+      def inner(i, j): 
+        k = i ^ j
+        self.reverse[i][j] = 0 
+        self.reverse[j][i] = 1 
+        self.reverse[k][j] = 1 
+        self.reverse[j][k] = 0
+      for s in range(self.n>>1):
+        for x in range(self.n):
+          inner(x, (x + 1) % self.n)
+    def unswap(self): 
+      def inner(i, j): 
+        k = i ^ j
+        self.reverse[i][j] = 0 
+        self.reverse[j][i] = 0 
+        self.reverse[k][j] = 1
+        self.reverse[j][k] = 1
+      for s in range(self.n>>1):
+        for x in range(self.n):
+          inner(x, (x + 1) % self.n)
+    def invert(self): 
+    def inverse(self): 
+      if self.reversed: 
+        return self.reverse 
+      self.swap()
+      self.reversed = True 
+      return self.reverse 
+  def __str__(self): 
+    return str(self.matrix)
+    if (row!= column): 
+      for x in range(self.n):
+        if (row == x): 
+          for j in range(self.n):
+            if(j!= column and self.matrix[row][j]!= 0): 
+              self.matrix[column][column] += self.matrix[row][j] * (-1) ** j
+          break 
+      self.matrix[column][row] = 0 
+      self.matrix[row][column
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+    def __init__(self, function): 
+        self.function = function 
+class Gate(LinearFunction): 
+    def __init__(self, matrix, function, num_qubits, params, **options): 
+        super().__init__(matrix, function, num_qubits, params) 
+        self.matrix = matrix 
+class Grover(Gate): 
+    pass 
+class QFT(Gate): 
+    pass 
+class RX(Gate): 
+    pass 
+class RY(Gate): 
+    pass 
+class CCRX(Gate): 
+    pass 
+def test_add_gate(self): 
+	pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+    def __init__(self, function): 
+        self.function = function 
+class Gate(LinearFunction): 
+    def __init__(self, matrix, function, num_qubits, params, **options): 
+        super().__init__(matrix, function, num_qubits, params) 
+        self.matrix = matrix 
+class Grover(Gate): 
+    pass 
+class QFT(Gate): 
+    pass 
+class RX(Gate): 
+    pass 
+class RY(Gate): 
+    pass 
+class CCRX(Gate): 
+    pass 
+def test_add_gate(self): 
+	pass
+""" Please create a semantically equivalent program to the previous generation """
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class L(LinearFunction): 
+	def __init__(self, n): 
+		matrix = np.zeros((n,n), dtype=np.complex_)
+		
+class HZ(L):  
+	def __init__(self, n): 
+		matrix = np.zeros((n,n), dtype=np.complex_)
+class CX(L): 
+	def __init__(self, n): 
+		matrix = np.zeros((n,n), dtype=np.complex_)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Circuit(QuantumCircuit): 
+
+    @register_circuit_extension('linearfunction')
+    def set_linearfunction(function): 
+	self.qft(num_qubits) 
+	pass 
+
+    def set_function(self, function): 
+	pass 
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+	def _get_matrix(self):
+		pass
+	def _get_qasm(self):
+		pass
+
+
+if __name__ == '__main__':
+	pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class Oracle(object): 
+	def __init__(self, matrix): 
+		pass 
+class Grover(object): 
+	pass
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+class LinearFunction:
+    
+[VERBOSE] ========== sample =========
+[VERBOSE] '''The LinearFunction class and the Gate class are part of a unitary gate system. The LinearFunction class represents a reversible linear circuit on 'n' qubits, which can be synthesized into CX and SWAP gates using a specific algorithm. The internal 'n x n' matrix is stored in big-endian format for efficiency. The LinearFunction class includes methods to check if the function is a permutation, to synthesize the function into a quantum circuit, and to validate parameters. 
+
+Additionally, the Gate class is specifically for a unitary gate that acts on a specified 'n' number of qubits. The gate has a list of parameters and an optional label. Methods include adding decompositions, assembling a QasmQobjInstruction, setting a classical equality condition, creating a controlled version of the gate, inverting the instruction, creating a unitary gate as gate exponent, providing a default OpenQASM string, repeating the gate n times, reversing the order of sub-instructions, and a soft comparison between gates.'''
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+	def _get_matrix(self):
+		pass
+	def _get_qasm(self):
+		pass
+if __name__ == '__main__':
+	pass
+'''Create quantum circuit in Qiskit in Python that uses the LinearFunction API.'''
+from qiskit import QuantumCircuit
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, function, num_qubits): 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+	def _get_matrix(self):
+		pass
+	def _get_qasm(self):
+		pass
+if __name__ == '__main__':
+from qiskit import QuantumCircuit
+
+import numpy as np
+import copy
+
+class LinearFunction(object):
+	def __init__(self, function, input_qubits): 
+		self.input_qubits = input_qubits
+		self.function = function
+		self.output_qubits = list(range(self.input_qubits[0], self.input_qubits[-1] + 1))
+	def get_circuit(self): 
+		if self.is_perm(): 
+			gate = Gate(list(range(1, 2 * (len(self.input_qubits) + 1), 2)), self.function, len(self.input_qubits)) 
+			circuit = gate.synthesis()  
+		else: 
+			circuit = self._get_synth(0, len(self.input_qubits) - 2) 
+		return circuit 
+	def is_perm(self): 
+		function_length = len(self.function)
+		if not isinstance(self.function[0], int): 
+			return False 
+		elif np.amax(self.function) >= function_length or np.amin(self.function) <= 0: 
+			False 
+		else: 
+			for i in self.function: 
+				if self.function.count(i)!= 1: 
+					return False 
+			return True 
+	def _get_synth(self, start_idx, end_idx): 
+		if start_idx > end_idx: 
+			return QuantumCircuit(*self.num_qubits) 
+		else:
+			gate_list = []
+			if len(list(self.input_qubits)) > 1:
+				
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+if __name__ == '__main__':
+	import random
+	n = 5
+
+	
+	mat = []
+	for i in range(n):
+		m = [None] * n
+		for j in range(n):
+			m[j] = complex(round(random.uniform(-1, 1), 10), 0.0)
+		mat.append(m)
+	print('Random unitary matrix')
+	print(mat)
+
+	
+	q = Gate(lambda theta: mat, lambda theta: None, n)
+	exponent = GateExponent(q, lambda t: None, 1)
+	print('Gate exponent')
+	print(exponent)
+
+	
+	qc = exponent.to_circuit()
+	
+	qc.draw(output='mpl')
+
+	
+	num = len(qc.data)
+	
+	
+	
+	t = []
+	for i in range(num):
+		theta = qc.data[i]['params'][0]
+		t.append(theta)
+		qc.data[i]['function'](theta)
+	mat_2 = qc.data[num - 1]['function'](t[num - 1])
+	
+	print('Compare unitary matrix calculated from GateExponent with circuit unitary matrix')
+	if mat_2 == mat:
+		print('Unitary matrices match!')
+	else:
+		print('Unit
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+	def _get_matrix(self):
+		pass
+	def _get_qasm(self):
+		pass
+if __name__ == '__main__':
+	pass
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+
+	def _get_matrix(self):
+		
+		return self.function(1024)
+		
+	def _get_qasm(self):
+		pass
+		
+if __name__ == '__main__':
+	
+	def is_permutation(a, b):
+		
+		for i in range(min(a,b), max(a, b) + 1):
+			
+			if ((a_copy := i if a > b else j) == (b_copy := self.function.function.params['j'])):
+				return True
+			j += 1
+
+	
+	list_to_permute = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+	list_permutations_of_list = []
+	for i in range(len(list_to_permute)):
+		list_permutations_of_list_.append(self.function.gen_permutations_n_qubit(i, list_to_permute))
+	
+
+	def test_linear_function():
+		
+		j = 1
+		result = 0
+		for i in range(0, 1024, 2):
+			result += j
+			j += 1
+		return not result
+
+	def test_gate():
+		
+
+	
+	def apply_swaps(theta, qc, list_permutations_of_list):
+		for i, permutation in enumerate(list_permutations_of_list):
+			if i % 2!= 0:
+				qc.swap(a,b)
+
+	def add_cx_gates(theta, qc, list_permutations_of_list):
+		for permutation in list_permutations_of_list:
+			for a,b in zip(permutation[:-1:2], permutation[
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+
+	def _get_matrix(self):
+		pass
+
+	def _get_qasm(self):
+		pass
+[VERBOSE] ========== sample =========

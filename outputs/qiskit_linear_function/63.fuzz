@@ -1,0 +1,7 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object)
+
+
+
+  def __init__(self, num_qubits, name, circuit): pass

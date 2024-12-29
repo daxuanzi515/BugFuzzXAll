@@ -1,0 +1,12 @@
+#include <tuple>
+#include <iostream>
+void callMeWith(std::tuple<long> const& arg) {
+  std::cout << std::get<0>(arg);
+}
+int main()
+{
+  std::tuple<long> tuple{99L};
+  callMeWith(tuple);
+  return 0;
+}
+ 

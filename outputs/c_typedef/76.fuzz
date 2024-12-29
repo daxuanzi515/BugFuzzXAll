@@ -1,0 +1,30 @@
+#include <stdlib.h>
+#include <stdio.h>
+enum num 
+{
+	i,
+	j
+};
+enum color;
+enum color { red,green,blue };
+int main()
+{
+	enum num a;
+	return 0;
+}
+ 
+typedef complex num;
+typedef enum num2
+{
+	a, b
+} enum2;
+complex test(enum2 c)
+{
+	switch (c)
+	{
+	case (a):
+		return a;
+	default:
+		return b;
+	}
+}

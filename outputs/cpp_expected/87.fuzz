@@ -1,0 +1,106 @@
+#include <expected>
+ (expected<string, int> a, expected<string, int> b) -> expected<string, int>
+{
+  if (auto [av, au] = a; au && av == "apple")
+  {
+    if (auto [bv, bu] = b; bu && bv == "apple")
+      return std::make_expected("apple banana");
+    else
+      return std::make_unexpected(bu);
+  }
+  else
+  {
+    return std::make_unexpected(au);
+  }
+}
+ 
+std::string foo(expected<MyException, std::string> s)
+{
+  if (auto [v, u] = s; u)
+    throw MyException(5, "OOPS");
+  else
+    return "foo";
+}
+ 
+struct MyException {
+  MyException(int k = 0, const std::string& msg = "generic error")
+    : what_{msg}, kind_{k}
+  {}
+
+  int kind(){ return kind_;}
+  const char* what() const { return what_.c_str(); }
+
+  std::string what_;
+  int kind_;
+};
+ 
+#include <iostream>
+#include <string>
+#include <string_view>
+#include <system_error>
+
+using namespace std;
+
+template<class T, class E>
+class my_expected {
+ public:
+  using value_type = T;
+  using unexpected_type = E;
+
+  my_expected(const std::error_code& ec)
+    : value_{}, unexpected_{ec}
+  {
+  }
+  template<typename U, typename F>
+  my_expected(U val, F f)
+    : value_{val}, unexpected_{f()}
+  {
+  }
+
+  constexpr bool has_value() const noexcept
+  {
+    return (bool)unexpected_;
+  }
+
+  constexpr value_type& value() &
+  {
+    return value_;
+  }
+  constexpr const value_type& value() const&
+  {
+    return value_;
+  }
+  constexpr value_type&& value() &&
+  {
+    return std::move(value_);
+  }
+
+  constexpr unexpected_type& error() &
+  {
+    return unexpected_.value();
+  }
+  constexpr const unexpected_type& error() const&
+  {
+    return unexpected_.value();
+  }
+  constexpr unexpected_type&& error() &&
+  {
+    return std::move(unexpected_.value());
+  }
+
+  template<typename F>
+  value_type& value_or_eval(F&& f) &
+  {
+    if (auto val = value())
+      return *val;
+    else
+      return value_ = f(error());
+  }
+
+  template<typename F>
+  const value_type& value_or_eval(F&& f) const&
+  {
+    if (auto val = value())
+      return *val;
+    else
+      return value_ =

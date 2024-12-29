@@ -1,0 +1,82 @@
+#include <expected>
+<fim_suffix>)
+        {
+            std::cout << item.value() << "\n";
+        }
+        else
+        {
+            std::cout << item.error().value() << "\n";
+        }
+    }
+
+    std::cout << "The expected value is " << res.value() << '\n';
+
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+
+int main(int argc, char const *argv[])
+{
+    std::cout << "Please create a very short program which combines std::expected with new C++ features in a complex way\n";
+
+    std::expected<int, char> res(std::make_unexpected('e'));
+
+    res.get().clear();
+
+    if (res)
+    {
+        std::cout << res.value() << '\n';
+        return 0;
+    }
+    else
+    {
+        std::cout << res.error() << "\n";
+    }
+
+    std::expected<int, int> maybe_val = std::make_unexpected(1500);
+    std::expected<int, int> maybe_val1 = std::make_unexpected(15000);
+    if (!maybe_val)
+    {
+        std::cout << "The expected is invalid!\n";
+        return -1;
+    }
+
+    std::cout << maybe_val.error() << " is less than " << maybe_val1.error() << '\n';
+
+    std::string str = maybe_val->to_string();
+
+    std::cout << maybe_val->to_string() << maybe_val1->to_string() << maybe_val->to_string() << '\n';
+
+    if (maybe_val <= maybe_val1)
+    {
+        if (maybe_val < maybe_val1)
+        {
+            std::cout << maybe_val1.error() << " is less than " << maybe_val.error() << '\n';
+        }
+        else
+        {
+            std::cout << "Maybe" << maybe_val.error() << " is equal to " << maybe_val1.error() << '\n';
+        }
+    }
+
+    if (maybe_val >= maybe_val1)
+    {
+        if (maybe_val > maybe_val1)
+        {
+            std::cout << maybe_val1.error() << " is greater than " << maybe_val.error() << '\n';
+        }
+        else
+        {
+            std::cout << "Maybe" << maybe_val.error() << " is equal to " << maybe_val1.error() << '\n';
+        }
+    }
+
+    auto try_get_value_from_maybe = maybe_val.value_or(150);
+    auto try_get_error_from_maybe = maybe_val.error();
+    auto try_get_value_from_maybe2 = maybe_val1.value_or(9000);
+    auto try_get_error_from_maybe2 = maybe_val1.error();
+
+    std::cout << try_get_value_from_maybe << try_get_error_from_maybe << try_get_value_from_maybe2 << try_get_error_from_maybe2 << '\n';
+
+    auto try_get_value_from_maybe3

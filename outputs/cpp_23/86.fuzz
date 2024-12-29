@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+   ios::sync_with_stdio(0);
+   if (cin.rdbuf() == nullptr)
+   {
+      exit(EXIT_FAILURE);
+   }
+   cout << argv[1] <<'';
+   if (argv[2] == "someting")
+   {
+      string a{" "};
+      cin >> a;
+      cout << a;
+      if (a!= "someting")
+      {
+         abort();
+      }
+   }
+   else
+   {
+      exit(EXIT_SUCCESS);
+   }
+}
+
+ 

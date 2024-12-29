@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct Date
+{
+int day;
+int month;
+int year;
+};
+int main()
+{
+struct Date date;
+printf("Enter Date : ");
+scanf("%d/%d/%d", &date.month, &date.day, &date.year);
+printf("Date is %d/%d/%d\n", date.month, date.day,date.year);
+return 0;
+}

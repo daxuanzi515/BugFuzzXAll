@@ -1,0 +1,51 @@
+import java.lang.Object;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+class SampleData {
+    ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    void write() {  
+        lock.writeLock().lock();
+        try { System.out.println("Write operation to SampleData is invoked!"); } finally {
+            lock.writeLock().unlock();
+        }
+    }
+    void read() {  
+        lock.readLock().lock();
+        try { System.out.println("Read operation to SampleData is invoked!"); } finally {
+            lock.readLock().unlock();
+        }
+    }
+}
+class MultiThreadedData {
+    SampleData data;
+    public void read_synchronize(final String s) {
+        data.lock.readLock().lock();
+        try { data.read(); } finally { data.lock.readLock().unlock(); }
+    }
+    public void write_synchronize() {
+        data.lock.writeLock().lock();
+        try { data.write(); } finally { data.lock.writeLock().unlock(); }
+    }
+}
+public class SampleTest {
+    public static void main(String [] args) {
+        MultiThreadedData data = new MultiThreadedData();
+        data.data = new SampleData();
+        Thread t1 = new Thread(new Runnable() {
+                public void run() { data.read_synchronize("S"); }    
+            });
+        Thread t2 = new Thread(new Runnable() {
+                public void run() { data.write_synchronize(); } 
+            });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch(InterruptedException ie) {}
+    }
+}
+ 
+/* import java.lang.Object;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+class SampleData {
+    Re

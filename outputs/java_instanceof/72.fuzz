@@ -1,0 +1,12 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object x = null;
+		Integer y = new Integer(1);
+		Integer z = null;
+		System.out.println("x is Integer: " + (x instanceof Integer));
+		System.out.println("y is Integer: " + (y instanceof Integer));
+		System.out.println("z is Integer: " + (z instanceof Integer));
+	}
+}

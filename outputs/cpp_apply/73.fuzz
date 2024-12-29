@@ -1,0 +1,29 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply([](int& x, float& y) {x += y;}, t);
+  std::cout << t.size() << '\n';
+  return 0;
+}
+ 
+#include <tuple>
+#include <iostream>
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  std::apply(
+    [](const auto&... elements)
+    { 
+      int sum = 0; 
+      (sum += elements,...);
+      if(sum > 100)
+      {
+        sum += 100;
+      }
+      std::cout << sum << '\n';
+    }, 
+    t
+  );
+}

@@ -1,0 +1,20 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer g = null;
+        System.out.println(g instanceof Integer);
+        System.out.println(g instanceof Number);
+		Object a = new Integer(10);
+		Object b = new Integer(10);
+		a = b;
+		boolean c = a instanceof String;
+	}
+}
+ 
+ 
+class Main {
+    public static void main(String... args) {
+        System.out.println("Hello".compareTo("Helloo"));
+    }
+}

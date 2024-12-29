@@ -1,0 +1,7 @@
+/* The finally block in Java is used to execute important code such as cleanup tasks, and it always runs when the try block exits, irrespective of the occurrence of an exception. This ensures that crucial actions don't get bypassed inadvertently. However, the block may not perform if the JVM exits while executing try or catch code.
+
+In the context of file operations, the finally block can be used to close open streams. For example, in a method that writes to a file using a PrintWriter, the finally block can be written to close the PrintWriter and FileWriter regardless of how the try block exits - whether due to failure of operations or successful completion. 
+
+However, a more efficient way of handling cleanup tasks like closing files is using a try-with-resources statement. This statement automatically releases system resources, such as file handlers, when they're no longer required, eliminating the need for a finally block. */
+/* Please create a very short program which combines finally with new Java features in a complex way */
+import java.lang.Object;

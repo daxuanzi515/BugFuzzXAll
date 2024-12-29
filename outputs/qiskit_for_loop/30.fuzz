@@ -1,0 +1,7 @@
+from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+q = QuantumRegister(7)
+c = ClassicalRegister(2)
+qc = QuantumCircuit(q,c)<jupyter_output><empty_output><jupyter_text>ForLoopOp(body, qubits, clbits, indexset, loop_parameter)Creates a for loop on the given qubits and classical bits. The loop indices are contained in the indexset and incremented according to the order defined in its collection. The loop body contains the gates or other instructions for which the iteration indices are bound to the loop parameter, which can then be used to construct iteration dependent circuits. ForExample:<jupyter_code>with qc.for_loop(range(5), q, c, loop_parameter='i'):

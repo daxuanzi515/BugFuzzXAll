@@ -1,0 +1,18 @@
+import java.lang.Object;
+18a.append ("Java 8, Chapter 11, Code Example 1 of 2\n");
+	System.out.println(s18a.toString());
+	StringBuilder s18b = new StringBuilder ("Hello World!\n");
+	s18b.append ("Java 8, Chapter 11, Code Example 2 of 2\n");
+	System.out.println(s18b.toString());
+	String s18c = "Hi, There!";
+	System.out.println(s18c);
+	
+    }
+}
+<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally6 {
+
+    public static void main(String[] args) throws Exception {
+        
+	String s

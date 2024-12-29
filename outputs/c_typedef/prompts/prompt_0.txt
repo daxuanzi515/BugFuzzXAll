@@ -1,0 +1,5 @@
+/* The typedef declaration in C language is a way to create an alias for a potentially complex type name. It is used in the position of a storage-class specifier and does not affect storage or linkage. As an example, 'typedef int int_t' declares 'int_t' as an alias for the type int. It's important to know that a typedef does not introduce a new distinct type, it simply establishes a synonym for an existing one. As such, typedef names are compatible with the types they replace.
+
+Typedef declarations can also define incomplete types, use names from the tag name space, or even avoid using the tag name space altogether. Furthermore, they can simplify the syntax of complex declarations and libraries often use them to expose system or configuration-dependent types consistently to the users or other components. Thus, typedefs in C provide a powerful tool to increase code readability and maintainability. */
+/* Please create a short program which combines typedef with new C features in a complex way */
+#include <stdlib.h>

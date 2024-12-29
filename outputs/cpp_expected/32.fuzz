@@ -1,0 +1,98 @@
+#include <expected>
+(std::get<1>(v)? err : value));
+    }
+
+    expected(const err_type& error) : _val(value_type(error)) {}
+
+protected:
+    template<typename U>
+    expected(U&& v)
+    {
+
+        _val.construct(std::forward<U>(v));
+    }
+public:
+     
+    bool has_value() const noexcept { return _val.has_value; }
+
+     
+    bool has_error() const noexcept { return!_val.has_value; }
+
+    friend bool operator==(const expected& x, const expected& y)
+    {
+        return x._val.has_value == y._val.has_value;
+    }
+
+    value_type value() {
+        return value_type(std::move(_val.value));
+    }
+
+    value_type value() const
+    {
+        return value_type(std::move(_val.value));
+    }
+
+     
+     
+    const value_type& value() const noexcept {
+        return _val.value;
+    }
+
+    err_type error()
+    {
+        return _val.error!= nullptr? *errorType.valueFromInplace(*_val.error)
+            : _val.error;
+             
+    }
+private:
+    union expected_data_t
+    {
+        union
+        {
+            value_type value;
+            err_type error;
+        };
+
+        expected_data_t() : value() {}
+
+        ~expected_data_t() = default;
+        expected_data_t(expected_data_t&& data)
+            : value(std::move(data.value))
+        {
+            static_assert(!std::is_reference<err_type>::value, "");
+        }
+
+        void construct() {
+            new (this) expected_data_t();
+        }
+
+        template<typename U>
+        void construct(U&& data) {
+            new (this) expected_data_t(std::forward<U>(data));
+        }
+
+        expected_data_t(const expected_data_t&) = delete;
+        expected_data_t& operator=(const expected_data_t&) = delete;
+
+        bool has_value{ false };
+        bool has_error{ false };
+    };
+
+    expected_data_t _val;
+};
+
+template <typename T, typename E>
+class expected<T&, E> final {
+    static_assert(!std::is_same<T, std::in_place_t>::value, "Error, this should be a reference ");
+    template<typename T1, typename E1>
+    friend class expected;
+};
+
+
+/*
+template <typename T1, typename E1>
+bool operator==(const expected<T1, E1>& x, const expected<T1, E1>& y);
+template <typename T1, typename E1>
+bool operator!=(const expected<T1, E1>& x, const expected<T1, E1>& y);
+template <typename T1, typename E1>
+bool operator<(const expected<

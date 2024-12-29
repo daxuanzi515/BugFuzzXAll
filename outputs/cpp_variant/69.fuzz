@@ -1,0 +1,25 @@
+#include <variant>
+<fim_suffix>= {
+        std::monostate{}
+    };
+    std::visit([&output](auto value) {
+        if constexpr (std::is_same_v<std::decay_t<decltype(value)>, int>) {
+            output += value;
+        } else {
+            output += "Not Found";
+        }*/
+    }
+    
+*/
+ 
+ 
+<fim_middle>#include <iostream>
+int generate_int() { 
+    return 44;
+}
+float generate_float() { 
+    return 4.4f;
+}
+double generate_double() { 
+  return 4.3f;
+}

@@ -1,0 +1,43 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+    char character1 = getchar();
+    for (int i = 0; i < character1 ; i++) {
+        putchar('a')
+    }
+    putchar('\n');
+    return 0;
+}
+ 
+#include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <stdlib.h>
+ 
+void print_error(char* err_str)
+{
+    perror(err_str);
+    exit(EXIT_FAILURE);
+}
+
+int main(int argc, char *argv[])
+{
+    ssize_t retval, readbytes;
+    FILE* file_ptr = fopen(argv[1],"r");
+    if(file_ptr!= NULL) {
+        int fd = dup(fileno(file_ptr));
+        retval = get_file_size(file_ptr);
+        const char *path = argv[1];
+        int destfile = open(path, O_CREAT|O_WRONLY);
+        if(destfile == -1) {
+            print_error("Unable to open file.");
+        }
+ 
+        readbytes = 0;
+ 
+        char buff[3

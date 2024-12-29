@@ -1,0 +1,58 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+union Data
+{
+    int  n;
+    void *p;
+};
+
+int main()
+{
+    union Data u1, u2;
+    
+    printf("address of u1.n --> %p\n", &u1.n);
+    printf("address of u1.p --> %p\n", &u1.p);
+    printf("address of u1    --> %p\n", &u1);
+    
+    u1.n = 0x1234;
+    printf("now value of u1.n --> %d\n", u1.n);
+    printf("now address of u1 --> %p\n", &u1);
+    printf("u1      --> %p\n", u1);
+    
+    u1.p = 0x1234;
+    printf("address of u1      --> %p\n", &u1);
+    printf("new value of u1.p --> %p\n", u1.p);
+    printf("now value of u1   --> %p\n", u1);
+    
+    u2.p = 0x5678;
+    printf("new value of u2.p  --> %p\n", u2.p);
+    printf("now value of u2   --> %p\n", u2);
+
+    return (EXIT_SUCCESS);
+}
+
+ 
+
+ 
+#include <stdlib.h>
+#include <stdio.h>
+
+union data_types
+{
+    struct
+    {
+        float number;
+        int integer;
+    };
+    unsigned long long int big;
+};
+int main()
+{
+    union data_types my_data;
+    printf("Size of union: %ld bytes.\n", sizeof(my_data));
+    printf("The union's members are:\n");
+    printf("float: %f\n", my_data.number);
+    printf("int: %d\n", my_data.integer);
+    printf("unsigned long long: ");
+    printf("%#1

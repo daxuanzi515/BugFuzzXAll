@@ -1,0 +1,41 @@
+import java.lang.Object;
+class Sample1 {
+    void doSomething1() {
+        synchronized (this) {
+            System.out.println(this + ": doSomething1()");
+        }
+    }
+}
+class SynchTest2 {
+    public static void main(String [] args) {
+        Sample1 s = new Sample1();
+        s.doSomething1();
+    }
+}
+ 
+ 
+class Sample2 {
+    synchronized void doSomething1() {
+        System.out.println("doSomething1()");
+    }
+    synchronized void doSomething2() {
+        System.out.println("doSomething2()");
+    }
+}
+class SyncTest3 {
+    public static void main(String [] args) {
+        Sample2 s = new Sample2();
+        new Thread() {
+            public void run() {
+                System.out.println("New thread: doSomething1()");
+                s.doSomething1();
+            }
+        }.start();
+        s.doSomething2();
+    }
+}
+ 
+ 
+ 
+ 
+ 

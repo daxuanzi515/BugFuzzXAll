@@ -1,0 +1,77 @@
+#include <expected>
+<fim_suffix>t<int> get_data3(){
+    return expected<int>(std::in_place, static_cast<int>(*ep++));
+}
+  int main(void) {
+
+    auto data = get_data1();
+    if(data)
+        std::cout << "data: " << *data << '\n';
+    else
+        std::cout << "ERROR\n";
+    return 0;
+}<fim_middle>
+#include <iostream>
+#include <stdexcept>
+#include <exception>
+
+ const char* data3[] = {
+  "04 05 06 07 08 09 10 11 02 02",
+  "40 41 42 43 44 45 46 47 41 41",
+  "01020304",
+  "010102020303040405050606070708080909",
+  "01 02 03 03 040404"
+  };
+int get_i(){
+    static int i=0;
+    return i++;
+}
+static auto& ep = std::begin(data3) + (get_i()%5);
+
+ 
+ 
+ 
+ 
+class string_of_string {
+public:
+    void reset_buf_() {buf_ = "not assigned";}
+    string_of_string() {}
+    string_of_string(char const *p) {copy_(p);}
+    string_of_string(std::string const &s) {
+        copy_(s.data());
+    }
+    string_of_string(std::string &&s) {
+        buf_ = s.data();
+    }
+     
+    void throw_err_(std::string const &e);
+
+    char buf_[1024];
+
+private:
+    void copy_(char const *p);
+};
+
+
+std::string& trim(std::string const& in) {
+    size_t s = in.find_first_not_of(" \t");
+    size_t e = in.find_last_not_of(" \t");
+    return in.substr(s,e);
+}
+ 
+void string_of_string::copy_(char const *p){ try {
+    if (p == nullptr) {
+        throw_err_("nullptr exception");
+        return;
+
+    }
+    strcpy(buf_, p);
+}catch (std::exception const & ){
+    throw_err_("exceptional");
+} }
+void string_of_string::throw_err_(std::string const &e) { throw e; }
+expected<string_of_string, std::string> get_data1(){ try {
+    expected<string_of_string, std::string> data{ std::in_place };
+    try {
+        data.emplace(trim(ep));
+    }catch (std::exception const & ){

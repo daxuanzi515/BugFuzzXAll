@@ -1,0 +1,2987 @@
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+circuit = QuantumCircuit(2)
+
+circuit.h(circuit.clbits[0])
+circuit.h(circuit.clbits[1])
+
+circuit.add_register(circuit.clbits[1])
+circuit.switch(*(circuit.clbits), circuit.clbits[0])
+circuit.h(circuit.clbits[1])
+circuit.draw(output='mpl')
+
+
+
+from qiskit import QuantumCircuit, QuantumRegister
+from qiskit.circuit import QuantumCircuitSwitchCase as SwitchCase
+
+circuit = QuantumCircuit(QuantumRegister(3, 'q'), QuantumRegister(3, 'c'))
+
+circuit.h(circuit.q[2])
+circuit.h(circuit.c[2])
+
+case_zero = SwitchCase(circuit.c[0], circuit.q[0], circuit.q[1])
+circuit.add_case(case_zero)
+case_one = SwitchCase(circuit.c[1], circuit.q[0], circuit.q[1])
+circuit.add_case(case_one)
+
+circuit.switch_(circuit.c[2], circuit.q[2], circuit.q[0])
+
+circuit.i(circuit.q[0])
+circuit.draw(output='mpl')
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4)
+qc.h(0)
+qc.cnot(0,1)
+qc.cnot(1,2)
+
+case1_qc = QuantumCircuit(4)
+case1_qc.h(1)
+case1_qc.cnot(1,2)
+case1_qc.h(1)
+case1_qc.measure_all()
+
+case2_qc = QuantumCircuit(4)
+case2_qc.z(1)
+case2_qc.cnot(1,2)
+case2_qc.z(1)
+case2_qc.measure_all()
+qc.append(case2_qc.to_instruction(),[0])
+qc.append(case1_qc, [0])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4)
+
+qc.h(2)
+qc.ch(2, 1)
+qc.sw(1, 2)
+qc.t([1,2,3])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library.standard_gates.x import XGate
+from qiskit.circuit.library.standard_gates.mct import MCTGate
+from qiskit.circuit.library.standard_gates.h import HGate
+
+q = QuantumRegister(6, "q")
+c = ClassicalRegister(2, "c")
+circ = QuantumCircuit(q, c)
+
+circ.switch(case_0, [
+    [0, 0, 3, [q[1], q[2], q[3], c[0]]],
+    [1, 1, 2, [q[0], q[2], q[3], c[1]]],
+    [2, 2, 1, [q[0], q[1], q[3], c[0]]],
+]).add_cases(2, 1, [
+    [2, [3, 4, 5, [q[3]]]],
+]).add_cases(3, 3, [[3, [3, 4, [q[2], q[3]]]]])
+circ.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter
+
+backend = Aer.get_backend('qasm_simulator')
+
+
+qc = QuantumCircuit(4)
+
+
+theta = Parameter('θ')
+phi = Parameter('ϕ')
+
+
+qc.h(0)
+qc.rz(2*theta, 1)
+qc.cx(0, 1)
+qc.cx(1, 2)
+qc.u3(theta, phi, 0, 0)
+qc.barrier(range(3))
+
+
+qc.switch(phi, 2*phi)
+
+
+qc.rx(phi/2, [2, 3])
+
+qc.draw()
+
+job = backend.run(qc)
+
+from qiskit.tools.monitor import job_monitor
+
+job_monitor(job)
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qr = QuantumRegister(4)
+cr = ClassicalRegister(4)
+
+qc = QuantumCircuit(qr, cr)
+
+switch_obj = qc.switch(qr[0], (1, QuantumCircuit(1,1)), (2, QuantumCircuit(2,2)))
+switch_obj = qc.switch(qc.creg[0], (1, QuantumCircuit(1,1)), (2, QuantumCircuit(2,2)))
+
+
+
+
+
+
+switch_obj.c_if(cr, 0)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+c = QuantumCircuit(1, 1)
+c.h(0)
+c.switch(c[0], case1=c[0], case2=c[0])
+
+c = QuantumCircuit(1, 1)
+c.h(0)
+c.cx(0,0)
+c.switch_builder(c[0], case1=c[0], default=c[0])
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(6)
+cr = ClassicalRegister(6)
+circuit = QuantumCircuit(qr, cr)
+
+circuit.h(qr[3])
+
+circuit.cx(qr[3], qr[2])
+
+circuit.measure(qr, cr)
+with Switch(circuit, 3): 
+    
+    with Switch.case(1):
+        
+        circuit.h(qr[0])
+    
+    with Switch.case(0):
+        
+        circuit.x(qr[2])
+    
+    with Switch.default():
+        
+        circuit.x(qr[5])
+
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.circuit.controlflow import for_loop 
+from qiskit.circuit.controlflow import BreakLoop, ContinueLoop 
+qr = QuantumRegister(3)
+cr = ClassicalRegister(3)
+circuit = QuantumCircuit(qr, cr)
+
+circuit.h(qr[0])
+circuit.h(qr[1])
+
+with for_loop(circuit, range(5)):
+    
+    circuit.h(qr[0])
+    circuit.h(qr[1])
+    
+    with BreakLoop():
+        
+        circuit.measure(qr[2], cr[2])
+        circuit.add_condition(cr[2], 1, BreakLoop())
+'''The builder interface allows a circuit to branch out to two new blocks, using the “if” statement with a register. Branching on registers will not be supported by the final Qiskit 0.23.0 version, but the new conditional operation will. This requires a conditional gate on the QuantumCircuit with a register as input. A new operation will allow users to add a block of code that corresponds to a given input.
+
+A new operation that is not supported yet
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(2)
+
+
+qram0 = qc.add_register(name='ram',size=2)
+
+
+cam = [qram0]
+
+
+qc.x(qram0)
+qc.switch(cam)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3,3)
+qc.h(0)
+qc.h(1)
+qc.h(2)
+
+result = qc.measure_all()
+
+
+
+
+qc.draw()
+
+qc.draw(output='mpl')<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circuit1 = QuantumCircuit(4)
+
+circuit2 = QuantumCircuit(4)
+
+
+circuit1.swap(0, 1)
+circuit1.swap(1, 2)
+circuit1.swap(2, 3)
+
+circuit1.ccx(0, 1, 2)
+circuit1.swap(1, 2)
+circuit1.swap(0, 2)
+circuit1.ccx(2, 3, 3)
+circuit1.swap(3, 0)
+circuit1.swap(2, 0)
+
+circuit1.ccx(1, 0, 2)
+circuit1.swap(0, 2)
+circuit1.swap(1, 2)
+circuit1.ccx(2, 3, 3)
+circuit1.swap(3, 1)
+circuit1.swap(2, 1)
+
+
+input = QuantumCircuit(4)
+input.ccx(0, 1, 2)
+
+
+circuit2.switch(input, circuit1, [0, 1])
+circuit2.switch(input, circuit1, [1, 0])
+
+circuit2.draw()
+
+
+print(circuit2.to_qasm())<jupyter_output>module test
+    qreg q[4]
+    creg c[3]
+    breg b[2]
+    cx q[1], q[0]
+    cx q[2], q[1]
+    cx q[2], q[3]
+    cx q[1], q[2]
+    cx q[0], q[1]
+    cx q[2], q[0]
+    cx q[3], q[2]
+    cx q[0], q[2]
+    h b[0]
+    h b[1]
+    cx q[0], b[0]
+    cx q[1], b[1]
+end
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+
+qc.h(0)
+qc.cx(0, 1)
+
+qc.z(1)
+
+qc.h(0)
+qc.cx(0, 1)
+
+qc.z(1)
+
+qc.x(1)
+
+qc.switch(1, 0, [0,1], 0)
+qc.x(1)
+
+qc.h(0)
+qc.cx(0, 1)
+
+qc.z(1)
+
+qc.draw()
+
+from qiskit.circuit.library.standard_gates import SwitchLayer
+qcl = QuantumCircuit(3)
+
+qcl.x(2)
+qcl.z(1)
+qcl.z(3)
+qcl.h(1)
+qcl.x(2)
+qcl.ccx(1, 2, 3)
+
+layer = SwitchLayer(2, conditions=[2,1], break_condition=0, num_cases=2, name='sl_z', circuits=[qcl, qc]).to_instruction()
+
+qcl1 = QuantumCircuit(4)
+qcl1.x(3)
+qcl1.z(2)
+qcl1.h(2)
+qcl1.ccx(0, 3, 1)
+qcl1.cx(2, 3)
+qcl1.z(0)
+qcl1.z(1)
+
+layer = SwitchLayer(4, conditions=[3,2,1], break_condition=0, num_cases=2, name='sl2', circuits=[layer, qcl1]).to_instruction()
+
+qcl = QuantumCircuit(5)
+qcl.ccx(3, 4, 0)
+qcl.cx(0, 4)
+qcl.cx(4, 3)
+qcl.h(1)
+
+qcl.switch(1, 3, [3,4,1], 1)
+qcl.x(2)
+qcl.switch(1, 3, [3,4,1], 2)
+
+layer2 = SwitchLayer(5, [3,4,1], 3, [0, 2], 2, name='sl3', circuits=[qcl, qc]).to_instruction()
+
+qc = QuantumCircuit(5)
+qc.x(1)
+qc.switch(0, 1, [0,1,3,4], 0)
+qc.cx(0, 2)
+qc.switch(0, 1, [0,1,3,4], 1)
+qc.ccx(1, 2, 3)
+qc.y(0)
+qc.switch(0, 1, [0,1,3,4], 2)
+qc.append(layer, [2,4,0])
+qc.append(layer2, [3,4,0])
+
+qc.z(0)
+qc.ccx(1, 2, 3)
+qc.cx(2, 3)
+qc.h(3)
+qc.append(layer, [2,4,0])
+qc.append(layer2, [3,4,0])
+
+qc.dcx(4, [0,1])
+qc.x(2)
+
+qc.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCaseOp
+
+
+
+qc = QuantumCircuit(3, 2)
+qc.cz(0, 2)
+qc.x(0)
+
+
+
+
+
+switch_case = SwitchCaseOp(
+            [
+                (0, QuantumCircuit(3, 2).x(0)),
+                (1, QuantumCircuit(3, 2))
+            ],
+            1
+        )
+
+
+qc.append(switch_case, [0])
+
+
+print(qc)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(6)
+qc.h(0)
+qc.x(4)
+qc.switch(0,[1,2,3])
+qc.h(1)
+qc.switch(4,[1,2,3])
+qc.measure_all()
+circuit_drawer(qc)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3)
+
+
+qc.cx(1,0)
+switch_op = qc.switch([0],3,1)
+switch_op.c_if(switch_op.classical, 2)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(5,5)
+qc.append(SwitchCaseOp(
+    cases=[(0, QuantumCircuit(5,5),[]), (1, QuantumCircuit(5,5),[0])],
+    default=QuantumCircuit(5,5)
+), qargs=[0,1])
+qasm = qc.qasm()
+print(qasm)
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute
+from qiskit.compiler import transpile
+import numpy as np
+from qiskit.circuit.library import CXGate, XGate, CNOTGate
+qc = QuantumCircuit(5,5)
+qc.h([0,1,2,4])
+qc.append(SwitchCaseOp(
+    cases=[(0, QuantumCircuit(5,5),[]), (1, QuantumCircuit(5,5),[0])],
+    default=QuantumCircuit(5,5)
+), qargs=[0,1])
+qc.h([0,1,2,4])
+backend = Aer.get_backend('statevector_simulator')
+out_statevec = execute(qc,backend).result().get_statevector(qc)
+print(out_statevec)
+import numpy as np
+qc = QuantumCircuit(3,3)
+q = QuantumRegister(1, 'q')
+c = ClassicalRegister(3, 'c')
+qc.append(SwitchCaseOp(
+    cases=[(0, QuantumCircuit(3,3),[]), (1, QuantumCircuit(3,3),[0])],
+    default=QuantumCircuit(3,3)
+), qargs=qargs)
+qc.measure(q,c)
+print(qc)
+```
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+qc.x(0).c_if(2, 0)
+
+
+
+qc.draw('mpl')
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+
+circuit = QuantumCircuit(3,2)
+qr = QuantumRegister(2, name='qr') 
+cr = ClassicalRegister(2, name='cr') 
+
+
+
+circuit.x(qr[0]).c_if(cr, 2) 
+circuit.x(qr[1]).c_if(cr, 1) 
+
+circuit.cx(qr[0],qr[1]).c_if(cr, 0) 
+circuit.measure(qr, cr)
+circuit.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3)
+qc.x(0)
+qc.y(1)
+qc.z(2)
+qc.cx(0,1)
+qc.h(2)
+qc.barrier()
+qc.switch(0, 10, 2)
+qc.draw() 
+
+
+
+from qiskit.circuit.library import ToffoliGate
+qc = QuantumCircuit(3)
+qc.h(0)
+qc.ch(0,1)
+target = slice(2)
+T = ToffoliGate(target)
+qc.append(T, [0,1,2])
+qc.draw() 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+class QuantumSwitch(QuantumCircuit):
+    def __init__(self, num_inputs):
+        self.input_qubits = range(num_inputs)
+        self.output_qubit = num_inputs + 1
+        super().__init__(f'{num_inputs}q-q', f'{num_inputs + 1}q', [])
+        self.add_register(self.input_qubits)
+        self.h(num_inputs)
+        self.cdg(num_inputs)
+        self.measure(num_inputs, num_inputs)
+
+    def create_input_circuits(self, num_inputs, num_qubits):
+        for i in range(num_inputs):
+            input_circuit = QuantumSwitch(num_qubits)  
+            self.append(input_circuit.to_instruction(), [input_circuit.input_qubits[0]],
+                         range(num_qubits + 1))  
+        
+    def build(self, num_inputs, num_qubits):
+        self.create_input_circuits(num_inputs, num_qubits)
+        self.switch(self.input_qubits, self.output_qubit)
+
+
+def main():
+    quantum_switch = QuantumSwitch(3)
+    quantum_switch.build(3,3)
+
+
+if __name__ == '__main__':
+    main()
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import transpile
+from qiskit.compiler import assemble
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library import XGate, CXGate
+from qiskit.extensions import C Swap
+
+qr = QuantumRegister(1)
+
+circuit = QuantumCircuit(qr)
+
+
+classical_input = 0
+
+switch = CSwap(1, [0, 1])
+
+
+circuit.append(switch.control(classical_input), [qr[0], qr[1], qr[2], qr[3]])
+
+print(circuit)
+
+circuit.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+q = QuantumCircuit(2, 2)
+
+
+q.h([0,1])
+q.cx(0,1)
+
+
+
+q.switch(2, 0, [q.copy() for q in [q] * 2])
+q.p((float(2)/3) * 180,'x')
+q.p((float(1)/3) * 180,'x')
+q.switch(2, 1, [q.copy() for q in [q] * 2])
+q.p((float(1)/3) * 180,'x')
+q.p((float(2)/3) * 180,'x')
+q.switch(2, 0, (q for q in [q] * 2))
+
+
+q.measure(0,0)
+q.measure(1,1)
+
+
+print(q.draw('mpl'))
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCaseOp
+from qiskit.circuit.library.standard_gates import HGate
+qc = QuantumCircuit(2, 2)
+op = QuantumCircuit(2, 2)
+
+op.h(0)
+op.cswap(1, 0, 1)
+
+scop = SwitchCaseOp(input=0, cases=[(0, op)])
+scop.validate_foldable() 
+
+qc.h(0)
+qc.append(scop, [0, 1]) 
+qc.h(1)
+
+
+from qiskit_metal.qlibrary.qubits import TransmonConcentrator
+qubit1 = TransmonConcentrator('Q1')
+qubit2 = TransmonConcentrator('Q2')
+
+
+qr = QuantumRegister(2, 'qubit')
+cr = ClassicalRegister(2, 'control')
+qc2 = QuantumCircuit(qr, cr)
+
+
+qc2.ch(qr[0],qr[1]).c_if(cr, 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+case0 = QuantumCircuit(qr, cr)
+case0.x(qr[1])
+case0.ccx(qr[0],qr[1],qr[0]).c_if(cr[1], 1)
+
+
+
+case1 = QuantumCircuit(qr, cr)
+case1.ccx(qr[0],qr[1],qr[0]).c_if(cr[1], 0)
+
+qc2.append(case0.to_instruction(), [qr[i] for i in range(2)], cr[:])
+qc2.append(case1.to_instruction(), [qr[i] for i in range(2)], cr[:])
+qc2.append(case1.to_instruction(), [qr[i] for i in range(2)], cr[1:])
+
+qc22 = QuantumCircuit(3,2)
+qc22.ch(0,2)
+qc22.cx(1,2)
+
+from qis
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+q = qc.qubits
+c = qc.clbits
+switch = qc.switch([1,0],[q[1],q[0]],0)
+switch
+
+
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(2)
+q = qc.qubits
+c = qc.clbits
+
+qc.x(q[1])
+with qc.switch(1) as case1:
+    
+
+qc.x(q[0])
+with qc.switch(0) as case0:
+    
+    
+case0.x(q[1])
+case1.x(q[0])
+qc.draw(fold=-1)<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4, name='demo_switch')
+
+a = c_i.ClassicalRegister(4, name='a')
+classical_register=c_i.ClassicalRegister(2, name='c')
+qc.add_register(a)
+qc.add_register(classical_register)
+qc.cx(0, 1)
+qc.cx(1, 2)
+qc.cx(2, 3)
+qc.measure(0, a[0])
+qc.measure(1, a[1])
+qc.measure(2, a[2])
+qc.measure(3, a[3])
+
+def switch_demo(x):
+    for i in [0, 1, 2]:
+        if i == x:
+            for j in [1,3]:
+                qc.cx(j, i-1)
+            return qc
+        
+qc.barrier()
+qc = qc.extend(switch_demo, (2,), inplace=False)
+qc.draw()
+print(qc)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.qpy import *
+import qiskit.tools.visualization
+
+print()
+qc = QuantumCircuit(5) 
+
+qc.h(0)
+qc.cx(0, 1)
+qc.cx(0, 2)
+qc.cx(0, 3)
+
+
+qc.add_register(ClassicalRegister(1, "input")) 
+
+
+case0 = QuantumCircuit(5)
+case0.cx(0, 1)
+case0.cx(0, 2)
+case0.cx(0, 3)
+qc.switch(0, case0)
+
+
+case1 = QuantumCircuit(5)
+case1.h(0)
+case1.cx(0, 1)
+case1.cx(0, 2)
+case1.cx(0, 3)
+qc.switch(1, case1)
+
+
+case2 = QuantumCircuit(5)
+case2.h(1)
+case2.cx(1, 2)
+case2.cx(1, 3)
+qc.switch(2, case2)
+
+
+case3 = QuantumCircuit(5)
+case3.h(2)
+qc.switch(3, case3)
+
+
+qc.barrier()
+qc.measure(0, 0)
+
+if_success("Qiskit has introduced the switch operation with the new control flow operation. This switch "+\
+          "statement can either be represented using the QuantumCircuit.switch() method or the new"+\
+          "SwitchCaseOp instruction. The switch API is context sensitive and uses the new "+\
+          "SwitchCaseOp instruction to automatically build the instructions that execute the "+\
+          "circuit when the case is matched.")
+
+try:
+    QuantumCircuit.save_as_qpy(qc, "ifdemo.qpy")
+except qiskit.providers.exceptions import BackendV1SchemaError as ex:
+    if_fail("The qpy file was saved although it was an invalid file.")
+
+try:
+    qc1 = QuantumCircuit.load_from_qpy("ifdemo.qpy")
+    if_success("QPY load succeeded and the result is valid:\n\n"+
+                qiskit.tools.visualization.circuit_drawer(qc1)
+               )
+except qiskit.providers.exceptions.QiskitError as ex:
+    if_fail("The qpy file was not generated correctly.")
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.tools.visualization import circuit_drawer
+import numpy as np
+q = QuantumRegister(2, 'q')
+c = ClassicalRegister(2, 'c')
+qc = QuantumCircuit(q, c)
+qc.reset(q[1])
+qc.measure_active()
+
+qc.switch(2*c[0]+c[1], 0).c_if(c, 0)
+Circuit_drawer(qc, fold=1000000)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+q = QuantumRegister(3,'q')
+c = ClassicalRegister(3,'c')
+q_circuit = QuantumCircuit(q,c)
+
+
+q_circuit.x(q[1])
+
+q_circuit.switch(c,2)
+
+q_circuit.barrier()
+q_circuit.x(q)
+q_circuit.h(q)
+q_circuit.cx(q[0],q[1])
+q_circuit.x(q)
+
+q_circuit.barrier()
+q_circuit.measure(q,c)
+q_circuit.draw()
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+qc.h(0)
+
+qc.switch(0,1,[0],[0])
+qc.h(1)
+display(qc.draw())
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import CompositeGate, QuantumRegister, ClassicalRegister
+from qiskit.circuit.quantumregister import Qubit
+from qiskit.dagcircuit import DAGCircuit
+
+def main():
+  
+    q = QuantumRegister(1, 'qr')
+    c = ClassicalRegister(1, 'cr')
+    qr2 = QuantumRegister(1, 'qr2')
+    composite = QuantumCircuit(q, c)
+    
+    qc0 = QuantumCircuit(q)
+    qc0.h(q)
+    composite.append(qc0.to_instruction(), [*q])
+    
+    qc1 = QuantumCircuit(q)
+    qc1.x(q)
+    composite.cx(q, qr2)
+    composite.append(qc1.to_instruction(), [*q])
+    
+    composite.barrier(q)
+    
+    composite.append(CompositeGate(name='my_comp', circuits=(qc0, qc1,)), [*q])
+    composite.cx(q, qr2)
+    
+    composite.measure(q, c)
+   
+    composite.h(qr2)
+    composite.switch_case(ClassicalRegister(8, 'cr8'), {1: composite}, 'check_func')
+    composite.h(qr2)
+  
+    composite.draw(output='mpl', idle_wires=False)
+
+if __name__ == '__main__':
+  main()
+    
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+q  = QuantumCircuit(4, 4)
+b  = 1
+
+with  q.switch(b):
+    q.h(2)    
+    q.z(2)    
+  
+b = 0
+q.h(2)   
+q.z(0)   
+
+q.draw()
+
+    
+
+    
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow import SwitchCase
+from qiskit.test.mock import FakeParis
+qc=QuantumCircuit(2)
+qr0=qc.add_register(range(2))
+qr1=qc.add_register(range(2,5))
+qc.switch(qr0[0],
+          [qr0], [qr1])
+qc.draw()
+
+classical=QuantumCircuit(2)
+classical.cx(0,1)
+classical.cz(qr0[1],qr1[0])
+qc.switch(classical,1,qr1)
+qc.draw()
+
+provider=FakeParis()
+backend=provider.get_backend('ibmq_paris')
+job=provider.run(qc,backend)
+result=job.result()
+provider.get_backend()
+
+job.status()
+result.get_counts()
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.random import random_circuit
+from qiskit.circuit.library import XGate
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+qc = QuantumCircuit(qr, cr)
+
+
+x_circ = QuantumCircuit(1,1)
+
+x_circ.x(0)
+
+y_circ = QuantumCircuit(1,1)
+y_circ.rx(0.314159, 0)
+
+z_circ = QuantUmbit(1,1)
+z_circ.h(0)
+
+
+
+
+
+condition_value = 7.5
+
+qc.switch(condition_value,
+        [
+                
+                
+                (1, x_circ),
+                
+                
+                (2, y_circ),
+                
+                
+                (default, z_circ)
+        ])
+
+
+qc.qasm()
+
+qc.qpy()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import QuantumRegister, ClassicalRegister
+from qiskit.circuit.library.standard_gates import XGate
+
+cr = ClassicalRegister(4, 'creg')
+qr = QuantumRegister(4, 'qreg')
+
+circuit_switch_in_python = QuantumCircuit(qr, cr)
+
+switch_condition = cr[0]
+
+with circuit_switch_in_python.switch(switch_condition):
+    circuit_switch_in_python.x(qr[0])
+print(circuit_switch_in_python)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(4, 'qr')
+circ = QuantumCircuit(qr)
+circ.cx(0,1)
+
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit import SwitchGate
+
+qr = QuantumRegister(13, 'qr')
+circ = QuantumCircuit(qr)
+
+
+circ.append(SwitchGate([0, 3, 2, 0, 0, 2, 0, 1, 0, 0, 0, 0],
+                       1,
+                       [1, 0, 1, 1, 0, 0, 2, 0, 0, 1, 0, 0]), qr[0:2])
+circ.h(3)
+circ.cx(1, 0
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit.library.standard_gates.x import CXGate
+
+circuit = QuantumCircuit(3)
+qr_in = QuantumRegister(1, name='qr_in')
+qr_ctrl = QuantumRegister(1, name='qr_ctrl')
+circuit.add_register(qr_in)
+circuit.add_register(qr_ctrl)
+circuit.cx(qr_ctrl[0], qr_in[0])
+
+
+switch = circuit.switch(
+    case=qr_ctrl, 
+    cases = [0], 
+    fallback=circuit.copy() 
+) 
+
+
+circuit.x(switch.targets)
+
+print(circuit)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import execute
+
+q = QuantumRegister(1)
+c = ClassicalRegister(1)
+qc = QuantumCircuit(q, c)
+qc.switch(q, [0], lambda x: [1, 0][x])
+qc.x(q)
+qc.switch(q, [0], lambda x: [0, 1][x])
+qc.measure(q, c)
+
+print(qc)
+
+job = execute(qc, backend='statevector_simulator')
+
+qasm_simulator = Aer.get_backend('qasm_simulator')
+job = qasm_simulator.run(qc)
+
+result = job.result()
+statevector = result.get_statevector()
+print(statevector)
+
+qc.draw(output='mpl')
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+
+num_of_qubits = 4
+q1 = QuantumRegister(num_of_qubits, 'q')
+qc = QuantumCircuit(q1)
+
+with qc.switch(5, 5) as case0:
+    case0.z(0)
+    case0.x(0)
+    case0.cz(0, 3)
+
+with qc.switch(1, 2) as case0:
+    case0.cz(0, 1)
+    case0.cz(0, 1)
+    case0.cz(0, 1)
+
+qc.z(0)
+qc.z(0)
+
+qc.cz(1, 3)
+
+qc.draw()
+
+qc.switch(4, 4)
+qc.switch(2, 2)
+print(qc.count_ops())
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+simulator = Aer.get_backend('qasm_simulator')
+circuit = QuantumCircuit(4)
+circuit.h(1)
+circuit.h(2)
+circuit.h(3)
+circuit.switch(classical=circuit.creg[0], cases=[(circuit.ch(0,1), 1), (circuit.ch(0,2), 2)])
+circuit.x(0)
+circuit.x(1)
+circuit.x(2)
+circuit.x(3)
+circuit.measure_all()
+result = execute(circuit, backend=simulator, shots=10, memory=True).result()
+from qiskit.visualization import plot_histogram
+plot_histogram(result.get_counts())
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+qc = QuantumCircuit(3)
+qc.cu1(0.3, 1, 2)
+qc.h(0)
+qc.cx(0, 1)
+qc.tdg(0)
+
+
+with qc.case(0):
+    qc.x(0)
+    qc.y(0)
+    qc.z(0)
+    qc.barrier()
+
+with qc.case(1):
+    qc.x(1)
+    qc.z(1)
+    qc.measure_all()
+qc.draw()
+
+qc = QuantumCircuit(3)
+with qc.case(0):
+    qc.x(0)
+    qc.y(0)
+    qc.z(0)
+    qc.cx(0, 2)
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.controlflow.switch import SwitchCase
+from qiskit.circuit.library import XGate
+qc = QuantumCircuit(4, 2)
+with qc.switch(qc.classical_register):
+    with SwitchCase(
+        0, (qc.cry(0.5, 0, 1), qc.cry(0.1, 2, 3),),
+    ):
+        qc.barrier(0, 1, 2, 3)
+        qc.x(0)
+        qc.x(1).c_if(qc.classical_register, 1)
+        qc.x(2)
+        qc.ccx(qc.classical_register, 2, 3)
+    with SwitchCase(
+        1, (qc.cx(0, 2), qc.cx(1, 3)),
+    ):
+        qc.barrier(0, 1, 2, 3)
+        qc.x(0)
+        qc.x(1).c_if(qc.classical_register, 0)
+        qc.x(1)
+        qc.ccx(0, 1, 1)
+    qc.barrier(0, 1, 2, 3)
+    with SwitchCase(qc.classical_register, (qc.cx(0, 1), qc.u(0, 0, 0, 1), XGate().control(1, ctrl_state=qc.classical_register)),
+    ):
+        qc.ccx(0, 1, 2).c_if(qc.classical_register, 1)
+        qc.ccx(qc.classical_register, 2, 3)
+qc.x(2).c_if(qc.classical_register, 1)
+qc.x(3).c_if(qc.classical_register, 1)
+qc.draw(fold=-1)
+
+qc.decompose().draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.converters import circuit_to_dag, dag_to_circuit
+from qiskit.converters import circuit_to_dag
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.circuit import Instruction
+from qiskit.extensions.standard.cx import CNOTGate
+from qiskit.extensions.standard.barrier import Barrier
+from qiskit.extensions.standard.u2 import U2Gate
+
+
+circuits = [QuantumCircuit(2), QuantumCircuit(2),  QuantumCircuit(2), QuantumCircuit(2)]
+
+
+circuits[0]._data =  ["xx", "yy"]   
+circuits[1]._data =  ["yy", "zz"]
+circuits[2]._data =  ["xx", "yy", "zz"]
+circuits[3]._data =  ["xx", "yy", "zz", "z"]
+
+
+
+
+conditions = {
+    0: ([circuits[0], 1], 0),
+    1: ([circuits[1], 0], 1),
+    2: ([circuits[2], 1], 0),
+    3: ([circuits[3], 0], 1),
+}
+
+
+condition = QuantumCircuit(2)
+condition.measure_all()
+
+
+
+
+py_compiled_circuit = circuit_to_dag(condition)
+print(py_compiled_circuit)
+
+
+
+
+backend = { 0: 0, 1: 1, 2: 0, 3: 1 } 
+
+
+sw = switch.SwitchCaseOp(py_compiled_circuit, condition, backend, conditions)   
+sw.condition.label = "switch"
+
+
+sw.draw(line_length=250, initial_state=True) 
+
+
+from qiskit import BasicAer
+backend_sim = BasicAer.get_backend('qasm_simulator')
+job = backend_sim.run(sw)
+result = job.result()
+result.get_counts()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter
+
+
+qc = QuantumCircuit(5)
+c = Parameter('c0')
+
+qc.x(c)
+qc.y(3)
+qc.z(c)
+
+qc.switch(c, [1, 2], [2, 3], [c, 4], [qc.copy().x(0), qc.copy().x(1)])
+print(qc)
+
+
+qc1 = QuantumCircuit(5)
+qc1.z(0)
+qc1.z(1)
+qc1.x(0)
+qc2 = QuantumCircuit(5)
+qc2.x(2)
+qc2.y(4)
+qc2.h(3)
+qc.switch_case(c, {0: qc1, 2: qc2})
+
+print(qc)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+circuit = QuantumCircuit(3, 1)
+
+circuit.ccx(0, 1, 2)
+circuit.z(2)
+circuit.barrier()
+
+circuit.s(0)
+circuit.t(1)
+circuit.barrier()
+
+case0 = circuit.case(inputregister=0, casecircuit=circuit)
+case1 = circuit.case(inputregister=0, casecircuit=circuit)
+circuit.barrier()
+case2 = circuit.case(inputregister=1, casecircuit=circuit)
+
+s1 = circuit.switch(inputregister=inputregistervariable, case=[case0, case1, case2])
+
+circuit.swap(0, 1)
+circuit.ccx(0, 1, 2)
+circuit.barrier()
+circuit.h(2)
+circuit.measure(2, 0)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+print('Create quantum circuit in Qiskit in Python that uses the switch API.')
+
+
+print('Create a quantum circuit that uses a bit value as an input to control operations on a quantum wire.')
+
+
+print('Create a quantum circuit that uses an Integer as an input to control operations on a quantum wire.')
+
+
+print('Create a quantum circuit that uses a quantum wire value as an input to control operations.')
+
+quant = QuantumCircuit(2,2)
+quant.h(0)
+quant.cx(0,1)
+
+
+print('The QISKIT SwitchCase statement provides a convenient solution for defining the case based on input.')
+
+
+print('When compiled, this circuit is equivalent to the following circuit. The SwitchCase statement is compiled into a series of conditional gates, that provide the condition for the controlled gates to be used. The SwitchCase statement is executed when the circuit is executed.')
+
+
+
+print("In the next example that will not be executed in this section, a quantum circuit that uses the SwitchCase statement is demonstrated.")
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+import matplotlib.pyplot as plt 
+from numpy.random import rand
+
+qc = QuantumCircuit(3)
+qc.barrier()
+qc.x(1)
+qc.x(2)
+qc.barrier()
+qc.switch(rand() < 0.5, 
+             QuantumCircuit(2, input_mask=[1], name='q1'), 
+             QuantumCircuit(2, input_mask=[1], name='q2'))
+qc.draw(output='mpl')
+
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit.circuit import ClassicalRegister, Qubit
+
+def create_circuit():
+    
+    qc = QuantumCircuit(3, 1, name="SwitchTest")
+
+    qc.h(2)
+    if 1 == 2:
+        qc.cx(2, 0)
+    elif 3 == 2:
+        qc.cx(2, 1)
+    elif 4 == 5:
+        qc.x(0)
+    else:
+        qc.z(1)
+    qc.x(0)
+    qc.h(0)
+    qc.y(0)
+    qc.y(1)
+    qc.z(1)
+    qc.z(2)
+    qc.measure(2, 0)
+    qc.y(0)
+
+    return qc
+
+def main():
+
+    c = create_circuit()
+    print(c.draw(output='text'))
+    print(c.draw(output='mpl'))
+
+if __name__ == "__main__": main()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3,2)
+qc.x(0)
+qc.h(1)
+qc.switch([qc.x,qc.y,qc.z],
+    [0,1])
+qc.cx(0,2)
+qc.cx(1,2)
+qc.draw(output="mpl")<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc1 = QuantumCircuit(3)
+for i in range(3):
+  if i==0:
+    qc1.x(0)
+  elif i==2:
+    qc1.z(0)
+  else:
+    pass
+qc1.measure_all()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import QuantumRegister, Bit
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.x(0)
+qc.z(1)
+qc.measure([0,1], [0,1])
+
+qc.h(0)
+qc.x(0)
+switch = qc.switch(2)
+switch.ccx(0, 1, 2)
+switch.z(1)
+switch.ccx(0, 1, 2)
+switch.x(0)
+switch.h(0)
+
+qc.switch(switch, [0]).cswap(0, 1, 2).h(0).z(1).cswap(0, 1, 2).z(0).h(0)
+qc.draw()
+print(qc)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+from qiskit import ClassicalRegister
+from qiskit import execute
+from qiskit import Aer
+
+
+qubits = 8
+cbits = 2 * qubits
+qc = QuantumCircuit(qubits, cbits, name="switch-api")
+
+for j in range(qubits, qubits + 2):
+    qc.h(j)
+for j in range(qubits):
+    
+    
+    circ = QuantumCircuit(1, 1, name="qc_z")
+    circ.h(0)
+    circ.z(0)
+    circ_x = QuantumCircuit(1, 1, name="qc_x")
+    circ_x.h(0)
+    circ_x.x(0)
+    circ_x.append(circ, [0], [])
+
+    
+    qc.append(circ_x if j % 2 == 1 else circ, [j])
+
+print(qc)
+
+
+qc.save_qasm_file("switch-api.qasm")
+
+
+
+
+backend = Aer.get_backend('qasm_simulator')
+job_sim = execute(qc, backend, shots=2020)
+result_sim = job_sim.result()
+
+
+from qiskit.visualization import plot_histogram
+plot_histogram(result_sim.get_counts())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(5,5)<jupyter_output><empty_output><jupyter_text>Create a quantum circuit that maps an input of 1 to |+> and 0 to |0><jupyter_code>q1=q.qubit(0)
+print(q.qasm())<jupyter_output>OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[5];
+creg c[4];
+// map 0 to |0>
+cx q[4],q[3];
+// map 1 to |+>
+x q[2];
+cx q[2],q[1];
+x q[2];
+cx q[1],q[0];
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+circuit = QuantumCircuit(1)
+circuit.x(0)
+classical_register= circuit.creg.create_cups('c')
+switch = CircuitSwitchOpFactory({1:circuit})
+
+circuit.x(0).c_if(classical_register[1], 1)
+circuit.barrier()
+circuit.append(switch.switch_case(classical_register[0]), range(1))
+circuit.barrier()
+circuit.measure_all()
+circuit.draw(output='mpl')
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister,  QuantumCircuit, QuantumCircuit, QuantumRegister, ClassicalRegister, QuantumCircuit, QuantumRegister, ClassicalRegister, QuantumCircuit, QuantumRegister, ClassicalRegister
+
+classical_register= [ClassicalRegister(2)]
+quantum_register= [QuantumRegister(1, 'q0')]
+qc = QuantumCircuit(quantum_register, classical_register)
+
+
+
+qc.reset(quantum_register[1])
+qc.measure(quantum_register[1], classical_register[1])
+qc.x(quantum_register[0]).c_if(classical_register[1].c[0], 0)
+
+qc.draw(output='mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister, ClassicalRegister
+circuit = QuantumCircuit(name='Switch API test')
+
+
+cr = ClassicalRegister(2, 'control')
+q = QuantumRegister(3)
+
+circuit.add_register([cr, q])
+circuit.add_instruction(XGate(), q[0])
+circuit.add_instruction(CXGate(), [q[1], q[2]])
+
+circuit.x(cr[0])
+circuit.x(q[0])
+circuit.x(q[2])
+
+circuit.switch(cr, 0, then_circuit=circuit, else_circuit=None)
+print(circuit.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qr = QuantumRegister(3, "qr")
+circ = QuantumCircuit(qr)
+circ.append(circ.switch(qr.c_if(qr, 1)), [qr[1], qr[2]])
+circ.draw(output='mpl')
+
+
+
+from qiskit import QuantumCircuit
+from qiskit import QuantumRegister
+from qiskit.circuit import SwitchCase
+from qiskit.circuit.library import XGate
+
+qr = QuantumRegister(3, "qr")
+circ = QuantumCircuit(qr)
+circ.append(SwitchCase(XGate(), [0, 1]), [qr[2]], [])
+circ.draw()
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import ClassicalRegister, QuantumRegister
+from math import pi
+
+
+q = QuantumRegister(2)
+
+c = ClassicalRegister(2)
+
+qc = QuantumCircuit(q, c)
+qc.ry(pi / 2, q[0])
+qc.ry(pi, q[1])
+qc.cx(q[0], q[1])
+qc.x(q[0])
+qc.measure(q, c)
+
+print(qc)
+
+from qiskit import QuantumCircuit
+from math import pi
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(3, 1)
+
+with qc.switch(1):
+    qc.cx(0,1)
+
+with qc.switch(1):
+    qc.cx(0,1)
+
+with qc.switch(1):
+    qc.cx(1,2)
+
+
+with qc.switch(2):
+    qc.cx(0,1)
+    qc.cx(0,2)
+
+qc.draw("mpl")
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(1,1)
+qc.x(0)
+qc.switch(1,
+    QuantumCircuit(0,1, name='0'),
+    QuantumCircuit(0,1, name='1'),
+if_false=QuantumCircuit(0,1, name='10')
+)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc = QuantumCircuit(3, 3)
+
+qc.cx(0, 1)
+qc.cx(0, 2)
+
+qc.barrier()
+
+qc.switch(2, [qc.case([0, 1], 0), qc.case([0], 1)])
+
+
+
+
+qc.measure(qr, cr)
+
+qc .draw(output='mpl')
+
+
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.circuit import QuantumRegister, QuantumCircuit
+
+qc = QuantumCircuit(2,3)
+qc.h(0)
+qc.h(1)
+
+
+
+
+qc.barrier()
+qc.switch(0,
+          [qc.case([0, 1], lambda q, c: qc.measure(q, 1)),
+           qc.case([0], lambda q, c: qc.measure(q, 2))])
+
+print(qc)
+
+
+
+def measure_qubit_1(qc, reg, creg, case_index):
+    qc.measure(reg, creg)
+    qc.x(0)
+
+def keep_qubit_0(qc, reg, creg, case_index):
+    qc.measure(reg, creg)
+
+qc = QuantumCircuit(2, 3)
+qc.h(0)
+qc.h(1)
+
+qc.barrier()
+
+qc.switch(0,
+          [qc.case([0, 1], measure_qubit_1),
+           qc.case([0], keep_qubit_0)])
+
+qobj = compile(qc, backend, shots=1024)
+job = backend.run(qobj)
+print(job.result().get_counts())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+
+
+cr = ClassicalRegister(1, name='c')
+
+
+
+qc = QuantumCircuit(qr, cr)
+
+
+qc.h(qr[0])     
+qc.z(qr[1])     
+qc.measure(qr[0], cr[0])     
+qc.barrier(qr)     
+
+
+qc.z(qr[2]).c_if(cr, 0)     
+qc.x(qr[3]).c_if(cr, 1)     
+qc.h(qr[4]).c_if(cr, 1)     
+
+
+
+
+qc.draw() 
+IBMQ.load_accounts()
+provider = IBMQ.get_provider(hub='ibm-q-rochester', group='xyz-openqasm', project='openqasmhub')
+device = provider.get_backend('ibmq_rochester')
+properties = device.properties()
+
+execute(qc, backend=device, shots=1024).result()
+qc.save_statevector()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+
+
+qc.switch(1, case1, case2)
+
+qc.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import XGate
+qr = QuantumRegister(2,'qreg')
+qc = QuantumCircuit(qr)
+qc.h(qr[0])
+for q in qr: 
+    qc.t(q)
+qc.h( qr[0] )
+qc.cx( qr[0], qr[1] ) 
+
+switch = qc.switch(1, 0, 2) 
+from qiskit.circuit.library import XGate
+qr = QuantumRegister(2,'qreg')
+qc = QuantumCircuit(qr)
+qc.h(qr[0])
+for q in qr: 
+    qc.t(q)
+qc.h( qr[0] )
+qc.cx( qr[0], qr[1] ) 
+
+switch = qc.switch(1, 0, 2) 
+print(
+    qc.data[-2].op.condition.circuit,
+    qc.data[-1].op.circuit, sep='\n'
+)<jupyter_output>if qreg_2 == 1:
+    t qreg[0]
+    x qreg[2]
+if qreg_2 == 2:
+    t qreg[1]
+    x qreg[2]
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Qubit
+from qiskit.circuit.library.standard_gates import XGate
+
+qc_00 = QuantumCircuit(3, 3)
+qubit_0 = Qubit()
+qubit_1 = Qubit()
+qc_00.rx(0.3, qubit_0)
+qc_00.ry(0.8, qubit_0)
+qc_00.cx(qubit_0, qubit_1)
+qc_00.cx(qubit_0, qubit_1)
+qc_00.rx(0.3, qubit_0)
+
+
+qc_swh = QuantumCircuit(2, 2)
+qc_swh.x(0)
+qc_swh.switch((0,), qc_00, (qubit_0,), (qubit_1,),
+              add_def=True, label='switch_0')
+qc_swh.x(0)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def generate_circuit(n_cases: int) -> QuantumCircuit:
+    qc = QuantumCircuit(3, 4)
+    (q, c) = (0, 1)
+    default_value = 15
+
+    for i in range(0, n_cases):
+        value = i
+        qc.switch(q, default_value, value, n_cases - i - 1)
+        qc.cswap(i, i + 1, default_value + i + 2)
+
+    return qc
+
+qc = generate_circuit(4)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4, 2)
+qc.switch(
+    [0,1,2],
+    [0,1,3],
+    [0,2,3],
+    label=1000
+)
+qc.draw()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+
+q = QuantumRegister(2)
+
+
+b = ClassicalRegister(1)
+
+qcp = QuantumCircuit(q, b)
+
+qcp.measure(q[0], b[0])
+
+
+qcp.switch(1, 1, 2, None, q_ancilla_list=[q[0]], c_ancilla_list=[b[0], q[0]],)
+qcp.switch(0, 0, 2, None, q_ancilla_list=[q[1]], c_ancilla_list=[b[0], q[1]],)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import (
+    Parameter,
+    ParameterVector,
+    ClassicalRegister,
+    QuantumRegister,
+)
+import numpy as np
+
+
+
+p = Parameter("p")
+
+
+qc = QuantumCircuit(1)
+qc.h(0)
+qc.measure_all()
+
+
+
+case0 = (p, qc)  
+switch = QuantumCircuit(1)
+switch.x(0).c_if(p, 0)
+case1 = (2, switch)  
+
+
+
+circ = QuantumCircuit(1)
+circ.append(case0, [0])
+circ.append(case1, [0])
+circ.x(0)
+circ.switch(0, 1, p)
+
+
+val = 2
+
+
+qc.bind_parameters({p: val})
+circ.bind_parameters({p: val})
+
+print("Without building the switch:\n", qc)
+print("After building the switch:\n", circ)
+
+qc_json = circ.to_dict()
+print(qc_json)
+
+import qiskit.tools.jupyter
+
+
+
+circ.draw()
+
+
+
+
+q = QuantumRegister(5, 'q')
+c = ClassicalRegister(5, 'c')
+qc = QuantumCircuit(q, c)
+
+qc.h(q[3])
+qc.cx(q[3], q[4])
+qc.swap(q[2], q[1])
+qc.cx(q[2], q[3])
+qc.swap(q[2], q[1])
+qc.cx(q[0], q[1])
+qc.swap(q[3], q[1])
+qc.cx(q[0], q[2])
+qc.x(q[4])
+qc.cx(q[3], q[4])
+qc.x(q[4])
+qc.barrier(q)
+qc.ccx(q[4], q[1], q[4])
+qc.ccx(q[4], q[2], q[4])
+qc.ccx(q[4], q[3], q[4])
+qc.barrier(q)
+qc.measure(q, c)
+
+
+
+
+qc.draw()
+
+
+
+
+from qiskit import QuantumCircuit
+from qiskit.circuit import (
+    Parameter,
+    QuantumCircuit,
+    QuantumRegister,
+    ClassicalRegister
+)
+
+
+p = Parameter(value="X")
+
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.p(0.3, 0)
+qc.h(0)
+qc.r(p, 3.14, 0)
+qc.h(0)
+qc.z(0)
+qc.h(1)
+qc.measure_all()
+
+qc.draw()
+
+
+'''Create a quantum circuit in Qiskit in Python with parameters. In the example above, we'll define two parameters $a$ and $b$ (defined using the qiskit.circuit.Parameter() call), instantiate these parameters, bind them, and run the circuit using Python's eval() function. 
+
+We'll first
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qr = QuantumRegister(2, 'input')
+cr = ClassicalRegister(2, 'output')
+qc = QuantumCircuit(qr, cr)
+qc.ccx(qr[0], qr[1], cr[1])
+qc.ry(0.6, qr[1]).c_if(cr, 1)
+qc.cx(qr[1], cr[1]).c_if(cr, 0)
+qc.x(qr[1]).c_if(cr, 1)
+qc.ccx(qr[0], qr[1], cr[1]).c_if(cr, 0)
+
+print(qc.decompose().draw())
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.opflow import CX
+
+def conditional_gate_builder(circuit, x, y):
+    circuit.cx(x, y).cz(x, y)
+    return circuit
+
+qc = QuantumCircuit(2, 2)
+
+
+switch = qc.switch(index_wire=1, cases=[(0, conditional_gate_builder(QuantumCircuit(2), 0, 1)), (1, conditional_gate_builder(QuantumCircuit(2), 1, 0))])
+
+
+
+qc.draw('mpl')
+
+print(qc.qasm())<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+qasm_out = open('qasm_out_1.qasm', 'w')
+
+q = QuantumCircuit(3,2)
+
+with q.switch():
+    q.h(1)
+    q.cx(1, 2)
+    q.cx(0, 1)
+    q.h(0)
+
+
+q.switch(2).h(2)
+q.draw()
+q.decompose().draw()
+
+from qiskit import transpile
+
+q_t = transpile(q, basis_gates=['id', 'x', 'cx', 'h'])
+
+qasm_out.write(q_t.qasm())
+
+q_t.draw()
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister,ClassicalRegister
+from qiskit import IBMQ
+from qiskit import A, B, C, D
+from qiskit.compiler import transpile, assemble
+from qiskit.quantum_info import Statevector
+
+qr = QuantumRegister(1,'qr')
+cr = ClassicalRegister(1,'cr')
+qc = QuantumCircuit(qr, cr)
+
+
+
+qc.h(qr)
+qc.h(qr)
+
+qc.x(A)
+qc.x(B)
+qc.ccx(A, B, C)
+qc.x(C)
+qc.cx(B, D) 
+switch_case = qc.switch(D, {0: A, 1: B})
+add_cnd1 = qc.ccx(C,A,D)
+add_cnd2 = qc.cx(D,A)
+qc.x(D)
+qc.barrier(D,A)
+qc.measure(D,cr)
+qc.x(D)
+
+print('\nSwitchStatement Circuit')
+print(qc.draw())
+
+job=transpile(qc, basis_gates=['cx'])
+state = Statevector(job.execute().result().get_statevector(qc))
+print('\nFinal State Vector of SwitchStatement Example')
+print(state)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+qc.z(0)
+qc.barrier()
+qc.z(1)
+qc.if_then_else(qc.clbits[0], circuit1, circuit2)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.quantum_info import Statevector
+from qiskit.circuit import Barrier, SwitchCaseOp
+from qiskit.circuit import Qubit, QuantumRegister
+from qiskit import QuantumState, ClassicalRegister
+
+from qiskit import QuantumCircuit
+from qiskit.circuit import Parameter
+from qiskit.circuit.quantumregister import Qubit as qubit
+from random import randrange
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+circuit = QuantumCircuit(qr, cr)
+
+
+cases = [
+    
+    [(1, 'circuit1'), (2, 'circuit2')],
+    [(2, 'circuit3'), (3, 'circuit4')],
+    [(0, 'circuit5')]
+]
+total_cases = len(cases)
+
+
+circuit.add_statevector()
+circuit.add_register(cr)
+circuit.x(qr[0])
+circuit.switch(total_cases, cases, circuit)
+print(circuit)
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+import unittest
+
+qc = QuantumCircuit(2, 2) 
+qc.switch(2, 1, 1).c_if(0, 3) 
+qc.switch(1, 2, 0).c_if(0, 1) 
+
+class MyTest(unittest.TestCase):
+    def test_creg(self):
+        qc = QuantumCircuit(2, 2)  
+        qc.switch(2, 1, 1).c_if(0, 3) 
+        qc.switch(1, 2, 0).c_if(0, 1) 
+        qc.h(0)  
+
+        out = qc.classical_data_list
+        print(out) 
+        assert out == [0]
+
+if __name__ == '__main__':
+    unittest.main()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCaseOp
+
+
+circ = QuantumCircuit(1)
+circ.x(0)
+
+
+switch = SwitchCaseOp(circ, 0)  
+switch_case_0 = switch.case(0b0).build()
+switch_case_1 = switch.case(0b1).build()
+
+
+with switch.default():
+    circ.h(0)  
+    switch_case_0.enable()  
+
+
+
+circ.h(0)  
+switch_case_0.enable()  
+circ.h(0)  
+
+
+switch_case_1.enable()
+
+
+print(circ.draw())
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import Parameter
+
+param = Parameter('a')
+qc = QuantumCircuit(3)
+qc.h([0,1,2])
+qc.barrier()
+qc.cx(0,1)
+qc.cx(1,2)
+qc.barrier()
+qc.x(2)
+qc.ry(param,2)
+
+qc.switch(param, range(qc.num_qubits), [
+        (1,[2]),
+        (0,[0,1])
+    ]
+)
+
+qc.cx([0,1],2)
+
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc_inst1 = QuantumCircuit(3,2)
+qc_inst1.h(0)
+qc_inst1.h(1)
+qc_inst1.cx(0,1)
+qc_inst1.h(1)
+qc_inst2 = QuantumCircuit(3,2)
+qc_inst2.h(0)
+qc_inst2.h(1)
+qc_inst2.s(0)
+qc_inst2.cx(0,1)
+qc_inst2.h(1)
+qc_inst1.cswap(0,1,2)
+qc_inst1.h(2)
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(6)
+
+for i in range(4, 6):
+    qc.switch(1, 3, cbit[i])
+
+for i in range(4, 6):
+    qc.switch(0, 2, cbit[i])
+    i=1
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(3,3)
+q.ccx(0,1,2)
+q.switch(1,0,2)
+q.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(1,1)
+qc.x(0)
+qc.x(0).c_if(1, 0)     
+qc.z(0).c_if(1, 1)     
+qc.draw('mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc =  QuantumCircuit(2)
+qc.x(1)
+
+
+qc.x(0)
+
+
+qc.cx(0,1)
+
+qc.name = "SwitchTest"
+
+qc.draw()
+
+
+qc.decompose().qasm()
+
+
+from qiskit import transpile, assemble, Aer
+
+device = 'ibmq_santiago'
+trans_qc = transpile(qc, backend=device, optimization_level=3, seed_transpiler=42)
+qobj = assemble(trans_qc, shots=1000)
+results = Aer.run(qobj, backend=device, shots=1000).result()
+counts = results.get_counts(trans_qc)
+print(counts)
+
+
+
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
+from qiskit.extensions.quantum_initializer import apply_initializer
+from qiskit.circuit.library import QFT
+from qiskit.circuit.library.arithmetic.adders import Incrementer
+from qiskit.circuit.library.arithmetic.subtraction import FullSubtraction
+from qiskit.circuit.library.arithmetic.arithmetic_paulis import (
+    ArithmeticAddativeEquality,
+)
+from qiskit.circuit.library.arithmetic.reversible_lookup import (
+    ReversibleBooleanLiteralLookup,
+)
+
+from qiskit.circuit.quantumregister import QuantumRegister
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.circuit.library import QFT
+from qiskit.extensions.quantum_initializer import apply_state_vector
+from qiskit.quantum_info import Statevector
+from qiskit.quantum_info.operators import Operator
+from qiskit.circuit.library.arithmetic.adders import Incrementer
+from qiskit.circuit.library.arithmetic.arithmetic_paulis import (
+    ArithmeticAddativeEquality,
+)
+from qiskit.circuit.library.arithmetic.subtraction import FullSubtraction
+from qiskit.circuit.library.arithmetic.reversible_lookup import (
+    ReversibleBooleanLiteralLookup,
+)
+qc = QuantumCircuit(4)
+qc.xgate(0)
+qc.hgate(2)
+qc.measure([0, 2], [0, 2])
+
+from qiskit.extensions.quantum_initializer import apply_state_vector
+apply_state_vector([0] + [1] * 3, qc.qubits, qc)
+qc.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit import QuantumRegister
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+
+switch_gate = qc.switch([0, 1, 2, 3, 4, 5, 6], 1, 2)
+
+print(switch_gate.condition_value)
+print(switch_gate.default_value)
+print(switch_gate.conditions)
+print(switch_gate.value_index)
+print(switch_gate.value_format)
+print(switch_gate)
+
+from qiskit import QuantumCircuit, QuantumRegister
+qc = QuantumCircuit(2)
+qc.h(0)
+
+print(qc.qasm())<jupyter_output>OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[2];
+h q[0];
+cx q[0],q[1];
+h q[0];
+switch q[0],{0,1,2,3,4,5,6,7,8,9,16,17,10,18,11,19,12,20,13,21,14,22,15,23},{2,3} q[1]
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+qc_b0 = QuantumCircuit(2)
+qc_b0.h(0)
+qc_b0.z(1)
+qc_t1 = QuantumCircuit(2)
+qc_t1.h(0)
+qc_t1.cx(0, 1)
+qc_t2 = QuantumCircuit(2)
+qc_t2.y(0)
+qc_t2.cx(0, 1)
+qc_t3 = QuantumCircuit(2)
+qc_t3.s(0)
+qc_t3.h(1)
+qcs = [qc_b0, qc_t1, qc_t2, qc_t3]
+sw = QuantumCircuit(2, name='sw')
+sw.switch(4, *qcs)
+sw.draw()
+<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+my_circuit = QuantumCircuit(3)
+
+my_circuit.switch(1, 3)
+
+my_circuit.measure_all()
+my_circuit.draw()
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+my_circuit=
+qc = QuantumCircuit.from_qasm_str(my_circuit)
+
+
+
+
+qc=QuantumCircuit.from_qasm_str(my_circuit)
+qc.draw('mpl')
+qc.switch(0,1)
+qc.draw('mpl')
+qc.ccx(1,2,3)
+qc.draw('mpl')
+
+
+
+
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import ZZFeatureMap
+from qiskit.circuit.library import RealAmplitudes
+from qiskit.circuit.library import EfficientSU2
+from qiskit.quantum_info import Statevector
+from qiskit.opflow import Zero, I, One
+
+n_features = 2
+
+
+feature_map = ZZFeatureMap(n_features, reps=2)
+
+
+feature_map2 = ZZFeatureMap(n_features, reps=1)
+feature_map3 = EfficientSU2(n_features, reps=2)
+
+my_circuit = QuantumCircuit(4)
+
+
+my_circuit.append(feature_map, range(feature_map.num_qubits))
+my_circuit.z(0)  
+my_circuit.append(feature_map2, range(feature_map2.num_qubits))
+my_circuit.append(feature_map3, range(feature_map.num_qubits, feature_map2.num_qubits+feature_map.num_qubits))
+my_circuit.cz(1, 2)
+
+my_circuit.switch(ControlRegister, 0, [Circuit1, Circuit2])
+
+print(my_circuit)
+
+'''The QuantumCircuit instance my_circuit contains all the instructions as we defined as inputs. This circuit is built from scratch with the QuantumCircuit.append() API and then it is applied the QuantumCircuit.append and QuantumCircuit.switch() statements to make them work. After the compilation, we expect that the circuit will be represented in the desired form. The output should be the following:
+q0_0: ───ZZFeatureMap(d=2,reps=2)───Z───ZZFeatureMap(d=2,reps=1)────────ZZFeatureMap(d=2,reps=3)───
+q0_1: ───ZZFeatureMap(d=2,reps=2)───Z───ZZFeatureMap(d=2,reps=1)(c:q0_0)───ZZFeatureMap(d=2,reps=3)───
+q0_2: ───ZZFeatureMap(d=2,reps=2)───Z──────────────────────────────────────────────────────────ZZFeatureMap(d=2,reps=3)───
+q0_3: ───ZZFeatureMap(d=2,reps=2)─────┬───                                                ┌────────────────┐
+                                                                       ┌────────────────┤ ControlRegister ├────────────────┤
+q1_0: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤├───────────────┤ ControlCircuit ├───────────────┤
+q1_1: ──────────────────────────────────────────┤ X ├──────────────────────────────────────││                │                ├
+q1_2: ──────────────────────────────────────────┤ X ├──────────────────────────────────────││                └────────────────┘
+q0_0: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤│┌────────────────┐
+q0_1: ──────────────────────────────────────────┤ X ├──────────────────────────────────────│││ ControlCircuit │
+q0_2: ──────────────────────────────────────────┤ X ├──────────────────────────────────────┤││                ├
+q0_3: ──────────────────────────────────────────┤ X ├───────────────────────────────■││                │
+q1_0: ──────────────────────────────────────────┤ X ├─────────────────────────────────         │                │
+q1_1: ──────────────────────────────────────────┤ X ├─────────────────────────────────         │                │
+q1_2: ──────────────────────────────────────────┤ X ├────────────────────────────────
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(4, 3)
+
+
+
+number = q.classical_register(10, 'number')
+switch_on = q.initialize([1, 0, 1, 1], number[0:4])
+
+
+
+plus = q.copy()
+
+
+
+switch_to = q.switch(switch_on, 0, [0, 1])
+
+minus = q.copy()
+minus.x(0)
+switch_to = q.switch(switch_on, 5, [0, 1])  
+
+
+plus.measure(range(3), range(3))
+minus.measure(range(3), range(3, 6))
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCase
+
+q = QuantumRegister(2, 'q')
+qc = QuantumCircuit(q)
+
+switch_case = SwitchCase(1,[
+    (1,QuantumCircuit(q,name='1')),
+    (2,QuantumCircuit(q,name='2'))
+])
+qc.append(switch_case,[q[0],q[1]])
+qc.draw()
+
+print('QPY from the circuit:')
+qc.qasm()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(2,3)
+q.x(0)
+with q.switch(1) as case_zero:
+    z=case_zero.zero_state
+    q.x(0)
+    with case_zero.case(1):
+        z.x(0)
+        case_zero.break_switch()   
+        q.h(0)
+    with case_zero.case(0,ctrl_state=2):
+        z.x(0)
+        q.h(0)   
+q.y(0)
+q.barrier(0)
+q.append(z,range(2))
+q.draw('mpl')
+with open('SwitchCase.qpy','w') as f:
+     f.write(q.qpy())<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+q = QuantumCircuit(2)
+q.h(0)
+q.cx(0,1)
+
+q.switch.on(1,2,0)
+
+q.save_with_input("q_switch.qpy", ("qr", 2))
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4)
+qc.x(0)
+qc.h(2)
+qc.ccx(0, 1, 2)
+print(qc)
+qc.switch(0, 2)
+print(qc)
+
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+q = QuantumRegister(2, 'q')
+c = ClassicalRegister(2, 'c')
+circuit = QuantumCircuit(q, c)
+circuit.cz(q[0], q[1])
+print(circuit)
+
+from qiskit import Aer, transpile
+from qiskit.transforms import unroll
+from qiskit.circuit.library import QFT
+from qiskit.transpiler import PassManager
+from qiskit.transpiler.passes import Unroller
+
+backend = Aer.get_backend('qasm_simulator')
+
+
+trans_qc = transpile(circuit,
+                     backend=backend,
+                     basis_gates=['u1', 'u2', 'u3', 'cx'],
+                     instruction_durations=[('u1', None, None, '0'),
+                                            ('u2', None, None, '0'),
+                                            ('u3', None, None, '0'),
+                                            ('cx', 1, 1,'static')],
+                     seed_transpiler=0)
+print(trans_qc)
+
+from qiskit import assemble
+
+qobj = assemble(trans_qc,
+                backend=backend,
+                shots=1024)
+result = backend.run(qobj).result()
+
+print(result.get_data())
+
+from qiskit.visualization import plot_histogram
+plot_histogram(result.get_counts())
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+
+def qiskit_switch_case(val):
+    
+    circ = QuantumCircuit(6,6,'switchCase')
+    circ.x(1)
+    if 0 == val:
+        circ.u1(0.5,0)
+        circ.cx(4,5)
+    elif 1 == val:
+        circ.s(0)
+        circ.x(2)
+        circ.cx(3,5)
+    else:
+        circ.u1(-0.5,0)
+        circ.cx(3,5)
+    return circ
+
+
+my_cases = {0: qiskit_switch_case(0), 1: qiskit_switch_case(1), 2: qiskit_switch_case(2)}
+
+c = QuantumCircuit(5,5,'testSwitchCases')
+value = c.classical_register(2,name='value-register')
+test = c.switch_case(value,my_cases)
+c.save_qasm('switch-cascading.qasm', add_comments=True, reverse_bits=True)
+
+c.draw()
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2, 2)
+qc.cx(0, 2)
+qc.cx(1, 2)
+
+qc.measure(2, 0)
+qc.switch(1, [("A",qc),("B",qc.control(1))])
+qc.measure(2, 1)
+
+qc.draw('mpl')
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+qr = QuantumRegister(2, 'q')
+crz = ClassicalRegister(2,'res')
+circuit = QuantumCircuit(qr, crz)
+circuit.h([0, 1])
+circuit.cx(0, 1)
+
+qrnew = QuantumRegister(2, 'qnew')
+custom = QuantumCircuit(qrnew)
+custom.barrier([1])
+custom.h(qrnew[0])
+custom.cx(qrnew[0], qrnew[1])
+circuit.switch(
+    2,
+    [qr],
+    { 0 : circuit, 1 : custom }
+)
+circuit.draw(output='mpl', scale=0.7, justify='center')
+
+
+
+from qiskit.circuit import Qubit
+from qiskit.opflow import Z, I
+from qiskit.circuit.library.standard_gates import CXGate, HGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.compiler import transpile
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.extensions.simulator_unitary import get_unitary
+from qiskit.extensions.unitary_simulator import UnitarySimulatorPy
+
+
+qr = QuantumRegister(3, 'q')
+cr = ClassicalRegister(3,'res')
+circuit1 = QuantumCircuit(qr, cr)
+circuit1.h(qr)
+circuit1.s(qr[1])
+circuit1.cx(qr[0], qr[1])
+circuit1.x(qr[2])
+circuit1.draw()
+
+
+ucircuit = transpile(
+    circuit1,
+    backend=UnitarySimulatorPy(),
+)
+
+unitary = get_unitary(ucircuit)
+unitary_map = ucircuit.property_set['unitary_map']
+
+
+dag = circuit_to_dag(circuit1)
+switch_case_op = dag.switch(
+    [Qubit(q) for q in (0, 1, 2)],
+    [Z, None, I],
+    [
+        None,
+        DAGCircuit(dag.basis.to_instruction().definition),
+        DAGCircuit(dag.basis.to_instruction().definition),
+    ],
+    [Z, None, None],
+)
+
+
+circuit2 = dag_to_circuit(switch_case_op, circuit_factory=CXGate,
+                          basis=ucircuit.basis, unitary_map=unitary_map)
+circuit2_unitary = get_unitary(circuit2)
+circuit2_unitary
+
+[VERBOSE] ========== sample =========
+[VERBOSE] '''Qiskit has introduced the switch operation with the new control flow operation. This switch statement can either be represented using the QuantumCircuit.switch() method or the new SwitchCaseOp instruction. This operation allows a numeric input such as a classical register or bit to execute the circuit that matches the value. This process can be constructed through a builder interface, too.
+
+The switch statement is supported by the Qiskit compiler stack and it can be serialized to QPY. For further elaboration, some examples are provided in the documentation, explaining how to create this structure. The switch operation is context-sensitive and facilitates the automatic building of the SwitchCaseOp when the scope finishes, removing the requirement to trace the qubits or clbits used.'''
+'''Create quantum circuit in Qiskit in Python that uses the switch API.'''
+from qiskit import QuantumCircuit
+
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+for case in range(10):
+    circuit = QuantumCircuit(1)
+    circuit.h(0)
+    if case == 0:
+        circuit.x(0)
+    circuit.measure_all()
+
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+switch_circuit = QuantumCircuit(8)
+
+switch_circuit.h(range(4))
+switch_circuit.cx(range(4), range(4, 8))
+
+print(switch_circuit.draw())
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit.quantumcircuit import QuantumRegister, AncillaRegister, ClassicalRegister
+def add_bit_register():
+    qc = QuantumCircuit(3,2)
+    
+    qc.barrier(0,1,2)   
+    qubit_reg = QuantumRegister(3, 'q')
+    class_bit_reg = ClassicalRegister(2, 'bit')
+    qc.add_register([qubit_reg, class_bit_reg])
+    qc.x(0)
+    qc.barrier(0,1,2) 
+    return qc
+
+def test(case, qubits, bits, circuit):        
+    case = case % 2
+    if case == 0:
+        circuit.x(qubits[0])
+    else:
+        circuit.h(qubits[0])
+    circuit.measure(qubits[0],bits[0])
+    return circuit
+q,b = 3,2
+qc = add_bit_register()
+qc.append(test(range(q),range(q),range(b),QuantumCircuit(QuantumRegister(q,'q'))),q)
+qc.append(test(range(q),range(q),range(b),QuantumCircuit(QuantumRegister(q,'q'))),[q+i for i in range(q)])
+qc.h([i for i in range(q*2)])
+display(qc.draw(output='mpl'))
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+
+def q_switch_demo():
+    
+    qc1 = QuantumCircuit(2, 2)
+    qc1.h(0)
+    qc1.cx(0, 1)
+    qc1.measure([0], [0])
+    qc1.measure([1], [1])
+
+    qc2 = QuantumCircuit(2, 2)
+    qc2.x(0)
+    qc2.x(1)
+    qc2.h(0)
+    qc2.cx(0, 1)
+    qc2.measure([0], [0])
+    qc2.measure([1], [1])
+    
+    
+    switch = qc1.switch(1, qc2, 1)
+
+    print(switch)<jupyter_output><empty_output><jupyter_text>***<jupyter_code>q_switch_demo()<jupyter_output><empty_output>
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCaseOp
+n = 6
+c = QuantumCircuit(n)
+c.x(0).c_if(n, 1)
+[VERBOSE] ========== sample =========

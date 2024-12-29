@@ -1,0 +1,60 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class BetterFinallyJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("something.txt"));
+            }
+        }
+        finally{
+            if(in!= null){
+                try(BufferedReader in2 = new BufferedReader(new FileReader("file2.txt"))){
+                    String line2;
+                    while((line2 = in2.readLine())!= null){
+                        System.out.println(line2);
+                        in2 = new BufferedReader(new FileReader("something2.txt"));
+                         
+                    }
+                }
+                 
+            }
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class TryJava{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        try(BufferedReader in2 = new BufferedReader(new FileReader("file2.txt"))){
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                if((line = in2.readLine())!= null){
+                    System.out.println(line);
+                }
+                 
+                 
+            }
+        }
+    }
+}
+ 
+ 
+ 
+import java.lang.String;
+import java.io.*;
+public class OpenStreamsJava{
+    public static void open(String name) throws FileNotFoundException{
+    }
+}
+ 
+import java.lang.String;
+import java.io.*;

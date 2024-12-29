@@ -1,0 +1,18 @@
+import java.lang.Object;
+<fim_suffix>	try {
+		File file = new File("hello.txt");
+		if (file.exists())
+			return file.createNewFile();
+    } catch (IOException e) {
+    	return false;
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<fim_middle>

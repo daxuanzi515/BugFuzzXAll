@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <concepts>
+#include <ranges>
+#include <initializer_list>
+using namespace std;
+struct Employee2
+{
+    Employee2& operator=(Employee2 const& other)
+    {
+        return (*this) = other;
+    }
+    void* secretDataPtr{nullptr};
+    void* myAddressPtr{nullptr};
+    Employee2() noexcept(false)
+    {
+        Employee2* p{this};
+        p->secretDataPtr = new int;
+        secretDataPtr = p->secretDataPtr;
+        myAddressPtr = (void*)&p;
+    }
+    Employee2& operator=(Employee2&& other) noexcept
+    {
+        if (this == &other)
+        {  

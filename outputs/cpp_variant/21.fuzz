@@ -1,0 +1,14 @@
+#include <variant>
+#include <cstdio>
+#include <iostream>
+int main()
+{
+  std::variant<char, int, float> v{'x', 16};
+
+  if (std::holds_alternative<int>(v))
+    std::get<int>(v) += 1;
+  else if (std::holds_alternative<char>(v))
+    std::get<char>(v) = std::to_lower(std::get<char>(v));
+
+  std::cout << std::get_if<int>(&v) << std::endl;
+}

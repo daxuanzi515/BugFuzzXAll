@@ -1,0 +1,65 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+  def __init__(self, label):
+    
+    self.label = label
+    self.params = [1.0]
+    self.ctrl = []
+    self.gate = []
+    
+    
+    
+    
+
+  def set(self, x, y, z, w): pass
+
+  def add_ctrl(self, qn, ctrl):
+    self.ctrl.append(ctrl)
+
+  def assemble(self):
+    
+    pass
+
+  def invert(self): pass
+
+  def controlled(self):
+    
+    pass
+
+  def gate_exponent(self): pass
+
+  def defaultOpenQASM(self):
+    
+    pass
+
+  def repeatGate(self, n):
+    
+
+    
+    
+  
+  def unroll(self): pass
+
+  def __eq__(self, other):
+    if (other == None or not isinstance(other, self.__class__)):
+        return False
+    
+    
+    
+    
+    
+    
+    
+    
+    if (not np.array_equal(self.params, other.params)):
+      return False
+
+  def __neq__(self, other):
+    return not self == other
+
+  def __hash__(self): pass
+
+Gate_L1 = LinearFunction()
+Gate_L1.set(x=0, y=1, z=2)
+Gate_L1.swap(x=0, y=1)

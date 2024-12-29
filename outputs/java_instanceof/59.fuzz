@@ -1,0 +1,14 @@
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.ArrayList;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = (Integer) 2;
+		System.out.println("a ->" + a + "<-");
+		a = null;
+		b = (Integer) 3;
+		System.out.println("a ->" + a + "<-");
+		System.out.println("b ->" + b + "<-");
+	}
+}

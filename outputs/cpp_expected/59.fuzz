@@ -1,0 +1,65 @@
+#include <expected>
+<fim_suffix>;
+}
+
+int main() {
+ std::cout << "Hello World!\n";
+ try {return expected_value_with_exception::call(0);} catch(std::exception_ptr) {return 1;}
+}
+<fim_middle>
+#include <algorithm>
+#include <iostream>
+#include <exception>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+#include <variant>
+#include <string>
+#include <climits>
+ 
+
+class ErrorCodes
+{
+public:
+ enum Values : unsigned int
+ {
+ no_error,
+ no_memory,
+ file_not_found,
+ file_already_open,
+ invalid_index_to_file,
+ };
+ 
+  
+  
+  
+ operator std::string() const;
+};
+
+struct no_memory_error_info
+{};
+
+ 
+ 
+ 
+ 
+using no_memory_expected_type = std::expected <int, no_memory_error_info>;
+ 
+
+ 
+no_memory_expected_type expected_value = no_memory_expected_type(10);  
+ 
+no_memory_expected_type expected_ref = no_memory_expected_type(&someOtherObj);  
+ 
+
+ 
+
+class my_exception : public std::exception
+{};
+
+class my_unexpected;
+
+class my_expected_with_unexpectable_type
+{
+public:
+	using unexpected_type =

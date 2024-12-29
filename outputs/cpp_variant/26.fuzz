@@ -1,0 +1,40 @@
+#include <variant>
+#include <iostream>
+#include <cassert>
+#include <string>
+
+ 
+int main()
+{   
+    std::variant<int, float, double, std::string> v {4.5f};
+    
+    if(v.index() == 0)
+        std::cout << "This variant holds an int = " << std::get<0> (v) << "\n";
+        
+    if(v.index() == 1)
+        std::cout << "This variant holds a float = " << std::get<1>(v) << "\n";
+        
+    if(v.index() == 2)
+        std::cout << "This variant holds a double = " << std::get<2>(v) << "\n";
+        
+    if(v.index() == 3)
+        std::cout << "This variant holds a string = " << std::get<3>(v) << "\n";
+}
+ 
+#include <iostream>
+#include <variant>
+
+int main()
+{   
+    std::variant<int, float, double> v { 11 };
+    
+    if(v.index() == 0)
+        std::cout << "int holds " << std::get<0>(v) << "\n";
+    else if(v.index() == 1)
+        std::cout << "float holds " << std::get<1>(v) << "\n";
+    else if(v.index() == 2)
+        std::cout << "double holds " << std::get<2>(v) << "\n";
+    else
+        std::throw_with_nested(std::runtime_error("unknown variant alternative index"));
+}
+/* Create a user defined struct and demonstrate how operator[] of std::variant<T...> can be used to replace get

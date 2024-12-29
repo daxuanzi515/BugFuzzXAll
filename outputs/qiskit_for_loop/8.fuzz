@@ -1,0 +1,51 @@
+from qiskit import QuantumCircuit
+
+
+
+circuit = QuantumCircuit()
+with circuit.for_loop(indexset=[2, 4, 6], loop_parameter='i'):
+  circuit.h(0)
+  circuit.measure(0, 'b')
+
+print(circuit)
+
+
+circuit = QuantumCircuit()
+loop = circuit.for_loop(indexset=[2, 4, 6], loop_parameter='i',
+   body=QuantumCircuit(), qubits=[0, 1], clbits=[2, 3])
+circuit.h(0)
+circuit.measure(0, 'b')
+
+print(circuit)
+for ket in loop[::-1]:
+  print(ket)
+
+for_loop_circuit = QuantumCircuit()
+index_set = [2, 4, 6]
+loop_param = 'index_string'
+qr = [0, 1]
+cr = [2, 3]
+inner_circuit = QuantumCircuit()
+
+index_value = Integer(0, rmin=0, rmax=6)
+index_string = String(index_value.name)
+for_loop = for_loop_circuit.for_loop(indexset=index_set, loop_parameter=index_string)
+with for_loop:
+  inner_circuit.h(0)
+  inner_circuit.measure(qr[0], cr[0])
+
+
+for j in for_loop_circuit:
+  measurement = for_loop_circuit.measure(qr[1], cr[1])
+  assign = index_value.assign(measurement)
+  for_loop_circuit.append(assign, for_loop)
+
+
+print(for_loop_circuit)
+"""
+The circuit class supports tomography which enables the construction of quantum classifiers using quantum circuits. These classifiers take the form of a probabilistic classification function which maps a state to a conditional state with a given set of parameters.
+For example, a classifier is given by the Bell State:
+1/√2 ( |00⟩ + |11⟩ )
+One can then take two such states and measure their conditional distributions
+|A >〉 ∈ ∫∫ |𝜓〉( |𝜓⟩1 ∣𝜓2) d2𝜓^2
+|B >〉 ∈ ∫∫ |𝜓〉( |𝜓⟩1 ∣𝜓2) d2𝜓^2

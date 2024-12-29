@@ -1,0 +1,40 @@
+import java.lang.Object;
+<fim_suffix>}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.nextLine();
+		s1.useDelimiter(",");
+		s1.skip("l{1}");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		char a; 
+		String s; 
+		int b = 0; 
+		while (b < 5) { 
+			a = 'a'; 
+			System.out.println(a); 
+			s = "Hi"; 
+			System.out.println(s); 
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s = null;
+		s = new Scanner(">>> ");
+		String a = s.nextLine();
+		while(!a.equals("exit"));
+		System.out.println("Thank you for leaving");
+	}

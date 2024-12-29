@@ -1,0 +1,41 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+class LinearFunctionGate(Gate):
+    def __init__(self, matrix, n, label=None, creg_sizes=None, check_params=None, gate_type=None):
+        
+        Gate.__init__(self, "uf", num_qubits=n, params=[matrix], label=label)
+        self.n = n 
+        self.check_params = check_params 
+        self.params = list(matrix)
+
+        if gate_type:
+            if label == None:
+                self.label = gate_type
+            if creg_sizes == None:
+                raise RuntimeError("In the LinearFunctionGate, the creg_sizes list must be non-None.")
+            
+            if gate_type == "permutation":
+                raise RuntimeError("In the LinearFunctionGate, permutations are not implemented yet.")
+
+        else:
+            print("Creating UF gate...")
+            self.matrix = matrix
+            self.params[0] = list(map(float, list(matrix[0])))
+            self.qasmOutput = self.UFP_QASM()
+            if label == None:
+                self.label = "UF"
+
+            if not creg_sizes:
+                print("CREG sizes list must be non-None, using empty list as default.")
+                self.cregs = [[] for _ in range(n)]
+            else:
+                self.cregs = [ [q for q in range(i)] for i in creg_sizes] 
+
+        if check_params:
+            if self.is_permutation():
+                print("Matrix is a permutation matrix, but a permutation gate does not require check_params=True. Returning unconstrained gate.")
+                self.check_params = False
+
+    @property

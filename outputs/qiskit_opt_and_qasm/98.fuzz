@@ -1,0 +1,60 @@
+from qiskit import QuantumCircuit
+
+def create_circuit(mutants): 
+    
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(mutants, 1)
+    circuit.ry((mutants + 1) * 3, 0)
+    circuit.rx(mutants / 2, 1)
+
+    circuit.ry((mutants + 1) * 11, 0)
+    
+    circuit.rx(12 / 11, 0)
+    circuit.ry(24 / 37, 0)
+    circuit[0].cphase(-23, 1)
+    circuit[0].h(1)
+    
+    
+    circuit.ry((mutants + 1) * 3, 1)
+    
+    circuit.draw()
+    return circuit
+mutants = 120
+
+create_circuit(mutants).draw()
+my_quantum_circuit = create_circuit(mutants)
+my_quantum_circuit.draw()
+
+simulator = Aer.get_backend('aer_simulator')
+result = execute(circuit, simulator).result()
+counts = result.get_counts(circuit)
+print("\nTotal count for 00 and 11 are:", counts)
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

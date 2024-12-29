@@ -1,0 +1,41 @@
+import java.lang.Object;
+class Sample {
+    synchronized Sample doSomething() {
+        return this;
+    }
+    synchronized Sample doSomethingElse() {
+        return this;
+    }
+}
+public class SynchTest {
+    public static void main(String [] args) {
+        Sample s = new Sample(); 
+        synchronized (s) {
+            synchronized (s) {
+                System.out.println("Synchronization works");
+            }
+        }
+    }
+}
+ 
+ 
+class TestMutaionWithSync{  
+    int count =0;  
+    synchronized int countPlusPlus() {
+        count++;   
+        return count;
+    }
+} 
+public class Main{  
+    public static void main(String[] args) {
+        TestMutaionWithSync ts = new TestMutaionWithSync();
+        ts = ts.countPlusPlus();
+        ts = ts.countPlusPlus();
+        ts = ts.countPlusPlus();
+        System.out.println("Final " + ts);
+    }
+}
+ 
+ 
+ 
+ 

@@ -1,0 +1,26 @@
+import java.lang.Object;
+class Sample1 {
+    static synchronized void doSomething() {
+        try {
+            System.out.println(this + ": doSomething()");
+            Thread.sleep(1000);  
+        } catch(InterruptedException e) {
+            System.out.println(
+                Thread.currentThread().getName() + 
+                " was interrupted."
+            );
+        }
+    }
+    void doSomethingElse() {
+        Sample1.doSomething();
+    }
+}
+class Foo {
+    public static void main(String [] args) {
+        new Foo().run();
+    }
+    void run() {
+        Sample1 sample1 = new Sample1();
+        sample1.doSomethingElse();
+    }
+}

@@ -1,0 +1,32 @@
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+    
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return counts_dict
+
+
+def run_circuits(circuit_list_to_run):
+    qubits_run_by_circ = []
+    for single_circuit in circuit_list_to_run:
+        result = single_circuit.run(shots=1024).result() 
+        counts_dict = result.get_counts()
+        circuit_bell = {"count": counts_dict, "circuit_obj": single_circuit}
+        qubits_run_by_circ.append(circuit_bell)
+    return qubits_run_by_circ
+%matplotlib notebook 
+
+from qiskit.visualization import *
+
+def plot_counts(qubits_run_by_circ):
+    qubits_run_by_circ_dict = [circ_bell['count'] for circ_bell in qubits_run_by_circ]
+    labels = [qubit['circuit_obj'].name for qubit in qubits_run_by_circ]
+    qubits_run_counts_dict = Counter(counts_dict for counts_dict in qubits_run_by_circ_dict)

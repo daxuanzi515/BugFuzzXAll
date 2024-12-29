@@ -1,0 +1,86 @@
+from qiskit import QuantumCircuit
+
+
+class GroverCircuit(QuantumCircuit):
+    def __init__(self, n_count_qubits: int) -> None:
+        super().__init__(n_count_qubits)
+        for i in range(n_count_qubits):
+            self.h(i)
+        for i in range(n_count_qubits):
+            self.barrier()
+            for j in range(n_count_qubits):
+                if i == j:
+                    continue
+                self.cz(i, j)
+        for i in range(n_count_qubits):
+            self.barrier()
+            self.h(i)
+        self.measure_all()
+
+
+class GroverOperator(Operator):
+    def __init__(self, circuit: Circuit) -> None:
+        super().__init__(circuit)
+        self._circuit = circuit
+        self._num_qubits = self._get_n_qubits()
+        self._depth = self.get_depth()
+        self.parameter_expressions = Circuit.get_parameters(circuit)
+        self.parameters_count = len(self.parameter_expressions)
+        self._parameters = Parameter('θ', (2**self.parameters_count))
+
+    def num_qubits(self) -> int:
+        return self._num_qubits
+
+    def get_depth(self) -> int:
+        if not hasattr(self, '_depth'):
+            depths = [step['depth'] for step in self.run().steps]
+            self._depth = max(depths)
+        return self._depth
+
+    def to_ir(self):
+        return self._circuit
+
+    def to_qasm(self):
+        qasm = f"{self._circuit.qasm()}\nparam θ[{self.parameters_count}]"
+        return qasm
+
+class GroverOperator(Operator):
+    def __init__(self, circuit: Circuit) -> None:
+        super().__init__(circuit)
+        self._circuit = circuit
+        self._num_qubits = self._get_n_qubits()
+        self._depth = self.get_depth()
+        self.parameter_expressions = Circuit.get_parameters(circuit)
+        self.parameters_count = len(self.parameter_expressions)
+        self._parameters = Parameter('theta', (2**self.parameters_count))
+
+    def num_qubits(self) -> int:
+        return
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

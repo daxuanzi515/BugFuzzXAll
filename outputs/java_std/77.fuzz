@@ -1,0 +1,79 @@
+import java.lang.Object;
+5769L;
+	public static void main() {
+		Random ran = new Random();
+		s1 = ran.nextInt(99);
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(12/s1.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		GenericMethod gm = new GenericMethod<ArrayList<Scanner>>();
+		gm.processList(new ArrayList<Scanner>(), 61);
+		gm.processList(new ArrayList<Scanner>(), 61l);
+		gm.processList(new ArrayList<Scanner>(), System.in);
+	}
+	class GenericMethod<Class> {
+		void processList(List<Class> l, Object obj) {
+			l.add(obj);
+			for(Object o : l)
+				System.out.println(o.getClass());
+		}
+	}
+}
+ 
+ 
+import java.lang.Exception;
+public abstract class AbstractClass1 {
+	public abstract void m();
+}
+
+public class InnerClass1 {
+	void f1() {
+		try {
+			int i = 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass2 {
+	public abstract void m();
+}
+
+public class InnerClass2 {
+	public InnerClass2(AbstractClass2 abstractClass2) {
+		abstractClass2.m();
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass3 {
+	public abstract void m();
+}
+
+public class InnerClass3 {
+	public InnerClass3(AbstractClass3 abstractClass3) {
+		abstractClass3.m();
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass4 {
+	public abstract void m();
+	void m() {
+		try {
+			m();
+		} catch (Exception e)

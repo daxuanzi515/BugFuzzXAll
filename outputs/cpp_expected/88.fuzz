@@ -1,0 +1,82 @@
+#include <expected>
+<fim_suffix>or<Point *> &points)
+{
+	for(Point *p: points) {
+		p->Draw();
+		if(p->IsInBounds(10, 10)) {
+			return p;
+		}
+	}
+	return {} { }
+}
+
+auto FindBiggestPointReturnNullopt()
+{
+	 
+	std::vector<Point *> &points = { }
+	 
+	return FindBiggestPoint(points);
+}
+
+ 
+ 
+auto FindBiggestPointReturnExpected()
+: std::expected<Point *>(std::nullopt)
+{
+	std::vector<Point *> &points = { }
+	 
+	auto result {FindBiggestPoint(points)};
+	if (result.has_value()) {
+		return *result;
+	}
+	else {
+		return result.error();
+	}
+}
+
+int main() {
+	auto [result1, error1] = FindBiggestPointReturnOptional(std::vector<Point *>());
+	if (result1!= nullptr) {
+		Point *p {result1};
+		p->Draw();
+		if (p->IsInBounds(10, 10)) {
+			std::cout << "Found a point" << std::endl;	
+		}	
+	}
+	else {
+		std::cout << "Error: " << error1.what() << std::endl;	
+	}
+	
+	std::cout << "================================\n";
+	
+	auto [result2, error2] = FindBiggestPointReturnError(std::vector<Point *>());
+	if (!error.has_value()) {
+		Point *p {*result2};
+		p->Draw();
+		if (p->IsInBounds(10, 10)) {
+			std::cout << "Found a point" << std::endl;	
+		}	
+	}
+	else {
+		std::cout << "Error: " << error2.what() << std::endl;	
+	}
+	
+	std::cout << "================================\n";
+	
+	auto [result3, error3] = FindBiggestPointReturnNullopt();
+	if (result3!= nullptr) {
+		Point *p {result3};
+		p->Draw();
+		if (p->IsInBounds(10, 10)) {
+			std::cout << "Found a point" << std::endl;	
+		}	
+	}
+	else {
+		std::cout << "Error: " << error3.what() << std::endl;	
+	}
+	
+	std::cout << "================================\n";
+	
+	auto [result4, error4] = FindBiggestPointReturnExpected();
+	if (!result4.has_value()) {
+		

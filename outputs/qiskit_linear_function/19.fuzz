@@ -1,0 +1,75 @@
+from qiskit import QuantumCircuit
+
+from LinearFunction import LinearFunction
+
+
+fn = LinearFunction(1, 3)
+
+
+print(fn.is_permutation())
+
+
+gates_in_fn = fn.gate_synthesis(QuantumCircuit())
+print('Function decomposed into:')
+for gate in gates_in_fn:
+    print((gate.gate, gate.ctrls, gate.qargs))
+
+
+input = input('Enter input:')
+gate_parameters = [f.replace('\n', '') for f in input.split(',')]
+print('Function output:'), 
+fn.validate_parameters(gate_parameters)
+
+
+simulator = Aer.get_backend('qasm_simulator')
+circuit = QuantumCircuit()
+gate = Gate(gate_parameters, gates_in_fn)
+circuit.append(gate.as_qasm(), gate.qargs)
+circuit.measure_all()
+results = execute(circuit, simulator).result()
+counts = results.get_counts()
+print('Number of times the function gets "110" as the output: '), 
+print(counts['110'])
+
+
+print('Controlled version of gate:')
+controlled_gate = gate.controlled_gate()
+print(controlled_gate.gate, controlled_gate.ctrls, controlled_gate.qargs)
+controller = QuantumCircuit()
+
+
+circuit = QuantumCircuit()
+circuit.append(controlled_gate.as_qasm(), controlled_gate.qargs)
+circuit.measure_all()
+results = execute(circuit, simulator).result()
+counts = results.get_counts()
+print('Number of times the function gets "110" as the output: '), 
+print(counts['110'])
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

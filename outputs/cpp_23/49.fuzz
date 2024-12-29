@@ -1,0 +1,56 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <array>
+#include <algorithm>
+ 
+class Rational {
+
+    private:
+        int numerator;
+        int denominator;
+        
+    public:
+        Rational()
+        : denominator(1)
+        {}
+
+        Rational(const int new_numerator, const int new_denominator)
+        : numerator(new_numerator)
+       , denominator(new_denominator)
+        {
+        }
+
+        int Numerator() 
+        {
+            return this->numerator;
+        }
+
+        int Denominator() 
+        {
+            return this->denominator;
+        }
+};
+
+std::ostream & operator<<(std::ostream & stdos, const Rational & rational)
+{    
+    return stdos << rational.Numerator() << '/' << rational.Denominator();
+}
+int main()
+{
+    stdos << "Please enter a number: ";
+    string in_string;
+     
+
+    array<char> c_arr{'7', '9', '9', '\0'};
+    std.getline(std::cin, c_arr.data);
+
+    stringstream ss(c_arr.data);
+    string buffer;
+    ss >> buffer;
+
+    Rational r_out{stoi(buffer)};
+     
+
+    return 0;
+}

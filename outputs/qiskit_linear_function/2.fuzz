@@ -1,0 +1,93 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+from qiskit.circuit import QuantumRegister
+from qiskit.aqua.components.instructions import Instruction
+
+
+
+class LinearFunction:
+
+    def __init__(self, n):
+        
+        self.gate_dimension = n
+        self.input_dimension = n
+        self.gate_matrix = [ [ 0, 0 ], [ 0, 0 ] ]
+        self.gate_parameters = []
+
+
+    def check_permutation(self):
+
+        if ( sorted( self.gate_matrix[0] )!= [0, 1] )or ( sorted( self.gate_matrix[1] )!= [0, 1] ):
+            return False
+        else:
+            return True
+
+
+    def synthesize(self, circuit):
+
+        if circuit.is_finalized():
+            raise AttributeError("Please run the circuit using QuantumCircuit.decompose() before using Gate.synthesize()")
+        elif len(self.gate_parameters) > 2**self.gate_dimension:
+            raise ValueError("The size of the gate's input is bigger than the given number of parameters")
+        elif len(self.gate_parameters) == 0:
+            raise ValueError("The gate's input has no parameters")
+        else:
+            if self.n == 1:
+                if self.gate_matrix[1][0] == 0:
+                    circuit.x(self.qureg[0])
+                elif self.gate_matrix[1][1] == 0:
+                    circuit.x(self.qureg[0])      
+                else:
+                    circuit.id(self.qureg[0])
+            elif self.n == 2:
+                pass
+            elif self.n == 3:
+                circuit.barrier(self.qureg)
+                circuit.h(self.qureg)
+                circuit.ch(self.qureg[0], self.qureg[1])
+                circuit.ch(self.qureg[1], self.qureg[0])
+                circuit.ch(self.qureg[1], self.qureg[2])
+                circuit.h(self.qureg)
+                circuit.barrier(self.qureg)
+
+
+    def validate(self):
+
+        for i in range(0, len(self.gate_parameters)):
+            if isinstance(self.gate_parameters[i], complex):
+                raise TypeError("Parameters should be real numbers. " + str(self.gate_parameters[i]) + " is complex.")
+
+        if ( ( len(self.gate_parameters) * 2 ) - len(self.gate_matrix[0] ) ) > 0:
+            raise ValueError("The gate's parameter set must be divisible in half by the number of input/output basis vectors.")
+
+
+   
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

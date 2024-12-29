@@ -1,0 +1,24 @@
+#include <tuple>
+struct add
+{
+  int operator()(int& x, float& y)
+  {
+    return (x + y);
+  }
+};
+struct output
+{
+  int operator()(const int& x, const float& y)
+  {
+    std::cout << x << '\n';
+  }
+};
+int main()
+{
+  std::tuple<int, float> t = std::make_tuple(99, 50.0);
+  add addition;
+  output outputing;
+  std::apply(addition, t);
+  std::apply(outputing, t);
+  return EXIT_SUCCESS;
+}

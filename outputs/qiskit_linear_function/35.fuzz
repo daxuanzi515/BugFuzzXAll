@@ -1,0 +1,79 @@
+from qiskit import QuantumCircuit
+
+class Gate(object):
+    def __init__(self, name, n, p):
+        self.name     = name
+        self.n        = n
+        self.p        = p
+        self.params   = []
+        self.decomp   = []
+        self.c_if     = None
+        self.classical = -1
+        self.label     = ""
+        self.qasm      = ""
+
+    def copy(self, other):
+        self.params   = other.params
+        self.decomp   = other.decomp
+        self.c_if     = other.c_if
+        self.classical = other.classical
+        self.label     = other.label
+        self.qasm      = other.qasm
+
+    def assemble(self):
+        qc = QuantumCircuit(1)
+        qc.unitary(self.qasm, range(1), label=self.label)
+        return qc.data
+
+    def getParamList(self):
+        if self.n < len(self.params):
+            self.params = self.params[0:self.n]
+        else:
+            for i in range(self.n - len(self.params)):
+                self.params.append(0)
+        return self.params
+
+    def getControlledUnitary(self):
+        n = self.n
+        for p in self.params:
+            if p == 0:
+                n += 1
+        qc = QuantumCircuit(n)
+        for i in range(len(self.decomp)):
+            for op in self.decomp[i]:
+                if op[0]!= 'ctrl':
+                    qc.unitary(op, range(n), label=op[1])
+                else:
+                    qc.unitary(op, range(n))
+                    qc.ctrl(op[1])
+        return qc.data
+
+    def getInvertedUnitary(self):
+        qc = QuantumCircuit(2*self.n)
+        for i in range(len(self.decomp)):
+            for op in self.decomp[i]:
+                if op[0]!= 'ctrl':
+                    qc.unitary(op, range(2*self.n), label=op[1])
+                else:
+                    qc.unitary(op, range(2*self.n))
+                    qc.ctrl(op[1])
+        return qc.data
+
+    def decompose(self):
+        return self.decomp
+        
+    def __str(self):
+        s = ""
+        s += self.name
+        s += "\n"
+
+        for p in self.params:
+            s += str(p)
+            s += "\t"
+
+        for i in range(self.n):
+            s += str(len(self.decomp[i]))
+            s += "\t"
+        s += '\n'
+        for j in range(self.n):
+            for i in range(0, len(self.decomp[j])):

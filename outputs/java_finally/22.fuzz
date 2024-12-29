@@ -1,0 +1,20 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava2a{
+    public static void main(String[] args) throws IOException{
+        FileReader in = null;
+        try{
+            in = new FileReader("file.txt");
+            String line;
+            while((line = in.readUTF())!= null){
+                System.out.println(line.getBytes());
+            }
+        }
+        finally{
+            if(in!= null){
+                in.close();
+            }
+        }
+    }
+}

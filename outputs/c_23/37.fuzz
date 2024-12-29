@@ -1,0 +1,55 @@
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+#include <stdlib.h>
+#include <string.h>
+ 
+uint32_t func_v_void(void);
+void func_void_v(uint32_t *a, uint32_t *b);
+typedef struct f_struct
+{
+    uint32_t num;
+    void *ptr;
+} func_struct_type;
+func_struct_type func_struct(uint32_t *a, void *b);
+ 
+ 
+char *strdup(const char *src);
+ 
+char *strndup(const char *src, size_t max);
+int func(uint32_t num_of_ones,...)
+{
+     
+    void *dest = (void *)malloc(num_of_ones);
+    return 0;
+}
+int func_v_void(void)
+{
+     
+    int n = func(0);
+    return n;
+}
+void func_void_v(uint32_t *a, uint32_t *b)
+{
+     
+    int n = func(1, a, b);
+    return void;
+}
+func_struct_type func_struct(uint32_t *a, void *b)
+{
+     
+    func_struct_type s = {1, (void *)255};
+    return s;
+}
+int main()
+{
+     
+    func_void_v(&a, &b);
+    return 0;
+}

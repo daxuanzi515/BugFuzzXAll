@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    FILE *file = fopen( "test files/hello.txt", "r");
+    if (!file ) {
+        printf("Error opening file\n");
+        exit(1);
+    }
+    char c;
+    while( (c = getc(file))!= EOF ) {
+        printf("%c", c);
+    }
+    fclose(file);
+    return 0;
+}

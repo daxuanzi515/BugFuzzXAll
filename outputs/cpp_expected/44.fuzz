@@ -1,0 +1,25 @@
+#include <expected>
+<fim_suffix>(true)
+    {
+        std::cout << std::boolalpha;  
+        std::cout << "Value: " << *opt.value() << std::endl;
+        *opt += 1;
+    }
+}
+
+int main()
+{
+    std::expected<double, int> exp = std::make_expected(2.0);
+    std::cout << *exp << std::endl;
+     
+    std::optional<double> opt = exp.get();
+    use(opt);
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <optional>
+
+void use(std::optional<double>& opt)
+{
+    while 

@@ -1,0 +1,59 @@
+#include <expected>
+<fim_suffix>es the expected value or throws.
+    try
+    {
+        std::exit(1);
+    }
+    catch (const std::runtime_error& e)
+    {
+        cout << e.what() << endl;
+    }
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <random>
+#include <chrono>
+
+using namespace std;
+
+
+int main() {
+
+    int number = 0;
+     
+    const auto expectedValue = expected<int, string>("The world is going crazy");
+    try {
+         
+        number = stoi(string(expectedValue.value()));
+    }
+    catch (const std::invalid_argument& e) {
+         
+        cout << "Can't convert the user input to a number." << endl;
+        return 1;
+    }
+    catch (const string& e) {
+         
+        cout << e << endl;
+        return 1;
+    }
+
+     
+    cout << "The input was: " << number << endl;
+    return 0;
+}
+
+ 
+
+/* The std::expected<T> class is a non-standard class template which can hold an object of non-default type.
+
+It provides a wrapper object that can either contain an object of one type (e.g., a double, int, short etc.) or an unexpected value of another type.
+As an object of type `std::expected<T>` can contain only one of two values, it also disallows objects with const or volatile cv-qualifiers and forbids all specializations with references and pointers types.
+
+Usually, you don’t explicitly instantiate it, instead you need it implicitly.
+That’s why it’s possible to write a function or method with an expected that it will be instantiated depending on the type you provide it initially and will only instantiate it once during the first use of the function (this is why you can say that it’s lazy). So, an expected of type `std::expected<double>` won’t be instantiated if double is not used inside the function at all, otherwise it will be instantiated as `T = double`.
+
+The default value of std::expected<T> is expected{ T() }, where T is not known.
+
+
+There are two possible alternatives with one type: expected

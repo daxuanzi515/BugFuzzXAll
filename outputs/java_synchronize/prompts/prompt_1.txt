@@ -1,0 +1,11 @@
+/* Synchronized methods in Java are used to prevent concurrent access to an object by multiple threads. By adding the "synchronized" keyword to a method declaration, it achieves two effects. Firstly, it prevents the interleaving of two invocations of synchronized methods on the same object. Secondly, it ensures the visibility of changes to the state of an object to all threads by establishing a "happens-before" relationship with any subsequent invocation of a synchronized method for the same object. However, constructors can't be synchronized.
+
+Java's synchronization is built around an internal feature known as the intrinsic lock or monitor lock, which helps enforce exclusive access to an object's state. Every object in Java has an intrinsic lock associated with it, which is acquired by a thread before accessing the object's fields and released once done. No other threads can acquire the lock until the owning thread releases it.
+
+When a synchronized method is invoked, a thread acquires the intrinsic lock for that method's object and releases it when the method returns. In case of static synchronized methods, the thread acquires the intrinsic lock for the Class object associated with the class.
+
+Another way to create synchronized code is with synchronized statements, which specify the object providing the intrinsic lock. This is efficient for improving concurrency with fine-grained synchronization.
+
+Reentrant synchronization is also possible, where a thread can acquire a lock that it already owns, useful for scenarios where synchronized code invokes a method containing synchronized code using the same lock. */
+/* Please create a very short program which combines synchronized with new Java features in a complex way */
+import java.lang.Object;

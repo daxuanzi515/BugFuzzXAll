@@ -1,0 +1,20 @@
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		if(s1.hasNext()) {
+			String s = s1.next();
+			System.out.println(s);
+		}
+		System.out.println(s1.hasNextLine());
+		if(s1.hasNextLine()) {
+			String s = s1.nextLine();
+			System.out.println(s);
+		}
+		System.out.println(s1.next());
+		try {
+			s1.close();
+		} catch(Exception e) {}
+	}
+}

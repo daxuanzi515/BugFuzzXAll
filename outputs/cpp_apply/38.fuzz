@@ -1,0 +1,30 @@
+#include <tuple>
+#include <functional>
+#include <iostream>
+namespace util {
+  using namespace std;
+  template <class... Types>
+  void apply(const function<Types...>& f, tuple<Types...>&& paramPack) {
+    f(forward<Types>(get<Types>(move(paramPack)))...);
+  }
+}
+int main()
+{
+  auto tuple = make_tuple(99L);
+  util::apply([](auto& x) { cout << x << "\n"; }, move(tuple));
+  return EXIT_SUCCESS;
+}
+ 
+/* Solution
+
+#include <utility>
+#include <iostream>
+
+namespace util {
+  using std::cin;
+
+  template <typename F, typename Arg1, typename Arg2>
+  auto apply(F &&f, Arg1 &&arg1, Arg2 &&arg2) noexcept(noexcept(
+    std::forward<F>(f)(std::forward<Arg1>(arg1),
+                        std::forward<Arg2>(arg2))))
+      -> decltype(std::forward<F>(f)(std::forward<Arg1>(arg1), std::forward

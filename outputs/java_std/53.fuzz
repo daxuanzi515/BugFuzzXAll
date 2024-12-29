@@ -1,0 +1,55 @@
+import java.lang.Object;
+<fim_suffix>e.addEdge(vertex1, vertex2, 3, null);
+		System.out.println("\nVertices of graph after addEdge for "+vertex1+"\n"+graph.getVertices());
+		graph.removeVertex(vertex1);
+		System.out.println("Vertices of graph after removeVertex("+vertex1.getElement()+"): "+graph.getVertices());
+		Vertex<String> vertex3 = new Vertex<>(id++,3,"a");
+		graph.addEdge(vertex1,vertex3);
+		System.out.println("Vertices of graph after addEdge for "+vertex1+vertex3+"\n"+graph.getVertices());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+			Scanner s1 = new Scanner("Hello Indian\nWorld\n");
+			String a=s1.next();
+			System.out.println(a);
+	}
+}
+public class HelloJava
+{
+	public static void main(String args[])
+	{
+		System.out.println("#Hello, Java");
+	}
+}
+import java.util.*;	 
+import java.util.List;	 
+public class HelloGraph
+{
+	public static void main(String args[])
+	{
+		Graph<String> graph = new Graph<>();
+		for(int i=1;i<5;i++)
+		{
+			Vertex<String> vertex = new Vertex<>(i,"node"+i);
+			graph.addVertex(vertex);
+		}
+		List<Vertex<String>> vertices= graph.getVertices();
+		for(Vertex<String> vertex : vertices)
+		{
+			List<Edge<String>> edges = graph.getEdges(vertex);
+			 
+		}
+	}
+}
+/*
+This class is the essential starting point for building an object oriented program. The Graph
+class is the foundation upon which all the graph-related program design takes place. In other
+words, this is the class that implements the Graph interface and its various abstractions,
+along with the associated functions that make up its core. In fact, the Graph class is a
+generalization of the class we’ve built so far; if we were to replace this Graph class with a
+LinkedList, we would get the simplest possible Graph.
+
+Each Graph requires a way to store its vertices and edges. The addVertex and addEdge
+functions do just that, although a number of other functions exist. In fact,

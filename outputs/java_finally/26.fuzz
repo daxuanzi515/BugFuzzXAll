@@ -1,0 +1,21 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        BufferedReader in2 = null;
+        try{
+            String line;
+            in2 = in;
+            while((line = in2.readLine())!= null){
+                System.out.println(line);
+            }
+        }finally{
+            if(in!= null){
+                in2 = null;
+            }
+        }
+    }
+}
+

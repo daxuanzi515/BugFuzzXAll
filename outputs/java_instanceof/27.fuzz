@@ -1,0 +1,10 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Object b = new Integer(123);
+		Integer a = new Integer(10);
+        System.out.println("b instanceof Boolean: " + (b instanceof Boolean));
+        System.out.println("b.getClass().getName(): " + b.getClass().getName());
+	}
+}

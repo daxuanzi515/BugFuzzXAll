@@ -1,0 +1,12 @@
+/* The std::variant, a part of the C++ Utilities library, is a class template which provides a type-safe union, an instance that can hold the value of multiple pre-specified types at a time. It either holds a value of one of its alternative types or no value in case of an error. It can’t hold references, arrays, or ‘void’ type. You can use std::monostate for empty variants. 
+
+The variant may contain the same type more than once, and different cv-qualified versions of the same type. The default-constructed variant holds the value of its first alternative, while std::monostate can be used for default-constructible purpose. 
+
+Member functions include constructor, destructor, operator=, and observers like index and valueless_by_exception. It also has modifiers like emplace and swap.
+
+Non-member functions include visit, holds_alternative, std::get(std::variant), get_if and comparison operators.
+
+The helper classes include monostate, bad_variant_access, variant_size, variant_alternative, std::hash<std::variant) and helper objects like variant_npos.
+ */
+/* Please create a very short program which combines std::variant with new C++ features in a complex way */
+#include <variant>

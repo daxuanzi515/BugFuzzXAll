@@ -1,0 +1,63 @@
+#include <stdlib.h>
+
+#include <memory.h>
+#include <stdio.h>
+#include <string.h>
+ 
+#include <stdint.h>
+ 
+#include <limits.h>
+#include <alloca.h>
+
+#include "../include/lib/inttypes.h"
+#include "../include/lib/stdbool.h"
+
+#define likely(x)       __builtin_expect((x),1)
+#define unlikely(x)     __builtin_expect((x),0)
+
+int main(int argc, char const *argv[]) {
+	 
+
+	 
+	char *str = malloc(sizeof(char) * 26);
+	printf("String: %s\n", str);
+
+	 
+
+
+	int num;
+	memcpy(&num, "12", sizeof(int));
+	printf("Num: %i\n", num);
+
+	 
+	char* s = strdup("MyString");
+	printf("strdup: %s\n", s);
+	free(s);
+
+	 
+	char* s2 = strndup("MyString", 5);
+	printf("strndup: %s\n", s2);
+	free(s2);
+
+	 
+	int8_t i8bit = -10;
+	int16_t i16bit = -100;
+	int32_t i32bit = -1000;
+	int64_t i64bit = -10000;
+	uint8_t u8bit = 10;
+	uint16_t u16bit = 100;
+	uint32_t u32bit = 10000;
+	uint64_t u64bit = u64bit;
+
+	size_t _Alignas(sizeof(long long)) longlong_alignment;
+	size_t _Alignas(32) alignment_32_value = 0;
+	size_t _Alignas(16) alignment_64_value = 1;
+	size_t _Alignas(8) alignment_8_value = 2;
+
+	longlong_alignment = alignment_64_value;
+    printf("Size of long long: %i\n", sizeof(longlong_alignment));
+    printf("Value of align64bit: %i\n", _Alignof(longlong_alignment));
+
+    longlong_alignment = alignment_8_value;
+    printf("Size of long long: %i\n", sizeof(longlong_alignment));
+    printf("Value of align8bit:

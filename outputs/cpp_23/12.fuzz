@@ -1,0 +1,71 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+#include <sstream>
+#include <variant>
+#include <string_view>
+#include <string>
+using namespace std;
+
+struct User
+{
+   string_view name;
+   string_view last_name;
+   string_view country;
+   unsigned age;
+};
+
+struct Post
+{
+   User poster;
+   string_view content;
+   vector<string_view> tags;
+};
+
+void print(const User& user);
+
+bool operator==(const User& lhs, const User& rhs);
+bool operator==(const Post& lhs, const Post& rhs);
+
+template<size_t N>
+struct ConstexprString
+{
+   constexpr std::string_view str() const
+   {
+      return std::string_view(data(), N);
+   }
+
+   constexpr ConstexprString(const char (&data)[N]) : _data(&data[0]) {}
+
+   constexpr const char* data() const { return _data; }
+
+   const char* _data;
+};
+struct ConstexprString<0>
+{
+   constexpr ConstexprString(string_view data) : _view(data), _data(data.data()) {}
+
+   constexpr ConstexprString() = default;
+   constexpr string_view str() const { return _view; }
+   constexpr size_t size() const { return _view.size(); }
+   constexpr const char* data() const { return _data; }
+
+   string_view _view;
+   const char* _data;
+   constexpr operator std::string() const { return string(_view); }
+};
+
+inline ostream& operator<<(ostream& os, const ConstexprString& x)
+{
+
+   return (os << x.str());
+}
+
+inline ostream& operator<<(ostream& os, const User& user)
+{
+
+   return (os << user.name <<'' << user.last_name <<''
+              << user.country);
+}
+void print(const User& user)
+{

@@ -1,0 +1,67 @@
+#include <stdlib.h>
+
+#include <time.h>
+#include <stdio.h>
+
+#define STRUCT_SIZE 1000;
+
+typedef struct 
+{
+    int xCoordinate; 
+    int yCoordinate;
+} coordinate;
+
+typedef struct sComplex 
+{
+    coordinate c1;
+    union 
+    {
+        coordinate c2;
+        struct 
+        {
+             int a;
+             int b;
+        };
+    }; 
+
+    int x;  
+
+} complex;
+
+void getCoordinate(coordinate *coordinate);
+void printCoordinate(coordinate coordinate);
+
+int getRandom (int min, int max);
+
+int main(void)
+{
+    srand(time(NULL));
+     
+    complex c;
+    coordinate c3 ;
+
+     
+    getCoordinate(&c.c1);
+    c.xCoordinate = getRandom(0, 100);
+    c.yCoordinate = getRandom(0, 100);
+    printCoordinate(&c.c2);
+
+    getCoordinate(&c3);  
+    printCoordinate(c3);
+}
+
+void getCoordinate(coordinate *coordinate) 
+{
+    coordinate -> xCoordinate = getRandom( 0, 300);
+    coordinate -> yCoordinate = getRandom( 0, 300);
+}
+
+void printCoordinate(coordinate coordinate) 
+{
+    printf("(%d, %d)", coordinate.xCoordinate, coordinate.yCoordinate);
+}
+
+int getRandom(int min, int max) 
+{
+    return (rand() % max) + min;
+}

@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdio.h>
+int main() {
+    printf("Parameter 1: %s\n", "hello1234");
+    printf("Parameter 2: %s\n", "world1234");
+    return 0;
+}
+ 
+ 

@@ -1,0 +1,11 @@
+import java.lang.Object;
+class Main {
+  int i;
+	void say() {
+		System.out.println(i);
+	}
+	public static void main(String... args) {
+		Object b;
+		System.out.println(b); 
+	}
+}

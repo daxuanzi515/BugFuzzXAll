@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+int* changeValue(long *const num, long *const newNum) 
+{
+    int * temp = newNum;
+    
+    if(num > newNum)
+    {
+        *newNum = *num/2;
+        *num = *newNum;
+        temp = num;
+    }
+    else
+    {
+        *newNum = *num*2;
+        *temp = *newNum;
+        temp = num;
+    }
+    
+    return temp;
+}
+long* longChangeValue(int num)
+{
+    long newNum = num;
+    double temp = num /10.9;
+    if(temp%2!=0)
+    {
+        temp = temp + 1;
+    }
+    else
+    {
+        temp = temp - 1;
+    }
+
+    num = num + temp;
+    changeValue(&newNum, &num);
+    newNum = num;
+    return &newNum;
+}
+int main()
+{
+    int val = rand() % 20;
+    long val2 = longChangeValue(val);
+    printf("%

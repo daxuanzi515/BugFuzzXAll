@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct __union_Data
+{
+    void *p;
+};
+int main()
+{
+    struct __union_Data u1, u2;
+    u1.p = 0x1234;
+    printf("%p\n", u1.p);
+    u2.p = 0x5678;
+    printf("%p\n", u2.p);
+    return (EXIT_SUCCESS);
+}

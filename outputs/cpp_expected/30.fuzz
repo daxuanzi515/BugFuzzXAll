@@ -1,0 +1,42 @@
+#include <expected>
+=" << e.error() << "\n";
+    return 1;
+  }
+  std::cout << "Value=" << value << "\n";
+  return 0;
+}<fim_middle>
+#include <iostream>
+#include <string>
+
+struct Person
+{
+  std::string name;
+  int age{};
+};
+std::ostream& operator<<(std::ostream& os, const Person& p)
+{
+  os << "Name=" << p.name << ", Age=" << p.age;
+  return os;
+}
+
+void parseString(std::string s, std::expected<Person, int>& e)
+{
+  if(s == "<NAME>")
+    e = Person{"<NAME>", 1975};
+  else if(s == "<NAME>")
+    e = Person{"<NAME>", 2001};
+  else
+    e = 2;
+}
+int main()
+{
+  std::string s{"<NAME>"};
+  std::expected<Person, int> p;
+  parseString("Donald Duck", p);
+  //std::in_place_t i{};
+  //p = std::in_place(i, "Donald Duck", 1975);
+  if(p)
+    std::cout << *p << "\n";
+  else {
+    auto e = p.error();
+    std::cout << "Error

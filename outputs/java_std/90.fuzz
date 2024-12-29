@@ -1,0 +1,60 @@
+import java.lang.Object;
+5678)
+	{
+		Scanner scan = new Scanner (System.in);
+		System.out.println("Enter the size of array");
+		int len = scan.nextInt();
+		int a[] = new int[len];
+		for(int i=0;i<len;i++) 
+			a[i] = i;
+		for(int i=0;i<len;i++)
+			System.out.println(a[i]);
+	}
+}<fim_middle>import java.util.*;
+class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner("Hello\nworld");
+		while(s2.hasNext())
+		{
+			String word =s2.next();
+			if(word.length()>5)
+				word = "Hi" + word.substring(3);
+			System.out.println(word);
+		}	
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner ("Hello, Indian developers");
+		while(s1.hasNext())
+		{
+			String s2 = s1.next();
+			if(s2.length()>=10)
+				s2 = s2.substring(0,1) + " " + s2.substring(1,6).toLowerCase() + s2.substring(6,s2.length());
+			System.out.println(s2);
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s4 = new Scanner("ABC123");
+		if(s4.hasNext())
+			System.out.println("Not empty");
+		else
+			System.out.println("Empty");
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s3 = new Scanner("Welcome to IIT Dharwad");
+		String str = s3.next();
+		System.out.println("First character of String:

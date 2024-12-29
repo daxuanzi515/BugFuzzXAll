@@ -1,0 +1,34 @@
+#include <stdlib.h>
+#include <stdio.h>
+int main()
+{
+    union 
+    {
+        struct 
+        {
+          int size;
+          int *ptr;
+        }mem;
+        struct
+        {
+            union {
+              int numerator;
+              int real_part;
+            } real;
+
+            union {
+                int denominator;
+                int imag_part;
+            } img;
+        } complex;
+    }t1; 
+    t1.mem.size = 32;
+    t1.mem.ptr = 0x5678;
+    printf("t1: %d %p\n", t1.mem.size, (int *)t1.mem.ptr);
+    t1.complex.real.numerator = 123;
+    t1.complex.real.real_part = 0;
+    t1.complex.img.denominator= 5434;
+    t1.complex.img.imag_part = 5454;
+
+    return (EXIT_SUCCESS);
+}

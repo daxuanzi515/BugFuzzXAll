@@ -1,0 +1,15 @@
+/* The `std::expected` is a class template, introduced in C++23, that allows the storage of two types of values, i.e., an expected value of type ‘T’ or an unexpected value of type ‘E’. It is constructed in the storage of the expected object, with no dynamic memory allocation taking place.
+
+The template parameters include:
+- T, which is the type of the expected value. It can be (cv-qualified) void or must comply with the destructible requirements.
+- E, which is the unexpected value, must meet the Destructible requirements and be a valid template argument for `std::unexpected`.
+
+The `std::expected` cannot be instantiated with a reference type, function type, or `std::unexpected` specialization. Also, T cannot be `std::in_place_t` or `std::unexpect_t`.
+
+It provides numerous member types and functions for convenient access and manipulation of its values, including functions to check if the object holds the expected value, returning the expected or unexpected value, and performing various operations.
+
+Also, it provides non-member functions for comparing expected objects and swapping values, and helper classes such as `unexpected`, `bad_expected_access`, and `unexpect`.  
+
+Overall, `std::expected` provides an efficient and safe way to handle expected and unexpected values in programming, reducing potential errors due to incorrect assumptions. */
+/* Please create a very short program which combines std::expected with new C++ features in a complex way */
+#include <expected>

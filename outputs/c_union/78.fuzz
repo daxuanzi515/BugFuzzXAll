@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct { 
+  int x;
+  int y;
+}point;
+struct s{
+      int x;
+      int y;
+}*q1,*q2;
+int main() {
+     q1=(struct s *)&point;
+     q2 = q1;
+     q1->x=1;
+     q1->y=2;
+     return (EXIT_SUCCESS);
+}

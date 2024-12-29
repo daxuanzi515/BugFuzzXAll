@@ -1,0 +1,78 @@
+#include <expected>
+<fim_suffix>or_type{};
+    std::expected<ValueT, ErrorT> e{ValueT{}};
+    if (e)
+        std::cerr << "value " << e.value().get() << "\n";
+    else
+        std::cerr << "error " << e.error().what() << "\n";
+    
+    return 0;
+}
+<fim_middle>
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    using namespace std::literals;
+    struct ValueT
+    {
+        ValueT() = default;
+        ValueT(const ValueT&) = default;
+        ValueT(ValueT&&) = default;
+        ValueT& operator=(const ValueT&) = default;
+        ValueT& operator=(ValueT&&) = default;
+        float get()
+        {
+            m_data.push_back(rand());
+            float total { 0.0f };
+            for (auto n : m_data)
+                total += n;
+            auto avg = total / m_data.size();
+            return avg;
+        }
+        
+    private:
+        std::vector<float> m_data;
+    };
+
+    struct ErrorT
+    {
+        ErrorT() = default;
+        ErrorT(const ErrorT&) = default;
+        ErrorT(ErrorT&&) = default;
+        ErrorT& operator=(const ErrorT&) = default;
+        ErrorT& operator=(ErrorT&&) = default;
+        const char* what()
+        {
+            return "I should have gotten a real error from somewhere\n";
+        }
+    };
+
+    std::expected<ValueT, ErrorT> e2{std::make_unexpected(ErrorT{})};
+    if (!e2)
+        std::cerr << "Error: " << e2.error().what() << "\n";
+    else
+        std::cerr << "Data value: " << e2.value().get() << "\n";
+    for (std::size_t i{ 1u }; i < 20u; ++i)
+    {
+        if (i % 2u == 0)
+        {
+            std::cerr << "Even value " << i << "\n";
+        }
+        else
+        {
+            std::expected<ValueT, ErrorT> e1(std::make_unexpected(ErrorT{}));
+            if (!e1)
+                std::cerr << "Error: " << e1.error().what() << "\n";
+            else  
+                std::cerr << "Data value: " << e1.value().get() << "\n";
+            e2 = e1;
+        }
+        if (e2)
+            std::cerr << "Data value: " << e2.value().get() << "\n";
+        else 
+            std::cerr << "Error: " << e2.error().what() << "\n";        
+    }
+
+     

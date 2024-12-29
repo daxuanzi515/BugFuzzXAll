@@ -1,0 +1,4425 @@
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.Character;
+import java.util.Vector;
+import java.util.function.Supplier;
+
+ 
+@SuppressWarnings("javadoc")
+public class new_in_java {
+	private static char[] generate_message() {
+		Vector<Character> charVec = new Vector<>();
+		char[] carr = new char[12];
+		final Supplier<Character> charSupplier = () -> (char) (Math.random() * 26 + 97),
+				charSupplier2 = () -> (char) ('A' + Integer.parseInt(
+						String.valueOf((Math.random() * 10 + 48))))
+				;
+		for (int i = 0; i < 12; i++) {
+			char c = charSupplier.get();
+			System.out.print((char) c);
+			carr[i] = new Character((char) c);
+		}
+		return carr;
+	}
+
+	public static void main(String[] args) {
+		 
+		char[] carr = generate_message();
+		for (char c : carr) {
+			if (Character.isUpperCase(c)) {
+				Character lowerCase = Character.toLowerCase(c);
+				System.out.print(lowerCase);
+			} else {
+				Character upperCase = Character.toUpperCase(c);
+				System.out.print(upperCase);
+			}
+		}
+	}
+
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.*;
+import java.util.Timer;
+class MyThread extends Thread {
+    public void call(){
+        System.out.println("Hello World");
+    }
+}
+public class Driver {
+    public static void main(String args[]) throws InterruptedException {
+        class MyThread1 extends Thread {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                    System.out.println();
+                    for (int i = 0; i < 100; i++) {
+                        if (i%10 == 0) System.out.println();
+                        float[] nums = new float[10000];
+                        for (int j = 0; j < 10000; j++)
+                            nums[i] = i;
+                        System.out.print(nums[(i - 1)]!= 0? (i + 1) : 0);
+                    }
+                } catch (InterruptedException ignored) {
+                }
+            }
+        }
+        class MyThread2 extends Thread {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10000);
+                    System.out.println();
+                    for (int i = 0; i < 100; i++) {
+                        if (i%10 == 0) System.out.println();
+                        float[] nums = new float[10000];
+                        for (int j = 0; j < 10000; j++)
+                            nums[i] = i;
+                        System.out.print(nums[(i - 1)]!= 0? (i + 1) : 0);
+                    }
+                } catch (InterruptedException ignored) {
+                }
+            }
+        }
+        long startTime = System.nanoTime();
+        new MyThread1().start();
+        new MyThread2().start();
+        long endTime = System.nanoTime();
+        if (endTime - startTime >= 0){
+            System.out.println("Total time taken ::" + (endTime - startTime));
+        } else {
+            System.out.println("No time");
+        }
+    }
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.lang.Runnable;
+import java.lang.String;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+public class HelloWorld {
+     
+    public static void main(String args[]) {
+         
+        System.out.println("Hello World");
+    }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+public class HelloWorld{
+  public static void main(String[] args)
+  {
+     
+    HelloWorld2 hwi = new HelloWorld2();
+    System.out.println("Hello world");
+  }
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+import java.util.Scanner;
+
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+/* Please create a semantically equivalent program to the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ 
+import java.util.Scanner;
+ 
+public class HelloJava {
+	public static void main(String args[]) {
+		 
+		 
+		var s = new Scanner(System.in);
+		 
+		do {
+			System.out.println(s.next());
+		} while(true);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		do {
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(s1.hasNext());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.* java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+class Reader{
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("temp_folder.txt"));
+        String line;
+        while ((line = reader.readLine())!= null) {
+            System.out.println("Java: " + line);
+        }
+    }
+}
+ 
+  
+import java.util.*;       import java.io.FileWriter;
+                
+            
+    public class HelloWorld{
+         public static void main(String[] args) {
+             FileWriter outputFile;
+             try {
+                 outputFile = new FileWriter("File1.txt", false);
+                outputFile.write("I am from file one\n");
+                outputFile.close();
+         
+                 outputFile = new FileWriter("File2.txt", false);
+                outputFile.write("I am from file two\n");
+                outputFile.close();
+             }
+             catch(IOException e) {
+                 
+             }
+          }
+    }
+    
+    
+    
+ 
+ 
+import java.io.*;
+import java.util.*;       import java.io.FileWriter;
+                
+            
+    public class HelloWorld{
+         public static void main(String[] args) {
+             
+ 
+             FileWriter outputFile;
+             try {
+                 outputFile = new FileWriter("
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+	    	System.out.println("Hello Indian");
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+if(true)
+	do {
+		System.out.println("Hello Indian");
+	} while(true);
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+		do {
+		System.out.println("Hello Indian");
+	} while(true);
+}
+ 
+ 
+import java.lang.Object;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String [] args) {
+	class A {
+		int a = 10;
+	}
+	
+	class B {
+		int b = 15;
+		static A c = new A();
+	}
+
+	try {
+		B ob = new B();
+		{
+		System.out.println(ob.a + " " + ob.c.a);
+		}
+		int x = 10;
+		x = x * ++ob.c.a;
+		System.out.print(x);
+	} catch(Exception e) {
+		System.out.println("Exception caught :" + e);
+	}
+	}
+}
+ 
+import java.lang.Object;
+import
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(s1.hasNext());
+	}
+}
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.ArrayList;
+public class ListExample {
+	public static void main(String[] args) {
+
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Hello");
+		list.add("Indian");
+		list.add("!");
+		System.out.println(list);
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(args[0]);
+		do {
+			System.out.println(s1.nextLine());
+		} while(s1.hasNext());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\n");
+		do {
+			System.out.println(s1.nextLine());
+		} while(s1.hasNext());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner("HelloIndia\n");
+		do {
+			System.out.println(s2.nextLine());
+		} while(s2.hasNext());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				break;
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				break;
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		if(s1.hasNext()) {
+			String s = s1.next();
+			System.out.println(s);
+		}
+		System.out.println(s1.hasNextLine());
+		if(s1.hasNextLine()) {
+			String s = s1.nextLine();
+			System.out.println(s);
+		}
+		System.out.println(s1.next());
+		try {
+			s1.close();
+		} catch(Exception e) {}
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.lang.String;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - MUTATED ");
+		TreeMap<String, TreeMap<String, String>> x = new TreeMap<String, TreeMap<String, String>>();
+		TreeMap<String, String> y = new TreeMap<String, String>();
+		TreeMap<String, String> z = new TreeMap<String, String>();
+		y.put("abc", "x");
+		z.put("abc", "y");
+		x.put("x", y);
+		x.put("", z);
+		x.values().toArray()[0].get("abc");
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - MORPHED ");
+		TreeMap<Integer, TreeMap<Integer, Integer>> a = new TreeMap<Integer, TreeMap<Integer, Integer>>();
+		TreeMap<Integer, Integer> b = new TreeMap<Integer, Integer>();
+		TreeMap<Integer, Integer> c = new TreeMap<Integer, Integer>();
+		b.put(4,5);
+		c.put(4,6);
+		a.put(1,b);
+		a.put(2,c);
+		a.values().toArray()[0].get(4);
+		a = new TreeMap<Integer,TreeMap<Integer,Integer>>(a);
+		a.values().toArray()[0].get(1);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+import java.util.TreeMap;
+public class HelloIndian {
+	public static void main(String[] args) {
+		System.out.println("Hello Indian - LINED ");
+		TreeMap<Integer, TreeMap<Integer, Integer>> a = new TreeMap<Integer, TreeMap<Integer, Integer>>();
+		TreeMap<Integer, Integer> b = new TreeMap<Integer, Integer>();
+		TreeMap<Integer, Integer> c = new TreeMap<Integer, Integer>();
+		b
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndiae {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indiae\nworld");
+		do {
+			if(!s1.hasNext())
+				break;
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class Mutated {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld"); 
+		do {
+			if(!s1.hasNext())
+				break;
+			System.out.println(s1.nextLine());
+		} while(true);
+	}
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				continue; 
+			System.out.println(s1.nextLine());
+		} while(s1.hasNextLine());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				continue; 
+			System.out.println(s1.nextLine());
+		} while(s1.hasNextLine());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main1(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				continue; 
+			System.out.println(s1.nextLine());
+					
+			if (true)
+			  break;
+			else System.exit(0);
+			
+		} while(s1.hasNextLine());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s = new Scanner("Hello Indian\nworld");
+		while (s.hasNextLine())
+			System.out.println(s.nextLine());
+	}
+}
+ 
+
+public class Hello2010 {
+System.out.println("Hello world!"); 
+}
+ 
+import java.util.*;
+class ChatTerminal 
+{ 
+static Scanner Scanner2 = new Scanner(System.in);
+public static void main (String [] args) throws Exception
+{ 
+System.out.print(">");  String name = Scanner2.nextLine();  
+System.out.println(name + " is now logged in."); 
+String response = Scanner2.nextLine(); 
+while (response.equals("bye"))
+  break;   
+System.out.print(">"); response = Scanner2.nextLine(); 
+} 
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do {
+			if(!s1.hasNext())
+				continue; 
+		} while(s1.hasNextLine());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		int num = s1.length();
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian2 {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian2 {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian3 {
+	public static void main(String[] args) {
+		final String text = "Hello Indian\nworld";
+		Scanner s1 = new Scanner(text);
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian2 {
+	public static void main(String[] args) { 
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}
+ 
+ 
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian2 {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		while(s1.hasNext()) 
+			System.out.println(s1.next());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.Scanner;
+public class HelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello Indian\nworld");
+		do 
+			System.out.print(s1.next());
+		while(s1.hasNext());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+> 10)
+		System.out.println(s + " is greater than 10");			
+	else {
+		System.out.println(s + " is less than 10");
+	}
+	 
+	System.out.println(s);
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class SquareAbove{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner(System.in);
+		System.out.print("please input a number: ");
+		if(s2.hasNextInt()) {
+			int num = s2.nextInt();
+
+			if(num < 0) {
+				System.out.println("invalid input");
+				return;
+			}
+
+			System.out.println(num + " to the square is " + (num * num));
+
+		} else {
+			s2.next();
+			System.out.println("invalid input");
+		}
+	}
+}
+ 
+import java.lang.StringBuffer;
+public class StringBufferApp{
+	public static void main(String[] args) {
+		StringBuffer s = new StringBuffer("Hello ");
+		s.append("World");
+		System.out.println(s.toString());
+
+		System.out.print("Hello");
+		System.out.print(" - ");
+		System.out.print("World");
+		System.out.println();
+	}
+}	
+ 
+import java.util.*;
+public class PrintNumValue{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		float num = s1.nextFloat();
+		System.out.println(num);
+	}
+}
+ 
+import java.util.Scanner;
+public class GetDouble{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner(System.in);
+		
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ng a simple program with an infinite loop. */
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+
+ 
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(new FileReader("test.txt"));
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* The following was the beginning of the program before. It was an interactive printi
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>
+	
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args){
+		Scanner s1 = new Scanner("Hello\nworld");
+		List<String> l = new ArrayList<>();
+		while(s1.hasNext()){
+			l.add(s1.next());
+		}
+		System.out.println(new ArrayList<>(new HashSet<>(l)));
+	}
+}
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args){
+		Scanner s1 = new Scanner("Hello\nworld");
+		List<String> l = new ArrayList<>();
+		while (s1.hasNext())
+			l.add(s1.next());
+	
+		for (Iterator i = l.iterator();i.hasNext();)
+			System.out.println(i.next());
+    }
+}
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args){
+		for(int i = 0;i < 5;i++)
+			System.out.println(new Scanner("hello\nworld"));
+	}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+-1) {
+					if (arr[m] < arr[k] && arr[m] < arr[k-1]) {
+						temp = arr[k-1];
+						arr[k-1] = arr[m];
+						arr[m] = temp;
+					}
+				}
+
+				 
+				k++;
+			}
+		}
+
+		return arr;
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int[] arr = {8, 2, 3, 1, 4, 6, 19, 15};
+
+		System.out.println("List before Insertion Sort" + Arrays.toString(arr));
+		for (int i : insertionSort(arr))
+			System.out.print(i + " ");
+	}
+}
+  
+ 
+import java.lang.Object;
+public class Main {
+	public static int[] selectionSort(int[] arr) {
+		int n = arr.length;
+		for(int i = 0; i < n-1; ++i) {
+			int min = arr[i];
+			int minIndex = i;
+			for(int j = i+1; j < n; ++j) {
+				if (arr[j] < min) {
+					min = arr[j];
+					minIndex = j;
+				}
+			}
+
+			int temp = arr[minIndex];
+			arr[minIndex] = arr[i];
+			arr[i] = temp;
+		}
+
+		return arr;
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int[] arr = {8, 2, 3, 1, 4, 6, 19,
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ < nameList.size(); i++) {
+			System.out.println(nameList.get(i));
+		}
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+
+
+ 
+ 
+package com.example.java; 	  
+ 
+ 
+ 
+ 
+import java.util.*;
+ 
+public class AcademicRecord implements Comparable {   
+												    
+												    
+												    
+    private String course;
+    private String instructor;
+    private double avgGrade; 
+    private double score;
+   
+     
+    public AcademicRecord(String course, String instructor, double avgGrade) {
+        this.course = course;
+        this.instructor = instructor;
+        this.avgGrade = avgGrade;
+    }
+    
+     
+    public double addScore() {
+        score = avgGrade * 1.15;		 
+        return score;
+    }
+ 
+    @Override
+    public int compareTo(Object name2) {	 
+		AcademicRecord ar2 = (AcademicRecord) name
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+  int max = 0;
+		    int count = 1;
+		    for(j=0;j < arr.length - 1; ++j)
+		    {
+		        int diff = arr[j + 1] - arr[j] - 1;
+		        if(diff == 1)        
+		        {
+		            max = 1;
+		            count = 1;
+		        }
+		        else if(diff <= 3)
+		        {
+		            max = Math.max(max, count);
+		            ++count;
+		        }
+		        else
+		        {
+		            max = Math.max(max, count);
+		            count = 1;     
+		        }
+		    }
+		    max = Math.max(max, count);
+		    System.out.print(max);
+		}
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+class Prime { 
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n= sc.nextInt();
+		boolean isPrime,isFound = true;
+		for (int i=2; i< Math.sqrt(n); ++i){
+			isFound = true;
+			if(n%1==0)isPrime=true;
+			for(int j=2; j<i; ++j){
+				if(i%j==0) { 
+					isFound= false;
+					break;
+				}
+			}
+			if(isFound){
+				System.out.println(i);
+				if(n==i)break;
+			}
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.Scanner;
+
+class RangeWithMinDivisors { 
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n= sc.nextInt();
+		int min=0, max=(n>5)?n-5:1;
+		int count = 6 - n;
+		boolean flag = false;
+		boolean valid = true;
+		int res = 0;
+		while(valid){
+			valid = true;
+			for(int i=2; i <= Math.sqrt(max); ++i)
+				if(isPrime(i)){
+					int cnt=primeCo(i,min,max); 
+					if(cnt >= count){
+						flag = true;
+						res
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>.next()));
+			String a[]={};
+			s.add(a);
+		}
+		while(s.hasNext()) {
+			String[] str = s.next().split("-");
+			int x = Integer.parseInt(str[1]) - a.size();
+			if(x > 0) {
+				for(int i=0;i<x;i++) a.add(" ");
+			}
+			a.set(Integer.parseInt(str[0]),str[2]);
+		}
+		for(String i:a)
+			System.out.println(i);
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndianMutated {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		ArrayList<String> a = new ArrayList<String>();
+		String line;
+		while(!(line = s.nextLine()).equals("\n")) {
+			a.add(String.valueOf(line
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>emote Method Call (RMI) Java Bean. If you try to create a client that calls the Bean in the remote JVM from outside of a Remote Environment, you'll fail with a security exception.
+
+*/
+import javax.ejb.*;
+import java.rmi.*;
+public interface Server extends java.rmi.Remote
+{
+	ArrayList<String> execute(String text);
+	public void execute2(String text, String[] options)
+	void sendHello(ClientHello c);
+}
+import javax.ejb.*;
+import javax.rmi.PortableRemoteObject;
+import java.rmi.*;
+import java.rmi.server.*;
+import javax.ejb.*;
+public class RMIClient extends UnicastRemoteObject implements Client{
+	private static ArrayList<Object> mData;
+	static String mOutput = "";
+	public RMIClient(String host, int port)throws RemoteException{
+		super();
+		mData = new ArrayList<Object>();
+		ClientHandle cHandle = new ClientHandle();
+		PortableRemoteObject pr;
+		mOutput += "\nConnecting";
+		cHandle.mOutput += "\nConnecting";
+		try{
+			pr = (ClientHandle) Naming.lookup("//"+host+":"+port+"/RMIBean");
+			cHandle.mOutput += "\nGot a client";
+			mOutput += "\nGot a client";
+			mData.add(pr);
+		}catch(NotBoundException e) {
+			mOutput += "\nNo client found";
+			cHandle.mOutput+="/nNo client found";
+		}catch(Exception e){
+			mOutput += "\n\Error:";
+			cHandle.mOutput += "\n\Error:";
+			mOutput += e.toString();
+			cHandle.mOutput += e.toString();
+		}
+		 
+		 
+		mData.add(cHandle);
+	}
+	public static void SendtoServer(String text){
+		try{
+			Object o = (Object) mData.get(1);
+			((Server)o).execute2(text,new String(new char[text.length()]));
+		}catch(Exception e){e.printStackTrace();}
+		 
+	}
+	public int getSize(){
+		return mData.size();
+	}
+	public static void main(String[] args){
+		 
+		String host = "
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	{
+		String n=s.nextLine();
+		if(n.equals("Y"))
+		return "Welcome";
+		else 
+			return "Bye";
+	}
+}<fim_middle>import java.util.*;
+public class SayHaiIndianHelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+import java.util.Scanner;
+public class Helloin{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(sc.nextLine());
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner s1= new Scanner(System.in);
+		Scanner s2= new Scanner(System.in);
+		Scanner s3= new Scanner(System.in);
+		System.out.println("Give a");
+		a=s1.nextInt();
+		System.out.println("Give b");
+		a=s2.nextInt();
+		System.out.println("Give x");
+		a=s3.nextDouble();
+		System.out.println("Give s");
+		a=s1.nextLine();
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner s1= new Scanner(System.in);
+		Scanner s2= new Scanner(System.in);
+		Scanner s3= new Scanner(System.in);
+		System.out.println("Give a");
+		a=s1.nextInt();
+		System.out.println("Give b");
+		a=s2.nextInt();
+		System.out.println("Give x");
+		a=s3.nextDouble();
+		System.out.println("Give s");
+		a=s1.nextLine();
+	}
+}
+ 
+import java.util.Scanner;
+public class Hello{
+	public static void main(String[] args) {
+		int a;
+		Scanner
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/*
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	 
+		int x = 100, y = 101, j = 5;
+		while (j <= 4)
+			x = x + y,--j;
+		 
+		System.out.println(x++ + x-- + x);
+		 
+		System.out.println(x + " " + x++ + ++y);
+		 
+		System.out.println(y + " " + y-- + --j);
+		 
+		while (j < 200)
+			System.out.println(++j);
+	}
+}
+ 
+package hello;
+public class Test extends String{
+	public void method(){
+		System.out.println("Printing package name");
+		System.out.println(getClass().getName());
+	}
+}
+ 
+/* For the purpose of the following exercise, assume that you will be using the JDK and compile the following program using the javac (java compiler) command:
+
+class Test {
+	public static void main(String[] args) {
+		boolean isTrue = false;
+		float value;
+		System.out.println("Using try-catch block.");
+		if (isTrue == true) {
+			System.out.println("True!");
+		} else {
+			System.out.println("Not true.");
+		}
+		System.out.println("Returning value in a try block.");
+		try {
+			value = 5.0f / 0.0f;
+		} catch (ArithmeticException e) {
+			System.out.println("Caught ArithmeticException");
+			value = 0.0f;
+		}
+		System.out.println("Value returned is: "+value);
+		System.out.println
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>s.add("java.util.Scanner.hasNextBoolean()");
+    c.setAccessible(true);
+    boolean result = (boolean)c.invoke(scanner, (Object[])new Object[0]);
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Method;
+public class HelloIndian{
+	public static void main(String[] args) throws Exception {
+		Class c1 = scanner.getClass();
+		Method m1 = c1.getDeclaredMethod("hasNext", String.class);
+		System.out.println(m1);
+		Method m2 = c1.getMethod("nextInt", new Class[0]);
+		System.out.println(m2);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+public class HelloIndian{
+	public static void main(String[] args) throws Exception {
+		Class c1 = scanner.getClass();
+		Constructor[] constructors = c1.getConstructors();
+		for(Constructor c : constructors)
+			System.out.println(c);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+public class HelloIndian{
+	public static void main(String[] args) throws SecurityException {
+		int n2 = 42;
+		Field f1 = scanner.getClass().getDeclaredField("n");
+		f1.setAccessible(true);
+		f1.setInt(scanner, scanner.n);
+		System.out.println(n2);
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Scanner;
+public class HelloIndian2{
+	public static void main(String[] args) throws InvocationTargetException,
+        IllegalAccessException,NoSuchMethodException{
+		Scanner s1 = new Scanner(System.in);
+		String s2 = s1.next();
+		Method m1 = System.class.getMethod("out.", String.class);
+	}
+}
+/* Let's now print the content of
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>t("Enter the number: "));
+		System.out.print("The Square is: ");
+		System.out.println((num * num));
+	
+		}
+
+ 
+		 
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello\nworld");
+	}
+}
+
+import java.lang.Object;
+import java.util.*;
+
+public class Prime {
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+	public void add(int val) {
+		if(size == list.length) resize(size << 1);		
+		list[size++]=val;
+	}
+	public int remove() {
+		int val = list[--size];				
+		if(size == list.length>>1 && size > 1)
+			resize(size>>>1);			
+		return val;
+	}
+	private void resize(int sz) {
+		list = Arrays.copyOf(list, sz);		
+	}
+}
+*/
+
+ 
+class Socket_Demo extends JFrame {
+	JTextArea ta;
+	JTextField tx;
+	JButton bt;
+	JScrollPane sc;
+
+	Socket_Demo() {
+		setLayout(new BorderLayout());
+		ta=new JTextArea("Write anything here");
+		tx=new JTextField();
+		sc=new JScrollPane();
+		sc.setViewportView(ta);
+		bt=new JButton("Submit");
+		bt.setForeground(Color.blue);
+		bt.setBackground(Color.yellow);
+
+		add(BorderLayout.NORTH,tx);
+		add(BorderLayout.CENTER,sc);
+		add(BorderLayout.SOUTH,bt);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		setSize(300,300);
+		setVisible(true);
+		bt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					 
+					Socket client = new Socket("127.0.0.1",5050);
+					OutputStream o = client.getOutputStream();
+					byte[] buffer = null;
+					String input = tx.getText();			
+					buffer = input.getBytes();
+					o.write(buffer);
+					 
+					InputStream i = client.getInputStream();
+					int ch;
+					buffer=new byte[128];
+					ByteArrayOutputStream bos = new ByteArrayOutputStream();
+					while((ch=i.read())!= -1)
+						bos.write(ch);
+					buffer = bos.toByteArray();
+					String output = new String(buffer);
+					ta.append(
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	try {
+		File file = new File("hello.txt");
+		if (file.exists())
+			return file.createNewFile();
+    } catch (IOException e) {
+    	return false;
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<fim_middle>
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>n(s.nextLine());
+		 return 0;		
+		}
+	}
+}
+ 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+public class TestDate {
+	public static void main(String [] args) {
+		Date d = new Date();
+		Date d1 = new Date(System.currentTimeMillis());
+		SimpleDateFormat df = new SimpleDateFormat("MMM");
+		SimpleDateFormat df1 = new SimpleDateFormat("dd MMM yyyy");
+		if(args[0].equals("time")){
+			System.out.println("Current Time: " + df.format(d));
+			System.out.println("Current Date: " + df1.format(d1));
+		}
+		else if(args[0].equals("month")){
+			SimpleDateFormat df2 = new SimpleDateFormat("MMM d");
+			System.out.println(df2.format(d1));
+		}
+		else if(args[0].equals("date")){
+			System.out.println(df1.format(d1));
+		}
+	}
+}
+ 
+/* 
+The following is the class template:
+
+class Fruit{
+	public String Name;
+	public abstract void getWeight();
+}
+Now there are atleast 3 classes which extends class Fruit, and they are Apple, Orange and Banana. For eg:
+If you say fruit object. The Fruit class provides the getWeight method. Now everytime someone says fruit.getWeight(), it gets executed the one which is implemented in the child classes.
+
+To sum up, a machine should simply be passed the Fruit class, and from that F
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+		String str;
+
+		obj = new Object();
+		obj = s;
+		
+		int size = s.size() - pos;
+
+		for(int i = 0; i < size; i++)
+		{
+
+			str = s.get(pos);
+			s.remove(pos);
+			s.add(s.elementAt(s.size() -1), str);
+		}
+	}
+
+	public static void main(String[] args) {
+		Vector <String> str = new Vector <String>();
+		str.add("A");
+		str.add("B");
+		str.add("C");
+		str.add("D");
+		str.remove(1);
+		System.out.println(str);
+	}
+}*/<fim_middle>import java.util.*;
+public class VectorEx{
+	public static void reverse(Vector<String> s) {
+
+		if (s.size() < 2) 
+		System.out.println("Less items in the vector\n");
+		else if (s.size() > 6)
+		System.out.println("More than 6 items in the vector\n");
+
+		Vector<String> str = new Vector<String>();
+		str.add("A");
+		str.add("B");
+		str.add("C");
+		str.add("D");
+
+		for(int i =2; i < s.size() - 1; i++)
+		{
+			String str2 = s.get(i);
+			s.remove(i);
+			s.add(i, str2);
+			}
+		}
+
+	 
+
+	public static void reverse2(Vector<String> s) {
+
+		if (s.size() < 2) 
+		System.out.println("Less items in the vector\n");
+		else if (s.size() > 6)
+		System.out.println("More than 6 items in the vector\n");
+
+		String str;
+
+		Vector<String> str1 = new Vector <String>(s.size() - 2);
+
+		for(int i = s.size() - 2; i > -1; i--)
+		{
+
+			str = s.get(i);
+			str1.add(str);
+			s.remove(i);
+		}
+		
+		for(int i = 0; i < str1.size(); i++)
+		{
+
+			str = str1.get(i);
+			s.add
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>hared. 
+ 
+ 
+
+ 
+```
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>(String[] args) {
+		Scanner s1 = new Scanner("Hello, world");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		s1.close();
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+class GetDate {
+	public static void main(String[] args) {
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		System.out.println("Today is: "+cal.getTime());
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello world!");
+	}
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>a.util.*;
+import java.util.Locale;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello World");
+		Locale.setDefault(Locale.FRANCE);
+		System.out.println(s1.nextLine());
+	}
+}<fim_middle>import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello World");
+		System.out.println(s1.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		try{
+		Scanner s1 = new Scanner("Hello World");
+		int[] j = new int[]{1,2,3};
+		}
+		catch(Exception e){
+			System.out.println("The exception " + e + " has been raised");
+		}
+		finally{
+			System.out.println("The code has been run");
+		}
+	}
+}
+ 
+import java.lang.Object;
+import jav
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>lgorithm which uses linear congruential generator*/
+        int j = (int)(Math.random()*256);
+        return (j>=97)?j:j+33;
+    }
+}
+ 
+public class random{
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		int i = (int)(Math.random()*3);
+		if(i==0)
+			System.out.println("I am Bob the builder, a poor soul!");
+		else if(i==1)
+			System.out.println("I love cats, but I hate dogs!");
+		else
+			System.out.println("I am a computer program with the name \"Java\"");
+		in.close();
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String fname = sc.nextLine();
+		try{
+			Scanner input = new Scanner(new java.io.File(fname));
+			while(input.hasNextLine()){
+				System.out.println(input.nextLine());
+			}
+		} catch(java.io.FileNotFoundException e){
+			System.out.println("File does not exist!");
+		}
+		sc.close();
+	}
+}
+<fim_middle>public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(in);
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		Scanner s2 = new Scanner("Goodbye\nearth");
+		while(s2.hasNext())
+			System.out.println(s2.next());
+	}
+}
+/* Please generate a PRNG which:
+Generates a random number after generating a random number
+Generates a random number after generating a random number
+Generates a random number after generating
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ * @param 	args
+	 */
+	public static void main(String[] args){	
+		Scanner s1 = new Scanner("Hello\nworld");
+		ArrayList<Integer> aryList = new ArrayList<>();
+		aryList.add(1);
+		aryList.add(2);
+		aryList.add(3);
+		String stringList = null;	
+		stringList = s1.next();		
+		System.out.println(stringList);
+	}	
+}
+ 
+import java.util.*;
+public class ArrayList1{
+	public static void main(String[] args){	
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Rama");
+		list.add("Mohammad");
+		list.set(0, "Ramesha");
+		Iterator<String> iterator = list.iterator();
+		while(iterator.hasNext())
+			System.out.println(iterator.next());
+	}	
+}
+ 
+import java.util.*;
+public class ArrayList1{
+	public static void main(String[] args){	
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Rama");
+		list.add("Mohammad");
+		list.set(0, "Ramesha"); 
+		System.out.println(list.indexOf("Ramesha"));
+	}	
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			if(s1.hasNextLine()){
+				System.out.println(s1.nextLine());
+			}
+			else{
+				System.out.println(s1.next());
+			}	
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian{
+	public static void main(String[] args) {
+		int[][] intArr = {
+			{1, 2},
+			{3, 4}
+		};
+		char[][][] charArr = new char[5][6][7];
+		charArr["x=1.y=1"][1][2] = 'a';
+		charArr[1]
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.nextLine();
+		s1.useDelimiter(",");
+		s1.skip("l{1}");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		char a; 
+		String s; 
+		int b = 0; 
+		while (b < 5) { 
+			a = 'a'; 
+			System.out.println(a); 
+			s = "Hi"; 
+			System.out.println(s); 
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s = null;
+		s = new Scanner(">>> ");
+		String a = s.nextLine();
+		while(!a.equals("exit"));
+		System.out.println("Thank you for leaving");
+	}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>e.addEdge(vertex1, vertex2, 3, null);
+		System.out.println("\nVertices of graph after addEdge for "+vertex1+"\n"+graph.getVertices());
+		graph.removeVertex(vertex1);
+		System.out.println("Vertices of graph after removeVertex("+vertex1.getElement()+"): "+graph.getVertices());
+		Vertex<String> vertex3 = new Vertex<>(id++,3,"a");
+		graph.addEdge(vertex1,vertex3);
+		System.out.println("Vertices of graph after addEdge for "+vertex1+vertex3+"\n"+graph.getVertices());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+			Scanner s1 = new Scanner("Hello Indian\nWorld\n");
+			String a=s1.next();
+			System.out.println(a);
+	}
+}
+public class HelloJava
+{
+	public static void main(String args[])
+	{
+		System.out.println("#Hello, Java");
+	}
+}
+import java.util.*;	 
+import java.util.List;	 
+public class HelloGraph
+{
+	public static void main(String args[])
+	{
+		Graph<String> graph = new Graph<>();
+		for(int i=1;i<5;i++)
+		{
+			Vertex<String> vertex = new Vertex<>(i,"node"+i);
+			graph.addVertex(vertex);
+		}
+		List<Vertex<String>> vertices= graph.getVertices();
+		for(Vertex<String> vertex : vertices)
+		{
+			List<Edge<String>> edges = graph.getEdges(vertex);
+			 
+		}
+	}
+}
+/*
+This class is the essential starting point for building an object oriented program. The Graph
+class is the foundation upon which all the graph-related program design takes place. In other
+words, this is the class that implements the Graph interface and its various abstractions,
+along with the associated functions that make up its core. In fact, the Graph class is a
+generalization of the class we’ve built so far; if we were to replace this Graph class with a
+LinkedList, we would get the simplest possible Graph.
+
+Each Graph requires a way to store its vertices and edges. The addVertex and addEdge
+functions do just that, although a number of other functions exist. In fact,
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>va
+	 
+	 
+
+}
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.print("Hello, Indian");  
+		String name = System.console().readLine();  
+		Scanner intName = new Scanner(name);  
+    	while(intName.hasNextInt()) {  
+    		int n = intName.nextInt();  
+    		char[] toChar = name.toCharArray();
+    		System.out.println("Hello "+ String.valueOf(toChar) +"! You have entered number: " +n);  
+    		
+    	}
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1 {
+	public static void main(String[] args) {
+		Scanner intName = new Scanner(System.console().readLine());
+		while(intName.hasNext()) {
+			String name = intName.next();
+			System.out.println("Hello "+ name+"! You have entered name: "+ name);
+		}
+		System.out.println("Hello"+ "Anirudh"+ "! You have entered name: "+ name);
+	}
+}
+
+ 
+import java.lang.*;
+import java.util.*;
+public class HelloIndian2 {  
+	public static void main(String[] args) {
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>{
+	public static void main(String[] args) {
+		try{
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext()){
+			System.out.println(s1.next());
+		}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		System.out.println(s1.hasNext() + " " + s1.hasPrevious());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ 'M', 'A', 'D'};
+		StringBuilder sb= new  StringBuilder();
+		System.out.println(String.join(":", a));
+	}
+}
+<fim_middle>public class HelloAgain {
+	public static void main(String[] args) {
+		String[] a = {'R', 'A', 'W', 'O', 'L',
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>(args[0])+"\r\n";
+		}
+		System.out.print(s+"a. ");
+		s = s+"b. "+args[1];
+		System.out.print(s);
+	}
+}<fim_middle>import java.util.*;
+import java.text.SimpleDateFormat;
+class Greeting{
+	public static String time(String s) {
+		return s+" (at "+new SimpleDateFormat("h:ms a, E d MMM yyyy z").format(new Date())+")\r\n";
+	}
+}
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println(Greeting.time("Hello World"));
+	}
+}
+ 
+public class Greeting{
+	public static void main(String[] args) {
+		String s= new String(args[0]);
+		for(int i=1;i<args.length;i++){
+			s=s+" "+new String
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ntln(array[i]);
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ng[] args) {
+		String url = "https://www.google.com/ncr";
+		String regex = "^https?://([^/?#]+\\.[^/?#]+)";
+
+		String pattern = "Hello";
+		String str = "Hello world";
+
+		 
+		String[] splitStringArray = str.split(pattern);
+		String regexString = "[^\\s\\d]";
+		Matcher m = Pattern.compile(regexString).matcher("Teststring");
+
+		String newString1 = "Hello";
+		String newString2 = "world";
+		String anotherString = newString1 + " " + newString2;
+
+		String myString = anotherString.concat(anotherString);
+
+		char[] charArray = "Hello world".toCharArray();
+		for(int i = 0; i < charArray.length; i++) {
+			if(charArray[i] % 2 == 1)
+				break;
+			System.out.println(charArray[i]);
+		}
+
+		int myVar = anotherString.length();
+		boolean check = anotherString.equals(newString1);
+	}
+}
+
+<fim_middle>import java.util.*;
+import java.util.regex.*;
+ 
+
+public class HelloIndian{
+	public static void main(Stri
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>tln(l2.pop());
+		System.out.println(l2.pop());
+	}
+}
+ 
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Collections;
+class Ex_1{
+	public static void main(String[] args) {
+	    List<Integer> list = Arrays.asList(1,8,9,7,3);
+
+	    list = Collections.synchronizedList(list);  
+	    List<Integer> listCopy = list.stream().collect(Collectors.toList());
+	    listCopy.remove(1);
+
+	    for(int n : list)
+	        System.out.println(n);
+
+	    for(int n : listCopy)
+	        System.out.println(n);
+	}
+}
+ 
+class Ex_2{
+	public static void main(String[] args) {
+	    List<Integer> list = Arrays.asList(1,8,9,7,3);
+
+	    list = Collections.synchronizedList(list);  
+	    List<Integer> listCopy = list.stream().collect(Collectors.toList());
+
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+
+	    listCopy = listCopy.stream().filter(e -> e!= 1).collect(Collectors.toList());
+
+	    for(int n : list)
+	        System.out.println(n);
+
+	    for(int n : listCopy)
+	        System.out.println(n);
+	}
+}
+
+ 
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello, world!");
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		List<Integer> l = new ArrayList<Integer>();
+		Collections.addAll(l, 1,8,9,7,3);
+		for(int i:l)
+			System
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>er(s1.nextLine()));
+		s1.readFully(bytes);
+		for(int a : bytes){
+			System.out.println(a);
+		}
+		s1.close();
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class Test{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.useDelimiter("<->");
+		int a[]=new int[5];
+		for(int i : a)
+			System.out.println(i);
+		s1.close();
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Hello{
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+}
+ 
+ 
+import java.lang.Object;
+public class Hello{
+	public static void main(String[] args) {
+		String s1= "";
+		for(int i = 0; i < 20; i++){
+			s1+=i;
+		}
+		System.out.println(s1);
+	}
+}
+<fim_middle>public class Hello{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		int bytes[]=new int[s1.nextLine().length()];
+		s1=new Scanner(new CharArrayRead
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>(String texta, String textb){
+		String word = "";
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		int word_count = 0;
+		Scanner s1 = new Scanner(texta);
+		Scanner s2 = new Scanner(textb);
+		
+		while(s1.hasNext() || s2.hasNext()){
+			word += (s1.hasNext()? (word_count<1? s1.next() : s2.next()) : s2.next());
+			word_count++;
+		}
+		return word;
+	}
+	public static String append(String texta, String textb){
+		String res = texta + textb;
+		 
+
+		 
+		 
+		 
+		 
+		 
+		
+		/* [0 : 3, 1 : 2, 3: 1, 4
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	int[] list = new int[] {6, 1, 4, 5, 3, 2};   
+		System.out.println("Original list: ");  
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		System.out.println("Sorted list: ");  
+		Arrays.sort(list);
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		System.out.println("List reversed: ");  
+		for (int i = list.length-1; i >= 0; i--) {
+			System.out.println(list[i]);
+		}
+	}
+}
+
+public final class ArrayDemo {
+
+	public static void main(String[] args) {
+		 
+	}
+
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian2{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		String s = "";
+		int count = 0;
+		do {
+			count = count + 1;
+			s = s + s1.nextLine();
+		} while(count < 5);
+		System.out.println(s);
+	}
+}
+
+/* For your new version, replace the nextLine() method with the following code:
+ 
+String line;
+ 
+While the Scanner object s reads another line of input into line, perform the following operations until the line is empty:
+Increase the counter by 1
+Add line to s.
+End the while loop.
+ 
+Write the program as a single line; this may require changes to one line of code in the body of the main method.
+
+public static void main(String[] args) {
+	Scanner s = new Scanner("Hello\nworld");
+	String s = "";
+	int count = 0;
+	do {
+		++count;
+		s = s + s.nextLine();
+	}  while(count < 5);
+	System.out.println(s);
+}
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>r(String[] args) {
+		Scanner s1=new Scanner(Scanner.INPUT);
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian_new{
+	public static void main(String[] args) { 
+		Scanner s1 = new Scanner("Helo\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+import java.util.*;
+public class HelloWorld_new{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.util.*;
+public class HelloWorld_new1{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		while(s1.hasNextLine())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorldNew{
+	public static void main(String[] args) {
+		Scanner s1=new Scanner("Hello\nworld");
+		System.out.println(s1);
+	}
+}
+ 
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+x=i;y=(x)*5; System.out.println(x +" " +y);}  
+		   { int x=10;int y =3; x=x+y+4; System.out.println(x+" " +y);}
+		}
+}
+<fim_middle>public class HelloIndian1{
+	public static void main(String [] args){	
+		String [] arr={"Nishant","Java","18","Bangalore"};
+		String [] arr1 = {"Shyam","Python","17","Delhi","Haryana"};
+ 		for(int i=0; i<arr.length; i++)
+	  	    System.out.println(arr[i]);
+	  	    for(int i=0; i<=3; i++)
+	  	    System.out.println(arr1[i]);
+		for (int x: arr) {
+			System.out.println(x);
+		}	
+		for (String x:arr1){
+		System.out.println(x);
+		}
+	}
+}
+ 
+import java.lang.Object;
+public class HelloIndian2{
+	public static void main(String args[]){
+	    int x = 5, y = 12;
+	    for(int i=1;i<=4;i++)
+	    {
+	        System.out.print("\n For "+i+"st iteration, ");
+	        for(int j=1;j<=y;j++)
+	        {
+	            System.out.print(x+", ");
+	        }
+	    }
+	}
+	 
+	 
+}
+ 
+import java.lang.Object;
+public class HelloIndian3{
+   public static void main(String... abc)
+        {
+	    int sumOfAllNumbers = 0;
+	    int [] arr = {10,20,25,30,35};
+	    for (int a: arr)
+	    {
+	        sumOfAllNumbers = sumOfAllNumbers + a;
+	    }
+	    System.out.println(sumOfAllNumbers);
+        }
+}
+ 
+import java.lang.Object;
+public class HelloIndian4{
+   public static void main(String... abc)
+        {
+		int count =
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>		i=i+2) {
+			x[i] = Math.log((double)i);
+		}
+		for (int i: x){
+			System.out.println(i);
+		}
+		
+	}
+}
+<fim_middle>import java.util.*;
+public class ModifiedHelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		Scanner s2 = new Scanner(System.in);
+		while(s1.hasNext()){
+			System.out.print(s2.next());
+		}
+		while(s2.hasNext()){
+			System.out.println(s1.next());
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		double h = s1.nextDouble();
+		double b = s1.nextDouble();
+		double area = (0.5 * h * b);
+		System.out.println(area);
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class AnotherHelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		double n = s1.nextDouble();
+		System.out.println(Math.cbrt(n));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		int n = s1.nextInt();
+		System.out.println(Math.sqrt(n));
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloWorld{
+	 
+	public static double getAreaFromRectangle(double b, double h) {
+
+		return (b * h);
+	}
+
+	/**
+	 * Method that
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("HelloIndian");
+	}
+}
+ 
+ 
+ 
+public class HelloIndian{
+	private static void main() {
+		System.out.println("HelloIndian");
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>t, java.awt.event.*
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import javax.swing.*;
+class Hello {
+	public static void main(String[] args) {
+		 
+	     
+	    JFrame frame = new JFrame();
+
+	     
+	    frame.getContentPane().add(new HelloWorldPanel());
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	     
+	    frame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	    frame.setVisible(true);
+	}
+}
+class HelloWorldPanel extends JPanel {
+	public void render(Graphics g) {
+        g.clearRect(0, 0, getWidth(), getHeight());
+        g.drawString("Hello World", 20, 30);
+	}
+     
+    public void paintComponent(Graphics g) {
+        render(g);
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Cursor;
+import javafx.scene.canvas.*;
+import javafx.scene.control.*;
+import javafx.scene.effect.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.stage.Screen;
+import javafx.application.Platform;
+import javafx.event.*;
+import javafx.scene.layout.GridPane;
+import java.util.concurrent.TimeUnit;
+public class hello extends Application{
+	public static void main(String [] args)
+	{
+		launch(args);
+	}
+	public void start(Stage s)
+	{
+		  
+		Canvas c = new Canvas(100,100);
+		
+		 
+		GraphicsContext g = c.getGraphicsContext2D();
+		
+		 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+2+c);
+		System.out.println(a-b);
+		System.out.println(a*b);
+	}
+}
+<fim_middle>import java.util.*;
+public class Mutata{
+	public static void main(String[] args) {
+		int a=10, b=5;
+		short c=12;
+		System.out.println(a/b);
+		System.out.println(a%b);
+		System.out.println(a/c);
+		System.out.println(a/3);
+		System.out.println(a/3.
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ut.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner(System.in);
+		while(s1.hasNext())
+			System.o
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+0];
+		while(i<num)
+		{
+			while(num%i!=0)
+			{
+				if(i<=n3)
+				{
+					n3=i;
+					break;
+				}
+				i++;
+			}
+			i++;
+		}
+		System.out.println("\n"+n3);
+	}
+}
+<fim_middle>import java.util.*;
+public class HellowWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+		 
+		System.out.println("Enter the number of times you want to ask a question: ");
+		Scanner n1 = new Scanner(System.in);
+		int num = n1.nextInt();
+		int i=0;
+		String str1[] = new String[num];
+		for(i=0; i<num; i++)
+		{
+			System.out.println("Enter the Question");
+		}
+		int n2;
+		System.out.println("Enter the number of times you want to answer: ");
+		Scanner n3 = new Scanner(System.in);
+		n2 = n3.nextInt();
+		for( ; n2<num; n2+=1)
+		{
+			System.out.println("Enter the answer");
+		}
+		i = n2;
+ 
+	int n3=1;
+		do
+		{
+			 
+			while(num%i!= 0)
+			{
+				 
+				if(i > 2)
+				{
+					i = i-1;
+					continue;
+				}
+				break;
+			}
+			n3 = n3 + 1;
+			 
+			i = n3;
+		}while(i<=n3);
+		i=n3;
+		 
+		 
+		int num = i-1;
+		 
+ 
+	int a
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>{
+		Scanner a=new Scanner(100);
+		String str="", str2="";
+		while(true){
+			str+=a.next();
+			str2+=(Character.isUpperCase(str.charAt(str.length()-1))?" ":"\n")+str; 
+			str="";
+			if (str2.matches("^.*[a-z]$"))
+				break;
+		}
+		System.out.println(str2);
+		 
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner("Hello there");;
+		while (s2.hasNext())
+			System.out.print(s2.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloRandomNum{
+	public static void main(String[] args) {
+		Random r = new Random(10);
+		int x = r.nextInt();
+		System.out.print(x);
+		System.out.println(x);
+	}
+}
+ 
+
+import java.lang.Object;
+import java.util.*;
+public class HelloRandomNumLoop{
+	public static void main(String[] args) {
+		Random r2 = new Random(99);
+		do{
+			int x = r2.nextInt(100);
+			System.out.print(x);
+			System.out.println(x);
+		} while (x!=1);
+	}
+}
+ 
+
+import java.lang.Object;
+import java.util.*;
+public class DoubleNum{
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		s.nextInt();
+		int x=s.nextInt();
+		if(x<0||x>100)
+			System.out.println("Not in correct range");
+		else
+			System.out.println((2*x - 2*x)/2);
+	}
+}
+/*
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	public static void main(String[][] args) {
+		String a[] = {"A","a","e","E","i","I","o","O","u","U"};
+        String b[] = {"a","e","i","o","u"};
+        String c[] = new String(a);
+
+        if(a.length == b.length){
+
+            for(int i = 0; i < a.length; i++){
+                if(a[i] == b[i]){
+
+                    c[i] = " ";  
+                }
+            }
+        }
+		for(int i = 0; i < c.length; i++){
+        	System.out.print(c[i]);
+        }		
+	}
+}
+
+ 
+import java.lang.String;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String s1 = "135";
+		String s2 = "7";
+		String s3 = "8";
+		String s = s1 + s2 + s3;
+		String s4 = "C";
+        int a = s.indexOf(s4);
+        int b = s.lastIndexOf(s4);
+        System.out.println(b);
+        System.out.println(a);
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+800802112233445566778899L;
+	}
+}
+<fim_middle>public class HelloIndian{
+	public static void main(String[] args) { 
+		Integer x = 1492;
+		long y = x.longValue();
+	}
+}
+class Integer extends Number implements java.io.Serializable {
+	private static final long serialVersionUID = -3617455986540544835L;
+	private final int value;
+	public int intValue() {
+		return this.value;
+	}
+}
+ 
+class HelloIndian {
+	public static long x = 47L;
+	public static final int A = 883414239L;
+}
+ 
+class HelloIndian {
+	public static void main(String[] args) {
+		long a = 999999;
+	}
+}
+ 
+class HelloIndian {
+	public static void main(String[] args) {
+		long a = 01;
+	}
+}
+ 
+public final class HelloIndian extends GregorianCalendar {
+	public HelloIndian() {
+		 
+	}
+	public long getTime(){
+		long x = new HelloIndian().currentTimeMillis();
+		System.out.println(x);
+		return x;
+	}
+}
+ 
+ 
+public final class ExampleClass implements java.io.Serializable {
+	private static final long serialVersionUID = 8888
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>= 0) {
+			int newY = (int)Math.abs(x) + y;
+			x = ((double)(x*y*z))/(double)(newY*y);
+			y = newY;
+		}
+		System.out.println(x);
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Random r = new Random();
+		int x = r.nextInt()/(r.nextInt());
+		int y = x*x;
+		int z = y*x;
+		while(x > 0 && y >
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>tln(s1));
+		return false;
+	}
+}
+<fim_middle>import java.util.function.Consumer;
+public class HelloIndian2{
+	public static void main(String[] args) {
+ 
+ 
+
+		String str = "Hello world";
+		str = str.toUpperCase();
+		System.out.println(str);
+		
+		List<Character> list = str.chars().mapToObj(character->(char)(character)).collect(Collectors.toList());
+		list.removeIf(a->a=='I');
+		list.add('A');
+		String newstr = String.join(" ", list);
+		System.out.println(newstr + "world");
+		System.out.println(str.toLowerCase()+"WORLD");
+	}
+}
+ 
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class JavaButton extends Application {
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage sc) throws Exception {
+		Alert a= new Alert(Alert.AlertType.NONE);
+		a.setTitle("Alert from Java");
+		a.setHeaderText("This is an example of JavaFX Alert");
+		a.setContentText("This is a simple alert box");
+		a.showAndWait();
+
+		Button b = new Button("Click Me!!");
+		b.setOnAction(e->a.close());
+		Button b2 = new Button("Click Me!!");
+		b2.setOnAction(e->{a.setHeaderText("Header");
+			a.setContentText("This is a simple alert box");
+		});
+		b.setStyle("-fx-border-color: red;"+
+						"-fx-background-color: yellow;"+
+						"-fx-padding: 30;"+
+						"-fx-font: normal bold 30px sans-serif;");
+		b2.setStyle("-fx-border-color: blue;"+
+						"-fx-background-color: yellow
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+5769L;
+	public static void main() {
+		Random ran = new Random();
+		s1 = ran.nextInt(99);
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(12/s1.next());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		GenericMethod gm = new GenericMethod<ArrayList<Scanner>>();
+		gm.processList(new ArrayList<Scanner>(), 61);
+		gm.processList(new ArrayList<Scanner>(), 61l);
+		gm.processList(new ArrayList<Scanner>(), System.in);
+	}
+	class GenericMethod<Class> {
+		void processList(List<Class> l, Object obj) {
+			l.add(obj);
+			for(Object o : l)
+				System.out.println(o.getClass());
+		}
+	}
+}
+ 
+ 
+import java.lang.Exception;
+public abstract class AbstractClass1 {
+	public abstract void m();
+}
+
+public class InnerClass1 {
+	void f1() {
+		try {
+			int i = 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass2 {
+	public abstract void m();
+}
+
+public class InnerClass2 {
+	public InnerClass2(AbstractClass2 abstractClass2) {
+		abstractClass2.m();
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass3 {
+	public abstract void m();
+}
+
+public class InnerClass3 {
+	public InnerClass3(AbstractClass3 abstractClass3) {
+		abstractClass3.m();
+	}
+}
+ 
+import java.lang.Exception;
+public abstract class AbstractClass4 {
+	public abstract void m();
+	void m() {
+		try {
+			m();
+		} catch (Exception e)
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>s Java program*/
+import java.lang.String;
+import java.lang.System;
+import java.util.Scanner;
+public class HelloWorld{
+	public static void main(String[] args) {
+		System.out.println("Hello, World!");
+	}}<fim_middle>import java.util.*;
+public class SayHelloIndian {
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next() + "\n");
+	}
+}
+/* Creating Thi
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>);
+		 
+		 
+		System.out.println("After");
+		p.drive("Right");
+		System.out.println("Before");
+		String str = "\u2306";
+		System.out.println(str);
+		String x = str.toString();
+		boolean a = str.equals(x);
+		System.out.println(a);
+		 
+	}
+}
+ 
+abstract class Book
+{
+	String id;
+	String Author;
+	String Publisher;
+	String Category;
+	int Price;
+	int TotalAmount;
+
+	public Book(String BookName, int Cost, String Publisher)
+	{
+		id = getNewID();
+		Author = "Unknown";
+		this.Publisher = Publisher;
+		Category = "General";
+		Price = Cost;
+		this.TotalAmount = 0;
+	}
+
+	protected int getNewID()
+	{
+		return 5000000;
+	}
+
+	abstract void create(String type, int copies, int totalCopies);
+
+	
+
+	public void sell(int quantity)
+	{
+		if(quantity > 0)
+		{
+			if(quantity < TotalAmount)
+			{
+				System.out.println(quantity + " of Book No "+ id + " sold");
+				TotalAmount -= quantity;
+			}
+			else
+			{
+				int b = quantity - TotalAmount;
+				System.out.println("Only " + TotalAmount + " left of Book No "+id + " sold");
+				TotalAmount = 0;
+				System.out.println(b + " of Book No "+id + " sold");
+			}
+		}
+		else
+		{
+			System.out.print("No book sold");
+		}
+	}
+
+	public void viewAll()
+	{
+		System.out.println("Book Name: " + this.Category);
+		System.out.println("Author of the Book: " + this.Author);
+		System.out.println("Publisher of the Book: " + this.Publisher);
+		System.out.println("Category of the Book: "+ Category);
+		System.
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>	System.out.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndianMutant{
+	public static void main(String[] args) {
+		Scanner s = new Scanner("Hello\nworld");
+		String[] arr = {"Hello"};
+		System.out.println(arr.length);
+		Scanner s1 = new Scanner("hello");
+		System.out.println((s1.hasNext()).toString());
+	
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ean isValid(String id) {
+  return get(id)!= null;
+}
+private String get(String id)     {
+	try {
+		return id;
+	}
+	catch (Exception e) {
+		return null;
+	}
+}
+}
+*/
+<fim_middle>import java.util.*;
+public class HelloBaby{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next().toString().toUpperCase());
+	}
+}
+ 
+ 
+/* Finally, here is a question for you to answer on your own:
+
+What do you have to do when an exception is thrown by your code?
+Use Scanner to read in a string consisting of a single word. 
+The method must then output back the reversed string.
+
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>s java.lang
+import java.util.*;
+import java.lang.String;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+		    System.out.println(s1.next());
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Set s = new HashSet();
+		s.add("A");
+		s.add("A");
+		s.add("B");
+		if(s.contains("A"))
+			System.out.println("Contains ");
+	}
+}
+ 
+import java.lang.Object;  
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+70621 11:34:06 AM
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+public class HelloWorld{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello");
+			System.out.println(s1.next());
+	}
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+2;
+		int sum = 0;
+		for(int i  = 0; i<arr.length; i++) {
+			if( arr[i] % 2 == 0)
+				sum += arr[i];
+			else
+				sum = sum - arr[i];
+		}
+		System.out.println(sum);
+		return;
+	}
+}
+ 
+abstract class Flower{
+	abstract public String name();
+}
+
+class PetalFlower extends Flower{
+	public String name() {
+		return("Petalflower");
+	}
+}
+
+class Rose extends Flower{
+	public String name() {
+		return("Rose");
+	}
+}
+
+class YellowFlower extends Flower{
+	public String name() {
+		return("YellowFlower");
+	}
+}
+
+class NewFlower{
+	Flower f;
+	NewFlower(int r) {
+		Random randomGenerator=new Random();
+		if(r == 0)
+			f = new PetalFlower();
+		else if(r==1)
+			f = new Rose();
+		else if(r==2)
+			f = new YellowFlower();
+	}
+	void printName() {
+		System.out.println("The name of the flower is: "+f.name());
+	}
+}
+
+public class MainFlower{
+	public static void main(String[] args) {
+		Scanner sca = new Scanner(System.in);
+		NewFlower obj[] = new NewFlower[5];
+		int r;
+		System.out.println("enter the integer to generate the specific flower object");
+		r = sca.nextInt();
+		for(int i = 0; i<obj.length;i++) {
+			obj[i] = new NewFlower(r);
+			obj[i].printName();
+		}
+	}
+}
+ 
+import java.lang.reflect.*;
+
+class TestInterface extends InterfaceTest.A {
+	public static void main(String[] args) throws ClassNotFoundException{
+		System.out.println(InterfaceTest.class.getInterfaces()[0].getName()); 
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>		int y = 10;
+		int z = x % y;
+	}
+	public void modulusAssignment(){
+		int x = 8;
+		int y = 10;
+		x %= y;
+	}
+	public void bitwiseAndExpression(){
+		int x = 5, y = 4, z;
+		z = x & y;
+	}
+	public void bitwiseAndAssignment(){
+		int x = 7, y = 8, z;
+		z = (y = (x &= 3));
+	}
+	public static void main(String[] args) {
+		BinaryOperator obj = new BinaryOperator();
+		obj.mod();
+		obj.modulus();
+		obj.modAssign();
+		obj.and();
+		obj.andAssign();
+	}
+}
+ 
+class UnaryOperator{
+	public static void main(String[] args) {
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		System.out.printf("Hello, World!");
+		int x = 5;
+		System.out.println(x++);
+		System.out.println(++x);
+		--x;
+		System.out.println(x);
+	}
+}
+ 
+class TernaryOperator {
+	void ternary(){
+		boolean truth = false;
+		String msg;
+		truth? msg = "This is true" : msg = "This is false";
+		System.out.println(msg);
+	}
+	static void ternary(int x){
+		byte c = (byte) x;
+		System.out.println((c < 10? "Small" : "Big ")+c);
+	}
+	void tAnd(int x, int y) {
+	
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+722.<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		System.out.println("Hello Geeks for Geeks");
+	}
+}
+
+ 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>nceof Object[] && arr[0] instanceof Byte) {
+				return (byte[])arr;
+			}
+
+		}
+
+
+
+
+		int a = 6;
+		Integer b = new Integer(6);
+		Integer c = 6;
+		Integer d = Integer.valueOf(6);
+		int e = 6;
+		Integer f = 1/0;
+		return null;
+
+	}
+
+}<fim_middle>import java.util.*;
+public class HelloModified{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next().toUpperCase());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloOther{
+	public static void main(String[] args) {
+		Integer[] ints = {Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3)};
+		Integer[] sortedInts = Arrays.copyOf(ints, ints.length);
+		System.out.println(Arrays.toString(sortedInts));
+		Arrays.sort(sortedInts);
+		System.out.println(Arrays.toString(sortedInts));
+	}
+}
+ 
+import java.lang.String;
+import java.util.Scanner;
+public class InsertLine{
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		String code1 = "System.out.println(\"Hello, world\");\nint a = 0;\nint b = 10;\nint c = a + b;\nSystem.out.println(c);\n";
+		String code2 = new String(code1);
+		String code3 = new String(code1);
+		System.out.println("Insert line with (1, \"code that was on this line\")");
+		System.out.println("Insert line before line 2 (2, \"code that was on line 2\")");
+		System.out.println("Insert line after line 3 (1, \"code that was on line 3\")");
+	
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ng.parseInt(args[3]);
+			System.out.println(name+", are you between "+lower+" and "+higher);
+			break;
+		case "l":
+			break;
+		default:
+			break;
+		}		
+	}
+}
+ 
+public class HelloIndian{
+	public static void main(String[] args)
+		System.out.println("Hello Indian");
+	void myMethod(){
+		System.out.println("Hi\nIndian");
+		}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String str1 = sc.nextLine();
+		int number = sc.nextInt();
+		int number2 = sc.nextInt();
+		int sum = number + number2;
+		System.out.println(str1);
+		System.out.println(sum);
+		}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String name = args[0];
+		char choice = args[1].toLowerCase();
+		switch(choice){
+		case "d":
+			int day = Integer.parseInt(args[2]);
+			System.out.print(name+", your day of the week is ");
+			switch(day){
+			case 0:
+				System.out.println("sunday");
+				break;
+			case 1:
+				System.out.println("monday");
+				break;
+			case 2:
+				System.out.println("tuesday");
+				break;
+			case 3:
+				System.out.println("wednesday");
+				break;
+			case 4:
+				System.out.println("thursday");
+				break;
+			case 5:
+				System.out.println("friday");
+				break;
+			case 6:
+				System.out.println("saturday");
+				break;
+			default:
+				break;
+			}
+			break;
+		case "v":
+			int lower = Integer.parseInt(args[2]);
+			int higher = Integer.parseInt(args[3]);
+			System.out.println(name+", are you between "+args[2]+" and "+args[3]);
+			break;
+		case "j":
+			lower =
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+ (char c : s1.toCharArray())
+			s2[c+'a'-'@']=true;
+		Scanner s3 = new Scanner("Welcome to Java\n");
+		while(s3.hasNext()) {
+			String word = s3.next().toLowerCase();
+			if (s2[word.charAt(0)]==true)
+				System.out.println(word);
+		}
+	}
+}
+ 
+public class LowercaseAndCapitalize {
+	public static void main(String[] args) {
+		Scanner input= new Scanner(System.in);
+		Scanner wordinput = new Scanner(input.nextLine());
+		String array[] = new String[100];
+		int i = 0;
+		String str = "";
+		while (wordinput.hasNext()) {
+			str = wordinput.next();
+			str = str.toLowerCase();
+			str=Character.toUpperCase(str.charAt(0)) + str.substring(1);
+			array[i]=str;
+			i=i+1;
+		}
+		for (i = 0; i<array.length-1; i++)
+			System.out.println(array[i]);
+		System.out.println(array[i]);
+	}
+}
+ 
+public class ArrayList {
+	public static void main(String[] args) {
+		ArrayList<String> namesList = new ArrayList<String>();
+		namesList.add("Zamith");
+		namesList.add("Othman");
+		namesList.add("Osmani");
+		namesList.add("Mohammed");
+		Iterator itr=namesList.iterator();
+		while(itr.hasNext())
+			System.out.println(itr.next().toString());
+	}
+}
+ 
+public class AppendReverseArrayList {	
+	public static void main(String[] args) {
+		ArrayList myList = new ArrayList();
+		myList.add("Zamith");
+		myList.add("Othman");
+		myList.add("Mohammed");
+		myList.add("Osmani");
+		Iterator itr = myList.descendingIterator();
+		while (itr.hasNext())
+			System.out.println(itr.next().toString());
+	}
+}
+/* Please create a java program that
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+5678)
+	{
+		Scanner scan = new Scanner (System.in);
+		System.out.println("Enter the size of array");
+		int len = scan.nextInt();
+		int a[] = new int[len];
+		for(int i=0;i<len;i++) 
+			a[i] = i;
+		for(int i=0;i<len;i++)
+			System.out.println(a[i]);
+	}
+}<fim_middle>import java.util.*;
+class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s2 = new Scanner("Hello\nworld");
+		while(s2.hasNext())
+		{
+			String word =s2.next();
+			if(word.length()>5)
+				word = "Hi" + word.substring(3);
+			System.out.println(word);
+		}	
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner ("Hello, Indian developers");
+		while(s1.hasNext())
+		{
+			String s2 = s1.next();
+			if(s2.length()>=10)
+				s2 = s2.substring(0,1) + " " + s2.substring(1,6).toLowerCase() + s2.substring(6,s2.length());
+			System.out.println(s2);
+		}
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s4 = new Scanner("ABC123");
+		if(s4.hasNext())
+			System.out.println("Not empty");
+		else
+			System.out.println("Empty");
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s3 = new Scanner("Welcome to IIT Dharwad");
+		String str = s3.next();
+		System.out.println("First character of String:
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>er.append("Java ");
+		buffer.append(25 - i + 1);
+		buffer.append("");
+		
+		System.out.println(buffer);
+	}
+}
+ 
+ 
+import java.util.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		System.out.println(Integer.toString(99+10)+ " % 10: "+ (99+10)%10);
+		System.out.println(Integer.toString(99+1)+ " % 10: "+ (99+1)%10);
+		System.out.println(Integer.toString(99+5)+ " % 10: "+ (99+5)%10);
+		System.out.println(Integer.toString(99+3)+ " % 10: "+ (99+3)%10);
+	}
+}
+ 
+ 
+import java.io.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		Random myRandomGenerator = new Random();
+		for(int i = 0; i < 10; i++){
+			int myRandomNumber = myRandomGenerator.nextInt(101);
+			System.out.println(Double.toString(myRandomNumber/100));
+		}
+	}
+}
+ 
+ 
+import java.lang.Math;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String args[]){
+		Scanner s1 = new Scanner("Hello\nworld");
+		int max = -1;
+		int first;
+		int second;
+		String secondString;
+		int maxIndex = 0;
+		while(s1.hasNext()){
+			first = s1.nextInt();
+			second = s1.nextInt();
+			secondString = s1.next();
+			int current = getDifference(first, second);
+			if (current<=max){
+				max = current;
+				maxIndex = getIndex(max, first, second);
+				if(max==4){
+					if(maxIndex == 0){
+						System.out.println(" " + second);
+					} else {
+						System.
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+1 = s.split("\n");
+		for(String s3 : arr1)
+		{
+			String[] arr2 = s3.split("\\s");
+			
+		}
+	}
+}
+/* 2. The Java SE Platform.
+2.1. Java SE Runtime Environment(JRE)
+2.2. Java Platform, Standard Edition (Java SE)
+2.3. What is Java? Why do we need it?
+Let’s find out.
+A Java program is compiled into a class file(.class). Each class file is then stored within a Java package. 
+The package name may be represented by any hierarchial structure that follows the name convention 'com.samsung.edu.pune.java.javaX', i.e. each package name is seperated by a '.'. 
+The Java package names have no pre-defined set of rules, just a convention for separating individual components of the package.
+The package name of the class must be unique under the same hierarchy. Multiple packages could exist under the same hierarchy if they have a common ancestor package like java.lang, java.util, or java.net.
+The Java compiler accepts files with any of the following suffices: *.java, *.class, and *.javafx. But the recommended suffix is.java.  
+
+The class file is the actual code in a Java program, it contains the entire application code and the bytecode is interpreted by the virtual machine. 
+The bytecode is just the binary equivalent of a machine language written in machine code (i.e. 1s and 0s). It is the responsibility of the virtual machine to interpret and run the bytecode. 
+
+These are the three major parts that constitute the Java SE Platform,
+
+JDK - To compile the application into bytecode, the Java compiler (Java compiler) is used by the JDK, based upon the java source code. The JDK compiles the java files into class files using a predefined set of rules.
+JRE - After the class files are compiled into bytecode, the JRE (Java runtime environment) compiles, loads, and executes the bytecode using a predefined set of rules.
+JVM - The JVM (Java Virtual Machine) is created by the JDK. It is the component responsible for interpreting and executing the bytecode.
+2.4. Differences Between the JRE and the JDK
+The JDK contains both the Java compiler and the JRE. Whereas the JRE contains the JVM, the JDK does not. Both the JDK and the JRE are installed on the computer to make the use of Java programming easier for developers.
+
+The difference between the JRE and JDK has been clear for both programmers and software designers. For example, some
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>t.println(s1.next());
+					System.out.println("Your number is : " + s1.nextInt("Enter number "));
+					System.out.println(s1.nextLine());
+			}
+			catch(Exception e1) {
+					System.out.println(e1);
+			}
+	}
+}
+ 
+import java.util.*;
+class InputValidation{
+	public static void main(String[] args)
+	{
+			System.out.println("Welcome to program");
+			Scanner s1 = new Scanner("2");  
+
+			int x;
+			try{
+				x = s1.nextInt();
+			}
+			catch(Exception x){
+				System.out.println("Invalid Input..Please enter the values only");
+				throw x;
+			}
+	}
+}
+ 
+import java.util.*;
+class Array {
+	public static void main(String[] args)
+	{
+		Scanner s1 = new Scanner(System.in);
+		int[] arr = new int [10];
+		System.out.println("Hello I am an array");
+		System.out.println("Please enter your values one by one");
+		for(int i=0;i<arr.length;i++)
+			try{
+				arr[i] = s1.nextInt();
+			}
+			catch(Exception e1){
+				System.out.println("You have entered the wrong values");
+			}
+
+		for(int i=0;i<arr.length;i++)
+			System.out.println(arr[i]);
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class LeastCommonMultiple{
+	public static void main(String [] args) {
+		int a = 0 ;
+		int b = 0 ;
+		Scanner s1 = new Scanner("Hello\nworld\n41\n85");
+		try{
+			a = s1.nextInt();
+			b = s1.nextInt();
+		}
+		catch(Scanner
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>			System.out.print((char) (s.charAt(i)));
+		}
+	}
+}<fim_middle>import java.util.*;
+public class Indian{
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		String f = s.nextLine();
+		String s1 = f.toLowerCase();
+		System.out.print(s1);
+		for (int i = 0; i < s1.length(); i++) {
+
+[VERBOSE] ========== sample =========
+[VERBOSE] /* The document outlines the Java Platform, Standard Edition (Java SE) and Java Development Kit (JDK). Java SE forms the groundwork for the Java platform and is designed for general-purpose computing. It covers foundational APIs, data transfer, user interface toolkits, logging, security, and more. 
+
+The JDK, which may not be available in all Java SE platform implementations, includes tool-specific functions like system Java compiler, the SunPKCS11 security provider, JMX graphical tool, management interfaces for the JVM, and functionalities for creating run-time images.
+
+Each API comes with a module that starts with either java (in Java SE) or jdk (in JDK). Each module corresponds to a specific function, ranging from data transfer to security to xml processing in Java SE, or from system compiler to networking API in JDK.
+
+A few examples of modules are:
+
+1. java.compiler, which is responsible for the language model, annotation processing, and Java Compiler APIs.
+2. java.desktop, which covers AWT and Swing user interface toolkits, and APIs for accessibility, audio, imaging, printing, and JavaBeans.
+3. jdk.compiler, which looks after the implementation of the system Java compiler and its command line equivalent, javac.
+4. jdk.javadoc, which is responsible for the system documentation tool and its command-line equivalent, javadoc.
+
+The two sections combined provide an in-depth look at the components, functionality, and intricate workings of the Java SE Platform and the JDK. */
+/* Please create a very short program which uses new Java features in a complex way */
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next());
+	}
+}
+/* Please create a mutated program that modifies the previous generation */
+import java.lang.Object;
+
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>;
+import java.io.*;
+public class HelloIndian{
+	public static void main(String[] args) throws IOException {
+		Scanner s1 = new Scanner("Hello\nworld");
+		StringBuilder s2 = new StringBuilder();
+		while(s1.hasNext())
+			s2.append(s1.next());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String str = reader.readLine();
+		FileOutputStream outfile = new FileOutputStream("Textin.txt");
+		outfile.write(str.getBytes());
+		scanner s3 = new scanner(new BufferedInputStream(in));
+		System.out.println(s3.next());
+	}
+}<fim_middle>import java.util.*;
+import java.io.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		StringBuilder s2 = new StringBuilder();
+		while(s1.hasNext())
+			s2.append(s1.next());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String str = reader.readLine();
+		FileOutputStream outfile = new FileOutputStream("Textout.txt");
+		outfile.write(str.getBytes());
+		PrintWriter file = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outfile)));
+		file.println(s2.toString());
+	}
+}
+
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>t(Arrays.toString(c));		
+		}
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.useDelimiter(System.lineSeparator());
+		String temp = "";
+		while(s1.hasNext()) {
+			temp += s1.next() + " ";
+		}
+		System.out.println(temp);
+	}
+}
+ 
+ 
+import java.lang.*;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		s1.nextLine();
+		System.out.println(s1.nextLine());
+	}
+}
+
+ 
+ 
+import java.lang.Object;
+import java.util.regex.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		String line = "Hello\nworld";
+		String[] split_lines = line.split("\n");
+		String output = "";
+		for(String s : split_lines) {
+		    output += s + " ";
+		}
+		System.out.println(output);
+	}
+}
+ 
+import java.lang.*;
+import java.util.regex.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		java.util.regex.Pattern PATTERN = java.util.regex.Pattern.compile("( |\n)");
+		String input_line = "Hello\nworld";
+		String[] split_line = input_line.split(PATTERN.toString());
+		String result = String.join(" ", split_line);
+		System.out.println(result);
+	}
+}
+/* The second type of splitting in the above program uses the substring() method to cut
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+, or even using a new syntax/structure.
+
+In the section, the focus is on two topics:
+
+- Using the enhanced switch feature, which allows you to easily write a complex if-else statement.
+- Using a new type called List that provides an enhanced version of an array. */
+import java.lang.reflect.*;
+import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		int[] a1 = {1,2,3,4,5};
+		List<Integer> a2 = new ArrayList<Integer>();
+		for(int i = 0; i < a1.length; i++)
+			a2.add(a1[i]);
+		System.out.println(a2);
+		ListIterator<Integer> l1 = a2.listIterator();
+		while(l1.hasNext()) {
+			int j = l1.next();
+			if(j < 3) continue;
+			l1.set(j*10);
+			if(j == 3) continue;
+			l1.remove();
+		}
+		System.out.println(a2);
+	}
+}
+<fim_middle>import java.util.*;
+public class HelloIndian{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.next().toUpperCase());
+	}
+}
+/* Using Java SE 5 features
+
+The previous sections introduce readers to the basics of Java language. The next section provides readers information on the new features in Java 5
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>, (Integer)args[1]);  
+		obj.add((Integer)args[0]);  
+		int d = obj.pop(); 
+		System.out.println(d);
+		System.out.println(obj);
+	}
+}
+ 
+import java.lang.Object;
+import java.lang.Integer;
+public class A1
+{
+	public static void main(String[] args)
+	{
+		int a = 100;
+		int b = new Integer(100);
+		Boolean c;
+		c = new Boolean("true");
+		String d = new String("true");
+		System.out.println(a==b);		 
+		System.out.println(a==c.booleanValue());  
+		System.out.println(b==c);		 
+		System.out.println(c==d);		 
+		System.out.println(b==Boolean.parseBoolean(d));  
+	}
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.lang.Integer;
+public class HelloIndian
+{
+	public static void main(String[] args)
+	{
+		List<Integer> list = new ArrayList<Integer>();
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 3\n4, 5");
+		while(s1.hasNext())
+			list.add(s1.nextInt());
+		s1 = new Scanner("1\n2\n1, 2");
+		while(s1.hasNext())
+			list.remove(s1.nextInt());
+		System.out.println(list);
+		s1.close();
+	}
+}
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.lang.Integer;
+public class Mutated
+{
+	public static void main(String[] args)
+	{
+		List<Integer> list = new ArrayList<Integer>();
+		Scanner s1 = new Scanner("1\n1, 2\n1, 2, 
+[VERBOSE] ========== sample =========
+[VERBOSE] ========== sample =========
+[VERBOSE] import java.lang.Object;
+<fim_suffix>ouble total_hours = 0, avg = 0;
+        while(n.hasNextFloat()){
+            count++;
+            total_hours = total_hours + n.nextFloat();
+        }
+        avg = total_hours/count;
+        System.out.println(avg);
+
+    }
+}
+<fim_middle>import java.util.*;
+public class HelloIndian2{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		System.out.println(s1.nextInt());
+		System.out.println(s1.nextLine());
+		System.out.println(s1.nextLine());
+		System.out.println(s1.nextLine());
+	}
+}
+ 
+ 
+import java.lang.Object;
+import java.lang.Math;
+import java.util.*;
+public class HelloIndian3{
+  static Scanner infile = new Scanner(System.in);
+  public static void main(String[] args) {
+      Scanner n = new Scanner("10\n8.5"); 
+      int count = 0;
+      d
+[VERBOSE] ========== sample =========

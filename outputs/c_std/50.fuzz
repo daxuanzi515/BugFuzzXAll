@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <stdio.h>
+int changeValue(int *const num, int newNum) 
+{
+    *num = *num + newNum;
+    return newNum;
+}
+int main()
+{
+    int value = rand() % 100;
+    int val2 = changeValue(&value, 100);
+    printf(value); 
+    return 0;
+}

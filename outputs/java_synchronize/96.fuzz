@@ -1,0 +1,19 @@
+import java.lang.Object;
+public class Deadlock {
+
+    private synchronized void start() {
+        System.out.println(Thread.currentThread().getName() + " calling stop()");
+        stop();
+    }
+    private synchronized void stop() {
+        System.out.println(Thread.currentThread().getName() + " calling start()");
+        start();
+    }
+    private void run() { System.out.println(Thread.currentThread().getName() + " calling run()"); run(); }
+
+    public static void main(String[] args) {
+        Deadlock x = new Deadlock();
+        new Thread(() -> x.run()).start();
+        new Thread(() -> x.start()).start();
+    }
+}}

@@ -1,0 +1,21 @@
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit()
+
+
+with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', qubits=['q0[index]'], body=QuantumCircuit().h('q0[index]')):
+    qc.barrier()
+qc.draw('mpl')
+
+print('-------')
+print('')
+
+
+with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', qubits=['q0[index]'], body=QuantumCircuit().h('q0[index]'), label='outer_barrier'):
+    with qc.for_loop(indexset=[0, 1, 2, 3], loop_parameter='j', body=QuantumCircuit().h(i), label='inner_barrier'):
+        qc.barrier()
+qc.draw('mpl')
+'''
+The QuantumCircuit class in Qiskit now includes control-flow operations such as ForLoopOp, IfElseOp, and WhileLoopOp. These operations can be accessed through methods like QuantumCircuit.for_loop(), QuantumCircuit.if_test(), and QuantumCircuit.while_loop(). These methods are overloaded to return a context manager if the body parameter is not provided. This context manager captures all gate calls and resources used within its scope and builds the relevant operation at the end.
+
+The QuantumCircuit.for_loop() method can be used in two ways. If all arguments are provided (except possibly the label), it creates a ForLoopOp with the given body. If the body, qubits, and clbits are not passed, it acts as a context manager that provides a loop variable and automatically builds a ForLoopOp when the scope finishes. In this case, you don't need to track the qubits or clbits used as the scope handles it.

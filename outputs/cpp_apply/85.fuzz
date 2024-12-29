@@ -1,0 +1,12 @@
+#include <tuple>
+#include <array>
+int main()
+{
+  std::array<int, 2> a{ 1, 2 };
+  std::array<int, 2> b{ 3, 4 };
+  auto t = std::make_tuple(a, b);
+  std::apply([&](auto&...x) {
+    (std::get<0>(x) = std::get<0>(x) + std::get<1>(x),...);
+    }, t);
+  return EXIT_SUCCESS;
+}

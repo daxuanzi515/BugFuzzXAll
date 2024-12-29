@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+class A1 
+{
+  public:
+    A1(long nL, A1& oA1);
+};
+class A2: public virtual A1
+{
+  public:
+    A2(long nL, A1& oA1, A2& oA2);
+};
+class A3 : public virtual A2
+{
+  public:
+    A3(long nL, A1& oA1, A2& oA2, A3& oA3);
+};
+class A4 : public virtual A3
+{
+  public:
+    A4(long nL, A1& oA1, A2& oA2, A3& oA3, A4& oA4);
+};
+class A5 : public virtual A4
+{
+  public:
+    A4(long nL, A1& oA1, A2& oA2, A3& oA3, A4& oA4, A5& oA5);
+};
+class A6 : public A5
+{
+  friend ostream& operator<<(ostream& ostream, const A6& oA6);
+  public:
+    A6(long nL, A6* pA6): n(nL), p(pA6){};
+    A6* to_right() { return p; };
+    A6* to_left() { return p->to_left(); };
+  private:
+    long n;
+    A6* p;
+};
+A6::A6(long nL, A6* pA6): n(nL), p(pA6) 
+{
+  cout << "@@@@" << *this << "\n";
+};
+ostream& operator<<(ostream& ostream, const A6& oA6)
+{
+  ostream << "[<["

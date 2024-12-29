@@ -1,0 +1,57 @@
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw()
+create_circuit()
+from qiskit import QuantumCircuit
+%%writefile quantum_circuit_example.js
+
+
+circuit = QuantumCircuit(1,1)
+circuit.h(0)
+circuit.tdg(0)
+circuit.h(0)
+circuit.rx(0.3,0)
+circuit.rz(0.6,0)
+circuit.cx(0,0)
+circuit.draw()
+circuit.save_statevector()
+circuit.save_unitary()
+circuit.draw()
+circuit.qasm()
+
+from qiskit.test import mock
+
+backend = qiskit.Aer.get_backend("qasm_simulator")
+
+job_exp = execute(circuit, backend=backend, shots=1024)
+
+job_monitor(job_exp)
+
+result_exp = job_exp.result()
+
+result_exp.get_counts(circuit)
+import qiskit
+
+provider = qiskit.IBMQ.enable_account("YOUR API TOKEN")
+provider.backends()
+provider = qiskit.IBMQ.get_provider(hub='ibm-q')
+import qiskit
+from qiskit.test import mock
+sim = qiskit.Aer.get_backend('aer_simulator')
+sim_job = qiskit.execute([circuit]*4, backend=sim, shots=1024)
+
+sim_job.status()
+sim_result  = sim_job.result()
+plot_histogram(sim_result.get_counts())
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(1)
+
+qc.h(0)
+qc.cx(0,0)
+qc.draw()

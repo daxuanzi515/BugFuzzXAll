@@ -1,0 +1,11 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto args = std::make_tuple(42, 13);
+  auto f = [](int, int) { std::cout << "Bar(int, int)" << std::endl; };
+  std::get<0>(args) = 42;
+  std::get<1>(args) = 13;
+  std::apply(f, args);
+  return EXIT_SUCCESS;
+}

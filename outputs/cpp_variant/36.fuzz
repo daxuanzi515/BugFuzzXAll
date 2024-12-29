@@ -1,0 +1,51 @@
+#include <variant>
+<fim_suffix>   {
+            std::cout << "value = " << m.value << "\n";
+            std::cout << "is_specialized = " 
+                    << std::boolalpha << m << "\n";
+        }
+    }
+};
+
+int main() 
+{
+    std::variant<std::monostate, double, std::string> var = 3.14;
+    double_visitor visitor{};
+    visitor(var);
+}
+ 
+ 
+#include <variant>
+#include <iostream>
+
+class double_visitor {
+public:
+    void operator()(std::monostate m) const
+    {
+        std::cout << "Specialized visitor 1" << "\n";
+    }
+    void operator()(double m) const
+    {
+        std::cout << m << "\n";
+    }
+};
+
+struct print{};
+void print_visitor(print&, std::monostate m)
+{
+    std::cout << "Specialized visitor 2" << "\n";
+}
+void print_visitor(print&, double m)
+{
+    std::cout << m << "\n";
+}
+void print_visitor(print&, std::string m)
+{
+    std::cout << "Specialized visitor 3" << "\n";
+}
+
+int main() 
+{
+    std::variant<std::monostate, double, std::string> var = 3.14;
+    double_visitor visitor{};
+   

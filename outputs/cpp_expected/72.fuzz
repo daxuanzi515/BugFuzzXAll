@@ -1,0 +1,98 @@
+#include <expected>
+<fim_suffix> std::cin, "error!");
+
+		std::cout << "Value: " << errOrVal.get() << std::endl;
+	}
+
+	{
+		auto result = getNumber();
+		result
+			.and_then(printNumber)
+			.or_else([]() -> void
+			{
+				std::cout << "An error has occurred!" << std::endl;
+			});
+<fim_middle>
+#include <iostream>
+
+ 
+template<class T>
+using expected = std::expected<T, std::error_code>;
+
+int main()
+{
+	 
+	 
+	int getNumber()
+	{
+		return 5;
+	}
+	bool printNumber(const int num)
+	{
+		std::cout << "You got the number: ";
+		std::cout << num;
+		std::cout << std::endl;
+		return true;
+	}
+
+	bool fail(const int  )
+	{
+		std::cout << "Oops... you shouldn't be allowed to set the number to 3! Bailing!" << std::endl;
+		return false;
+	}
+
+	{
+		int num = getNumber();
+		expected<int> errOrVal = num;
+		if (errOrVal.has_value()) {
+			if (!printNumber(errOrVal.value())) {
+				 
+			}
+		}
+		else {
+			 
+		}
+	}
+
+	{
+		int num = 5;
+
+		expected<int> errOrVal = num;
+		if (errOrVal.has_value()) {
+			if (!printNumber(errOrVal.value())) {
+				errOrVal.emplace(3);
+				 
+			}
+		}
+		else {
+			errOrVal.emplace(3);
+			 
+		}
+	}
+
+	{
+		int num = getNumber();
+
+		expected<int> errOrVal = num;
+		errOrVal = 3;
+
+		if (errOrVal.has_value()) {
+			printNumber(errOrVal.value());
+		}
+		else {
+			 
+		}
+	}
+
+	{
+		std::expected<double, std::error_code> errOrVal;
+		 
+		errorOrIntErrOrErr(numFromStdIn, errOrVal);
+
+		errOrVal.map([](double val)
+		{
+			std::cout << "The new value: " << val << std::endl;
+		});
+		errOrVal.and_then([](double val)
+		{
+			std::cout << "The new value: " << val

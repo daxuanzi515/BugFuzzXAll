@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+struct __union_Data
+{
+    float fval;
+    double dval;
+    char name[80];
+};
+int main()
+{
+    struct __union_Data u1, u2, u3;
+    fread(&u1, sizeof(u1), 1, stdin);
+    fread(&u2, sizeof(u1), 1, stdin);
+    printf("u3.fval : %-21.10g\nu3.dval: %19.17g\nu3.val : %-21.10g\n", u2.fval, u1.dval, u1.fval);
+    return (EXIT_SUCCESS);
+}

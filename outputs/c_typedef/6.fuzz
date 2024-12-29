@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+  int age;
+  char *name;
+} Student;
+
+ 
+int main() {
+    Student st;
+    st.age = 32;
+    st.name = "Albert";
+    printf("Age: %d\n", st.age);
+    printf("Name: %s\n", st.name);
+    return 0;
+}

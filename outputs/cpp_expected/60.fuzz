@@ -1,0 +1,99 @@
+#include <expected>
+<fim_suffix>
+    print(std::string("C++20:"), std::string("hello C++20"));
+
+    std::cout << std::endl;
+
+     
+    int some_int_heap_array[42] = {1};
+
+    auto ptr = std::addressof(some_int_heap_array[42 - 1]);
+
+     
+    std::expected<int*, std::errc> sptr1{
+        ptr,
+        std::errc{}
+    };
+
+    print(sptr1.value(), sptr1.error());
+
+    (*sptr1)++;
+
+    print(sptr1.value(), sptr1.error());
+
+    std::cout << std::endl;
+
+     
+    std::expected<int, std::errc> &&sptr2{
+        std::move(1),
+        std::errc{}
+    };
+
+     
+    {
+        auto sptr3{&sptr2};
+        print(*(sptr3), sptr3.error());
+    }
+
+    print(sptr2.value(), sptr2.error());
+
+    return 0;
+}
+
+template <typename...Args>
+ 
+decltype(auto) print(Args &&...args) {
+     
+    (std::cout <<... << args) << std::endl;
+    return std::forward_as_tuple(std::forward<Args>(args)...);
+}
+
+ 
+enum class errc {
+    successful = 0,
+    invalid_argument = 22,  
+     
+    io_error = 24,
+};
+
+ 
+namespace std {
+    template <>
+    struct hash<errc> {
+      public:
+        size_t operator()(errc k) const {
+            return static_cast<size_t>(k);
+        }
+    };
+}<fim_middle>
+#include <map>
+#include <utility>
+#include <iostream>
+
+template <typename...Args>
+ 
+decltype(auto) print(Args &&...args);
+ 
+
+int main() {
+     
+    std::expected<int, std::errc> sptr1{
+        1,
+        std::errc{}
+    };
+
+    print(sptr1.value(), sptr1.error());
+
+    (*sptr1)++;
+
+    print(sptr1.value(), sptr1.error());
+
+    std::cout << std::endl;
+
+    sptr1 = 2;
+
+    print(sptr1.value(), sptr1.error());
+
+    std::cout << std::endl;
+
+     

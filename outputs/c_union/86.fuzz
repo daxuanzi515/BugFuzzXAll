@@ -1,0 +1,46 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct Point{
+    int x;
+    int y;
+} point;
+
+union Number{
+      int z;
+}t;
+
+int *p;
+int *q;
+
+
+
+int *p1,*p2;
+
+
+main()
+{
+   p = &t;
+   p1 = &point; 
+   
+printf("value at p = %d\n", *p);   
+printf("value at p = %d\n", *p1); 
+
+q = p2;  
+printf("value at q = %d\n", *q);  
+
+
+
+t. z = 0x1234;
+p = &(t. z);
+
+q = p;
+ 
+printf("value at q = %d\n", *q);
+
+
+point. x = 0x12;
+}
+
+
+

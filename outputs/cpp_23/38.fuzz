@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <new>
+#include <optional>
+#include <variant>
+#include <cstddef>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
+#include <thread>
+#include <future>
+#include <mutex>
+#include <shared_mutex>
+
+template<typename Tp>
+    concept Number = std::derived_from<Tp, std::integral>;
+template<typename Tp>
+    concept Arithmetic = std::derived_from<Tp, std::arithmetic>;
+template<typename Tp>
+    concept Streamble = requires(Tp x)
+    {
+        ostream& operator<<(ostream& s, const Tp& x);
+    };
+
+class Data {
+public

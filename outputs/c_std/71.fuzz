@@ -1,0 +1,42 @@
+#include <stdlib.h>
+int main()
+{
+    int val = rand() % 100;
+    int val2 = val/2;
+    int val3 = val + val2;
+    printf("%d",val3); 
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int x,y,z;
+    scanf("%d",&x);
+    scanf("%d",&y);
+    scanf("%d",&z);
+    int w = x/2;
+    int v = y/2;
+    int u = z/2;
+    int n = x+w;
+    int m = y+v;
+    int q = z+u;
+    int temp;
+    if(n>x){
+        temp = n;
+        n = x;
+        x = temp;
+    }
+    if(m>y){
+        temp = m;
+        m = y;
+        y = temp;
+    }
+    if(q>z){
+        temp = q;
+        q = z;
+        z = temp;
+    }
+    printf("%d %d %d",n,m,q);
+    return 0;
+}

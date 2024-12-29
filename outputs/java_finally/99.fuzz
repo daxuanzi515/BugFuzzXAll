@@ -1,0 +1,14 @@
+import java.lang.Object;
+<fim_suffix>    try (InputStreamReader reader = new InputStreamReader(System.in)) {
+            if (reader.read()!= -1)
+            System.out.println("You entered some text, but that's all.");
+        } catch (IOException e) {
+            System.err.println("There was a problem reading your input. Try again.");
+        }
+    }
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally8 {
+    public static void main(String[] args) throws Exception {
+            System.out.print("Please enter some text.");
+        

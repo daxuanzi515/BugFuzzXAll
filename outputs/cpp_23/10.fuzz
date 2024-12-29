@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <limits>
+#include <shared_ptr>
+#include <new>
+#include <optional>
+#include <variant>
+#include <ranges>
+using namespace std;
+struct Employee {
+	 
+	 
+	 
+	 
+	 
+	 
+};
+int main()
+{}

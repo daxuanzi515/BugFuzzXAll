@@ -1,0 +1,24 @@
+import java.lang.Object;
+<fim_suffix>.next()));
+			String a[]={};
+			s.add(a);
+		}
+		while(s.hasNext()) {
+			String[] str = s.next().split("-");
+			int x = Integer.parseInt(str[1]) - a.size();
+			if(x > 0) {
+				for(int i=0;i<x;i++) a.add(" ");
+			}
+			a.set(Integer.parseInt(str[0]),str[2]);
+		}
+		for(String i:a)
+			System.out.println(i);
+	}
+}<fim_middle>import java.util.*;
+public class HelloIndianMutated {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		ArrayList<String> a = new ArrayList<String>();
+		String line;
+		while(!(line = s.nextLine()).equals("\n")) {
+			a.add(String.valueOf(line

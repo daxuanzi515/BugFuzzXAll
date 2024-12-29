@@ -1,0 +1,66 @@
+import java.lang.Object;
+<fim_suffix>	int[] list = new int[] {6, 1, 4, 5, 3, 2};   
+		System.out.println("Original list: ");  
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		System.out.println("Sorted list: ");  
+		Arrays.sort(list);
+		Arrays.stream(list).boxed().forEach(System.out::println);
+		System.out.println("List reversed: ");  
+		for (int i = list.length-1; i >= 0; i--) {
+			System.out.println(list[i]);
+		}
+	}
+}
+
+public final class ArrayDemo {
+
+	public static void main(String[] args) {
+		 
+	}
+
+}
+<fim_middle>import java.util.*;
+public class HelloIndian1{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		while(s1.hasNext())
+			System.out.println(s1.nextLine());
+	}
+}
+ 
+import java.lang.Object;
+import java.util.*;
+public class HelloIndian2{
+	public static void main(String[] args) {
+		Scanner s1 = new Scanner("Hello\nworld");
+		String s = "";
+		int count = 0;
+		do {
+			count = count + 1;
+			s = s + s1.nextLine();
+		} while(count < 5);
+		System.out.println(s);
+	}
+}
+
+/* For your new version, replace the nextLine() method with the following code:
+ 
+String line;
+ 
+While the Scanner object s reads another line of input into line, perform the following operations until the line is empty:
+Increase the counter by 1
+Add line to s.
+End the while loop.
+ 
+Write the program as a single line; this may require changes to one line of code in the body of the main method.
+
+public static void main(String[] args) {
+	Scanner s = new Scanner("Hello\nworld");
+	String s = "";
+	int count = 0;
+	do {
+		++count;
+		s = s + s.nextLine();
+	}  while(count < 5);
+	System.out.println(s);
+}

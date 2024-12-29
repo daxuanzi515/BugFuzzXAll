@@ -1,0 +1,79 @@
+#include <expected>
+1] < 100; ++i) {
+      std::cout << i << std::endl;
+    }
+    return 0;
+  } catch (std::exception const& e) {
+    std::cerr << e.what() << std::endl;
+    return EXIT_FAILURE;
+  }
+}<fim_middle>
+#include <stdexcept>
+
+static std::expected<void, std::exception_ptr> divide(int x, int y) {
+  if (y == 0) {
+    throw std::logic_error{"Division by zero"};
+  }
+  auto quotient = x / y;
+  return quotient;
+}
+
+int main() {
+   
+   
+  try {
+     
+     
+       
+       
+     
+     
+     
+     
+
+    for (int i = 50; i >= 0; ++i) {
+      divide(10, i);
+      std::cout << i << std::endl;
+    }
+
+    for (int i = 1; std::cin >> i && i < 90; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i < -90; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i < 0; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i >= 0; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i > -90; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i < 0 && i >= -90; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i >= 100; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i < 100 && i >= 0; ++i) {
+      std::cout << i << std::endl;
+    }
+     
+
+    for (int i = 1; std::cin >> i && i >= 0 && i >

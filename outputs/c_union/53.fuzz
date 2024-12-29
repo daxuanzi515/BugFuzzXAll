@@ -1,0 +1,76 @@
+#include <stdlib.h>
+#include <stdio.h>
+int f(int n)
+{
+    n = n * 3;
+    return n;
+}
+int main()
+{
+    union 
+    {
+        int (*fun)(int);
+        struct
+        {
+          char c;
+          union
+          {
+            int i;
+            float f;
+          }x;
+        }y;
+    }u1;
+     
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.y.x.i = 100;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.fun = f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    u1.y = (struct 
+            {
+            char c;
+            union
+            {
+                int i;
+                float f;
+            }x;
+    })});
+    printf("value of u1 is %d\n", u1.y.x.i);
+    printf("value of u1 is %d\n", u1.y.x.f);
+    return 0;
+}
+u1.y = (void *) f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+u1.y = f;
+    printf("value of u1 is %d\n", u1.y.x.i);
+    return 0;
+*/
+ 
+ 
+#include <stdlib.h>
+#include <stdio.h>
+struct complex{
+    char c;
+    union{
+        struct {
+            int x;
+            int y;
+        } point;
+        float f;
+    }y1;
+};
+int main()
+{
+    struct complex obj;
+    int *ip = &obj.y1.point.x;
+    float *fp = &obj.y1.f;
+    obj.y1.point.x = 10;
+    obj.y1.point.y = 20;
+
+    obj.y1.f = 3.56;
+    printf("x = %d\n", obj.y1.point.x);
+    printf("y = %d\n", obj.y1.point.y);
+    printf("f = %f\n", obj.y1.f);
+    printf("size of x = %lu\n", sizeof(obj.y1.point.x));
+    printf("size of y = %lu\n", sizeof(obj.y1.point.y));
+    printf("size of f = %lu\n

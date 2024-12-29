@@ -1,0 +1,99 @@
+from qiskit import QuantumCircuit
+
+qr = QuantumRegister(2, 'q')
+crz = ClassicalRegister(2,'res')
+circuit = QuantumCircuit(qr, crz)
+circuit.h([0, 1])
+circuit.cx(0, 1)
+
+qrnew = QuantumRegister(2, 'qnew')
+custom = QuantumCircuit(qrnew)
+custom.barrier([1])
+custom.h(qrnew[0])
+custom.cx(qrnew[0], qrnew[1])
+circuit.switch(
+    2,
+    [qr],
+    { 0 : circuit, 1 : custom }
+)
+circuit.draw(output='mpl', scale=0.7, justify='center')
+
+
+
+from qiskit.circuit import Qubit
+from qiskit.opflow import Z, I
+from qiskit.circuit.library.standard_gates import CXGate, HGate
+from qiskit.circuit.library.standard_gates import XGate
+from qiskit.compiler import transpile
+from qiskit.converters import circuit_to_dag
+from qiskit.converters import dag_to_circuit
+from qiskit.dagcircuit import DAGCircuit
+from qiskit.extensions.simulator_unitary import get_unitary
+from qiskit.extensions.unitary_simulator import UnitarySimulatorPy
+
+
+qr = QuantumRegister(3, 'q')
+cr = ClassicalRegister(3,'res')
+circuit1 = QuantumCircuit(qr, cr)
+circuit1.h(qr)
+circuit1.s(qr[1])
+circuit1.cx(qr[0], qr[1])
+circuit1.x(qr[2])
+circuit1.draw()
+
+
+ucircuit = transpile(
+    circuit1,
+    backend=UnitarySimulatorPy(),
+)
+
+unitary = get_unitary(ucircuit)
+unitary_map = ucircuit.property_set['unitary_map']
+
+
+dag = circuit_to_dag(circuit1)
+switch_case_op = dag.switch(
+    [Qubit(q) for q in (0, 1, 2)],
+    [Z, None, I],
+    [
+        None,
+        DAGCircuit(dag.basis.to_instruction().definition),
+        DAGCircuit(dag.basis.to_instruction().definition),
+    ],
+    [Z, None, None],
+)
+
+
+circuit2 = dag_to_circuit(switch_case_op, circuit_factory=CXGate,
+                          basis=ucircuit.basis, unitary_map=unitary_map)
+circuit2_unitary = get_unitary(circuit2)
+circuit2_unitary
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

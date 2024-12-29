@@ -1,0 +1,8 @@
+#include <tuple>
+#include <iostream>
+int main()
+{
+  auto tuple = std::make_tuple(99L);
+  std::apply([](auto& x) { std::cout << x << '\n'; }, tuple);
+  return EXIT_SUCCESS;
+}

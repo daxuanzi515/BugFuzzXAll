@@ -1,0 +1,39 @@
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava3{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("someFile.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("someOtherFile.txt"));
+            }
+        }
+        finally{
+            in = new BufferedReader(new FileReader("anotherFile.txt"));
+        }
+    }
+}
+ 
+import java.lang.Object;
+import java.lang.String;
+import java.io.*;
+public class FinallyJava4{
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = new BufferedReader(new FileReader("anotherFile.txt"));
+        try{
+            String line;
+            while((line = in.readLine())!= null){
+                System.out.println(line);
+                in = new BufferedReader(new FileReader("yetAnotherFile.txt"));
+            }
+        }
+        finally{
+             
+             
+            System.gc();
+        }
+    }
+}

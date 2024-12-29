@@ -1,0 +1,116 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+  pass
+  
+class Gate(LinearFunction): 
+  pass
+  
+def create_circuit(f, initial_input): 
+  size = len(f)
+  input_labels = qubit_labels(size)
+  qc = QuantumCircuit(size,size)
+  i = initial_input 
+  for j in input_labels: 
+    if i & 1: 
+      qc.x(j)
+    i >>= 1
+    
+  
+  
+def input_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+
+
+def qubit_labels(n): 
+  labels = [] 
+  for j in range(n): 
+    labels.append(str(j))
+  return labels 
+  
+  
+def create_gate(matrix): 
+  g = Gate(None) 
+  return g 
+
+
+def add_gate(circuit, gate, qubits, params): 
+  pass 
+
+
+
+from qiskit import QuantumCircuit
+
+
+class LinearFunction(object): 
+  pass
+  
+class Gate(LinearFunction): 
+  pass
+  
+ 
+class Grover(Gate): 
+  pass
+  
+class QFT(Gate): 
+  pass
+  
+ 
+class RX(Gate): 
+  pass
+class RY(Gate): 
+  pass
+ 
+class CCRX(Gate): 
+  pass
+
+
+def test_create_circuit(self): 
+	
+	
+	pass 
+
+def test_create_gate(self): 
+	
+	
+	 test_create_gate 
+	 pass 
+	
+def test_add_gate(self): 
+	
+	
+	
+	pass 
+	
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

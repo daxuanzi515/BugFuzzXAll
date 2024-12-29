@@ -1,0 +1,14 @@
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct {
+        int age;
+        char *name;                  
+} Student;
+
+int main()
+{
+  Student *student;              
+  Student person;                
+  student = &person;             
+  return 0;                     
+}

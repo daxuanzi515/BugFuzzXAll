@@ -1,0 +1,55 @@
+from qiskit import QuantumCircuit
+
+def create_circuit():
+    circuit = QuantumCircuit(1)
+    circuit.h(0)
+    circuit.draw()
+
+create_circuit()
+def create_custom_bell():
+    circuit = QuantumCircuit(2)
+    circuit.h(0)
+    circuit.cx(0, 1)
+    circuit.draw()
+create_custom_bell()
+def create_complex(bell_circuits):
+    create_circuit()
+    bell_circuits.append(circuit)
+    print(bell_circuits)
+bell_circuits = []
+create_complex(bell_circuits)
+def create_custom_and_bell():
+    circuit1 = QuantumCircuit(1)
+    circuit1.h(0)
+    circuit1.draw()
+    circuit2 = QuantumCircuit(2)
+    circuit2.h(0)
+    circuit2.cx(0, 1)
+    circuit2.draw()
+    custom_bell = circuit1+circuit2
+    custom_bell.draw()
+create_custom_and_bell()<jupyter_output><empty_output><jupyter_text>Custom Operators and Quantum Circuits in Qiskit<jupyter_code>
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit import execute 
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)
+circuit = QuantumCircuit(qr, cr)
+circuit.draw()
+from qiskit.providers.aer import StatevectorSimulator
+
+backend = StatevectorSimulator(method='density_matrix') 
+circuit = QuantumCircuit(4)
+circuit.h(range(4))
+circuit.draw()
+job = execute(circuit, backend)
+result = job.result()
+result.get_statevector(circuit)
+
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit.circuit import ClassicalRegister
+from qiskit.circuit import QuantumRegister
+from qiskit.circuit import QuantumCircuit
+from qiskit.circuit.library.standard_gates import CXGate
+
+qr = QuantumRegister(2)
+cr = ClassicalRegister(2)

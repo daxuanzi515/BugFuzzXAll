@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+
+int main(int argc, char const *argv[])
+{
+   for (; argc > 1;)
+   {
+      argc--;
+      if (argv[argc] == "something")
+      {
+         argc--;
+         std::vector<char> a{};
+         for (char const *c = argv[argc]; *c!= '\0';)
+         {
+            a.push_back(*c++);
+         }
+         std::string f{};
+         for (char const &c : a)
+         {
+            f.push_back(c);
+         }
+         for (char const &c : f)
+         {
+            if (c == "s" && f == "some")
+            {
+               std::cout << "first" << '\n';
+               break;
+            }
+         }
+         std::cout << f << '\n';
+         break;
+      }
+   }
+}

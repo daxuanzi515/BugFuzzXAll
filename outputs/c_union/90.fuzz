@@ -1,0 +1,27 @@
+#include <stdlib.h>
+<fim_suffix>xit(0);
+}
+<fim_middle>#include <stdio.h>
+#define size 10
+typedef	struct _Array {
+	int numbers [size];
+	unsigned int count;
+} Array;
+main ()
+{
+	int i;
+	char *ptrstring;
+	Array array;
+	ptrstring=malloc(30*sizeof(char));
+	printf ( "\n%d - Enter numbers \n",getpid());
+	for (i=0;i<size;i++) {
+		scanf ("%d",&array. numbers[i]);
+		array. count +=array. numbers[i];
+	}
+	array. count -= (array. numbers [size -1]);
+	for (i=0;i<size;i++) {
+		printf ("Elements in %d array %d\n", getpid(),array. numbers[i]);
+	}
+	printf ("Count of all values %d\n",array. count);
+	free ( ptrstring);
+	e

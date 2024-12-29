@@ -1,0 +1,62 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import Gate
+
+
+def is_permutation(wlist):
+    
+    
+        
+class LinearFunction(Gate):
+    
+    
+
+    def __init__(self, w_list, name=None, label=None):
+        super().__init__("linear", num_qubits=int(len(w_list) / 4.0) + 1, params=[w_list])
+        self.label = label
+        self.w_list = [float(w) for w in w_list]
+        self.num_bits = 0
+        
+        
+        for w in w_list:
+            bit_count = 0
+            while w!= 0.0:
+                bit_count += int(w % 2)
+                w = w//2
+                
+            if bit_count > self.num_bits: 
+                self.num_bits = bit_count
+                
+        self.num_qubits = int(len(w_list) / 4.0) + 1
+        self.circuit = QuantumCircuit(self.num_qubits)
+
+    def __call__(self, circuit, registers, label=None):
+        
+        
+        
+        
+        
+        
+        params = self.get_params(circuit, registers)
+         
+        
+        current_gate = Gate(self.name, self.num_qubits, params = params)
+        return circuit.append(current_gate,[register[0] for register in zip(circuit.qubits, registers)])
+    
+    def get_params(self, circuit, registers):
+        
+        params = []
+
+        
+        for qubit, register in zip(circuit.qubits,registers):
+            if len(register) > 0:
+                params.append(self.w_list[self.get_param_index_for_wire(qubit, register) - 1])
+            elif len(register) == 0 and qubit not in circuit.clbits:
+                params.append(2**(self.num_bits - 1))
+        return params
+
+
+    def synthesize(self):
+        self.synth()
+        
+    def synth(self):

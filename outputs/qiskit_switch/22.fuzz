@@ -1,0 +1,89 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit import SwitchCaseOp
+from qiskit.circuit.library.standard_gates import HGate
+qc = QuantumCircuit(2, 2)
+op = QuantumCircuit(2, 2)
+
+op.h(0)
+op.cswap(1, 0, 1)
+
+scop = SwitchCaseOp(input=0, cases=[(0, op)])
+scop.validate_foldable() 
+
+qc.h(0)
+qc.append(scop, [0, 1]) 
+qc.h(1)
+
+
+from qiskit_metal.qlibrary.qubits import TransmonConcentrator
+qubit1 = TransmonConcentrator('Q1')
+qubit2 = TransmonConcentrator('Q2')
+
+
+qr = QuantumRegister(2, 'qubit')
+cr = ClassicalRegister(2, 'control')
+qc2 = QuantumCircuit(qr, cr)
+
+
+qc2.ch(qr[0],qr[1]).c_if(cr, 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+case0 = QuantumCircuit(qr, cr)
+case0.x(qr[1])
+case0.ccx(qr[0],qr[1],qr[0]).c_if(cr[1], 1)
+
+
+
+case1 = QuantumCircuit(qr, cr)
+case1.ccx(qr[0],qr[1],qr[0]).c_if(cr[1], 0)
+
+qc2.append(case0.to_instruction(), [qr[i] for i in range(2)], cr[:])
+qc2.append(case1.to_instruction(), [qr[i] for i in range(2)], cr[:])
+qc2.append(case1.to_instruction(), [qr[i] for i in range(2)], cr[1:])
+
+qc22 = QuantumCircuit(3,2)
+qc22.ch(0,2)
+qc22.cx(1,2)
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

@@ -1,0 +1,24 @@
+#include <expected>
+<fim_suffix>std::cout << v << std::endl;
+    
+    auto res = func();
+    if(res)
+    {
+        auto valueToProcess = res.value();
+        valueToProcess++;
+    }
+    else
+    {
+         
+    }
+
+    return 0;
+}<fim_middle>
+#include <iostream>
+int main()
+{
+    auto func = []() -> auto { return std::make_expected<int, std::error_code>(10); };
+
+     
+
+    

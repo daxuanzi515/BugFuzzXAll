@@ -1,0 +1,38 @@
+#include <variant>
+  void print() const { 
+        std::cout << "The variant has the value " << v.d << "\n";
+    }
+};
+*/  
+int main() 
+{
+     
+    std::variant<int, float, double> data;
+    data = 10;  
+     
+    data = 32.24f;  
+     
+    data = 0.0;  
+     
+    data = 234;  
+    if (data.index() >= 0)
+        std::cout << "The variant stores an integer (" << std::get<0>(data) << ")\n";
+    if (data.index() == 1)
+        std::cout << "The variant stores a floating-point number (" << std::get<1>(data) << ")\n";
+    if (data.index() == 2)
+        std::cout << "The variant stores a double number (" << std::get<2>(data) << ")\n";
+    auto v = std::get_if<float>(&data);
+    if (v)
+        std::cout << "The variant stores a floating-point number (" << *v << ")\n";
+}
+
+
+ 
+#include <variant>
+#include <iostream>
+struct V {
+    int i;
+    float f;
+    double d;
+    void print() const { 
+        std::cout

@@ -1,0 +1,58 @@
+from qiskit import QuantumCircuit
+
+class LinearFunction(object): 
+	def __init__(self, function): 
+		self.function = function
+
+class Gate(LinearFunction): 
+	def __init__(self, params, function, num_qubits): 
+		self.params = {'theta': float(theta)} 
+		self.function = function
+		self.num_qubits = int(num_qubits)
+		self.matrix = self._get_matrix()
+		self.qasm = self._get_qasm()
+
+	def _get_matrix(self):
+		
+		return self.function(1024)
+		
+	def _get_qasm(self):
+		pass
+		
+if __name__ == '__main__':
+	
+	def is_permutation(a, b):
+		
+		for i in range(min(a,b), max(a, b) + 1):
+			
+			if ((a_copy := i if a > b else j) == (b_copy := self.function.function.params['j'])):
+				return True
+			j += 1
+
+	
+	list_to_permute = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+	list_permutations_of_list = []
+	for i in range(len(list_to_permute)):
+		list_permutations_of_list_.append(self.function.gen_permutations_n_qubit(i, list_to_permute))
+	
+
+	def test_linear_function():
+		
+		j = 1
+		result = 0
+		for i in range(0, 1024, 2):
+			result += j
+			j += 1
+		return not result
+
+	def test_gate():
+		
+
+	
+	def apply_swaps(theta, qc, list_permutations_of_list):
+		for i, permutation in enumerate(list_permutations_of_list):
+			if i % 2!= 0:
+				qc.swap(a,b)
+
+	def add_cx_gates(theta, qc, list_permutations_of_list):
+		for permutation in list_permutations_of_list:

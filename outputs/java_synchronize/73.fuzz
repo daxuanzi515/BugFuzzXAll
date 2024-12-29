@@ -1,0 +1,14 @@
+import java.lang.Object;
+class Sample {
+    synchronized void doSomething1() {
+        synchronized(this) {
+            System.out.println(System.identityHashCode(this) + ": doSomething1()");
+        }
+    }
+}
+public class SynchTest2 {
+    public static void main(String [] args) {
+        Sample s = new Sample();
+        s.doSomething1();
+    }
+}

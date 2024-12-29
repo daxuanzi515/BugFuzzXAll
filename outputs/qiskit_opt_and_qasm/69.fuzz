@@ -1,0 +1,24 @@
+from qiskit import QuantumCircuit
+
+
+def create_circuit():
+    circuit = QuantumCircuit(2)
+    circuit.reset(range(2))
+    circuit.rx(0.3, 0)
+    circuit.ry(0.3, 1)
+    circuit.draw() 
+    circuit_bell = {"count": counts_dict, "circuit_obj": circuit}
+    return circuit
+
+def run_circuit():
+    result = circuit.run(shots=1024).result() 
+    counts_dict = result.get_counts()
+    return counts_dict 
+circuit_bell['count']
+%matplotlib inline  
+circuit = create_circuit()
+counts_dict = run_circuit()
+
+circuit.draw()
+
+print("Observations: \n", counts_dict)<jupyter_output>Observations: 

@@ -1,0 +1,58 @@
+#include <variant>
+<fim_suffix>}
+    size_t index;
+};
+#include <iostream>
+
+struct C
+{
+    C(int val) :val{ val }
+    {
+        std::cout << "constructed\n";
+    }
+    C(const C &)
+    {
+        std::cout << "copy constructed\n";
+    }
+    ~C()
+    {
+        std::cout << "destructed\n";
+    }
+    int* val;
+};
+
+int main() {
+    variant<std::monostate, int, double, C> v;
+    std::vector<C> vec_;
+    vec_.reserve(10);
+    for(int i = 0; i < 10; ++i) {
+        vec_.push_back(C{ i });
+    }
+    
+    v = 2.0;
+    v.emplace<C>(5);
+    
+    for (auto& ref : vec_) {
+        *ref.val += 100;
+    }
+    
+    return 0;
+}
+ 
+ <fim_middle>#include <iostream>
+
+struct V {
+    int i;
+    float f;
+    double d;
+};
+V create() {
+    V v = {10, 0.0f, 0.0};
+    v.f = 32.24f;
+    return v;
+}
+int main() {
+    std::variant<int, float, double> var = 32.24f;
+    std::cout << std::get<float>(var);
+}
+/* The function visit from the <variant> header file was one of the C

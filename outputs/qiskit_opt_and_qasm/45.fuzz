@@ -1,0 +1,11 @@
+from qiskit import QuantumCircuit
+
+import qiskit.providers.aer as aer<jupyter_output><empty_output><jupyter_text>**The final output of your program should be the following dictionary:****counts = {'00': 497, '11': 503}**<jupyter_code>from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+
+circuit = QuantumCircuit(2, 2)
+circuit.reset(range(2))
+circuit.h(0)
+circuit.h(1)
+circuit.measure_all()
+
+counts_dict = {}

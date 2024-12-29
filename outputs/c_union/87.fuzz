@@ -1,0 +1,53 @@
+#include <stdlib.h>
+#include <stdio.h>
+struct Point{
+    int x;
+    int y;
+};
+struct Point *q;
+main()
+{
+   struct Point point;
+   struct Point *p;
+   point.x=0x01234565;
+   point.y=0xabcd;
+   p = &point;
+   q = p ;
+   q->x=0xef123456;
+   printf("the pointer's x is %d \n ", (*p).x);
+   printf("the value of the point struct is %d\n", (*p).y);
+      
+   printf("the x is %d \n ", (*q).x);
+   printf("the y is %d\n", (*q).y);
+   }
+
+ 
+#include <stdio.h>
+
+#include <stdlib.h>
+
+typedef struct{
+int x;
+int y;
+char *name;
+}Test;
+int main()
+{
+Test *q;
+int z=42;
+q=&z;
+*q=50;
+printf(" * q = %d * &z=%u", *q, *&z);
+return 0;
+
+}
+
+int main()
+{
+Test a;
+Test *q;
+q=&a;
+*q=50;
+printf(" * q = %d", *q);
+return 0;
+}

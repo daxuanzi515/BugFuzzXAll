@@ -1,0 +1,47 @@
+#include <variant>
+<fim_suffix>< "The variant has the value " << v.d << "\n"; 
+ 
+    std::visit(print_lambda, v);  
+}
+<fim_middle>#include <iostream>
+struct V {
+    template <typename T>
+    T& get() 
+    {
+        if constexpr(std::is_same_v<T, int>)
+            return i;
+        if constexpr(std::is_same_v<T, bool>)
+            return b; 
+        if constexpr(std::is_same_v<T, char>)
+            return c;
+        if constexpr(std::is_same_v<T, float>)
+            return f;
+        if constexpr(std::is_same_v<T, double>)
+            return d;
+         
+    }
+    template <typename T>
+    void print_visitor() {
+            std::cout << "The variant has the value " << get<double>() << "\n";
+    }
+    V() : i(0), b(false), c('x'), f(3.14f), d(123) {}
+    union {
+        int i;
+        bool b;
+        char c;
+        float f;
+        double d;
+    };
+};
+
+int main()
+{
+    V v;
+    v.d = 666;
+
+    auto print_lambda = [](auto& v) 
+    {
+        v.print();
+    };
+
+    std::cout <

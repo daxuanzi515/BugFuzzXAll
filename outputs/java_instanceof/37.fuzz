@@ -1,0 +1,9 @@
+import java.lang.Object;
+import java.lang.Integer;
+class Main {
+	public static void main(String... args) {
+		Integer a = 1;
+		Object b = 2;
+        System.out.println(a instanceof Integer? a : b);
+	}
+}

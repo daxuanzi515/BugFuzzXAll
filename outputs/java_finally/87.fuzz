@@ -1,0 +1,93 @@
+import java.lang.Object;
+ if (System.nanoTime() % 5000000 < 200) {
+                try {
+                    throw new NullPointerException("This exception will be caught");
+                } finally {
+                    System.out.println("Finally block executed");
+                }
+            } else {
+                System.out.print(".");
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Caught the exception");
+    }
+
+}
+}<fim_middle>import java.lang.System;
+import java.io.*;
+public class SFinally5 {
+    public static void main(String[] args) throws Exception {
+        PrintWriter printWriter= new PrintWriter("src/myData.txt");
+        printWriter.append("Added some data\n");
+        FileWriter fileWriter =new FileWriter("src/myData.txt");
+        try ( printWriter;fileWriter ) {
+            System.out.println("This line will not be printed");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Re-thrown with a better message.");
+        } finally {
+            System.out.println("Finally block executed, resource is closed");
+        }
+    }
+}
+/* What’s the difference between the following implementations?
+A)
+public class SFinally5 {
+    public int divide(int x, int y) {
+        try {
+            int z = x / y;
+            return z;
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+            return 0;
+        }
+    }
+} 
+
+C)
+public class SFinally5 {
+    public void divide() throws Exception {
+        int x = Integer.parseInt(System.console().readLine());
+        int y = Integer.parseInt(System.console().readLine());
+        int z = 0;
+        if (y == 0) {
+            throw new Exception("Invalid value");
+        } else {
+            z = x / y;
+            }
+        } 
+        System.out.println("Result: " + z);
+    } 
+}
+
+D)
+public class SFinally5 {
+    int divide(){
+        try{
+            int x = Integer.parseInt(System.console().readLine());
+            int y = Integer.parseInt(System.console().readLine());
+            return (x/y);
+        } catch (Exception e){
+            System.out.println("Invalid input : " + e.getMessage());
+            return 0;
+        } 
+    }
+} 
+
+E)  public class SFinally5 {
+    public int divide() throws Exception {
+        int z = 0, x, y;
+        try {
+            x = Integer.parseInt(System.console().readLine());
+            y = Integer.parseInt(System.console().readLine());
+            z = x / y;
+        } finally {
+        }
+        return z;
+    } 
+}
+
+F)  public class SFinally5 {
+    public static int divide() throws Exception {
+        int z = 0, x, y

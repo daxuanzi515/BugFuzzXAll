@@ -1,0 +1,71 @@
+from qiskit import QuantumCircuit
+
+from qiskit.circuit.library import PhaseOracle, ZZFeatureMap
+from numpy import pi as π, array
+
+
+state = array([1, 1, 0, 1, 1, 1, 0, 0, 1, 0])
+
+
+oracle = PhaseOracle(state)
+
+
+initial_state = QuantumCircuit(8)
+initial_state.append(oracle, range(8))
+
+zz_map = ZZFeatureMap(feature_dimension=3, reps=1)
+
+
+circuit = QuantumCircuit(10, 10)
+
+
+
+with circuit.for_loop(0, indexset=range(3), loop_parameter="i"):
+    circuit.append(zz_map, circuit.qubits)
+
+
+
+with circuit.for_loop(1, loop_parameter="i"):
+    circuit.cz(2, 9)
+
+
+with circuit.for_loop(2, loop_parameter="item"):
+    circuit.h([2, 8])
+
+
+with circuit.for_loop(
+    3, indexset=range(3), loop_parameter=["i", "j"], condition="i < j"
+):
+    circuit.x([3, 8])
+    circuit.y([3, 8])
+    
+circuit.draw()
+
+
+# ==================== ORACLE ====================
+from qiskit.compiler import transpile
+from qiskit import QuantumCircuit
+class CustomFuzzAllException(Exception):
+    pass
+# get any the global variables (including the circuits)
+global_vars = list(globals().keys())
+# keep all those that are QuantumCircuit
+circuits = [
+    globals()[var] for var in global_vars
+    if isinstance(globals()[var], QuantumCircuit)
+]
+try:
+    # transpile them
+    for circuit in circuits:
+        for lvl in range(0, 4):
+            res = transpile(circuit, optimization_level=lvl)
+            # print(f"Optimization level {lvl} for circuit {circuit.name}")
+            # print(res.draw())
+
+    # conert them to qasm and back
+    for circuit in circuits:
+        # print(f"Converting to qasm and back for circuit {circuit.name}")
+        QuantumCircuit().from_qasm_str(circuit.qasm())
+except Exception as e:
+    raise CustomFuzzAllException(e)
+# ==================== ORACLE ====================

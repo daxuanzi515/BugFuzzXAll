@@ -1,0 +1,31 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+ 
+
+union Data {
+	size_t size_of_data_type;
+	void *p;
+	int i;
+};
+ 
+
+union Data u;
+ 
+
+u.size_of_data_type = "long";
+u.p = 0x1;
+
+printf("^U1.i -- %p\n", &u.i);
+printf("^U1 -- %p\n", &u);
+printf("U1.p: %p\n", u.p);
+u.i = 0x1234;
+printf("U1.i: %d\n", u.i);
+u.p = 0x5678;
+printf("U1.p: %p\n", u.p);
+u.size_of_data_type = "short";
+u.p = 0x1234;
+printf("U1.p: %p\n", u.p);
+u.i = 0x5678;
+printf("U1.i: %d\n", u.i);
+return (EXIT_SUCCESS);

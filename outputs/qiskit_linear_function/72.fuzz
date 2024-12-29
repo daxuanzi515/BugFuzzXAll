@@ -1,0 +1,46 @@
+from qiskit import QuantumCircuit
+
+
+class Gate(object):
+  def __init__():
+    self.gate = qiskit gate object
+    self.qubit = qubit number(integer)
+    self.parameter = list(float)
+    pass
+  def toCircuit():
+  
+  def addParameter(list):
+  
+  def toQiskitGate():
+    return QuantumCircuit([customGate])
+  
+  def setCondition():
+
+  def getCondition():
+
+  def createControlled():
+  
+  def inverse():
+  
+  def compose():
+  
+  def getParameter():
+  
+  def getLabel():
+  
+  def getSubInstructions():
+  
+  def isUnitary():
+  
+  def repeat():
+  
+  def reverse():
+  
+  def equals():
+  
+  def toOpenQasm():
+
+  def softEquals():
+  
+
+
