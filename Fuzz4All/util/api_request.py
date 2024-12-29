@@ -1,11 +1,10 @@
 import os
 import signal
 import time
-
 import openai
+from openai import OpenAI
 
-openai.api_key = os.environ.get("OPENAI_API_KEY", "dummy")
-client = openai.OpenAI()
+client = OpenAI(api_key="api_key", base_url="https://openkey.cloud/v1")
 
 
 def create_openai_config(

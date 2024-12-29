@@ -42,13 +42,12 @@ def make_target_with_config(config_dict: Dict[str, Any]) -> Target:
         "bs": llm.get("batch_size", 1),
         "temperature": llm.get("temperature", 1.0),
         "device": llm.get("device", "cuda"),
-        "model_name": llm.get("model_name", "bigcode/starcoder"),
-        "max_length": llm.get("max_length", 1024),
+        "model_name": llm.get("model_name", "bigcode/starcoderbase"),
+        "max_length": llm.get("max_length", 512),
         "use_hw": fuzzing.get("use_hand_written_prompt", False),
         "no_input_prompt": fuzzing.get("no_input_prompt", False),
         "prompt_strategy": fuzzing.get("prompt_strategy", 0),
         "level": fuzzing.get("log_level", 0),
-        # "models_path": llm.get("models_path", "/root/.cache/huggingface"), 
         # compatibility conversion
         # signalling the target to use the config file
         "template": "fuzzing_with_config_file",

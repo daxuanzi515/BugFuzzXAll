@@ -1,6 +1,6 @@
 import os
 from typing import Any, Dict, List, Optional, Tuple, Union
-import bitsandbytes as bnb
+
 import torch
 from transformers import (
     AutoModelForCausalLM,
@@ -8,10 +8,10 @@ from transformers import (
     StoppingCriteria,
     StoppingCriteriaList,
 )
+from transformers import BitsAndBytesConfig
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"  # disable warning
 EOF_STRINGS = ["<|endoftext|>", "###"]
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
 class EndOfFunctionCriteria(StoppingCriteria):
@@ -57,7 +57,11 @@ class StarCoder:
     def __init__(
         self, model_name: str, device: str, eos: List, max_length: int
     ) -> None:
-        checkpoint = model_name
+        # checkpoint = model_name
+        # checkpoint = "/home/cxx/starcoderbase"
+        checkpoint = "/home/cxx/.cache/huggingface/hub/models--bigcode--starcoderbase/snapshots/88ec5781ad071a9d9e925cd28f327dea22eb5188"
+        # ds = os.listdir(checkpoint)
+        # print(f'files {ds}')
         self.device = device
         self.tokenizer = AutoTokenizer.from_pretrained(
             checkpoint,
@@ -66,26 +70,32 @@ class StarCoder:
         #     AutoModelForCausalLM.from_pretrained(
         #         checkpoint,
         #     )
-        #     .to(torch.bfloat16)
-        #     .to(device)
+        #     .to(device).to(torch.bfloat16)
         # )
 
-        self.model = (
-            AutoModelForCausalLM.from_pretrained(
-                checkpoint,
-                load_in_8bit=True,      # 使用8-bit 量化
-                device_map="auto"       # 自动分配设备，防止单一GPU显存不足
-            )
+        # it can work but slow
+        quantization_config = BitsAndBytesConfig(
+            load_in_8bit=True,  # 启用 8-bit 量化
+            llm_int8_threshold=6.0  # 你可以根据需要调整阈值
         )
+
+        # 加载模型时传递 quantization_config
+        self.model = AutoModelForCausalLM.from_pretrained(
+            checkpoint,
+            quantization_config=quantization_config,
+            device_map="auto"
+        )
+
+        print(self.model)
         self.eos = EOF_STRINGS + eos
         self.max_length = max_length
         self.prefix_token = "<fim_prefix>"
         self.suffix_token = "<fim_suffix><fim_middle>"
         self.skip_special_tokens = False
+        
 
     @torch.inference_mode()
     def generate(
-        # self, prompt, batch_size=10, temperature=1.0, max_length=512
         self, prompt, batch_size=1, temperature=1.0, max_length=512
     ) -> List[str]:
         input_str = self.prefix_token + prompt + self.suffix_token
@@ -157,5 +167,4 @@ def make_model(eos: List, model_name: str, device: str, max_length: int):
 
     print(f"model_obj (class name): {model_obj_class_name}")
     print("====================")
-
     return model_obj
