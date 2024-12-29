@@ -8,7 +8,7 @@ fuzzing:
   # number of fuzzing iterations
   num: 100
   # total fuzzing time in hours
-  total_time: 1
+  total_time: 24
   # level of logging: 1 = INFO, 2 = TRACE, 3 = VERBOSE
   log_level: 3
   # use to validate fuzzing outputs on the fly.
@@ -24,7 +24,7 @@ fuzzing:
   use_hand_written_prompt: false
   # whether to use only trigger_to_generate_input and input_hint, without the
   # any documentation information or example code
-  no_input_prompt: true
+  no_input_prompt: false
   # prompt strategy to generate obtain programs after the first one.
   # 0: generate new code using separator
   # 1: mutate existing code
@@ -37,18 +37,18 @@ fuzzing:
 # Configuration of the target system
 target:
   # language to fuzz, currently supported: cpp, smt2, java, go
-  language: cpp
+  language: c
   # path to documentation of the feature of the target system
   # (Relative to the root of the fuzzing framework)
-  path_documentation: /home/cxx/fuzz4all/config/documentation/cpp/cpp_23_shortened.md
+  path_documentation: /home/cxx/fuzz4all/config/documentation/c/c_23.md
   # path to the example code using the feature of the target system
   # (Relative to the root of the fuzzing framework)
   path_example_code:
   # path to the command to push the llm to generate the input for the
   # target system using the given feature
-  trigger_to_generate_input: "/* Please create a very short program which uses new C++ features in a complex way */"
+  trigger_to_generate_input: "/* Please create a short program which uses new C features in a complex way */"
   # hint to give to the llm to generate the input for the target system
-  input_hint: "#include <iostream>"
+  input_hint: "#include <stdlib.h>"
   # path to the hand-written prompt to give to the llm
   # (Relative to the root of the fuzzing framework)
   path_hand_written_prompt:
@@ -63,7 +63,7 @@ llm:
   # temperature to query the LLM model when generating output.
   temperature: 1
   # batch size
-  batch_size: 5
+  batch_size: 30
   # use hardware acceleration (GPU) for the LLM model
   device: cuda
   # model name according to the HuggingFace model hub
