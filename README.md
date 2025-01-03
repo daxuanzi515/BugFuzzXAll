@@ -350,13 +350,15 @@ COV_FOLDER = "/home/cxx/fuzz4all/coverage/gcc-coverage-build/gcc"
 GCOV = "/home/cxx/fuzz4all/coverage/GCC-13-COVERAGE/bin/gcov"
 ```
 
-Install JaCoCo (jacoco-0.8.12):
+Install JaCoCo (Optional):
 https://www.jacoco.org/jacoco/
+
+Mine: jacoco-0.8.12
 ```bash
 # Two important path:
 /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar
 /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar
-# Your java adn javac path, choose official docker version
+# Your java and javac path, choose official docker version
 /home/cxx/fuzz4all/javac/bin/java
 /home/cxx/fuzz4all/javac/bin/javac
 ```
