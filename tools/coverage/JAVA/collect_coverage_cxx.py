@@ -90,34 +90,16 @@ def combine_reports(exec_files, combined_exec_file):
         subprocess.run(combine_cmd, check=True, text=True, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
         print(f"Combining reports failed:\n{e.stderr}")
-
-       
+    
 def determine_file_name(index, code, temp_folder):
     """
     Determine the file name for a Java source code based on the public class name.
-    Handles cases with duplicate class names or missing public class.
     """
-    # Match public class name
-    public_class_match = re.search(r"\s*public\s+class\s+([^\s\{]+)", code)
-    
+    public_class_match = re.search(r"\s*public(\s)+class(\s)+([^\s\{]+)", code)
     if public_class_match:
-        class_name = public_class_match.group(1)
-    else:
-        # Fallback to temp file naming
-        class_name = f"TempClass_{index}"
+        return os.path.join(temp_folder, f"{public_class_match[3]}.java")
+    return os.path.join(temp_folder, "temp.java")
 
-    # Ensure unique file name in the temp folder
-    temp_file_path = os.path.join(temp_folder, f"{class_name}.java")
-    unique_file_path = temp_file_path
-    counter = 1
-
-    while os.path.exists(unique_file_path):
-        unique_file_path = os.path.join(temp_folder, f"{class_name}_{counter}.java")
-        counter += 1
-
-    return unique_file_path
-
-        
 def coverage_loop(args):
     """
     Main loop for coverage analysis, processing `.fuzz` files in intervals.
@@ -128,18 +110,13 @@ def coverage_loop(args):
     combined_exec_file = os.path.join(args.folder, "combined/java-comb.exec")
     combined_folder = os.path.join(args.folder, "combined")
     os.makedirs(combined_folder, exist_ok=True)
-    end_num = args.clip if args.clip else len(files)  # Process all files if no clip specified
-    files = files[:end_num]
 
     for i in range(0, len(files), args.interval):
-        temp_folder = os.path.join(args.folder, f"temp_interval_{i}")
-        coverage_folder = os.path.join(args.folder, f"coverage_interval_{i}")
+        temp_folder = os.path.join(args.folder, "temp")
         os.makedirs(temp_folder, exist_ok=True)
-        os.makedirs(coverage_folder, exist_ok=True)
 
         file_map = {}  # Map temp Java files to original .fuzz files
 
-        # Process files in the current interval
         for j in range(i, min(i + args.interval, len(files))):
             try:
                 with open(files[j], "r", encoding="utf-8") as f:
@@ -152,21 +129,14 @@ def coverage_loop(args):
                 print(f"Error processing {files[j]}:\n{e}")
 
         # Pass file_map to compile_and_run
-        compile_and_run(file_map, coverage_folder)
+        compile_and_run(file_map, args.folder)
 
-        # Combine only the current interval's .exec files
-        current_exec_files = glob.glob(os.path.join(coverage_folder, "*.exec"))
-        interval_exec_file = os.path.join(combined_folder, f"interval_{i}.exec")
-        combine_reports(current_exec_files, interval_exec_file)
+        # Combine coverage reports
+        exec_files = glob.glob(os.path.join(args.folder, "coverage/*.exec"))
+        combine_reports(exec_files, combined_exec_file)
 
         # Clean up temporary files
         shutil.rmtree(temp_folder, ignore_errors=True)
-        shutil.rmtree(coverage_folder, ignore_errors=True)
-
-    # After all intervals, combine all interval .exec files
-    all_interval_exec_files = glob.glob(os.path.join(combined_folder, "interval_*.exec"))
-    combine_reports(all_interval_exec_files, combined_exec_file)
-
 
 def main():
     parser = argparse.ArgumentParser()
