@@ -45,7 +45,8 @@ def compile_and_run(file_map, output_folder):
                 class_folder,
                 class_name,
             ]
-            subprocess.run(run_cmd, check=True, text=True, stderr=subprocess.PIPE)
+            subprocess.run(compile_cmd, check=True, text=True, stderr=subprocess.PIPE, timeout=100)  # 100秒超时
+
         except subprocess.CalledProcessError as e:
             log_records.append(f"Execution failed for {original_file}:\n{e.stderr}")
             continue
@@ -110,6 +111,8 @@ def coverage_loop(args):
     combined_exec_file = os.path.join(args.folder, "combined/java-comb.exec")
     combined_folder = os.path.join(args.folder, "combined")
     os.makedirs(combined_folder, exist_ok=True)
+    
+    files = files[: args.clip]
 
     for i in range(0, len(files), args.interval):
         temp_folder = os.path.join(args.folder, "temp")
@@ -142,7 +145,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--folder", type=str, required=True, help="Input folder containing .fuzz files")
     parser.add_argument("--interval", type=int, required=True, help="Number of files to process per batch")
-    parser.add_argument("--clip", type=int, required=True, default=1, help="End of your clip")
+    parser.add_argument("--clip", type=int, required=True, default=100, help="End of your clip")
     args = parser.parse_args()
     coverage_loop(args)
 
