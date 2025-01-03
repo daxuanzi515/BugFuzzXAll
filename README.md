@@ -350,6 +350,18 @@ COV_FOLDER = "/home/cxx/fuzz4all/coverage/gcc-coverage-build/gcc"
 GCOV = "/home/cxx/fuzz4all/coverage/GCC-13-COVERAGE/bin/gcov"
 ```
 
+Install JaCoCo (jacoco-0.8.12):
+https://www.jacoco.org/jacoco/
+```bash
+# Two important path:
+/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar
+/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar
+# Your java adn javac path, choose official docker version
+/home/cxx/fuzz4all/javac/bin/java
+/home/cxx/fuzz4all/javac/bin/javac
+```
+Then add them to `/home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py`.
+
 #### C++ example
 ```bash
 cd /home/cxx/fuzz4all
@@ -401,6 +413,9 @@ Total success: 29. Total failure (timeout): 71
 ```
 #### Java example (optional)
 ```bash
-...
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_std --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_finally --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_instanceof --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_synchronize --interval 100 --clip 100
 ```
 

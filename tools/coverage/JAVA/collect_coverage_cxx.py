@@ -1,307 +1,180 @@
 import argparse
-import csv
 import glob
 import os
 import re
 import shutil
 import subprocess
-from collections import defaultdict
 
 
 def natural_sort_key(s):
-    _nsre = re.compile("([0-9]+)")
-    return [
-        int(text) if text.isdigit() else text.lower() for text in re.split(_nsre, s)
-    ]
+    _nsre = re.compile(r"([0-9]+)")
+    return [int(text) if text.isdigit() else text.lower() for text in re.split(_nsre, s)]
+            
+def compile_and_run(file_map, output_folder):
+    """
+    Compile and run Java files using `javac` and `java` with JaCoCo.
+    Generate coverage reports for each file.
+    """
+    agent_path = "/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar"
+    coverage_folder = os.path.join(output_folder, "coverage")
+    os.makedirs(coverage_folder, exist_ok=True)
 
+    log_records = []  # 用于记录日志
 
-def check(pkg, cls, whitelist):
-    def check_pkg(pattern):
-        if "*" in pattern and pkg.startswith(pattern[:-1]):
-            return True
-        if pkg == pattern:
-            return True
-        return False
+    for temp_file, original_file in file_map.items():
+        class_name = os.path.splitext(os.path.basename(temp_file))[0]
+        class_folder = os.path.join(output_folder, "classes")
+        os.makedirs(class_folder, exist_ok=True)
 
-    for pattern in whitelist:
-        if "," not in pattern and check_pkg(pattern):
-            return True
-        elif "," in pattern:
-            pkg2 = pattern.split(",")[0]
-            cls2 = pattern.split(",")[1]
-            if check_pkg(pkg2) and cls.startswith(cls2):
-                return True
-    return False
-
-
-def compute_raw(res, metric):
-    covered = metric + "_covered"
-    covered = res[covered]
-    missed = metric + "_missed"
-    missed = res[missed]
-    if covered == 0 and missed == 0:
-        return 0
-    return covered, missed
-
-
-def read_csv(name, whitelist):
-    def add_coverage(res, pkg, key, value):
-        segs = pkg.split(".")
-        while segs:
-            pkg = ".".join(segs)
-            res[pkg][key] += value
-            segs = segs[:-1]
-
-    res = defaultdict(lambda: defaultdict(lambda: 0))
-    with open(name, "r") as f:
-        csvreader = csv.reader(f)
-        next(csvreader)
-        # Header
-        # (0) GROUP,(1) PACKAGE,(2) CLASS,
-        # (3)INSTRUCTION_MISSED, (4)INSTRUCTION_COVERED,
-        # (5)BRANCH_MISSED, (6)BRANCH_COVERED,
-        # (7)LINE_MISSED, (8)LINE_COVERED,
-        # (9)COMPLEXITY_MISSED, (10)COMPLEXITY_COVERED,
-        # (11)METHOD_MISSED, (12)METHOD_COVERED
-
-        for row in csvreader:
-            pkg = row[1]
-            cls = row[2].split(".")[0]
-            if check(pkg, cls, whitelist):
-                branch_missed = row[3]
-                branch_covered = row[4]
-                line_missed = row[7]
-                line_covered = row[8]
-                function_missed = row[11]
-                function_covered = row[12]
-                add_coverage(res, pkg, "branch_missed", int(branch_missed))
-                add_coverage(res, pkg, "branch_covered", int(branch_covered))
-                add_coverage(res, pkg, "line_missed", int(line_missed))
-                add_coverage(res, pkg, "line_covered", int(line_covered))
-                add_coverage(res, pkg, "function_missed", int(function_missed))
-                add_coverage(res, pkg, "function_covered", int(function_covered))
-                res[(pkg, cls)]["branch_missed"] += int(branch_missed)
-                res[(pkg, cls)]["branch_covered"] += int(branch_covered)
-                res[(pkg, cls)]["line_missed"] += int(line_missed)
-                res[(pkg, cls)]["line_covered"] += int(line_covered)
-                res[(pkg, cls)]["function_missed"] += int(function_missed)
-                res[(pkg, cls)]["function_covered"] += int(function_covered)
-                res["total"]["branch_missed"] += int(branch_missed)
-                res["total"]["branch_covered"] += int(branch_covered)
-                res["total"]["line_missed"] += int(line_missed)
-                res["total"]["line_covered"] += int(line_covered)
-                res["total"]["function_missed"] += int(function_missed)
-                res["total"]["function_covered"] += int(function_covered)
-
-    return res
-
-
-def write_back_file(code, write_back_name=""):
-    if write_back_name != "":
+        # Compile Java file
         try:
-            with open(write_back_name, "w", encoding="utf-8") as f:
-                f.write(code)
-        except:
-            pass
+            compile_cmd = ["/home/cxx/fuzz4all/javac/bin/javac", "-d", class_folder, temp_file]
+            subprocess.run(compile_cmd, check=True, text=True, stderr=subprocess.PIPE)
+        except subprocess.CalledProcessError as e:
+            error_message = e.stderr.replace(temp_file, original_file)
+            log_records.append(f"Compilation failed for {original_file}:\n{error_message}")
+            continue
+
+        # Run Java file with JaCoCo agent
+        exec_file = os.path.join(coverage_folder, f"{class_name}.exec")
+        try:
+            run_cmd = [
+                "/home/cxx/fuzz4all/javac/bin/java",
+                f"-javaagent:{agent_path}=destfile={exec_file}",
+                "-cp",
+                class_folder,
+                class_name,
+            ]
+            subprocess.run(run_cmd, check=True, text=True, stderr=subprocess.PIPE)
+        except subprocess.CalledProcessError as e:
+            log_records.append(f"Execution failed for {original_file}:\n{e.stderr}")
+            continue
+
+        # Generate JaCoCo HTML report
+        report_folder = os.path.join(coverage_folder, f"{class_name}-report")
+        os.makedirs(report_folder, exist_ok=True)
+        try:
+            report_cmd = [
+                "/home/cxx/fuzz4all/javac/bin/java",
+                "-jar",
+                "/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar",
+                "report",
+                exec_file,
+                "--classfiles",
+                class_folder,
+                "--sourcefiles",
+                os.path.dirname(temp_file),
+                "--html",
+                report_folder,
+            ]
+            subprocess.run(report_cmd, check=True, text=True, stderr=subprocess.PIPE)
+        except subprocess.CalledProcessError as e:
+            log_records.append(f"Report generation failed for {original_file}:\n{e.stderr}")
+
+    # 按顺序输出日志
+    for log in sorted(log_records):
+        print(log)
 
 
-def determine_file_name(folder, code):
-    public_class_name = re.search("\s*public(\s)+class(\s)+([^\s\{]+)", code)
 
-    # check if folder exists
-    if not os.path.exists(f"/tmp/temp{folder}"):
-        os.mkdir(f"/tmp/temp{folder}")
-
-    if public_class_name is None:
-        # No public class found, return standard write back file name
-        return f"/tmp/temp{folder}/temp.java"
-
-    # Public class is found, ensure that file name matches public class name
-    return f"/tmp/temp{folder}/{public_class_name[0].split()[-1]}.java"
-
-
-def baseline_coverage_loop(args):
-    with open("java_whitelist") as f:
-        whitelist = [l.strip() for l in f.readlines()]
-
-    folders = glob.glob(args.folder + "/*/")
-    folders.sort(key=natural_sort_key)
-
-    for i in range(0, len(folders), args.interval):
-        total_folders = []
-        orders = []
-        for j in range(i, min(i + args.interval, len(folders)), args.parallel):
-            folder_names = []
-            # parallel processing
-            for k in range(j, min(j + args.parallel, len(folders))):
-
-                # cp folder to temp folder
-                try:
-                    shutil.copytree(folders[j], f"/tmp/temp{k}")
-                    folder_names.append(f"/tmp/temp{k}")
-
-                except:
-                    pass
-            total_folders.append(folder_names)
-            order = min(j, len(folders))
-            orders.append(order)
-
-        commands = [
-            f'./java_test_suite.sh "{" ".join(folder_names)}" Results/{order}'
-            for folder_names, order in zip(total_folders, orders)
+def combine_reports(exec_files, combined_exec_file):
+    """
+    Combine multiple JaCoCo `.exec` files into a single `.exec` file.
+    """
+    cli_path = "/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar"
+    try:
+        combine_cmd = ["/home/cxx/fuzz4all/javac/bin/java", "-jar", cli_path, "merge"] + exec_files + [
+            "--destfile",
+            combined_exec_file,
         ]
+        subprocess.run(combine_cmd, check=True, text=True, stderr=subprocess.PIPE)
+    except subprocess.CalledProcessError as e:
+        print(f"Combining reports failed:\n{e.stderr}")
 
-        procs = [
-            subprocess.Popen(
-                i,
-                shell=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.STDOUT,
-                encoding="utf-8",
-            )
-            for i in commands
-        ]
+       
+def determine_file_name(index, code, temp_folder):
+    """
+    Determine the file name for a Java source code based on the public class name.
+    Handles cases with duplicate class names or missing public class.
+    """
+    # Match public class name
+    public_class_match = re.search(r"\s*public\s+class\s+([^\s\{]+)", code)
+    
+    if public_class_match:
+        class_name = public_class_match.group(1)
+    else:
+        # Fallback to temp file naming
+        class_name = f"TempClass_{index}"
 
-        exit_codes = [p.wait() for p in procs]
+    # Ensure unique file name in the temp folder
+    temp_file_path = os.path.join(temp_folder, f"{class_name}.java")
+    unique_file_path = temp_file_path
+    counter = 1
 
-        for folder_names, order in zip(total_folders, orders):
-            # combine all previous
-            if i == 0:
-                # just cp
-                subprocess.run(
-                    f"./combine.sh java Results/{order}/jacoco.exec Results/{order}/jacoco.exec Results/combined java-comb",
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                )
-            else:
-                # first move the previous combined folder
-                subprocess.run(
-                    f"mv Results/combined Results/combined_temp",
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                )
-                subprocess.run(
-                    f"./combine.sh java Results/{order}/jacoco.exec Results/combined_temp/java-comb.exec Results/combined java-comb",
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                )
-                # delete combined folder
-                subprocess.run(
-                    f"rm -rf Results/combined_temp",
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                )
+    while os.path.exists(unique_file_path):
+        unique_file_path = os.path.join(temp_folder, f"{class_name}_{counter}.java")
+        counter += 1
 
-            # delete all folders
-            for folder_name in folder_names:
-                subprocess.run(
-                    f"rm -rf {folder_name}", shell=True, capture_output=True, text=True
-                )
+    return unique_file_path
 
-            # remove current coverage folder
-            subprocess.run(
-                f"rm -rf Results/{order}", shell=True, capture_output=True, text=True
-            )
-
-        raw = read_csv("Results/combined/java-comb.csv", whitelist=whitelist)
-        lines, missed = compute_raw(raw["total"], "line")
-        print(i + args.interval, lines / (lines + missed))
-        with open("Results/coverage.txt", "a") as f:
-            f.write(f"{i+args.interval},{lines},0\n")
-
-
+        
 def coverage_loop(args):
+    """
+    Main loop for coverage analysis, processing `.fuzz` files in intervals.
+    """
+    files = glob.glob(os.path.join(args.folder, "*.fuzz"))
+    files = sorted(files, key=natural_sort_key)  # Ensure natural sorting order
 
-    with open("java_whitelist") as f:
-        whitelist = [l.strip() for l in f.readlines()]
+    combined_exec_file = os.path.join(args.folder, "combined/java-comb.exec")
+    combined_folder = os.path.join(args.folder, "combined")
+    os.makedirs(combined_folder, exist_ok=True)
+    end_num = args.clip if args.clip else len(files)  # Process all files if no clip specified
+    files = files[:end_num]
 
-    files = glob.glob(args.folder + "/*.fuzz")
-    files.sort(key=natural_sort_key)
-    # loop through files in interval
     for i in range(0, len(files), args.interval):
-        folder_names = []
+        temp_folder = os.path.join(args.folder, f"temp_interval_{i}")
+        coverage_folder = os.path.join(args.folder, f"coverage_interval_{i}")
+        os.makedirs(temp_folder, exist_ok=True)
+        os.makedirs(coverage_folder, exist_ok=True)
+
+        file_map = {}  # Map temp Java files to original .fuzz files
+
+        # Process files in the current interval
         for j in range(i, min(i + args.interval, len(files))):
             try:
                 with open(files[j], "r", encoding="utf-8") as f:
                     code = f.read()
-                    write_back_name = determine_file_name(j, code)
-                    write_back_file(code, write_back_name=write_back_name)
-                    folder_names.append(write_back_name)
-            except:
-                pass
-        order = min(i + args.interval, len(files))
-        subprocess.run(
-            f'./java_test_suite.sh "{" ".join(folder_names)}" Results/{order}',
-            shell=True,
-            capture_output=True,
-            text=True,
-        )
-        # combine all previous
-        if i == 0:
-            # just cp
-            subprocess.run(
-                f"./combine.sh java Results/{order}/jacoco.exec Results/{order}/jacoco.exec Results/combined java-comb",
-                shell=True,
-                capture_output=True,
-                text=True,
-            )
-        else:
-            # first move the previous combined folder
-            subprocess.run(
-                f"mv Results/combined Results/combined_temp",
-                shell=True,
-                capture_output=True,
-                text=True,
-            )
-            subprocess.run(
-                f"./combine.sh java Results/{order}/jacoco.exec Results/combined_temp/java-comb.exec Results/combined java-comb",
-                shell=True,
-                capture_output=True,
-                text=True,
-            )
-            # delete combined folder
-            subprocess.run(
-                f"rm -rf Results/combined_temp",
-                shell=True,
-                capture_output=True,
-                text=True,
-            )
+                    temp_file = determine_file_name(j, code, temp_folder)
+                    with open(temp_file, "w", encoding="utf-8") as temp_file_handle:
+                        temp_file_handle.write(code)
+                    file_map[temp_file] = files[j]  # Map temp file to original .fuzz file
+            except Exception as e:
+                print(f"Error processing {files[j]}:\n{e}")
 
-        # remove current coverage folder
-        subprocess.run(
-            f"rm -rf Results/{order}", shell=True, capture_output=True, text=True
-        )
+        # Pass file_map to compile_and_run
+        compile_and_run(file_map, coverage_folder)
 
-        raw = read_csv("Results/combined/java-comb.csv", whitelist=whitelist)
-        lines, missed = compute_raw(raw["total"], "line")
-        print(order, lines / (lines + missed))
-        with open("Results/coverage.txt", "a") as f:
-            f.write(f"{order},{lines},0\n")
+        # Combine only the current interval's .exec files
+        current_exec_files = glob.glob(os.path.join(coverage_folder, "*.exec"))
+        interval_exec_file = os.path.join(combined_folder, f"interval_{i}.exec")
+        combine_reports(current_exec_files, interval_exec_file)
 
-        # delete all folders
-        for folder_name in folder_names:
-            subprocess.run(
-                f"rm -rf {folder_name}", shell=True, capture_output=True, text=True
-            )
+        # Clean up temporary files
+        shutil.rmtree(temp_folder, ignore_errors=True)
+        shutil.rmtree(coverage_folder, ignore_errors=True)
+
+    # After all intervals, combine all interval .exec files
+    all_interval_exec_files = glob.glob(os.path.join(combined_folder, "interval_*.exec"))
+    combine_reports(all_interval_exec_files, combined_exec_file)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--folder", type=str, default="Results/test")
-    parser.add_argument("--interval", type=int, required=True)
-    parser.add_argument("--parallel", type=int, default=1)
-    parser.add_argument("--baseline", action="store_true")
-
+    parser.add_argument("--folder", type=str, required=True, help="Input folder containing .fuzz files")
+    parser.add_argument("--interval", type=int, required=True, help="Number of files to process per batch")
+    parser.add_argument("--clip", type=int, required=True, default=1, help="End of your clip")
     args = parser.parse_args()
-
-    if args.baseline:
-        baseline_coverage_loop(args)
-    else:
-        coverage_loop(args)
+    coverage_loop(args)
 
 
 if __name__ == "__main__":

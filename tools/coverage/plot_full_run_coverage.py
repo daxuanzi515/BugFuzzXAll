@@ -21,7 +21,7 @@ mpl.rcParams["grid.linewidth"] = 1.2
 mpl.rcParams["axes.edgecolor"] = "#0b2457"
 mpl.rcParams["axes.linewidth"] = 1.2
 
-BASE_DIR = "IntermediateResults/"
+BASE_DIR = "/home/cxx/fuzz4all/IntermediateResults/"
 
 
 def grab_line_cov(lines, change_time=False, increase_index=True):

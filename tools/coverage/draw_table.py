@@ -49,7 +49,7 @@ def rich_print(rows):
 
 
 def main():
-    rows = grab_csv_data("IntermediateResults/full_run/full_run_coverage.csv")
+    rows = grab_csv_data("/home/cxx/fuzz4all/IntermediateResults/full_run/full_run_coverage.csv")
     rich_print(rows)
 
 
