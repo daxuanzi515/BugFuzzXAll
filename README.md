@@ -1,4 +1,5 @@
 # README
+original link: https://github.com/fuzz4all/fuzz4all
 ## Core task
 It contains 2 parts: prompts generation and selection; fuzzing examples generation.
 
