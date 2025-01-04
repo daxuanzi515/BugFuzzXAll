@@ -63,10 +63,6 @@ python3 /home/cxx/fuzz4all/Fuzz4All/fuzz.py \
     --target /home/cxx/fuzz4all/gcc-13/bin/g++
 ```
 
-HF-MIRROR:
-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
-export HF_ENDPOINT=https://hf-mirror.com
-
 ### EXPERIMENTS
 #### C++ g++-13.0.1
 #### NEED A TRUE API KEY FOR GPT-4
