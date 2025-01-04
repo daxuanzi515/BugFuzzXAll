@@ -448,3 +448,11 @@ generate a csv report:
 ```
 
 
+#### ERROR SUMMARY
+Edit your path in `/home/cxx/fuzz4all/tools/coverage/ERROR/list.py`
+```bash
+# change the path to your own and your output folder
+python3 /home/cxx/fuzz4all/tools/coverage/ERROR/py_validation_classification.py
+python3 /home/cxx/fuzz4all/tools/coverage/ERROR/newer.py
+```
+It will generate `error_summary.csv` in output folder.
