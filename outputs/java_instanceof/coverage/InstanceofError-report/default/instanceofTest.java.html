@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>instanceofTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">instanceofTest.java</span></div><h1>instanceofTest.java</h1><pre class="source lang-java linenums">import java.lang.Object;
+
+import java.lang.String;
+import java.util.Date;
+import java.lang.Integer;
+<span class="nc" id="L6">class Animal {</span>
+}
+<span class="nc" id="L8">class Cat extends Animal {</span>
+}
+<span class="nc" id="L10">class Dog extends Animal {</span>
+}
+<span class="nc" id="L12">public class instanceofTest {</span>
+public boolean isAnInstanceOf(Animal a, Dog d) {
+<span class="nc" id="L14">    return (d instanceof Dog);</span>
+  }
+  public static void main(String[] args) throws Exception {
+<span class="nc" id="L17">    System.out.println(&quot;Program starts&quot;);</span>
+<span class="nc" id="L18">    Dog d = new Dog();  </span>
+<span class="nc" id="L19">	Animal a = new Cat();  </span>
+<span class="nc" id="L20">	instanceofTest c1 = new instanceofTest();  </span>
+<span class="nc" id="L21">	boolean ans1 = c1.isAnInstanceOf(a, d);  </span>
+<span class="nc" id="L22">    System.out.println(&quot;Answer after instanceof test (a, d): &quot;+ ans1);</span>
+<span class="nc" id="L23">	boolean ans2 = d instanceof Dog;  </span>
+<span class="nc" id="L24">    System.out.println(&quot;Answer after instanceof test, (d, Dog): &quot;+  ans2);</span>
+<span class="nc" id="L25">    System.out.println(&quot;End.&quot;);</span>
+<span class="nc" id="L26">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

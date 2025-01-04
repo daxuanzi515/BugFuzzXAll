@@ -1,0 +1,430 @@
+Execution timed out for /home/cxx/fuzz4all/outputs/java_std/1.fuzz. Command was: ['/home/cxx/fuzz4all/javac/bin/java', '-javaagent:/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar=destfile=/home/cxx/fuzz4all/outputs/java_std/coverage/1/Driver.exec', '-cp', '/home/cxx/fuzz4all/outputs/java_std/classes/1', 'Driver']
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/3.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/3.fuzz:7: 错误: 找不到符号
+    HelloWorld2 hwi = new HelloWorld2();
+    ^
+  符号:   类 HelloWorld2
+  位置: 类 HelloWorld
+/home/cxx/fuzz4all/outputs/java_std/3.fuzz:7: 错误: 找不到符号
+    HelloWorld2 hwi = new HelloWorld2();
+                          ^
+  符号:   类 HelloWorld2
+  位置: 类 HelloWorld
+2 个错误
+
+Execution failed for /home/cxx/fuzz4all/outputs/java_std/4.fuzz:
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1677)
+	at HelloIndian.main(HelloIndian.java:9)
+
+Execution failed for /home/cxx/fuzz4all/outputs/java_std/5.fuzz:
+Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:962)
+	at java.base/java.util.Scanner.next(Scanner.java:1503)
+	at HelloJava.main(HelloJava.java:12)
+
+Execution failed for /home/cxx/fuzz4all/outputs/java_std/6.fuzz:
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1677)
+	at HelloIndian.main(HelloIndian.java:7)
+
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/8.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:2: 错误: 需要';'
+import java.util.* java.io.File;
+                  ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;       import java.io.FileWriter;
+^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;       import java.io.FileWriter;
+                          ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:17: 错误: 非法字符: '\u00a0'
+                
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:18: 错误: 非法字符: '\u00a0'
+            
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:19: 错误: 非法字符: '\u00a0'
+    public class HelloWorld{
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:19: 错误: 非法字符: '\u00a0'
+    public class HelloWorld{
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:20: 错误: 非法字符: '\u00a0'
+         public static void main(String[] args) {
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:21: 错误: 非法字符: '\u00a0'
+             FileWriter outputFile;
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 非法字符: '\u00a0'
+             try {
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:23: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File1.txt", false);
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:24: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file one\n");
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:25: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:26: 错误: 非法字符: '\u00a0'
+         
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:26: 错误: 非法字符: '\u00a0'
+         
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:26: 错误: 非法字符: '\u00a0'
+         
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:26: 错误: 非法字符: '\u00a0'
+         
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:27: 错误: 非法字符: '\u00a0'
+                 outputFile = new FileWriter("File2.txt", false);
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:28: 错误: 非法字符: '\u00a0'
+                outputFile.write("I am from file two\n");
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:29: 错误: 非法字符: '\u00a0'
+                outputFile.close();
+               ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:30: 错误: 非法字符: '\u00a0'
+             }
+           ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+ ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:22: 错误: 'try' 不带有 'catch', 'finally' 或资源声明
+             try {
+             ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+   ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+     ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+       ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+         ^
+/home/cxx/fuzz4all/outputs/java_std/8.fuzz:31: 错误: 非法字符: '\u00a0'
+             catch(IOException e) {
+           ^
+100 个错误
+仅显示前 100 个错误（共 181 个）；若要查看更多错误，请使用 -Xmaxerrs
+
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/9.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:14: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:15: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:17: 错误: 非法的类型开始
+if(true)
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:20: 错误: 非法的类型开始
+	} while(true);
+	  ^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:23: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:24: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:26: 错误: 非法的类型开始
+		do {
+		^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:28: 错误: 非法的类型开始
+	} while(true);
+	  ^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:32: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:33: 错误: 需要 class、interface、enum 或 record
+import java.util.Scanner;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:60: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/9.fuzz:61: 错误: 需要 class、interface、enum 或 record
+import
+^
+12 个错误
+
+Execution failed for /home/cxx/fuzz4all/outputs/java_std/11.fuzz:
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at HelloIndian.main(HelloIndian.java:5)
+
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/16.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:18: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:19: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:20: 错误: 需要 class、interface、enum 或 record
+import java.util.TreeMap;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:37: 错误: 需要 class、interface、enum 或 record
+import java.lang.Object;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:38: 错误: 需要 class、interface、enum 或 record
+import java.lang.Integer;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:39: 错误: 需要 class、interface、enum 或 record
+import java.util.TreeMap;
+^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:46: 错误: 不是语句
+		b
+		^
+/home/cxx/fuzz4all/outputs/java_std/16.fuzz:46: 错误: 进行语法分析时已到达文件结尾
+		b
+		 ^
+8 个错误
+
+Execution failed for /home/cxx/fuzz4all/outputs/java_std/20.fuzz:
+错误: 在类 HelloIndian 中找不到 main 方法, 请将 main 方法定义为:
+   public static void main(String[] args)
+否则 JavaFX 应用程序类必须扩展javafx.application.Application
+
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/21.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/21.fuzz:13: 错误: 需要<标识符>
+System.out.println("Hello world!"); 
+                  ^
+/home/cxx/fuzz4all/outputs/java_std/21.fuzz:13: 错误: 非法的类型开始
+System.out.println("Hello world!"); 
+                   ^
+/home/cxx/fuzz4all/outputs/java_std/21.fuzz:16: 错误: 需要 class、interface、enum 或 record
+import java.util.*;
+^
+3 个错误
+
+Execution timed out for /home/cxx/fuzz4all/outputs/java_std/22.fuzz. Command was: ['/home/cxx/fuzz4all/javac/bin/java', '-javaagent:/home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar=destfile=/home/cxx/fuzz4all/outputs/java_std/coverage/22/HelloIndian.exec', '-cp', '/home/cxx/fuzz4all/outputs/java_std/classes/22', 'HelloIndian']
+Compilation failed for /home/cxx/fuzz4all/outputs/java_std/23.fuzz:
+/home/cxx/fuzz4all/outputs/java_std/23.fuzz:5: 错误: 找不到符号
+		int num = s1.length();
+		          ^
+  符号:   变量 s1
+  位置: 类 HelloIndian
+1 个错误
+

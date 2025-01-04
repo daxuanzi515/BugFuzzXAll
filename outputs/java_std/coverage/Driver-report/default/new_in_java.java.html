@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>new_in_java.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">new_in_java.java</span></div><h1>new_in_java.java</h1><pre class="source lang-java linenums">import java.lang.Object;
+
+import java.lang.Character;
+import java.util.Vector;
+import java.util.function.Supplier;
+
+ 
+@SuppressWarnings(&quot;javadoc&quot;)
+<span class="nc" id="L9">public class new_in_java {</span>
+	private static char[] generate_message() {
+<span class="nc" id="L11">		Vector&lt;Character&gt; charVec = new Vector&lt;&gt;();</span>
+<span class="nc" id="L12">		char[] carr = new char[12];</span>
+<span class="nc" id="L13">		final Supplier&lt;Character&gt; charSupplier = () -&gt; (char) (Math.random() * 26 + 97),</span>
+<span class="nc" id="L14">				charSupplier2 = () -&gt; (char) ('A' + Integer.parseInt(</span>
+<span class="nc" id="L15">						String.valueOf((Math.random() * 10 + 48))))</span>
+				;
+<span class="nc bnc" id="L17" title="All 2 branches missed.">		for (int i = 0; i &lt; 12; i++) {</span>
+<span class="nc" id="L18">			char c = charSupplier.get();</span>
+<span class="nc" id="L19">			System.out.print((char) c);</span>
+<span class="nc" id="L20">			carr[i] = new Character((char) c);</span>
+		}
+<span class="nc" id="L22">		return carr;</span>
+	}
+
+	public static void main(String[] args) {
+		 
+<span class="nc" id="L27">		char[] carr = generate_message();</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">		for (char c : carr) {</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">			if (Character.isUpperCase(c)) {</span>
+<span class="nc" id="L30">				Character lowerCase = Character.toLowerCase(c);</span>
+<span class="nc" id="L31">				System.out.print(lowerCase);</span>
+<span class="nc" id="L32">			} else {</span>
+<span class="nc" id="L33">				Character upperCase = Character.toUpperCase(c);</span>
+<span class="nc" id="L34">				System.out.print(upperCase);</span>
+			}
+		}
+<span class="nc" id="L37">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

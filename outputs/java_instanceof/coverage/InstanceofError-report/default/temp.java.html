@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>temp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">temp.java</span></div><h1>temp.java</h1><pre class="source lang-java linenums">import java.lang.Object;
+import java.lang.IllegalArgumentException;
+<span class="nc" id="L3">class Main {</span>
+	public static void main(String... args) {
+<span class="nc" id="L5">		Object a = &quot;abc&quot;;</span>
+<span class="nc bnc" id="L6" title="All 4 branches missed.">		if (!(a instanceof Integer &amp;&amp; (a = (int) a) instanceof Integer)) </span>
+<span class="nc" id="L7">			throw new IllegalArgumentException(&quot;a is not Integer&quot;);</span>
+<span class="nc" id="L8">		System.out.println(&quot;a is Integer: &quot; + (a instanceof Integer));</span>
+<span class="nc" id="L9">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

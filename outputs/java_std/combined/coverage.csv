@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+JaCoCo Coverage Report,default,new_in_java,23,74,1,5,5,15,3,5,2,3
+JaCoCo Coverage Report,default,ListExample,3,20,0,0,1,6,1,1,1,1
+JaCoCo Coverage Report,default,MyThread,7,0,0,0,3,0,2,0,2,0
+JaCoCo Coverage Report,default,HelloJava,8,5,0,0,3,1,1,1,1,1
+JaCoCo Coverage Report,default,HelloIndian3,3,14,0,2,1,4,1,2,1,1
+JaCoCo Coverage Report,default,Driver.new Thread() {...},20,33,5,3,4,8,4,2,0,2
+JaCoCo Coverage Report,default,Driver,6,26,1,1,2,7,2,1,1,1
+JaCoCo Coverage Report,default,Mutated,3,15,0,2,1,6,1,2,1,1
+JaCoCo Coverage Report,default,Driver.new Thread() {...},20,33,5,3,4,8,4,2,0,2
+JaCoCo Coverage Report,default,HelloIndiae,3,15,0,2,1,6,1,2,1,1

@@ -415,9 +415,36 @@ Total success: 29. Total failure (timeout): 71
 ```
 #### Java example (optional)
 ```bash
-python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_std --interval 100 --clip 100
-python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_finally --interval 100 --clip 100
-python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_instanceof --interval 100 --clip 100
-python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py --folder /home/cxx/fuzz4all/outputs/java_synchronize --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_update.py --folder /home/cxx/fuzz4all/outputs/java_std --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_update.py --folder /home/cxx/fuzz4all/outputs/java_finally --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_update.py --folder /home/cxx/fuzz4all/outputs/java_instanceof --interval 100 --clip 100
+python3 /home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_update.py --folder /home/cxx/fuzz4all/outputs/java_synchronize --interval 100 --clip 100
 ```
+
+collect coverage (during running):
+```bash
+/home/cxx/fuzz4all/javac/bin/java -jar /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacocoagent.jar=destfile=/home/cxx/fuzz4all/outputs/java_std/combined/java-comb.exec,includes=java_std/src/main/java/ --classfiles /home/cxx/fuzz4all/outputs/java_std/classes --sourcefiles /home/cxx/fuzz4all/outputs/java_std/src/main/java/ --html /home/cxx/fuzz4all/outputs/java_std/combined/html/ --xml /home/cxx/fuzz4all/outputs/java_std/combined/xml/
+```
+
+generate a csv report:
+```bash
+/home/cxx/fuzz4all/javac/bin/java -jar /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar report /home/cxx/fuzz4all/outputs/java_std/combined/java-comb.exec \
+    --classfiles /home/cxx/fuzz4all/outputs/java_std/classes \
+    --csv /home/cxx/fuzz4all/outputs/java_std/combined/coverage.csv
+    #-sourcefiles /home/cxx/fuzz4all/outputs/java_std/temp 
+
+
+/home/cxx/fuzz4all/javac/bin/java -jar /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar report /home/cxx/fuzz4all/outputs/java_finally/combined/java-comb.exec \
+    --classfiles /home/cxx/fuzz4all/outputs/java_finally/classes \
+    --csv /home/cxx/fuzz4all/outputs/java_finally/combined/coverage.csv
+
+/home/cxx/fuzz4all/javac/bin/java -jar /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar report /home/cxx/fuzz4all/outputs/java_instanceof/combined/java-comb.exec \
+    --classfiles /home/cxx/fuzz4all/outputs/java_instanceof/classes \
+    --csv /home/cxx/fuzz4all/outputs/java_instanceof/combined/coverage.csv
+
+/home/cxx/fuzz4all/javac/bin/java -jar /home/cxx/fuzz4all/jacoco-0.8.12/lib/jacococli.jar report /home/cxx/fuzz4all/outputs/java_synchronize/combined/java-comb.exec \
+    --classfiles /home/cxx/fuzz4all/outputs/java_synchronize/classes \
+    --csv /home/cxx/fuzz4all/outputs/java_synchronize/combined/coverage.csv  
+```
+
 

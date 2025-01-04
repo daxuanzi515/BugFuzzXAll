@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SynchronizationExample.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">SynchronizationExample.java</span></div><h1>SynchronizationExample.java</h1><pre class="source lang-java linenums">import java.lang.Object;
+<span class="nc" id="L2">class SampleData {</span>
+<span class="nc" id="L3">    void write() { System.out.println(&quot;Write operation to SampleData is invoked!&quot;); }</span>
+<span class="nc" id="L4">    synchronized void read() { System.out.println(&quot;Read operation to SampleData is invoked!&quot;); }</span>
+}
+class MultiThreadedData {
+    SampleData data;
+<span class="nc" id="L8">    MultiThreadedData(SampleData data) {</span>
+<span class="nc" id="L9">        this.data = data;</span>
+<span class="nc" id="L10">    }</span>
+<span class="nc" id="L11">    public void read() { data.read(); }</span>
+<span class="nc" id="L12">    public void write() { data.write(); }</span>
+}
+<span class="nc" id="L14">class SampleThread implements Runnable {</span>
+    MultiThreadedData data;
+    public void setData(MultiThreadedData data) {
+<span class="nc" id="L17">        this.data = data;</span>
+<span class="nc" id="L18">    }</span>
+   public void read() {
+<span class="nc" id="L20">        data.read();</span>
+<span class="nc" id="L21">    }</span>
+    public void write() {
+<span class="nc" id="L23">        data.write();</span>
+<span class="nc" id="L24">    }</span>
+    public synchronized void run() {
+<span class="nc" id="L26">        data.read();</span>
+<span class="nc" id="L27">        data.write();</span>
+<span class="nc" id="L28">    }</span>
+}
+<span class="nc" id="L30">public class SynchronizationExample</span>
+{
+    public static void main (String[] args) {
+<span class="nc" id="L33">        SampleThread st = new SampleThread();</span>
+<span class="nc" id="L34">        MultiThreadedData data = new MultiThreadedData(new SampleData());</span>
+<span class="nc" id="L35">        st.setData(data);</span>
+<span class="nc" id="L36">        Thread.currentThread().setName(&quot;Thread 1&quot;);</span>
+<span class="nc" id="L37">        Thread t1 = new Thread(st, &quot;Thread 1&quot;); </span>
+<span class="nc" id="L38">        Thread.currentThread().setName(&quot;Thread 2&quot;);</span>
+<span class="nc" id="L39">        Thread t2 = new Thread(st, &quot;Thread 2&quot;);</span>
+<span class="nc" id="L40">        t1.start();</span>
+<span class="nc" id="L41">        t2.start();</span>
+        try {
+<span class="nc" id="L43">            t1.join();</span>
+<span class="nc" id="L44">            t2.join();</span>
+        }
+<span class="nc" id="L46">        catch (InterruptedException ex) {</span>
+<span class="nc" id="L47">            System.out.println(ex.getMessage());</span>
+<span class="nc" id="L48">        }</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

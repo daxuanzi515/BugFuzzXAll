@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+JaCoCo Coverage Report,default,FinallyTwo,33,10,4,2,8,6,4,1,1,1
+JaCoCo Coverage Report,default,SFInally5,26,4,2,0,6,3,2,1,1,1
+JaCoCo Coverage Report,default,Program1,30,0,6,0,9,0,5,0,2,0
+JaCoCo Coverage Report,default,FinallyJava1,3,25,1,1,1,9,2,1,1,1
+JaCoCo Coverage Report,default,FinallyJava2,35,0,4,0,9,0,4,0,2,0
+JaCoCo Coverage Report,default,MutatedFinaly,18,0,0,0,5,0,2,0,2,0
+JaCoCo Coverage Report,default,SFinally3,16,8,0,0,5,4,1,1,1,1
+JaCoCo Coverage Report,default,Main,7,14,0,0,3,6,1,1,1,1
+JaCoCo Coverage Report,default,FinallyJava,37,0,4,0,11,0,4,0,2,0

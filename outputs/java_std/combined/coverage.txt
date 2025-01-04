@@ -1,0 +1,5 @@
+Total Line, 61, 86, 0.71
+Total Branch, 18, 30, 0.60
+Total Method, 13, 23, 0.57
+Total Instruction, 235, 331, 0.71
+Total Complexity, 18, 38, 0.47
