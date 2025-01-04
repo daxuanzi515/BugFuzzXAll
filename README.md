@@ -359,7 +359,7 @@ Mine: jacoco-0.8.12
 /home/cxx/fuzz4all/javac/bin/java
 /home/cxx/fuzz4all/javac/bin/javac
 ```
-Then add them to `/home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_cxx.py`.
+Then add them to `/home/cxx/fuzz4all/tools/coverage/JAVA/collect_coverage_update.py`.
 
 #### C++ example
 ```bash
